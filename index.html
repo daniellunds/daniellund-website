@@ -22,14 +22,15 @@
         }
     </style>
 </head>
-<body class="bg-[#fff8f0] min-h-screen relative overflow-hidden flex flex-col items-center justify-center text-center p-6">
+<body class="bg-[#fff8f0] min-h-screen relative overflow-x-hidden flex flex-col items-center justify-center text-center p-6 py-12">
 
-    <div class="absolute inset-0 z-0 pointer-events-none"
+    <div class="fixed inset-0 z-0 pointer-events-none"
          style="background-image: 
             radial-gradient(circle at 20% 80%, rgba(255, 182, 153, 0.3) 0%, transparent 50%),
             radial-gradient(circle at 80% 20%, rgba(255, 244, 214, 0.5) 0%, transparent 50%),
             radial-gradient(circle at 40% 40%, rgba(255, 182, 153, 0.1) 0%, transparent 50%);">
     </div>
+
     <div class="relative z-10 fade-in max-w-3xl">
         
         <h1 class="text-5xl md:text-7xl font-semibold mb-4 text-gray-900 tracking-tight">
@@ -68,7 +69,7 @@
         </div>
     </div>
 
-    <footer class="absolute bottom-6 text-gray-500 text-sm z-10">
+    <footer class="relative mt-16 text-gray-500 text-sm z-10">
         &copy; <span id="year"></span> Daniel Lund Sørensen
     </footer>
 
