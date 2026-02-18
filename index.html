@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Lund Sørensen - Landskabsarkitekt</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Outfit', sans-serif;
-            background: radial-gradient(circle at center, #1f2937 0%, #0d1117 100%);
-            color: #e2e8f0;
+            margin: 0;
+            padding: 0;
         }
         .fade-in {
             animation: fadeIn 1.5s ease-out forwards;
@@ -22,48 +22,63 @@
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-6 text-center">
+<body class="bg-[#fff8f0] min-h-screen relative overflow-hidden flex flex-col items-center justify-center text-center p-6">
 
-    <div class="fade-in max-w-3xl">
-        <p class="text-green-400 font-medium tracking-widest uppercase text-sm mb-4">
+    <div class="absolute inset-0 z-0 pointer-events-none"
+         style="background-image: 
+            radial-gradient(circle at 20% 80%, rgba(255, 182, 153, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 244, 214, 0.5) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(255, 182, 153, 0.1) 0%, transparent 50%);">
+    </div>
+    <div class="relative z-10 fade-in max-w-3xl">
+        
+        <p class="text-green-700 font-semibold tracking-widest uppercase text-sm mb-4">
             Portfolio
         </p>
 
-        <h1 class="text-5xl md:text-7xl font-semibold mb-6 text-white tracking-tight">
+        <h1 class="text-5xl md:text-7xl font-semibold mb-4 text-gray-900 tracking-tight">
             Daniel Lund Sørensen
         </h1>
 
-        <h2 class="text-2xl md:text-3xl text-gray-300 mb-6 font-light">
+        <h2 class="text-2xl md:text-3xl text-gray-600 mb-8 font-light">
             MSc Landscape Architecture
         </h2>
 
-        <p class="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed font-light">
-            Jeg arbejder med alt fra tidlige helhedsplaner til detaljeret projektering med fokus på at integrere æstetik, funktionalitet og bæredygtighed.<br><br>
-            Specialiseret i landskabsbaserede regnvandsløsninger, infrastruktur og byrumsdesign, der respekterer stedets unikke karakter.
-        </p>
+        <div class="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed font-light space-y-4">
+            <p>
+                Jeg er en alsidig landskabsarkitekt med erfaring inden for landskabsprojekter, byrumsdesign, infrastruktur og miljøkonsekvensvurderinger. Mit fokus ligger på at integrere æstetik, funktionalitet og bæredygtighed i løsninger, der harmonerer med stedets unikke karakter.
+            </p>
+            <p>
+                Med særlig erfaring i landskabsbaserede regnvandsløsninger (LAR) og strategisk klimatilpasning arbejder jeg med alt fra helhedsplaner til detaljeret projektering. Jeg kombinerer teknisk indsigt med visuel formidling gennem 3D-modeller og infografik for at sikre, at projekter skaber værdi for både mennesker og miljø.
+            </p>
+        </div>
         
         <div class="flex flex-col md:flex-row gap-4 justify-center">
             <a 
                 href="https://www.linkedin.com/in/daniel-lund-s%C3%B8rensen/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                class="bg-white text-gray-900 hover:bg-gray-200 font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105"
+                class="bg-gray-900 text-white hover:bg-gray-700 font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-orange-100"
             >
                 LinkedIn
             </a>
 
             <a 
-                href="mailto:din@email.her" 
-                class="border border-gray-600 hover:border-white hover:text-white text-gray-300 font-medium py-3 px-8 rounded-full transition-all duration-300"
+                href="mailto:mail@daniellund.dk" 
+                class="border-2 border-gray-800 text-gray-900 hover:bg-gray-800 hover:text-white font-medium py-3 px-8 rounded-full transition-all duration-300"
             >
                 Kontakt mig
             </a>
         </div>
     </div>
 
-    <footer class="absolute bottom-6 text-gray-600 text-sm">
-        &copy; 2024 Daniel Lund Sørensen
+    <footer class="absolute bottom-6 text-gray-500 text-sm z-10">
+        &copy; <span id="year"></span> Daniel Lund Sørensen
     </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 
 </body>
 </html>
