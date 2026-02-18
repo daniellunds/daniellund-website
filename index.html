@@ -3,33 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Lund Sørensen - MSc Landscape Architecture</title>
+    <title>Daniel Lund Sørensen - Landskabsarkitekt</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #0d1117; /* Mørk baggrund */
-            color: #c9d1d9; /* Lys tekst */
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(circle at center, #1f2937 0%, #0d1117 100%); /* Mørk, lækker gradient */
+            color: #e2e8f0;
+        }
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-6 text-center">
-    <div>
-        <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight text-white">
+<body class="flex flex-col items-center justify-center min-h-screen p-6 text-center">
+
+    <div class="fade-in max-w-2xl">
+        <p class="text-green-400 font-medium tracking-widest uppercase text-sm mb-4">
+            Portfolio
+        </p>
+
+        <h1 class="text-5xl md:text-7xl font-semibold mb-6 text-white tracking-tight">
             Daniel Lund Sørensen
         </h1>
-        <p class="text-xl md:text-2xl text-gray-400 mb-10 font-light">
-            MSc Landscape Architecture
+
+        <p class="text-xl md:text-2xl text-gray-400 mb-12 font-light leading-relaxed">
+            MSc Landscape Architecture.<br>
+            Specialiseret i digitale landskaber og AI-drevet design.
         </p>
         
-        <a 
-            href="https://www.linkedin.com/in/daniel-lund-s%C3%B8rensen/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="inline-block border border-gray-600 hover:border-white hover:text-white text-gray-400 font-medium py-3 px-8 rounded-full transition-all duration-300"
-        >
-            LinkedIn
-        </a>
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a 
+                href="https://www.linkedin.com/in/daniel-lund-s%C3%B8rensen/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="bg-white text-gray-900 hover:bg-gray-200 font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105"
+            >
+                LinkedIn
+            </a>
+
+            <a 
+                href="mailto:mail@daniellund.dk" 
+                class="border border-gray-600 hover:border-white hover:text-white text-gray-300 font-medium py-3 px-8 rounded-full transition-all duration-300"
+            >
+                Kontakt mig
+            </a>
+        </div>
     </div>
+
+    <footer class="absolute bottom-6 text-gray-600 text-sm">
+        &copy; 2024 Daniel Lund Sørensen
+    </footer>
+
 </body>
 </html>
