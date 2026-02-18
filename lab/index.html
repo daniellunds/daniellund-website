@@ -7,19 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Outfit', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .fade-in {
-            animation: fadeIn 1.5s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        body { font-family: 'Outfit', sans-serif; margin: 0; padding: 0; }
+        .fade-in { animation: fadeIn 1.5s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="bg-[#fff8f0] min-h-screen relative overflow-x-hidden flex flex-col items-center p-6">
@@ -34,47 +24,41 @@
     <div class="relative z-10 w-full max-w-4xl mt-12 fade-in">
         
         <div class="text-center mb-16">
-            <a href="/" class="inline-block mb-6 text-gray-500 hover:text-gray-900 transition-colors text-sm uppercase tracking-wide">
-                ← Tilbage til forsiden
-            </a>
-            <h1 class="text-4xl md:text-6xl font-semibold text-gray-900 mb-4 tracking-tight">
-                Laboratoriet
-            </h1>
+            <a href="/" class="inline-block mb-6 text-gray-500 hover:text-gray-900 transition-colors text-sm uppercase tracking-wide">← Tilbage til forsiden</a>
+            <h1 class="text-4xl md:text-6xl font-semibold text-gray-900 mb-4 tracking-tight">Laboratoriet</h1>
             <p class="text-xl text-gray-600 font-light max-w-2xl mx-auto">
-                Her udforsker jeg krydsfeltet mellem landskabsarkitektur, kode og AI. 
-                Velkommen til mit digitale værksted.
+                Her udforsker jeg krydsfeltet mellem landskabsarkitektur, kode og AI.
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <div class="bg-white/60 backdrop-blur-sm border border-orange-100 rounded-2xl p-8 hover:shadow-lg hover:bg-white/80 transition-all duration-300 group cursor-default">
-                <div class="text-green-700 text-xs font-bold uppercase tracking-widest mb-2">Eksperiment 01</div>
-                <h3 class="text-2xl text-gray-900 font-medium mb-2">Terræn Generator</h3>
-                <p class="text-gray-600 font-light">Under udvikling...</p>
-                <div class="mt-4 h-32 bg-gray-100/50 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-200">
-                    <span class="text-gray-400 text-sm">Kommer snart</span>
+            <a href="/lab/terrain.html" class="block group">
+                <div class="bg-white/60 backdrop-blur-sm border border-orange-100 rounded-2xl p-8 hover:shadow-xl hover:bg-white/90 transition-all duration-300 transform hover:-translate-y-1 h-full">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="text-green-700 text-xs font-bold uppercase tracking-widest">Eksperiment 01</div>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Live</span>
+                    </div>
+                    <h3 class="text-2xl text-gray-900 font-medium mb-2 group-hover:text-green-800 transition-colors">Terræn Generator</h3>
+                    <p class="text-gray-600 font-light text-sm mb-4">Et algoritmisk landskab skabt af matematik.</p>
+                    <div class="mt-auto h-32 bg-gray-900 rounded-lg overflow-hidden relative opacity-80 group-hover:opacity-100 transition-opacity">
+                        <div class="absolute inset-0" style="background: repeating-linear-gradient(45deg, #1f2937, #1f2937 10px, #111827 10px, #111827 20px);"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-white font-mono text-xs">Klik for at starte -></div>
+                    </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="bg-white/60 backdrop-blur-sm border border-orange-100 rounded-2xl p-8 hover:shadow-lg hover:bg-white/80 transition-all duration-300 group cursor-default">
-                <div class="text-green-700 text-xs font-bold uppercase tracking-widest mb-2">Eksperiment 02</div>
-                <h3 class="text-2xl text-gray-900 font-medium mb-2">AI Plantevælger</h3>
-                <p class="text-gray-600 font-light">Under udvikling...</p>
-                <div class="mt-4 h-32 bg-gray-100/50 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-200">
-                    <span class="text-gray-400 text-sm">Kommer snart</span>
-                </div>
+            <div class="bg-white/40 backdrop-blur-sm border border-orange-50 rounded-2xl p-8 opacity-75 cursor-default">
+                <div class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Eksperiment 02</div>
+                <h3 class="text-2xl text-gray-500 font-medium mb-2">AI Plantevælger</h3>
+                <p class="text-gray-500 font-light text-sm">Under udvikling...</p>
+                <div class="mt-4 h-32 bg-gray-100/50 rounded-lg border-2 border-dashed border-gray-200"></div>
             </div>
 
         </div>
 
-        <div class="text-center mt-20 text-gray-400 text-sm">
-            &copy; <span id="year"></span> Daniel Lund Sørensen Lab
-        </div>
+        <div class="text-center mt-20 text-gray-400 text-sm">&copy; <span id="year"></span> Daniel Lund Lab</div>
     </div>
-
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
