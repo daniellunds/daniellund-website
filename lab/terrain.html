@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terræn Generator - Daniel Lund Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background: #fff8f0; font-family: sans-serif; }
+        canvas { display: block; }
+        .overlay { position: absolute; top: 20px; left: 20px; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+    <div class="overlay">
+        <a href="/lab" class="text-green-700 text-sm font-bold uppercase tracking-widest hover:underline pointer-events-auto">
+            ← Tilbage til Lab
+        </a>
+        <h1 class="text-3xl text-gray-900 mt-2 font-light">Procedural Terrain</h1>
+        <p class="text-gray-500 text-sm mt-1">Genereret med Math.sin() og Math.cos()</p>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let t = 0; // Tid
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        function draw() {
+            // Ryd skærmen med din "papir"-farve, men lidt gennemsigtig for at lave "trails"
+            ctx.fillStyle = 'rgba(255, 248, 240, 0.4)'; 
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.beginPath();
+            
+            // Tegn linjer
+            for (let i = 0; i < width; i += 20) {
+                for (let j = 0; j < height; j += 40) {
+                    
+                    // Matematikken: Her skabes landskabet
+                    // Vi bruger "t" til at få det til at bevæge sig
+                    const yOffset = Math.sin(i * 0.01 + t) * 20 + Math.cos(j * 0.01 + t) * 20;
+                    
+                    // Farve: Skift mellem grøn og grå baseret på højde
+                    const colorVal = Math.floor((yOffset + 40) * 2); 
+                    ctx.fillStyle = `rgb(${100 - colorVal}, ${120 + colorVal}, 100)`;
+                    
+                    // Tegn en lille "dot" eller firkant
+                    const size = (yOffset + 50) / 20; // Størrelse baseret på højde (perspektiv)
+                    if (size > 0) {
+                        ctx.fillRect(i, j + yOffset + 100, size, size); // +100 flytter horisonten ned
+                    }
+                }
+            }
+            
+            t += 0.02; // Øg tiden for at animere
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
+</body>
+</html>
