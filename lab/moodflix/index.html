@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moodflix — Lab</title>
+
+  <!-- Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html, body { font-family: 'Outfit', sans-serif; }
+    input[type="range"] { height: 28px; }
+    input[type="range"]::-webkit-slider-thumb { height: 22px; width: 22px; }
+    input[type="range"]::-moz-range-thumb { height: 22px; width: 22px; }
+  </style>
+</head>
+
+<body class="bg-[#fff8f0] text-gray-900">
+  <!-- Paper texture (REQUIRED) -->
+  <div class="fixed inset-0 z-0 pointer-events-none"
+       style="background-image:
+          radial-gradient(circle at 20% 80%, rgba(255, 182, 153, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 244, 214, 0.5) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(255, 182, 153, 0.1) 0%, transparent 50%);">
+  </div>
+
+  <div class="relative z-10">
+    <main class="max-w-4xl mx-auto px-6 py-14 space-y-8">
+      <header class="space-y-2">
+        <a href="/lab" class="text-sm font-semibold text-gray-700 hover:text-gray-900">← Tilbage til Lab</a>
+        <div class="inline-flex items-center gap-2 text-sm text-gray-700">
+          <span class="h-2 w-2 rounded-full bg-emerald-700"></span>
+          <span>Moodflix (prototype)</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-semibold tracking-tight">Find noget at se — baseret på dit humør</h1>
+        <p class="text-gray-700 font-light max-w-2xl">
+          Vælg din vibe. Vi anbefaler film og serier — og viser hvor du kan se dem, når vi ved det.
+        </p>
+        <p class="text-xs text-gray-600 font-light">
+          Region: <span id="regionLabel" class="font-semibold">DK</span> (auto)
+        </p>
+      </header>
+
+      <!-- Mood form -->
+      <section class="grid gap-4 md:grid-cols-2" id="formGrid"></section>
+
+      <section class="grid gap-4 md:grid-cols-2">
+        <!-- Time -->
+        <div class="rounded-3xl border border-gray-200 bg-white/60 backdrop-blur-sm p-5 shadow-sm">
+          <div class="text-sm font-semibold">Tid</div>
+          <div class="mt-3 flex flex-wrap gap-2" id="timeChips"></div>
+        </div>
+
+        <!-- Company -->
+        <div class="rounded-3xl border border-gray-200 bg-white/60 backdrop-blur-sm p-5 shadow-sm">
+          <div class="text-sm font-semibold">Selskab</div>
+          <div class="mt-3 flex flex-wrap gap-2" id="companyChips"></div>
+        </div>
+      </section>
+
+      <section class="grid gap-4 md:grid-cols-2">
+        <!-- Kids mode -->
+        <div class="rounded-3xl border border-gray-200 bg-white/60 backdrop-blur-sm p-5 shadow-sm">
+          <label class="flex items-start gap-3">
+            <input id="kidsMode" type="checkbox" class="mt-1 h-5 w-5" />
+            <span class="flex flex-col">
+              <span class="text-sm font-semibold">Kids/Family mode</span>
+              <span class="text-sm text-gray-700 font-light">Prioritér mere familievenligt indhold.</span>
+            </span>
+          </label>
+        </div>
+
+        <!-- High rated -->
+        <div class="rounded-3xl border border-gray-200 bg-white/60 backdrop-blur-sm p-5 shadow-sm">
+          <label class="flex items-start gap-3">
+            <input id="highRatedOnly" type="checkbox" class="mt-1 h-5 w-5" />
+            <span class="flex flex-col">
+              <span class="text-sm font-semibold">Kun højtratede</span>
+              <span class="text-sm text-gray-700 font-light">Brug et minimumskrav til rating/stemmer (MVP).</span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <div class="flex flex-wrap gap-3">
+        <button id="submitBtn"
+          class="rounded-full px-6 py-3 bg-emerald-800 text-white text-sm font-semibold shadow-sm hover:bg-emerald-700 transition">
+          Find noget at se
+        </button>
+        <button id="resetBtn"
+          class="rounded-full px-6 py-3 border border-gray-300 text-sm font-semibold bg-white/60 hover:bg-white transition">
+          Nulstil
+        </button>
+      </div>
+
+      <!-- Results -->
+      <section class="mt-6 space-y-4" id="resultsWrap" hidden>
+        <div class="flex items-baseline justify-between gap-4">
+          <h2 class="text-xl font-semibold">Anbefalinger</h2>
+          <p class="text-xs text-gray-600 font-light" id="resultsMeta"></p>
+        </div>
+        <div class="grid gap-4" id="resultsList"></div>
+      </section>
+
+      <footer class="pt-8 text-xs text-gray-600 font-light">
+        (Prototype) Ingen rigtige data endnu — næste skridt er TMDB-katalog + watch providers.
+      </footer>
+    </main>
+  </div>
+
+<script>
+  // ---------- Region detection (simple) ----------
+  function detectRegion() {
+    const loc = navigator.language || "da-DK";
+    const map = { "da-DK":"DK", "sv-SE":"SE", "nb-NO":"NO", "en-US":"US" };
+    return map[loc] || (loc.split("-")[1] || "DK");
+  }
+
+  // ---------- State ----------
+  const DEFAULTS = {
+    mood: { energy: 3, lightness: 3, intensity: 3, comfort: 3, inspiration: 3 },
+    context: { timeMins: 90, company: "alone", kidsMode: false },
+    filters: { highRatedOnly: false },
+    region: detectRegion()
+  };
+
+  let state = structuredClone(DEFAULTS);
+
+  // ---------- UI config ----------
+  const sliders = [
+    { key: "energy", label: "Energi", desc: "Hvor meget energi har du?", minLabel: "Lav", maxLabel: "Høj" },
+    { key: "lightness", label: "Lethed", desc: "Skal det føles tungt eller let?", minLabel: "Tungt", maxLabel: "Let" },
+    { key: "intensity", label: "Intensitet", desc: "Hvor intenst må det være?", minLabel: "Roligt", maxLabel: "Intenst" },
+    { key: "comfort", label: "Tryghed", desc: "Vil du udfordres eller have noget trygt?", minLabel: "Udfordrende", maxLabel: "Trygt" },
+    { key: "inspiration", label: "Inspiration", desc: "Hvor inspireret/nysgerrig føler du dig i dag?", minLabel: "Lav", maxLabel: "Høj", span2: true },
+  ];
+
+  const timeOptions = [30, 60, 90, 120];
+  const companyOptions = [
+    { value: "alone", label: "Alene" },
+    { value: "partner", label: "Partner" },
+    { value: "friends", label: "Venner" },
+    { value: "family", label: "Familie" },
+  ];
+
+  function chipClass(active) {
+    return "rounded-full px-3 py-2 text-sm font-semibold border transition " +
+      (active ? "bg-gray-900 text-white border-gray-900" : "bg-white/70 text-gray-900 border-gray-200 hover:border-gray-400");
+  }
+
+  // ---------- Render sliders ----------
+  const formGrid = document.getElementById("formGrid");
+  function renderSliders() {
+    formGrid.innerHTML = "";
+    sliders.forEach(s => {
+      const wrap = document.createElement("div");
+      wrap.className = "rounded-3xl border border-gray-200 bg-white/60 backdrop-blur-sm p-5 shadow-sm " + (s.span2 ? "md:col-span-2" : "");
+      wrap.innerHTML = `
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <div class="text-sm font-semibold">${s.label}</div>
+            <div class="text-sm text-gray-700 font-light">${s.desc}</div>
+          </div>
+          <div class="rounded-full bg-white/70 border border-gray-200 px-3 py-1 text-sm font-semibold tabular-nums">
+            <span id="${s.key}Val">${state.mood[s.key]}</span>/5
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <input type="range" min="1" max="5" step="1" value="${state.mood[s.key]}" data-key="${s.key}" class="w-full" aria-label="${s.label}" />
+          <div class="mt-2 flex items-center justify-between text-xs text-gray-600">
+            <span>${s.minLabel}</span>
+            <div class="flex gap-2">
+              ${[1,2,3,4,5].map(n => `<span class="w-5 text-center ${n===state.mood[s.key] ? "text-gray-900 font-semibold" : ""}" data-step="${s.key}-${n}">${n}</span>`).join("")}
+            </div>
+            <span>${s.maxLabel}</span>
+          </div>
+        </div>
+      `;
+      formGrid.appendChild(wrap);
+    });
+
+    // wire slider events
+    formGrid.querySelectorAll('input[type="range"]').forEach(inp => {
+      inp.addEventListener("input", (e) => {
+        const key = e.target.dataset.key;
+        state.mood[key] = Number(e.target.value);
+        document.getElementById(key + "Val").textContent = state.mood[key];
+
+        // update step highlight
+        [1,2,3,4,5].forEach(n => {
+          const el = formGrid.querySelector(`[data-step="${key}-${n}"]`);
+          if (!el) return;
+          el.className = "w-5 text-center " + (n === state.mood[key] ? "text-gray-900 font-semibold" : "");
+        });
+      });
+    });
+  }
+
+  // ---------- Render chips ----------
+  function renderTimeChips() {
+    const el = document.getElementById("timeChips");
+    el.innerHTML = "";
+    timeOptions.forEach(t => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = chipClass(state.context.timeMins === t);
+      btn.textContent = (t === 120 ? "120+" : `${t} min`);
+      btn.addEventListener("click", () => {
+        state.context.timeMins = t;
+        renderTimeChips();
+      });
+      el.appendChild(btn);
+    });
+  }
+
+  function renderCompanyChips() {
+    const el = document.getElementById("companyChips");
+    el.innerHTML = "";
+    companyOptions.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = chipClass(state.context.company === opt.value);
+      btn.textContent = opt.label;
+      btn.addEventListener("click", () => {
+        state.context.company = opt.value;
+        renderCompanyChips();
+      });
+      el.appendChild(btn);
+    });
+  }
+
+  // ---------- Availability CTA links ----------
+  function justWatchBase(region) {
+    region = (region || "DK").toUpperCase();
+    if (region === "DK") return "https://www.justwatch.com/dk";
+    if (region === "SE") return "https://www.justwatch.com/se";
+    if (region === "NO") return "https://www.justwatch.com/no";
+    if (region === "US") return "https://www.justwatch.com/us";
+    return "https://www.justwatch.com";
+  }
+  function justWatchUrl(title, year, region) {
+    const q = year ? `${title} ${year}` : title;
+    return `${justWatchBase(region)}/søg?q=${encodeURIComponent(q)}`;
+  }
+  function googleUrl(title, year, region) {
+    const q = year ? `${title} ${year} watch ${region}` : `${title} watch ${region}`;
+    return `https://www.google.com/search?q=${encodeURIComponent(q)}`;
+  }
+
+  // ---------- Mock recommendations ----------
+  function mockRecs(region) {
+    return [
+      { name:"Severance", year:2022, type:"Serie", pg:"TV-MA", explanation:"Anbefalet fordi du valgte høj inspiration; idé-tung og spændingskurven er stabil.", availability:{ status:"unknown", region } },
+      { name:"Inside Out", year:2015, type:"Film", pg:"PG", explanation:"Anbefalet fordi du ligger højt på tryghed og lethed; varm og overskuelig.", availability:{ status:"known", region, includedOn:["Disney+"], rentOn:[], buyOn:[] } },
+      { name:"Drive", year:2011, type:"Film", pg:"R", explanation:"Anbefalet fordi din intensitet er højere end din energi; stram pacing og stemning.", availability:{ status:"unknown", region } },
+      { name:"The Grand Budapest Hotel", year:2014, type:"Film", pg:"R", explanation:"Anbefalet fordi du vil have lethed + inspiration; quirky og visuelt kreativ.", availability:{ status:"known", region, includedOn:["Netflix"], rentOn:["Apple TV"], buyOn:[] } }
+    ];
+  }
+
+  // ---------- Render results ----------
+  function renderResults() {
+    const wrap = document.getElementById("resultsWrap");
+    const list = document.getElementById("resultsList");
+    const meta = document.getElementById("resultsMeta");
+    wrap.hidden = false;
+
+    meta.textContent = `Tid: ${state.context.timeMins === 120 ? "120+" : state.context.timeMins + " min"} • Selskab: ${state.context.company} • Kids: ${state.context.kidsMode ? "On" : "Off"} • High rated: ${state.filters.highRatedOnly ? "On" : "Off"}`;
+
+    const items = mockRecs(state.region);
+    list.innerHTML = "";
+
+    items.forEach(item => {
+      const card = document.createElement("article");
+      card.className = "rounded-3xl border border-gray-200 bg-white/60 backdrop-blur-sm p-5 shadow-sm";
+
+      const availability = item.availability;
+      let availabilityHtml = "";
+
+      if (availability.status === "known") {
+        const parts = [];
+        if (availability.includedOn?.length) parts.push(`<div><div class="text-xs font-semibold text-gray-700">Included on</div><div class="text-sm">${availability.includedOn.join(", ")}</div></div>`);
+        if (availability.rentOn?.length) parts.push(`<div><div class="text-xs font-semibold text-gray-700">Rent</div><div class="text-sm">${availability.rentOn.join(", ")}</div></div>`);
+        if (availability.buyOn?.length) parts.push(`<div><div class="text-xs font-semibold text-gray-700">Buy</div><div class="text-sm">${availability.buyOn.join(", ")}</div></div>`);
+        availabilityHtml = parts.length ? parts.join('<div class="h-2"></div>') : `<div class="text-sm text-gray-700">Availability unknown</div>`;
+      } else {
+        availabilityHtml = `
+          <div class="text-sm text-gray-700">Availability unknown</div>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <a class="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-semibold hover:border-gray-400"
+               href="${justWatchUrl(item.name, item.year, availability.region)}" target="_blank" rel="noreferrer">
+               Tjek på JustWatch
+            </a>
+            <a class="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-semibold hover:border-gray-400"
+               href="${googleUrl(item.name, item.year, availability.region)}" target="_blank" rel="noreferrer">
+               Søg på Google
+            </a>
+          </div>
+          <div class="mt-2 text-xs text-gray-600 font-light">Eksterne links — vi kan ikke garantere tilgængelighed.</div>
+        `;
+      }
+
+      card.innerHTML = `
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="text-base font-semibold">${item.name}</div>
+            <div class="text-sm text-gray-700 font-light">${item.year} • ${item.type} • ${item.pg}</div>
+          </div>
+          <span class="rounded-full bg-white/70 border border-gray-200 px-3 py-1 text-xs font-semibold">Match</span>
+        </div>
+
+        <p class="mt-3 text-sm text-gray-900">${item.explanation}</p>
+
+        <div class="mt-4 rounded-2xl bg-white/70 border border-gray-200 p-4">
+          <div class="text-xs font-semibold text-gray-700">Tilgængelighed</div>
+          <div class="mt-2 space-y-2">${availabilityHtml}</div>
+        </div>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          <button type="button" class="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-semibold hover:border-gray-400">👍 Like</button>
+          <button type="button" class="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-semibold hover:border-gray-400">👎 Dislike</button>
+          <button type="button" class="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-semibold hover:border-gray-400">💾 Gem</button>
+          <button type="button" class="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-semibold hover:border-gray-400">🙈 Skjul</button>
+        </div>
+      `;
+
+      list.appendChild(card);
+    });
+  }
+
+  // ---------- Wire controls ----------
+  document.getElementById("regionLabel").textContent = state.region;
+
+  renderSliders();
+  renderTimeChips();
+  renderCompanyChips();
+
+  const kidsEl = document.getElementById("kidsMode");
+  const ratedEl = document.getElementById("highRatedOnly");
+  kidsEl.checked = state.context.kidsMode;
+  ratedEl.checked = state.filters.highRatedOnly;
+
+  kidsEl.addEventListener("change", (e) => state.context.kidsMode = e.target.checked);
+  ratedEl.addEventListener("change", (e) => state.filters.highRatedOnly = e.target.checked);
+
+  document.getElementById("submitBtn").addEventListener("click", () => renderResults());
+
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    state = structuredClone(DEFAULTS);
+    document.getElementById("regionLabel").textContent = state.region;
+    document.getElementById("kidsMode").checked = state.context.kidsMode;
+    document.getElementById("highRatedOnly").checked = state.filters.highRatedOnly;
+    renderSliders();
+    renderTimeChips();
+    renderCompanyChips();
+    document.getElementById("resultsWrap").hidden = true;
+  });
+</script>
+</body>
+</html>
