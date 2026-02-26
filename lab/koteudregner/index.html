@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Koteudregner (promille ↔ længde ↔ højde)</title>
+
+  <!-- Google Font: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html, body { font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    /* Prevent number input arrows from stealing layout focus (optional) */
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+  </style>
+</head>
+
+<body class="bg-[#fff8f0] text-gray-900 min-h-screen">
+  <!-- Paper watercolor texture (required across pages) -->
+  <div class="fixed inset-0 z-0 pointer-events-none"
+       style="background-image:
+          radial-gradient(circle at 20% 80%, rgba(255, 182, 153, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 244, 214, 0.5) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(255, 182, 153, 0.1) 0%, transparent 50%);">
+  </div>
+
+  <main class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <header class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+      <div>
+        <p class="text-sm text-gray-600">Lab / Underprojekt</p>
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Koteudregner</h1>
+        <p class="mt-2 text-gray-700 max-w-2xl">
+          Tre små beregnere der matcher Excel-arket: beregn <span class="font-semibold">højde</span>,
+          <span class="font-semibold">længde</span> eller <span class="font-semibold">hældning (‰)</span>.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="/" class="text-sm text-gray-700 hover:text-gray-900 underline underline-offset-4">Til forsiden</a>
+        <a href="/lab" class="text-sm text-gray-700 hover:text-gray-900 underline underline-offset-4">Til Lab</a>
+      </div>
+    </header>
+
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <!-- Card 1: Height -->
+      <div class="bg-white/70 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-5">
+        <h2 class="text-lg font-semibold">Beregn højdeforskel</h2>
+        <p class="text-sm text-gray-700 mt-1">Formel: <span class="font-mono">h = (‰/1000) · L</span></p>
+
+        <div class="mt-4 space-y-3">
+          <label class="block">
+            <span class="text-sm text-gray-700">Hældning (‰)</span>
+            <input id="slope1" type="number" inputmode="decimal" step="0.1" value="40"
+                   class="mt-1 w-full rounded-xl border border-black/10 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-black/10" />
+          </label>
+
+          <label class="block">
+            <span class="text-sm text-gray-700">Længde (m)</span>
+            <input id="len1" type="number" inputmode="decimal" step="0.01" value="7.5"
+                   class="mt-1 w-full rounded-xl border border-black/10 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-black/10" />
+          </label>
+
+          <div class="pt-2">
+            <div class="flex items-baseline justify-between">
+              <span class="text-sm text-gray-700">Højde (m)</span>
+              <span id="out1" class="text-2xl font-semibold">—</span>
+            </div>
+            <p id="hint1" class="text-xs text-gray-600 mt-1"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Length -->
+      <div class="bg-white/70 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-5">
+        <h2 class="text-lg font-semibold">Beregn længde</h2>
+        <p class="text-sm text-gray-700 mt-1">Formel: <span class="font-mono">L = h / (‰/1000)</span></p>
+
+        <div class="mt-4 space-y-3">
+          <label class="block">
+            <span class="text-sm text-gray-700">Hældning (‰)</span>
+            <input id="slope2" type="number" inputmode="decimal" step="0.1" value="40"
+                   class="mt-1 w-full rounded-xl border border-black/10 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-black/10" />
+          </label>
+
+          <label class="block">
+            <span class="text-sm text-gray-700">Højde (m)</span>
+            <input id="h2" type="number" inputmode="decimal" step="0.001" value="1"
+                   class="mt-1 w-full rounded-xl border border-black/10 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-black/10" />
+          </label>
+
+          <div class="pt-2">
+            <div class="flex items-baseline justify-between">
+              <span class="text-sm text-gray-700">Længde (m)</span>
+              <span id="out2" class="text-2xl font-semibold">—</span>
+            </div>
+            <p id="hint2" class="text-xs text-gray-600 mt-1"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Slope -->
+      <div class="bg-white/70 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-5">
+        <h2 class="text-lg font-semibold">Beregn hældning</h2>
+        <p class="text-sm text-gray-700 mt-1">Formel: <span class="font-mono">‰ = (h / L) · 1000</span></p>
+
+        <div class="mt-4 space-y-3">
+          <label class="block">
+            <span class="text-sm text-gray-700">Længde (m)</span>
+            <input id="len3" type="number" inputmode="decimal" step="0.01" value="5"
+                   class="mt-1 w-full rounded-xl border border-black/10 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-black/10" />
+          </label>
+
+          <label class="block">
+            <span class="text-sm text-gray-700">Højde (m)</span>
+            <input id="h3" type="number" inputmode="decimal" step="0.001" value="1"
+                   class="mt-1 w-full rounded-xl border border-black/10 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-black/10" />
+          </label>
+
+          <div class="pt-2">
+            <div class="flex items-baseline justify-between">
+              <span class="text-sm text-gray-700">Hældning (‰)</span>
+              <span id="out3" class="text-2xl font-semibold">—</span>
+            </div>
+            <p id="hint3" class="text-xs text-gray-600 mt-1"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8 bg-white/50 rounded-2xl border border-black/5 p-5">
+      <h3 class="font-semibold">Noter</h3>
+      <ul class="mt-2 text-sm text-gray-700 list-disc pl-5 space-y-1">
+        <li>Promille (‰) betyder pr. 1000 (fx 40‰ = 4% stigning).</li>
+        <li>Der rundes automatisk: højde til 3 decimaler, længde til 2, promille til 1.</li>
+        <li>Hvis en beregning ikke giver mening (fx division med 0), vises en advarsel.</li>
+      </ul>
+    </section>
+
+    <footer class="mt-10 text-xs text-gray-600">
+      <p>Bygget ud fra formlerne i <span class="font-mono">Koteberegning.xlsx</span>.</p>
+    </footer>
+  </main>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    function toNum(v) {
+      const n = Number(String(v).replace(',', '.'));
+      return Number.isFinite(n) ? n : NaN;
+    }
+
+    function fmt(n, decimals) {
+      if (!Number.isFinite(n)) return '—';
+      // Trim trailing zeros nicely while keeping a stable feel
+      const fixed = n.toFixed(decimals);
+      // Remove trailing zeros and optional dot
+      return fixed.replace(/\.0+$/, '').replace(/(\.\d*[1-9])0+$/, '$1');
+    }
+
+    function setHint(el, msg, isWarn=false) {
+      el.textContent = msg || '';
+      el.className = isWarn ? 'text-xs text-orange-700 mt-1' : 'text-xs text-gray-600 mt-1';
+    }
+
+    function calc1() {
+      const prom = toNum($('slope1').value);
+      const L = toNum($('len1').value);
+      const out = (prom/1000) * L;
+      $('out1').textContent = fmt(out, 3);
+      if (!Number.isFinite(out)) return setHint($('hint1'), 'Tjek at du har skrevet tal i begge felter.', true);
+      setHint($('hint1'), `(${fmt(prom, 1)}‰/1000) · ${fmt(L, 2)}m = ${fmt(out, 3)}m`);
+    }
+
+    function calc2() {
+      const prom = toNum($('slope2').value);
+      const h = toNum($('h2').value);
+      const denom = (prom/1000);
+      const out = (denom === 0) ? NaN : (h / denom);
+      $('out2').textContent = fmt(out, 2);
+      if (!Number.isFinite(out)) return setHint($('hint2'), 'Promille må ikke være 0, og begge felter skal være tal.', true);
+      setHint($('hint2'), `${fmt(h, 3)}m / (${fmt(prom, 1)}‰/1000) = ${fmt(out, 2)}m`);
+    }
+
+    function calc3() {
+      const L = toNum($('len3').value);
+      const h = toNum($('h3').value);
+      const out = (L === 0) ? NaN : (h / L) * 1000;
+      $('out3').textContent = fmt(out, 1);
+      if (!Number.isFinite(out)) return setHint($('hint3'), 'Længde må ikke være 0, og begge felter skal være tal.', true);
+      setHint($('hint3'), `(${fmt(h, 3)}m / ${fmt(L, 2)}m) · 1000 = ${fmt(out, 1)}‰`);
+    }
+
+    function hook(ids, fn) {
+      ids.forEach(id => {
+        const el = $(id);
+        el.addEventListener('input', fn);
+        el.addEventListener('change', fn);
+      });
+    }
+
+    hook(['slope1','len1'], calc1);
+    hook(['slope2','h2'], calc2);
+    hook(['len3','h3'], calc3);
+
+    // initial render
+    calc1();
+    calc2();
+    calc3();
+  </script>
+</body>
+</html>
