@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chron — Market Events | Daniel Lund Sørensen</title>
+  <meta name="description" content="A lab experiment for mapping market-moving events against price charts." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.06)',
+            paper: '0 12px 40px rgba(255, 182, 153, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#fff8f0] text-gray-900 font-sans min-h-screen antialiased">
+  <div class="fixed inset-0 z-0 pointer-events-none"
+       style="background-image:
+          radial-gradient(circle at 20% 80%, rgba(255, 182, 153, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 244, 214, 0.5) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(255, 182, 153, 0.1) 0%, transparent 50%);">
+  </div>
+
+  <div class="relative z-10">
+    <header class="sticky top-0 z-30 backdrop-blur bg-[#fff8f0]/90 border-b border-black/5">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div class="flex items-center gap-4">
+          <a href="/" class="text-sm text-gray-500 hover:text-gray-900 transition">Daniel Lund Sørensen</a>
+          <span class="text-gray-300">/</span>
+          <a href="/lab" class="text-sm text-gray-500 hover:text-gray-900 transition">Labs</a>
+          <span class="text-gray-300">/</span>
+          <span class="text-sm font-medium text-gray-900">Chron — Market Events</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 sm:items-center w-full lg:w-auto">
+          <label class="flex items-center gap-3 rounded-2xl border border-black/10 bg-white/80 px-4 py-3 shadow-soft min-w-[280px] lg:min-w-[360px]">
+            <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="M21 21l-4.35-4.35"></path>
+            </svg>
+            <input
+              type="text"
+              id="tickerInput"
+              list="tickerSuggestions"
+              value="AAPL"
+              placeholder="Type ticker + Enter — AAPL, MSFT, NVDA…"
+              class="w-full bg-transparent outline-none text-sm text-gray-900 placeholder:text-gray-400 uppercase"
+            />
+            <datalist id="tickerSuggestions"></datalist>
+          </label>
+
+          <div class="flex gap-2">
+            <button id="exportBtn" class="px-4 py-3 rounded-2xl border border-black/10 bg-white/70 text-sm text-gray-700 hover:text-gray-900 hover:border-black/20 transition shadow-soft">Export</button>
+            <button id="importBtn" class="px-4 py-3 rounded-2xl border border-black/10 bg-white/70 text-sm text-gray-700 hover:text-gray-900 hover:border-black/20 transition shadow-soft">Import</button>
+            <button onclick="openModal()" class="px-5 py-3 rounded-2xl bg-gray-900 text-white text-sm font-medium hover:translate-y-[-1px] transition shadow-soft">Add event</button>
+          </div>
+          <input type="file" id="importFile" accept="application/json" hidden />
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-10 space-y-8">
+      <section class="grid gap-6 lg:grid-cols-[1.3fr_0.7fr] items-start">
+        <div class="space-y-4">
+          <p class="text-xs uppercase tracking-[0.25em] text-gray-500">Lab experiment</p>
+          <h1 class="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900">Chron — market events on a price timeline</h1>
+          <p class="max-w-2xl text-[15px] leading-7 text-gray-600">
+            A lightweight experiment for comparing political, geopolitical, macro and technology events against market movements.
+            Built as a lab page for daniellund.dk in plain HTML, Tailwind and Chart.js.
+          </p>
+        </div>
+
+        <div class="rounded-3xl border border-black/5 bg-white/70 p-5 shadow-paper">
+          <div class="text-xs uppercase tracking-[0.22em] text-gray-500 mb-3">Status</div>
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <div class="text-gray-500">Data mode</div>
+              <div id="dataModeLabel" class="mt-1 font-medium text-gray-900">Checking…</div>
+            </div>
+            <div>
+              <div class="text-gray-500">Ticker</div>
+              <div id="statusTicker" class="mt-1 font-medium text-gray-900">AAPL</div>
+            </div>
+            <div>
+              <div class="text-gray-500">Range</div>
+              <div id="statusRange" class="mt-1 font-medium text-gray-900">1Y</div>
+            </div>
+            <div>
+              <div class="text-gray-500">Visible events</div>
+              <div id="statusEvents" class="mt-1 font-medium text-gray-900">0</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div class="rounded-3xl border border-black/5 bg-white/70 p-5 shadow-paper">
+          <div class="text-xs uppercase tracking-[0.22em] text-gray-500">Events in range</div>
+          <div id="eventsInRangeValue" class="mt-3 text-3xl font-semibold tracking-tight">0</div>
+          <div id="eventsInRangeSub" class="mt-2 text-sm text-gray-500">No visible events for this range.</div>
+        </div>
+        <div class="rounded-3xl border border-black/5 bg-white/70 p-5 shadow-paper">
+          <div class="text-xs uppercase tracking-[0.22em] text-gray-500">Largest up move</div>
+          <div id="largestUpValue" class="mt-3 text-3xl font-semibold tracking-tight">—</div>
+          <div id="largestUpSub" class="mt-2 text-sm text-gray-500">Measured between visible chart points.</div>
+        </div>
+        <div class="rounded-3xl border border-black/5 bg-white/70 p-5 shadow-paper">
+          <div class="text-xs uppercase tracking-[0.22em] text-gray-500">Largest down move</div>
+          <div id="largestDownValue" class="mt-3 text-3xl font-semibold tracking-tight">—</div>
+          <div id="largestDownSub" class="mt-2 text-sm text-gray-500">Measured between visible chart points.</div>
+        </div>
+        <div class="rounded-3xl border border-black/5 bg-white/70 p-5 shadow-paper">
+          <div class="text-xs uppercase tracking-[0.22em] text-gray-500">Selected event</div>
+          <div id="selectedEventSummary" class="mt-3 text-2xl font-semibold tracking-tight">None</div>
+          <div id="selectedEventSummarySub" class="mt-2 text-sm text-gray-500">Click an event in the list or chart.</div>
+        </div>
+      </section>
+
+      <section class="rounded-[2rem] border border-black/5 bg-white/75 p-4 md:p-6 shadow-paper">
+        <div class="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
+          <div class="flex flex-wrap items-end gap-4">
+            <div>
+              <div class="text-xs uppercase tracking-[0.22em] text-gray-500">Company / ETF</div>
+              <div class="mt-2 flex items-end flex-wrap gap-3">
+                <h2 id="stockName" class="text-3xl md:text-4xl font-semibold tracking-tight">Apple Inc.</h2>
+                <span id="stockTicker" class="px-3 py-1 rounded-full border border-black/10 text-xs text-gray-600 bg-[#fff8f0]">AAPL</span>
+              </div>
+            </div>
+            <div class="text-3xl md:text-4xl font-semibold tracking-tight" id="stockPrice">—</div>
+            <div class="text-sm" id="stockChange"></div>
+          </div>
+
+          <div class="flex flex-wrap gap-2" id="rangeControls">
+            <button class="range-btn px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-500 hover:text-gray-900 transition" data-range="1M">1M</button>
+            <button class="range-btn px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-500 hover:text-gray-900 transition" data-range="3M">3M</button>
+            <button class="range-btn px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-500 hover:text-gray-900 transition" data-range="6M">6M</button>
+            <button class="range-btn active px-3 py-2 rounded-full text-sm border border-gray-900 bg-gray-900 text-white transition" data-range="1Y">1Y</button>
+            <button class="range-btn px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-500 hover:text-gray-900 transition" data-range="2Y">2Y</button>
+            <button class="range-btn px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-500 hover:text-gray-900 transition" data-range="5Y">5Y</button>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-[1.5rem] border border-black/5 bg-[#fffaf5] p-4 md:p-5">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+            <div class="text-sm text-gray-500">Click event markers to inspect their forward impact.</div>
+            <div id="dataBadge" class="inline-flex items-center self-start gap-2 rounded-full border border-black/10 px-3 py-1 text-xs text-gray-500 bg-white/80 hidden"></div>
+          </div>
+
+          <div class="relative h-[360px] md:h-[460px]">
+            <div id="loadingState" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-sm text-gray-500 bg-[#fffaf5] z-10">
+              <div class="w-5 h-5 rounded-full border-2 border-gray-200 border-t-gray-900 animate-spin"></div>
+              <span id="loadingMsg">Fetching market data…</span>
+            </div>
+            <canvas id="priceChart" class="w-full h-full hidden"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid gap-6 xl:grid-cols-[1.2fr_0.8fr] items-start">
+        <div class="rounded-[2rem] border border-black/5 bg-white/75 p-5 md:p-6 shadow-paper">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+            <div>
+              <div class="text-xs uppercase tracking-[0.22em] text-gray-500">Timeline events</div>
+              <h3 class="mt-2 text-2xl font-semibold tracking-tight">Tagged moments on the chart</h3>
+            </div>
+            <button id="clearSelectionBtn" class="px-4 py-2 rounded-full border border-black/10 bg-white text-sm text-gray-600 hover:text-gray-900 transition">Clear selection</button>
+          </div>
+
+          <div id="filterRow" class="flex flex-wrap gap-2 mb-6">
+            <button class="filter-chip active px-3 py-2 rounded-full text-sm border border-gray-900 bg-gray-900 text-white transition" data-filter="all">All</button>
+            <button class="filter-chip px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-600 hover:text-gray-900 transition" data-filter="geopolitical">Geopolitical</button>
+            <button class="filter-chip px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-600 hover:text-gray-900 transition" data-filter="political">Political</button>
+            <button class="filter-chip px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-600 hover:text-gray-900 transition" data-filter="economic">Economic</button>
+            <button class="filter-chip px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-600 hover:text-gray-900 transition" data-filter="pandemic">Pandemic</button>
+            <button class="filter-chip px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-600 hover:text-gray-900 transition" data-filter="tech">Tech</button>
+            <button class="filter-chip px-3 py-2 rounded-full text-sm border border-black/10 bg-white text-gray-600 hover:text-gray-900 transition" data-filter="other">Other</button>
+          </div>
+
+          <div id="eventList" class="space-y-3 max-h-[520px] overflow-y-auto pr-1"></div>
+        </div>
+
+        <aside class="rounded-[2rem] border border-black/5 bg-white/75 p-5 md:p-6 shadow-paper xl:sticky xl:top-28">
+          <div class="text-xs uppercase tracking-[0.22em] text-gray-500">Event impact</div>
+          <div id="statsContent" class="mt-5 text-sm text-gray-500 leading-7">
+            Click any event to inspect its price impact.
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <div id="modalOverlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/25 backdrop-blur-sm p-6">
+    <div class="w-full max-w-xl rounded-[2rem] border border-black/5 bg-[#fffaf5] p-6 md:p-8 shadow-paper">
+      <div class="flex items-start justify-between gap-4 mb-6">
+        <div>
+          <div class="text-xs uppercase tracking-[0.22em] text-gray-500">New event</div>
+          <h3 class="mt-2 text-2xl font-semibold tracking-tight">Add market event</h3>
+        </div>
+        <button onclick="closeModal()" class="w-10 h-10 rounded-full border border-black/10 bg-white text-gray-500 hover:text-gray-900 transition">×</button>
+      </div>
+
+      <div class="space-y-5">
+        <div>
+          <label class="block text-xs uppercase tracking-[0.22em] text-gray-500 mb-2">Event name</label>
+          <input type="text" id="eventName" placeholder="e.g. Fed begins rate cuts" class="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-gray-900" />
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs uppercase tracking-[0.22em] text-gray-500 mb-2">Date</label>
+            <input type="date" id="eventDate" class="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-gray-900" />
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-[0.22em] text-gray-500 mb-2">Category</label>
+            <select id="eventCategory" class="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-gray-900">
+              <option value="geopolitical">Geopolitical</option>
+              <option value="political">Political</option>
+              <option value="economic">Economic / Monetary</option>
+              <option value="pandemic">Pandemic / Health</option>
+              <option value="tech">Technology</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-[0.22em] text-gray-500 mb-2">Description / notes</label>
+          <textarea id="eventDescription" rows="4" placeholder="Optional context for why the event mattered." class="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-gray-900 resize-y"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-[0.22em] text-gray-500 mb-2">Source URL</label>
+          <input type="url" id="eventSource" placeholder="https://..." class="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-gray-900" />
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-[0.22em] text-gray-500 mb-3">Color</label>
+          <div id="colorRow" class="flex flex-wrap gap-3">
+            <button type="button" class="color-chip selected w-8 h-8 rounded-full border-2 border-gray-900" data-color="#ff6b6b" style="background:#ff6b6b"></button>
+            <button type="button" class="color-chip w-8 h-8 rounded-full border-2 border-transparent" data-color="#ffa94d" style="background:#ffa94d"></button>
+            <button type="button" class="color-chip w-8 h-8 rounded-full border-2 border-transparent" data-color="#ffe066" style="background:#ffe066"></button>
+            <button type="button" class="color-chip w-8 h-8 rounded-full border-2 border-transparent" data-color="#00c389" style="background:#00c389"></button>
+            <button type="button" class="color-chip w-8 h-8 rounded-full border-2 border-transparent" data-color="#7c83ff" style="background:#7c83ff"></button>
+            <button type="button" class="color-chip w-8 h-8 rounded-full border-2 border-transparent" data-color="#cc5de8" style="background:#cc5de8"></button>
+            <button type="button" class="color-chip w-8 h-8 rounded-full border-2 border-transparent" data-color="#111827" style="background:#111827"></button>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <button onclick="closeModal()" class="px-5 py-3 rounded-2xl border border-black/10 bg-white text-sm text-gray-600 hover:text-gray-900 transition">Cancel</button>
+          <button onclick="addEvent()" class="px-5 py-3 rounded-2xl bg-gray-900 text-white text-sm font-medium hover:translate-y-[-1px] transition">Add to timeline</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let chartInstance = null;
+    let chartLabels = [];
+    let chartData = [];
+    let selectedColor = '#ff6b6b';
+    let selectedRange = '1Y';
+    let selectedTicker = 'AAPL';
+    let isSimulated = false;
+    let selectedEventId = null;
+    let eventIdCounter = 10;
+    let activeFilter = 'all';
+
+    const STORAGE_KEY = 'chron-market-events-v2';
+    const PREFS_KEY = 'chron-market-prefs-v2';
+
+    const STOCK_NAMES = {
+      'AAPL':'Apple Inc.','MSFT':'Microsoft Corp.','GOOGL':'Alphabet Inc.',
+      'AMZN':'Amazon.com Inc.','NVDA':'NVIDIA Corp.','META':'Meta Platforms',
+      'TSLA':'Tesla Inc.','NOVO-B.CO':'Novo Nordisk A/S','SPY':'S&P 500 ETF',
+      'QQQ':'Nasdaq 100 ETF','NFLX':'Netflix Inc.','AMD':'AMD Inc.',
+      'BRK-B':'Berkshire Hathaway','JPM':'JPMorgan Chase','DIS':'Disney',
+      'PLTR':'Palantir Technologies','ASML':'ASML Holding','ORSTED.CO':'Ørsted A/S'
+    };
+
+    let events = [
+      { id:1, name:'COVID-19 Lockdowns', date:'2020-03-11', color:'#ffa94d', category:'pandemic', description:'WHO characterized COVID-19 as a pandemic, followed by lockdowns and sharp risk-off moves.', source:'https://www.who.int/' },
+      { id:2, name:'Russia-Ukraine War', date:'2022-02-24', color:'#ff6b6b', category:'geopolitical', description:'Russia launched a full-scale invasion of Ukraine, creating a broad macro shock.', source:'https://www.reuters.com/' },
+      { id:3, name:'Fed Hike Cycle Begins', date:'2022-03-16', color:'#00c389', category:'economic', description:'The Federal Reserve began its hiking cycle after inflation accelerated.', source:'https://www.federalreserve.gov/' },
+      { id:4, name:'Trump 2nd Inauguration', date:'2025-01-20', color:'#7c83ff', category:'political', description:'Potential regime-change marker for market expectations, regulation and trade.', source:'' }
+    ];
+
+    function mulberry32(a) {
+      return function() {
+        a |= 0; a = a + 0x6D2B79F5 | 0;
+        let t = Math.imul(a ^ a >>> 15, 1 | a);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+    }
+
+    const BASE = {
+      'AAPL':182,'MSFT':375,'GOOGL':140,'AMZN':178,'NVDA':495,'META':330,
+      'TSLA':248,'NOVO-B.CO':720,'SPY':460,'QQQ':385,'NFLX':480,'AMD':120,
+      'BRK-B':350,'JPM':180,'DIS':90,'PLTR':25,'ASML':840,'ORSTED.CO':400,
+    };
+
+    const KNOWN_SHOCKS = [
+      { date:'2020-03-11', pct:-0.35 },
+      { date:'2022-02-24', pct:-0.12 },
+      { date:'2022-03-16', pct:-0.08 },
+      { date:'2020-11-09', pct:+0.04 },
+      { date:'2023-01-10', pct:+0.08 },
+      { date:'2024-11-05', pct:+0.05 },
+    ];
+
+    function dateToNum(s) { return new Date(s + 'T00:00:00').getTime(); }
+    function iso(date) { return new Date(date).toISOString().split('T')[0]; }
+    function addDays(dateString, days) {
+      const d = new Date(dateString + 'T00:00:00');
+      d.setDate(d.getDate() + days);
+      return iso(d);
+    }
+
+    function escapeHtml(str = '') {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function saveEvents() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(events));
+    }
+
+    function savePrefs() {
+      localStorage.setItem(PREFS_KEY, JSON.stringify({
+        selectedTicker,
+        selectedRange,
+        activeFilter
+      }));
+    }
+
+    function loadLocalState() {
+      try {
+        const storedEvents = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+        if (Array.isArray(storedEvents) && storedEvents.length) {
+          events = storedEvents.map((ev, idx) => ({
+            id: ev.id ?? idx + 1,
+            name: ev.name || 'Untitled Event',
+            date: ev.date,
+            color: ev.color || '#ff6b6b',
+            category: ev.category || 'other',
+            description: ev.description || '',
+            source: ev.source || ''
+          })).sort((a,b) => a.date.localeCompare(b.date));
+          eventIdCounter = Math.max(...events.map(e => +e.id || 0), 0) + 1;
+        }
+      } catch (e) {}
+
+      try {
+        const prefs = JSON.parse(localStorage.getItem(PREFS_KEY) || 'null');
+        if (prefs?.selectedTicker) selectedTicker = prefs.selectedTicker;
+        if (prefs?.selectedRange) selectedRange = prefs.selectedRange;
+        if (prefs?.activeFilter) activeFilter = prefs.activeFilter;
+      } catch (e) {}
+    }
+
+    function populateTickerSuggestions() {
+      const datalist = document.getElementById('tickerSuggestions');
+      datalist.innerHTML = Object.entries(STOCK_NAMES)
+        .map(([ticker, name]) => `<option value="${ticker}">${name}</option>`)
+        .join('');
+    }
+
+    function generateSimulatedData(ticker, range) {
+      const cfgs = {
+        '1M': { days: 22, step: 'day' },
+        '3M': { days: 65, step: 'day' },
+        '6M': { days: 130, step: 'day' },
+        '1Y': { days: 252, step: 'week' },
+        '2Y': { days: 504, step: 'week' },
+        '5Y': { days: 1260, step: 'month' },
+      };
+
+      const { days, step } = cfgs[range] || cfgs['1Y'];
+      const seed = ticker.split('').reduce((a,c) => a + c.charCodeAt(0), 0);
+      const rand = mulberry32(seed * 1000 + days);
+
+      const endDate = new Date();
+      const startDate = new Date(endDate - days * 86400000);
+
+      const base = BASE[ticker] || 100;
+      const mu = 0.00025;
+      const sigma = 0.018;
+
+      const allDays = [];
+      let price = base * (0.6 + rand() * 0.5);
+      const cur = new Date(startDate);
+
+      while (cur <= endDate) {
+        if (cur.getDay() !== 0 && cur.getDay() !== 6) {
+          const ds = iso(cur);
+          let shockMult = 1;
+          KNOWN_SHOCKS.forEach(sh => {
+            const diff = (dateToNum(ds) - dateToNum(sh.date)) / 86400000;
+            if (diff >= 0 && diff < 5) shockMult += sh.pct * Math.exp(-diff / 3);
+          });
+          const r = (rand() - 0.5) * 2;
+          price = price * Math.exp(mu + sigma * r) * shockMult;
+          if (price < 1) price = 1;
+          allDays.push({ date: ds, price: +price.toFixed(2) });
+        }
+        cur.setDate(cur.getDate() + 1);
+      }
+
+      let labels = [], prices = [];
+      if (step === 'day') {
+        labels = allDays.map(d => d.date);
+        prices = allDays.map(d => d.price);
+      } else if (step === 'week') {
+        allDays.forEach((d, i) => { if (i % 5 === 0) { labels.push(d.date); prices.push(d.price); } });
+      } else {
+        allDays.forEach((d, i) => { if (i % 21 === 0) { labels.push(d.date); prices.push(d.price); } });
+      }
+
+      const last = prices[prices.length - 1];
+      const prev = prices[prices.length - 2] || last;
+      return { labels, prices, price: last, prevClose: prev };
+    }
+
+    async function fetchRealData(ticker, range) {
+      try {
+        const res = await fetch(`/api/market?ticker=${encodeURIComponent(ticker)}&range=${encodeURIComponent(range)}`);
+        if (!res.ok) return null;
+        const json = await res.json();
+        const r = json?.chart?.result?.[0];
+        if (!r?.timestamp || !r?.indicators?.quote?.[0]?.close) return null;
+
+        const labels = r.timestamp.map(ts => new Date(ts * 1000).toISOString().split('T')[0]);
+        const prices = r.indicators.quote[0].close.map(v => v != null ? +v.toFixed(2) : null);
+        const meta = r.meta || {};
+
+        return {
+          labels,
+          prices,
+          price: meta.regularMarketPrice || [...prices].reverse().find(p => p != null),
+          prevClose: meta.chartPreviousClose || prices.find(p => p != null),
+          real: true,
+        };
+      } catch (e) {
+        return null;
+      }
+    }
+
+    async function loadData() {
+      setLoading(true, 'Fetching market data…');
+      savePrefs();
+
+      let data = await fetchRealData(selectedTicker, selectedRange);
+      if (data) {
+        isSimulated = false;
+      } else {
+        setLoading(true, 'Live data unavailable — showing simulated model…');
+        await new Promise(r => setTimeout(r, 250));
+        data = generateSimulatedData(selectedTicker, selectedRange);
+        isSimulated = true;
+      }
+
+      const { labels, prices, price, prevClose } = data;
+      chartLabels = labels;
+      chartData = prices;
+
+      document.getElementById('stockName').textContent = STOCK_NAMES[selectedTicker] || selectedTicker;
+      document.getElementById('stockTicker').textContent = selectedTicker;
+      document.getElementById('statusTicker').textContent = selectedTicker;
+      document.getElementById('statusRange').textContent = selectedRange;
+
+      const change = price - prevClose;
+      const pct = prevClose ? (change / prevClose * 100) : 0;
+      document.getElementById('stockPrice').textContent = price ? price.toFixed(2) : '—';
+      document.getElementById('stockChange').textContent = `${change >= 0 ? '+' : ''}${change.toFixed(2)} (${pct >= 0 ? '+' : ''}${pct.toFixed(2)}%)`;
+      document.getElementById('stockChange').className = 'text-sm ' + (change >= 0 ? 'text-emerald-600' : 'text-red-500');
+
+      const badge = document.getElementById('dataBadge');
+      const dataModeLabel = document.getElementById('dataModeLabel');
+      badge.classList.remove('hidden');
+      if (isSimulated) {
+        badge.textContent = 'Simulated data';
+        badge.className = 'inline-flex items-center self-start gap-2 rounded-full border border-orange-200 px-3 py-1 text-xs text-orange-600 bg-orange-50';
+        dataModeLabel.textContent = 'Simulated fallback';
+      } else {
+        badge.textContent = 'Live data';
+        badge.className = 'inline-flex items-center self-start gap-2 rounded-full border border-emerald-200 px-3 py-1 text-xs text-emerald-700 bg-emerald-50';
+        dataModeLabel.textContent = 'Live API';
+      }
+
+      buildChart(labels, prices);
+      setLoading(false);
+      updateSummaryCards();
+      renderEvents();
+
+      if (selectedEventId) {
+        showEventStats(selectedEventId);
+      } else {
+        updateSelectedSummary(null);
+      }
+    }
+
+    function setLoading(on, msg = '') {
+      document.getElementById('loadingState').style.display = on ? 'flex' : 'none';
+      document.getElementById('priceChart').style.display = on ? 'none' : 'block';
+      if (msg) document.getElementById('loadingMsg').textContent = msg;
+    }
+
+    function getVisibleEvents() {
+      return events.filter(ev => activeFilter === 'all' || ev.category === activeFilter);
+    }
+
+    function getEventsInCurrentRange() {
+      if (!chartLabels.length) return [];
+      const min = chartLabels[0];
+      const max = chartLabels[chartLabels.length - 1];
+      return getVisibleEvents().filter(ev => ev.date >= min && ev.date <= max);
+    }
+
+    function getClosestIndexOnOrAfter(targetDate) {
+      for (let i = 0; i < chartLabels.length; i++) {
+        if (chartLabels[i] >= targetDate && chartData[i] != null) return i;
+      }
+      return -1;
+    }
+
+    function getClosestIndexOnOrBefore(targetDate) {
+      for (let i = chartLabels.length - 1; i >= 0; i--) {
+        if (chartLabels[i] <= targetDate && chartData[i] != null) return i;
+      }
+      return -1;
+    }
+
+    function getReturnBetweenDates(startDate, endDate) {
+      const startIdx = getClosestIndexOnOrAfter(startDate);
+      const endIdx = getClosestIndexOnOrAfter(endDate);
+      if (startIdx === -1 || endIdx === -1) return null;
+      const startPrice = chartData[startIdx];
+      const endPrice = chartData[endIdx];
+      if (startPrice == null || endPrice == null) return null;
+      return ((endPrice - startPrice) / startPrice) * 100;
+    }
+
+    function updateSummaryCards() {
+      const inRange = getEventsInCurrentRange();
+      document.getElementById('eventsInRangeValue').textContent = inRange.length;
+      document.getElementById('eventsInRangeSub').textContent = inRange.length
+        ? `${inRange[0].date} → ${inRange[inRange.length - 1].date}`
+        : 'No visible events for this range.';
+      document.getElementById('statusEvents').textContent = inRange.length;
+
+      let largestUp = { pct: -Infinity, from: '', to: '' };
+      let largestDown = { pct: Infinity, from: '', to: '' };
+
+      for (let i = 1; i < chartData.length; i++) {
+        if (chartData[i] == null || chartData[i - 1] == null) continue;
+        const pct = ((chartData[i] - chartData[i - 1]) / chartData[i - 1]) * 100;
+        if (pct > largestUp.pct) largestUp = { pct, from: chartLabels[i - 1], to: chartLabels[i] };
+        if (pct < largestDown.pct) largestDown = { pct, from: chartLabels[i - 1], to: chartLabels[i] };
+      }
+
+      document.getElementById('largestUpValue').innerHTML = Number.isFinite(largestUp.pct)
+        ? `<span class="text-emerald-600">+${largestUp.pct.toFixed(2)}%</span>`
+        : '—';
+      document.getElementById('largestUpSub').textContent = Number.isFinite(largestUp.pct)
+        ? `${largestUp.from} → ${largestUp.to}`
+        : 'Measured between visible chart points.';
+
+      document.getElementById('largestDownValue').innerHTML = Number.isFinite(largestDown.pct)
+        ? `<span class="text-red-500">${largestDown.pct.toFixed(2)}%</span>`
+        : '—';
+      document.getElementById('largestDownSub').textContent = Number.isFinite(largestDown.pct)
+        ? `${largestDown.from} → ${largestDown.to}`
+        : 'Measured between visible chart points.';
+    }
+
+    function updateSelectedSummary(eventObj) {
+      const titleEl = document.getElementById('selectedEventSummary');
+      const subEl = document.getElementById('selectedEventSummarySub');
+      if (!eventObj) {
+        titleEl.textContent = 'None';
+        subEl.textContent = 'Click an event in the list or chart.';
+        return;
+      }
+      titleEl.textContent = eventObj.name.length > 18 ? eventObj.name.slice(0, 18) + '…' : eventObj.name;
+      subEl.textContent = `${eventObj.date} · ${eventObj.category}`;
+    }
+
+    function buildChart(labels, prices) {
+      const ctx = document.getElementById('priceChart').getContext('2d');
+      if (chartInstance) chartInstance.destroy();
+
+      const valid = prices.filter(p => p != null);
+      const rising = valid[valid.length - 1] >= valid[0];
+      const lineColor = rising ? '#0f9f6e' : '#ef4444';
+
+      const grad = ctx.createLinearGradient(0, 0, 0, 420);
+      grad.addColorStop(0, rising ? 'rgba(16, 185, 129, 0.20)' : 'rgba(239, 68, 68, 0.18)');
+      grad.addColorStop(1, 'rgba(255,255,255,0)');
+
+      const eventPlugin = {
+        id: 'eventPlugin',
+        afterDraw(chart) {
+          const { ctx, chartArea, scales } = chart;
+          const visibleEvents = getEventsInCurrentRange();
+          visibleEvents.forEach(ev => {
+            const idx = getClosestIndexOnOrAfter(ev.date);
+            if (idx === -1) return;
+            const x = scales.x.getPixelForValue(idx);
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(x, chartArea.top + 6);
+            ctx.lineTo(x, chartArea.bottom);
+            ctx.strokeStyle = ev.color + 'aa';
+            ctx.lineWidth = selectedEventId === ev.id ? 2.4 : 1.4;
+            ctx.setLineDash([4, 4]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.beginPath();
+            ctx.arc(x, chartArea.top + 10, selectedEventId === ev.id ? 5 : 4, 0, Math.PI * 2);
+            ctx.fillStyle = ev.color;
+            ctx.fill();
+            ctx.restore();
+          });
+        }
+      };
+
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels.map((_, i) => i),
+          datasets: [{
+            data: prices,
+            borderColor: lineColor,
+            backgroundColor: grad,
+            fill: true,
+            borderWidth: 2,
+            tension: 0.28,
+            pointRadius: 0,
+            pointHoverRadius: 4,
+            pointHoverBackgroundColor: lineColor,
+            pointHoverBorderColor: '#fff',
+            pointHoverBorderWidth: 2,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          animation: { duration: 350 },
+          onClick: (evt, elements, chart) => {
+            const pos = Chart.helpers.getRelativePosition(evt, chart);
+            const visibleEvents = getEventsInCurrentRange();
+            const hitEvent = visibleEvents.find(ev => {
+              const idx = getClosestIndexOnOrAfter(ev.date);
+              if (idx === -1) return false;
+              const x = chart.scales.x.getPixelForValue(idx);
+              return Math.abs(pos.x - x) < 10;
+            });
+            if (hitEvent) selectEvent(hitEvent.id);
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(17,24,39,0.94)',
+              borderColor: 'rgba(255,255,255,0.08)',
+              borderWidth: 1,
+              padding: 12,
+              titleColor: '#cbd5e1',
+              bodyColor: '#ffffff',
+              displayColors: false,
+              callbacks: {
+                title: items => labels[items[0].dataIndex] || '',
+                label: item => `${item.raw != null ? item.raw.toFixed(2) : 'N/A'}`,
+                afterBody: items => {
+                  const currentDate = labels[items[0].dataIndex];
+                  const hitEvents = getVisibleEvents().filter(ev => {
+                    const idx = getClosestIndexOnOrAfter(ev.date);
+                    return idx === items[0].dataIndex && ev.date <= currentDate;
+                  });
+                  return hitEvents.length ? ['', ...hitEvents.map(ev => `• ${ev.name}`)] : [];
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: '#9ca3af',
+                maxTicksLimit: 10,
+                callback: value => labels[value] ? labels[value].slice(0, 7) : ''
+              },
+              grid: { color: 'rgba(17,24,39,0.05)' },
+              border: { display: false }
+            },
+            y: {
+              position: 'right',
+              ticks: {
+                color: '#9ca3af',
+                callback: value => Number(value).toLocaleString()
+              },
+              grid: { color: 'rgba(17,24,39,0.05)' },
+              border: { display: false }
+            }
+          }
+        },
+        plugins: [eventPlugin]
+      });
+    }
+
+    function renderEvents() {
+      const list = document.getElementById('eventList');
+      const filtered = getVisibleEvents();
+
+      if (!filtered.length) {
+        list.innerHTML = `
+          <div class="rounded-3xl border border-dashed border-black/10 bg-[#fffaf5] px-5 py-8 text-sm text-gray-500 text-center">
+            No events match this filter.<br>Try another category or add a new event.
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = filtered.map(ev => `
+        <article class="group rounded-3xl border ${selectedEventId === ev.id ? 'border-gray-900 bg-[#fffaf5]' : 'border-black/5 bg-white/80'} p-4 transition hover:border-black/15 hover:bg-[#fffaf5] cursor-pointer" onclick="selectEvent(${ev.id})">
+          <div class="flex items-start gap-4">
+            <div class="w-3 h-3 rounded-full mt-1.5 shrink-0" style="background:${ev.color}"></div>
+            <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <h4 class="text-[15px] font-medium text-gray-900 leading-6">${escapeHtml(ev.name)}</h4>
+                <span class="px-2.5 py-1 rounded-full bg-white border border-black/5 text-[10px] uppercase tracking-[0.12em] text-gray-500">${escapeHtml(ev.category)}</span>
+              </div>
+              <div class="mt-1 text-sm text-gray-500">${ev.date}</div>
+              ${ev.description ? `<p class="mt-3 text-sm leading-6 text-gray-600 line-clamp-2">${escapeHtml(ev.description)}</p>` : ''}
+            </div>
+            <button onclick="deleteEvent(event, ${ev.id})" class="opacity-0 group-hover:opacity-100 transition text-gray-400 hover:text-red-500 text-xl leading-none">×</button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function selectEvent(id) {
+      selectedEventId = id;
+      renderEvents();
+      showEventStats(id);
+      if (chartInstance) chartInstance.update();
+    }
+
+    function showEventStats(id) {
+      const ev = events.find(e => e.id === id);
+      if (!ev || !chartLabels.length) return;
+
+      const idx = getClosestIndexOnOrAfter(ev.date);
+      if (idx === -1) {
+        document.getElementById('statsContent').innerHTML = `<p class="text-sm text-gray-500 leading-7">Event is outside the current chart range. Try expanding the time range.</p>`;
+        updateSelectedSummary(ev);
+        return;
+      }
+
+      const eventDateLabel = chartLabels[idx];
+      const priceAt = chartData[idx];
+      const preIdx = getClosestIndexOnOrBefore(addDays(ev.date, -1));
+      const prePrice = preIdx !== -1 ? chartData[preIdx] : null;
+
+      const windows = [
+        { label: '+7D', days: 7 },
+        { label: '+30D', days: 30 },
+        { label: '+90D', days: 90 },
+        { label: '+180D', days: 180 }
+      ];
+
+      const fmtPct = value => {
+        if (value == null || Number.isNaN(value)) return '<span class="text-gray-400">—</span>';
+        const cls = value >= 0 ? 'text-emerald-600' : 'text-red-500';
+        const sign = value >= 0 ? '+' : '';
+        return `<span class="${cls}">${sign}${value.toFixed(2)}%</span>`;
+      };
+
+      const impactCards = windows.map(w => {
+        const pct = getReturnBetweenDates(ev.date, addDays(ev.date, w.days));
+        return `
+          <div class="rounded-2xl border border-black/5 bg-[#fffaf5] p-4">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-gray-500">${w.label}</div>
+            <div class="mt-2 text-xl font-semibold tracking-tight">${fmtPct(pct)}</div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('statsContent').innerHTML = `
+        <div class="space-y-6">
+          <div>
+            <div class="text-xs uppercase tracking-[0.22em] text-gray-500">Event</div>
+            <h4 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900 leading-tight">${escapeHtml(ev.name)}</h4>
+            <div class="mt-2 text-sm text-gray-500">${ev.date} · ${escapeHtml(ev.category)}</div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="rounded-2xl border border-black/5 bg-[#fffaf5] p-4">
+              <div class="text-[10px] uppercase tracking-[0.18em] text-gray-500">Event marker date used</div>
+              <div class="mt-2 text-lg font-medium text-gray-900">${eventDateLabel}</div>
+              <div class="mt-2 text-xs text-gray-500">Nearest visible chart point.</div>
+            </div>
+            <div class="rounded-2xl border border-black/5 bg-[#fffaf5] p-4">
+              <div class="text-[10px] uppercase tracking-[0.18em] text-gray-500">Price at event</div>
+              <div class="mt-2 text-lg font-medium text-gray-900">${priceAt != null ? priceAt.toFixed(2) : '—'}</div>
+              <div class="mt-2 text-xs text-gray-500">Pre-event close: ${prePrice != null ? prePrice.toFixed(2) : '—'}</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="text-xs uppercase tracking-[0.22em] text-gray-500 mb-3">Forward impact</div>
+            <div class="grid grid-cols-2 gap-3">${impactCards}</div>
+          </div>
+
+          ${ev.description ? `
+            <div>
+              <div class="text-xs uppercase tracking-[0.22em] text-gray-500 mb-2">Notes</div>
+              <p class="text-sm leading-7 text-gray-600">${escapeHtml(ev.description).replace(/\n/g, '<br>')}</p>
+            </div>
+          ` : ''}
+
+          ${ev.source ? `
+            <div>
+              <div class="text-xs uppercase tracking-[0.22em] text-gray-500 mb-2">Source</div>
+              <a href="${escapeHtml(ev.source)}" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-900 underline decoration-gray-300 underline-offset-4 hover:decoration-gray-900 transition">Open source link</a>
+            </div>
+          ` : ''}
+
+          ${isSimulated ? `
+            <div class="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-xs text-orange-700 leading-6">
+              Simulated fallback is active. Forward impact figures are illustrative until live data is available.
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      updateSelectedSummary(ev);
+    }
+
+    function deleteEvent(e, id) {
+      e.stopPropagation();
+      events = events.filter(ev => ev.id !== id);
+      saveEvents();
+      if (selectedEventId === id) {
+        selectedEventId = null;
+        document.getElementById('statsContent').innerHTML = 'Click any event to inspect its price impact.';
+        updateSelectedSummary(null);
+      }
+      renderEvents();
+      updateSummaryCards();
+      if (chartInstance) chartInstance.update();
+    }
+
+    function openModal() {
+      document.getElementById('eventDate').value = new Date().toISOString().split('T')[0];
+      const overlay = document.getElementById('modalOverlay');
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      document.getElementById('eventName').focus();
+    }
+
+    function closeModal() {
+      const overlay = document.getElementById('modalOverlay');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+    }
+
+    function addEvent() {
+      const name = document.getElementById('eventName').value.trim();
+      const date = document.getElementById('eventDate').value;
+      const category = document.getElementById('eventCategory').value;
+      const description = document.getElementById('eventDescription').value.trim();
+      const source = document.getElementById('eventSource').value.trim();
+
+      if (!name || !date) {
+        alert('Please fill in event name and date.');
+        return;
+      }
+
+      events.push({
+        id: eventIdCounter++,
+        name,
+        date,
+        color: selectedColor,
+        category,
+        description,
+        source
+      });
+
+      events.sort((a, b) => a.date.localeCompare(b.date));
+      saveEvents();
+      renderEvents();
+      updateSummaryCards();
+      if (chartInstance) chartInstance.update();
+
+      document.getElementById('eventName').value = '';
+      document.getElementById('eventDescription').value = '';
+      document.getElementById('eventSource').value = '';
+      closeModal();
+    }
+
+    function exportEvents() {
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        ticker: selectedTicker,
+        events
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `chron-events-${selectedTicker.toLowerCase()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importEventsFromFile(file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const json = JSON.parse(reader.result);
+          const imported = Array.isArray(json) ? json : json.events;
+          if (!Array.isArray(imported)) throw new Error('No events array found');
+
+          const normalized = imported.map((ev, idx) => ({
+            id: eventIdCounter + idx,
+            name: ev.name || 'Untitled Event',
+            date: ev.date,
+            color: ev.color || '#ff6b6b',
+            category: ev.category || 'other',
+            description: ev.description || '',
+            source: ev.source || ''
+          })).filter(ev => ev.date);
+
+          events = [...events, ...normalized]
+            .sort((a, b) => a.date.localeCompare(b.date))
+            .filter((ev, idx, arr) => idx === arr.findIndex(x => x.name === ev.name && x.date === ev.date));
+
+          eventIdCounter = Math.max(...events.map(e => +e.id || 0), 0) + 1;
+          saveEvents();
+          renderEvents();
+          updateSummaryCards();
+          if (chartInstance) chartInstance.update();
+        } catch (err) {
+          alert('Could not import events JSON.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    document.getElementById('colorRow').addEventListener('click', e => {
+      const chip = e.target.closest('.color-chip');
+      if (!chip) return;
+      document.querySelectorAll('.color-chip').forEach(c => c.classList.remove('selected', 'border-gray-900'));
+      document.querySelectorAll('.color-chip').forEach(c => c.classList.add('border-transparent'));
+      chip.classList.add('selected', 'border-gray-900');
+      chip.classList.remove('border-transparent');
+      selectedColor = chip.dataset.color;
+    });
+
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.range-btn').forEach(b => {
+          b.classList.remove('active', 'border-gray-900', 'bg-gray-900', 'text-white');
+          b.classList.add('border-black/10', 'bg-white', 'text-gray-500');
+        });
+        btn.classList.add('active', 'border-gray-900', 'bg-gray-900', 'text-white');
+        btn.classList.remove('border-black/10', 'bg-white', 'text-gray-500');
+        selectedRange = btn.dataset.range;
+        savePrefs();
+        loadData();
+      });
+    });
+
+    document.getElementById('filterRow').addEventListener('click', e => {
+      const btn = e.target.closest('.filter-chip');
+      if (!btn) return;
+      document.querySelectorAll('.filter-chip').forEach(b => {
+        b.classList.remove('active', 'border-gray-900', 'bg-gray-900', 'text-white');
+        b.classList.add('border-black/10', 'bg-white', 'text-gray-600');
+      });
+      btn.classList.add('active', 'border-gray-900', 'bg-gray-900', 'text-white');
+      btn.classList.remove('border-black/10', 'bg-white', 'text-gray-600');
+      activeFilter = btn.dataset.filter;
+      savePrefs();
+      renderEvents();
+      updateSummaryCards();
+      if (chartInstance) chartInstance.update();
+    });
+
+    document.getElementById('tickerInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        selectedTicker = e.target.value.trim().toUpperCase();
+        savePrefs();
+        loadData();
+      }
+    });
+
+    document.getElementById('clearSelectionBtn').addEventListener('click', () => {
+      selectedEventId = null;
+      renderEvents();
+      if (chartInstance) chartInstance.update();
+      document.getElementById('statsContent').innerHTML = 'Click any event to inspect its price impact.';
+      updateSelectedSummary(null);
+    });
+
+    document.getElementById('exportBtn').addEventListener('click', exportEvents);
+    document.getElementById('importBtn').addEventListener('click', () => document.getElementById('importFile').click());
+    document.getElementById('importFile').addEventListener('change', e => {
+      const file = e.target.files?.[0];
+      if (file) importEventsFromFile(file);
+      e.target.value = '';
+    });
+
+    document.getElementById('modalOverlay').addEventListener('click', e => {
+      if (e.target.id === 'modalOverlay') closeModal();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        document.getElementById('tickerInput').focus();
+        document.getElementById('tickerInput').select();
+      }
+    });
+
+    loadLocalState();
+    populateTickerSuggestions();
+    document.getElementById('tickerInput').value = selectedTicker;
+    document.getElementById('statusTicker').textContent = selectedTicker;
+    document.getElementById('statusRange').textContent = selectedRange;
+
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      const active = btn.dataset.range === selectedRange;
+      btn.classList.toggle('active', active);
+      if (active) {
+        btn.classList.add('border-gray-900', 'bg-gray-900', 'text-white');
+        btn.classList.remove('border-black/10', 'bg-white', 'text-gray-500');
+      }
+    });
+
+    document.querySelectorAll('.filter-chip').forEach(btn => {
+      const active = btn.dataset.filter === activeFilter;
+      btn.classList.toggle('active', active);
+      if (active) {
+        btn.classList.add('border-gray-900', 'bg-gray-900', 'text-white');
+        btn.classList.remove('border-black/10', 'bg-white', 'text-gray-600');
+      }
+    });
+
+    renderEvents();
+    loadData();
+  </script>
+</body>
+</html>
