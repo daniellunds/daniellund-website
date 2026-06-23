@@ -34,7 +34,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             <a href="/lab/terrain.html" class="block group">
-                <div class="bg-white/60 backdrop-blur-sm border border-orange-100 rounded-2xl p-8 hover:shadow-xl hover:bg-white/90 transition-all duration-300 transform hover:-translate-y-1 h-full">
+                <div class="bg-white/60 backdrop-blur-sm border border-orange-100 rounded-2xl p-8 hover:shadow-xl hover:bg-white/90 transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col">
                     <div class="flex justify-between items-center mb-2">
                         <div class="text-green-700 text-xs font-bold uppercase tracking-widest">Eksperiment 01</div>
                         <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Live</span>
@@ -48,8 +48,28 @@
                 </div>
             </a>
 
-            <div class="bg-white/40 backdrop-blur-sm border border-orange-50 rounded-2xl p-8 opacity-75 cursor-default">
-                <div class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Eksperiment 02</div>
+            <a href="/lab/chron" class="block group">
+                <div class="bg-white/60 backdrop-blur-sm border border-orange-100 rounded-2xl p-8 hover:shadow-xl hover:bg-white/90 transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="text-green-700 text-xs font-bold uppercase tracking-widest">Eksperiment 02</div>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Live</span>
+                    </div>
+                    <h3 class="text-2xl text-gray-900 font-medium mb-2 group-hover:text-green-800 transition-colors">Chron</h3>
+                    <p class="text-gray-600 font-light text-sm mb-4">Kortlæg markedsbevægende events direkte på en prisgraf og undersøg deres mulige impact over tid.</p>
+                    <div class="mt-auto h-32 rounded-lg overflow-hidden relative opacity-90 group-hover:opacity-100 transition-opacity bg-[#fffaf5] border border-orange-100">
+                        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(17,24,39,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(17,24,39,0.05)_1px,transparent_1px)] bg-[size:26px_26px]"></div>
+                        <div class="absolute left-0 right-0 bottom-6 h-[2px] bg-transparent">
+                            <div class="absolute inset-x-5 bottom-0 h-[2px] bg-emerald-500/80 rounded-full origin-left -rotate-6"></div>
+                        </div>
+                        <div class="absolute left-10 top-5 bottom-5 w-px border-l border-dashed border-red-400/80"></div>
+                        <div class="absolute left-24 top-8 bottom-5 w-px border-l border-dashed border-indigo-400/80"></div>
+                        <div class="absolute right-4 bottom-4 text-gray-700 font-mono text-[11px]">Events + chart -></div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="bg-white/40 backdrop-blur-sm border border-orange-50 rounded-2xl p-8 opacity-75 cursor-default md:col-span-2">
+                <div class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Eksperiment 03</div>
                 <h3 class="text-2xl text-gray-500 font-medium mb-2">AI Plantevælger</h3>
                 <p class="text-gray-500 font-light text-sm">Under udvikling...</p>
                 <div class="mt-4 h-32 bg-gray-100/50 rounded-lg border-2 border-dashed border-gray-200"></div>
