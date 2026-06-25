@@ -1,0 +1,1 @@
+Trigger Vercel redeploy after switching Tour 26 profiles to local AVIF assets.
