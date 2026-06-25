@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/tour26",
+      "destination": "/tour26/",
+      "permanent": false
+    }
+  ]
+}
