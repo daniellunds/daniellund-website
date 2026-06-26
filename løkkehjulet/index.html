@@ -6,301 +6,84 @@
   <title>Løkkehjulet</title>
   <style>
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top, #2b2f38 0%, #171a21 45%, #0f1116 100%);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .wrap {
-      width: 100%;
-      max-width: 920px;
-      padding: 24px;
-      text-align: center;
-    }
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      letter-spacing: -0.03em;
-    }
-    .subtitle {
-      margin: 0 0 24px;
-      color: #c7cedb;
-    }
-    .wheel-area {
-      position: relative;
-      width: min(82vw, 720px);
-      height: min(82vw, 720px);
-      margin: 0 auto 24px;
-    }
-    canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-      cursor: pointer;
-      filter: drop-shadow(0 18px 28px rgba(0,0,0,0.35));
-    }
-    .pointer {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      pointer-events: none;
-    }
-    .pointer-head {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #ffd54a;
-      border: 4px solid #fff6cc;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-    }
-    .pointer-stem {
-      width: 8px;
-      height: 38px;
-      background: #ffd54a;
-      border-radius: 999px;
-      margin-top: -2px;
-    }
-    .pointer-tip {
-      width: 0;
-      height: 0;
-      border-left: 18px solid transparent;
-      border-right: 18px solid transparent;
-      border-top: 32px solid #ffd54a;
-      margin-top: -2px;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
-    }
-    .result {
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .result-label {
-      color: #c7cedb;
-      font-size: 0.95rem;
-    }
-    .result-value {
-      font-size: clamp(1.6rem, 3vw, 2.5rem);
-      font-weight: 700;
-      color: #ffd54a;
-    }
-    .badge {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      color: #dfe6f2;
-      font-size: 0.92rem;
-    }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: radial-gradient(circle at top, #2b2f38 0%, #171a21 45%, #0f1116 100%); color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .wrap { width: 100%; max-width: 920px; padding: 24px; text-align: center; }
+    h1 { margin: 0 0 8px; font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -0.03em; }
+    .subtitle { margin: 0 0 24px; color: #c7cedb; }
+    .wheel-area { position: relative; width: min(82vw, 720px); height: min(82vw, 720px); margin: 0 auto 24px; }
+    canvas { width: 100%; height: 100%; display: block; cursor: pointer; filter: drop-shadow(0 18px 28px rgba(0,0,0,0.35)); }
+    .pointer { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; pointer-events: none; }
+    .pointer-head { width: 28px; height: 28px; border-radius: 50%; background: #ffd54a; border: 4px solid #fff6cc; box-shadow: 0 4px 12px rgba(0,0,0,0.35); }
+    .pointer-stem { width: 8px; height: 38px; background: #ffd54a; border-radius: 999px; margin-top: -2px; }
+    .pointer-tip { width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 32px solid #ffd54a; margin-top: -2px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25)); }
+    .result { min-height: 70px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; }
+    .result-label { color: #c7cedb; font-size: 0.95rem; }
+    .result-value { font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 700; color: #ffd54a; }
+    .badge { display: inline-block; margin-top: 10px; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,0.08); color: #dfe6f2; font-size: 0.92rem; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>Løkkehjulet</h1>
-    <p class="subtitle">Klik på hjulet og se, hvad Løkke vælger</p>
-    <div class="wheel-area">
-      <div class="pointer">
-        <div class="pointer-head"></div>
-        <div class="pointer-stem"></div>
-        <div class="pointer-tip"></div>
-      </div>
-      <canvas id="wheel" width="800" height="800"></canvas>
-    </div>
-    <div class="result">
-      <div class="result-label">Resultat</div>
-      <div class="result-value" id="result">Klar til spin</div>
-    </div>
+    <p class="subtitle">Klik på hjulet og se resultatet</p>
+    <div class="wheel-area"><div class="pointer"><div class="pointer-head"></div><div class="pointer-stem"></div><div class="pointer-tip"></div></div><canvas id="wheel" width="800" height="800"></canvas></div>
+    <div class="result"><div class="result-label">Resultat</div><div class="result-value" id="result">Klar til spin</div></div>
     <div class="badge">Klik direkte på hjulet for at spinne</div>
   </div>
-
   <script>
     const canvas = document.getElementById("wheel");
     const ctx = canvas.getContext("2d");
     const resultEl = document.getElementById("result");
     const TAU = Math.PI * 2;
-
-    const items = [
-      "Øl",
-      "Rødvin",
-      "Hvidvin",
-      "Rosé",
-      "Cava",
-      "Champagne",
-      "Gin & tonic",
-      "Mojito",
-      "Joseph Spritzel",
-      "Whisky",
-      "Rom",
-      "Vodka",
-      "Likør",
-      "Shots"
-    ];
-
-    const colors = [
-      "#d94f4f",
-      "#e07a5f",
-      "#f2cc8f",
-      "#81b29a",
-      "#3d405b",
-      "#6d597a",
-      "#b56576",
-      "#457b9d",
-      "#2a9d8f",
-      "#8d6e63",
-      "#ffb703",
-      "#90be6d",
-      "#577590",
-      "#f28482"
-    ];
-
+    const itemCodes = [[216,108],[82,248,100,118,105,110],[72,118,105,100,118,105,110],[82,111,115,233],[67,97,118,97],[67,104,97,109,112,97,103,110,101],[71,105,110,32,38,32,116,111,110,105,99],[77,111,106,105,116,111],[74,111,115,101,112,104,32,83,112,114,105,116,122,101,108],[87,104,105,115,107,121],[82,111,109],[86,111,100,107,97],[76,105,107,248,114],[83,104,111,116,115]];
+    const items = itemCodes.map(c => String.fromCodePoint(...c));
+    const colors = ["#d94f4f", "#e07a5f", "#f2cc8f", "#81b29a", "#3d405b", "#6d597a", "#b56576", "#457b9d", "#2a9d8f", "#8d6e63", "#ffb703", "#90be6d", "#577590", "#f28482"];
     const centerImage = new Image();
-    centerImage.src = "data:image/webp;base64,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";
-
+    centerImage.src = "./" + String.fromCharCode(108,111,107,107,101) + ".png";
     let rotation = 0;
     let spinning = false;
-
     const cx = canvas.width / 2;
     const cy = canvas.height / 2;
     const outerRadius = 350;
-    const innerRadius = 115;
+    const innerRadius = 74;
+    const imageSize = 270;
+    const imageOffsetY = -8;
     const sliceAngle = TAU / items.length;
-
-    function normalizeAngle(angle) {
-      return ((angle % TAU) + TAU) % TAU;
-    }
-
+    function normalizeAngle(angle) { return ((angle % TAU) + TAU) % TAU; }
     function drawWheel() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      ctx.beginPath();
-      ctx.arc(cx, cy, outerRadius + 12, 0, TAU);
-      ctx.fillStyle = "#11161f";
-      ctx.fill();
-
+      ctx.beginPath(); ctx.arc(cx, cy, outerRadius + 12, 0, TAU); ctx.fillStyle = "#11161f"; ctx.fill();
       for (let i = 0; i < items.length; i++) {
         const start = rotation + i * sliceAngle - Math.PI / 2;
         const end = start + sliceAngle;
-
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, outerRadius, start, end);
-        ctx.closePath();
-        ctx.fillStyle = colors[i % colors.length];
-        ctx.fill();
-
-        ctx.strokeStyle = "rgba(255,255,255,0.18)";
-        ctx.lineWidth = 3;
-        ctx.stroke();
-
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(start + sliceAngle / 2);
-        ctx.textAlign = "right";
-        ctx.fillStyle = "#ffffff";
-        ctx.font = items[i].length > 13 ? "bold 21px Arial" : "bold 25px Arial";
-        ctx.shadowColor = "rgba(0,0,0,0.35)";
-        ctx.shadowBlur = 4;
-        ctx.fillText(items[i], outerRadius - 24, 10);
-        ctx.restore();
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, outerRadius, start, end); ctx.closePath(); ctx.fillStyle = colors[i % colors.length]; ctx.fill();
+        ctx.strokeStyle = "rgba(255,255,255,0.18)"; ctx.lineWidth = 3; ctx.stroke();
+        ctx.save(); ctx.translate(cx, cy); ctx.rotate(start + sliceAngle / 2); ctx.textAlign = "right"; ctx.fillStyle = "#ffffff"; ctx.font = items[i].length > 13 ? "bold 21px Arial" : "bold 25px Arial"; ctx.shadowColor = "rgba(0,0,0,0.35)"; ctx.shadowBlur = 4; ctx.fillText(items[i], outerRadius - 24, 10); ctx.restore();
       }
-
-      ctx.beginPath();
-      ctx.arc(cx, cy, innerRadius + 8, 0, TAU);
-      ctx.fillStyle = "#f4f1ea";
-      ctx.fill();
-
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(cx, cy, innerRadius, 0, TAU);
-      ctx.closePath();
-      ctx.clip();
-      ctx.translate(cx, cy);
-      ctx.rotate(rotation);
-
-      if (centerImage.complete && centerImage.naturalWidth > 0) {
-        ctx.drawImage(centerImage, -innerRadius, -innerRadius, innerRadius * 2, innerRadius * 2);
-      } else {
-        ctx.fillStyle = "#d9d9d9";
-        ctx.fillRect(-innerRadius, -innerRadius, innerRadius * 2, innerRadius * 2);
-      }
+      ctx.beginPath(); ctx.arc(cx, cy, innerRadius, 0, TAU); ctx.fillStyle = "#f4f1ea"; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx, cy, innerRadius, 0, TAU); ctx.lineWidth = 6; ctx.strokeStyle = "#ffffff"; ctx.stroke();
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(rotation); ctx.shadowColor = "rgba(0,0,0,0.32)"; ctx.shadowBlur = 18; ctx.shadowOffsetY = 7;
+      if (centerImage.complete && centerImage.naturalWidth > 0) ctx.drawImage(centerImage, -imageSize / 2, -imageSize / 2 + imageOffsetY, imageSize, imageSize);
       ctx.restore();
-
-      ctx.beginPath();
-      ctx.arc(cx, cy, innerRadius + 2, 0, TAU);
-      ctx.lineWidth = 8;
-      ctx.strokeStyle = "#ffffff";
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.arc(cx, cy + 88, 38, 0, TAU);
-      ctx.fillStyle = "rgba(0,0,0,0.72)";
-      ctx.fill();
-
-      ctx.fillStyle = "#ffd54a";
-      ctx.textAlign = "center";
-      ctx.font = "bold 16px Arial";
-      ctx.fillText("LØKKEHJUL", cx, cy + 94);
     }
-
-    function easeOutCubic(t) {
-      return 1 - Math.pow(1 - t, 3);
-    }
-
-    function getSelectedIndex(currentRotation) {
-      return Math.floor(normalizeAngle(-currentRotation) / sliceAngle) % items.length;
-    }
-
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+    function getSelectedIndex(currentRotation) { return Math.floor(normalizeAngle(-currentRotation) / sliceAngle) % items.length; }
     function spinWheel() {
-      if (spinning) return;
-      spinning = true;
-      resultEl.textContent = "Spinner...";
-
+      if (spinning) return; spinning = true; resultEl.textContent = "Spinner...";
       const chosenIndex = Math.floor(Math.random() * items.length);
       const targetSliceCenter = chosenIndex * sliceAngle + sliceAngle / 2;
       const finalBaseRotation = -targetSliceCenter;
       const extraTurns = 6 + Math.floor(Math.random() * 4);
       const normalizedDelta = normalizeAngle(finalBaseRotation - rotation);
       const targetRotation = rotation + normalizedDelta + extraTurns * TAU;
-
-      const startRotation = rotation;
-      const duration = 4300;
-      const startTime = performance.now();
-
+      const startRotation = rotation; const duration = 4300; const startTime = performance.now();
       function animate(now) {
-        const elapsed = now - startTime;
-        const t = Math.min(elapsed / duration, 1);
-        const eased = easeOutCubic(t);
-
-        rotation = startRotation + (targetRotation - startRotation) * eased;
-        drawWheel();
-
-        if (t < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          rotation = normalizeAngle(targetRotation);
-          drawWheel();
-          const landedIndex = getSelectedIndex(rotation);
-          resultEl.textContent = items[landedIndex];
-          spinning = false;
-        }
+        const elapsed = now - startTime; const t = Math.min(elapsed / duration, 1); const eased = easeOutCubic(t);
+        rotation = startRotation + (targetRotation - startRotation) * eased; drawWheel();
+        if (t < 1) requestAnimationFrame(animate); else { rotation = normalizeAngle(targetRotation); drawWheel(); resultEl.textContent = items[getSelectedIndex(rotation)]; spinning = false; }
       }
-
       requestAnimationFrame(animate);
     }
-
     canvas.addEventListener("click", spinWheel);
     centerImage.onload = drawWheel;
     centerImage.onerror = drawWheel;
