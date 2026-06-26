@@ -1,1 +1,93 @@
-<!DOCTYPE html><html lang="da"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Løkkehjulet</title><style>*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top,#2b2f38 0%,#171a21 45%,#0f1116 100%);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center}.wrap{width:100%;max-width:920px;padding:24px;text-align:center}h1{margin:0 0 8px;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.03em}.subtitle{margin:0 0 24px;color:#c7cedb}.wheel-area{position:relative;width:min(82vw,720px);height:min(82vw,720px);margin:0 auto 24px}canvas{width:100%;height:100%;display:block;cursor:pointer;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35))}.pointer{position:absolute;top:-12px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;pointer-events:none}.pointer-head{width:28px;height:28px;border-radius:50%;background:#ffd54a;border:4px solid #fff6cc;box-shadow:0 4px 12px rgba(0,0,0,.35)}.pointer-stem{width:8px;height:38px;background:#ffd54a;border-radius:999px;margin-top:-2px}.pointer-tip{width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-top:32px solid #ffd54a;margin-top:-2px;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}.result{min-height:70px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}.result-label{color:#c7cedb;font-size:.95rem}.result-value{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:700;color:#ffd54a}.badge{display:inline-block;margin-top:10px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.08);color:#dfe6f2;font-size:.92rem}</style></head><body><div class="wrap"><h1>Løkkehjulet</h1><p class="subtitle">Klik på hjulet og se resultatet</p><div class="wheel-area"><div class="pointer"><div class="pointer-head"></div><div class="pointer-stem"></div><div class="pointer-tip"></div></div><canvas id="wheel" width="800" height="800"></canvas></div><div class="result"><div class="result-label">Resultat</div><div class="result-value" id="result">Klar til spin</div></div><div class="badge">Klik direkte på hjulet for at spinne</div></div><script>const canvas=document.getElementById("wheel"),ctx=canvas.getContext("2d"),resultEl=document.getElementById("result"),TAU=Math.PI*2,itemCodes=[[216,108],[82,248,100,118,105,110],[72,118,105,100,118,105,110],[82,111,115,233],[67,97,118,97],[67,104,97,109,112,97,103,110,101],[71,105,110,32,38,32,116,111,110,105,99],[77,111,106,105,116,111],[74,111,115,101,112,104,32,83,112,114,105,116,122,101,108],[87,104,105,115,107,121],[82,111,109],[86,111,100,107,97],[76,105,107,248,114],[83,104,111,116,115]],items=itemCodes.map(c=>String.fromCodePoint(...c)),colors=["#d94f4f","#e07a5f","#f2cc8f","#81b29a","#3d405b","#6d597a","#b56576","#457b9d","#2a9d8f","#8d6e63","#ffb703","#90be6d","#577590","#f28482"],centerImage=new Image;centerImage.src="data:image/webp;base64,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";let rotation=0,spinning=false;const cx=canvas.width/2,cy=canvas.height/2,outerRadius=350,innerRadius=54,imageSize=330,imageOffsetY=-12,sliceAngle=TAU/items.length;function normalizeAngle(a){return(a%TAU+TAU)%TAU}function drawWheel(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.beginPath();ctx.arc(cx,cy,outerRadius+12,0,TAU);ctx.fillStyle="#11161f";ctx.fill();for(let i=0;i<items.length;i++){const start=rotation+i*sliceAngle-Math.PI/2,end=start+sliceAngle;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,outerRadius,start,end);ctx.closePath();ctx.fillStyle=colors[i%colors.length];ctx.fill();ctx.strokeStyle="rgba(255,255,255,.18)";ctx.lineWidth=3;ctx.stroke();ctx.save();ctx.translate(cx,cy);ctx.rotate(start+sliceAngle/2);ctx.textAlign="right";ctx.fillStyle="#fff";ctx.font=items[i].length>13?"bold 21px Arial":"bold 25px Arial";ctx.shadowColor="rgba(0,0,0,.35)";ctx.shadowBlur=4;ctx.fillText(items[i],outerRadius-24,10);ctx.restore()}ctx.beginPath();ctx.arc(cx,cy,innerRadius,0,TAU);ctx.fillStyle="#f4f1ea";ctx.fill();ctx.beginPath();ctx.arc(cx,cy,innerRadius,0,TAU);ctx.lineWidth=5;ctx.strokeStyle="rgba(255,255,255,.85)";ctx.stroke();ctx.save();ctx.translate(cx,cy);ctx.rotate(rotation);ctx.shadowColor="rgba(0,0,0,.30)";ctx.shadowBlur=18;ctx.shadowOffsetY=7;if(centerImage.complete&&centerImage.naturalWidth>0)ctx.drawImage(centerImage,-imageSize/2,-imageSize/2+imageOffsetY,imageSize,imageSize);ctx.restore()}function easeOutCubic(t){return 1-Math.pow(1-t,3)}function getSelectedIndex(r){return Math.floor(normalizeAngle(-r)/sliceAngle)%items.length}function spinWheel(){if(spinning)return;spinning=true;resultEl.textContent="Spinner...";const chosenIndex=Math.floor(Math.random()*items.length),targetSliceCenter=chosenIndex*sliceAngle+sliceAngle/2,finalBaseRotation=-targetSliceCenter,extraTurns=6+Math.floor(Math.random()*4),normalizedDelta=normalizeAngle(finalBaseRotation-rotation),targetRotation=rotation+normalizedDelta+extraTurns*TAU,startRotation=rotation,duration=4300,startTime=performance.now();function animate(now){const elapsed=now-startTime,t=Math.min(elapsed/duration,1),eased=easeOutCubic(t);rotation=startRotation+(targetRotation-startRotation)*eased;drawWheel();if(t<1)requestAnimationFrame(animate);else{rotation=normalizeAngle(targetRotation);drawWheel();resultEl.textContent=items[getSelectedIndex(rotation)];spinning=false}}requestAnimationFrame(animate)}canvas.addEventListener("click",spinWheel);centerImage.onload=drawWheel;centerImage.onerror=drawWheel;drawWheel();</script></body></html>
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Løkkehjulet</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: radial-gradient(circle at top, #2b2f38 0%, #171a21 45%, #0f1116 100%); color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .wrap { width: 100%; max-width: 920px; padding: 24px; text-align: center; }
+    h1 { margin: 0 0 8px; font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -0.03em; }
+    .subtitle { margin: 0 0 24px; color: #c7cedb; }
+    .wheel-area { position: relative; width: min(82vw, 720px); height: min(82vw, 720px); margin: 0 auto 24px; }
+    canvas { width: 100%; height: 100%; display: block; cursor: pointer; filter: drop-shadow(0 18px 28px rgba(0,0,0,0.35)); }
+    .center-face { position: absolute; left: 50%; top: 50%; width: 42%; height: auto; z-index: 6; pointer-events: none; transform: translate(-50%, -50%) rotate(0rad); transform-origin: center center; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3)); }
+    .pointer { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; pointer-events: none; }
+    .pointer-head { width: 28px; height: 28px; border-radius: 50%; background: #ffd54a; border: 4px solid #fff6cc; box-shadow: 0 4px 12px rgba(0,0,0,0.35); }
+    .pointer-stem { width: 8px; height: 38px; background: #ffd54a; border-radius: 999px; margin-top: -2px; }
+    .pointer-tip { width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 32px solid #ffd54a; margin-top: -2px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25)); }
+    .result { min-height: 70px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; }
+    .result-label { color: #c7cedb; font-size: 0.95rem; }
+    .result-value { font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 700; color: #ffd54a; }
+    .badge { display: inline-block; margin-top: 10px; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,0.08); color: #dfe6f2; font-size: 0.92rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Løkkehjulet</h1>
+    <p class="subtitle">Klik på hjulet og se resultatet</p>
+    <div class="wheel-area">
+      <div class="pointer"><div class="pointer-head"></div><div class="pointer-stem"></div><div class="pointer-tip"></div></div>
+      <canvas id="wheel" width="800" height="800"></canvas>
+      <img id="centerFace" class="center-face" src="./lokke.svg?v=4" alt="" />
+    </div>
+    <div class="result"><div class="result-label">Resultat</div><div class="result-value" id="result">Klar til spin</div></div>
+    <div class="badge">Klik direkte på hjulet for at spinne</div>
+  </div>
+  <script>
+    const canvas = document.getElementById("wheel");
+    const ctx = canvas.getContext("2d");
+    const resultEl = document.getElementById("result");
+    const centerFace = document.getElementById("centerFace");
+    const TAU = Math.PI * 2;
+    const itemCodes = [[216,108],[82,248,100,118,105,110],[72,118,105,100,118,105,110],[82,111,115,233],[67,97,118,97],[67,104,97,109,112,97,103,110,101],[71,105,110,32,38,32,116,111,110,105,99],[77,111,106,105,116,111],[74,111,115,101,112,104,32,83,112,114,105,116,122,101,108],[87,104,105,115,107,121],[82,111,109],[86,111,100,107,97],[76,105,107,248,114],[83,104,111,116,115]];
+    const items = itemCodes.map(c => String.fromCodePoint(...c));
+    const colors = ["#d94f4f", "#e07a5f", "#f2cc8f", "#81b29a", "#3d405b", "#6d597a", "#b56576", "#457b9d", "#2a9d8f", "#8d6e63", "#ffb703", "#90be6d", "#577590", "#f28482"];
+    let rotation = 0;
+    let spinning = false;
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const outerRadius = 350;
+    const innerRadius = 54;
+    const sliceAngle = TAU / items.length;
+    function normalizeAngle(angle) { return ((angle % TAU) + TAU) % TAU; }
+    function updateFaceRotation() { centerFace.style.transform = `translate(-50%, -50%) rotate(${rotation}rad)`; }
+    function drawWheel() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath(); ctx.arc(cx, cy, outerRadius + 12, 0, TAU); ctx.fillStyle = "#11161f"; ctx.fill();
+      for (let i = 0; i < items.length; i++) {
+        const start = rotation + i * sliceAngle - Math.PI / 2;
+        const end = start + sliceAngle;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, outerRadius, start, end); ctx.closePath(); ctx.fillStyle = colors[i % colors.length]; ctx.fill();
+        ctx.strokeStyle = "rgba(255,255,255,0.18)"; ctx.lineWidth = 3; ctx.stroke();
+        ctx.save(); ctx.translate(cx, cy); ctx.rotate(start + sliceAngle / 2); ctx.textAlign = "right"; ctx.fillStyle = "#ffffff"; ctx.font = items[i].length > 13 ? "bold 21px Arial" : "bold 25px Arial"; ctx.shadowColor = "rgba(0,0,0,0.35)"; ctx.shadowBlur = 4; ctx.fillText(items[i], outerRadius - 24, 10); ctx.restore();
+      }
+      ctx.beginPath(); ctx.arc(cx, cy, innerRadius, 0, TAU); ctx.fillStyle = "#f4f1ea"; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx, cy, innerRadius, 0, TAU); ctx.lineWidth = 5; ctx.strokeStyle = "rgba(255,255,255,0.85)"; ctx.stroke();
+      updateFaceRotation();
+    }
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+    function getSelectedIndex(currentRotation) { return Math.floor(normalizeAngle(-currentRotation) / sliceAngle) % items.length; }
+    function spinWheel() {
+      if (spinning) return; spinning = true; resultEl.textContent = "Spinner...";
+      const chosenIndex = Math.floor(Math.random() * items.length);
+      const targetSliceCenter = chosenIndex * sliceAngle + sliceAngle / 2;
+      const finalBaseRotation = -targetSliceCenter;
+      const extraTurns = 6 + Math.floor(Math.random() * 4);
+      const normalizedDelta = normalizeAngle(finalBaseRotation - rotation);
+      const targetRotation = rotation + normalizedDelta + extraTurns * TAU;
+      const startRotation = rotation; const duration = 4300; const startTime = performance.now();
+      function animate(now) {
+        const elapsed = now - startTime; const t = Math.min(elapsed / duration, 1); const eased = easeOutCubic(t);
+        rotation = startRotation + (targetRotation - startRotation) * eased; drawWheel();
+        if (t < 1) requestAnimationFrame(animate); else { rotation = normalizeAngle(targetRotation); drawWheel(); resultEl.textContent = items[getSelectedIndex(rotation)]; spinning = false; }
+      }
+      requestAnimationFrame(animate);
+    }
+    canvas.addEventListener("click", spinWheel);
+    centerFace.addEventListener("click", spinWheel);
+    drawWheel();
+  </script>
+</body>
+</html>
