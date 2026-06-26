@@ -39,15 +39,15 @@
     const items = itemCodes.map(c => String.fromCodePoint(...c));
     const colors = ["#d94f4f", "#e07a5f", "#f2cc8f", "#81b29a", "#3d405b", "#6d597a", "#b56576", "#457b9d", "#2a9d8f", "#8d6e63", "#ffb703", "#90be6d", "#577590", "#f28482"];
     const centerImage = new Image();
-    centerImage.src = "./" + String.fromCharCode(108,111,107,107,101) + ".png";
+    centerImage.src = "./" + String.fromCharCode(108,111,107,107,101) + ".svg";
     let rotation = 0;
     let spinning = false;
     const cx = canvas.width / 2;
     const cy = canvas.height / 2;
     const outerRadius = 350;
-    const innerRadius = 74;
-    const imageSize = 270;
-    const imageOffsetY = -8;
+    const innerRadius = 58;
+    const imageSize = 310;
+    const imageOffsetY = -10;
     const sliceAngle = TAU / items.length;
     function normalizeAngle(angle) { return ((angle % TAU) + TAU) % TAU; }
     function drawWheel() {
@@ -61,8 +61,8 @@
         ctx.save(); ctx.translate(cx, cy); ctx.rotate(start + sliceAngle / 2); ctx.textAlign = "right"; ctx.fillStyle = "#ffffff"; ctx.font = items[i].length > 13 ? "bold 21px Arial" : "bold 25px Arial"; ctx.shadowColor = "rgba(0,0,0,0.35)"; ctx.shadowBlur = 4; ctx.fillText(items[i], outerRadius - 24, 10); ctx.restore();
       }
       ctx.beginPath(); ctx.arc(cx, cy, innerRadius, 0, TAU); ctx.fillStyle = "#f4f1ea"; ctx.fill();
-      ctx.beginPath(); ctx.arc(cx, cy, innerRadius, 0, TAU); ctx.lineWidth = 6; ctx.strokeStyle = "#ffffff"; ctx.stroke();
-      ctx.save(); ctx.translate(cx, cy); ctx.rotate(rotation); ctx.shadowColor = "rgba(0,0,0,0.32)"; ctx.shadowBlur = 18; ctx.shadowOffsetY = 7;
+      ctx.beginPath(); ctx.arc(cx, cy, innerRadius, 0, TAU); ctx.lineWidth = 5; ctx.strokeStyle = "rgba(255,255,255,0.85)"; ctx.stroke();
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(rotation); ctx.shadowColor = "rgba(0,0,0,0.30)"; ctx.shadowBlur = 18; ctx.shadowOffsetY = 7;
       if (centerImage.complete && centerImage.naturalWidth > 0) ctx.drawImage(centerImage, -imageSize / 2, -imageSize / 2 + imageOffsetY, imageSize, imageSize);
       ctx.restore();
     }
