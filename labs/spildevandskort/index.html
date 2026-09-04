@@ -16,8 +16,6 @@
   <main class="app-shell">
     <aside class="sidebar">
       <header class="brand-header">
-        <a href="/lab/" style="color:#9fc2cc;text-decoration:none;font-size:11px;display:inline-block;margin-bottom:6px">← Tilbage til laboratoriet</a>
-        <p class="eyebrow">MARKEDS- OG KUNDEOVERBLIK</p>
         <h1>Dansk spildevandskort</h1>
         <p class="subtitle">Kloakoplande · PULS renseanlæg · aktuelle projekter</p>
       </header>
@@ -29,15 +27,16 @@
       <section id="brandControls" class="controls-panel"><div class="quick-actions"><button id="selectAll" type="button">Vælg alle</button><button id="selectNone" type="button">Ingen</button><button id="zoomSelected" type="button">Zoom til valgte</button></div></section>
       <section id="plantControls" class="controls-panel" hidden><label class="toggle"><input id="showPlants" type="checkbox" checked /><span>Vis renseanlæg</span></label><label class="toggle"><input id="includeClosed" type="checkbox" /><span>Medtag nedlagte</span></label><label class="toggle"><input id="selectedOnly" type="checkbox" checked /><span>Følg valgte forsyninger</span></label></section>
       <section id="projectControls" class="controls-panel projects-controls" hidden>
-        <label class="toggle"><input id="showProjects" type="checkbox" checked /><span>Vis projektmarkører</span></label>
+        <label class="toggle"><input id="showProjects" type="checkbox" checked /><span>Vis georefererede projekter</span></label>
         <label class="toggle"><input id="projectsSelectedOnly" type="checkbox" checked /><span>Følg valgte forsyninger</span></label>
         <div class="project-filter-row"><select id="projectCategory" aria-label="Filtrer projekter efter kategori"><option value="all">Alle projekttyper</option><option value="advanced">Avanceret rensning</option><option value="treatment">Renseanlæg & proces</option><option value="climate">Klima & regnvand</option><option value="sewer">Kloak & separering</option><option value="transport">Transport & pumpning</option><option value="strategy">Strategi & udvikling</option></select></div>
+        <p class="control-note">Kun projekter med en dokumenterbar geografisk placering vises som markør. Øvrige projekter er stadig med i listen.</p>
       </section>
       <div class="list-heading"><span id="listHeading">Forsyninger</span><span id="visibleCount">—</span></div>
       <div id="itemList" class="item-list" aria-live="polite"></div>
       <footer class="sidebar-footer"><p><strong>Kloakoplande:</strong> Plandata · vedtagne oplande</p><p><strong>Renseanlæg:</strong> PULS · Danmarks Miljøportal</p><p><strong>Projekter:</strong> offentlige forsynings- og projektkilder</p></footer>
     </aside>
-    <section class="map-shell"><div id="map"></div><div id="projectLegend" class="project-map-legend" hidden><strong>Forsyningsprojekter</strong><span><i class="legend-project-symbol"></i>projekt / projektområde</span></div><div class="map-legend"><strong>Renseanlæg</strong><span><i class="dot small"></i>&lt;2.000 PE</span><span><i class="dot medium"></i>2–10.000 PE</span><span><i class="dot large"></i>10–100.000 PE</span><span><i class="dot xlarge"></i>&gt;100.000 PE</span></div><div id="mapStatus" class="map-status">Indlæser kortdata…</div></section>
+    <section class="map-shell"><div id="map"></div><div id="projectLegend" class="project-map-legend" hidden><strong>Forsyningsprojekter</strong><span><i class="legend-project-symbol"></i>verificeret projekt / projektområde</span></div><div class="map-legend"><strong>Renseanlæg</strong><span><i class="dot small"></i>&lt;2.000 PE</span><span><i class="dot medium"></i>2–10.000 PE</span><span><i class="dot large"></i>10–100.000 PE</span><span><i class="dot xlarge"></i>&gt;100.000 PE</span></div><div id="mapStatus" class="map-status">Indlæser kortdata…</div></section>
   </main>
   <aside id="detailPanel" class="detail-panel" aria-hidden="true"><button id="closeDetail" class="close-detail" type="button" aria-label="Luk">×</button><div id="detailContent"></div></aside>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
@@ -45,7 +44,9 @@
   <script src="./owner-aliases.js"></script>
   <script src="./profiles.js"></script>
   <script src="./projects.js"></script>
+  <script src="./project-geocoder.js"></script>
   <script src="./app2.js"></script>
+  <script src="./basemaps.js"></script>
   <script src="./profile-integration.js"></script>
 </body>
 </html>
