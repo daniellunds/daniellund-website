@@ -1,7 +1,9 @@
 name: QA labs spildevandskort
 on:
   push:
-    branches: [labs-spildevandskort]
+    paths:
+      - 'labs/spildevandskort/**'
+  pull_request:
     paths:
       - 'labs/spildevandskort/**'
 permissions:
@@ -93,6 +95,24 @@ jobs:
               assert not status_visible, 'statusBanner shows data-loading error'
               assert map_box and map_box['width']>250 and map_box['height']>180, map_box
 
+              puls_schema=await page.evaluate("""() => {
+                const cap=state.plants.find(p=>Object.prototype.hasOwnProperty.call(p.sourceProperties||{},'DesignedCapacity'));
+                const load=state.plants.find(p=>Object.prototype.hasOwnProperty.call(p.sourceProperties||{},'AuthorizedLoad'));
+                const vol=state.plants.find(p=>Object.prototype.hasOwnProperty.call(p.sourceProperties||{},'LatestDischargeVolume'));
+                return {
+                  nullParser:n(null)===null && n(undefined)===null && n('')===null && n('   ')===null,
+                  capacityMapped:!!cap && cap.capacity===cap.sourceProperties.DesignedCapacity,
+                  loadMapped:!!load && load.approvedLoad===load.sourceProperties.AuthorizedLoad,
+                  volumeMapped:!!vol && vol.latestVolume===vol.sourceProperties.LatestDischargeVolume,
+                  activeWithCapacity:state.plants.filter(p=>p.active && n(p.capacity)!==null).length
+                };
+              }""")
+              assert puls_schema['nullParser'], puls_schema
+              assert puls_schema['capacityMapped'], puls_schema
+              assert puls_schema['loadMapped'], puls_schema
+              assert puls_schema['volumeMapped'], puls_schema
+              assert puls_schema['activeWithCapacity'] >= 700, puls_schema
+
               await page.locator('.region-group[data-region="hovedstaden"] .region-toggle').click()
               assert await page.locator('.region-group[data-region="hovedstaden"] .brand-row').count() > 0
               await page.locator('#search').fill('Fyn')
@@ -118,7 +138,7 @@ jobs:
 
               label='mobile' if mobile else 'desktop'
               await page.screenshot(path=f'qa-{label}.png',full_page=True)
-              print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} map={round(map_box["width"])}x{round(map_box["height"])}')
+              print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])}')
               await context.close()
 
           async def main():
