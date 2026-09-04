@@ -220,6 +220,17 @@
     return projectPlantAnchor(pr)||projectNamedAreaAnchor(pr)||state.projectResolvedLocations.get(pr.id)||null;
   };
 
+  // Make unlocated rows visibly different while keeping them searchable and readable.
+  const coreProjectRowElement=projectRowElement;
+  projectRowElement=function(pr){
+    const row=coreProjectRowElement(pr);
+    if(!projectLocation(pr)){
+      row.classList.add("unmapped");
+      row.title="Projektet er registreret, men har endnu ingen tilstrækkeligt verificeret kortplacering";
+    }
+    return row;
+  };
+
   const coreOpenProject=openProject;
   openProject=function(pr){
     coreOpenProject(pr);
