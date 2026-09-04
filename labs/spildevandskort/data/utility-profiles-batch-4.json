@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-04",
+  "profiles": {
+    "kalundborg-forsyning": {
+      "name": "Kalundborg Forsyning",
+      "website": "https://www.kalfor.dk/",
+      "phone": "59 57 17 00",
+      "address": "Dokhavnsvej 15, 4400 Kalundborg",
+      "summary": "Kalundborg Forsyning håndterer bl.a. spildevand og renseanlæg i en kommune med stor industriel vækst. Kalundborg Central Renseanlæg er under markant kapacitets- og miljøudbygning.",
+      "contacts": [
+        {"name":"Jes Bo Tobiassen","title":"Direktør","sourceUrl":"https://www.proff.dk/firma/kalundborg-forsyning-as/kalundborg/vand-og-kloak/0LT7GKI10LD"},
+        {"name":"Daniel Dahl Christensen","title":"Afdelingsleder, Spildevand og Rens","sourceUrl":"https://www.kalundborg.dk/service-and-selvbetjening/teknik-og-miljoe/spildevand"}
+      ],
+      "projects": [
+        {"name":"Udvidelse af Kalundborg Central Renseanlæg","status":"I anlæg / udbud","description":"KCR udvides som følge af stigende industriel tilledning. Projektet omfatter større biologisk kapacitet, bedre overløbsstyring, ny slamafvanding samt tredje og fjerde rensetrin til miljøfremmede stoffer.","url":"https://udbudsscanner.dk/udbud/6a7511f3052c3512f7df3b3d"},
+        {"name":"Ozon-GAK-anlæg på KCR","status":"Kontraheret 2026","description":"Systemleverance til avanceret rensning med ozon og aktivt kul er kontraheret som del af udbygningen af Centralrenseanlægget.","url":"https://bygtek.dk/licitation/19461"}
+      ],
+      "sources": ["https://www.kalfor.dk/","https://udbudsscanner.dk/udbud/6a7511f3052c3512f7df3b3d","https://bygtek.dk/licitation/19461"],
+      "verifiedAt": "2026-09-04"
+    },
+    "frederikshavn-forsyning": {
+      "name": "Frederikshavn Forsyning",
+      "website": "https://www.forsyningen.dk/",
+      "phone": "98 29 90 00",
+      "email": "forsyningen@forsyningen.dk",
+      "address": "Knivholtvej 15, 9900 Frederikshavn",
+      "summary": "Frederikshavn Forsyning håndterer spildevand i Frederikshavn Kommune, driver tre større renseanlæg og gennemfører løbende kloakrenovering, separering og klimatilpasning.",
+      "contacts": [
+        {"name":"Claus Reimann Petersen","title":"Administrerende direktør","sourceUrl":"https://www.forsyningen.dk/om-os/ledelse"},
+        {"name":"René Hansen","title":"Forsyningschef Spildevand","linkedin":"https://dk.linkedin.com/in/ren%C3%A9-hansen-2a616054","sourceUrl":"https://www.forsyningen.dk/om-os/ledelse"}
+      ],
+      "projects": [
+        {"name":"Pumpestations-renovering 2026","status":"I anlæg","description":"Forsyningen renoverer en række spildevandspumpestationer i Frederikshavn Kommune i 2026 som del af den løbende fornyelse af afløbssystemet.","url":"https://www.forsyningen.dk/spildevand"},
+        {"name":"Klimaprojekt Koralbanke, Fænøvej og Bågøvej","status":"Etapevis anlæg","description":"Klimaprojekt i Skagen med nye regn- og spildevandsløsninger, LAR og koordinering med øvrig forsyningsinfrastruktur. Første etape blev afleveret i april 2026.","url":"https://www.forsyningen.dk/spildevand/anlaegsprojekter/anlaegsarbejder-for-klimaprojekt-koralbanke-faenoevej-og-baagoevej-skagen"}
+      ],
+      "sources": ["https://www.forsyningen.dk/om-os/ledelse","https://www.forsyningen.dk/spildevand"],
+      "verifiedAt": "2026-09-04"
+    },
+    "broenderslev-forsyning": {
+      "name": "Brønderslev Forsyning",
+      "website": "https://bronderslevforsyning.dk/",
+      "phone": "98 80 15 89",
+      "email": "forsyning@bronderslevforsyning.dk",
+      "address": "Virksomhedsvej 20, 9700 Brønderslev",
+      "summary": "Brønderslev Forsyning håndterer spildevand for lidt over 11.000 kunder og driver renseanlæg i Brønderslev, Hjallerup, Aasa og Thorup.",
+      "contacts": [
+        {"name":"Helle Strandbæk","title":"Vand- og Spildevandschef","linkedin":"https://dk.linkedin.com/in/helle-strandb%C3%A6k-070804b6","sourceUrl":"https://dk.linkedin.com/jobs/view/br%C3%B8nderslev-forsyning-a-s-s%C3%B8ger-projektleder-til-spildevand-at-br%C3%B8nderslev-forsyning-a-s-4221193373"},
+        {"name":"Jan Aarup","title":"Fagkoordinator og projektleder, Spildevand","linkedin":"https://dk.linkedin.com/in/jan-aarup-1462b6365","sourceUrl":"https://dk.linkedin.com/jobs/view/br%C3%B8nderslev-forsyning-a-s-s%C3%B8ger-projektleder-til-spildevand-at-br%C3%B8nderslev-forsyning-a-s-4221193373"}
+      ],
+      "projects": [
+        {"name":"Sanering af spildevandssystemet i Brønderslev By","status":"Langsigtet investeringsprogram","description":"Fællessystem og ældre ledninger renoveres og separatkloakeres over en længere periode. Det aktuelle planlagte investeringsniveau er ca. 8–10 mio. kr. årligt over 15–20 år.","url":"https://bronderslevforsyning.dk/nyt/aktuelt/renoveringsplaner/sanering-af-spildevandssystemet-i-bronderslev-by/"},
+        {"name":"Sanering af spildevandssystemet i Hjallerup","status":"Langsigtet investeringsprogram","description":"Nedslidte fælleskloakker omlægges gradvist til separatsystem med regnvandssøer, rensning og forsinkelse. Planen opererer med ca. 10–12,5 mio. kr. årligt over 10–12 år.","url":"https://bronderslevforsyning.dk/nyt/aktuelt/renoveringsplaner/sanering-af-spildevandssystemet-i-hjallerup-by/"}
+      ],
+      "sources": ["https://bronderslevforsyning.dk/kontakt/","https://bronderslevforsyning.dk/organisation/organisationen/datterselskaber/spildevand/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "hjoerring-vandselskab": {
+      "name": "Hjørring Vandselskab",
+      "website": "https://hjvand.dk/",
+      "phone": "38 41 28 28",
+      "email": "post@hjvand.dk",
+      "address": "Åstrupvej 9, 9800 Hjørring",
+      "summary": "Hjørring Vandselskab håndterer vand og spildevand i Hjørring Kommune med otte renseanlæg, et omfattende ledningsnet og en stor portefølje af anlægs- og udviklingsprojekter.",
+      "contacts": [
+        {"name":"Jakob Bisgaard","title":"Direktør","sourceUrl":"https://hjvand.dk/om-os/organisation/"},
+        {"name":"Ole Madsen","title":"Chef for Plan og Projekt","linkedin":"https://dk.linkedin.com/in/ole-madsen-2a240647","sourceUrl":"https://hjvand.dk/om-os/organisation/"},
+        {"name":"Jacob Andersen","title":"Chef for Produktion og Udvikling","sourceUrl":"https://hjvand.dk/om-os/organisation/"}
+      ],
+      "projects": [
+        {"name":"Overskudsvarme fra renseanlægget i Hæstrup","status":"Projektering / anlæg","description":"Sammen med Hjørring Varmeforsyning etableres en stor varmepumpe, der skal udnytte varme fra renset spildevand og levere fjernvarme til ca. 2.500 husstande fra fyringssæsonen 2027–28.","url":"https://hjvand.dk/energisk-aftale-paa-plads/"},
+        {"name":"Nyt klimavenligt slambehandlingsanlæg","status":"Udviklings- og demonstrationsprojekt","description":"Hjørring Vandselskab er indstillet til 13 mio. kr. støtte til ny teknologi for rensning og genanvendelse af spildevandsslam med fokus på miljøfremmede stoffer, energi og ressourceudnyttelse.","url":"https://hjvand.dk/hjoerring-vandselskab-er-indstillet-til-et-tilskud-paa-13-mio-kroner-til-banebrydende-klimavenlig-teknologi-til-rensning-og-genanvendelse-af-spildevandsslam/"}
+      ],
+      "sources": ["https://hjvand.dk/om-os/organisation/","https://hjvand.dk/energisk-aftale-paa-plads/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "hedensted-spildevand": {
+      "name": "Hedensted Spildevand",
+      "website": "https://hspv.dk/",
+      "phone": "75 89 57 66",
+      "email": "info@hspv.dk",
+      "address": "Erhvervsvej 2, 8721 Daugård",
+      "summary": "Hedensted Spildevand står for afløb og spildevandsrensning i Hedensted Kommune og gennemfører løbende kloakfornyelse, separatkloakering og kloakering af nye områder.",
+      "contacts": [
+        {"name":"Ole Pedersen","title":"Direktør","sourceUrl":"https://hspv.dk/om-os/personale/administration/"},
+        {"name":"Jesper Mau Kristiansen","title":"Projektchef","linkedin":"https://dk.linkedin.com/in/jesper-mau-kristiansen-b17179a9","sourceUrl":"https://hspv.dk/om-os/personale/administration/"}
+      ],
+      "projects": [
+        {"name":"Separatkloakering af Øster Snede","status":"I anlæg 2026–2027","description":"Projektet blev genoptaget i 2026. Første etape startede efter sommerferien 2026, og de efterfølgende etaper fortsætter ind i 2027.","url":"https://hspv.dk/projekter/2025/12/oester-snede-kloakseparering/"},
+        {"name":"Kloakering Storstranden, Juelsminde","status":"I anlæg","description":"Sommerhusområdet Storstranden udstykkes til 125 grunde, og Hedensted Spildevand etablerer spildevandskloak frem til skel samt dræn for grundejerforeningen.","url":"https://hspv.dk/projekter/"}
+      ],
+      "sources": ["https://hspv.dk/om-os/personale/administration/","https://hspv.dk/projekter/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "htk-forsyning": {
+      "name": "Høje-Taastrup Forsyning",
+      "website": "https://htkforsyning.dk/",
+      "phone": "70 20 51 20",
+      "email": "htkforsyning@htkforsyning.dk",
+      "address": "Lervangen 35 D, 2630 Taastrup",
+      "summary": "HTK Forsyning håndterer vand, spildevand og affald i Høje-Taastrup Kommune. Spildevandssystemet omfatter både separat- og fælleskloakerede områder.",
+      "contacts": [
+        {"name":"John Buur Christiansen","title":"Direktør","sourceUrl":"https://htkforsyning.dk/nyheder/ny-direktoer-i-htk-forsyning-a-s/"},
+        {"name":"Sebahat Turan","title":"Spildevandschef","sourceUrl":"https://htkforsyning.dk/om-os/bestyrelse-og-organisation/"},
+        {"name":"Martin Leander Hansen","title":"Driftsleder for spildevand","sourceUrl":"https://htkforsyning.dk/om-os/bestyrelse-og-organisation/"}
+      ],
+      "projects": [
+        {"name":"Opgravningsfri kloakrenovering i Taastrup/Hedehusene","status":"I anlæg","description":"HTK Spildevand renoverer hoved- og stikledninger uden opgravning på bl.a. Bronzealderen, Fløngvej, Jernalderen, Kobberstien, Græshøjvej og Østergade.","url":"https://htkforsyning.dk/spildevand/"}
+      ],
+      "sources": ["https://htkforsyning.dk/om-os/bestyrelse-og-organisation/","https://htkforsyning.dk/spildevand/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "ikast-brande-spildevand": {
+      "name": "Ikast-Brande Spildevand",
+      "website": "https://www.ikast-brandespildevand.dk/",
+      "phone": "96 60 35 00",
+      "email": "info@ibspild.dk",
+      "address": "Europavej 2, 7430 Ikast",
+      "summary": "Ikast-Brande Spildevand håndterer kloak og spildevandsrensning i Ikast-Brande Kommune og arbejder med kapacitet og recipientforhold i takt med byernes udvikling.",
+      "contacts": [
+        {"name":"Anders Harpøth","title":"Spildevandschef","linkedin":"https://dk.linkedin.com/in/anders-harp%C3%B8th-54202792","sourceUrl":"https://ikast-brandespildevand.dk/node/273"}
+      ],
+      "projects": [
+        {"name":"Ny udløbsledning fra Brande Renseanlæg","status":"Planlægning / miljøkonsekvensvurdering","description":"Den rensede udledning planlægges flyttet ca. 5 km nedstrøms fra Brande Å til Skjern Å for at understøtte vækst og fremtidssikre renseanlæggets drift.","url":"https://ikast-brandespildevand.dk/node/273"}
+      ],
+      "sources": ["https://www.ikast-brandespildevand.dk/","https://ikast-brandespildevand.dk/node/273"],
+      "verifiedAt": "2026-09-04"
+    },
+    "assens-forsyning": {
+      "name": "Assens Forsyning",
+      "website": "https://www.assensforsyning.dk/",
+      "phone": "63 44 90 00",
+      "email": "post@assensforsyning.dk",
+      "address": "Forsyningsparken 2, 5610 Assens",
+      "summary": "Assens Forsyning håndterer bl.a. vand og spildevand og driver seks renseanlæg. En stor del af anlægsporteføljen handler om separatkloakering og klimatilpasning.",
+      "contacts": [
+        {"name":"Michael Dissing Nielsen","title":"Projektchef, Vand og Spildevand","sourceUrl":"https://www.assensforsyning.dk/om-os/medarbejdere"},
+        {"name":"Lasse Slaikjer-Kongaa","title":"Teamansvarlig for separatkloakering og klimatilpasning, projektingeniør","linkedin":"https://dk.linkedin.com/in/lasse-slaikjer-kongaa-50670b59","sourceUrl":"https://www.assensforsyning.dk/om-os/medarbejdere"}
+      ],
+      "projects": [
+        {"name":"Separatkloakering i Haarby – sidste etape","status":"Udbud / forventet anlægsstart 2026–2027","description":"Syvende og sidste etape omfatter nye regn- og spildevandsledninger samt anvendelse af Mølledammene til opmagasinering af regnvand og regulering af Haarby Å.","url":"https://www.assensforsyning.dk/spildevand/separatkloakering/haarby-status-og-tidsplan"},
+        {"name":"Separatkloakering i Aarup og regnvandsbassin i Ebberup","status":"Aktuelle projekter","description":"Forsyningen arbejder aktuelt med separatkloakering i Aarup samt regnvandsbassin ved Kirkebakken i Ebberup som del af den løbende klimatilpasning.","url":"https://www.assensforsyning.dk/projekter"}
+      ],
+      "sources": ["https://www.assensforsyning.dk/om-os/medarbejdere","https://www.assensforsyning.dk/projekter"],
+      "verifiedAt": "2026-09-04"
+    },
+    "billund-vand-energi": {
+      "name": "Billund Vand & Energi",
+      "website": "https://www.billundvand.dk/",
+      "phone": "76 50 27 00",
+      "email": "post@billundvand.dk",
+      "address": "Grindsted Landevej 40, 7200 Grindsted",
+      "summary": "Billund Vand & Energi håndterer vand, spildevand og ressourceudnyttelse i Billund Kommune og arbejder ud fra både en ny spildevandsplan og en langsigtet investeringsplan for ledningsnettet.",
+      "contacts": [
+        {"name":"Thomas Kruse Madsen","title":"Administrerende direktør","sourceUrl":"https://www.billundvand.dk/kontakt/medarbejdere/"},
+        {"name":"Jesper Primdahl","title":"Afdelingschef, Plan & Projekt","sourceUrl":"https://www.billundvand.dk/kontakt/medarbejdere/"},
+        {"name":"Peter Jeppesen","title":"Driftsleder, Spildevand og Energi","sourceUrl":"https://www.billundvand.dk/kontakt/medarbejdere/"}
+      ],
+      "projects": [
+        {"name":"Implementering af Spildevandsplan 2025–2031","status":"Planperiode i gang","description":"Den nye spildevandsplan omfatter bl.a. nye kloakoplande, separatkloakering, indsatser for vandløb og søer, renseanlæg samt serviceniveau for regnvand og klimatilpasning.","url":"https://www.billundvand.dk/spildevandsplan-2025-2031/"},
+        {"name":"30-årig investeringsplan for kloaknettet","status":"Løbende investeringsprogram","description":"Ca. 500 km ledninger er tilstandsvurderet for at prioritere renovering over en 30-årig horisont og undgå at udskyde nødvendige reinvesteringer.","url":"https://www.billundvand.dk/nyheder/nyhedsarkiv/vi-har-en-plan-en-30-aars-investerigsplan/"}
+      ],
+      "sources": ["https://www.billundvand.dk/kontakt/medarbejdere/","https://www.billundvand.dk/spildevandsplan-2025-2031/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "beof": {
+      "name": "Bornholms Energi & Forsyning",
+      "website": "https://beof.dk/",
+      "phone": "56 900 000",
+      "email": "kundeservice@beof.dk",
+      "address": "Skansevej 2, 3700 Rønne",
+      "summary": "Bornholms Energi & Forsyning er øens multiforsyning. Bornholms Spildevand ejer og driver de offentlige kloakker og renseanlæg og indgår også i klimasikringsprojekter.",
+      "contacts": [
+        {"name":"Claus M. Andersen","title":"Administrerende direktør, CEO","sourceUrl":"https://beof.dk/om-os/organisation/"},
+        {"name":"Ole Dissing","title":"Afdelingschef, Forsyning","linkedin":"https://dk.linkedin.com/in/ole-dissing-013660145","sourceUrl":"https://beof.dk/om-os/organisation/"},
+        {"name":"Sofie Persson","title":"Afdelingschef, Projekter og Innovation","sourceUrl":"https://beof.dk/om-os/organisation/"}
+      ],
+      "projects": [
+        {"name":"Reinvestering i Bornholms renseanlæg","status":"Langsigtet investeringsprogram","description":"BEOF står over for meget store investeringer de kommende 10–12 år, herunder reinvesteringer i alle Bornholms renseanlæg og øvrig spildevandsinfrastruktur.","url":"https://beof.dk/beof-tilpasser-organisationen-til-fremtidens-opgaver/"}
+      ],
+      "sources": ["https://beof.dk/om-os/organisation/","https://beof.dk/beof-tilpasser-organisationen-til-fremtidens-opgaver/"],
+      "verifiedAt": "2026-09-04"
+    }
+  }
+}
