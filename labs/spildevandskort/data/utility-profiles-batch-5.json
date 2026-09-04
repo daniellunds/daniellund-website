@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-04",
+  "profiles": {
+    "faxe-forsyning": {
+      "name": "Faxe Forsyning",
+      "website": "https://www.faxeforsyning.dk/",
+      "phone": "70 26 02 07",
+      "email": "post@faxeforsyning.dk",
+      "address": "Jens Chr. Skous Vej 1, 4690 Haslev",
+      "summary": "Faxe Forsyning håndterer vand, kloak, spildevandsrensning og affald i Faxe Kommune. På spildevandsområdet arbejdes der bl.a. med separatkloakering og løbende udvikling af kloak- og renseanlægsinfrastrukturen.",
+      "contacts": [],
+      "projects": [
+        {"name":"Separatkloakering i Faxe Kommune","status":"Løbende program","description":"Faxe Kommune og Faxe Forsyning arbejder løbende med separatkloakering for at reducere oversvømmelser, overløb og belastning af renseanlæggene.","url":"https://www.faxekommune.dk/da/borger/spildevand-kloak/spildevandsplan/kloakseparering"}
+      ],
+      "sources": ["https://www.faxeforsyning.dk/","https://www.faxekommune.dk/da/borger/spildevand-kloak/spildevandsplan/kloakseparering"],
+      "verifiedAt": "2026-09-04"
+    },
+    "ffv": {
+      "name": "FFV Energi & Miljø",
+      "website": "https://www.ffv.dk/",
+      "phone": "62 61 16 66",
+      "email": "ffv@ffv.dk",
+      "address": "Korsvangen 6A, 5750 Ringe",
+      "summary": "FFV Energi & Miljø er Faaborg-Midtfyn Kommunes multiforsyning og driver bl.a. FFV Spildevand med kloak, renseanlæg og langsigtet udvikling af rensestrukturen.",
+      "contacts": [
+        {"name":"Brian Seeberg","title":"Administrerende direktør","linkedin":"https://dk.linkedin.com/in/brian-seeberg-3ab4905/da","sourceUrl":"https://www.ffv.dk/om-ffv/organisation-direktion-og-bestyrelse/"}
+      ],
+      "projects": [
+        {"name":"Spildevandsprojekt ved Horne – etape 2","status":"I anlæg august–december 2026","description":"Ny spildevandsledning og omlægning af eksisterende ledning til drænformål skal forbedre håndteringen af spildevand og drænvand ved Horne.","url":"https://www.ffv.dk/nyheder/artikler/nyt-spildevandsprojekt-ved-horne-etape-2/"},
+        {"name":"Ny rensestruktur","status":"Strategisk udvikling","description":"FFV arbejder med den fremtidige rensestruktur og tilpasning til skærpede miljø- og rensekrav på spildevandsområdet.","url":"https://www.ffv.dk/om-ffv/organisation-direktion-og-bestyrelse/"}
+      ],
+      "sources": ["https://www.ffv.dk/","https://www.ffv.dk/om-ffv/organisation-direktion-og-bestyrelse/","https://www.ffv.dk/nyheder/artikler/nyt-spildevandsprojekt-ved-horne-etape-2/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "gribskov-forsyning": {
+      "name": "Gribskov Forsyning",
+      "website": "https://www.gribskovforsyning.dk/",
+      "phone": "48 40 41 00",
+      "email": "kundeservice@gribskovforsyning.dk",
+      "address": "Holtvej 18C, 3230 Græsted",
+      "summary": "Gribskov Forsyning ejer og driver Gribskov Kommunes offentlige kloakker og renseanlæg og arbejder med spildevandsplan, klimatilpasning og reduktion af belastningen af vandmiljøet.",
+      "contacts": [
+        {"name":"Mette Therkildsen","title":"Direktør","linkedin":"https://dk.linkedin.com/in/mette-therkildsen-a23121390","sourceUrl":"https://gribskov.dk/Media/638961310252485404/Referat%20Det%20Gr%C3%B8nne%20Dialogforum%2016%20september%202025.pdf"}
+      ],
+      "projects": [
+        {"name":"Ny spildevandsplan og separatkloakering","status":"Planlægning / implementering","description":"Forsyning og kommune arbejder med spildevandsplanen og en styrket indsats for separatkloakering og reduktion af næringsstofbelastning til vandmiljøet.","url":"https://gribskov.dk/borger/natur-miljoe-klima-og-trafik/vand/spildevand-og-regnvand"}
+      ],
+      "sources": ["https://www.gribskovforsyning.dk/","https://gribskov.dk/borger/natur-miljoe-klima-og-trafik/vand/spildevand-og-regnvand"],
+      "verifiedAt": "2026-09-04"
+    },
+    "guldborgsund-forsyning": {
+      "name": "Guldborgsund Forsyning",
+      "website": "https://www.guldborgsundforsyning.dk/",
+      "phone": "72 44 12 12",
+      "email": "forbrug@guldborgsundforsyning.dk",
+      "address": "Gaabensevej 116, 4800 Nykøbing Falster",
+      "summary": "Guldborgsund Forsyning håndterer afledning og rensning af spildevand fra omkring 32.000 ejendomme via et omfattende kloaknet og kommunens renseanlæg.",
+      "contacts": [
+        {"name":"Carsten Jacobsen","title":"Produktionschef, Spildevand","sourceUrl":"https://www.guldborgsundforsyning.dk/om-os/"},
+        {"name":"Niels Rasmussen","title":"Administrerende direktør","sourceUrl":"https://www.guldborgsundforsyning.dk/pressemeddelelse-takster-2026/"}
+      ],
+      "projects": [
+        {"name":"Kloakering i det åbne land","status":"Løbende implementering","description":"Forsyningen etablerer ledningsnet og pumpeløsninger for ejendomme, der efter spildevandsplanen skal tilsluttes offentlig kloak og renseanlæg.","url":"https://www.guldborgsundforsyning.dk/spildevand/"},
+        {"name":"Investeringsprogram 2026","status":"I gennemførelse","description":"Forsyningen gennemfører et flerårigt investeringsprogram for at styrke forsyningssikkerhed, kvalitet og robusthed i infrastrukturen.","url":"https://www.guldborgsundforsyning.dk/pressemeddelelse-takster-2026/"}
+      ],
+      "sources": ["https://www.guldborgsundforsyning.dk/om-os/","https://www.guldborgsundforsyning.dk/spildevand/","https://www.guldborgsundforsyning.dk/pressemeddelelse-takster-2026/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "fredensborg-forsyning": {
+      "name": "Fredensborg Forsyning",
+      "website": "https://fredensborgforsyning.dk/",
+      "phone": "35 29 44 00",
+      "email": "forsyning@fredensborgforsyning.dk",
+      "address": "Højvangen 23, 3480 Fredensborg",
+      "summary": "Fredensborg Forsyning ejer og driver hovedparten af kommunens kloakledninger, bassiner og renseanlæg. Forsyningen driver mere end 650 km ledninger og gennemfører klimatilpasning og større strukturændringer på spildevandsområdet.",
+      "contacts": [],
+      "projects": [
+        {"name":"Udbygning af Nivå Renseanlæg og afskæring af Kokkedal","status":"Planlagt i spildevandsplanen","description":"Nivå Renseanlæg skal udbygges, så spildevand fra Kokkedal kan afskæres fra Usserød Renseanlæg og i stedet ledes til Nivå via en ny transportledning.","url":"https://spildevand.fredensborg.dk/om-planen/indsatser-i-planperioden"},
+        {"name":"Separatkloakering i Humlebæk","status":"Planlægning mod anlægsstart omkring 2028–2030","description":"Fællessystemet i dele af Humlebæk skal separeres for at reducere oversvømmelser og overløb til vandløb og Øresund.","url":"https://fredensborg.dk/borger/spildevand/separatkloakering-i-humlebaek"}
+      ],
+      "sources": ["https://fredensborgforsyning.dk/","https://spildevand.fredensborg.dk/om-planen/indsatser-i-planperioden"],
+      "verifiedAt": "2026-09-04"
+    },
+    "halsnaes-forsyning": {
+      "name": "Halsnæs Forsyning",
+      "website": "https://hnf.dk/",
+      "phone": "47 76 07 00",
+      "email": "forsyning@hnf.dk",
+      "address": "Havnevej 8, 3300 Frederiksværk",
+      "summary": "Halsnæs Forsyning håndterer kommunens offentlige kloakker og renseanlæg. Melby Renseanlæg behandler langt størstedelen af spildevandet, og forsyningen gennemfører en stor sommerhuskloakering frem mod 2040.",
+      "contacts": [],
+      "projects": [
+        {"name":"Sommerhuskloakering i Liseleje","status":"I anlæg 2025–2026","description":"Lidt over 200 sommerhuse i Liseleje spildevandskloakeres som første del af kommunens større kloakeringsprogram.","url":"https://halsnaes.dk/borger/miljoe-og-affald/spildevand/spildevandsplan/kloakeringsprojekter"},
+        {"name":"Sommerhuskloakering langs Roskilde Fjord","status":"Etapevis frem mod 2040","description":"Mere end 2.200 ejendomme langs Roskilde Fjord skal spildevandskloakeres i etaper for at forbedre miljøforhold og spildevandshåndtering.","url":"https://halsnaes.dk/borger/miljoe-og-affald/spildevand/spildevandsplan/kloakeringsprojekter"}
+      ],
+      "sources": ["https://hnf.dk/","https://halsnaes.dk/borger/miljoe-og-affald/spildevand","https://halsnaes.dk/borger/miljoe-og-affald/spildevand/spildevandsplan/kloakeringsprojekter"],
+      "verifiedAt": "2026-09-04"
+    },
+    "ishoej-forsyning": {
+      "name": "Ishøj Forsyning",
+      "website": "https://www.ishojforsyning.dk/",
+      "phone": "43 57 77 77",
+      "email": "info@ishojforsyning.dk",
+      "address": "Baldersbækvej 6, 2635 Ishøj",
+      "summary": "Ishøj Forsyning varetager vand, varme og spildevand i Ishøj Kommune og arbejder målrettet med klimatilpasning, regnvandskvalitet og fremtidssikring af forsyningsnettet.",
+      "contacts": [
+        {"name":"Henrik Michel Lemée","title":"Administrerende direktør","sourceUrl":"https://www.proff.dk/firma/ish%C3%B8j-forsyning-aps/ish%C3%B8j/hovedkontortjenester/0JKPK2I10NZ"}
+      ],
+      "projects": [
+        {"name":"Ishøj Vandvartegn – klimatilpasningsprojekt","status":"Afsluttende fase 2026","description":"Nye og ombyggede regnvandsbassiner ved Ishøj Stationsvej og Ishøj Strandvej kombinerer regnvandsrensning, forsinkelse og rekreativt byrum. Bassin 1 blev afleveret i juni 2026.","url":"https://www.systra.com/denmark/project/ishoej-vandvartegn-klimatilpasningsprojekt/"},
+        {"name":"Spildevandsplan 2024–2034","status":"Implementering","description":"Planen fastlægger udbygning af kloaksystemet og planlagte aktiviteter for regn- og spildevand i Ishøj frem mod 2034.","url":"https://ishoj.dk/borger/klima-natur-og-miljo/vand/spildevand-og-regnvand/"}
+      ],
+      "sources": ["https://www.ishojforsyning.dk/","https://ishoj.dk/borger/klima-natur-og-miljo/vand/spildevand-og-regnvand/","https://www.systra.com/denmark/project/ishoej-vandvartegn-klimatilpasningsprojekt/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "jammerbugt-forsyning": {
+      "name": "Jammerbugt Forsyning",
+      "website": "https://jfas.dk/",
+      "phone": "72 14 34 00",
+      "email": "administration@jfas.dk",
+      "address": "Lundbakvej 5, 9490 Pandrup",
+      "summary": "Jammerbugt Forsyning håndterer vand og spildevand i Jammerbugt Kommune og driver renseanlæg, pumpestationer og en flerårig portefølje af separatkloakeringsprojekter.",
+      "contacts": [
+        {"name":"Lars Konnerup","title":"Projektchef","sourceUrl":"https://jfas.dk/om-os/medarbejdere/"},
+        {"name":"Kristian Løystrup Jensen","title":"Driftschef, Renseanlæg","sourceUrl":"https://jfas.dk/om-os/medarbejdere/"},
+        {"name":"Jane Møller Mortensen","title":"Ingeniør / bygherrekontakt på V. Hjermitslev","sourceUrl":"https://jfas.dk/projekter/separatkloakering-i-v-hjermitslev/"}
+      ],
+      "projects": [
+        {"name":"Separatkloakering i V. Hjermitslev – etape 3 og 4","status":"I anlæg / udbud 2026–2028","description":"Etape 3 forventes udført fra oktober 2026 til juni 2028. Etape 3 og 4 udbydes som særskilte entrepriser.","url":"https://jfas.dk/projekter/separatkloakering-i-v-hjermitslev/"},
+        {"name":"Separatkloakering i Fjerritslev – etape 9–10","status":"I anlæg 2025–2026","description":"Tennisvej, Havevej, Toftevej, Kirkegaardsvej, Lærkevej og Mågevej separatkloakeres sammen med øvrige forsynings- og fortovsarbejder.","url":"https://jfas.dk/projekter/separatkloakering-i-fjerritslev/etape-9-10/"}
+      ],
+      "sources": ["https://jfas.dk/om-os/medarbejdere/","https://jfas.dk/projekter/separatkloakering-i-v-hjermitslev/","https://jfas.dk/projekter/separatkloakering-i-fjerritslev/etape-9-10/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "kerteminde-forsyning": {
+      "name": "Kerteminde Forsyning",
+      "website": "https://www.kertemindeforsyning.dk/",
+      "phone": "70 25 33 33",
+      "email": "forsyning@kertemindeforsyning.dk",
+      "address": "Kohaven 12, 5300 Kerteminde",
+      "summary": "Kerteminde Forsyning driver Kerteminde Forsyning – Spildevand A/S. Forsyningen vedligeholder omkring 476 km regn- og spildevandsledninger og arbejder i 2026 med investeringer i ledningsnet og en ny spildevandsplan.",
+      "contacts": [
+        {"name":"Joakim Krenz","title":"Plan- og projektchef","sourceUrl":"https://www.kertemindeforsyning.dk/om-os/find-en-medarbejder"},
+        {"name":"Henning L. Hansen","title":"Projektleder, Spildevand – separatkloakering","sourceUrl":"https://www.kertemindeforsyning.dk/om-os/find-en-medarbejder"},
+        {"name":"Kemal Kökten","title":"Projektingeniør, Spildevand – spildevandsplanlægning","sourceUrl":"https://www.kertemindeforsyning.dk/om-os/find-en-medarbejder"}
+      ],
+      "projects": [
+        {"name":"Ny spildevandsplan","status":"I arbejde 2026","description":"Forsyningen styrker i 2026 arbejdet med en ny spildevandsplan samtidig med planlagte investeringer i ledningsnet og øvrige spildevandsaktiver.","url":"https://www.kertemindeforsyning.dk/kerteminde-forsyning-leverer-bedre-end-forventet-i-2025"},
+        {"name":"Ledningsnet og separatkloakering","status":"Løbende investeringsprogram","description":"Plan- og projektorganisationen gennemfører anlæg og renovering på spildevandsområdet, herunder separatkloakering og spildevandsplanlægning.","url":"https://www.kertemindeforsyning.dk/om-os/find-en-medarbejder"}
+      ],
+      "sources": ["https://www.kertemindeforsyning.dk/","https://www.kertemindeforsyning.dk/om-os/find-en-medarbejder","https://www.kertemindeforsyning.dk/kerteminde-forsyning-leverer-bedre-end-forventet-i-2025"],
+      "verifiedAt": "2026-09-04"
+    },
+    "fanoe-vand": {
+      "name": "Fanø Vand",
+      "website": "https://www.fanoevand.dk/",
+      "phone": "24 45 00 88",
+      "email": "sb@fanoevand.dk",
+      "address": "Stadionvej 11A, 6720 Fanø",
+      "summary": "Fanø Vand er kommunalt ejet og varetager både vandforsyning og spildevandsforsyning på Fanø. Spildevandet ledes videre til rensning hos DIN Forsyning på fastlandet.",
+      "contacts": [
+        {"name":"Susanne Vilstrup Brøner","title":"Direktør","sourceUrl":"https://www.proff.dk/firma/fan%C3%B8-vand-as/fan%C3%B8/vand-og-kloak/GSPCAAI10LD"}
+      ],
+      "projects": [
+        {"name":"Ny spildevandsplan og spildevandsstrategi","status":"Planlægning","description":"Fanø Vand og Fanø Kommune arbejder med ny spildevandsplan og strategi, herunder håndtering af sommerhusområder og fremtidig spildevandsstruktur.","url":"https://usercontent.one/wp/www.fanoevand.dk/wp-content/uploads/2025/04/Referat-nr-71-11-04-2025.pdf"},
+        {"name":"Reduktion af uvedkommende vand","status":"Løbende undersøgelse og udbedring","description":"Fanø Vand sporer fejlagtige tilslutninger og regnvand, der trænger ind i spildevandsledningerne, for at reducere unødig tilledning til DIN Forsyning.","url":"https://usercontent.one/wp/www.fanoevand.dk/wp-content/uploads/2025/04/Referat-nr-71-11-04-2025.pdf"}
+      ],
+      "sources": ["https://fanoe.dk/borger/vand-og-klimatilpasning/vand-og-spildevand","https://fanoe.dk/kommunen/kontakt/forsyningsvirksomheder","https://usercontent.one/wp/www.fanoevand.dk/wp-content/uploads/2025/04/Referat-nr-71-11-04-2025.pdf"],
+      "verifiedAt": "2026-09-04"
+    }
+  }
+}
