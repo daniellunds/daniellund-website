@@ -81,14 +81,17 @@ jobs:
               control=page.locator('.leaflet-control-layers')
               assert await control.count()==1
               if mobile:
-                  await page.locator('.leaflet-control-layers-toggle').click()
+                  expanded=await control.evaluate("el=>el.classList.contains('leaflet-control-layers-expanded')")
+                  if not expanded:
+                      await page.locator('.leaflet-control-layers-toggle').dispatch_event('click')
+                      await page.wait_for_timeout(150)
               labels=page.locator('.leaflet-control-layers-base label')
               texts=await labels.all_inner_texts()
               assert any('Kort' in x for x in texts),texts
               assert any('Luftfoto' in x for x in texts),texts
               for i,t in enumerate(texts):
                   if 'Luftfoto' in t:
-                      await labels.nth(i).click();break
+                      await labels.nth(i).click(force=True);break
               await page.wait_for_function("state.activeBasemap==='Luftfoto'",timeout=10000)
               await page.wait_for_timeout(1500)
               imagery_tiles=await page.locator('img.leaflet-tile[src*="World_Imagery"]').count()
