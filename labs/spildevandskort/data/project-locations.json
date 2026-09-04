@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-04",
+  "note": "Area anchors are deliberately approximate. Treatment-plant projects are preferentially anchored to live PULS plant coordinates at runtime.",
+  "anchors": [
+    {"label":"Tangkrogen","matches":["tangkrogen"],"lat":56.1376,"lon":10.21028,"precision":"område","sourceUrl":"https://mapcarta.com/39739578"},
+    {"label":"Vildbjerg","matches":["vildbjerg"],"lat":56.19842,"lon":8.76757,"precision":"område","sourceUrl":"https://maps.apple.com/place?auid=4560798247173913202"},
+    {"label":"Gjellerup","matches":["gjellerup"],"lat":56.14601,"lon":9.04713,"precision":"område","sourceUrl":"https://mapcarta.com/17588550"},
+    {"label":"Hjallerup","matches":["hjallerup"],"lat":57.1666,"lon":10.1466,"precision":"område","sourceUrl":"https://mapcarta.com/Hjallerup"},
+    {"label":"Hæstrup","matches":["hæstrup","haestrup"],"lat":57.40634,"lon":9.98791,"precision":"område","sourceUrl":"https://mapcarta.com/17585056"},
+    {"label":"Øster Snede","matches":["øster snede","oester snede"],"lat":55.797,"lon":9.6407,"precision":"område","sourceUrl":"https://samlinger.natmus.dk/dmr/asset/181669"},
+    {"label":"Horne, Faaborg-Midtfyn","matches":["horne"],"lat":55.10947,"lon":10.16312,"precision":"område","sourceUrl":"https://maps.apple.com/place?auid=12571840512924374257"},
+    {"label":"Benløse","matches":["benløse","benloese"],"lat":55.466694,"lon":11.8,"precision":"område","sourceUrl":"https://www.wikidata.org/wiki/Q12303119"},
+    {"label":"Skagen","matches":["skagen"],"lat":57.733333,"lon":10.6,"precision":"område","sourceUrl":"https://geographic.org/geographic_names/name.php?c=denmark&fid=1526&uni=-3816843"},
+    {"label":"Vester Hjermitslev","matches":["vester hjermitslev","v. hjermitslev","v hjermitslev"],"lat":57.285608,"lon":9.758212,"precision":"område","sourceUrl":"https://www.wikidata.org/wiki/Q2691907"},
+    {"label":"Fjerritslev","matches":["fjerritslev"],"lat":57.0888,"lon":9.2731,"precision":"område","sourceUrl":"https://mapcarta.com/Fjerritslev"},
+    {"label":"Kalvehave","matches":["kalvehave"],"lat":54.99774,"lon":12.16312,"precision":"område","sourceUrl":"https://mapcarta.com/17583964"},
+    {"label":"Liseleje","matches":["liseleje"],"lat":56.01224,"lon":11.96482,"precision":"område","sourceUrl":"https://mapcarta.com/17580754"},
+    {"label":"Humlebæk","matches":["humlebæk","humlebaek"],"lat":55.96,"lon":12.53306,"precision":"område","sourceUrl":"https://www.wikidata.org/wiki/Q2631512"},
+    {"label":"Kokkedal","matches":["kokkedal"],"lat":55.91051,"lon":12.49167,"precision":"område","sourceUrl":"https://mapcarta.com/17582768"},
+    {"label":"Brørup","matches":["brørup","broerup"],"lat":55.481936,"lon":9.017558,"precision":"område","sourceUrl":"https://www.geonames.org/search.html?country=DK&q=Danmark"},
+    {"label":"Ladelund, Vejen","matches":["ladelund"],"lat":55.48583,"lon":9.04761,"precision":"område","sourceUrl":"https://mapcarta.com/17581750"},
+    {"label":"Ranum","matches":["ranum"],"lat":56.89679,"lon":9.22964,"precision":"område","sourceUrl":"https://mapcarta.com/17575632"},
+    {"label":"Løgstør","matches":["løgstør","loegstoer"],"lat":56.966694,"lon":9.25,"precision":"område","sourceUrl":"https://www.wikidata.org/wiki/Q10573021"},
+    {"label":"Oddesund Nord","matches":["oddesund nord"],"lat":56.5825,"lon":8.54553,"precision":"område","sourceUrl":"https://mapcarta.com/17577438"},
+    {"label":"Rønde","matches":["rønde","roende"],"lat":56.30156,"lon":10.47544,"precision":"område","sourceUrl":"https://mapcarta.com/17574808"},
+    {"label":"Sønder Bjert","matches":["sønder bjert","sdr. bjert","sdr bjert"],"lat":55.45913,"lon":9.55716,"precision":"område","sourceUrl":"https://mapcarta.com/17571890"},
+    {"label":"Børkop","matches":["børkop","boerkop"],"lat":55.64195,"lon":9.64958,"precision":"område","sourceUrl":"https://www.geonames.org/advanced-search.html?country=DK&q=Danmark"}
+  ]
+}
