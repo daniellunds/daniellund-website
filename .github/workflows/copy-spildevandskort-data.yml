@@ -1,0 +1,35 @@
+name: Copy spildevandskort data
+on:
+  push:
+    branches: [labs-spildevandskort]
+    paths: [.github/workflows/copy-spildevandskort-data.yml]
+permissions:
+  contents: write
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: labs-spildevandskort
+      - name: Copy verified map data
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p labs/spildevandskort/data
+          BASE="https://raw.githubusercontent.com/daniellunds/daniellund-website/spildevandskort-data/spildevandskort-data"
+          curl -fsSL "$BASE/brands.json" -o labs/spildevandskort/data/brands.json
+          for i in 1 2 3 4; do
+            curl -fsSL "$BASE/spildevandsoplande-$i.geojson.gz" -o "labs/spildevandskort/data/spildevandsoplande-$i.geojson.gz"
+            gzip -t "labs/spildevandskort/data/spildevandsoplande-$i.geojson.gz"
+          done
+          test -s labs/spildevandskort/data/brands.json
+          git rm .github/workflows/copy-spildevandskort-data.yml
+      - name: Commit data files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f labs/spildevandskort/data/brands.json labs/spildevandskort/data/spildevandsoplande-1.geojson.gz labs/spildevandskort/data/spildevandsoplande-2.geojson.gz labs/spildevandskort/data/spildevandsoplande-3.geojson.gz labs/spildevandskort/data/spildevandsoplande-4.geojson.gz
+          git add .github/workflows/copy-spildevandskort-data.yml || true
+          git commit -m "Bundle wastewater map data assets"
+          git push origin HEAD:labs-spildevandskort
