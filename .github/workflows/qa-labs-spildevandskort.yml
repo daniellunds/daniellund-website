@@ -1,0 +1,113 @@
+name: QA labs spildevandskort
+on:
+  push:
+    branches: [labs-spildevandskort]
+    paths:
+      - 'labs/spildevandskort/**'
+permissions:
+  contents: read
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Static asset QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s labs/spildevandskort/index.html
+          test -s labs/spildevandskort/styles.css
+          test -s labs/spildevandskort/app1.js
+          test -s labs/spildevandskort/app2.js
+          test -s labs/spildevandskort/data/brands.json
+          for i in 1 2 3 4; do
+            test -s "labs/spildevandskort/data/spildevandsoplande-$i.geojson.gz"
+            gzip -t "labs/spildevandskort/data/spildevandsoplande-$i.geojson.gz"
+          done
+          node --check labs/spildevandskort/app1.js
+          node --check labs/spildevandskort/app2.js
+          python - <<'PY'
+          import json, gzip
+          from pathlib import Path
+          root=Path('labs/spildevandskort/data')
+          b=json.loads((root/'brands.json').read_text())
+          brands=b.get('brands',b)
+          total=0
+          for i in range(1,5):
+              with gzip.open(root/f'spildevandsoplande-{i}.geojson.gz','rt',encoding='utf-8') as f:
+                  total += len(json.load(f).get('features',[]))
+          assert len(brands)>=70, len(brands)
+          assert total==53179, total
+          print(f'STATIC_QA PASS brands={len(brands)} polygons={total}')
+          PY
+      - name: Install Playwright Chromium
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium >/dev/null
+      - name: Start local server
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/map-server.log 2>&1 &
+          echo $! > /tmp/map-server.pid
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4173/labs/spildevandskort/ >/dev/null && break; sleep 1; done
+      - name: Browser QA desktop and mobile
+        shell: bash
+        run: |
+          cat > /tmp/map-qa.mjs <<'JS'
+          import { chromium } from 'playwright';
+          import fs from 'node:fs';
+          const URL='http://127.0.0.1:4173/labs/spildevandskort/';
+          const browser=await chromium.launch({headless:true});
+          async function run(viewport,label){
+            const ctx=await browser.newContext({viewport});
+            const page=await ctx.newPage();
+            const errors=[];
+            page.on('console',m=>{ if(m.type()==='error') errors.push('console: '+m.text()) });
+            page.on('pageerror',e=>errors.push('pageerror: '+e.message));
+            page.on('response',r=>{ if(r.status()>=400 && !r.url().includes('tile.openstreetmap')) errors.push(`http ${r.status()}: ${r.url()}`) });
+            await page.goto(URL,{waitUntil:'domcontentloaded',timeout:30000});
+            await page.waitForFunction(()=>window.L && document.querySelector('#map')?true:false,{timeout:15000});
+            await page.waitForFunction(()=>Number(document.querySelector('#brandCount')?.textContent)>60,{timeout:15000});
+            await page.waitForFunction(()=>document.querySelectorAll('.region-group').length===8,{timeout:15000});
+            const regionNames=await page.locator('.region-name').allTextContents();
+            if(regionNames.length!==8) throw new Error(`${label}: expected 8 regions, got ${regionNames.length}`);
+            await page.locator('.region-toggle').first().click();
+            if(await page.locator('.brand-row').count()<1) throw new Error(`${label}: no utility rows after opening a region`);
+            await page.waitForFunction(()=>document.querySelectorAll('.leaflet-overlay-pane path').length>100,{timeout:45000});
+            const mapBox=await page.locator('#map').boundingBox();
+            if(!mapBox||mapBox.width<250||mapBox.height<180) throw new Error(`${label}: map has invalid size ${JSON.stringify(mapBox)}`);
+            const mapCenter=await page.evaluate(()=>state?.map?.getCenter?.());
+            if(!mapCenter) throw new Error(`${label}: Leaflet map state missing`);
+            await page.locator('[data-tab="plants"]').click();
+            await page.waitForFunction(()=>{const t=document.querySelector('#activePlantCount')?.textContent;return t && t!=='—' && Number(t)>0},{timeout:45000});
+            const activePlants=Number(await page.locator('#activePlantCount').textContent());
+            const plantRows=await page.locator('.plant-row').count();
+            const circles=await page.locator('.leaflet-marker-pane path,.leaflet-overlay-pane path.leaflet-interactive').count();
+            const warning=await page.locator('#statusBanner').isVisible()?await page.locator('#statusBanner').textContent():'';
+            if(warning) throw new Error(`${label}: status warning: ${warning}`);
+            if(activePlants<1) throw new Error(`${label}: no active PULS plants`);
+            if(plantRows<1) throw new Error(`${label}: plant list empty`);
+            if(viewport.width<600){
+              const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+              if(overflow>3) throw new Error(`${label}: horizontal overflow ${overflow}px`);
+            }
+            await page.screenshot({path:`qa-${label}.png`,fullPage:true});
+            console.log(`BROWSER_QA ${label} PASS regions=${regionNames.length} activePlants=${activePlants} plantRows=${plantRows} map=${Math.round(mapBox.width)}x${Math.round(mapBox.height)} errors=${errors.length}`);
+            if(errors.length) console.log('NONFATAL_BROWSER_ERRORS '+JSON.stringify(errors.slice(0,10)));
+            await ctx.close();
+          }
+          await run({width:1440,height:900},'desktop');
+          await run({width:390,height:844},'mobile');
+          await browser.close();
+          JS
+          node /tmp/map-qa.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: spildevandskort-qa-screenshots
+          path: qa-*.png
+          if-no-files-found: ignore
