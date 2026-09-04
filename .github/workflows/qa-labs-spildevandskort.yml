@@ -114,6 +114,9 @@ jobs:
               assert interactive > 100, f'leafletInteractive={interactive}'
               assert not status_visible, 'statusBanner shows data-loading error'
               assert map_box and map_box['width']>250 and map_box['height']>180, map_box
+              assert await page.locator('#brandControls').is_visible()
+              assert not await page.locator('#plantControls').is_visible()
+              assert not await page.locator('#projectControls').is_visible()
 
               puls_schema=await page.evaluate("""() => {
                 const cap=state.plants.find(p=>Object.prototype.hasOwnProperty.call(p.sourceProperties||{},'DesignedCapacity'));
@@ -142,11 +145,17 @@ jobs:
 
               await page.locator('.tab[data-tab="plants"]').click()
               await page.wait_for_timeout(300)
+              assert await page.locator('#plantControls').is_visible()
+              assert not await page.locator('#brandControls').is_visible()
+              assert not await page.locator('#projectControls').is_visible()
               plant_rows=await page.locator('.plant-row').count()
               assert plant_rows > 100, f'plantRows={plant_rows}'
 
               await page.locator('.tab[data-tab="projects"]').click()
               await page.wait_for_timeout(500)
+              assert await page.locator('#projectControls').is_visible()
+              assert not await page.locator('#brandControls').is_visible()
+              assert not await page.locator('#plantControls').is_visible()
               project_rows=await page.locator('.project-row').count()
               project_markers=await page.locator('#map .project-marker-shell').count()
               assert project_rows >= 100, f'projectRows={project_rows}'
@@ -169,8 +178,12 @@ jobs:
               assert 'Områdeplacering' in detail,detail
               await page.locator('#closeDetail').click()
               await page.locator('#search').fill('')
+              label='mobile' if mobile else 'desktop'
+              await page.screenshot(path=f'qa-projects-{label}.png',full_page=True)
 
               await page.locator('.tab[data-tab="brands"]').click()
+              assert await page.locator('#brandControls').is_visible()
+              assert not await page.locator('#projectControls').is_visible()
               before=len(errors)
               await page.locator('#zoomSelected').click()
               await page.wait_for_timeout(250)
@@ -181,7 +194,6 @@ jobs:
                   overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
                   assert overflow <= 3, f'horizontal overflow={overflow}px'
 
-              label='mobile' if mobile else 'desktop'
               await page.screenshot(path=f'qa-{label}.png',full_page=True)
               print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])}')
               await context.close()
