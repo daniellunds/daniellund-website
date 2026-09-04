@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-04",
+  "profiles": {
+    "hofor": {
+      "name": "HOFOR",
+      "website": "https://www.hofor.dk/",
+      "phone": "33 95 33 95",
+      "email": "kundeservice@hofor.dk",
+      "address": "Ørestads Boulevard 35, 2300 København S",
+      "summary": "HOFOR håndterer spildevand og regnvand i hovedstadsområdet og driver/administrerer de lokale spildevandsselskaber i koncernen.",
+      "contacts": [
+        {"name":"Rebekka Nymark","title":"Direktør for Vand & Spildevand","linkedin":"https://dk.linkedin.com/in/rebekkanymark","sourceUrl":"https://www.hofor.dk/om-hofor/organisationen/koncerndiagram/selskaber-i-hofor/net/hofor-spildevand-kobenhavn-as/"}
+      ],
+      "projects": [
+        {"name":"Svanemøllen Skybrudstunnel","status":"I anlæg / udbud","description":"Ca. 10 km skybrudstunnel i samarbejde med Novafos og Frederiksberg Forsyning. Byggeriet startede i 2025 og forventes færdigt i 2033.","url":"https://www.hofor.dk/baeredygtige-byer/udviklingsprojekter/skybrudssikring/svanemoelle-skybrudstunnel/"},
+        {"name":"Valby Skybrudstunnel","status":"I anlæg","description":"Ca. 2,5 km tunnel til skybrudssikring og reduktion af overløb. Projektet udføres med Frederiksberg Forsyning og forventes færdigt i 2028.","url":"https://www.hofor.dk/baeredygtige-byer/udviklingsprojekter/skybrudssikring/valby-skybrudstunnel/"}
+      ],
+      "sources": ["https://www.hofor.dk/kontakt-os/","https://www.hofor.dk/om-hofor/organisationen/koncerndiagram/selskaber-i-hofor/net/hofor-spildevand-kobenhavn-as/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "novafos": {
+      "name": "Novafos",
+      "website": "https://www.novafos.dk/",
+      "phone": "44 20 80 00",
+      "email": "novafos@novafos.dk",
+      "address": "Blokken 9, 3460 Birkerød",
+      "summary": "Novafos håndterer drikkevand, spildevand, renseanlæg og klimatilpasning på tværs af ni ejerkommuner i hovedstadsområdet.",
+      "contacts": [
+        {"name":"Carsten Nystrup","title":"Administrerende direktør","linkedin":"https://dk.linkedin.com/in/carsten-nystrup-a0038518","sourceUrl":"https://www.novafos.dk/"},
+        {"name":"Martin Moneaux","title":"Sektionsleder, Spildevand","linkedin":"https://dk.linkedin.com/in/martin-moneaux-4878002","sourceUrl":"https://www.frederikssund.dk/Dagsordener/Teknik_og_Klima(2026)/03-02-2026/Dagsorden(ID5655)/Bilag/Punkt_9_Bilag_2_Bilag_2_Orintering_om_investeringsaftale_med_Novafos_2026.pdf"}
+      ],
+      "projects": [
+        {"name":"Svanemøllen Skybrudstunnel","status":"I anlæg / udbud","description":"Novafos er medbygherre på den ca. 10 km lange skybrudstunnel sammen med HOFOR og Frederiksberg Forsyning. Forventet drift i 2033.","url":"https://www.hofor.dk/baeredygtige-byer/udviklingsprojekter/skybrudssikring/svanemoelle-skybrudstunnel/"},
+        {"name":"Skovshoved – ny udløbsledning og bassin","status":"Planlægning / miljøvurdering","description":"Ny udløbsledning og underjordisk bassin skal reducere overløb til Øresund og fremtidssikre systemet. Anlægsstart forventes omkring 2030.","url":"https://gentofte.dk/bolig-og-by/miljoe-forsyning-og-klima/badevand-og-havmiljoe/udloebsledning-ved-skovshoved-havbad/"}
+      ],
+      "sources": ["https://www.novafos.dk/","https://gentofte.dk/om-kommunen/nyheder-og-presse/nyheder/2026-maj/paa-vej-mod-renere-vand-i-oeresund/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "biofos": {
+      "name": "BIOFOS",
+      "website": "https://biofos.dk/",
+      "phone": "32 57 32 32",
+      "email": "post@biofos.dk",
+      "address": "Refshalevej 250, 1432 København K",
+      "summary": "BIOFOS er hovedstadsområdets store renseanlægsoperatør og driver Renseanlæg Lynetten, Damhusåen og Avedøre.",
+      "contacts": [
+        {"name":"Cicilie Senderovitz","title":"Teknisk direktør","linkedin":"https://dk.linkedin.com/in/cicilie-senderovitz","sourceUrl":"https://dk.linkedin.com/in/cicilie-senderovitz"}
+      ],
+      "projects": [
+        {"name":"Udbygningsplan – Lynetten og Damhusåen","status":"I anlæg","description":"Kapacitets- og miljøudbygning af renseanlæggene med bl.a. øget biologisk og hydraulisk kapacitet. Den samlede udbygningsplan er planlagt mod færdiggørelse i 2027.","url":"https://biofos.dk/"},
+        {"name":"Fremtidig placering af renseanlæg i hovedstadsområdet","status":"Analyse / beslutningsgrundlag","description":"Analyse af langsigtede scenarier for Lynetten, Damhusåen og fremtidig rensekapacitet i hovedstadsområdet.","url":"https://biofos.dk/"}
+      ],
+      "sources": ["https://biofos.dk/","https://dk.linkedin.com/company/biofos"],
+      "verifiedAt": "2026-09-04"
+    },
+    "vandcenter-syd": {
+      "name": "VandCenter Syd",
+      "website": "https://www.vandcenter.dk/",
+      "phone": "63 13 23 33",
+      "email": "info@vandcenter.dk",
+      "address": "Vandværksvej 7, 5000 Odense C",
+      "summary": "VandCenter Syd håndterer spildevand i Odense og Nordfyn og driver otte renseanlæg samt omkring 3.000 km kloakledninger.",
+      "contacts": [
+        {"name":"Mads Leth","title":"Direktør","linkedin":"https://www.linkedin.com/in/madsleth","sourceUrl":"https://www.vandcenter.dk/kontakt/presse/"},
+        {"name":"Andreas Bassett","title":"Vicedirektør og områdechef for drift","linkedin":"https://dk.linkedin.com/in/andreas-bassett-9a6b922","sourceUrl":"https://www.vandcenter.dk/kontakt/presse/"}
+      ],
+      "projects": [
+        {"name":"DAWN – fjerde rensetrin","status":"Udviklingsprojekt","description":"Data-drevet vurdering af teknologier til fjerde rensetrin for fjernelse af medicinrester og andre miljøfremmede stoffer.","url":"https://www.vandcenter.dk/her-arbejder-vi/udviklingsprojekter/"},
+        {"name":"Kloakledninger ved E20 og Søparken","status":"I anlæg 2026–2027","description":"Flytning af regn- og spildevandsledninger i forbindelse med udvidelsen af den fynske motorvej E20.","url":"https://www.vandcenter.dk/spildevand/"},
+        {"name":"Modernisering af renseanlæg på Nordfyn","status":"Planlægning","description":"Efter stop for projektet om ét centralt renseanlæg i juni 2026 arbejdes videre med modernisering og udbygning af eksisterende renseanlæg.","url":"https://www.vandcenter.dk/nyheder/stop-for-centralt-renseanlaeg-paa-nordfyn/"}
+      ],
+      "sources": ["https://www.vandcenter.dk/kontakt/","https://www.vandcenter.dk/om-os/","https://www.vandcenter.dk/kontakt/presse/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "aarhus-vand": {
+      "name": "Aarhus Vand",
+      "website": "https://www.aarhusvand.dk/",
+      "phone": "89 47 10 00",
+      "email": "aarhusvand@aarhusvand.dk",
+      "address": "Hasselager Allé 29, 8260 Viby J",
+      "summary": "Aarhus Vand håndterer vand, afløb, klimatilpasning og spildevandsrensning i Aarhus og er bygherre på det kommende Aarhus ReWater.",
+      "contacts": [
+        {"name":"Maj Møller Sørensen","title":"Afdelingschef, Rensning & Ressourcer","linkedin":"https://dk.linkedin.com/in/maj-m%C3%B8ller-s%C3%B8rensen-1a88b927","sourceUrl":"https://www.aarhusvand.dk/om-os/organisation-og-direktion/"},
+        {"name":"Peter Hjortdal","title":"Afdelingschef, Klima & Afløb – Anlægsprojekter","linkedin":"https://dk.linkedin.com/in/peter-hjortdal-81b3533b/da","sourceUrl":"https://www.aarhusvand.dk/om-os/organisation-og-direktion/"},
+        {"name":"Andrew Ferguson Dunn","title":"CPO / Projektdirektør, Aarhus ReWater","linkedin":"https://dk.linkedin.com/in/andrew-ferguson-dunn-982b433","sourceUrl":"https://www.aarhusvand.dk/om-os/organisation-og-direktion/"}
+      ],
+      "projects": [
+        {"name":"Aarhus ReWater","status":"Projektering / forberedelser","description":"Aarhus' kommende rense- og ressourceanlæg med 4. og 5. rensetrin. Havbundsundersøgelser og forberedelser pågår i 2026; anlægget skal understøtte byens vækst og Aarhus Bugts vandmiljø.","url":"https://www.aarhusvand.dk/pressemeddelelser/2026/aarhus-vand-investerer-i-drikkevandsbeskyttelse-godt-vandmiljoe-og-klimatiltag/"},
+        {"name":"Ozonanlæg på Egå Renseanlæg","status":"I anlæg","description":"Anlæg til fjernelse af medicinrester og miljøfremmede stoffer; opførelsen blev igangsat i 2025.","url":"https://www.aarhusvand.dk/pressemeddelelser/2026/aarhus-vand-investerer-i-drikkevandsbeskyttelse-godt-vandmiljoe-og-klimatiltag/"}
+      ],
+      "sources": ["https://www.aarhusvand.dk/om-os/organisation-og-direktion/","https://www.aarhusvand.dk/pressemeddelelser/2026/aarhus-vand-investerer-i-drikkevandsbeskyttelse-godt-vandmiljoe-og-klimatiltag/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "aalborg-forsyning": {
+      "name": "Aalborg Forsyning",
+      "website": "https://www.aalborgforsyning.dk/",
+      "phone": "99 82 82 99",
+      "address": "Norbis Park 100, 9310 Vodskov",
+      "summary": "Aalborg Forsyning håndterer regn- og spildevand i Aalborg Kommune, driver Renseanlæg Øst og Vest og gennemfører en langsigtet separatkloakering.",
+      "contacts": [
+        {"name":"Birthe Dilling Berg","title":"Vand- og spildevandschef","linkedin":"https://dk.linkedin.com/in/birthe-berg-9b38647","sourceUrl":"https://www.aalborgforsyning.dk/vores-organisation/organisation/"},
+        {"name":"Kim Wiese Nielsen","title":"Afdelingsleder, renseanlæg","sourceUrl":"https://www.aalborgforsyning.dk/vores-kvalitet/spildevand/vores-renseanlaeg/kunstig-intelligens-paa-renseanlaeg-oest/"}
+      ],
+      "projects": [
+        {"name":"Separatkloakering i Aalborg Kommune","status":"I anlæg","description":"Omkring 260 mio. kr. investeres årligt i separatkloakering. Næsten 72 % var gennemført i foråret 2026; den samlede plan løber frem mod 2065.","url":"https://aalborgforsyning.dk/artikelliste/07-04-2026-foraaret-saetter-fart-paa-nye-separatkloakeringer/"},
+        {"name":"AI-styring af Renseanlæg Øst","status":"Udviklingsprojekt","description":"AI anvendes til processtyring med fokus på at reducere lattergasudledning og optimere renseprocessen.","url":"https://www.aalborgforsyning.dk/vores-kvalitet/spildevand/vores-renseanlaeg/kunstig-intelligens-paa-renseanlaeg-oest/"},
+        {"name":"MAP'N'TREAT","status":"Udviklingsprojekt","description":"Kortlægning af kilder til miljøfarlige stoffer og vurdering af teknologier til rensning.","url":"https://www.aalborgforsyning.dk/vores-kvalitet/spildevand/vores-renseanlaeg/"}
+      ],
+      "sources": ["https://www.aalborgforsyning.dk/vores-organisation/organisation/","https://www.aalborgforsyning.dk/vores-kvalitet/spildevand/"],
+      "verifiedAt": "2026-09-04"
+    }
+  }
+}
