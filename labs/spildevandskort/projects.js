@@ -12,7 +12,7 @@ state.projectLocationAnchors=[];
 state.projectLocationMeta={};
 
 const PROJECT_CATEGORIES={
-  advanced:{label:"Avanceret rensning",short:"4. trin"},
+  advanced:{label:"Avanceret rensning",short:"4./5. trin"},
   treatment:{label:"Renseanlæg & proces",short:"Rens"},
   climate:{label:"Klima & regnvand",short:"Klima"},
   sewer:{label:"Kloak & separering",short:"Kloak"},
@@ -22,7 +22,7 @@ const PROJECT_CATEGORIES={
 
 function projectCategoryFor(pr){
   const t=normalize(`${pr.name} ${pr.description||""}`);
-  if(/4 rensetrin|fjerde rensetrin|ozon|gak|aktivt kul|mikroforur|miljøfremmede|medicinrester|micropollut/.test(t)) return "advanced";
+  if(/\b(?:4|5)(?: og (?:4|5))? rensetrin\b|fjerde rensetrin|femte rensetrin|ozon|gak|aktivt kul|mikroforur|miljøfremmede|medicinrester|pfas|micropollut/.test(t)) return "advanced";
   if(/renseanlæg|renseanlaeg|centralrense|rensestruktur|slambehandling|slamafvanding|renseproces|rensning/.test(t)) return "treatment";
   if(/skybrud|klima|regnvand|bassin|overløb|overloeb|vandparkering|udløbsledning|udloebsledning/.test(t)) return "climate";
   if(/pumpestation|transportledning|transportrør|transportroer|pumpeledning/.test(t)) return "transport";
