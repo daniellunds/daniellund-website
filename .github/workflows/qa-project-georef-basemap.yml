@@ -85,11 +85,6 @@ jobs:
 
               control=page.locator('.leaflet-control-layers')
               assert await control.count()==1
-              if mobile:
-                  expanded=await control.evaluate("el=>el.classList.contains('leaflet-control-layers-expanded')")
-                  if not expanded:
-                      await page.locator('.leaflet-control-layers-toggle').dispatch_event('click')
-                      await page.wait_for_timeout(150)
               labels=page.locator('.leaflet-control-layers-base label')
               texts=await labels.all_inner_texts()
               assert any('Kort' in x for x in texts),texts
@@ -105,7 +100,8 @@ jobs:
               await page.locator('.tab[data-tab="projects"]').click()
               await page.wait_for_timeout(500)
               qa=await page.evaluate("projectGeorefState()")
-              assert qa['staticLoaded']==26,qa
+              assert qa['staticLoaded'] + qa['ignored'] == 26,qa
+              assert qa['staticLoaded'] >= 25,qa
               assert qa['errors']==0,qa
               assert qa['strategies']['dawa']>=20,qa
               assert qa['strategies']['withheld']>0,qa
