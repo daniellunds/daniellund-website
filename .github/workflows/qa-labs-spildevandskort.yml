@@ -3,9 +3,11 @@ on:
   push:
     paths:
       - 'labs/spildevandskort/**'
+      - '.github/workflows/qa-labs-spildevandskort.yml'
   pull_request:
     paths:
       - 'labs/spildevandskort/**'
+      - '.github/workflows/qa-labs-spildevandskort.yml'
 permissions:
   contents: read
 jobs:
@@ -22,6 +24,9 @@ jobs:
           test -s labs/spildevandskort/styles.css
           test -s labs/spildevandskort/app1.js
           test -s labs/spildevandskort/app2.js
+          test -s labs/spildevandskort/projects.js
+          test -s labs/spildevandskort/projects.css
+          test -s labs/spildevandskort/data/project-locations.json
           test -s labs/spildevandskort/data/brands.json
           for i in 1 2 3 4; do
             test -s "labs/spildevandskort/data/spildevandsoplande-$i.geojson.gz"
@@ -29,11 +34,13 @@ jobs:
           done
           node --check labs/spildevandskort/app1.js
           node --check labs/spildevandskort/app2.js
+          node --check labs/spildevandskort/projects.js
           python - <<'PY'
           import json, gzip
           from pathlib import Path
           root=Path('labs/spildevandskort/data')
           b=json.loads((root/'brands.json').read_text())
+          loc=json.loads((root/'project-locations.json').read_text())
           rendered=0
           for i in range(1,5):
               with gzip.open(root/f'spildevandsoplande-{i}.geojson.gz','rt',encoding='utf-8') as f:
@@ -44,7 +51,14 @@ jobs:
           assert len(b.get('brands',[])) == 73
           assert rendered == 276
           assert sum(int(x.get('sourceFeatureCount') or 0) for x in b['brands']) == 53179
-          print(f"STATIC_QA_OK brands=73 sourceCatchments=53179 renderedFeatures={rendered}")
+          anchors=loc.get('anchors',[])
+          assert len(anchors)>=20,len(anchors)
+          for a in anchors:
+              assert a.get('label') and a.get('matches')
+              assert 54 <= float(a['lat']) <= 58.5 and 7.5 <= float(a['lon']) <= 16,(a['label'],a['lat'],a['lon'])
+              assert a.get('precision')=='område',a
+              assert str(a.get('sourceUrl','')).startswith('https://'),a
+          print(f"STATIC_QA_OK brands=73 sourceCatchments=53179 renderedFeatures={rendered} projectAnchors={len(anchors)}")
           PY
       - name: Install Playwright
         run: |
@@ -74,6 +88,7 @@ jobs:
               assert response and response.ok, f'HTTP {response.status if response else "none"}'
               await page.wait_for_selector('.leaflet-container',timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#brandCount')?.textContent)>60",timeout=30000)
+              await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>80",timeout=30000)
               await page.wait_for_function("document.querySelectorAll('.region-group').length===8",timeout=30000)
               await page.wait_for_function("document.querySelectorAll('#map .leaflet-interactive').length>100",timeout=60000)
               await page.wait_for_function("Number(document.querySelector('#activePlantCount')?.textContent)>0",timeout=60000)
@@ -81,6 +96,7 @@ jobs:
 
               brands=int((await page.locator('#brandCount').inner_text()).strip())
               plants=int(re.sub(r'\D','',await page.locator('#activePlantCount').inner_text()) or 0)
+              projects=int(re.sub(r'\D','',await page.locator('#projectCount').inner_text()) or 0)
               regions=await page.locator('.region-group').count()
               interactive=await page.locator('#map .leaflet-interactive').count()
               names=await page.locator('.region-name').all_inner_texts()
@@ -89,6 +105,7 @@ jobs:
 
               assert brands == 76, f'brandCount={brands}'
               assert plants >= 700, f'activePlantCount={plants}'
+              assert projects >= 100, f'projectCount={projects}'
               assert regions == 8, f'regionGroups={regions}'
               assert names == EXPECTED, names
               assert interactive > 100, f'leafletInteractive={interactive}'
@@ -125,6 +142,28 @@ jobs:
               plant_rows=await page.locator('.plant-row').count()
               assert plant_rows > 100, f'plantRows={plant_rows}'
 
+              await page.locator('.tab[data-tab="projects"]').click()
+              await page.wait_for_timeout(500)
+              project_rows=await page.locator('.project-row').count()
+              project_markers=await page.locator('#map .project-marker-shell').count()
+              assert project_rows >= 100, f'projectRows={project_rows}'
+              assert project_markers >= 80, f'projectMarkers={project_markers}'
+              assert await page.locator('#projectLegend').is_visible()
+
+              await page.locator('#projectCategory').select_option('advanced')
+              await page.wait_for_timeout(200)
+              advanced_rows=await page.locator('.project-row').count()
+              assert advanced_rows >= 5, f'advancedRows={advanced_rows}'
+              await page.locator('#projectCategory').select_option('all')
+              await page.locator('#search').fill('Aarhus ReWater')
+              await page.wait_for_timeout(200)
+              assert await page.locator('.project-row').count() >= 1
+              await page.locator('.project-row').first.click()
+              detail=await page.locator('#detailContent').inner_text()
+              assert 'Forsyningsprojekt' in detail and 'Aarhus ReWater' in detail,detail
+              await page.locator('#closeDetail').click()
+              await page.locator('#search').fill('')
+
               await page.locator('.tab[data-tab="brands"]').click()
               before=len(errors)
               await page.locator('#zoomSelected').click()
@@ -138,7 +177,7 @@ jobs:
 
               label='mobile' if mobile else 'desktop'
               await page.screenshot(path=f'qa-{label}.png',full_page=True)
-              print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])}')
+              print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])}')
               await context.close()
 
           async def main():
