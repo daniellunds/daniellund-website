@@ -40,7 +40,12 @@ jobs:
             'mølleåværket':'moelleaavaerket','mølleåværket a/s':'moelleaavaerket',
             'biofos':'biofos','biofos a/s':'biofos'
           }
+          # Keep this audit in sync with the browser's separately maintained curated alias file.
+          alias_js=Path('labs/spildevandskort/owner-aliases.js').read_text(encoding='utf-8')
+          for k,v in re.findall(r'"([^"]+)"\s*:\s*"([^"]+)"',alias_js):
+              aliases_raw[k]=v
           aliases={norm(k):v for k,v in aliases_raw.items()}
+
           b=json.loads(Path('labs/spildevandskort/data/brands.json').read_text())
           brands=b['brands']+[{'id':'biofos','name':'BIOFOS'},{'id':'moelleaavaerket','name':'Mølleåværket'},{'id':'laesoe-forsyning','name':'Læsø Forsyning'}]
           byid={x['id']:x for x in brands}
@@ -61,8 +66,7 @@ jobs:
           with urllib.request.urlopen(req,timeout=60) as r:
               raw=json.load(r)
           features=raw.get('features',[])
-          type_counts=Counter(); closed_counts=Counter(); owners=Counter(); active_owners=Counter(); unmatched=Counter(); matched=Counter()
-          plants=[]
+          type_counts=Counter(); closed_counts=Counter(); active_owners=Counter(); unmatched=Counter(); matched=Counter()
           for f in features:
               p=f.get('properties') or {}
               dtype=p.get('DischargeType')
@@ -71,28 +75,22 @@ jobs:
               owner=str(p.get('Owner') or '')
               closed=str(p.get('Closed') or '')
               closed_counts[closed]+=1
-              owners[owner]+=1
-              is_active=norm(closed) in {'aktivt','aktiv','active','i drift','drift'}
-              if is_active:
+              if norm(closed) in {'aktivt','aktiv','active','i drift','drift'}:
                   active_owners[owner]+=1
                   bid=match(owner)
                   (matched if bid else unmatched)[owner]+=1
-              plants.append((owner,closed))
 
+          active=sum(active_owners.values()); mapped=sum(matched.values()); missing=sum(unmatched.values())
           print('RAW_FEATURES',len(features),'NUMBER_MATCHED',raw.get('numberMatched'))
           print('DISCHARGE_TYPES',json.dumps(type_counts,ensure_ascii=False))
           print('CLOSED_VALUES',json.dumps(closed_counts,ensure_ascii=False))
-          print('PLANT_RECORDS',len(plants))
-          print('ACTIVE_PLANTS',sum(active_owners.values()))
-          print('MATCHED_ACTIVE',sum(matched.values()))
-          print('UNMATCHED_ACTIVE',sum(unmatched.values()))
-          print('MATCH_RATE_PCT',round(100*sum(matched.values())/max(1,sum(active_owners.values())),1))
+          print('ACTIVE_PLANTS',active)
+          print('MATCHED_ACTIVE',mapped)
+          print('UNMATCHED_ACTIVE',missing)
+          print('MATCH_RATE_PCT',round(100*mapped/max(1,active),1))
           print('\nTOP_UNMATCHED_ACTIVE_OWNERS')
           for owner,count in unmatched.most_common(100):
               no=norm(owner)
               sims=sorted(((SequenceMatcher(None,no,norm(x['name'])).ratio(),x['id'],x['name']) for x in brands),reverse=True)[:3]
               print(json.dumps({'owner':owner,'activePlants':count,'suggestions':[{'score':round(s,3),'id':i,'name':n} for s,i,n in sims]},ensure_ascii=False))
-          print('\nTOP_MATCHED_ACTIVE_OWNERS')
-          for owner,count in matched.most_common(50):
-              print(json.dumps({'owner':owner,'activePlants':count,'brandId':match(owner)},ensure_ascii=False))
           PY
