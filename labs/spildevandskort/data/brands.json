@@ -1,0 +1,841 @@
+{
+  "generatedAt": "2026-09-03T11:31:21.398Z",
+  "source": "Plandata.dk WFS – theme_pdk_kloakopland_vedtaget",
+  "sourceUrl": "https://geoserver.plandata.dk/geoserver/wfs",
+  "municipalityCount": 97,
+  "brandCount": 73,
+  "sourceFeatureCount": 53179,
+  "brands": [
+    {
+      "id": "aquadjurs",
+      "name": "AquaDjurs",
+      "color": "#6d8726",
+      "municipalities": [
+        "Norddjurs"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 610,
+      "latestSourceUpdate": "2023-12-11T07:12:55.484Z"
+    },
+    {
+      "id": "arwos",
+      "name": "ARWOS",
+      "color": "#c83255",
+      "municipalities": [
+        "Aabenraa"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 605,
+      "latestSourceUpdate": "2026-01-07T09:43:31.309Z"
+    },
+    {
+      "id": "assens-forsyning",
+      "name": "Assens Forsyning",
+      "color": "#269424",
+      "municipalities": [
+        "Assens"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 749,
+      "latestSourceUpdate": "2026-06-26T09:18:24.648Z"
+    },
+    {
+      "id": "billund-vand-energi",
+      "name": "Billund Vand & Energi",
+      "color": "#2c8a96",
+      "municipalities": [
+        "Billund"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 232,
+      "latestSourceUpdate": "2022-09-07T11:22:12.120Z"
+    },
+    {
+      "id": "bluekolding",
+      "name": "BlueKolding",
+      "color": "#b22aa0",
+      "municipalities": [
+        "Kolding"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 800,
+      "latestSourceUpdate": "2026-09-02T09:16:20.539Z"
+    },
+    {
+      "id": "beof",
+      "name": "Bornholms Energi & Forsyning",
+      "color": "#91c23d",
+      "municipalities": [
+        "Bornholm"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 503,
+      "latestSourceUpdate": "2026-08-06T13:06:14.633Z"
+    },
+    {
+      "id": "broenderslev-forsyning",
+      "name": "Brønderslev Forsyning",
+      "color": "#258e42",
+      "municipalities": [
+        "Brønderslev"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 412,
+      "latestSourceUpdate": "2024-12-20T09:45:08.744Z"
+    },
+    {
+      "id": "din-forsyning",
+      "name": "DIN Forsyning",
+      "color": "#a02c9a",
+      "municipalities": [
+        "Esbjerg",
+        "Varde"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1426,
+      "latestSourceUpdate": "2026-08-17T07:28:27.666Z"
+    },
+    {
+      "id": "energi-viborg-vand",
+      "name": "Energi Viborg Vand",
+      "color": "#b241c3",
+      "municipalities": [
+        "Viborg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1018,
+      "latestSourceUpdate": "2026-03-23T08:11:13.143Z"
+    },
+    {
+      "id": "envafors",
+      "name": "Envafors",
+      "color": "#8d2a70",
+      "municipalities": [
+        "Næstved",
+        "Slagelse",
+        "Sorø"
+      ],
+      "localBrands": [
+        "NK-Forsyning",
+        "SK Forsyning",
+        "Sorø Forsyning"
+      ],
+      "sourceFeatureCount": 1929,
+      "latestSourceUpdate": "2026-08-03T13:23:59.817Z"
+    },
+    {
+      "id": "fanoe-vand",
+      "name": "Fanø Vand",
+      "color": "#672fa2",
+      "municipalities": [
+        "Fanø"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 32,
+      "latestSourceUpdate": "2016-02-10T15:34:25.578Z"
+    },
+    {
+      "id": "favrskov-forsyning",
+      "name": "Favrskov Forsyning",
+      "color": "#32c878",
+      "municipalities": [
+        "Favrskov"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 570,
+      "latestSourceUpdate": "2024-04-03T08:43:52.118Z"
+    },
+    {
+      "id": "faxe-forsyning",
+      "name": "Faxe Forsyning",
+      "color": "#bc632f",
+      "municipalities": [
+        "Faxe"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 354,
+      "latestSourceUpdate": "2023-08-22T13:19:14.134Z"
+    },
+    {
+      "id": "ffv",
+      "name": "FFV Energi & Miljø",
+      "color": "#28b85d",
+      "municipalities": [
+        "Faaborg-Midtfyn"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 690,
+      "latestSourceUpdate": "2016-01-15T07:25:59.783Z"
+    },
+    {
+      "id": "fors",
+      "name": "FORS",
+      "color": "#86ba2c",
+      "municipalities": [
+        "Holbæk",
+        "Lejre",
+        "Roskilde"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1703,
+      "latestSourceUpdate": "2026-06-24T08:31:15.782Z"
+    },
+    {
+      "id": "forsyning-helsingoer",
+      "name": "Forsyning Helsingør",
+      "color": "#91224e",
+      "municipalities": [
+        "Helsingør"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 286,
+      "latestSourceUpdate": "2025-08-28T06:37:53Z"
+    },
+    {
+      "id": "fredensborg-forsyning",
+      "name": "Fredensborg Forsyning",
+      "color": "#379027",
+      "municipalities": [
+        "Fredensborg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 631,
+      "latestSourceUpdate": "2025-12-09T13:47:00.810Z"
+    },
+    {
+      "id": "fredericia-spildevand",
+      "name": "Fredericia Spildevand og Energi",
+      "color": "#2b55b1",
+      "municipalities": [
+        "Fredericia"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 961,
+      "latestSourceUpdate": "2021-04-06T11:27:55.283Z"
+    },
+    {
+      "id": "frederiksberg-forsyning",
+      "name": "Frederiksberg Forsyning",
+      "color": "#8a2851",
+      "municipalities": [
+        "Frederiksberg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 9,
+      "latestSourceUpdate": "2015-10-23T10:21:13.768Z"
+    },
+    {
+      "id": "frederikshavn-forsyning",
+      "name": "Frederikshavn Forsyning",
+      "color": "#c52b54",
+      "municipalities": [
+        "Frederikshavn"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 894,
+      "latestSourceUpdate": "2025-08-07T13:12:19.313Z"
+    },
+    {
+      "id": "glostrup-forsyning",
+      "name": "Glostrup Forsyning",
+      "color": "#4233a3",
+      "municipalities": [
+        "Glostrup"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 68,
+      "latestSourceUpdate": "2015-12-21T14:05:06.114Z"
+    },
+    {
+      "id": "gribskov-forsyning",
+      "name": "Gribskov Forsyning",
+      "color": "#4fb22e",
+      "municipalities": [
+        "Gribskov"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 263,
+      "latestSourceUpdate": "2026-07-13T07:29:22.262Z"
+    },
+    {
+      "id": "guldborgsund-forsyning",
+      "name": "Guldborgsund Forsyning",
+      "color": "#2ed195",
+      "municipalities": [
+        "Guldborgsund"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 645,
+      "latestSourceUpdate": "2021-04-29T09:23:57.185Z"
+    },
+    {
+      "id": "halsnaes-forsyning",
+      "name": "Halsnæs Forsyning",
+      "color": "#9c305d",
+      "municipalities": [
+        "Halsnæs"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 180,
+      "latestSourceUpdate": "2026-04-20T11:54:02.616Z"
+    },
+    {
+      "id": "hedensted-spildevand",
+      "name": "Hedensted Spildevand",
+      "color": "#a63061",
+      "municipalities": [
+        "Hedensted"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1977,
+      "latestSourceUpdate": "2025-12-11T13:44:23.327Z"
+    },
+    {
+      "id": "herning-vand",
+      "name": "Herning Vand",
+      "color": "#79b12b",
+      "municipalities": [
+        "Herning"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 586,
+      "latestSourceUpdate": "2023-01-27T08:06:14.280Z"
+    },
+    {
+      "id": "hilleroed-forsyning",
+      "name": "Hillerød Forsyning",
+      "color": "#9ac23d",
+      "municipalities": [
+        "Hillerød"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 430,
+      "latestSourceUpdate": "2026-03-16T13:50:23.833Z"
+    },
+    {
+      "id": "hjoerring-vandselskab",
+      "name": "Hjørring Vandselskab",
+      "color": "#a7bf3b",
+      "municipalities": [
+        "Hjørring"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 890,
+      "latestSourceUpdate": "2020-07-08T08:46:43.738Z"
+    },
+    {
+      "id": "hofor",
+      "name": "HOFOR",
+      "color": "#3430ab",
+      "municipalities": [
+        "Albertslund",
+        "Brøndby",
+        "Dragør",
+        "Herlev",
+        "Hvidovre",
+        "Københavns",
+        "Rødovre",
+        "Vallensbæk"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1043,
+      "latestSourceUpdate": "2025-11-20T15:01:36.366Z"
+    },
+    {
+      "id": "htk-forsyning",
+      "name": "Høje-Taastrup Forsyning",
+      "color": "#c544b2",
+      "municipalities": [
+        "Høje-Taastrup"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 59,
+      "latestSourceUpdate": "2023-07-06T11:59:33.181Z"
+    },
+    {
+      "id": "ikast-brande-spildevand",
+      "name": "Ikast-Brande Spildevand",
+      "color": "#2e37b8",
+      "municipalities": [
+        "Ikast-Brande"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 395,
+      "latestSourceUpdate": "2025-10-27T09:35:22.165Z"
+    },
+    {
+      "id": "ishoej-forsyning",
+      "name": "Ishøj Forsyning",
+      "color": "#3d35b1",
+      "municipalities": [
+        "Ishøj"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 37,
+      "latestSourceUpdate": "2025-07-09T09:06:58.770Z"
+    },
+    {
+      "id": "jammerbugt-forsyning",
+      "name": "Jammerbugt Forsyning",
+      "color": "#c43b92",
+      "municipalities": [
+        "Jammerbugt"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 556,
+      "latestSourceUpdate": "2021-04-15T06:10:30.203Z"
+    },
+    {
+      "id": "kalundborg-forsyning",
+      "name": "Kalundborg Forsyning",
+      "color": "#2ac68a",
+      "municipalities": [
+        "Kalundborg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 449,
+      "latestSourceUpdate": "2026-04-09T05:51:09.636Z"
+    },
+    {
+      "id": "kerteminde-forsyning",
+      "name": "Kerteminde Forsyning",
+      "color": "#702a93",
+      "municipalities": [
+        "Kerteminde"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 255,
+      "latestSourceUpdate": "2015-12-22T08:25:47.370Z"
+    },
+    {
+      "id": "klar-forsyning",
+      "name": "KLAR Forsyning",
+      "color": "#2c4faf",
+      "municipalities": [
+        "Greve",
+        "Køge",
+        "Solrød",
+        "Stevns"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 981,
+      "latestSourceUpdate": "2025-12-18T13:15:14.383Z"
+    },
+    {
+      "id": "langeland-forsyning",
+      "name": "Langeland Forsyning",
+      "color": "#2a378d",
+      "municipalities": [
+        "Langeland"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 522,
+      "latestSourceUpdate": "2018-02-28T10:40:29.936Z"
+    },
+    {
+      "id": "lemvig-vand",
+      "name": "Lemvig Vand",
+      "color": "#42af2c",
+      "municipalities": [
+        "Lemvig"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 338,
+      "latestSourceUpdate": "2022-06-29T09:16:33.845Z"
+    },
+    {
+      "id": "lolland-forsyning",
+      "name": "Lolland Forsyning",
+      "color": "#32bd81",
+      "municipalities": [
+        "Lolland"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 595,
+      "latestSourceUpdate": "2024-12-10T12:06:30.310Z"
+    },
+    {
+      "id": "ltf",
+      "name": "Lyngby-Taarbæk Forsyning",
+      "color": "#338acc",
+      "municipalities": [
+        "Lyngby-Taarbæk"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 267,
+      "latestSourceUpdate": "2025-04-23T10:53:04.986Z"
+    },
+    {
+      "id": "mariagerfjord-vand",
+      "name": "Mariagerfjord Vand",
+      "color": "#3d2db9",
+      "municipalities": [
+        "Mariagerfjord"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 696,
+      "latestSourceUpdate": "2025-02-06T10:03:49.538Z"
+    },
+    {
+      "id": "middelfart-spildevand",
+      "name": "Middelfart Spildevand",
+      "color": "#9a2354",
+      "municipalities": [
+        "Middelfart"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 411,
+      "latestSourceUpdate": "2023-07-13T13:11:00.084Z"
+    },
+    {
+      "id": "morsoe-forsyning",
+      "name": "Morsø Forsyning",
+      "color": "#d36f31",
+      "municipalities": [
+        "Morsø"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 134,
+      "latestSourceUpdate": "2022-06-21T12:44:23.952Z"
+    },
+    {
+      "id": "nordfyns-forsyning",
+      "name": "Nordfyns Forsyning",
+      "color": "#d33185",
+      "municipalities": [
+        "Nordfyns"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 605,
+      "latestSourceUpdate": "2022-01-03T13:04:29.960Z"
+    },
+    {
+      "id": "novafos",
+      "name": "Novafos",
+      "color": "#38c746",
+      "municipalities": [
+        "Allerød",
+        "Ballerup",
+        "Egedal",
+        "Frederikssund",
+        "Furesø",
+        "Gentofte",
+        "Gladsaxe",
+        "Hørsholm",
+        "Rudersdal"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 2495,
+      "latestSourceUpdate": "2026-07-01T08:18:51.131Z"
+    },
+    {
+      "id": "nyborg-forsyning",
+      "name": "Nyborg Forsyning & Service",
+      "color": "#aa3731",
+      "municipalities": [
+        "Nyborg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 415,
+      "latestSourceUpdate": "2018-11-29T15:50:46.352Z"
+    },
+    {
+      "id": "odsherred-forsyning",
+      "name": "Odsherred Forsyning",
+      "color": "#3131a5",
+      "municipalities": [
+        "Odsherred"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 265,
+      "latestSourceUpdate": "2025-03-18T16:02:08.863Z"
+    },
+    {
+      "id": "provas",
+      "name": "Provas",
+      "color": "#288d9a",
+      "municipalities": [
+        "Haderslev"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 803,
+      "latestSourceUpdate": "2025-09-04T08:10:34.112Z"
+    },
+    {
+      "id": "rebild-forsyning",
+      "name": "Rebild Forsyning",
+      "color": "#d2c732",
+      "municipalities": [
+        "Rebild"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 269,
+      "latestSourceUpdate": "2023-07-26T11:25:55.908Z"
+    },
+    {
+      "id": "rksk-forsyning",
+      "name": "Ringkøbing-Skjern Forsyning",
+      "color": "#c26d38",
+      "municipalities": [
+        "Ringkøbing-Skjern"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 673,
+      "latestSourceUpdate": "2024-03-04T09:00:36.694Z"
+    },
+    {
+      "id": "ringsted-forsyning",
+      "name": "Ringsted Forsyning",
+      "color": "#22669b",
+      "municipalities": [
+        "Ringsted"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 277,
+      "latestSourceUpdate": "2024-10-03T10:50:28.274Z"
+    },
+    {
+      "id": "samn-forsyning",
+      "name": "SAMN Forsyning",
+      "color": "#33d1be",
+      "municipalities": [
+        "Horsens",
+        "Odder"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1554,
+      "latestSourceUpdate": "2025-01-23T13:56:40.710Z"
+    },
+    {
+      "id": "samsoe-spildevand",
+      "name": "Samsø Spildevand",
+      "color": "#38cc58",
+      "municipalities": [
+        "Samsø"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 106,
+      "latestSourceUpdate": "2024-04-23T09:13:13.841Z"
+    },
+    {
+      "id": "silkeborg-forsyning",
+      "name": "Silkeborg Forsyning",
+      "color": "#88b332",
+      "municipalities": [
+        "Silkeborg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1907,
+      "latestSourceUpdate": "2026-04-17T06:36:07.881Z"
+    },
+    {
+      "id": "skanderborg-forsyning",
+      "name": "Skanderborg Forsyning",
+      "color": "#66c337",
+      "municipalities": [
+        "Skanderborg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 835,
+      "latestSourceUpdate": "2024-04-23T09:31:34.818Z"
+    },
+    {
+      "id": "skive-vand",
+      "name": "Skive Vand",
+      "color": "#9630b5",
+      "municipalities": [
+        "Skive"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 619,
+      "latestSourceUpdate": "2025-02-06T10:48:22.261Z"
+    },
+    {
+      "id": "sonfor",
+      "name": "SONFOR",
+      "color": "#229aa0",
+      "municipalities": [
+        "Sønderborg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 901,
+      "latestSourceUpdate": "2017-11-28T14:49:30.293Z"
+    },
+    {
+      "id": "struer-energi",
+      "name": "Struer Energi",
+      "color": "#3bbace",
+      "municipalities": [
+        "Struer"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 423,
+      "latestSourceUpdate": "2024-05-07T07:30:41.234Z"
+    },
+    {
+      "id": "syddjurs-spildevand",
+      "name": "Syddjurs Spildevand",
+      "color": "#b52c45",
+      "municipalities": [
+        "Syddjurs"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 795,
+      "latestSourceUpdate": "2022-08-10T10:07:40.205Z"
+    },
+    {
+      "id": "thisted-vand",
+      "name": "Thisted Vand",
+      "color": "#c8442d",
+      "municipalities": [
+        "Thisted"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 596,
+      "latestSourceUpdate": "2026-06-30T13:55:39.048Z"
+    },
+    {
+      "id": "toender-forsyning",
+      "name": "Tønder Forsyning",
+      "color": "#8a3a28",
+      "municipalities": [
+        "Tønder"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 758,
+      "latestSourceUpdate": "2024-07-17T11:24:09.225Z"
+    },
+    {
+      "id": "taarnby-forsyning",
+      "name": "Tårnby Forsyning",
+      "color": "#308c2b",
+      "municipalities": [
+        "Tårnby"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 130,
+      "latestSourceUpdate": "2023-07-11T17:12:43.745Z"
+    },
+    {
+      "id": "vand-og-affald",
+      "name": "Vand og Affald",
+      "color": "#257098",
+      "municipalities": [
+        "Svendborg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 3617,
+      "latestSourceUpdate": "2025-10-27T11:09:21.601Z"
+    },
+    {
+      "id": "vandcenter-syd",
+      "name": "VandCenter Syd",
+      "color": "#b32975",
+      "municipalities": [
+        "Odense"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 857,
+      "latestSourceUpdate": "2026-09-03T06:41:49.978Z"
+    },
+    {
+      "id": "vandmiljoe-randers",
+      "name": "Vandmiljø Randers",
+      "color": "#2a893e",
+      "municipalities": [
+        "Randers"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1635,
+      "latestSourceUpdate": "2025-08-08T08:23:39.406Z"
+    },
+    {
+      "id": "vejen-forsyning",
+      "name": "Vejen Forsyning",
+      "color": "#2755a5",
+      "municipalities": [
+        "Vejen"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 484,
+      "latestSourceUpdate": "2026-08-07T12:28:07.185Z"
+    },
+    {
+      "id": "vejle-spildevand",
+      "name": "Vejle Spildevand",
+      "color": "#69a630",
+      "municipalities": [
+        "Vejle"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1812,
+      "latestSourceUpdate": "2026-03-20T08:31:41.551Z"
+    },
+    {
+      "id": "vestforsyning",
+      "name": "Vestforsyning",
+      "color": "#41c87e",
+      "municipalities": [
+        "Holstebro"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1160,
+      "latestSourceUpdate": "2026-01-23T09:15:45.444Z"
+    },
+    {
+      "id": "vesthimmerlands-vand",
+      "name": "Vesthimmerlands Vand",
+      "color": "#269779",
+      "municipalities": [
+        "Vesthimmerlands"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 301,
+      "latestSourceUpdate": "2026-07-30T10:46:32.470Z"
+    },
+    {
+      "id": "vordingborg-forsyning",
+      "name": "Vordingborg Forsyning",
+      "color": "#34a89e",
+      "municipalities": [
+        "Vordingborg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 515,
+      "latestSourceUpdate": "2025-10-24T07:40:48.252Z"
+    },
+    {
+      "id": "aeroe-forsyning",
+      "name": "Ærø Forsyning",
+      "color": "#25a7a3",
+      "municipalities": [
+        "Ærø"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 157,
+      "latestSourceUpdate": "2018-02-19T12:37:08.835Z"
+    },
+    {
+      "id": "aalborg-forsyning",
+      "name": "Aalborg Forsyning",
+      "color": "#772a93",
+      "municipalities": [
+        "Aalborg"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 854,
+      "latestSourceUpdate": "2026-06-29T12:56:22.302Z"
+    },
+    {
+      "id": "aarhus-vand",
+      "name": "Aarhus Vand",
+      "color": "#c0bb2a",
+      "municipalities": [
+        "Aarhus"
+      ],
+      "localBrands": [],
+      "sourceFeatureCount": 1170,
+      "latestSourceUpdate": "2023-08-29T09:23:57.837Z"
+    }
+  ]
+}
