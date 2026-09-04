@@ -5,7 +5,7 @@
   if(typeof projectLocation!=="function" || typeof initProjects!=="function")return;
 
   const DAWA_BASE="https://api.dataforsyningen.dk";
-  const CACHE_KEY="spildevandskort-project-geocodes-v3";
+  const CACHE_KEY="spildevandskort-project-geocodes-v4";
   state.projectResolvedLocations=new Map();
   state.projectGeorefQa={resolved:0,attempted:0,cacheHits:0,errors:0,withheldLinear:0};
 
@@ -43,13 +43,14 @@
   function projectPlaceCandidates(pr){
     const seeds=[];
     const title=String(pr.name||"");
-    const text=`${title}. ${pr.description||""}`;
 
     title.split(/[–—,]/).forEach(x=>seeds.push(x));
     title.split("/").forEach(x=>seeds.push(x));
     title.split(/\s+og\s+/i).forEach(x=>seeds.push(x));
 
-    for(const m of text.matchAll(/\b(?:i|ved|på|langs|mod|fra|til)\s+([A-ZÆØÅ][A-Za-zÆØÅæøå .'-]{2,42})/g)){
+    // Only explicit location language in the project title is trusted. Description
+    // text often names recipients, municipalities or context rather than the site.
+    for(const m of title.matchAll(/\b(?:i|ved|på|langs|mod|fra|til)\s+([A-ZÆØÅ][A-Za-zÆØÅæøå .'-]{2,42})/g)){
       seeds.push(m[1].split(/[,.();–—]/)[0]);
     }
 
@@ -134,7 +135,8 @@
         best={...center,label:placeName(item,place)||candidate,precision:"område",strategy:"dawa",sourceUrl:url,score};
       }
     }
-    return bestScore>=11?best:null;
+    // Require exact or near-exact text agreement in addition to municipality agreement.
+    return bestScore>=15?best:null;
   }
 
   async function resolveProjectViaDawa(pr){
@@ -218,7 +220,6 @@
     return projectPlantAnchor(pr)||projectNamedAreaAnchor(pr)||state.projectResolvedLocations.get(pr.id)||null;
   };
 
-  // The core detail renderer predates withheld locations; correct its note for projects with no verified geography.
   const coreOpenProject=openProject;
   openProject=function(pr){
     coreOpenProject(pr);
