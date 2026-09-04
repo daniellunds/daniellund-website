@@ -177,6 +177,8 @@ jobs:
               assert 'Avanceret rensning' in detail,detail
               assert 'Områdeplacering' in detail,detail
               await page.locator('#closeDetail').click()
+              await page.wait_for_timeout(250)
+              assert not await page.locator('#detailPanel').evaluate("el=>el.classList.contains('open')")
               await page.locator('#search').fill('')
               label='mobile' if mobile else 'desktop'
               await page.screenshot(path=f'qa-projects-{label}.png',full_page=True)
