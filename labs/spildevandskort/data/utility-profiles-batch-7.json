@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-04",
+  "profiles": {
+    "favrskov-forsyning": {
+      "name": "Favrskov Forsyning",
+      "website": "https://www.favrskovforsyning.dk/",
+      "phone": "89 64 50 00",
+      "email": "forsyning@favrskovforsyning.dk",
+      "address": "Torvegade 7, 8450 Hammel",
+      "summary": "Favrskov Forsyning håndterer kommunens offentlige spildevands- og regnvandssystemer og arbejder både med separatkloakering og planlægning af en ny samlet rensestruktur.",
+      "contacts": [
+        {"name":"Lone Bejder","title":"Projekt- og udviklingschef","sourceUrl":"https://www.favrskovforsyning.dk/om-os/find-medarbejder"},
+        {"name":"Henrik Kofoed Pedersen","title":"Driftschef for spildevand","sourceUrl":"https://www.favrskovforsyning.dk/om-os/find-medarbejder"},
+        {"name":"Maria Eriksen","title":"Projektleder, spildevand og regnvand","sourceUrl":"https://www.favrskovforsyning.dk/om-os/find-medarbejder"}
+      ],
+      "projects": [
+        {"name":"Nyt centralt renseanlæg i Favrskov","status":"Planlægning og placeringsanalyse 2026","description":"Favrskov Forsyning ønsker at erstatte seks eksisterende renseanlæg med ét nyt centralrenseanlæg. Kommunen undersøger egnede placeringer og forventer forslag offentliggjort i efteråret 2026.","url":"https://favrskov.dk/borger/fysisk-planlaegning/nyt-centralt-renseanlaeg-i-favrskov"},
+        {"name":"Separatkloakering i Hvorslev","status":"I anlæg 2025–2026","description":"Fælleskloakken ombygges til separat regn- og spildevandssystem for at reducere overløb, oversvømmelser og belastning af recipienter.","url":"https://www.favrskovforsyning.dk/separatkloakering-af-hvorslev"}
+      ],
+      "sources": ["https://www.favrskovforsyning.dk/om-os/find-medarbejder","https://www.favrskovforsyning.dk/spildevand/her-arbejder-vi","https://favrskov.dk/borger/fysisk-planlaegning/nyt-centralt-renseanlaeg-i-favrskov"],
+      "verifiedAt": "2026-09-04"
+    },
+    "lemvig-vand": {
+      "name": "Lemvig Vand",
+      "website": "https://lvs-as.dk/",
+      "phone": "96 90 80 00",
+      "email": "post@lvs-as.dk",
+      "address": "Havnen 8, 7620 Lemvig",
+      "summary": "Lemvig Vand driver vand- og spildevandsforsyningen i Lemvig Kommune. Den langsigtede spildevandsstrategi omfatter centralisering af rensningen på Harboøre Renseanlæg samt fornyelse og udbygning af ledningsnettet.",
+      "contacts": [
+        {"name":"Albert Jensen","title":"Projektchef","sourceUrl":"https://lvs-as.dk/medarbejdere/"},
+        {"name":"Jan Nielsen","title":"Driftsansvarlig – Ledningsnet Spildevand","sourceUrl":"https://lvs-as.dk/medarbejdere/"}
+      ],
+      "projects": [
+        {"name":"Centralisering på Harboøre Renseanlæg","status":"Plan- og myndighedsprojekt","description":"Spildevandsrensningen planlægges centraliseret på et udbygget Harboøre Renseanlæg med ny transportledning fra Lemvig og tilhørende pumpestationer.","url":"https://lemvig.dk/selvbetjening-og-service/natur-miljoe-og-klima/vand-og-spildevand/spildevandsplan-2021-2028"},
+        {"name":"Kloakering og fornyelse i planperioden","status":"Løbende program 2021–2028","description":"Spildevandsplanen omfatter bl.a. kloakering af sommerhusområder, nye kloakoplande, kloakfornyelse og reduktion af uvedkommende vand.","url":"https://lemvig.dk/selvbetjening-og-service/natur-miljoe-og-klima/vand-og-spildevand/spildevandsplan-2021-2028"}
+      ],
+      "sources": ["https://lvs-as.dk/medarbejdere/","https://lvs-as.dk/spildevand/","https://lemvig.dk/selvbetjening-og-service/natur-miljoe-og-klima/vand-og-spildevand/spildevandsplan-2021-2028"],
+      "verifiedAt": "2026-09-04"
+    },
+    "mariagerfjord-vand": {
+      "name": "Mariagerfjord Vand / Ren Forsyning Mariagerfjord",
+      "website": "https://www.renform.dk/",
+      "phone": "99 52 53 54",
+      "email": "mail@renform.dk",
+      "address": "Islandsvej 7, 9560 Hadsund",
+      "summary": "Kortets Mariagerfjord Vand-label repræsenterer den lokale vand- og spildevandsforsyning, som siden 2025 er samlet under Ren Forsyning Mariagerfjord. Selskabet driver offentlige kloakanlæg, spildevandsrensning og klimatilpasning i Mariagerfjord Kommune.",
+      "contacts": [
+        {"name":"Søren Erikstrup","title":"Direktør","sourceUrl":"https://www.renform.dk/om-os/organisation-og-ledelse"},
+        {"name":"Kirstin Bjørnbak Kjær","title":"Afdelingsleder","sourceUrl":"https://www.renform.dk/om-os/pressekontakt-og-logoer"}
+      ],
+      "projects": [
+        {"name":"Udbygning af Himmerlands Renseanlæg","status":"Miljøvurdering og myndighedsproces","description":"Fællesrensning Himmerland – Ren Forsyning Mariagerfjord, Rebild Vand og Spildevand og Vesthimmerlands Forsyning – arbejder med udbygning af Himmerlands Renseanlæg og skærpede rensekrav.","url":"https://www.mariagerfjord.dk/by-land-og-bolig/natur-vand-og-miljoe/spildevand/udbygning-himmerlands-renseanlaeg"},
+        {"name":"Sommerhusområdet syd for Als","status":"Aktuelt kloakeringsprojekt","description":"Mariagerfjord Vand arbejder med etapevis spildevandshåndtering i sommerhusområdet syd for Als som del af den løbende udbygning af forsyningsområdet.","url":"https://www.mariagerfjordvand.dk/"}
+      ],
+      "sources": ["https://www.renform.dk/","https://www.renform.dk/om-os/organisation-og-ledelse","https://www.mariagerfjord.dk/by-land-og-bolig/natur-vand-og-miljoe/spildevand/udbygning-himmerlands-renseanlaeg"],
+      "verifiedAt": "2026-09-04"
+    },
+    "morsoe-forsyning": {
+      "name": "Morsø Forsyning",
+      "website": "https://morsoeforsyning.dk/",
+      "phone": "82 13 04 04",
+      "email": "post@morsoeforsyning.dk",
+      "address": "Strandparken 19, 7900 Nykøbing Mors",
+      "summary": "Morsø Forsyning driver vand, varme og spildevand på Mors, herunder tre renseanlæg, et omfattende kloaknet og flere hundrede pumpestationer.",
+      "contacts": [
+        {"name":"Jesper Toft","title":"Driftsleder, spildevand","sourceUrl":"https://morsoeforsyning.dk/kontakt/"},
+        {"name":"Toke Larsen","title":"Senioringeniør, Plan-, klima- og projektafdeling","sourceUrl":"https://morsoeforsyning.dk/kontakt/"}
+      ],
+      "projects": [
+        {"name":"Modernisering af pumpestationer og spildevandsdrift","status":"Løbende investeringsprogram","description":"Forsyningen udskifter ældre og defekt udstyr og indfører mere digitalt styrbare løsninger på spildevandsanlæggene for at øge driftssikkerhed og overvågning.","url":"https://morsoeforsyning.dk/spildevand/"}
+      ],
+      "sources": ["https://morsoeforsyning.dk/kontakt/","https://morsoeforsyning.dk/spildevand/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "nyborg-forsyning": {
+      "name": "Nyborg Forsyning & Service",
+      "website": "https://www.nfs.as/",
+      "phone": "63 31 50 00",
+      "email": "nfs@nfs.as",
+      "address": "Gasværksvej 2, 5800 Nyborg",
+      "summary": "Nyborg Forsyning & Service leverer bl.a. spildevand og kloak i Nyborg Kommune og arbejder løbende med separatkloakering, ledningsrenovering og drift af renseanlæg.",
+      "contacts": [
+        {"name":"Søren Valentin Christensen","title":"Spildevandschef","linkedin":"https://dk.linkedin.com/in/s%C3%B8ren-valentin-christensen-6b92b93","sourceUrl":"https://www.nfs.as/kontakt/find-en-medarbejder/"},
+        {"name":"Jan Sørensen","title":"Projektleder, Spildevand & Kloak","sourceUrl":"https://www.nfs.as/kontakt/find-en-medarbejder/"}
+      ],
+      "projects": [
+        {"name":"Kloakseparering i Nyborg Kommune","status":"Løbende program","description":"Ved kloakrenoveringer etableres som udgangspunkt separate ledninger til regn- og spildevand for at aflaste renseanlæg og reducere oversvømmelses- og overløbsrisiko.","url":"https://www.nfs.as/spildevand-kloak/projekter-spildevand/"},
+        {"name":"Strømpeforing af kloakledninger","status":"Løbende renovering","description":"Eksisterende kloakledninger renoveres indvendigt med strømpeforing, hvor det er teknisk relevant, for at begrænse opgravning og forlænge levetiden.","url":"https://www.nfs.as/spildevand-kloak/projekter-spildevand/"}
+      ],
+      "sources": ["https://www.nfs.as/kontakt/find-en-medarbejder/","https://www.nfs.as/spildevand-kloak/projekter-spildevand/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "rebild-forsyning": {
+      "name": "Rebild Forsyning",
+      "website": "https://rebildforsyning.dk/",
+      "phone": "41 78 74 70",
+      "email": "forsyning@rebildforsyning.dk",
+      "address": "Østre Alle 6, 9530 Støvring",
+      "summary": "Rebild Vand & Spildevand A/S håndterer vand og spildevand i Rebild Kommune og arbejder med separatkloakering, transport af spildevand og en gradvis centralisering af rensestrukturen.",
+      "contacts": [
+        {"name":"Johan Livbjerg Pedersen","title":"Direktør (tiltrådt 1. september 2026)","sourceUrl":"https://www.danva.dk/nyheder/2026/nyt-fra-medlemmerne-staerk-forsyningsprofil-bliver-direktoer-i-rebild-forsyning/"}
+      ],
+      "projects": [
+        {"name":"Separatkloakering i Ravnkilde","status":"I anlæg 2026","description":"Forsyningen gennemfører separatkloakering i Ravnkilde; projektstatus blev senest opdateret 30. juni 2026.","url":"https://rebildforsyning.dk/"},
+        {"name":"Udbygning af Himmerlands Renseanlæg","status":"Miljøvurdering og myndighedsproces","description":"Rebild Vand & Spildevand deltager sammen med Ren Forsyning Mariagerfjord og Vesthimmerlands Forsyning i Fællesrensning Himmerland og den planlagte udbygning af Himmerlands Renseanlæg.","url":"https://www.mariagerfjord.dk/by-land-og-bolig/natur-vand-og-miljoe/spildevand/udbygning-himmerlands-renseanlaeg"}
+      ],
+      "sources": ["https://rebildforsyning.dk/","https://www.danva.dk/nyheder/2026/nyt-fra-medlemmerne-staerk-forsyningsprofil-bliver-direktoer-i-rebild-forsyning/","https://www.mariagerfjord.dk/by-land-og-bolig/natur-vand-og-miljoe/spildevand/udbygning-himmerlands-renseanlaeg"],
+      "verifiedAt": "2026-09-04"
+    },
+    "rksk-forsyning": {
+      "name": "Ringkøbing-Skjern Forsyning",
+      "website": "https://www.rsforsyning.dk/",
+      "phone": "96 74 85 00",
+      "email": "rsforsyning@rsforsyning.dk",
+      "address": "Ånumvej 28, 6900 Skjern",
+      "summary": "Ringkøbing-Skjern Forsyning er kommunens multiforsyning og ejer det offentlige kloaknet frem til renseanlæggene. En stor del af den aktuelle spildevandsportefølje er knyttet til sommerhus- og separatkloakering.",
+      "contacts": [
+        {"name":"Finn Jessen","title":"Direktør","sourceUrl":"https://www.rsforsyning.dk/app/webroot/uploads/bestyrelsesmoder/bestyrelsesmode-nr.%20114/referat-bestyrelsesmode-rsf-04-09-25---til-offentligheden.pdf"}
+      ],
+      "projects": [
+        {"name":"Sommerhuskloakering","status":"Igangværende program","description":"Forsyningen gennemfører et særskilt program for kloakering af sommerhusområder i Ringkøbing-Skjern Kommune.","url":"https://www.rsforsyning.dk/"},
+        {"name":"Separatkloakering","status":"Igangværende program","description":"Regn- og spildevand separeres løbende i udvalgte områder for at fremtidssikre afløbssystemet og reducere belastningen ved kraftig regn.","url":"https://www.rsforsyning.dk/"}
+      ],
+      "sources": ["https://www.rsforsyning.dk/","https://www.rsforsyning.dk/om-os/spildevand","https://www.rsforsyning.dk/kontakt"],
+      "verifiedAt": "2026-09-04"
+    },
+    "samsoe-spildevand": {
+      "name": "Samsø Spildevand",
+      "website": "https://www.samsoespildevand.dk/",
+      "phone": "40 13 25 57",
+      "email": "info@samsoespildevand.dk",
+      "address": "Slagterivej 28, Brundby Mark, 8305 Samsø",
+      "summary": "Samsø Spildevand håndterer spildevand fra de offentligt kloakerede områder og tømningsordningen i det åbne land. Forsyningen driver bl.a. de centrale MBK-renseanlæg i Ballen og Nordby.",
+      "contacts": [
+        {"name":"Per Even Rasmussen","title":"Direktør","sourceUrl":"https://www.samsoespildevand.dk/om-os/"}
+      ],
+      "projects": [
+        {"name":"Spildevandsplan 2024–2027","status":"Implementering","description":"Samsø Kommunes gældende spildevandsplan beskriver renovering og udbygning af kloakforsyningen med målet om at reducere spildevandsbelastningen af vandløb og havet.","url":"https://www.samsoe.dk/borger/natur-miljoe-og-renovation/miljoeomraadet/spildevand"}
+      ],
+      "sources": ["https://www.samsoespildevand.dk/","https://www.samsoespildevand.dk/om-os/","https://www.samsoe.dk/borger/natur-miljoe-og-renovation/miljoeomraadet/spildevand"],
+      "verifiedAt": "2026-09-04"
+    },
+    "skive-vand": {
+      "name": "Skive Vand",
+      "website": "https://www.skivevand.dk/",
+      "phone": "82 13 20 00",
+      "email": "forbrug@skivevand.dk",
+      "address": "Norgesvej 5, 7800 Skive",
+      "summary": "Skive Vand håndterer vand og spildevand i Skive Kommune og driver fem renseanlæg samt et omfattende afløbsnet. Forsyningen har en aktiv portefølje af lednings-, klima- og vandløbsprojekter.",
+      "contacts": [
+        {"name":"Niels V. Bjerregaard","title":"Afdelingsleder, Plan & Projekt","sourceUrl":"https://www.skivevand.dk/skive-vand/medarbejdere/plan-projekt"},
+        {"name":"Morten Jakobsen","title":"Driftsleder, spildevand","sourceUrl":"https://www.skivevand.dk/skive-vand/medarbejdere/spildevand-driftafdeling"}
+      ],
+      "projects": [
+        {"name":"Skive Vestby – etape 6","status":"I anlæg 2026","description":"Etape 6 er i udførelse og indgår i Skive Vands aktuelle anlægsportefølje for fornyelse og udvikling af forsyningsinfrastrukturen.","url":"https://www.skivevand.dk/anlaegsarbejder"},
+        {"name":"Glattrup Bæk","status":"I anlæg sensommer/efterår 2026","description":"Skive Vand udfører flere arbejder ved Glattrup Bæk i 2026 som del af den aktuelle anlægs- og vandhåndteringsportefølje.","url":"https://www.skivevand.dk/anlaegsarbejder"}
+      ],
+      "sources": ["https://www.skivevand.dk/anlaegsarbejder","https://www.skivevand.dk/skive-vand/medarbejdere/plan-projekt","https://www.skivevand.dk/skive-vand/medarbejdere/spildevand-driftafdeling"],
+      "verifiedAt": "2026-09-04"
+    },
+    "sonfor": {
+      "name": "SONFOR",
+      "website": "https://sonfor.dk/",
+      "phone": "88 43 53 00",
+      "email": "info@sonfor.dk",
+      "address": "Ellegårdvej 8, 6400 Sønderborg",
+      "summary": "SONFOR er Sønderborg-områdets multiforsyning og håndterer bl.a. spildevand, renseanlæg og kloak. Den centrale strategiske satsning er en ny rensestruktur under Projekt Værdivand.",
+      "contacts": [
+        {"name":"Susanne Lehmann Pagh","title":"Administrerende direktør","sourceUrl":"https://sonfor.dk/om-os/direktion-og-chefer/"},
+        {"name":"Stinne Stokkebo","title":"Spildevandschef","sourceUrl":"https://sonfor.dk/om-os/direktion-og-chefer/"},
+        {"name":"Søren A. Henriksen","title":"Projektchef, Projekt Værdivand","sourceUrl":"https://sonfor.dk/nyheder/ny-projektchef-skal-tage-soenderborgs-nye-rensestruktur-fra-plan-til-virkelighed/"}
+      ],
+      "projects": [
+        {"name":"Projekt Værdivand – ny rensestruktur","status":"Miljøundersøgelser og projektering","description":"SONFOR udvikler en ny samlet rensestruktur med et centralt, moderne renseanlæg. Miljøundersøgelser og ny miljøkonsekvensrapport indgår i projektet, og 4. rensetrin tænkes ind fra starten. Fuld ibrugtagning forventes i 2031.","url":"https://sonfor.dk/nyheder/spildevand/projekt-vaerdivand/"},
+        {"name":"Flowmåling på alle overløb","status":"Implementering","description":"SONFOR etablerer flowmåling på samtlige overløbsbygværker for at få et bedre datagrundlag til prioritering af kloakindsatser og den nye rensestruktur.","url":"https://sonfor.dk/nyheder/sonfor-vil-saette-flow-maalere-paa-samtlige-overloeb/"}
+      ],
+      "sources": ["https://sonfor.dk/om-os/direktion-og-chefer/","https://sonfor.dk/spildevand/","https://sonfor.dk/nyheder/spildevand/projekt-vaerdivand/"],
+      "verifiedAt": "2026-09-04"
+    }
+  }
+}
