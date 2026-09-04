@@ -1,0 +1,138 @@
+name: QA labs spildevandskort
+on:
+  push:
+    branches: [labs-spildevandskort]
+    paths:
+      - 'labs/spildevandskort/**'
+permissions:
+  contents: read
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static asset QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s labs/spildevandskort/index.html
+          test -s labs/spildevandskort/styles.css
+          test -s labs/spildevandskort/app1.js
+          test -s labs/spildevandskort/app2.js
+          test -s labs/spildevandskort/data/brands.json
+          for i in 1 2 3 4; do
+            test -s "labs/spildevandskort/data/spildevandsoplande-$i.geojson.gz"
+            gzip -t "labs/spildevandskort/data/spildevandsoplande-$i.geojson.gz"
+          done
+          node --check labs/spildevandskort/app1.js
+          node --check labs/spildevandskort/app2.js
+          python - <<'PY'
+          import json, gzip
+          from pathlib import Path
+          root=Path('labs/spildevandskort/data')
+          b=json.loads((root/'brands.json').read_text())
+          rendered=0
+          for i in range(1,5):
+              with gzip.open(root/f'spildevandsoplande-{i}.geojson.gz','rt',encoding='utf-8') as f:
+                  rendered += len(json.load(f).get('features',[]))
+          assert b.get('brandCount') == 73
+          assert b.get('municipalityCount') == 97
+          assert b.get('sourceFeatureCount') == 53179
+          assert len(b.get('brands',[])) == 73
+          assert rendered == 276
+          assert sum(int(x.get('sourceFeatureCount') or 0) for x in b['brands']) == 53179
+          print(f"STATIC_QA_OK brands=73 sourceCatchments=53179 renderedFeatures={rendered}")
+          PY
+      - name: Install Playwright
+        run: |
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+      - name: Start local server
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/map-server.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4173/labs/spildevandskort/ >/dev/null && break; sleep 1; done
+      - name: Run desktop and mobile QA
+        env:
+          MAP_URL: http://127.0.0.1:4173/labs/spildevandskort/
+        run: |
+          cat > /tmp/qa.py <<'PY'
+          import asyncio, os, re
+          from playwright.async_api import async_playwright
+
+          EXPECTED=['Hovedstaden','Nordsjælland','Sjælland','Bornholm','Fyn','Syd- og Sønderjylland','Midtjylland','Nordjylland']
+
+          async def check(browser, mobile=False):
+              viewport={"width":390,"height":844} if mobile else {"width":1440,"height":900}
+              context=await browser.new_context(viewport=viewport, is_mobile=mobile)
+              page=await context.new_page()
+              errors=[]
+              page.on('pageerror', lambda e: errors.append(str(e)))
+              response=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
+              assert response and response.ok, f'HTTP {response.status if response else "none"}'
+              await page.wait_for_selector('.leaflet-container',timeout=30000)
+              await page.wait_for_function("Number(document.querySelector('#brandCount')?.textContent)>60",timeout=30000)
+              await page.wait_for_function("document.querySelectorAll('.region-group').length===8",timeout=30000)
+              await page.wait_for_function("document.querySelectorAll('#map .leaflet-interactive').length>100",timeout=60000)
+              await page.wait_for_function("Number(document.querySelector('#activePlantCount')?.textContent)>0",timeout=60000)
+              await page.wait_for_timeout(1000)
+
+              brands=int((await page.locator('#brandCount').inner_text()).strip())
+              plants=int(re.sub(r'\D','',await page.locator('#activePlantCount').inner_text()) or 0)
+              regions=await page.locator('.region-group').count()
+              interactive=await page.locator('#map .leaflet-interactive').count()
+              names=await page.locator('.region-name').all_inner_texts()
+              status_visible=await page.locator('#statusBanner').is_visible()
+              map_box=await page.locator('#map').bounding_box()
+
+              assert brands == 76, f'brandCount={brands}'
+              assert plants >= 700, f'activePlantCount={plants}'
+              assert regions == 8, f'regionGroups={regions}'
+              assert names == EXPECTED, names
+              assert interactive > 100, f'leafletInteractive={interactive}'
+              assert not status_visible, 'statusBanner shows data-loading error'
+              assert map_box and map_box['width']>250 and map_box['height']>180, map_box
+
+              await page.locator('.region-group[data-region="hovedstaden"] .region-toggle').click()
+              assert await page.locator('.region-group[data-region="hovedstaden"] .brand-row').count() > 0
+              await page.locator('#search').fill('Fyn')
+              await page.wait_for_timeout(250)
+              assert await page.locator('.region-group[data-region="fyn"] .brand-row').count() > 0
+              await page.locator('#search').fill('')
+
+              await page.locator('.tab[data-tab="plants"]').click()
+              await page.wait_for_timeout(300)
+              plant_rows=await page.locator('.plant-row').count()
+              assert plant_rows > 100, f'plantRows={plant_rows}'
+
+              await page.locator('.tab[data-tab="brands"]').click()
+              before=len(errors)
+              await page.locator('#zoomSelected').click()
+              await page.wait_for_timeout(250)
+              assert len(errors)==before, f'zoomSelected error={errors[before:]}'
+              assert not errors, f'pageerrors={errors}'
+
+              if mobile:
+                  overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
+                  assert overflow <= 3, f'horizontal overflow={overflow}px'
+
+              label='mobile' if mobile else 'desktop'
+              await page.screenshot(path=f'qa-{label}.png',full_page=True)
+              print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} map={round(map_box["width"])}x{round(map_box["height"])}')
+              await context.close()
+
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch()
+                  await check(browser,False)
+                  await check(browser,True)
+                  await browser.close()
+          asyncio.run(main())
+          PY
+          python /tmp/qa.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: spildevandskort-qa-screenshots
+          path: qa-*.png
+          if-no-files-found: ignore

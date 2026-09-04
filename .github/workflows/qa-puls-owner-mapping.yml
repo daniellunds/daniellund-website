@@ -1,0 +1,96 @@
+name: QA PULS owner mapping
+on:
+  push:
+    branches: [labs-spildevandskort]
+    paths:
+      - '.github/workflows/qa-puls-owner-mapping.yml'
+permissions:
+  contents: read
+jobs:
+  owner-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch PULS and audit owner mapping
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, re, urllib.parse, urllib.request
+          from collections import Counter
+          from difflib import SequenceMatcher
+          from pathlib import Path
+
+          def norm(s=''):
+              s=str(s or '').lower()
+              s=re.sub(r'\(cvr[^)]*\)','',s)
+              s=re.sub(r'\bcvr[:\s-]*\d+\b','',s)
+              s=re.sub(r'\ba/s\b|\baps\b|\bi/s\b','',s)
+              s=s.replace('&',' og ')
+              s=re.sub(r'[^a-z0-9æøå]+',' ',s)
+              return re.sub(r'\s+',' ',s).strip()
+
+          aliases_raw={
+            'syddjurs spildevand':'aquadjurs','syddjurs spildevand a/s':'aquadjurs',
+            'thy forsyning':'thisted-vand','thy forsyning a/s':'thisted-vand',
+            'ren forsyning mariagerfjord':'mariagerfjord-vand','ren forsyning mariagerfjord a/s':'mariagerfjord-vand',
+            'nordfyns forsyning':'vandcenter-syd','nordfyns forsyning a/s':'vandcenter-syd',
+            'langeland energi og forsyning':'langeland-forsyning','langeland energi & forsyning':'langeland-forsyning',
+            'mølleåværket':'moelleaavaerket','mølleåværket a/s':'moelleaavaerket',
+            'biofos':'biofos','biofos a/s':'biofos'
+          }
+          # Keep this audit in sync with the browser's separately maintained curated alias file.
+          alias_js=Path('labs/spildevandskort/owner-aliases.js').read_text(encoding='utf-8')
+          for k,v in re.findall(r'"([^"]+)"\s*:\s*"([^"]+)"',alias_js):
+              aliases_raw[k]=v
+          aliases={norm(k):v for k,v in aliases_raw.items()}
+
+          b=json.loads(Path('labs/spildevandskort/data/brands.json').read_text())
+          brands=b['brands']+[{'id':'biofos','name':'BIOFOS'},{'id':'moelleaavaerket','name':'Mølleåværket'},{'id':'laesoe-forsyning','name':'Læsø Forsyning'}]
+          byid={x['id']:x for x in brands}
+
+          def match(owner):
+              k=norm(owner)
+              direct=aliases.get(k)
+              if direct in byid:return direct
+              for x in brands:
+                  bn=norm(x['name'])
+                  if k==bn or (len(bn)>=6 and (bn in k or k in bn)):
+                      return x['id']
+              return direct
+
+          params={'service':'WFS','version':'2.0.0','request':'GetFeature','typeNames':'puls:Renseanlaeg','outputFormat':'application/json','srsName':'EPSG:4326','count':'5000'}
+          url='https://pulsgeo.miljoeportal.dk/geoserver/wfs?'+urllib.parse.urlencode(params)
+          req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'})
+          with urllib.request.urlopen(req,timeout=60) as r:
+              raw=json.load(r)
+          features=raw.get('features',[])
+          type_counts=Counter(); closed_counts=Counter(); active_owners=Counter(); unmatched=Counter(); matched=Counter()
+          for f in features:
+              p=f.get('properties') or {}
+              dtype=p.get('DischargeType')
+              type_counts[str(dtype)]+=1
+              if norm(dtype) not in {'renseanlæg','renseanlaeg'}: continue
+              owner=str(p.get('Owner') or '')
+              closed=str(p.get('Closed') or '')
+              closed_counts[closed]+=1
+              if norm(closed) in {'aktivt','aktiv','active','i drift','drift'}:
+                  active_owners[owner]+=1
+                  bid=match(owner)
+                  (matched if bid else unmatched)[owner]+=1
+
+          active=sum(active_owners.values()); mapped=sum(matched.values()); missing=sum(unmatched.values())
+          print('RAW_FEATURES',len(features),'NUMBER_MATCHED',raw.get('numberMatched'))
+          print('DISCHARGE_TYPES',json.dumps(type_counts,ensure_ascii=False))
+          print('CLOSED_VALUES',json.dumps(closed_counts,ensure_ascii=False))
+          print('ACTIVE_PLANTS',active)
+          print('MATCHED_ACTIVE',mapped)
+          print('UNMATCHED_ACTIVE',missing)
+          print('MATCH_RATE_PCT',round(100*mapped/max(1,active),1))
+          print('\nTOP_UNMATCHED_ACTIVE_OWNERS')
+          for owner,count in unmatched.most_common(100):
+              no=norm(owner)
+              sims=sorted(((SequenceMatcher(None,no,norm(x['name'])).ratio(),x['id'],x['name']) for x in brands),reverse=True)[:3]
+              print(json.dumps({'owner':owner,'activePlants':count,'suggestions':[{'score':round(s,3),'id':i,'name':n} for s,i,n in sims]},ensure_ascii=False))
+          PY
