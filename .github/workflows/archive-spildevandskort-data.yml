@@ -1,0 +1,43 @@
+name: Archive spildevandskort data
+
+on:
+  push:
+    branches: [spildevandskort-data]
+    paths:
+      - .github/workflows/archive-spildevandskort-data.yml
+
+permissions:
+  contents: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: spildevandskort-data
+      - name: Download current production data
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p spildevandskort-data
+          BASE='https://dansk-spildevandskort.vercel.app/data'
+          curl --fail --location --retry 3 "$BASE/brands.json" -o spildevandskort-data/brands.json
+          for i in 1 2 3 4; do
+            curl --fail --location --retry 3 "$BASE/spildevandsoplande-$i.geojson.gz" -o "spildevandskort-data/spildevandsoplande-$i.geojson.gz"
+          done
+          sha256sum spildevandskort-data/* > spildevandskort-data/SHA256SUMS.txt
+          test -s spildevandskort-data/brands.json
+          for i in 1 2 3 4; do gzip -t "spildevandskort-data/spildevandsoplande-$i.geojson.gz"; done
+      - name: Commit archived assets
+        shell: bash
+        run: |
+          git config user.name 'spildevandskort-archive-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add spildevandskort-data
+          if git diff --cached --quiet; then
+            echo 'No changes to archive.'
+          else
+            git commit -m 'Archive current spildevandskort data [skip ci]'
+            git push origin HEAD:spildevandskort-data
+          fi
