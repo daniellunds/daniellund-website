@@ -1,7 +1,8 @@
-// Non-invasive integration layer for utility profiles.
+// Non-invasive integration layer for utility profiles and project map data.
 // Keeps core map/PULS logic unchanged while profiles can evolve independently.
 (async function integrateUtilityProfiles(){
   await loadProfiles();
+  if(typeof initProjects==="function")await initProjects();
 
   // Keep stable brand names/IDs internally for existing geometry and search joins,
   // but correct obsolete labels in the profile-enhanced list.
@@ -15,7 +16,7 @@
     const displayName=displayBrandName(b);
     const row=document.createElement("div"); row.className="brand-row"; row.dataset.brandId=b.id;
     const cb=document.createElement("input"); cb.type="checkbox"; cb.checked=state.selected.has(b.id); cb.setAttribute("aria-label",`Vis ${displayName} på kortet`);
-    cb.addEventListener("change",()=>{cb.checked?state.selected.add(b.id):state.selected.delete(b.id);renderPolygons();renderPlants();renderList();});
+    cb.addEventListener("change",()=>{cb.checked?state.selected.add(b.id):state.selected.delete(b.id);renderPolygons();renderPlants();if(typeof renderProjects==="function")renderProjects();renderList();});
     const sw=document.createElement("span");sw.className="brand-swatch";sw.style.background=b.color||"#6d98a3";
     const cp=document.createElement("button");cp.type="button";cp.className="row-copy row-profile-open";
     const geography=b.sourceFeatureCount===0?"Anlægsejer · uden eget oplandslag":(b.municipalities?.length===1?b.municipalities[0]:`${b.municipalities?.length||0} kommuner`);
@@ -53,5 +54,5 @@
   };
 
   renderList();
-  console.info("UTILITY_PROFILES_READY",{profiles:state.profiles.size});
+  console.info("UTILITY_PROFILES_READY",{profiles:state.profiles.size,projects:state.projects?.length||0});
 })();
