@@ -38,7 +38,7 @@ const state = {tab:"brands", brands:[], brandById:new Map(), selected:new Set(),
 
 function normalize(s="") { return String(s).toLocaleLowerCase("da").replace(/\(cvr[^)]*\)/gi,"").replace(/\bcvr[:\s-]*\d+\b/gi,"").replace(/\ba\/s\b|\baps\b|\bi\/s\b/gi,"").replace(/&/g," og ").replace(/[^a-z0-9æøå]+/gi," ").trim().replace(/\s+/g," "); }
 function pick(p,...keys){ if(!p)return null; const m=new Map(Object.entries(p).map(([k,v])=>[k.toLowerCase(),v])); for(const k of keys){ if(m.has(k.toLowerCase())) return m.get(k.toLowerCase()); } return null; }
-function n(v){ const x=Number(String(v??"").replace(/\./g,"").replace(",",".")); return Number.isFinite(x)?x:null; }
+function n(v){ if(v===null||v===undefined||String(v).trim()==="")return null; const x=Number(String(v).trim().replace(/\./g,"").replace(",",".")); return Number.isFinite(x)?x:null; }
 function fmtPE(v){ const x=n(v); return x===null?"Ikke oplyst":new Intl.NumberFormat("da-DK",{maximumFractionDigits:0}).format(x)+" PE"; }
 function fmt(v){ return v===null||v===undefined||String(v).trim()===""?"Ikke oplyst":String(v); }
 function fmtVolume(v){ const x=n(v); return x===null?fmt(v):new Intl.NumberFormat("da-DK",{maximumFractionDigits:0}).format(x)+" m³/år"; }
@@ -85,9 +85,9 @@ function normalizeCoords(feature, props){
 function normalizePlant(f,i){
   const p=f.properties||{}; const discharge=pick(p,"DischargeType","Punktkildetype","Type"); if(discharge && !["renseanlæg","renseanlaeg"].includes(normalize(discharge)))return null;
   const owner=fmt(pick(p,"Owner","Ejer","OwnerName")); const statusValue=pick(p,"Closed","Status","Driftsstatus");
-  const capacity=pick(p,"DimensionedCapacity","DimensioneretKapacitet","Dimensioneret kapacitet","PE");
+  const capacity=pick(p,"DesignedCapacity","DimensionedCapacity","DimensioneretKapacitet","Dimensioneret kapacitet","PE");
   const responsibleBrandId=brandMatch(owner);
-  return {id:String(pick(p,"WwtpId","Id","ID","PulsId","PULS_ID")||f.id||`puls-${i}`),name:fmt(pick(p,"Name","Navn","PlantName","Renseanlægsnavn")),owner,status:fmt(statusValue),active:activeFrom(statusValue),coordinates:normalizeCoords(f,p),capacity,approvedLoad:pick(p,"ApprovedLoad","GodkendtBelastning","Godkendt belastning"),treatmentType:pick(p,"TreatmentType","Rensetype","RenseType","Treatment"),authority:pick(p,"Authority","Myndighed"),municipality:pick(p,"Municipality","Kommune"),latestYear:pick(p,"LatestDischargeYear","SenesteUdledningsår","Udledningsår","LatestYear"),latestVolume:pick(p,"LatestWastewaterVolume","Spildevandsmængde","WastewaterVolume"),brandId:responsibleBrandId,responsibleBrandId,sourceProperties:p};
+  return {id:String(pick(p,"WwtpId","Id","ID","PulsId","PULS_ID")||f.id||`puls-${i}`),name:fmt(pick(p,"Name","Navn","PlantName","Renseanlægsnavn")),owner,status:fmt(statusValue),active:activeFrom(statusValue),coordinates:normalizeCoords(f,p),capacity,approvedLoad:pick(p,"AuthorizedLoad","ApprovedLoad","GodkendtBelastning","Godkendt belastning"),treatmentType:pick(p,"TreatmentType","Rensetype","RenseType","Treatment"),authority:pick(p,"Authority","Myndighed"),municipality:pick(p,"Municipality","Kommune"),latestYear:pick(p,"LatestDischargeYear","SenesteUdledningsår","Udledningsår","LatestYear"),latestVolume:pick(p,"LatestDischargeVolume","LatestWastewaterVolume","Spildevandsmængde","WastewaterVolume"),brandId:responsibleBrandId,responsibleBrandId,sourceProperties:p};
 }
 async function fetchAllPulsFeatures(){
   const all=[]; let startIndex=0; let expected=null;
