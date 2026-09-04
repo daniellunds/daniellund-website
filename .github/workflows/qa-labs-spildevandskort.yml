@@ -35,14 +35,18 @@ jobs:
           from pathlib import Path
           root=Path('labs/spildevandskort/data')
           b=json.loads((root/'brands.json').read_text())
-          brands=b.get('brands',b)
-          total=0
+          brands=b.get('brands',[])
+          rendered=0
           for i in range(1,5):
               with gzip.open(root/f'spildevandsoplande-{i}.geojson.gz','rt',encoding='utf-8') as f:
-                  total += len(json.load(f).get('features',[]))
-          assert len(brands)>=70, len(brands)
-          assert total==53179, total
-          print(f'STATIC_QA PASS brands={len(brands)} polygons={total}')
+                  rendered += len(json.load(f).get('features',[]))
+          assert b.get('brandCount') == 73, b.get('brandCount')
+          assert b.get('municipalityCount') == 97, b.get('municipalityCount')
+          assert b.get('sourceFeatureCount') == 53179, b.get('sourceFeatureCount')
+          assert len(brands) == 73, len(brands)
+          assert rendered == 276, rendered
+          assert sum(int(x.get('sourceFeatureCount') or 0) for x in brands) == 53179
+          print(f"STATIC_QA PASS brands={len(brands)} municipalities={b['municipalityCount']} sourceCatchments={b['sourceFeatureCount']} renderedFeatures={rendered}")
           PY
       - name: Install Playwright Chromium
         run: |
@@ -52,25 +56,23 @@ jobs:
       - name: Start local server
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/map-server.log 2>&1 &
-          echo $! > /tmp/map-server.pid
           for i in {1..20}; do curl -fsS http://127.0.0.1:4173/labs/spildevandskort/ >/dev/null && break; sleep 1; done
       - name: Browser QA desktop and mobile
         shell: bash
         run: |
           cat > /tmp/map-qa.mjs <<'JS'
           import { chromium } from 'playwright';
-          import fs from 'node:fs';
           const URL='http://127.0.0.1:4173/labs/spildevandskort/';
           const browser=await chromium.launch({headless:true});
           async function run(viewport,label){
             const ctx=await browser.newContext({viewport});
             const page=await ctx.newPage();
             const errors=[];
-            page.on('console',m=>{ if(m.type()==='error') errors.push('console: '+m.text()) });
+            page.on('console',m=>{if(m.type()==='error') errors.push('console: '+m.text())});
             page.on('pageerror',e=>errors.push('pageerror: '+e.message));
-            page.on('response',r=>{ if(r.status()>=400 && !r.url().includes('tile.openstreetmap')) errors.push(`http ${r.status()}: ${r.url()}`) });
+            page.on('response',r=>{if(r.status()>=400 && r.url().startsWith('http://127.0.0.1:4173/')) errors.push(`local http ${r.status()}: ${r.url()}`)});
             await page.goto(URL,{waitUntil:'domcontentloaded',timeout:30000});
-            await page.waitForFunction(()=>window.L && document.querySelector('#map')?true:false,{timeout:15000});
+            await page.waitForFunction(()=>window.L && document.querySelector('#map .leaflet-pane'),{timeout:15000});
             await page.waitForFunction(()=>Number(document.querySelector('#brandCount')?.textContent)>60,{timeout:15000});
             await page.waitForFunction(()=>document.querySelectorAll('.region-group').length===8,{timeout:15000});
             const regionNames=await page.locator('.region-name').allTextContents();
@@ -80,24 +82,22 @@ jobs:
             await page.waitForFunction(()=>document.querySelectorAll('.leaflet-overlay-pane path').length>100,{timeout:45000});
             const mapBox=await page.locator('#map').boundingBox();
             if(!mapBox||mapBox.width<250||mapBox.height<180) throw new Error(`${label}: map has invalid size ${JSON.stringify(mapBox)}`);
-            const mapCenter=await page.evaluate(()=>state?.map?.getCenter?.());
-            if(!mapCenter) throw new Error(`${label}: Leaflet map state missing`);
+            if(await page.locator('#map .leaflet-control-zoom').count()!==1) throw new Error(`${label}: Leaflet controls missing`);
             await page.locator('[data-tab="plants"]').click();
             await page.waitForFunction(()=>{const t=document.querySelector('#activePlantCount')?.textContent;return t && t!=='—' && Number(t)>0},{timeout:45000});
             const activePlants=Number(await page.locator('#activePlantCount').textContent());
             const plantRows=await page.locator('.plant-row').count();
-            const circles=await page.locator('.leaflet-marker-pane path,.leaflet-overlay-pane path.leaflet-interactive').count();
             const warning=await page.locator('#statusBanner').isVisible()?await page.locator('#statusBanner').textContent():'';
             if(warning) throw new Error(`${label}: status warning: ${warning}`);
             if(activePlants<1) throw new Error(`${label}: no active PULS plants`);
             if(plantRows<1) throw new Error(`${label}: plant list empty`);
+            if(errors.length) throw new Error(`${label}: browser errors: ${errors.slice(0,5).join(' | ')}`);
             if(viewport.width<600){
               const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
               if(overflow>3) throw new Error(`${label}: horizontal overflow ${overflow}px`);
             }
             await page.screenshot({path:`qa-${label}.png`,fullPage:true});
-            console.log(`BROWSER_QA ${label} PASS regions=${regionNames.length} activePlants=${activePlants} plantRows=${plantRows} map=${Math.round(mapBox.width)}x${Math.round(mapBox.height)} errors=${errors.length}`);
-            if(errors.length) console.log('NONFATAL_BROWSER_ERRORS '+JSON.stringify(errors.slice(0,10)));
+            console.log(`BROWSER_QA ${label} PASS regions=${regionNames.length} activePlants=${activePlants} plantRows=${plantRows} map=${Math.round(mapBox.width)}x${Math.round(mapBox.height)}`);
             await ctx.close();
           }
           await run({width:1440,height:900},'desktop');
