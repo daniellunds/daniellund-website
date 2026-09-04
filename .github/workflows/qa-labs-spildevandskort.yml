@@ -26,6 +26,8 @@ jobs:
           test -s labs/spildevandskort/app2.js
           test -s labs/spildevandskort/projects.js
           test -s labs/spildevandskort/projects.css
+          test -s labs/spildevandskort/project-geocoder.js
+          test -s labs/spildevandskort/basemaps.js
           test -s labs/spildevandskort/data/project-locations.json
           test -s labs/spildevandskort/data/brands.json
           for i in 1 2 3 4; do
@@ -35,6 +37,8 @@ jobs:
           node --check labs/spildevandskort/app1.js
           node --check labs/spildevandskort/app2.js
           node --check labs/spildevandskort/projects.js
+          node --check labs/spildevandskort/project-geocoder.js
+          node --check labs/spildevandskort/basemaps.js
           python - <<'PY'
           import json, gzip
           from pathlib import Path
@@ -117,6 +121,7 @@ jobs:
               assert await page.locator('#brandControls').is_visible()
               assert not await page.locator('#plantControls').is_visible()
               assert not await page.locator('#projectControls').is_visible()
+              assert await page.locator('.leaflet-control-layers').count()==1
 
               puls_schema=await page.evaluate("""() => {
                 const cap=state.plants.find(p=>Object.prototype.hasOwnProperty.call(p.sourceProperties||{},'DesignedCapacity'));
@@ -152,15 +157,21 @@ jobs:
               assert plant_rows > 100, f'plantRows={plant_rows}'
 
               await page.locator('.tab[data-tab="projects"]').click()
-              await page.wait_for_timeout(500)
+              await page.wait_for_timeout(1500)
               assert await page.locator('#projectControls').is_visible()
               assert not await page.locator('#brandControls').is_visible()
               assert not await page.locator('#plantControls').is_visible()
               project_rows=await page.locator('.project-row').count()
               project_markers=await page.locator('#map .project-marker-shell').count()
               assert project_rows >= 100, f'projectRows={project_rows}'
-              assert project_markers >= 80, f'projectMarkers={project_markers}'
+              assert project_markers >= 20, f'projectMarkers={project_markers}'
+              assert project_markers < project_rows, f'expected withheld projects: markers={project_markers} rows={project_rows}'
               assert await page.locator('#projectLegend').is_visible()
+              assert await page.locator('.project-row.unmapped').count() > 0
+
+              geo=await page.evaluate("projectGeorefStrategyCounts()")
+              assert geo['withheld'] > 0, geo
+              assert geo['puls']+geo['anchor']+geo['dawa'] >= 20, geo
 
               await page.locator('#projectCategory').select_option('advanced')
               await page.wait_for_timeout(200)
@@ -197,7 +208,7 @@ jobs:
                   assert overflow <= 3, f'horizontal overflow={overflow}px'
 
               await page.screenshot(path=f'qa-{label}.png',full_page=True)
-              print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])}')
+              print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} withheld={geo["withheld"]} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])}')
               await context.close()
 
           async def main():
