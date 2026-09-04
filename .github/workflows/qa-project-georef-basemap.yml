@@ -57,7 +57,7 @@ jobs:
               r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
               assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
-              await page.wait_for_function("window.state?.basemaps?.imagery && window.projectPlaceCandidates",timeout=30000)
+              await page.wait_for_function("typeof state!=='undefined' && state.basemaps?.imagery && window.projectPlaceCandidates",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>100",timeout=30000)
 
               body=await page.locator('body').inner_text()
@@ -97,15 +97,18 @@ jobs:
               await page.locator('.tab[data-tab="projects"]').click()
               await page.wait_for_timeout(500)
               assert await page.locator('.project-row').count()>=100
+              await page.wait_for_function("state.projectGeorefQa.attempted>0",timeout=30000)
+              await page.wait_for_timeout(5000)
+              resolved_now=await page.evaluate("state.projectResolvedLocations.size")
               qa=await page.evaluate("state.projectGeorefQa")
-              assert qa is not None
+              assert resolved_now>=3,(resolved_now,qa)
               if mobile:
                   overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
                   assert overflow<=3,overflow
               assert not errors,errors
               label='mobile' if mobile else 'desktop'
               await page.screenshot(path=f'qa-georef-{label}.png',full_page=True)
-              print(label.upper(),candidates,qa,'imageryTiles',imagery_tiles)
+              print(label.upper(),candidates,qa,'resolvedNow',resolved_now,'imageryTiles',imagery_tiles)
               await context.close()
 
           async def main():
