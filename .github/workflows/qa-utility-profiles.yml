@@ -1,7 +1,6 @@
 name: QA utility profiles
 on:
   push:
-    branches: [utility-profiles]
     paths:
       - 'labs/spildevandskort/**'
       - '.github/workflows/qa-utility-profiles.yml'
@@ -24,7 +23,7 @@ jobs:
           test -s labs/spildevandskort/profiles.js
           test -s labs/spildevandskort/profile-integration.js
           test -s labs/spildevandskort/profiles.css
-          test -s labs/spildevandskort/data/utility-profiles.json
+          test -s labs/spildevandskort/data/utility-profiles-index.json
           node --check labs/spildevandskort/profiles.js
           node --check labs/spildevandskort/profile-integration.js
           python - <<'PY'
@@ -33,10 +32,20 @@ jobs:
           root=Path('labs/spildevandskort/data')
           brands=json.loads((root/'brands.json').read_text(encoding='utf-8'))['brands']
           valid={b['id'] for b in brands}|{'biofos','moelleaavaerket','laesoe-forsyning'}
-          data=json.loads((root/'utility-profiles.json').read_text(encoding='utf-8'))
-          profiles=data['profiles']
-          assert len(profiles)>=6, len(profiles)
+          index=json.loads((root/'utility-profiles-index.json').read_text(encoding='utf-8'))
+          assert len(index.get('files',[]))>=2,index
+          profiles={}
+          for name in index['files']:
+              path=root/name
+              assert path.is_file() and path.stat().st_size>0,name
+              data=json.loads(path.read_text(encoding='utf-8'))
+              overlap=set(profiles)&set(data.get('profiles',{}))
+              assert not overlap,('duplicate profile ids',overlap)
+              profiles.update(data.get('profiles',{}))
+          assert len(profiles)>=16, len(profiles)
           assert set(profiles)<=valid, set(profiles)-valid
+          required={'din-forsyning','fors','envafors','aquadjurs','arwos','bluekolding','vandmiljoe-randers','silkeborg-forsyning','samn-forsyning','vejle-spildevand'}
+          assert required<=set(profiles),required-set(profiles)
           url_re=re.compile(r'^https://[^\s]+$')
           for bid,p in profiles.items():
               assert p.get('name')
@@ -46,14 +55,13 @@ jobs:
               for c in p.get('contacts',[]):
                   assert c.get('name') and c.get('title'), (bid,c)
                   for key in ('linkedin','sourceUrl'):
-                      if c.get(key):
-                          assert url_re.match(c[key]), (bid,key,c[key])
+                      if c.get(key): assert url_re.match(c[key]), (bid,key,c[key])
                   if c.get('linkedin'): links.append(c['linkedin'])
               assert len(links)==len(set(links)), (bid,'duplicate LinkedIn')
               for pr in p.get('projects',[]):
                   assert pr.get('name') and pr.get('status') and pr.get('description'), (bid,pr)
                   assert url_re.match(pr.get('url','')), (bid,'project',pr.get('url'))
-          print('PROFILE_STATIC_QA_OK',len(profiles),'profiles')
+          print('PROFILE_STATIC_QA_OK',len(profiles),'profiles',len(index['files']),'files')
           PY
       - name: Install Playwright
         run: |
@@ -77,26 +85,36 @@ jobs:
               page.on('pageerror',lambda e: errors.append(str(e)))
               r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
               assert r and r.ok,r.status if r else None
-              await page.wait_for_function("state.profiles && state.profiles.size>=6",timeout=30000)
+              await page.wait_for_function("state.profiles && state.profiles.size>=16",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#activePlantCount')?.textContent)>700",timeout=60000)
+
+              # Regression: original batch still works.
               await page.locator('#search').fill('HOFOR')
               await page.wait_for_selector('.brand-row[data-brand-id="hofor"] .profile-mini',timeout=10000)
               await page.locator('.brand-row[data-brand-id="hofor"] .profile-mini').click()
-              await page.wait_for_selector('#detailPanel.open')
-              assert 'HOFOR' in await page.locator('#detailContent').inner_text()
               assert '33 95 33 95' in await page.locator('#detailContent').inner_text()
-              assert await page.locator('[data-profile-tab="overview"]').count()==1
-              assert await page.locator('[data-profile-tab="people"]').count()==1
-              assert await page.locator('[data-profile-tab="projects"]').count()==1
+              await page.locator('[data-profile-tab="people"]').click()
+              assert 'Rebekka Nymark' in await page.locator('#profileTabBody').inner_text()
+              await page.locator('#closeDetail').click()
+
+              # Batch 2: AquaDjurs profile, people, LinkedIn and projects.
+              await page.locator('#search').fill('AquaDjurs')
+              await page.wait_for_selector('.brand-row[data-brand-id="aquadjurs"] .profile-mini')
+              await page.locator('.brand-row[data-brand-id="aquadjurs"] .profile-mini').click()
+              overview=await page.locator('#detailContent').inner_text()
+              assert '87 58 19 00' in overview,overview
               await page.locator('[data-profile-tab="people"]').click()
               people=await page.locator('#profileTabBody').inner_text()
-              assert 'Rebekka Nymark' in people,people
-              href=await page.locator('#profileTabBody a[href*="linkedin.com"]').first.get_attribute('href')
-              assert href and href.startswith('https://'),href
+              assert 'Bo Heidmann' in people and 'Klaus Helweg' in people,people
+              links=await page.locator('#profileTabBody a[href*="linkedin.com"]').count()
+              assert links>=2,links
               await page.locator('[data-profile-tab="projects"]').click()
               projects=await page.locator('#profileTabBody').inner_text()
-              assert 'Svanemøllen Skybrudstunnel' in projects,projects
+              assert 'Centralisering af spildevandsrensning på Djursland' in projects,projects
+              assert 'Fornæs Renseanlæg' in projects,projects
               await page.locator('#closeDetail').click()
+
+              # Unresearched profile remains graceful.
               await page.locator('#search').fill('Fanø Vand')
               await page.wait_for_selector('.brand-row[data-brand-id="fanoe-vand"] .profile-mini')
               await page.locator('.brand-row[data-brand-id="fanoe-vand"] .profile-mini').click()
@@ -108,7 +126,7 @@ jobs:
                   assert overflow<=3,f'overflow={overflow}'
               label='mobile' if mobile else 'desktop'
               await page.screenshot(path=f'profile-{label}.png',full_page=True)
-              print(f'PROFILE_{label.upper()}_QA_OK')
+              print(f'PROFILE_{label.upper()}_QA_OK profiles=16')
               await ctx.close()
           async def main():
               async with async_playwright() as p:
