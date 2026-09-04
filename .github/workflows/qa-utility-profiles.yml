@@ -33,7 +33,7 @@ jobs:
           brands=json.loads((root/'brands.json').read_text(encoding='utf-8'))['brands']
           valid={b['id'] for b in brands}|{'biofos','moelleaavaerket','laesoe-forsyning'}
           index=json.loads((root/'utility-profiles-index.json').read_text(encoding='utf-8'))
-          assert len(index.get('files',[]))>=5,index
+          assert len(index.get('files',[]))>=6,index
           profiles={}
           for name in index['files']:
               path=root/name
@@ -42,13 +42,14 @@ jobs:
               overlap=set(profiles)&set(data.get('profiles',{}))
               assert not overlap,('duplicate profile ids',overlap)
               profiles.update(data.get('profiles',{}))
-          assert len(profiles)>=46, len(profiles)
+          assert len(profiles)>=56, len(profiles)
           assert set(profiles)<=valid, set(profiles)-valid
           required={
             'din-forsyning','fors','envafors','aquadjurs','arwos','bluekolding','vandmiljoe-randers','silkeborg-forsyning','samn-forsyning','vejle-spildevand',
             'klar-forsyning','frederiksberg-forsyning','fredericia-spildevand','hilleroed-forsyning','forsyning-helsingoer','skanderborg-forsyning','herning-vand','vestforsyning','energi-viborg-vand','provas',
             'kalundborg-forsyning','frederikshavn-forsyning','broenderslev-forsyning','hjoerring-vandselskab','hedensted-spildevand','htk-forsyning','ikast-brande-spildevand','assens-forsyning','billund-vand-energi','beof',
-            'faxe-forsyning','ffv','gribskov-forsyning','guldborgsund-forsyning','fredensborg-forsyning','halsnaes-forsyning','ishoej-forsyning','jammerbugt-forsyning','kerteminde-forsyning','fanoe-vand'
+            'faxe-forsyning','ffv','gribskov-forsyning','guldborgsund-forsyning','fredensborg-forsyning','halsnaes-forsyning','ishoej-forsyning','jammerbugt-forsyning','kerteminde-forsyning','fanoe-vand',
+            'glostrup-forsyning','taarnby-forsyning','ltf','lolland-forsyning','odsherred-forsyning','ringsted-forsyning','vordingborg-forsyning','langeland-forsyning','middelfart-spildevand','nordfyns-forsyning'
           }
           assert required<=set(profiles),required-set(profiles)
           url_re=re.compile(r'^https://[^\s]+$')
@@ -90,7 +91,7 @@ jobs:
               page.on('pageerror',lambda e: errors.append(str(e)))
               r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
               assert r and r.ok,r.status if r else None
-              await page.wait_for_function("state.profiles && state.profiles.size>=46",timeout=30000)
+              await page.wait_for_function("state.profiles && state.profiles.size>=56",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#activePlantCount')?.textContent)>700",timeout=60000)
 
               # Regression: batch 1.
@@ -125,7 +126,7 @@ jobs:
               assert '63 44 90 00' in await page.locator('#detailContent').inner_text()
               await page.locator('#closeDetail').click()
 
-              # Batch 5: Kerteminde profile and wastewater people/projects.
+              # Regression: batch 5.
               await page.locator('#search').fill('Kerteminde Forsyning')
               await page.wait_for_selector('.brand-row[data-brand-id="kerteminde-forsyning"] .profile-mini')
               await page.locator('.brand-row[data-brand-id="kerteminde-forsyning"] .profile-mini').click()
@@ -139,10 +140,22 @@ jobs:
               assert 'Ny spildevandsplan' in projects,projects
               await page.locator('#closeDetail').click()
 
+              # Batch 6: Tårnby current leadership and project data.
+              await page.locator('#search').fill('Tårnby Forsyning')
+              await page.wait_for_selector('.brand-row[data-brand-id="taarnby-forsyning"] .profile-mini')
+              await page.locator('.brand-row[data-brand-id="taarnby-forsyning"] .profile-mini').click()
+              overview=await page.locator('#detailContent').inner_text()
+              assert '32 46 20 30' in overview,overview
+              await page.locator('[data-profile-tab="people"]').click()
+              assert 'Anja Whittard Dalberg' in await page.locator('#profileTabBody').inner_text()
+              await page.locator('[data-profile-tab="projects"]').click()
+              assert 'Klimatilpasning af Gemmas Allé' in await page.locator('#profileTabBody').inner_text()
+              await page.locator('#closeDetail').click()
+
               # Still-unresearched profile remains graceful.
-              await page.locator('#search').fill('Lolland Forsyning')
-              await page.wait_for_selector('.brand-row[data-brand-id="lolland-forsyning"] .profile-mini')
-              await page.locator('.brand-row[data-brand-id="lolland-forsyning"] .profile-mini').click()
+              await page.locator('#search').fill('Lemvig Vand')
+              await page.wait_for_selector('.brand-row[data-brand-id="lemvig-vand"] .profile-mini')
+              await page.locator('.brand-row[data-brand-id="lemvig-vand"] .profile-mini').click()
               empty=await page.locator('#profileTabBody').inner_text()
               assert 'Profilen er endnu ikke researchet' in empty,empty
               assert not errors,errors
@@ -151,7 +164,7 @@ jobs:
                   assert overflow<=3,f'overflow={overflow}'
               label='mobile' if mobile else 'desktop'
               await page.screenshot(path=f'profile-{label}.png',full_page=True)
-              print(f'PROFILE_{label.upper()}_QA_OK profiles=46')
+              print(f'PROFILE_{label.upper()}_QA_OK profiles=56')
               await ctx.close()
           async def main():
               async with async_playwright() as p:
