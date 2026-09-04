@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-04",
+  "profiles": {
+    "din-forsyning": {
+      "name": "DIN Forsyning",
+      "website": "https://dinforsyning.dk/",
+      "phone": "74 74 74 74",
+      "email": "post@dinforsyning.dk",
+      "address": "Ulvsundvej 1, 6715 Esbjerg N",
+      "summary": "DIN Forsyning er fælles forsyningsbrand for selskaberne i Esbjerg og Varde og varetager bl.a. kloak, spildevandsrensning og klimatilpasning.",
+      "contacts": [
+        {"name":"Frank Jordt Kappel","title":"Spildevandschef og chef for D&V Asset Management","linkedin":"https://dk.linkedin.com/in/frank-jordt-kappel-36731412","sourceUrl":"https://dinforsyning.dk/da-dk/om-os/organisationen"},
+        {"name":"Mette Skov Hansen","title":"Projekt, Spildevand","sourceUrl":"https://dinforsyning.dk/da-dk/om-os/organisationen"}
+      ],
+      "projects": [
+        {"name":"Nordenskov – etape 6","status":"I anlæg","description":"Kloakseparering med LAR. Arbejdet løber fra april 2025 til december 2026.","url":"https://dinforsyning.dk/da-dk/her-graver-vi"},
+        {"name":"Engparken, Bramming – etape 2","status":"I anlæg","description":"Kloakseparering udført i 2026 med planlagt afslutning i december 2026.","url":"https://dinforsyning.dk/da-dk/her-graver-vi"},
+        {"name":"Ringen","status":"I anlæg","description":"Kloakrenovering og standard-separering fra august 2025 til december 2026.","url":"https://dinforsyning.dk/da-dk/her-graver-vi"}
+      ],
+      "sources": ["https://dinforsyning.dk/da-dk/kontakt","https://dinforsyning.dk/da-dk/om-os/organisationen","https://dinforsyning.dk/da-dk/her-graver-vi"],
+      "verifiedAt": "2026-09-04"
+    },
+    "fors": {
+      "name": "FORS",
+      "website": "https://www.fors.dk/",
+      "phone": "70 20 20 66",
+      "email": "fors@fors.dk",
+      "address": "Tåstrup Møllevej 5, 4300 Holbæk",
+      "summary": "FORS håndterer bl.a. spildevand i Roskilde, Lejre og Holbæk og arbejder løbende med kloakudbygning, renseanlæg og reduktion af miljøbelastning.",
+      "contacts": [
+        {"name":"Steen Lindhardt","title":"Administrerende direktør","linkedin":"https://dk.linkedin.com/in/steenholten","sourceUrl":"https://www.fors.dk/om-os/"},
+        {"name":"Henrik Correll","title":"Produktionsdirektør","sourceUrl":"https://www.fors.dk/om-os/"}
+      ],
+      "projects": [
+        {"name":"Kloakering på Tuse Næs","status":"Projektering / anlæg","description":"Ca. 580 sommer- og helårshuse kloakeres. Første etape projekteres og udføres 2026–2028; den samlede tidsplan løber til 2030.","url":"https://www.fors.dk/spildevand/spildevandsprojekter/kloakering-paa-tuse-naes/"},
+        {"name":"Lejre Strukturplan Nord","status":"Undersøgelse / planlægning","description":"Mulig ombygning af Lyndby og Sæby renseanlæg til pumpestationer og mulig opgradering af Gevninge Renseanlæg.","url":"https://www.fors.dk/spildevand/spildevandsprojekter/"}
+      ],
+      "sources": ["https://www.fors.dk/om-os/","https://www.fors.dk/spildevand/spildevandsprojekter/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "envafors": {
+      "name": "Envafors",
+      "website": "https://www.envafors.dk/",
+      "phone": "58 36 25 00",
+      "email": "kontakt@envafors.dk",
+      "address": "Nordvej 6, 4200 Slagelse",
+      "summary": "Envafors er fælles serviceselskab for forsyningerne i Næstved, Slagelse og Sorø; de lokale selskaber ejer og driver fortsat deres vand- og spildevandsaktiver.",
+      "contacts": [
+        {"name":"Anders Frederik Gjesing","title":"Administrerende direktør, NK-Forsyning / direktør i Envafors","linkedin":"https://dk.linkedin.com/in/andersgjesing","sourceUrl":"https://dk.linkedin.com/in/andersgjesing"},
+        {"name":"Henrik Birch","title":"Administrerende direktør i SK Forsyning, Sorø Forsyning og Envafors","linkedin":"https://dk.linkedin.com/in/henrik-birch-97155514","sourceUrl":"https://dk.linkedin.com/in/henrik-birch-97155514"}
+      ],
+      "projects": [
+        {"name":"Hesselbjergvej/Mælkevej, Korsør","status":"I anlæg / planlagt 2026–2027","description":"Separatkloakering med nye spildevands- og regnvandsstik; husspildevand ledes til Korsør Renseanlæg.","url":"https://spildevandsplan.slagelse.dk/da/tillaeg-til-spildevandsplanen/"},
+        {"name":"Nygårdsvej og bassin, Vemmelev","status":"Planlagt / gennemførelse 2026","description":"Separatkloakering af boligområdet og udvidelse af eksisterende regnvandsbassin.","url":"https://spildevandsplan.slagelse.dk/da/tillaeg-til-spildevandsplanen/"}
+      ],
+      "sources": ["https://www.envafors.dk/","https://www.envafors.dk/selvbetjening","https://spildevandsplan.slagelse.dk/da/tillaeg-til-spildevandsplanen/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "aquadjurs": {
+      "name": "AquaDjurs",
+      "website": "https://www.aquadjurs.dk/",
+      "phone": "87 58 19 00",
+      "address": "Tyrrisvej 14, Følle, 8410 Rønde",
+      "summary": "AquaDjurs er spildevandsselskab for Norddjurs og Syddjurs og centraliserer i disse år spildevandsrensningen på Fornæs Renseanlæg.",
+      "contacts": [
+        {"name":"Bo Heidmann","title":"Projektleder, centralisering af spildevandsrensning","linkedin":"https://dk.linkedin.com/in/bo-heidmann-356b336b","sourceUrl":"https://aquadjurs.dk/projektomraader/centralisering-af-spildevandsrensning-paa-djursland"},
+        {"name":"Klaus Helweg","title":"Projektleder, udviklingsplan Fornæs Renseanlæg","linkedin":"https://dk.linkedin.com/in/klaus-helweg-7156a04","sourceUrl":"https://www.aquadjurs.dk/projektomraader/udviklingsplan-fornaes-renseanlaeg"}
+      ],
+      "projects": [
+        {"name":"Centralisering af spildevandsrensning på Djursland","status":"Projektering","description":"Ni renseanlæg skal på sigt lukkes, og spildevandet samles på Fornæs via ca. 110 km nyt transportanlæg. Planlægning og projektering er i gang.","url":"https://aquadjurs.dk/projektomraader/centralisering-af-spildevandsrensning-paa-djursland"},
+        {"name":"Udbygning af Fornæs Renseanlæg – fase II","status":"I anlæg","description":"Kapacitetsudvidelse med bl.a. to nye procestanke. Første spadestik var i november 2025, og fasen forventes færdig i 2027.","url":"https://www.aquadjurs.dk/projektomraader/udviklingsplan-fornaes-renseanlaeg"}
+      ],
+      "sources": ["https://www.aquadjurs.dk/kontakt","https://aquadjurs.dk/projektomraader/centralisering-af-spildevandsrensning-paa-djursland","https://www.aquadjurs.dk/projektomraader/udviklingsplan-fornaes-renseanlaeg"],
+      "verifiedAt": "2026-09-04"
+    },
+    "arwos": {
+      "name": "ARWOS",
+      "website": "https://arwos.dk/",
+      "phone": "76 93 00 00",
+      "address": "Forsyningsvejen 2, 6200 Aabenraa",
+      "summary": "ARWOS er Aabenraa Kommunes forsyningsselskab og varetager bl.a. vand og spildevand med fokus på separatkloakering, klimatilpasning og en mere central renseanlægsstruktur.",
+      "contacts": [
+        {"name":"Vibeke Gregersen","title":"Afdelingsleder, Vand og Spildevand – Planlægning og Projekt","linkedin":"https://dk.linkedin.com/in/vibekegregersen","sourceUrl":"https://arwos.dk/om-arwos/organisation/ledelsen-i-arwos/"},
+        {"name":"Henrik Hansen","title":"Afdelingsleder, Vand og Spildevand – Drift","sourceUrl":"https://arwos.dk/om-arwos/organisation/ledelsen-i-arwos/"}
+      ],
+      "projects": [
+        {"name":"Centralisering mod Stegholt Renseanlæg","status":"Undersøgelser / planlægning","description":"ARWOS undersøger en faseopdelt centralisering, hvor Bov, Kollund og Gårdeby på længere sigt lukkes og spildevand transporteres til Stegholt. Feltundersøgelser gennemføres i 2026.","url":"https://arwos.dk/feltundrsoegelse/"},
+        {"name":"Separatkloakering – Kruså Vest, Hjordkær, Loddenhøj og Sandskær","status":"Planlægning","description":"Nye separatkloakeringsprojekter skal reducere overløb og den mængde regnvand, der pumpes til renseanlæg.","url":"https://arwos.dk/kloak-og-spildevand/love-og-planer-kloak-spildevand/ny-spildevandsplan-saetter-retning/"}
+      ],
+      "sources": ["https://arwos.dk/","https://arwos.dk/om-arwos/organisation/ledelsen-i-arwos/","https://arwos.dk/feltundrsoegelse/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "bluekolding": {
+      "name": "BlueKolding",
+      "website": "https://bluekolding.dk/",
+      "phone": "76 36 36 36",
+      "email": "kontakt@bluekolding.dk",
+      "address": "Kolding Åpark 3, 6000 Kolding",
+      "summary": "BlueKolding håndterer regn- og spildevand i Kolding Kommune, driver seks renseanlæg og vedligeholder omkring 2.000 km kloakledninger.",
+      "contacts": [
+        {"name":"Pia Ravnskjær Rasmussen","title":"Projekt- og udviklingschef","linkedin":"https://dk.linkedin.com/in/pia-ravnskj%C3%A6r-rasmussen","sourceUrl":"https://bluekolding.dk/kontakt/organisation-ansatte/"},
+        {"name":"Lars Hoelgaard","title":"Driftschef, produktion","sourceUrl":"https://bluekolding.dk/kontakt/organisation-ansatte/"}
+      ],
+      "projects": [
+        {"name":"Kloaksanering i Sdr. Bjert og Agtrup","status":"I anlæg","description":"Omfattende kloaksanering og strømpeforing i flere etaper, med arbejder i 2026–2028.","url":"https://bluekolding.dk/prj/kloaksanering-i-sdr-bjert-og-agtrup/"},
+        {"name":"BlueKolding i Vejlevejs-området","status":"I anlæg / afsluttende etaper","description":"Sanering og udskiftning af eksisterende kloakledninger til større rør for bedre håndtering af kraftig regn.","url":"https://bluekolding.dk/prj/3987/"}
+      ],
+      "sources": ["https://bluekolding.dk/kontakt/organisation-ansatte/","https://bluekolding.dk/prj/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "vandmiljoe-randers": {
+      "name": "Vandmiljø Randers",
+      "website": "https://www.vmr.dk/",
+      "phone": "38 41 12 12",
+      "email": "mail@vmr.dk",
+      "address": "Ny Havnevej 20, 8960 Randers SØ",
+      "summary": "Vandmiljø Randers håndterer kloak, spildevandsrensning og klimatilpasning i Randers Kommune og driver bl.a. Randers Centralrenseanlæg.",
+      "contacts": [
+        {"name":"Johan Harkjær Kristensen","title":"Direktør","linkedin":"https://dk.linkedin.com/in/johan-harkj%C3%A6r-kristensen-722b812a","sourceUrl":"https://www.vmr.dk/om-os/strategi-og-ledelse"},
+        {"name":"Michael Sønder Jensen","title":"Produktionschef","sourceUrl":"https://www.vmr.dk/kundeservice/kontakt"}
+      ],
+      "projects": [
+        {"name":"Opgradering af Randers Centralrenseanlæg","status":"Besluttet / projektering","description":"Investering på 120 mio. kr. i nye renseprocesser og kapacitet for bl.a. at reducere kvælstofudledningen til Randers Fjord.","url":"https://www.vmr.dk/om-os/presse/vandmiljoe-randers-investerer-i-bedre-rensning"},
+        {"name":"Separatkloakering i Vorup","status":"I anlæg","description":"Næstsidste etape gennemføres i 2026 på bl.a. Holstebrovej, Struervej og Sønder Allé for at fremtidssikre kloaksystemet.","url":"https://www.vmr.dk/viden-om/her-arbejder-vi/separatkloakering-i-vorup-naeste-etape"}
+      ],
+      "sources": ["https://www.vmr.dk/kundeservice/kontakt","https://www.vmr.dk/om-os/strategi-og-ledelse","https://www.vmr.dk/om-os/presse/vandmiljoe-randers-investerer-i-bedre-rensning"],
+      "verifiedAt": "2026-09-04"
+    },
+    "silkeborg-forsyning": {
+      "name": "Silkeborg Forsyning",
+      "website": "https://www.silkeborgforsyning.dk/",
+      "phone": "89 20 64 00",
+      "email": "mail@silkeborgforsyning.dk",
+      "address": "Tietgensvej 3, 8600 Silkeborg",
+      "summary": "Silkeborg Forsyning håndterer bl.a. spildevand i Silkeborg Kommune og arbejder med både kloakseparering og en langsigtet modernisering af renseanlægsstrukturen.",
+      "contacts": [
+        {"name":"Ole Sinkjær","title":"Chef for Vand og Spildevand","sourceUrl":"https://www.silkeborgforsyning.dk/servicemenu/nyheder"},
+        {"name":"Jens Frederik Bastrup","title":"Administrerende direktør","sourceUrl":"https://www.silkeborgforsyning.dk/servicemenu/om-os/bestyrelse-og-direktion"}
+      ],
+      "projects": [
+        {"name":"Nyt Søholt Renseanlæg","status":"Myndigheds- og planlægningsfase","description":"Søholt Renseanlæg skal ombygges og moderniseres. Plan- og myndighedsfasen forventes at tage 2–3 år, og byggestart forventes i 2029.","url":"https://www.silkeborgforsyning.dk/nyheder/p%C3%A5-vej-mod-et-nyt-s%C3%B8holt-renseanl%C3%A6g"},
+        {"name":"Ny kloak i Ans","status":"I anlæg","description":"De sidste fælleskloakker i Ans separatkloakeres i perioden 2025–2027; etape 1.4 blev igangsat i august 2026.","url":"https://www.silkeborgforsyning.dk/ans"}
+      ],
+      "sources": ["https://www.silkeborgforsyning.dk/servicemenu/nyheder","https://www.silkeborgforsyning.dk/driftsinfo","https://www.silkeborgforsyning.dk/ans"],
+      "verifiedAt": "2026-09-04"
+    },
+    "samn-forsyning": {
+      "name": "SAMN Forsyning",
+      "website": "https://www.samn.dk/",
+      "phone": "76 26 87 00",
+      "email": "mail@samn.dk",
+      "address": "Alrøvej 11, 8700 Horsens",
+      "summary": "SAMN Forsyning er serviceselskab for Horsens Vand og Odder Spildevand og arbejder med drift, renseprocesser og store kloak- og separeringsprojekter.",
+      "contacts": [
+        {"name":"Christina Skipper Ravn","title":"Projektchef","linkedin":"https://dk.linkedin.com/in/christinaskipper","sourceUrl":"https://www.samn.dk/om-samn/bestyrelsen-i-samn-forsyning-aps"},
+        {"name":"Morten Wind Andersen","title":"Proceschef","sourceUrl":"https://www.samn.dk/om-samn/bestyrelsen-i-samn-forsyning-aps"}
+      ],
+      "projects": [
+        {"name":"Kloakseparering af Horsens Syd","status":"I anlæg","description":"Stort separeringsprojekt 2025–2030. Etape 2 blev startet i 2026 og forventes afsluttet ultimo 2026.","url":"https://www.samn.dk/horsenssyd"},
+        {"name":"Renovering af kloaksystem ved Dyngby Strand","status":"I anlæg / undersøgelser","description":"Strømpeforing udføres 2026–2027 og skelbrønde etableres 2027–2028 for at reducere indsivning og forbedre driftssikkerheden.","url":"https://www.samn.dk/driftsforstyrrelser/anlaegsarbejde/dyngbystrand"}
+      ],
+      "sources": ["https://www.samn.dk/kontakt","https://www.samn.dk/om-samn/bestyrelsen-i-samn-forsyning-aps","https://www.samn.dk/driftsforstyrrelser/anlaegsarbejde/store-projekter"],
+      "verifiedAt": "2026-09-04"
+    },
+    "vejle-spildevand": {
+      "name": "Vejle Spildevand",
+      "website": "https://www.vejlespildevand.dk/",
+      "phone": "76 41 37 00",
+      "address": "Toldbodvej 20, 7100 Vejle",
+      "summary": "Vejle Spildevand håndterer spildevand, klimatilpasning og separatkloakering i Vejle Kommune og driver flere renseanlæg.",
+      "contacts": [
+        {"name":"Mikael Schultz","title":"Direktør","linkedin":"https://dk.linkedin.com/in/mikael-schultz-b5a42111","sourceUrl":"https://www.vejlespildevand.dk/hvem-er-vi/medarbejdere"},
+        {"name":"Ole Dregaard","title":"Civilingeniør / projektleder","sourceUrl":"https://www.vejlespildevand.dk/projekter/oversigtskort-aktuelle-projekter/give-renseanlaeg-udbygning-og-renovering"}
+      ],
+      "projects": [
+        {"name":"Give Renseanlæg – udbygning og renovering","status":"I anlæg","description":"Ny tank og øvrige anlægsarbejder øger kapaciteten under kraftig regn og skal reducere overløb til Bæksgård Bæk. Byggeperioden er efterår 2025 til september 2026.","url":"https://www.vejlespildevand.dk/projekter/oversigtskort-aktuelle-projekter/give-renseanlaeg-udbygning-og-renovering"},
+        {"name":"Børkop – nyt bassin til vandparkering","status":"I anlæg","description":"Underjordisk regnvandsbassin etableres som led i klimatilpasning og reduktion af overløb i Børkop.","url":"https://www.vejlespildevand.dk/projekter/oversigtskort-aktuelle-projekter"}
+      ],
+      "sources": ["https://www.vejlespildevand.dk/","https://www.vejlespildevand.dk/hvem-er-vi/medarbejdere","https://www.vejlespildevand.dk/projekter/oversigtskort-aktuelle-projekter"],
+      "verifiedAt": "2026-09-04"
+    }
+  }
+}
