@@ -33,5 +33,11 @@
     console.info("BASEMAP_CHANGED",event.name);
   });
   state.activeBasemap="Kort";
+
+  window.spildevandskortBasemapState=()=>({
+    active:state.activeBasemap,
+    available:["Kort","Luftfoto"],
+    imageryOnMap:state.map.hasLayer(imagery)
+  });
   console.info("BASEMAPS_READY",{layers:["Kort","Luftfoto"]});
 })();
