@@ -35,6 +35,7 @@ Object.assign(OWNER_ALIASES_RAW, {
   "greve spildevand": "klar-forsyning",
   "nfs spildevand": "nyborg-forsyning",
   "billund spildevand": "billund-vand-energi",
+  "grindsted renseanlæg": "billund-vand-energi",
   "ærø vand": "aeroe-forsyning",
   "odder spildevand": "samn-forsyning",
   "horsens vand": "samn-forsyning",
@@ -46,5 +47,7 @@ Object.assign(OWNER_ALIASES_RAW, {
   "gribvand": "gribskov-forsyning",
   "aalborg kloak": "aalborg-forsyning",
   "læsø vand": "laesoe-forsyning",
-  "hofor spildevand dragør": "hofor"
+  "hofor spildevand dragør": "hofor",
+  "tårnbyforsyning spildevand": "taarnby-forsyning",
+  "htk kloak": "htk-forsyning"
 });
