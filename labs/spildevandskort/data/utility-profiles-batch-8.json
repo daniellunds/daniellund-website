@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-04",
+  "profiles": {
+    "struer-energi": {
+      "name": "Struer Energi",
+      "website": "https://struerenergi.dk/",
+      "phone": "96 84 22 30",
+      "email": "kundeservice@struerenergi.dk",
+      "address": "Jyllandsgade 1, 7600 Struer",
+      "summary": "Struer Energi driver spildevandsforsyningen i Struer Kommune, som er fuldt separatkloakeret. Forsyningen arbejder aktuelt med pumpestationer, kloakering i det åbne land og løbende fornyelse af spildevandsanlæggene.",
+      "contacts": [
+        {"name":"Thomas Sørensen","title":"Spildevandschef","sourceUrl":"https://struerenergi.dk/kontakt/"},
+        {"name":"Jens Bach Sørensen","title":"Driftsleder Spildevand","sourceUrl":"https://struerenergi.dk/kontakt/"},
+        {"name":"Lars Overgaard","title":"Projektleder, åben land","sourceUrl":"https://struerenergi.dk/kontakt/"}
+      ],
+      "projects": [
+        {"name":"Spildevandskloakering Oddesund Nord","status":"Anlæg september 2026–oktober 2027","description":"Oddesund Nord spildevandskloakeres efter Struer Kommunes spildevandsplan. Forberedende undersøgelser er udført forud for anlægsarbejdet.","url":"https://struerenergi.dk/spildevand/spildevandskloakering-oddesund-nord/"},
+        {"name":"Renovering af pumpestation ved Østre Strand","status":"Renovering 2026","description":"Pumpestationen ved Østre Strand renoveres som del af Struer Energis løbende fornyelse af spildevandsanlæggene.","url":"https://struerenergi.dk/spildevand/"}
+      ],
+      "sources": ["https://struerenergi.dk/kontakt/","https://struerenergi.dk/spildevand/","https://struerenergi.dk/spildevand/spildevandskloakering-oddesund-nord/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "syddjurs-spildevand": {
+      "name": "AquaDjurs – Syddjurs",
+      "website": "https://www.aquadjurs.dk/",
+      "phone": "87 58 19 00",
+      "address": "Tyrrisvej 14, Følle, 8410 Rønde",
+      "summary": "Kortets Syddjurs Spildevand-label er historisk. Spildevandsaktiviteterne i Syddjurs indgår nu i AquaDjurs, som håndterer og renser spildevand på tværs af Norddjurs og Syddjurs. Profilen viser derfor den aktuelle operatør og dens projekter i Syddjurs.",
+      "contacts": [
+        {"name":"Bo Heidmann","title":"Projektleder, centralisering af spildevandsrensning","linkedin":"https://dk.linkedin.com/in/bo-heidmann-356b336b","sourceUrl":"https://aquadjurs.dk/projektomraader/centralisering-af-spildevandsrensning-paa-djursland"},
+        {"name":"Klaus Helweg","title":"Projektleder, udviklingsplan Fornæs Renseanlæg","linkedin":"https://dk.linkedin.com/in/klaus-helweg-7156a04","sourceUrl":"https://www.aquadjurs.dk/projektomraader/udviklingsplan-fornaes-renseanlaeg"}
+      ],
+      "projects": [
+        {"name":"Centralisering af spildevandsrensning på Djursland","status":"Projektering","description":"Ni renseanlæg skal på sigt nedlægges, mens rensningen samles på Fornæs Renseanlæg. Projektet kræver omkring 110 km nyt transportanlæg og omfatter også anlæg i Syddjurs.","url":"https://aquadjurs.dk/projektomraader/centralisering-af-spildevandsrensning-paa-djursland"},
+        {"name":"Rønde kloakseparering – etape 5","status":"I anlæg til udgangen af 2027","description":"Separatkloakeringen i Rønde fortsætter i flere etaper og skal reducere belastningen fra fælleskloakken og forbedre håndteringen af regn- og spildevand.","url":"https://aquadjurs.dk/projektomraader/roende-kloakseparering"}
+      ],
+      "sources": ["https://www.aquadjurs.dk/","https://www.aquadjurs.dk/spildevand/spildevandsplan","https://aquadjurs.dk/projektomraader/centralisering-af-spildevandsrensning-paa-djursland","https://aquadjurs.dk/projektomraader/roende-kloakseparering"],
+      "verifiedAt": "2026-09-04"
+    },
+    "thisted-vand": {
+      "name": "Thy Forsyning",
+      "website": "https://www.thyforsyning.dk/",
+      "phone": "88 91 77 77",
+      "email": "info@thyforsyning.dk",
+      "address": "Tigervej 8, 7700 Thisted",
+      "summary": "Thy Forsyning er den aktuelle koncern og driver Thy Spildevand A/S i Thisted Kommune. Forsyningen arbejder med en ny renseanlægsstruktur, et mere robust kloaksystem og øget indsats mod uvedkommende vand.",
+      "contacts": [
+        {"name":"Morten Severinsen","title":"Projektchef","sourceUrl":"https://www.thyforsyning.dk/om-os/koncernoversigt/"},
+        {"name":"Jens Grønkjær Grandjean-Thomsen","title":"Spildevandschef","sourceUrl":"https://www.thyforsyning.dk/om-os/koncernoversigt/"},
+        {"name":"Helle Korsgaard","title":"Administrerende direktør","sourceUrl":"https://www.thyforsyning.dk/om-os/koncernoversigt/"}
+      ],
+      "projects": [
+        {"name":"Fremtidens renseanlægsstruktur i Thy","status":"Planlægning / udvikling","description":"Thy Forsyning planlægger fremtidens rensestruktur med fokus på vandmiljø, nye rensekrav og mulighed for at reducere udledningen til Limfjorden ved helt eller delvist at flytte den til Vesterhavet.","url":"https://www.thyforsyning.dk/om-os/strategi/"},
+        {"name":"Robust kloaksystem og øget spildevandsportefølje","status":"Igangværende og kommende projekter","description":"Forsyningen øger indsatsen mod uvedkommende vand og har varslet flere anlægs- og kloakprojekter på spildevandsområdet i de kommende år.","url":"https://www.thyforsyning.dk/om-os/job/"}
+      ],
+      "sources": ["https://www.thyforsyning.dk/om-os/koncernoversigt/","https://www.thyforsyning.dk/om-os/strategi/","https://www.thyforsyning.dk/om-os/job/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "toender-forsyning": {
+      "name": "Tønder Forsyning",
+      "website": "https://www.tonfor.dk/",
+      "phone": "88 43 75 00",
+      "email": "info@tonfor.dk",
+      "address": "Håndværkervej 4, 6261 Bredebro",
+      "summary": "Tønder Forsyning håndterer bl.a. spildevand og kloak i Tønder Kommune. Den aktuelle anlægsportefølje omfatter flere kloakprojekter på Rømø, i Skærbæk og Møgeltønder.",
+      "contacts": [
+        {"name":"Frank Jordt Kappel","title":"Administrerende direktør, tiltrådt 1. september 2026","linkedin":"https://dk.linkedin.com/in/frank-jordt-kappel-36731412","sourceUrl":"https://www.tonfor.dk/om-os/organisation/chefgruppen/"},
+        {"name":"Jan Daniel Fandrey","title":"Teknisk chef","sourceUrl":"https://www.tonfor.dk/om-os/organisation/chefgruppen/"}
+      ],
+      "projects": [
+        {"name":"Kloakprojekt Rømø","status":"Aktuelt projekt","description":"Tønder Forsyning gennemfører kloakarbejder på Rømø som del af den aktuelle projekt- og graveportefølje.","url":"https://www.tonfor.dk/her-arbejder-vi/"},
+        {"name":"Kloakprojekt Skærbæk og Møgeltønder","status":"Aktuelle projekter","description":"Forsyningen har aktuelle kloakprojekter i Skærbæk og Møgeltønder med løbende information om planlagte og igangværende arbejder.","url":"https://www.tonfor.dk/her-arbejder-vi/"}
+      ],
+      "sources": ["https://www.tonfor.dk/om-os/organisation/chefgruppen/","https://www.tonfor.dk/her-arbejder-vi/","https://www.tonfor.dk/kontakt/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "vand-og-affald": {
+      "name": "Vand og Affald",
+      "website": "https://www.vandogaffald.dk/",
+      "phone": "63 21 55 15",
+      "email": "post@vandogaffald.dk",
+      "address": "Ryttermarken 21, 5700 Svendborg",
+      "summary": "Vand og Affald driver Svendborg Spildevand A/S med seks renseanlæg, et stort pumpestationsnet og afløbsinfrastruktur i Svendborg Kommune. Egsmade er det største centralrenseanlæg.",
+      "contacts": [
+        {"name":"Gry Tully Robsahm","title":"Anlægschef","sourceUrl":"https://www.vandogaffald.dk/nyheder/artikler/er-dit-hus-klar-til-mere-regn/"}
+      ],
+      "projects": [
+        {"name":"Udbygning og klimatilpasning af afløbssystemet","status":"Løbende investeringsprogram","description":"Vand og Affald udbygger afløbssystemet med større rør og bedre styring, separerer regn- og spildevand og etablerer bassiner for at reducere oversvømmelser og belastning ved ekstremregn.","url":"https://www.vandogaffald.dk/nyheder/artikler/er-dit-hus-klar-til-mere-regn/"},
+        {"name":"Hovedpumpestationen på Svendborg Havn","status":"Idriftsat / formidling og videre integration 2026","description":"Den nye hovedpumpestation er integreret i udviklingen af Svendborg Havn og Den Blå Kant. Anlægget er forberedt til mulig fremtidig udnyttelse af varme fra spildevandet.","url":"https://www.vandogaffald.dk/spildevand/hovedpumpestation/"}
+      ],
+      "sources": ["https://www.vandogaffald.dk/spildevand/vores-renseanlaeg-og-pumpestationer/","https://www.vandogaffald.dk/nyheder/artikler/er-dit-hus-klar-til-mere-regn/","https://www.vandogaffald.dk/spildevand/hovedpumpestation/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "vejen-forsyning": {
+      "name": "Vejen Forsyning",
+      "website": "https://vejenforsyning.dk/",
+      "phone": "76 32 66 00",
+      "email": "post@vejenforsyning.dk",
+      "address": "Gormsvej 7, 6600 Vejen",
+      "summary": "Vejen Forsyning håndterer vand og spildevand i Vejen Kommune og har en bred aktuel portefølje af kloakrenovering, separatkloakering, bassiner, overløbsreduktion og optimering af renseanlæg.",
+      "contacts": [
+        {"name":"Pernille Andersen Dall","title":"Teamkoordinator, Projekt","sourceUrl":"https://vejenforsyning.dk/omos/organisation-og-bestyrelse"},
+        {"name":"Daniel Hvam","title":"Projektleder","sourceUrl":"https://vejenforsyning.dk/omos/organisation-og-bestyrelse"},
+        {"name":"Jeppe Lønne-Madsen","title":"Driftsansvarlig, spildevand","sourceUrl":"https://vejenforsyning.dk/omos/organisation-og-bestyrelse"}
+      ],
+      "projects": [
+        {"name":"Kloakseparering i Ladelund – erhverv","status":"Projektering 2026, forventet anlæg 2027–2028","description":"Efter bassinprojektet i 2025 projekteres separatkloakering i 2026. Regn- og spildevand adskilles for at reducere overløb, belastning af renseanlæg og oversvømmelsesrisiko.","url":"https://vejenforsyning.dk/kundecenter/her-graver-vi/spildevand-kloakseparering-ladelund-erhverv"},
+        {"name":"Brørup Renseanlæg – kapacitet og bassinoptimering","status":"Aktuelle projekter","description":"Forsyningens aktuelle portefølje omfatter både fjernelse af uvedkommende vand, kapacitetsforbedringer og bassinoptimering på Brørup Renseanlæg.","url":"https://vejenforsyning.dk/kundecenter/her-graver-vi"}
+      ],
+      "sources": ["https://vejenforsyning.dk/omos/organisation-og-bestyrelse","https://vejenforsyning.dk/kundecenter/her-graver-vi/spildevand-kloakseparering-ladelund-erhverv","https://vejenforsyning.dk/kundecenter/her-graver-vi"],
+      "verifiedAt": "2026-09-04"
+    },
+    "vesthimmerlands-vand": {
+      "name": "Vesthimmerlands Forsyning",
+      "website": "https://vesthimmerlandsforsyning.dk/",
+      "phone": "98 68 32 00",
+      "email": "info@vhforsyning.dk",
+      "address": "Stengårdsvej 33, 9670 Løgstør",
+      "summary": "Vesthimmerlands Forsyning driver vand- og spildevandsaktiviteterne i Vesthimmerlands Kommune. Den aktuelle portefølje omfatter store separatkloakeringsprojekter i Løgstør og Ranum samt samarbejdet om Fællesrensning Himmerland.",
+      "contacts": [
+        {"name":"Morten Sandersen","title":"Chef for Plan & Projekt","sourceUrl":"https://vesthimmerlandsforsyning.dk/om-os/medarbejdere"},
+        {"name":"Henrik Lyhne Hargaard","title":"Driftsleder, Vand & Spildevand","sourceUrl":"https://vesthimmerlandsforsyning.dk/om-os/medarbejdere"}
+      ],
+      "projects": [
+        {"name":"Ranum separatkloakering – etape 10–13","status":"I anlæg 2026–2027","description":"Etape 12 og 13 forventes afsluttet inden udgangen af 2026, mens etape 10 og 11 fortsætter og forventes afsluttet i 2027.","url":"https://vesthimmerlandsforsyning.dk/ranum-separatkloakering-etape-10-13"},
+        {"name":"Løgstør separatkloakering – etape 6 og 7","status":"I anlæg","description":"Separatkloakeringen i Løgstør fortsætter for at nedbringe fælleskloakering og overløb til recipienterne.","url":"https://vesthimmerlandsforsyning.dk/spildevand/her-arbejder-vi"}
+      ],
+      "sources": ["https://vesthimmerlandsforsyning.dk/om-os/medarbejdere","https://vesthimmerlandsforsyning.dk/spildevand/her-arbejder-vi","https://vesthimmerlandsforsyning.dk/ranum-separatkloakering-etape-10-13"],
+      "verifiedAt": "2026-09-04"
+    },
+    "aeroe-forsyning": {
+      "name": "Ærø Forsyning",
+      "website": "https://www.aeroeforsyning.dk/",
+      "phone": "63 52 63 63",
+      "email": "kunde@aeroeforsyning.dk",
+      "address": "Industrivej 6, 5960 Marstal",
+      "summary": "Ærø Forsyning varetager spildevandsforsyningen på hele Ærø. Den gældende spildevandsplan 2023–2027 sætter rammerne for drift, renovering og udvikling af kloak- og renseanlægsstrukturen.",
+      "contacts": [
+        {"name":"Lars Kock Christensen","title":"Kontaktperson, spildevand","sourceUrl":"https://aeroeforsyning.dk/om-os/spildevand"},
+        {"name":"Per Holmegaard Jørgensen","title":"Kontaktperson, spildevand","sourceUrl":"https://aeroeforsyning.dk/om-os/spildevand"}
+      ],
+      "projects": [
+        {"name":"Implementering af Spildevandsplan 2023–2027","status":"Løbende planperiode","description":"Forsyning og kommune arbejder efter den gældende spildevandsplan med sanering, drift og optimering af kloakker og renseanlæg på Ærø.","url":"https://www.aeroekommune.dk/borger/byggeri-bolig-og-miljoe/miljoe/spildevand/spildevandsplan"}
+      ],
+      "sources": ["https://www.aeroeforsyning.dk/","https://aeroeforsyning.dk/om-os/spildevand","https://www.aeroekommune.dk/borger/byggeri-bolig-og-miljoe/miljoe/spildevand/spildevandsplan"],
+      "verifiedAt": "2026-09-04"
+    }
+  }
+}
