@@ -58,6 +58,9 @@ jobs:
               assert 54 <= float(a['lat']) <= 58.5 and 7.5 <= float(a['lon']) <= 16,(a['label'],a['lat'],a['lon'])
               assert a.get('precision')=='område',a
               assert str(a.get('sourceUrl','')).startswith('https://'),a
+          rewater=[a for a in anchors if 'aarhus rewater' in [x.lower() for x in a.get('matches',[])]]
+          assert len(rewater)==1 and rewater[0]['label']=='Tangkrogen',rewater
+          assert 'aarhusvand.dk' in rewater[0]['sourceUrl'],rewater
           print(f"STATIC_QA_OK brands=73 sourceCatchments=53179 renderedFeatures={rendered} projectAnchors={len(anchors)}")
           PY
       - name: Install Playwright
@@ -160,7 +163,10 @@ jobs:
               assert await page.locator('.project-row').count() >= 1
               await page.locator('.project-row').first.click()
               detail=await page.locator('#detailContent').inner_text()
-              assert 'Forsyningsprojekt' in detail and 'Aarhus ReWater' in detail,detail
+              assert 'forsyningsprojekt' in detail.lower() and 'Aarhus ReWater' in detail,detail
+              assert 'Tangkrogen' in detail,detail
+              assert 'Avanceret rensning' in detail,detail
+              assert 'Områdeplacering' in detail,detail
               await page.locator('#closeDetail').click()
               await page.locator('#search').fill('')
 
