@@ -11,7 +11,7 @@ function regionForBrand(b){
 function brandRowElement(b){
   const row=document.createElement("label"); row.className="brand-row";
   const cb=document.createElement("input"); cb.type="checkbox"; cb.checked=state.selected.has(b.id);
-  cb.addEventListener("change",()=>{cb.checked?state.selected.add(b.id):state.selected.delete(b.id);renderPolygons();renderPlants();renderList();});
+  cb.addEventListener("change",()=>{cb.checked?state.selected.add(b.id):state.selected.delete(b.id);renderPolygons();renderPlants();if(typeof renderProjects==="function")renderProjects();renderList();});
   const sw=document.createElement("span");sw.className="brand-swatch";sw.style.background=b.color||"#6d98a3";
   const cp=document.createElement("span");cp.className="row-copy";
   const geography=b.sourceFeatureCount===0?"Anlægsejer · uden eget oplandslag":(b.municipalities?.length===1?b.municipalities[0]:`${b.municipalities?.length||0} kommuner`);
@@ -21,7 +21,7 @@ function brandRowElement(b){
 }
 function setRegionSelection(regionId,selected){
   for(const b of state.brands){ if(regionForBrand(b)!==regionId) continue; selected?state.selected.add(b.id):state.selected.delete(b.id); }
-  renderPolygons();renderPlants();renderList();
+  renderPolygons();renderPlants();if(typeof renderProjects==="function")renderProjects();renderList();
 }
 function renderBrandGroups(rows,q){
   const byRegion=new Map(LANDDELE.map(r=>[r.id,[]]));
@@ -51,7 +51,7 @@ function renderList(){
     els.listHeading.textContent="Forsyninger efter landsdel"; els.visibleCount.textContent=`${rows.length} vist`;
     renderBrandGroups(rows,q);
     if(!rows.length)els.itemList.innerHTML='<div class="empty">Ingen forsyninger matcher søgningen.</div>';
-  } else {
+  } else if(state.tab==="plants") {
     const rows=filteredPlants();els.listHeading.textContent="Renseanlæg";els.visibleCount.textContent=`${rows.length} vist`;
     for(const p of rows){
       const b=p.responsibleBrandId?state.brandById.get(p.responsibleBrandId):null;
@@ -60,6 +60,11 @@ function renderList(){
       row.onclick=()=>{openPlant(p);if(p.coordinates)state.map.setView([p.coordinates[1],p.coordinates[0]],13)};els.itemList.append(row);
     }
     if(!rows.length)els.itemList.innerHTML='<div class="empty">Ingen renseanlæg matcher de valgte filtre.</div>';
+  } else {
+    const rows=filteredProjects();const mapped=rows.filter(p=>projectLocation(p)).length;
+    els.listHeading.textContent="Forsyningsprojekter";els.visibleCount.textContent=`${rows.length} vist · ${mapped} på kort`;
+    for(const pr of rows)els.itemList.append(projectRowElement(pr));
+    if(!rows.length)els.itemList.innerHTML='<div class="empty">Ingen projekter matcher de valgte filtre.</div>';
   }
 }
 function openPlant(p){
@@ -79,10 +84,21 @@ function zoomBrand(id){
   closeDetail();
 }
 
+function syncTabUI(){
+  els.brandControls.hidden=state.tab!=="brands";
+  els.plantControls.hidden=state.tab!=="plants";
+  if(els.projectControls)els.projectControls.hidden=state.tab!=="projects";
+  els.search.placeholder=state.tab==="plants"?"Søg renseanlæg, ejer eller myndighed…":state.tab==="projects"?"Søg projekt, forsyning, sted eller status…":"Søg forsyning eller kommune…";
+  renderList();renderPlants();if(typeof renderProjects==="function")renderProjects();
+}
 function bindUI(){
-  document.querySelectorAll(".tab").forEach(btn=>btn.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===btn));state.tab=btn.dataset.tab;els.brandControls.hidden=state.tab!=="brands";els.plantControls.hidden=state.tab!=="plants";els.search.placeholder=state.tab==="plants"?"Søg renseanlæg, ejer eller myndighed…":"Søg forsyning eller kommune…";els.search.value="";renderList()});
-  els.search.oninput=()=>{renderList();if(state.tab==="plants")renderPlants()}; [els.showPlants,els.includeClosed,els.selectedOnly].forEach(x=>x.onchange=()=>{renderPlants();renderList()});
-  els.selectAll.onclick=()=>{state.selected=new Set(state.brands.map(b=>b.id));renderPolygons();renderPlants();renderList()};els.selectNone.onclick=()=>{state.selected.clear();renderPolygons();renderPlants();renderList()};els.zoomSelected.onclick=()=>{const g=L.featureGroup();state.polygonLayer?.eachLayer(l=>g.addLayer(l));if(g.getLayers().length)state.map.fitBounds(g.getBounds(),{padding:[20,20]})};els.closeDetail.onclick=closeDetail;
+  document.querySelectorAll(".tab").forEach(btn=>btn.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===btn));state.tab=btn.dataset.tab;els.search.value="";syncTabUI();});
+  els.search.oninput=()=>{renderList();if(state.tab==="plants")renderPlants();if(state.tab==="projects"&&typeof renderProjects==="function")renderProjects()};
+  [els.showPlants,els.includeClosed,els.selectedOnly].forEach(x=>x.onchange=()=>{renderPlants();renderList()});
+  [els.showProjects,els.projectsSelectedOnly,els.projectCategory].filter(Boolean).forEach(x=>x.onchange=()=>{renderProjects();renderList()});
+  els.selectAll.onclick=()=>{state.selected=new Set(state.brands.map(b=>b.id));renderPolygons();renderPlants();if(typeof renderProjects==="function")renderProjects();renderList()};
+  els.selectNone.onclick=()=>{state.selected.clear();renderPolygons();renderPlants();if(typeof renderProjects==="function")renderProjects();renderList()};
+  els.zoomSelected.onclick=()=>{const g=L.featureGroup();state.polygonLayer?.eachLayer(l=>g.addLayer(l));if(g.getLayers().length)state.map.fitBounds(g.getBounds(),{padding:[20,20]})};els.closeDetail.onclick=closeDetail;
 }
 async function init(){
   try{
