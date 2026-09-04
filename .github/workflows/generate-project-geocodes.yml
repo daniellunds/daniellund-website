@@ -1,0 +1,68 @@
+name: Generate project geocodes
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/generate-project-geocodes.yml'
+permissions:
+  contents: read
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Playwright
+        run: |
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+      - name: Start local server
+        run: |
+          python3 -m http.server 4175 --bind 127.0.0.1 > /tmp/map-server.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4175/labs/spildevandskort/ >/dev/null && break; sleep 1; done
+      - name: Generate static project geocodes
+        env:
+          MAP_URL: http://127.0.0.1:4175/labs/spildevandskort/
+        run: |
+          cat > /tmp/generate.py <<'PY'
+          import asyncio, json, os
+          from datetime import date
+          from pathlib import Path
+          from playwright.async_api import async_playwright
+
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch()
+                  page=await browser.new_page(viewport={"width":1280,"height":800})
+                  await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
+                  await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>100",timeout=30000)
+                  await page.wait_for_function("state.projectGeorefQa.attempted>0",timeout=30000)
+                  await page.wait_for_function("state.projectGeorefQa.resolved>0",timeout=120000)
+                  rows=await page.evaluate("""() => state.projects
+                    .filter(pr=>state.projectResolvedLocations.has(pr.id))
+                    .map(pr=>({
+                      id:pr.id,
+                      brandId:pr.brandId,
+                      name:pr.name,
+                      location:state.projectResolvedLocations.get(pr.id)
+                    }))
+                    .sort((a,b)=>a.id.localeCompare(b.id))""")
+                  payload={
+                    "schemaVersion":1,
+                    "generatedAt":date.today().isoformat(),
+                    "source":"Danmarks Adressers Web API (DAWA) / Danmarks officielle stednavne",
+                    "note":"Only municipality-validated place-name matches are included. PULS and curated project anchors retain higher priority at runtime.",
+                    "count":len(rows),
+                    "projects":rows
+                  }
+                  Path('generated-project-geocodes.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding='utf-8')
+                  print('GENERATED_PROJECT_GEOCODES',len(rows))
+                  await browser.close()
+          asyncio.run(main())
+          PY
+          python /tmp/generate.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: generated-project-geocodes
+          path: generated-project-geocodes.json
+          if-no-files-found: error
