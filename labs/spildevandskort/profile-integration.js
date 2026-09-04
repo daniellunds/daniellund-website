@@ -3,6 +3,15 @@
 (async function integrateUtilityProfiles(){
   await loadProfiles();
 
+  // Keep stable brand IDs for geometry/plant joins, while correcting obsolete display names.
+  const brandNameOverrides=new Map([
+    ["thisted-vand","Thy Forsyning"]
+  ]);
+  for(const [id,name] of brandNameOverrides){
+    const brand=state.brandById.get(id);
+    if(brand) brand.name=name;
+  }
+
   const coreBrandRowElement = brandRowElement;
   brandRowElement = function(b){
     const row=document.createElement("div"); row.className="brand-row"; row.dataset.brandId=b.id;
