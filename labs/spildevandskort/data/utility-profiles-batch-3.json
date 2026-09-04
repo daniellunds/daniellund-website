@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-04",
+  "profiles": {
+    "klar-forsyning": {
+      "name": "KLAR Forsyning",
+      "website": "https://klarforsyning.dk/",
+      "phone": "56 65 22 22",
+      "email": "klar@klarforsyning.dk",
+      "address": "Vasebækvej 40, 4600 Køge",
+      "summary": "KLAR Forsyning leverer drifts- og administrationsydelser til forsyningsselskaber i Greve, Køge, Solrød og Stevns og arbejder bl.a. med spildevandsrensning, kloak og klimatilpasning.",
+      "contacts": [
+        {"name":"Line von Benzon Hollesen","title":"Administrerende direktør","sourceUrl":"https://www.proff.dk/firma/klar-forsyning-as/k%C3%B8ge/hovedkontortjenester/0LPZKMI10NZ"}
+      ],
+      "projects": [
+        {"name":"CERO-MP – 4. rensetrin på Køge-Egnens Renseanlæg","status":"I anlæg / udviklingsprojekt 2025–2027","description":"KLAR leder fyrtårnsprojektet CERO-MP, hvor et nyt 4. rensetrin skal reducere medicinrester, industrikemikalier og andre mikroforureninger i spildevandet.","url":"https://vbn.aau.dk/da/projects/cero-mp-cost-efficient-reduction-of-micropollutants/"},
+        {"name":"Modernisering ved Mosede Renseanlæg","status":"I anlæg","description":"KLAR arbejder med modernisering og nye løsninger for regn- og spildevand ved Mosede, herunder forbedret regnvandshåndtering og rensekapacitet.","url":"https://klarforsyning.dk/"}
+      ],
+      "sources": ["https://klarforsyning.dk/","https://www.proff.dk/firma/klar-forsyning-as/k%C3%B8ge/hovedkontortjenester/0LPZKMI10NZ","https://vbn.aau.dk/da/projects/cero-mp-cost-efficient-reduction-of-micropollutants/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "frederiksberg-forsyning": {
+      "name": "Frederiksberg Forsyning",
+      "website": "https://www.frb-forsyning.dk/",
+      "phone": "38 18 50 00",
+      "email": "ff@frb-forsyning.dk",
+      "address": "Stæhr Johansens Vej 38, 2000 Frederiksberg",
+      "summary": "Frederiksberg Forsyning håndterer vand og spildevand på Frederiksberg og er medbygherre på flere af hovedstadsområdets store skybruds- og klimatilpasningsprojekter.",
+      "contacts": [
+        {"name":"Henrik Bay","title":"Administrerende direktør","sourceUrl":"https://www.frb-forsyning.dk/om-os/frederiksberg-forsyning-koncernen/ledelse-organisation"},
+        {"name":"Henrik Sønderup","title":"Chef for Vand og Spildevand","sourceUrl":"https://www.frb-forsyning.dk/om-os/frederiksberg-forsyning-koncernen/ledelse-organisation"}
+      ],
+      "projects": [
+        {"name":"Valby Skybrudstunnel","status":"I anlæg","description":"Skybrudstunnelen etableres sammen med HOFOR og skal reducere oversvømmelser og aflaste kloaksystemet. Første tunnelstrækning blev markeret i juni 2026; projektet forventes færdigt i 2028.","url":"https://www.frb-forsyning.dk/om-os/nyheder"},
+        {"name":"Svanemøllen Skybrudstunnel","status":"Udbud / forberedelse til anlæg","description":"Frederiksberg Forsyning er medbygherre på den ca. 10 km lange tunnel. Tunneleringen blev sendt i EU-udbud i 2026, og anlægget skal efter planen være i drift i 2033.","url":"https://www.frb-forsyning.dk/om-os/her-arbejder-vi/svanemoellen-skybrudstunnel"}
+      ],
+      "sources": ["https://www.frb-forsyning.dk/om-os/frederiksberg-forsyning-koncernen/ledelse-organisation","https://www.frb-forsyning.dk/om-os/her-arbejder-vi/svanemoellen-skybrudstunnel","https://www.frb-forsyning.dk/om-os/nyheder"],
+      "verifiedAt": "2026-09-04"
+    },
+    "fredericia-spildevand": {
+      "name": "Fredericia Spildevand og Energi",
+      "website": "https://www.frse.dk/",
+      "phone": "76 20 71 00",
+      "email": "info@frse.dk",
+      "address": "Røde Banke 16, 7000 Fredericia",
+      "summary": "Fredericia Spildevand og Energi håndterer spildevand, kloak, klimatilpasning og energiudnyttelse fra spildevand i Fredericia Kommune.",
+      "contacts": [
+        {"name":"Trine Hadrup","title":"Administrerende direktør","sourceUrl":"https://www.frse.dk/kontakt/find-en-medarbejder/"},
+        {"name":"Annemarie Gotfredsen","title":"Driftschef Renseanlæg","linkedin":"https://dk.linkedin.com/in/annemarie-gotfredsen-21ab4793","sourceUrl":"https://www.frse.dk/kontakt/find-en-medarbejder/"}
+      ],
+      "projects": [
+        {"name":"Bygværk ved Strandstien","status":"Nyligt idriftsat / landskab færdiggøres","description":"Bygværket er opgraderet med større bassin- og pumpekapacitet. Overløbsfrekvensen er reduceret markant, og FRSE arbejder videre med beplantning og biodiversitet omkring anlægget.","url":"https://www.frse.dk/nyheder/nyt-bygvaerk-ved-strandstien-reducerer-overloeb-til-lillebaelt-markant/"},
+        {"name":"Nørrebrogade- og Vesterbrogadekvarteret","status":"I anlæg / etapevis klimatilpasning","description":"Området ombygges med semi-separering og øvrige kloaktiltag for at håndtere regnvand bedre og reducere belastningen af fællessystemet.","url":"https://www.frse.dk/nyhedsarkiv/"}
+      ],
+      "sources": ["https://www.frse.dk/kontakt/","https://www.frse.dk/kontakt/find-en-medarbejder/","https://www.frse.dk/nyhedsarkiv/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "hilleroed-forsyning": {
+      "name": "Hillerød Forsyning",
+      "website": "https://hfors.dk/",
+      "phone": "48 23 10 00",
+      "email": "info@hfors.dk",
+      "address": "Solrødgårds Alle 6, 3400 Hillerød",
+      "summary": "Hillerød Forsyning håndterer bl.a. spildevand i Hillerød Kommune og driver HCR Syd, et avanceret overdækket renseanlæg, som udbygges for at følge byens og industriens vækst.",
+      "contacts": [
+        {"name":"Peter Underlin","title":"Administrerende direktør","linkedin":"https://dk.linkedin.com/in/peter-underlin-2026877a","sourceUrl":"https://dk.linkedin.com/in/peter-underlin-2026877a"},
+        {"name":"Britta Sevelsted Lauritzen","title":"Leder, Plan & Projekt: Spildevand – produktion / projektansvarlig HCR Syd","sourceUrl":"https://www.nordeafunds.com/da/artikler/plastik-er-vejen-til-renere-vand"}
+      ],
+      "projects": [
+        {"name":"Udvidelse af HCR Syd","status":"I anlæg","description":"HCR Syd udvides med bl.a. IFAS-biofilmteknologi for at øge kapaciteten til voksende befolkning, industri og hospital uden at udvide anlæggets fysiske bassinvolumen tilsvarende.","url":"https://www.nordeafunds.com/da/artikler/plastik-er-vejen-til-renere-vand"},
+        {"name":"4. rensetrin på HCR Syd","status":"I etablering","description":"Hillerød Forsyning etablerer avanceret rensning for bl.a. medicinrester som del af fremtidssikringen af HCR Syd.","url":"https://hfors.dk/"}
+      ],
+      "sources": ["https://hfors.dk/","https://dk.linkedin.com/company/hillerod-forsyning","https://www.nordeafunds.com/da/artikler/plastik-er-vejen-til-renere-vand"],
+      "verifiedAt": "2026-09-04"
+    },
+    "forsyning-helsingoer": {
+      "name": "Forsyning Helsingør",
+      "website": "https://www.fh.dk/",
+      "phone": "48 40 50 50",
+      "email": "fh@fh.dk",
+      "address": "Energivej 25, 3000 Helsingør",
+      "summary": "Forsyning Helsingør driver kommunens kloakker og tre større renseanlæg og gennemfører klimatilpasning samt indsatser til reduktion af overløb til Øresund og Kattegat.",
+      "contacts": [
+        {"name":"Jacob Brønnum","title":"Direktør","linkedin":"https://dk.linkedin.com/in/jacob-br%C3%B8nnum-7025238","sourceUrl":"https://www.fh.dk/"}
+      ],
+      "projects": [
+        {"name":"Plan for reduktion af overløb","status":"Planlægning / implementering 2025–2026","description":"Forsyning Helsingør og kommunen kortlægger og prioriterer overløb fra fællessystemet for at målrette kommende investeringer og konkrete reduktionsprojekter.","url":"https://www.helsingor.dk/Media/639013895437979105/Spildevandsplan%202025-2037%20-%20Helsing%C3%B8r%20Kommune-a.pdf"},
+        {"name":"Klimasikring og overløbsreduktion i Ålsgårde","status":"I planperioden 2025–2027","description":"Projektet ved Skåninge Dam kombinerer klimatilpasning af fællessystemet med reduktion af fosforbelastning fra overløb.","url":"https://www.helsingor.dk/Media/639013895437979105/Spildevandsplan%202025-2037%20-%20Helsing%C3%B8r%20Kommune-a.pdf"}
+      ],
+      "sources": ["https://www.fh.dk/","https://www.helsingor.dk/borger/natur-og-miljoe/vand/spildevand-og-regnvand/","https://www.helsingor.dk/Media/639013895437979105/Spildevandsplan%202025-2037%20-%20Helsing%C3%B8r%20Kommune-a.pdf"],
+      "verifiedAt": "2026-09-04"
+    },
+    "skanderborg-forsyning": {
+      "name": "Skanderborg Forsyning",
+      "website": "https://www.skanderborgforsyning.dk/",
+      "phone": "87 93 93 93",
+      "email": "service@skanderborgforsyning.dk",
+      "address": "Døjsøvej 1, 8660 Skanderborg",
+      "summary": "Skanderborg Forsyning håndterer spildevand, kloak og klimatilpasning i Skanderborg Kommune med en stor portefølje af separatkloakerings- og regnvandsprojekter.",
+      "contacts": [
+        {"name":"Jesper Brix Kjelgaard","title":"Afdelingsleder, Spildevand – Plan & Projekt","linkedin":"https://dk.linkedin.com/in/jesper-brix-kjelgaard-23783842","sourceUrl":"https://www.skanderborgforsyning.dk/om-os/organisation-og-bestyrelse"},
+        {"name":"Kurt Poulsen","title":"Afdelingsleder, Spildevand – Drift","linkedin":"https://dk.linkedin.com/in/kurt-poulsen-24885a13","sourceUrl":"https://www.skanderborgforsyning.dk/om-os/organisation-og-bestyrelse"}
+      ],
+      "projects": [
+        {"name":"Klimatilpasning langs Skanderupbækken","status":"I anlæg / etapevis 2025–2028","description":"Klimatilpasning, bassiner, natur- og opholdsarealer kombineres med efterfølgende separatkloakering. Flere anlægsetaper gennemføres i 2026–2028.","url":"https://www.skanderborgforsyning.dk/projekter/anlaegsprojekter/klimatilpasning-langs-skanderupbaekken"},
+        {"name":"Kloakplan Ellemosen","status":"Aktuelt projekt","description":"Kloakplan Ellemosen indgår i forsyningens aktuelle portefølje af kloak- og klimaprojekter og blev senest opdateret i juni 2026.","url":"https://www.skanderborgforsyning.dk/om-os/projekter"}
+      ],
+      "sources": ["https://www.skanderborgforsyning.dk/om-os/organisation-og-bestyrelse","https://www.skanderborgforsyning.dk/om-os/projekter","https://www.skanderborgforsyning.dk/projekter/anlaegsprojekter/klimatilpasning-langs-skanderupbaekken"],
+      "verifiedAt": "2026-09-04"
+    },
+    "herning-vand": {
+      "name": "Herning Vand",
+      "website": "https://herningvand.dk/",
+      "phone": "99 99 22 99",
+      "email": "info@herningvand.dk",
+      "address": "Ålykkevej 5, 7400 Herning",
+      "summary": "Herning Vand håndterer vand og spildevand i Herning Kommune og har en omfattende portefølje af kloakseparering, renovering og driftsprojekter.",
+      "contacts": [
+        {"name":"Jakob Juhl","title":"Administrerende direktør","linkedin":"https://dk.linkedin.com/in/jakobjuhl","sourceUrl":"https://herningvand.dk/afdelinger/ledelsen/"},
+        {"name":"Morten Fiskbæk Larsen","title":"Afdelingschef, Produktion","sourceUrl":"https://herningvand.dk/afdelinger/produktion/"}
+      ],
+      "projects": [
+        {"name":"Kloakprojekt Gjellerup","status":"I anlæg 2025–2027","description":"Kloaksystemet i Gjellerup renoveres og separatkloakeres for at reducere oversvømmelser, indsivning og belastning af renseanlæggene.","url":"https://herningvand.dk/gjellerup/"},
+        {"name":"Kloakprojekt Vildbjerg","status":"I anlæg frem til oktober 2026","description":"Søndergade, Østergade og Bredgade renoveres og opdeles i regn- og spildevand som del af fremtidssikringen af kloaksystemet.","url":"https://herningvand.dk/vildbjerg/"}
+      ],
+      "sources": ["https://herningvand.dk/afdelinger/ledelsen/","https://herningvand.dk/driftsinfo-og-projekter/","https://herningvand.dk/gjellerup/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "vestforsyning": {
+      "name": "Vestforsyning",
+      "website": "https://www.vestforsyning.dk/",
+      "phone": "96 12 73 00",
+      "email": "info@vestforsyning.dk",
+      "address": "Nupark 51, 7500 Holstebro",
+      "summary": "Vestforsyning er Holstebros multiforsyning og håndterer bl.a. vand, kloak og spildevandsrensning med fokus på separatkloakering, energiudnyttelse og ressourceeffektiv drift.",
+      "contacts": [
+        {"name":"Jesper Madsen","title":"Vandchef – vand/spildevand","linkedin":"https://dk.linkedin.com/in/jesper-madsen-8b8a0713a","sourceUrl":"https://www.vestforsyning.dk/om-vestforsyning/organisation/"},
+        {"name":"Lars Bundgård Klemensen","title":"Udviklingschef","sourceUrl":"https://www.vestforsyning.dk/om-vestforsyning/organisation/"}
+      ],
+      "projects": [
+        {"name":"Separering af Tvis Øst","status":"I anlæg","description":"Vestforsyning separatkloakerer Tvis Øst. Anlægsarbejdet blev igangsat i maj 2026 og gennemføres etapevis.","url":"https://www.vestforsyning.dk/SepareringTvis"},
+        {"name":"Spildevandsvarmepumpe ved Holstebro Central Renseanlæg","status":"I anlæg","description":"En 5–6 MW varmepumpe skal udnytte varme fra renset spildevand og levere fjernvarme svarende til omkring 1.000 husstande.","url":"https://www.vestforsyning.dk/nyheder/nyheder/her-rejser-sig-snart-en-kaempe-varmepumpe/"}
+      ],
+      "sources": ["https://www.vestforsyning.dk/om-vestforsyning/organisation/","https://www.vestforsyning.dk/SepareringTvis","https://www.vestforsyning.dk/nyheder/nyheder/her-rejser-sig-snart-en-kaempe-varmepumpe/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "energi-viborg-vand": {
+      "name": "Energi Viborg Vand",
+      "website": "https://www.energiviborg.dk/",
+      "phone": "89 29 28 00",
+      "email": "spildevand@energiviborg.dk",
+      "address": "Industrivej 15, 8800 Viborg",
+      "summary": "Energi Viborg Vand håndterer drikkevand og spildevand i Viborg Kommune og er i gang med en markant modernisering af både renseanlæg og afløbssystem.",
+      "contacts": [
+        {"name":"Flemming Hermann","title":"Chef for Energi Viborg Vand","linkedin":"https://dk.linkedin.com/in/flemminghermann","sourceUrl":"https://www.energiviborg.dk/organisation-og-chefgruppe/"},
+        {"name":"Henrik Juel Poulsen","title":"Projektleder, Energi Viborg Vand","sourceUrl":"https://www.energiviborg.dk/projekter/sct-joergens-vej/"}
+      ],
+      "projects": [
+        {"name":"Modernisering af Viborg Centralrenseanlæg","status":"I anlæg / totalentreprise","description":"Centralrenseanlægget i Bruunshåb moderniseres og udvides i en totalentreprise på ca. 425 mio. kr. Det nye anlæg får integreret 4. rensetrin til fjernelse af medicinrester.","url":"https://www.energiviborg.dk/nyheder/ncc-og-envidan-skal-modernisere-og-udvide-viborg-centralrenseanlaeg-for-energi-viborg-vand-a-s/"},
+        {"name":"Sct. Jørgens Vej og Søndersøparken","status":"I anlæg 2026","description":"Ny stor regnvandsledning, kloakfornyelse og underjordisk renseløsning etableres for at rense regnvand fra Viborg midtby før udledning til Søndersø.","url":"https://www.energiviborg.dk/projekter/sct-joergens-vej/"}
+      ],
+      "sources": ["https://www.energiviborg.dk/organisation-og-chefgruppe/","https://www.energiviborg.dk/projekter/sct-joergens-vej/","https://www.energiviborg.dk/nyheder/ncc-og-envidan-skal-modernisere-og-udvide-viborg-centralrenseanlaeg-for-energi-viborg-vand-a-s/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "provas": {
+      "name": "Provas",
+      "website": "https://www.provas.dk/",
+      "phone": "73 520 520",
+      "email": "info@provas.dk",
+      "address": "Fjordagervej 32, 6100 Haderslev",
+      "summary": "Provas er Haderslev Kommunes forsyningsselskab og håndterer bl.a. vand, spildevand og regnvand med stor vægt på klimatilpasning og forbedring af Haderslev Fjord.",
+      "contacts": [
+        {"name":"Esge Homilius","title":"Administrerende direktør","sourceUrl":"https://www.provas.dk/om-os/organisation/"},
+        {"name":"Martine Martin","title":"Plan- og Projektchef","sourceUrl":"https://www.provas.dk/om-os/organisation/"},
+        {"name":"Malene Staub","title":"Driftschef","sourceUrl":"https://www.provas.dk/om-os/organisation/"}
+      ],
+      "projects": [
+        {"name":"Jomfrusti – klimatilpasning og byrum","status":"Realiseret med fortsat faglig opfølgning","description":"Jomfrusti-projektet kombinerer regnvandshåndtering, klimatilpasning og byudvikling og er nomineret til Byplanprisen 2026.","url":"https://www.provas.dk/nyheder/byplanpris/"},
+        {"name":"Humlegårdsbæk-oplandet","status":"Fortsat indsats / separering","description":"Provas arbejder med en samlet indsats i Humlegårdsbæk-oplandet, hvor separatkloakering og bedre håndtering af regn- og spildevand skal reducere overløb og belastningen af Haderslev Fjord.","url":"https://www.provas.dk/nyheder/hygiejnisering/"}
+      ],
+      "sources": ["https://www.provas.dk/om-os/organisation/","https://www.provas.dk/nyheder/byplanpris/","https://www.provas.dk/nyheder/hygiejnisering/"],
+      "verifiedAt": "2026-09-04"
+    }
+  }
+}
