@@ -25,7 +25,7 @@
   state.basemapControl=L.control.layers(
     {"Kort":street,"Luftfoto":imagery},
     {},
-    {position:"topright",collapsed:window.matchMedia("(max-width:760px)").matches}
+    {position:"topright",collapsed:false}
   ).addTo(state.map);
 
   state.map.on("baselayerchange",event=>{
