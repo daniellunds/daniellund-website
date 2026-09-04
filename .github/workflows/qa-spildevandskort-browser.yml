@@ -1,0 +1,82 @@
+name: QA spildevandskort browser
+
+on:
+  push:
+    branches: [spildevandskort-data]
+    paths:
+      - .github/workflows/qa-spildevandskort-browser.yml
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Playwright
+        run: |
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+      - name: Run desktop and mobile QA
+        env:
+          MAP_URL: 'https://dansk-spildevandskort-nzp2dst5m-daniel-lund-sorensens-projects.vercel.app/?_vercel_share=duOIOdAiACBTgfHm1sKrOWJ3tCu2v3BT'
+        run: |
+          cat > /tmp/qa.py <<'PY'
+          import asyncio, os, re
+          from playwright.async_api import async_playwright
+
+          async def check(browser, mobile=False):
+              context = await browser.new_context(viewport={"width":390,"height":844} if mobile else {"width":1440,"height":1000}, is_mobile=mobile)
+              page = await context.new_page()
+              errors=[]
+              page.on("pageerror", lambda e: errors.append(str(e)))
+              response = await page.goto(os.environ['MAP_URL'], wait_until='domcontentloaded', timeout=60000)
+              assert response and response.ok, f'HTTP {response.status if response else "none"}'
+              await page.wait_for_selector('.leaflet-container', timeout=30000)
+              await page.wait_for_function("document.querySelector('#brandCount')?.textContent.trim() !== '—'", timeout=30000)
+              await page.wait_for_function("document.querySelector('#activePlantCount')?.textContent.trim() !== '—'", timeout=60000)
+              await page.wait_for_timeout(3000)
+              brands=int((await page.locator('#brandCount').inner_text()).strip())
+              plants=int(re.sub(r'\D','',await page.locator('#activePlantCount').inner_text()) or 0)
+              regions=await page.locator('.region-group').count()
+              interactive=await page.locator('#map .leaflet-interactive').count()
+              status_visible=await page.locator('#statusBanner').is_visible()
+              assert brands >= 73, f'brandCount={brands}'
+              assert plants > 0, f'activePlantCount={plants}'
+              assert regions == 8, f'regionGroups={regions}'
+              assert interactive > 100, f'leafletInteractive={interactive}'
+              assert not status_visible, 'statusBanner shows data-loading error'
+              names=await page.locator('.region-name').all_inner_texts()
+              expected=['Hovedstaden','Nordsjælland','Sjælland','Bornholm','Fyn','Syd- og Sønderjylland','Midtjylland','Nordjylland']
+              assert names == expected, names
+              # Expand Hovedstaden and verify rows render.
+              await page.locator('.region-group[data-region="hovedstaden"] .region-toggle').click()
+              assert await page.locator('.region-group[data-region="hovedstaden"] .brand-row').count() > 0
+              # Search by landsdel should expand filtered matches.
+              await page.locator('#search').fill('Fyn')
+              await page.wait_for_timeout(300)
+              assert await page.locator('.region-group[data-region="fyn"] .brand-row').count() > 0
+              await page.locator('#search').fill('')
+              # Plant tab and rows.
+              await page.locator('.tab[data-tab="plants"]').click()
+              await page.wait_for_timeout(300)
+              plant_rows=await page.locator('.plant-row').count()
+              assert plant_rows > 0, f'plantRows={plant_rows}'
+              # Back to utilities and exercise zoom button without JS error.
+              await page.locator('.tab[data-tab="brands"]').click()
+              before=len(errors)
+              await page.locator('#zoomSelected').click()
+              await page.wait_for_timeout(300)
+              assert len(errors)==before, f'zoomSelected error: {errors[before:]}'
+              assert not errors, f'page errors: {errors}'
+              label='mobile' if mobile else 'desktop'
+              await page.screenshot(path=f'/tmp/{label}.png', full_page=True)
+              print(f'{label.upper()}_QA_OK brands={brands} plants={plants} regions={regions} leafletInteractive={interactive} plantRows={plant_rows}')
+              await context.close()
+
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch()
+                  await check(browser, False)
+                  await check(browser, True)
+                  await browser.close()
+          asyncio.run(main())
+          PY
+          python /tmp/qa.py
