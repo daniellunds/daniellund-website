@@ -6,6 +6,7 @@ on:
       - 'labs/spildevandskort/projects.css'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/project-geocoder.js'
+      - 'labs/spildevandskort/data/project-geocodes.json'
       - '.github/workflows/qa-project-georef-basemap.yml'
   pull_request:
     paths:
@@ -13,6 +14,7 @@ on:
       - 'labs/spildevandskort/projects.css'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/project-geocoder.js'
+      - 'labs/spildevandskort/data/project-geocodes.json'
       - '.github/workflows/qa-project-georef-basemap.yml'
 permissions:
   contents: read
@@ -28,14 +30,23 @@ jobs:
           set -euo pipefail
           test -s labs/spildevandskort/basemaps.js
           test -s labs/spildevandskort/project-geocoder.js
+          test -s labs/spildevandskort/data/project-geocodes.json
           node --check labs/spildevandskort/basemaps.js
           node --check labs/spildevandskort/project-geocoder.js
           ! grep -q 'Tilbage til laboratoriet' labs/spildevandskort/index.html
           ! grep -q 'MARKEDS- OG KUNDEOVERBLIK' labs/spildevandskort/index.html
           grep -q 'Vis georefererede projekter' labs/spildevandskort/index.html
-          grep -q 'basemaps.js' labs/spildevandskort/index.html
-          grep -q 'project-geocoder.js' labs/spildevandskort/index.html
           grep -q 'no utility-area fallback' labs/spildevandskort/project-geocoder.js
+          python - <<'PY'
+          import json
+          p=json.load(open('labs/spildevandskort/data/project-geocodes.json',encoding='utf-8'))
+          assert p['count']==len(p['projects'])==26,p.get('count')
+          assert len({x['id'] for x in p['projects']})==26
+          assert all(54<=float(x['lat'])<=58.5 and 7.5<=float(x['lon'])<=16 for x in p['projects'])
+          forbidden={'aalborg-forsyning:0','faxe-forsyning:0','nyborg-forsyning:0','halsnaes-forsyning:1','thisted-vand:0'}
+          assert not forbidden.intersection(x['id'] for x in p['projects'])
+          print('STATIC_PROJECT_GEOCODES_OK',p['count'])
+          PY
       - name: Install Playwright
         run: |
           python -m pip install --quiet playwright
@@ -56,31 +67,21 @@ jobs:
               viewport={"width":390,"height":844} if mobile else {"width":1440,"height":900}
               context=await browser.new_context(viewport=viewport,is_mobile=mobile)
               page=await context.new_page()
-              errors=[]
+              errors=[]; dawa=[]
               page.on('pageerror',lambda e:errors.append(str(e)))
+              page.on('request',lambda r:dawa.append(r.url) if 'api.dataforsyningen.dk' in r.url else None)
               r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
               assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
-              await page.wait_for_function("typeof window.spildevandskortBasemapState==='function' && typeof window.projectPlaceCandidates==='function'",timeout=30000)
+              await page.wait_for_function("typeof window.spildevandskortBasemapState==='function' && typeof window.projectGeorefState==='function'",timeout=30000)
+              await page.wait_for_function("projectGeorefState().mode==='static' && projectGeorefState().staticLoaded>=20",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>100",timeout=30000)
 
               body=await page.locator('body').inner_text()
               assert 'Tilbage til laboratoriet' not in body
               assert 'MARKEDS- OG KUNDEOVERBLIK' not in body
               assert 'Dansk spildevandskort' in body
-
-              candidates=await page.evaluate("""() => ({
-                nordenskov:projectPlaceCandidates({name:'Nordenskov – etape 6',description:''}),
-                bramming:projectPlaceCandidates({name:'Engparken, Bramming – etape 2',description:''}),
-                korsoer:projectPlaceCandidates({name:'Hesselbjergvej/Mælkevej, Korsør',description:''}),
-                vorup:projectPlaceCandidates({name:'Separatkloakering i Vorup',description:''}),
-                aalsgaarde:projectPlaceCandidates({name:'Klimasikring og overløbsreduktion i Ålsgårde',description:''})
-              })""")
-              assert any('Nordenskov' in x for x in candidates['nordenskov']),candidates
-              assert any('Bramming' in x for x in candidates['bramming']),candidates
-              assert any('Korsør' in x for x in candidates['korsoer']),candidates
-              assert any('Vorup' in x for x in candidates['vorup']),candidates
-              assert any('Ålsgårde' in x for x in candidates['aalsgaarde']),candidates
+              assert not dawa,dawa[:3]
 
               control=page.locator('.leaflet-control-layers')
               assert await control.count()==1
@@ -97,34 +98,25 @@ jobs:
                   if 'Luftfoto' in t:
                       await labels.nth(i).click(force=True);break
               await page.wait_for_function("spildevandskortBasemapState().active==='Luftfoto' && spildevandskortBasemapState().imageryOnMap",timeout=10000)
-              await page.wait_for_timeout(1500)
+              await page.wait_for_timeout(1200)
               imagery_tiles=await page.locator('img.leaflet-tile[src*="World_Imagery"]').count()
-              assert imagery_tiles>0,f'imagery tiles={imagery_tiles}'
+              assert imagery_tiles>0,imagery_tiles
 
               await page.locator('.tab[data-tab="projects"]').click()
               await page.wait_for_timeout(500)
-              project_rows=await page.locator('.project-row').count()
-              assert project_rows>=100,project_rows
-              await page.wait_for_function("projectGeorefState().attempted>0 || projectGeorefState().cacheHits>0",timeout=30000)
-              await page.wait_for_timeout(5000)
+              qa=await page.evaluate("projectGeorefState()")
+              assert qa['staticLoaded']==26,qa
+              assert qa['errors']==0,qa
+              assert qa['strategies']['dawa']>=20,qa
+              assert qa['strategies']['withheld']>0,qa
+              assert 'fallback' not in qa['strategies'] or qa['strategies']['fallback']==0,qa
 
               svan=await page.evaluate("""() => {
                 const p=state.projects.find(x=>x.brandId==='novafos' && x.name.includes('Svanemøllen Skybrudstunnel'));
                 return p ? {linear:projectNeedsLinearGeometry(p),location:projectLocation(p),id:p.id} : null;
               }""")
-              assert svan is not None,svan
-              assert svan['linear'] is True,svan
-              assert svan['location'] is None,svan
-              svan_row=page.locator(f'.project-row[data-project-id="{svan["id"]}"]')
-              assert await svan_row.count()==1
-              assert await svan_row.evaluate("el=>el.classList.contains('unmapped')")
-
-              qa=await page.evaluate("projectGeorefState()")
-              assert qa['strategies']['withheld']>0,qa
-              assert qa['withheldLinear']>0,qa
-              assert qa['errors']<10,qa
-              mapped=qa['strategies']['puls']+qa['strategies']['anchor']+qa['strategies']['dawa']
-              assert mapped>20,qa
+              assert svan and svan['linear'] is True and svan['location'] is None,svan
+              assert await page.locator(f'.project-row[data-project-id="{svan["id"]}"]').evaluate("el=>el.classList.contains('unmapped')")
 
               if mobile:
                   overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
@@ -132,7 +124,7 @@ jobs:
               assert not errors,errors
               label='mobile' if mobile else 'desktop'
               await page.screenshot(path=f'qa-georef-{label}.png',full_page=True)
-              print(label.upper(),candidates,qa,'mapped',mapped,'imageryTiles',imagery_tiles,'svanemoellen',svan)
+              print(label.upper(),'geo',qa,'imageryTiles',imagery_tiles,'dawaRequests',len(dawa))
               await context.close()
 
           async def main():
