@@ -3,12 +3,14 @@ on:
   push:
     paths:
       - 'labs/spildevandskort/index.html'
+      - 'labs/spildevandskort/projects.css'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/project-geocoder.js'
       - '.github/workflows/qa-project-georef-basemap.yml'
   pull_request:
     paths:
       - 'labs/spildevandskort/index.html'
+      - 'labs/spildevandskort/projects.css'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/project-geocoder.js'
       - '.github/workflows/qa-project-georef-basemap.yml'
@@ -30,8 +32,10 @@ jobs:
           node --check labs/spildevandskort/project-geocoder.js
           ! grep -q 'Tilbage til laboratoriet' labs/spildevandskort/index.html
           ! grep -q 'MARKEDS- OG KUNDEOVERBLIK' labs/spildevandskort/index.html
+          grep -q 'Vis georefererede projekter' labs/spildevandskort/index.html
           grep -q 'basemaps.js' labs/spildevandskort/index.html
           grep -q 'project-geocoder.js' labs/spildevandskort/index.html
+          grep -q 'no utility-area fallback' labs/spildevandskort/project-geocoder.js
       - name: Install Playwright
         run: |
           python -m pip install --quiet playwright
@@ -57,7 +61,7 @@ jobs:
               r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
               assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
-              await page.wait_for_function("typeof state!=='undefined' && !!state.basemaps?.imagery && typeof window.projectPlaceCandidates==='function'",timeout=30000)
+              await page.wait_for_function("typeof window.spildevandskortBasemapState==='function' && typeof window.projectPlaceCandidates==='function'",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>100",timeout=30000)
 
               body=await page.locator('body').inner_text()
@@ -92,26 +96,43 @@ jobs:
               for i,t in enumerate(texts):
                   if 'Luftfoto' in t:
                       await labels.nth(i).click(force=True);break
-              await page.wait_for_function("state.activeBasemap==='Luftfoto'",timeout=10000)
+              await page.wait_for_function("spildevandskortBasemapState().active==='Luftfoto' && spildevandskortBasemapState().imageryOnMap",timeout=10000)
               await page.wait_for_timeout(1500)
               imagery_tiles=await page.locator('img.leaflet-tile[src*="World_Imagery"]').count()
               assert imagery_tiles>0,f'imagery tiles={imagery_tiles}'
 
               await page.locator('.tab[data-tab="projects"]').click()
               await page.wait_for_timeout(500)
-              assert await page.locator('.project-row').count()>=100
-              await page.wait_for_function("state.projectGeorefQa.attempted>0",timeout=30000)
+              project_rows=await page.locator('.project-row').count()
+              assert project_rows>=100,project_rows
+              await page.wait_for_function("projectGeorefState().attempted>0 || projectGeorefState().cacheHits>0",timeout=30000)
               await page.wait_for_timeout(5000)
-              resolved_now=await page.evaluate("state.projectResolvedLocations.size")
-              qa=await page.evaluate("state.projectGeorefQa")
-              assert resolved_now>=3,(resolved_now,qa)
+
+              svan=await page.evaluate("""() => {
+                const p=state.projects.find(x=>x.brandId==='novafos' && x.name.includes('Svanemøllen Skybrudstunnel'));
+                return p ? {linear:projectNeedsLinearGeometry(p),location:projectLocation(p),id:p.id} : null;
+              }""")
+              assert svan is not None,svan
+              assert svan['linear'] is True,svan
+              assert svan['location'] is None,svan
+              svan_row=page.locator(f'.project-row[data-project-id="{svan["id"]}"]')
+              assert await svan_row.count()==1
+              assert await svan_row.evaluate("el=>el.classList.contains('unmapped')")
+
+              qa=await page.evaluate("projectGeorefState()")
+              assert qa['strategies']['withheld']>0,qa
+              assert qa['withheldLinear']>0,qa
+              assert qa['errors']<10,qa
+              mapped=qa['strategies']['puls']+qa['strategies']['anchor']+qa['strategies']['dawa']
+              assert mapped>20,qa
+
               if mobile:
                   overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
                   assert overflow<=3,overflow
               assert not errors,errors
               label='mobile' if mobile else 'desktop'
               await page.screenshot(path=f'qa-georef-{label}.png',full_page=True)
-              print(label.upper(),candidates,qa,'resolvedNow',resolved_now,'imageryTiles',imagery_tiles)
+              print(label.upper(),candidates,qa,'mapped',mapped,'imageryTiles',imagery_tiles,'svanemoellen',svan)
               await context.close()
 
           async def main():
