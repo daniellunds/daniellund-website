@@ -1,12 +1,13 @@
 // Conservative geographic enrichment for project markers using Danmarks officielle stednavne (DAWA).
-// Priority remains: PULS plant -> curated static anchor -> DAWA place -> utility-area fallback.
+// Map priority: live PULS plant -> curated static anchor -> municipality-validated DAWA place.
+// Projects without defensible geography stay in the project list but are not shown as map markers.
 (function installProjectGeocoder(){
   if(typeof projectLocation!=="function" || typeof initProjects!=="function")return;
 
   const DAWA_BASE="https://api.dataforsyningen.dk";
-  const CACHE_KEY="spildevandskort-project-geocodes-v2";
+  const CACHE_KEY="spildevandskort-project-geocodes-v3";
   state.projectResolvedLocations=new Map();
-  state.projectGeorefQa={resolved:0,attempted:0,cacheHits:0,errors:0};
+  state.projectGeorefQa={resolved:0,attempted:0,cacheHits:0,errors:0,withheldLinear:0};
 
   const genericWords=new Set([
     "projekt","projekter","kloak","kloakering","kloakprojekt","kloaksanering","sanering","separatkloakering","separering",
@@ -15,6 +16,11 @@
     "bassin","regnvandsbassin","skybrudstunnel","tunnel","klimaprojekt","klimatilpasning","pumpestation","ledning","udløbsledning",
     "spildevandssystemet","spildevand","strukturplan","plan","område","området","by","program","indsats","overløb","overløbsreduktion"
   ].map(normalize));
+
+  function projectNeedsLinearGeometry(pr){
+    const t=normalize(`${pr.name||""} ${pr.description||""}`);
+    return /skybrudstunnel|\btunnel\b|transportledning|transportrør|transportroer|udløbsledning|udloebsledning|pumpeledning|\bkm nyt transportanlæg\b|\bkm nyt transportanlaeg\b/.test(t);
+  }
 
   function cleanCandidate(value=""){
     let s=String(value)
@@ -27,7 +33,6 @@
     if(!s)return null;
     const words=s.split(" ").filter(Boolean).filter(w=>!genericWords.has(normalize(w)) && !/^\d+$/.test(w));
     if(!words.length)return null;
-    // Remove dangling conjunctions/articles after generic terms have been stripped.
     while(words.length && /^(og|af|for|til|fra|den|det|de)$/i.test(words[0]))words.shift();
     while(words.length && /^(og|af|for|til|fra|den|det|de)$/i.test(words.at(-1)))words.pop();
     if(!words.length || words.length>4)return null;
@@ -40,17 +45,14 @@
     const title=String(pr.name||"");
     const text=`${title}. ${pr.description||""}`;
 
-    // Comma- and dash-separated title segments are usually the strongest signals.
     title.split(/[–—,]/).forEach(x=>seeds.push(x));
     title.split("/").forEach(x=>seeds.push(x));
     title.split(/\s+og\s+/i).forEach(x=>seeds.push(x));
 
-    // Explicit Danish location prepositions in title/description.
     for(const m of text.matchAll(/\b(?:i|ved|på|langs|mod|fra|til)\s+([A-ZÆØÅ][A-Za-zÆØÅæøå .'-]{2,42})/g)){
       seeds.push(m[1].split(/[,.();–—]/)[0]);
     }
 
-    // Strip common project nouns from the complete title, e.g. "Svanemøllen Skybrudstunnel" -> "Svanemøllen".
     let stripped=title;
     for(const word of genericWords){
       const escaped=word.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
@@ -126,7 +128,6 @@
       const place=await hydrateDawaResult(item);
       const center=placeCenter(item,place);if(!center)continue;
       const score=scorePlace(candidate,brandMunicipalities,item,place);
-      // Municipality agreement is mandatory; fuzzy text alone is never enough.
       if(!municipalMatch(brandMunicipalities,item,place))continue;
       if(score>bestScore){
         bestScore=score;
@@ -137,6 +138,7 @@
   }
 
   async function resolveProjectViaDawa(pr){
+    if(projectNeedsLinearGeometry(pr))return null;
     const candidates=projectPlaceCandidates(pr);
     for(const candidate of candidates){
       try{
@@ -161,8 +163,11 @@
     const cache=loadCache();
     const pending=[];
     for(const pr of state.projects){
-      // Do not spend requests on projects already tied safely to PULS or a curated anchor.
       if(projectPlantAnchor(pr)||projectNamedAreaAnchor(pr))continue;
+      if(projectNeedsLinearGeometry(pr)){
+        state.projectGeorefQa.withheldLinear++;
+        continue;
+      }
       const cached=cache[pr.id];
       if(cached?.name===pr.name && cached?.location?.strategy==="dawa"){
         state.projectResolvedLocations.set(pr.id,cached.location);
@@ -194,19 +199,33 @@
   }
 
   function projectGeorefStrategyCounts(){
-    const counts={puls:0,anchor:0,dawa:0,fallback:0,missing:0};
+    const counts={puls:0,anchor:0,dawa:0,withheld:0};
     for(const pr of state.projects){
       const loc=projectLocation(pr);
-      if(!loc){counts.missing++;continue;}
+      if(!loc){counts.withheld++;continue;}
       counts[loc.strategy]=(counts[loc.strategy]||0)+1;
     }
     return counts;
   }
+
   window.projectPlaceCandidates=projectPlaceCandidates;
   window.projectGeorefStrategyCounts=projectGeorefStrategyCounts;
+  window.projectNeedsLinearGeometry=projectNeedsLinearGeometry;
+  window.projectGeorefState=()=>({...state.projectGeorefQa,strategies:projectGeorefStrategyCounts()});
 
+  // Critical safety rule: no utility-area fallback on the project map.
   projectLocation=function(pr){
-    return projectPlantAnchor(pr)||projectNamedAreaAnchor(pr)||state.projectResolvedLocations.get(pr.id)||projectBrandFallback(pr);
+    return projectPlantAnchor(pr)||projectNamedAreaAnchor(pr)||state.projectResolvedLocations.get(pr.id)||null;
+  };
+
+  // The core detail renderer predates withheld locations; correct its note for projects with no verified geography.
+  const coreOpenProject=openProject;
+  openProject=function(pr){
+    coreOpenProject(pr);
+    const loc=projectLocation(pr);
+    if(loc)return;
+    const note=els.detailContent.querySelector(".source-note");
+    if(note)note.innerHTML="<strong>Kortplacering:</strong> Projektet er ikke vist med en markør, fordi der endnu ikke er verificeret en tilstrækkeligt præcis geografi. Det forhindrer misvisende placeringer i forsyningsområdet.";
   };
 
   const coreInitProjects=initProjects;
