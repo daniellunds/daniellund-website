@@ -1,0 +1,125 @@
+name: QA project georef and basemap
+on:
+  push:
+    paths:
+      - 'labs/spildevandskort/index.html'
+      - 'labs/spildevandskort/basemaps.js'
+      - 'labs/spildevandskort/project-geocoder.js'
+      - '.github/workflows/qa-project-georef-basemap.yml'
+  pull_request:
+    paths:
+      - 'labs/spildevandskort/index.html'
+      - 'labs/spildevandskort/basemaps.js'
+      - 'labs/spildevandskort/project-geocoder.js'
+      - '.github/workflows/qa-project-georef-basemap.yml'
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s labs/spildevandskort/basemaps.js
+          test -s labs/spildevandskort/project-geocoder.js
+          node --check labs/spildevandskort/basemaps.js
+          node --check labs/spildevandskort/project-geocoder.js
+          ! grep -q 'Tilbage til laboratoriet' labs/spildevandskort/index.html
+          ! grep -q 'MARKEDS- OG KUNDEOVERBLIK' labs/spildevandskort/index.html
+          grep -q 'basemaps.js' labs/spildevandskort/index.html
+          grep -q 'project-geocoder.js' labs/spildevandskort/index.html
+      - name: Install Playwright
+        run: |
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+      - name: Start local server
+        run: |
+          python3 -m http.server 4174 --bind 127.0.0.1 > /tmp/map-server.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4174/labs/spildevandskort/ >/dev/null && break; sleep 1; done
+      - name: Browser QA
+        env:
+          MAP_URL: http://127.0.0.1:4174/labs/spildevandskort/
+        run: |
+          cat > /tmp/qa.py <<'PY'
+          import asyncio, os
+          from playwright.async_api import async_playwright
+
+          async def check(browser,mobile=False):
+              viewport={"width":390,"height":844} if mobile else {"width":1440,"height":900}
+              context=await browser.new_context(viewport=viewport,is_mobile=mobile)
+              page=await context.new_page()
+              errors=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
+              r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
+              assert r and r.ok
+              await page.wait_for_selector('.leaflet-container',timeout=30000)
+              await page.wait_for_function("window.state?.basemaps?.imagery && window.projectPlaceCandidates",timeout=30000)
+              await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>100",timeout=30000)
+
+              body=await page.locator('body').inner_text()
+              assert 'Tilbage til laboratoriet' not in body
+              assert 'MARKEDS- OG KUNDEOVERBLIK' not in body
+              assert 'Dansk spildevandskort' in body
+
+              candidates=await page.evaluate("""() => ({
+                nordenskov:projectPlaceCandidates({name:'Nordenskov – etape 6',description:''}),
+                bramming:projectPlaceCandidates({name:'Engparken, Bramming – etape 2',description:''}),
+                korsoer:projectPlaceCandidates({name:'Hesselbjergvej/Mælkevej, Korsør',description:''}),
+                vorup:projectPlaceCandidates({name:'Separatkloakering i Vorup',description:''}),
+                aalsgaarde:projectPlaceCandidates({name:'Klimasikring og overløbsreduktion i Ålsgårde',description:''})
+              })""")
+              assert any('Nordenskov' in x for x in candidates['nordenskov']),candidates
+              assert any('Bramming' in x for x in candidates['bramming']),candidates
+              assert any('Korsør' in x for x in candidates['korsoer']),candidates
+              assert any('Vorup' in x for x in candidates['vorup']),candidates
+              assert any('Ålsgårde' in x for x in candidates['aalsgaarde']),candidates
+
+              control=page.locator('.leaflet-control-layers')
+              assert await control.count()==1
+              if mobile:
+                  await page.locator('.leaflet-control-layers-toggle').click()
+              labels=page.locator('.leaflet-control-layers-base label')
+              texts=await labels.all_inner_texts()
+              assert any('Kort' in x for x in texts),texts
+              assert any('Luftfoto' in x for x in texts),texts
+              for i,t in enumerate(texts):
+                  if 'Luftfoto' in t:
+                      await labels.nth(i).click();break
+              await page.wait_for_function("state.activeBasemap==='Luftfoto'",timeout=10000)
+              await page.wait_for_timeout(1500)
+              imagery_tiles=await page.locator('img.leaflet-tile[src*="World_Imagery"]').count()
+              assert imagery_tiles>0,f'imagery tiles={imagery_tiles}'
+
+              await page.locator('.tab[data-tab="projects"]').click()
+              await page.wait_for_timeout(500)
+              assert await page.locator('.project-row').count()>=100
+              qa=await page.evaluate("state.projectGeorefQa")
+              assert qa is not None
+              if mobile:
+                  overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
+                  assert overflow<=3,overflow
+              assert not errors,errors
+              label='mobile' if mobile else 'desktop'
+              await page.screenshot(path=f'qa-georef-{label}.png',full_page=True)
+              print(label.upper(),candidates,qa,'imageryTiles',imagery_tiles)
+              await context.close()
+
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch()
+                  await check(browser,False)
+                  await check(browser,True)
+                  await browser.close()
+          asyncio.run(main())
+          PY
+          python /tmp/qa.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: project-georef-basemap-qa
+          path: qa-georef-*.png
+          if-no-files-found: ignore
