@@ -1,0 +1,126 @@
+name: QA utility profiles
+on:
+  push:
+    branches: [utility-profiles]
+    paths:
+      - 'labs/spildevandskort/**'
+      - '.github/workflows/qa-utility-profiles.yml'
+  pull_request:
+    paths:
+      - 'labs/spildevandskort/**'
+      - '.github/workflows/qa-utility-profiles.yml'
+permissions:
+  contents: read
+jobs:
+  profile-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static profile QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s labs/spildevandskort/profiles.js
+          test -s labs/spildevandskort/profile-integration.js
+          test -s labs/spildevandskort/profiles.css
+          test -s labs/spildevandskort/data/utility-profiles.json
+          node --check labs/spildevandskort/profiles.js
+          node --check labs/spildevandskort/profile-integration.js
+          python - <<'PY'
+          import json,re
+          from pathlib import Path
+          root=Path('labs/spildevandskort/data')
+          brands=json.loads((root/'brands.json').read_text(encoding='utf-8'))['brands']
+          valid={b['id'] for b in brands}|{'biofos','moelleaavaerket','laesoe-forsyning'}
+          data=json.loads((root/'utility-profiles.json').read_text(encoding='utf-8'))
+          profiles=data['profiles']
+          assert len(profiles)>=6, len(profiles)
+          assert set(profiles)<=valid, set(profiles)-valid
+          url_re=re.compile(r'^https://[^\s]+$')
+          for bid,p in profiles.items():
+              assert p.get('name')
+              assert url_re.match(p.get('website','')), (bid,'website',p.get('website'))
+              assert p.get('phone'), (bid,'phone')
+              links=[]
+              for c in p.get('contacts',[]):
+                  assert c.get('name') and c.get('title'), (bid,c)
+                  for key in ('linkedin','sourceUrl'):
+                      if c.get(key):
+                          assert url_re.match(c[key]), (bid,key,c[key])
+                  if c.get('linkedin'): links.append(c['linkedin'])
+              assert len(links)==len(set(links)), (bid,'duplicate LinkedIn')
+              for pr in p.get('projects',[]):
+                  assert pr.get('name') and pr.get('status') and pr.get('description'), (bid,pr)
+                  assert url_re.match(pr.get('url','')), (bid,'project',pr.get('url'))
+          print('PROFILE_STATIC_QA_OK',len(profiles),'profiles')
+          PY
+      - name: Install Playwright
+        run: |
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+      - name: Start local server
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/profile-server.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4173/labs/spildevandskort/ >/dev/null && break; sleep 1; done
+      - name: Test profiles desktop and mobile
+        env:
+          MAP_URL: http://127.0.0.1:4173/labs/spildevandskort/
+        run: |
+          cat > /tmp/profile_qa.py <<'PY'
+          import asyncio,os
+          from playwright.async_api import async_playwright
+          async def check(browser,mobile=False):
+              viewport={'width':390,'height':844} if mobile else {'width':1440,'height':900}
+              ctx=await browser.new_context(viewport=viewport,is_mobile=mobile)
+              page=await ctx.new_page(); errors=[]
+              page.on('pageerror',lambda e: errors.append(str(e)))
+              r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
+              assert r and r.ok,r.status if r else None
+              await page.wait_for_function("state.profiles && state.profiles.size>=6",timeout=30000)
+              await page.wait_for_function("Number(document.querySelector('#activePlantCount')?.textContent)>700",timeout=60000)
+              await page.locator('#search').fill('HOFOR')
+              await page.wait_for_selector('.brand-row[data-brand-id="hofor"] .profile-mini',timeout=10000)
+              await page.locator('.brand-row[data-brand-id="hofor"] .profile-mini').click()
+              await page.wait_for_selector('#detailPanel.open')
+              assert 'HOFOR' in await page.locator('#detailContent').inner_text()
+              assert '33 95 33 95' in await page.locator('#detailContent').inner_text()
+              assert await page.locator('[data-profile-tab="overview"]').count()==1
+              assert await page.locator('[data-profile-tab="people"]').count()==1
+              assert await page.locator('[data-profile-tab="projects"]').count()==1
+              await page.locator('[data-profile-tab="people"]').click()
+              people=await page.locator('#profileTabBody').inner_text()
+              assert 'Rebekka Nymark' in people,people
+              href=await page.locator('#profileTabBody a[href*="linkedin.com"]').first.get_attribute('href')
+              assert href and href.startswith('https://'),href
+              await page.locator('[data-profile-tab="projects"]').click()
+              projects=await page.locator('#profileTabBody').inner_text()
+              assert 'Svanemøllen Skybrudstunnel' in projects,projects
+              await page.locator('#closeDetail').click()
+              await page.locator('#search').fill('Fanø Vand')
+              await page.wait_for_selector('.brand-row[data-brand-id="fanoe-vand"] .profile-mini')
+              await page.locator('.brand-row[data-brand-id="fanoe-vand"] .profile-mini').click()
+              empty=await page.locator('#profileTabBody').inner_text()
+              assert 'Profilen er endnu ikke researchet' in empty,empty
+              assert not errors,errors
+              if mobile:
+                  overflow=await page.evaluate('document.documentElement.scrollWidth-document.documentElement.clientWidth')
+                  assert overflow<=3,f'overflow={overflow}'
+              label='mobile' if mobile else 'desktop'
+              await page.screenshot(path=f'profile-{label}.png',full_page=True)
+              print(f'PROFILE_{label.upper()}_QA_OK')
+              await ctx.close()
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch()
+                  await check(browser,False);await check(browser,True)
+                  await browser.close()
+          asyncio.run(main())
+          PY
+          python /tmp/profile_qa.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: utility-profile-qa-screenshots
+          path: profile-*.png
+          if-no-files-found: ignore
