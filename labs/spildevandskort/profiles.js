@@ -10,9 +10,20 @@ function profileLink(url,label,cls="profile-link"){
 }
 async function loadProfiles(){
   try{
-    const raw=await fetchJSON(`${PROD}/utility-profiles.json`);
-    state.profiles=new Map(Object.entries(raw.profiles||{}));
-    state.profileMeta={schemaVersion:raw.schemaVersion,generatedAt:raw.generatedAt};
+    let files=["utility-profiles.json"];
+    try{
+      const index=await fetchJSON(`${PROD}/utility-profiles-index.json`);
+      if(Array.isArray(index.files)&&index.files.length) files=index.files;
+    }catch(indexErr){
+      console.info("Bruger enkelt profilfil; profilindeks ikke fundet",indexErr);
+    }
+    const batches=await Promise.all(files.map(file=>fetchJSON(`${PROD}/${file}`)));
+    const merged={};
+    for(const batch of batches){
+      for(const [id,profile] of Object.entries(batch.profiles||{})) merged[id]=profile;
+    }
+    state.profiles=new Map(Object.entries(merged));
+    state.profileMeta={schemaVersion:Math.max(...batches.map(x=>Number(x.schemaVersion)||1)),generatedAt:batches.map(x=>x.generatedAt).filter(Boolean).sort().at(-1)||null,files};
   }catch(err){
     console.warn("Forsyningsprofiler kunne ikke indlæses",err);
     state.profiles=new Map();
