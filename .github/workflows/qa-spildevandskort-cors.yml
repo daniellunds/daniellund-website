@@ -1,0 +1,49 @@
+name: QA spildevandskort CORS
+
+on:
+  push:
+    branches: [spildevandskort-data]
+    paths:
+      - .github/workflows/qa-spildevandskort-cors.yml
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check archived brand data CORS
+        run: |
+          set -euo pipefail
+          URL='https://raw.githubusercontent.com/daniellunds/daniellund-website/spildevandskort-data/spildevandskort-data/brands.json'
+          curl --fail --silent --show-error --location --header 'Origin: https://example.com' --dump-header /tmp/raw.headers --output /tmp/brands.json "$URL"
+          cat /tmp/raw.headers
+          grep -i '^access-control-allow-origin:' /tmp/raw.headers
+          python - <<'PY'
+          import json
+          d=json.load(open('/tmp/brands.json'))
+          assert d['brandCount']==73
+          assert d['sourceFeatureCount']==53179
+          print('RAW_DATA_OK', d['brandCount'], d['sourceFeatureCount'])
+          PY
+      - name: Check archived polygon CORS and gzip
+        run: |
+          set -euo pipefail
+          URL='https://raw.githubusercontent.com/daniellunds/daniellund-website/spildevandskort-data/spildevandskort-data/spildevandsoplande-1.geojson.gz'
+          curl --fail --silent --show-error --location --header 'Origin: https://example.com' --dump-header /tmp/poly.headers --output /tmp/poly.gz "$URL"
+          cat /tmp/poly.headers
+          grep -i '^access-control-allow-origin:' /tmp/poly.headers
+          gzip -t /tmp/poly.gz
+          echo POLYGON_GZIP_OK
+      - name: Check PULS WFS CORS and response
+        run: |
+          set -euo pipefail
+          URL='https://pulsgeo.miljoeportal.dk/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=puls:Renseanlaeg&outputFormat=application/json&srsName=EPSG:4326&count=1'
+          curl --fail --silent --show-error --location --header 'Origin: https://example.com' --dump-header /tmp/puls.headers --output /tmp/puls.json "$URL"
+          cat /tmp/puls.headers
+          grep -i '^access-control-allow-origin:' /tmp/puls.headers
+          python - <<'PY'
+          import json
+          d=json.load(open('/tmp/puls.json'))
+          assert d.get('type')=='FeatureCollection'
+          assert len(d.get('features',[]))<=1
+          print('PULS_WFS_OK', d.get('numberMatched'), len(d.get('features',[])))
+          PY
