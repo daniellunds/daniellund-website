@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-04",
+  "profiles": {
+    "glostrup-forsyning": {
+      "name": "Glostrup Forsyning",
+      "website": "https://www.glostrupforsyning.dk/",
+      "phone": "43 20 80 20",
+      "email": "forsyning@glostrupforsyning.dk",
+      "address": "Ørnebjergvej 7, 2600 Glostrup",
+      "summary": "Glostrup Forsyning driver Glostrup Kommunes offentlige kloaksystem gennem Glostrup Spildevand A/S. Spildevandet ledes til BIOFOS Renseanlæg Avedøre, mens forsyningen arbejder med kloakrenovering, regnvand og klimatilpasning lokalt.",
+      "contacts": [
+        {"name":"Bo Nybro Nørbjerg","title":"Direktør","linkedin":"https://dk.linkedin.com/in/bo-nybro-n%C3%B8rbjerg-b2116b7","sourceUrl":"https://www.proff.dk/firma/glostrup-spildevand-as/glostrup/vand-og-kloak/0JO8CCI10LD"}
+      ],
+      "projects": [
+        {"name":"Klimatilpasning af det offentlige kloaksystem","status":"Igangværende program","description":"Forsyningen udbygger kloaksystemet til det vedtagne serviceniveau, så fremtidens øgede regnmængder kan håndteres bedre.","url":"https://www.glostrup.dk/borger/miljoe-energi-og-affald/regn-og-spildevand/regnvand-og-klimatilpasning"},
+        {"name":"Vejbede til regnvand","status":"Forundersøgelse 2026","description":"Glostrup Forsyning undersøger vejbede til opsamling og tilbageholdelse af regnvand på bl.a. Nyvej, Bjergbakkevej og Ejby Mosevej.","url":"https://dagsorden.glostrup.dk/meeting/agendaitem/print/122789/202421"}
+      ],
+      "sources": ["https://www.glostrup.dk/borger/miljoe-energi-og-affald/regn-og-spildevand/kloaksystemet","https://www.glostrup.dk/borger/miljoe-energi-og-affald/regn-og-spildevand/regnvand-og-klimatilpasning","https://www.proff.dk/firma/glostrup-spildevand-as/glostrup/vand-og-kloak/0JO8CCI10LD","https://www.glostrupforsyning.dk/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "taarnby-forsyning": {
+      "name": "Tårnby Forsyning",
+      "website": "https://www.taarnbyforsyning.dk/",
+      "phone": "32 46 20 30",
+      "email": "info@taarnbyforsyning.dk",
+      "address": "Gemmas Allé 39, 2770 Kastrup",
+      "summary": "Tårnby Forsyning varetager vand, spildevand, fjernvarme og køl i Tårnby Kommune. Spildevandsselskabet driver den offentlige spildevandsinfrastruktur og indgår i kommunens klimatilpasning og planlagte udbygning af kloaksystemet.",
+      "contacts": [
+        {"name":"Anja Whittard Dalberg","title":"Administrerende direktør","linkedin":"https://dk.linkedin.com/in/anjawhittarddalberg","sourceUrl":"https://dk.linkedin.com/company/t%C3%A5rnby-forsyning"}
+      ],
+      "projects": [
+        {"name":"Klimatilpasning af Gemmas Allé","status":"Anlæg fra 2026","description":"Tårnby Kommune og Tårnby Forsyning gennemfører klimatilpasning af Gemmas Allé med lokal håndtering og forsinkelse af regnvand.","url":"https://www.taarnby.dk/politik/byudvikling/klimatilpasning-af-gemmas-alle/"},
+        {"name":"Spildevandsplan 2022–2034","status":"Implementering 2022–2028","description":"Spildevandsplanen fastlægger planlagte ændringer og udbygninger af kloaksystemet i den første del af planperioden.","url":"https://www.taarnby.dk/politik/politikker-strategier-og-planer/klima-miljo-og-affald/planer/spildevandsplan/"}
+      ],
+      "sources": ["https://dk.linkedin.com/company/t%C3%A5rnby-forsyning","https://cvrdb.dk/virksomhed/dk/taarnbyforsyning-as/32667767","https://www.taarnby.dk/politik/byudvikling/klimatilpasning-af-gemmas-alle/","https://www.taarnby.dk/politik/politikker-strategier-og-planer/klima-miljo-og-affald/planer/spildevandsplan/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "ltf": {
+      "name": "Lyngby-Taarbæk Forsyning",
+      "website": "https://ltf.dk/",
+      "phone": "72 28 33 60",
+      "email": "forsyning@ltf.dk",
+      "address": "Firskovvej 38, 2800 Kgs. Lyngby",
+      "summary": "Lyngby-Taarbæk Forsyning står for den offentlige vandforsyning og spildevandshåndtering i Lyngby-Taarbæk Kommune, herunder kloaknet, klimatilpasning og Mølleåværket.",
+      "contacts": [
+        {"name":"Jane B. Madsen","title":"Administrerende direktør","sourceUrl":"https://moelleaavaerket.dk/om-os/"},
+        {"name":"Thomas Christian Bergmann","title":"Teknisk direktør","sourceUrl":"https://moelleaavaerket.dk/om-os/"}
+      ],
+      "projects": [
+        {"name":"Klimatilpasning af Bondebyen","status":"Anlæg / færdiggørelse 2026","description":"Projektet håndterer regnvand i Bondebyen med bl.a. nyt gadekær og regnvandsbassin og kombinerer klimatilpasning med forbedring af bymiljø og natur.","url":"https://www.ltk.dk/borger/miljoe-og-natur/klima-og-baeredygtighed/klimatilpasning-bondebyen"},
+        {"name":"Rammeaftale for vand, spildevand og klimatilpasning","status":"Tildelt 2026","description":"Ny teknisk rådgiveraftale dækker forsyningens kommende opgaver inden for vand, spildevand og klimatilpasning.","url":"https://eu.eu-supply.com/ctm/Supplier/PublicPurchase/451942/1/0"}
+      ],
+      "sources": ["https://sortering.ltf.dk/","https://www.ltk.dk/borger/miljoe-og-natur/drikkevand-og-kloak","https://moelleaavaerket.dk/om-os/","https://www.ltk.dk/borger/miljoe-og-natur/klima-og-baeredygtighed/klimatilpasning-bondebyen"],
+      "verifiedAt": "2026-09-04"
+    },
+    "lolland-forsyning": {
+      "name": "Lolland Forsyning",
+      "website": "https://lollandforsyning.dk/",
+      "phone": "72 30 11 11",
+      "email": "Forsyning@lollandforsyning.dk",
+      "address": "Stavangervej 13, 4900 Nakskov",
+      "summary": "Lolland Forsyning driver Lolland Spildevands hovedkloakker, renseanlæg og pumpestationer. Forsyningen dækker et stort geografisk område og arbejder løbende med fornyelse og modernisering af spildevandsinfrastrukturen.",
+      "contacts": [
+        {"name":"Anders B. Møller-Hansen","title":"Administrerende direktør","sourceUrl":"https://lollandforsyning.dk/presse-og-marketing/"}
+      ],
+      "projects": [
+        {"name":"Fornyelse af kloakledninger","status":"Investeringsprogram 2026+","description":"Lolland Forsyning har mere end 1.100 km kloakledninger, og en del af nettet står foran udskiftning og fornyelse i de kommende år.","url":"https://lollandforsyning.dk/nye-takster-for-varme-vand-og-spildevand/"},
+        {"name":"Transportrør ved Nakskov Havn","status":"Infrastrukturprojekt","description":"Syv nye transportrør ved Nakskov Havn omfatter bl.a. spildevand og skal understøtte forsyningsinfrastrukturen i området.","url":"https://lollandforsyning.dk/kundeservice/forsyningsomraader/"}
+      ],
+      "sources": ["https://lollandforsyning.dk/","https://lollandforsyning.dk/presse-og-marketing/","https://lollandforsyning.dk/nye-takster-for-varme-vand-og-spildevand/","https://lollandforsyning.dk/kundeservice/forsyningsomraader/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "odsherred-forsyning": {
+      "name": "Odsherred Forsyning",
+      "website": "https://www.odsherredforsyning.dk/",
+      "phone": "70 12 00 49",
+      "email": "info@odsherredforsyning.dk",
+      "address": "Hovedgaden 39, 4571 Grevinge",
+      "summary": "Odsherred Forsyning håndterer spildevand i hele Odsherred Kommune med omkring 1.300 km kloak, 450 pumpestationer og ni renseanlæg. I 2026 genopbygges og prioriteres projektporteføljen med fokus på forsyningssikkerhed og vandmiljø.",
+      "contacts": [
+        {"name":"Pernille Ingildsen","title":"Administrerende direktør","linkedin":"https://dk.linkedin.com/in/pernilleingildsen","sourceUrl":"https://www.odsherredforsyning.dk/direktionen/"}
+      ],
+      "projects": [
+        {"name":"Projektportefølje for forsyningssikkerhed og vandmiljø","status":"Genopbygning / igangsætning 2026","description":"Forsyningen styrker projektorganisationen og prioriterer en portefølje af teknisk komplekse projekter med fokus på forsyningssikkerhed, anlæg og vandmiljø.","url":"https://www.odsherredforsyning.dk/nyheder/odsherred-forsyning-soeger-en-projektchef/"},
+        {"name":"Løbende teknologiopgraderinger på spildevandsområdet","status":"Løbende investeringer","description":"Forsyningen investerer i nye teknologier og optimeringer på de ni renseanlæg for at forbedre rensningen og reducere påvirkningen af miljøet.","url":"https://www.odsherredforsyning.dk/spildevand/"}
+      ],
+      "sources": ["https://www.odsherredforsyning.dk/","https://www.odsherredforsyning.dk/direktionen/","https://www.odsherredforsyning.dk/spildevand/","https://www.odsherredforsyning.dk/nyheder/odsherred-forsyning-soeger-en-projektchef/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "ringsted-forsyning": {
+      "name": "Ringsted Forsyning",
+      "website": "https://ringstedforsyning.dk/",
+      "phone": "69 89 80 00",
+      "email": "info@ringstedforsyning.dk",
+      "address": "Bragesvej 18, 4100 Ringsted",
+      "summary": "Ringsted Forsyning ejer Ringsted Spildevand og arbejder med kloakdrift, separatkloakering, fornyelse og klimatilpasning i Ringsted Kommune.",
+      "contacts": [
+        {"name":"Janne Maibritt Nyholm Hansen","title":"Direktør","sourceUrl":"https://www.proff.dk/firma/ringsted-forsyning-as/ringsted/hovedkontortjenester/0JQ06RI10NZ"}
+      ],
+      "projects": [
+        {"name":"Benløse kloakering","status":"Kontraheret / udførelse 2026","description":"Separatkloakeringen omkring Smålodsvej og Tofteåsvej omfatter omkring tre kilometer ledninger samt regnvandsbassiner og skal fremtidssikre kloaksystemet.","url":"https://nordkysten.dk/nordkysten-skal-udfoere-benloese-kloakseparering-for-ringsted-forsyning-a-s/"},
+        {"name":"Separatkloakering af Holbækvej","status":"Projektering / rådgivning","description":"Projektet omfatter rådgivning og projektering frem mod separatkloakering af Holbækvej og tilhørende afløbsinfrastruktur.","url":"https://bygtek.dk/licitation/17671"}
+      ],
+      "sources": ["https://ringstedforsyning.dk/","https://www.proff.dk/firma/ringsted-forsyning-as/ringsted/hovedkontortjenester/0JQ06RI10NZ","https://herkules.dk/da/udbud/2026/benloese-kloakering-120872-2026","https://nordkysten.dk/nordkysten-skal-udfoere-benloese-kloakseparering-for-ringsted-forsyning-a-s/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "vordingborg-forsyning": {
+      "name": "Vordingborg Forsyning",
+      "website": "https://vordingborgforsyning.dk/",
+      "phone": "55 35 37 00",
+      "email": "kontakt@vordingborgforsyning.dk",
+      "address": "Danmarksvej 1, Masnedø, 4760 Vordingborg",
+      "summary": "Vordingborg Forsyning driver spildevandsinfrastrukturen med ti renseanlæg, mere end 500 pumpestationer, omkring 823 km ledninger og cirka 80 regn- og forsinkelsesbassiner.",
+      "contacts": [
+        {"name":"Kaspar Mondrup","title":"Administrerende direktør","linkedin":"https://dk.linkedin.com/in/kaspar-mondrup","sourceUrl":"https://vordingborgforsyning.dk/om-forsyningen/bestyrelser-og-direktion"}
+      ],
+      "projects": [
+        {"name":"Kloakseparering af Kalvehave","status":"Igangsat 2026","description":"Anlægsarbejdet startede i marts 2026 og forventes at vare 14–16 måneder. Regn- og spildevand separeres for at forbedre kapacitet og robusthed.","url":"https://vordingborgforsyning.dk/projekter/%408/kloakseparering-af-kalvehave"},
+        {"name":"Renovering af regnvandsbassin i Hundeskoven","status":"I udførelse september 2026","description":"Forsyningen renoverer regnvandsbassinet i Hundeskoven som del af den løbende vedligeholdelse af regnvands- og afløbsinfrastrukturen.","url":"https://vordingborgforsyning.dk/"}
+      ],
+      "sources": ["https://vordingborgforsyning.dk/","https://vordingborgforsyning.dk/spildevand","https://vordingborgforsyning.dk/om-forsyningen/bestyrelser-og-direktion","https://vordingborgforsyning.dk/projekter/%408/kloakseparering-af-kalvehave"],
+      "verifiedAt": "2026-09-04"
+    },
+    "langeland-forsyning": {
+      "name": "Langeland Forsyning",
+      "website": "https://lef.dk/",
+      "phone": "63 51 68 00",
+      "email": "post@lef.dk",
+      "address": "Nørrebro 207A, 5900 Rudkøbing",
+      "summary": "Langeland Forsyning indgår i Langeland Energi & Forsyning og varetager spildevand på Langeland med omkring 500 km kloakledninger og otte renseanlæg.",
+      "contacts": [
+        {"name":"Lars Birk Rasmussen","title":"Direktør","linkedin":"https://dk.linkedin.com/in/lars-birk-rasmussen-969b5641","sourceUrl":"https://www.langeland-forsyning.dk/om-langeland-forsyning/direktion-og-bestyrelse.aspx"}
+      ],
+      "projects": [
+        {"name":"Fortsat udvikling af spildevandssystemet","status":"Investeringsprogram 2026","description":"Spildevandstaksterne finansierer transport, rensning, vedligeholdelse og fortsat udvikling af forsyningens cirka 500 km kloakledninger og otte renseanlæg.","url":"https://lef.dk/spildevand/priser"},
+        {"name":"Langeland Energi & Forsyning – fælles serviceselskab","status":"Implementering","description":"Vand, spildevand, affald og energi samles organisatorisk omkring et fælles serviceselskab med fortsat særskilte forsyningsselskaber.","url":"https://lef.dk/"}
+      ],
+      "sources": ["https://lef.dk/","https://lef.dk/spildevand/priser","https://www.langeland-forsyning.dk/om-langeland-forsyning/direktion-og-bestyrelse.aspx"],
+      "verifiedAt": "2026-09-04"
+    },
+    "middelfart-spildevand": {
+      "name": "Middelfart Spildevand",
+      "website": "https://middelfartspildevand.dk/",
+      "phone": "63 44 44 44",
+      "email": "contact@middelfartspildevand.dk",
+      "address": "Strandvejen 100, 5500 Middelfart",
+      "summary": "Middelfart Spildevand håndterer afledning og rensning af spildevand i Middelfart Kommune og arbejder med separatkloakering, klimatilpasning og nye blå-grønne rense- og regnvandsløsninger.",
+      "contacts": [
+        {"name":"Michael Pilc","title":"Direktør","linkedin":"https://dk.linkedin.com/in/michael-pilc-56770599","sourceUrl":"https://middelfartspildevand.dk/medarbejdere/"},
+        {"name":"Lasse Brinch","title":"Projektchef","linkedin":"https://dk.linkedin.com/in/lasse-bo-brinch-barbosa-54a69617b","sourceUrl":"https://middelfartspildevand.dk/medarbejdere/"},
+        {"name":"René Dixen Jensen","title":"Driftschef","sourceUrl":"https://middelfartspildevand.dk/medarbejdere/"}
+      ],
+      "projects": [
+        {"name":"Regnvandsrensning ved Hessgade","status":"Afsluttende fase 2026","description":"I forbindelse med separatkloakeringen ved Hessgade etableres en ny flertrinsløsning til rensning af regnvand før udledning til Lillebælt.","url":"https://middelfartspildevand.dk/ny-renseloesning-til-regnvand/"},
+        {"name":"Reduktion af kvælstof fra Middelfart Renseanlæg","status":"Godkendt plan 2026","description":"Forsyningen arbejder med en plan for at reducere kvælstofudledningen fra Middelfart Renseanlæg i forbindelse med skærpede nationale krav.","url":"https://middelfartspildevand.dk/"}
+      ],
+      "sources": ["https://middelfartspildevand.dk/","https://middelfartspildevand.dk/medarbejdere/","https://middelfartspildevand.dk/ny-renseloesning-til-regnvand/"],
+      "verifiedAt": "2026-09-04"
+    },
+    "nordfyns-forsyning": {
+      "name": "Nordfyns Forsyning",
+      "website": "https://www.vandcenter.dk/",
+      "phone": "63 13 23 33",
+      "email": "info@vandcenter.dk",
+      "address": "Nordfyns Kommune – spildevandsdrift varetages af VandCenter Syd",
+      "summary": "Kortets Nordfyns Forsyning-label er et historisk/lokalt datalag. Den aktuelle offentlige kloak- og spildevandsdrift i Nordfyns Kommune varetages af VandCenter Syd, som derfor er vist som den operative kontakt på profilen.",
+      "contacts": [],
+      "projects": [
+        {"name":"Regnvandsprojekt ved Brorenden, Otterup","status":"Igangværende 2026","description":"VandCenter Syd og Nordfyns Kommune samarbejder om bedre håndtering af regnvand ved Otterup med fokus på oversvømmelser, afledning og natur.","url":"https://www.vandcenter.dk/"},
+        {"name":"Ny spildevandsstruktur på Nordfyn","status":"Centralt renseanlæg annulleret juni 2026","description":"Planen om ét centralt renseanlæg blev stoppet 18. juni 2026, og der arbejdes videre med en revideret løsning for fremtidens spildevandsstruktur.","url":"https://www.nordfynskommune.dk/borger/bolig-byggeri-og-energi/spildevand-og-regnvand/ny-spildevandsstruktur/"}
+      ],
+      "sources": ["https://www.nordfynskommune.dk/borger/bolig-byggeri-og-energi/spildevand-og-regnvand/kloak/","https://www.vandcenter.dk/","https://www.nordfynskommune.dk/borger/bolig-byggeri-og-energi/spildevand-og-regnvand/ny-spildevandsstruktur/"],
+      "verifiedAt": "2026-09-04"
+    }
+  }
+}
