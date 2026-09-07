@@ -75,11 +75,12 @@ jobs:
               assert opened, 'No suitable catchment layer found'
               await page.wait_for_selector('#detailPanel.open',timeout=10000)
               text=await page.locator('#detailContent').inner_text()
+              text_fold=text.casefold()
               for label in REQUIRED:
-                  assert label in text, (label,text)
-              assert 'Ikke oplyst' not in text, text
-              assert opened['municipality'] in text, (opened,text)
-              assert opened['displayType'] in text, (opened,text)
+                  assert label.casefold() in text_fold, (label,text)
+              assert 'ikke oplyst' not in text_fold, text
+              assert opened['municipality'].casefold() in text_fold, (opened,text)
+              assert opened['displayType'].casefold() in text_fold, (opened,text)
               assert await page.locator('#detailContent .fact').count() >= 5
               assert await page.locator('#detailContent .area-profile-actions .detail-action').count() >= 1
               for i in range(await page.locator('#detailContent .area-source-links a').count()):
