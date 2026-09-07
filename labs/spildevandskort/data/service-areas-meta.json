@@ -1,0 +1,25 @@
+{
+  "source": "Plandata.dk WFS – theme_pdk_kloakopland_vedtaget",
+  "sourceUrl": "https://geoserver.plandata.dk/geoserver/wfs",
+  "numberMatched": 66229,
+  "rawFeatureCount": 66229,
+  "serviceAreaFeatureCount": 71,
+  "includedCurrentSewerTypeCodes": [
+    1,
+    2,
+    3,
+    4,
+    6
+  ],
+  "excludedCurrentSewerTypeCodes": [
+    5
+  ],
+  "excludedUnseweredFeatureCount": 9327,
+  "excludedKnownPrivateFeatureCount": 9,
+  "invalidOrEmptyGeometryCount": 0,
+  "ownershipPolicy": "Known private (ejerkode=2) excluded; public (1), mixed (3), and ownership-unknown included. Ownership is not yet populated nationwide in Plandata.",
+  "mappingPolicy": "Municipality-to-utility mapping inherited from the source-audited map registry; legacy IDs merged through current-operators.js where the current operator changed.",
+  "simplifyToleranceDegrees": 8e-05,
+  "uncompressedBytes": 22831047,
+  "compressedBytes": 7810328
+}
