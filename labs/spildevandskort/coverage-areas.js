@@ -29,14 +29,19 @@
     const p=feature.properties||{};
     const name=p.navn||p.name||p.NAVN||"";
     const key=norm(name),candidates=municipalityCandidates(name),override=VERIFIED_OVERRIDES[key]||null;
-    if(candidates.length===1)return {status:"assigned",brandId:candidates[0],name,override};
+    if(candidates.length===1){
+      const brandId=candidates[0];
+      const current=typeof currentOperatorForBrand==="function"?currentOperatorForBrand(brandId):null;
+      return {status:"assigned",brandId,name,override,current};
+    }
     if(candidates.length>1)return {status:"ambiguous",brandIds:candidates,name,override};
     return {status:"unmapped",brandIds:[],name,override};
   }
 
   function colorFor(feature){
     const c=classify(feature);
-    return c.status==="assigned"?(state.brandById.get(c.brandId)?.color||"#657D84"):"#FFFFFF";
+    if(c.status!=="assigned")return "#FFFFFF";
+    return c.current?.color||state.brandById.get(c.brandId)?.color||"#657D84";
   }
 
   function renderCoverage(){
@@ -79,6 +84,7 @@
         municipalities:rows.length,
         assigned:rows.filter(x=>x.status==="assigned").length,
         verifiedOverrides:rows.filter(x=>x.status==="assigned"&&x.override).map(x=>({name:x.name,brandId:x.brandId,reason:x.override.reason,sourceUrl:x.override.sourceUrl||null})),
+        currentOperatorOverrides:rows.filter(x=>x.status==="assigned"&&x.current?.isOverride).map(x=>({name:x.name,legacyBrandId:x.brandId,operatorBrandId:x.current.operatorBrandId,operatorName:x.current.operatorName,sourceUrl:x.current.sourceUrl})),
         ambiguous:rows.filter(x=>x.status==="ambiguous").map(x=>({name:x.name,brandIds:x.brandIds})),
         unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name)
       };
