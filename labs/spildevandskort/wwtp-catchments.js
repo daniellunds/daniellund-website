@@ -2,18 +2,21 @@
 // The pilot is deliberately partial and currently covers documented Copenhagen oplande for Lynetten and Damhusåen.
 (async function integrateWwtpCatchmentPilot(){
   let pilot=null,meta=null,highlightLayer=null,selectedPlantMarker=null,activePlantKey=null;
+  const MAIN_PULS_IDS={
+    lynetten:'Renseanlaeg.8793f333-ad28-446d-8d0e-c9c854ca4a6d',
+    damhusaen:'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'
+  };
 
   const esc=v=>typeof profileEscape==='function'?profileEscape(String(v)):String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const nkey=v=>String(v||'').toLocaleLowerCase('da').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9æøå]+/g,'');
   const plantKeyFor=p=>{
     if(!p)return null;
-    for(const [key,info] of Object.entries(meta?.plants||{})){
-      const ids=[info?.puls?.id,info?.puls?.featureId].filter(Boolean).map(String);
-      if(ids.includes(String(p.id)))return key;
-    }
+    const id=String(p.id||'');
+    for(const [key,mainId] of Object.entries(MAIN_PULS_IDS))if(id===mainId)return key;
+    // Resilient fallback only for exact main-plant names; avoids matching bypass/overflow subrecords.
     const name=nkey(p.name);
-    if(name.includes('lynetten'))return 'lynetten';
-    if(name.includes('damhus'))return 'damhusaen';
+    if(name===nkey('Renseanlæg Lynetten'))return 'lynetten';
+    if(name===nkey('Renseanlæg Damhusåen'))return 'damhusaen';
     return null;
   };
   const featuresFor=key=>(pilot?.features||[]).filter(f=>f.properties?.plantKey===key);
@@ -74,7 +77,7 @@
         <div class="fact"><span>Plandata-objekter</span><strong>${new Intl.NumberFormat('da-DK').format(sourceFeatureCount)}</strong></div>
         <div class="fact"><span>Datastatus</span><strong>Dokumenteret pilot · delvis dækning</strong></div>
       </div>
-      <div class="detail-actions wwtp-catchment-actions"><button type="button" class="detail-action" data-reset-wwtp> Nulstil opland </button></div>
+      <div class="detail-actions wwtp-catchment-actions"><button type="button" class="detail-action" data-reset-wwtp>Nulstil opland</button></div>
       ${sources.length?`<p class="source-note"><strong>Kilder:</strong> ${sources.slice(0,4).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)}</a>`).join(' · ')}${sources.length>4?` · +${sources.length-4} flere`:''}</p>`:''}`;
     body.append(box);
     box.querySelector('[data-reset-wwtp]').onclick=()=>resetCatchmentHighlight();
@@ -95,7 +98,8 @@
     window.resetWwtpCatchmentHighlight=resetCatchmentHighlight;
     window.WWTP_CATCHMENT_PILOT_READY=true;
     window.WWTP_CATCHMENT_PILOT_META=meta;
-    console.info('WWTP_CATCHMENT_PILOT_READY',{features:pilot.features?.length||0,plants:Object.keys(meta.plants||{})});
+    window.WWTP_CATCHMENT_MAIN_PULS_IDS=MAIN_PULS_IDS;
+    console.info('WWTP_CATCHMENT_PILOT_READY',{features:pilot.features?.length||0,plants:Object.keys(meta.plants||{}),mainPulsIds:MAIN_PULS_IDS});
   }catch(err){
     window.WWTP_CATCHMENT_PILOT_READY=false;
     console.warn('WWTP catchment pilot unavailable',err);
