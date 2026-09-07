@@ -17,6 +17,11 @@
       "key": "tuse-naes",
       "file": "tuse-naes.geojson",
       "precision": "schematic"
+    },
+    {
+      "key": "roende-etape-5",
+      "file": "roende-etape-5.geojson",
+      "precision": "schematic"
     }
   ]
 }
