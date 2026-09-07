@@ -4,6 +4,11 @@
       "source": "/tour26",
       "destination": "/tour26/",
       "permanent": false
+    },
+    {
+      "source": "/labs/spildevandskort",
+      "destination": "/labs/spildevandskort/",
+      "permanent": false
     }
   ]
 }
