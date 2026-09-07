@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "coverageStatus": "partial-documented-pilot",
+  "source": "Plandata.dk vedtagne kloakoplande + Københavns Kommunes spildevandsplan",
+  "rawPlandataFeaturesScanned": 66229,
+  "matchedRawFeatures": 25,
+  "mapFeatureCount": 25,
+  "plants": {
+    "lynetten": {
+      "plantName": "Renseanlæg Lynetten",
+      "requestedPlanNumbers": [
+        "100",
+        "201",
+        "202",
+        "204",
+        "219",
+        "228",
+        "233",
+        "234",
+        "242",
+        "266",
+        "281",
+        "284D",
+        "292",
+        "401",
+        "437",
+        "438",
+        "439",
+        "443",
+        "468"
+      ],
+      "matchedPlanNumbers": [
+        "100",
+        "201",
+        "202",
+        "204",
+        "228",
+        "233",
+        "234",
+        "266",
+        "281",
+        "284D",
+        "292",
+        "401",
+        "437",
+        "438",
+        "439",
+        "443"
+      ],
+      "missingPlanNumbers": [
+        "219",
+        "242",
+        "468"
+      ],
+      "puls": null,
+      "isCompleteCatchment": false
+    },
+    "damhusaen": {
+      "plantName": "Renseanlæg Damhusåen",
+      "requestedPlanNumbers": [
+        "113",
+        "116",
+        "311",
+        "315",
+        "316",
+        "319",
+        "321",
+        "322",
+        "325",
+        "378C",
+        "391"
+      ],
+      "matchedPlanNumbers": [
+        "311",
+        "315",
+        "316",
+        "319",
+        "321",
+        "322",
+        "325",
+        "378C",
+        "391"
+      ],
+      "missingPlanNumbers": [
+        "113",
+        "116"
+      ],
+      "puls": {
+        "id": "Renseanlaeg.4e07442b-9b8c-4842-84a2-50d36ace45d5",
+        "name": "Damhusåen nødoverløb Mekanisk Renset Bypass",
+        "featureId": "Renseanlaeg.4e07442b-9b8c-4842-84a2-50d36ace45d5"
+      },
+      "isCompleteCatchment": false
+    }
+  }
+}
