@@ -29,6 +29,13 @@
       displayName:"Vesthimmerlands Forsyning",
       reason:"The current utility brand is Vesthimmerlands Forsyning; the legacy map ID is retained for joins.",
       sourceUrl:"https://vesthimmerlandsforsyning.dk/"
+    }],
+    ["mariagerfjord-vand",{
+      operatorBrandId:"mariagerfjord-vand",
+      operatorName:"Mariagerfjord Vand",
+      displayName:"Ren Forsyning Mariagerfjord – Mariagerfjord Vand",
+      reason:"Since 1 January 2025, Ren Forsyning Mariagerfjord is the parent/customer-facing group for wastewater, while Mariagerfjord Vand remains the wastewater company. The legacy map ID is retained for joins.",
+      sourceUrl:"https://www.renform.dk/spildevand"
     }]
   ]);
 
