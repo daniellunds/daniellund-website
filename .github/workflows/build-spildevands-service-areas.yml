@@ -101,4 +101,5 @@ jobs:
             exit 0
           fi
           git commit -m 'Update verified Plandata wastewater geometry'
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
