@@ -90,7 +90,7 @@ jobs:
               r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
               assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
-              await page.wait_for_function("window.state && Array.isArray(state.features) && state.features.length>=350",timeout=90000)
+              await page.wait_for_function("typeof state !== 'undefined' && Array.isArray(state.features) && state.features.length>=350",timeout=90000)
               qa=await page.evaluate("""() => ({
                 features: state.features.length,
                 codes: [...new Set(state.features.map(f=>Number(f.properties?.sewerTypeCode)))].sort((a,b)=>a-b),
