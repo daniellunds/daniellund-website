@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "verifiedAt": "2026-09-07",
-  "purpose": "Source audit for municipality-based administrative/market wastewater coverage. This does not assert that every property is connected to public sewer; it verifies the utility brand responsible at municipality/owner-company level.",
-  "method": "Plandata adopted sewer catchments are the baseline consistency check. Multi-municipality utility brands are additionally cross-checked against current official utility or owner-municipality sources.",
+  "purpose": "Source audit for municipality-based administrative/market wastewater coverage. This does not assert that every property is connected to public sewer; it verifies the utility brand responsible at municipality/owner-company level and selected current-operator changes layered on top of stable legacy map IDs.",
+  "method": "Plandata adopted sewer catchments are the baseline consistency check. Multi-municipality utility brands and legacy-to-current operator changes are additionally cross-checked against current official utility or municipality sources.",
   "verifiedGroups": [
     {
       "brandId": "din-forsyning",
@@ -45,6 +45,40 @@
       "municipalities": ["Horsens", "Odder"],
       "sourceUrl": "https://www.samn.dk/om-samn/om-samn-forsyning",
       "evidence": "Samn Forsyning states that it handles wastewater in both Horsens and Odder municipalities."
+    }
+  ],
+  "verifiedOperatorChanges": [
+    {
+      "legacyBrandId": "nordfyns-forsyning",
+      "operatorBrandId": "vandcenter-syd",
+      "operatorName": "VandCenter Syd",
+      "municipalities": ["Nordfyns"],
+      "sourceUrl": "https://www.nordfynskommune.dk/borger/bolig-byggeri-og-energi/spildevand-og-regnvand/kloak/",
+      "evidence": "Nordfyns Kommune states directly that VandCenter Syd is responsible for the sewers in Nordfyns Kommune."
+    },
+    {
+      "legacyBrandId": "syddjurs-spildevand",
+      "operatorBrandId": "aquadjurs",
+      "operatorName": "AquaDjurs",
+      "municipalities": ["Syddjurs"],
+      "sourceUrl": "https://aquadjurs.dk/om-os",
+      "evidence": "AquaDjurs states that it is the joint water and wastewater company for Norddjurs and Syddjurs and handles wastewater for all of Djursland."
+    },
+    {
+      "legacyBrandId": "thisted-vand",
+      "operatorBrandId": "thisted-vand",
+      "operatorName": "Thy Forsyning",
+      "municipalities": ["Thisted"],
+      "sourceUrl": "https://thyforsyning.dk/spildevand/",
+      "evidence": "Thy Forsyning states that Thy Spildevand operates and maintains the sewer system and that the sewer network is in Thisted Kommune."
+    },
+    {
+      "legacyBrandId": "vesthimmerlands-vand",
+      "operatorBrandId": "vesthimmerlands-vand",
+      "operatorName": "Vesthimmerlands Forsyning",
+      "municipalities": ["Vesthimmerlands"],
+      "sourceUrl": "https://vesthimmerlandsforsyning.dk/spildevand/dit-spildevand",
+      "evidence": "Vesthimmerlands Forsyning describes wastewater from private and business customers throughout Vesthimmerlands Kommune and identifies its own public sewer system."
     }
   ]
 }

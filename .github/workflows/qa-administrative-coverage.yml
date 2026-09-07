@@ -46,14 +46,21 @@ jobs:
 
           audit=json.loads(Path('labs/spildevandskort/data/coverage-verification.json').read_text(encoding='utf-8'))
           brands=json.loads(Path('labs/spildevandskort/data/brands.json').read_text(encoding='utf-8'))
+          current_js=Path('labs/spildevandskort/current-operators.js').read_text(encoding='utf-8')
           groups=audit['verifiedGroups']
-          assert audit['schemaVersion']==1
+          changes=audit['verifiedOperatorChanges']
+          assert audit['schemaVersion']==2
           assert len(groups)==7, len(groups)
           assert len({g['brandId'] for g in groups})==7
-          assert all(g['sourceUrl'].startswith('https://') for g in groups)
+          assert len(changes)==4, len(changes)
+          assert len({x['legacyBrandId'] for x in changes})==4
+          assert all(x['sourceUrl'].startswith('https://') for x in groups+changes)
           municipalities=[m for g in groups for m in g['municipalities']]
+          changed_municipalities=[m for x in changes for m in x['municipalities']]
           assert len(municipalities)==31, len(municipalities)
           assert len(set(municipalities))==31
+          assert len(changed_municipalities)==4 and len(set(changed_municipalities))==4
+          assert len(set(municipalities+changed_municipalities))==35
           by_id={b['id']:b for b in brands['brands']}
           def norm(name):
               name=name.strip().lower()
@@ -63,7 +70,16 @@ jobs:
               mapped={norm(m) for m in by_id[g['brandId']]['municipalities']}
               expected={norm(m) for m in g['municipalities']}
               assert mapped==expected,(g['brandId'],mapped,expected)
-          print('COVERAGE_SOURCE_AUDIT_OK',len(groups),'brands',len(municipalities),'municipalities')
+          for x in changes:
+              legacy=x['legacyBrandId']; operator=x['operatorBrandId']
+              assert legacy in by_id,legacy
+              assert operator in by_id,operator
+              mapped={norm(m) for m in by_id[legacy]['municipalities']}
+              expected={norm(m) for m in x['municipalities']}
+              assert mapped==expected,(legacy,mapped,expected)
+              assert f'["{legacy}"' in current_js,legacy
+              assert f'operatorBrandId:"{operator}"' in current_js,operator
+          print('COVERAGE_SOURCE_AUDIT_OK',len(groups),'multi-brands',len(municipalities),'municipalities',len(changes),'operator-changes',len(set(municipalities+changed_municipalities)),'source-audited municipalities')
           PY
       - name: Install Playwright
         run: |
