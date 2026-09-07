@@ -1,0 +1,108 @@
+name: QA WWTP catchment pilot
+
+on:
+  push:
+    paths:
+      - 'labs/spildevandskort/wwtp-catchments.js'
+      - 'labs/spildevandskort/index.html'
+      - 'labs/spildevandskort/data/wwtp-catchment-pilot.geojson'
+      - 'labs/spildevandskort/data/wwtp-catchment-pilot-meta.json'
+      - '.github/workflows/qa-wwtp-catchment-pilot.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static pilot QA
+        run: |
+          node --check labs/spildevandskort/wwtp-catchments.js
+          test -s labs/spildevandskort/data/wwtp-catchment-pilot.geojson
+          test -s labs/spildevandskort/data/wwtp-catchment-pilot-meta.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('labs/spildevandskort/data')
+          geo=json.loads((root/'wwtp-catchment-pilot.geojson').read_text())
+          meta=json.loads((root/'wwtp-catchment-pilot-meta.json').read_text())
+          assert len(geo['features'])>=20,len(geo['features'])
+          assert set(f['properties']['plantKey'] for f in geo['features'])=={'lynetten','damhusaen'}
+          assert meta['coverageStatus']=='partial-documented-pilot'
+          assert meta['plants']['lynetten']['isCompleteCatchment'] is False
+          assert meta['plants']['damhusaen']['isCompleteCatchment'] is False
+          assert len(meta['plants']['lynetten']['matchedPlanNumbers'])>=15
+          assert len(meta['plants']['damhusaen']['matchedPlanNumbers'])>=8
+          print('WWTP_PILOT_STATIC_QA_OK',len(geo['features']))
+          PY
+      - name: Install Playwright
+        run: |
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+      - name: Start local server
+        run: |
+          python3 -m http.server 4184 --bind 127.0.0.1 >/tmp/wwtp-pilot-server.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4184/labs/spildevandskort/ >/dev/null && break; sleep 1; done
+      - name: Test plant click and catchment highlight
+        env:
+          MAP_URL: http://127.0.0.1:4184/labs/spildevandskort/
+        run: |
+          cat >/tmp/qa.py <<'PY'
+          import asyncio, os
+          from playwright.async_api import async_playwright
+
+          async def check(browser,mobile=False):
+              context=await browser.new_context(viewport={'width':390,'height':844} if mobile else {'width':1440,'height':900},is_mobile=mobile)
+              page=await context.new_page(); errors=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
+              r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
+              assert r and r.ok
+              await page.wait_for_function("window.WWTP_CATCHMENT_PILOT_READY===true",timeout=90000)
+              await page.wait_for_function("typeof state!=='undefined' && state.plants.length>700 && state.features.length>350",timeout=90000)
+
+              candidates=await page.evaluate("""() => state.plants.filter(p=>/lynetten|damhus/i.test(p.name||'')).map(p=>({id:p.id,name:p.name,capacity:p.capacity,active:p.active})).slice(0,30)""")
+              print(('MOBILE' if mobile else 'DESKTOP'),'PULS_CANDIDATES',candidates)
+
+              for needle in ['lynetten','damhus']:
+                  opened=await page.evaluate("""needle => {
+                    const rows=state.plants.filter(p=>String(p.name||'').toLocaleLowerCase('da').includes(needle));
+                    rows.sort((a,b)=>(Number(b.capacity)||0)-(Number(a.capacity)||0));
+                    const p=rows.find(x=>x.active) || rows[0];
+                    if(!p)return null;
+                    openPlant(p);
+                    let first=null; state.polygonLayer.eachLayer(l=>{if(!first)first=l});
+                    return {id:p.id,name:p.name,capacity:p.capacity,fillOpacity:first?.options?.fillOpacity};
+                  }""",needle)
+                  assert opened, (needle,candidates)
+                  await page.wait_for_selector('#detailPanel.open',timeout=10000)
+                  text=(await page.locator('#detailContent').inner_text()).lower()
+                  assert 'renseanlægsopland · pilot' in text,(needle,opened,text)
+                  assert 'dokumenteret pilot · delvis dækning' in text,(needle,text)
+                  assert 'nulstil opland' in text,(needle,text)
+                  assert opened['fillOpacity'] is not None and opened['fillOpacity']<0.1,opened
+                  assert await page.locator('#detailContent .wwtp-catchment-pilot').count()==1
+                  assert await page.locator('#detailContent [data-reset-wwtp]').count()==1
+                  await page.locator('#detailContent [data-reset-wwtp]').click()
+                  await page.wait_for_timeout(150)
+                  restored=await page.evaluate("""() => {let first=null;state.polygonLayer.eachLayer(l=>{if(!first)first=l});return first?.options?.fillOpacity}""")
+                  assert restored is not None and restored>0.2,restored
+
+              assert not errors,errors
+              if mobile:
+                  overflow=await page.evaluate('document.documentElement.scrollWidth-document.documentElement.clientWidth')
+                  assert overflow<=3,overflow
+              print(('MOBILE' if mobile else 'DESKTOP'),'WWTP_CATCHMENT_PILOT_BROWSER_QA_OK')
+              await context.close()
+
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch()
+                  await check(browser,False)
+                  await check(browser,True)
+                  await browser.close()
+          asyncio.run(main())
+          PY
+          python /tmp/qa.py
