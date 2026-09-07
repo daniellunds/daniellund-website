@@ -6,6 +6,11 @@
 
   const operatorFor=b=>typeof currentOperatorForBrand==="function"?currentOperatorForBrand(b.id):{displayName:b.name,operatorName:b.name,isOverride:false};
   const displayBrandName=b=>operatorFor(b).displayName||b.name;
+  // Profiles remain keyed by stable legacy IDs, but their visible headings follow the verified current operator identity.
+  for(const b of state.brands||[]){
+    const current=operatorFor(b),profile=profileForBrand(b.id);
+    if(profile&&current.isOverride&&current.displayName)profile.name=current.displayName;
+  }
 
   brandRowElement = function(b){
     const current=operatorFor(b),displayName=current.displayName||b.name;
