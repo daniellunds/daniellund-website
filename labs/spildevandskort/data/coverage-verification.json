@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-09-07",
+  "purpose": "Source audit for municipality-based administrative/market wastewater coverage. This does not assert that every property is connected to public sewer; it verifies the utility brand responsible at municipality/owner-company level.",
+  "method": "Plandata adopted sewer catchments are the baseline consistency check. Multi-municipality utility brands are additionally cross-checked against current official utility or owner-municipality sources.",
+  "verifiedGroups": [
+    {
+      "brandId": "din-forsyning",
+      "municipalities": ["Esbjerg", "Varde"],
+      "sourceUrl": "https://dinforsyning.dk/da-dk/om-os",
+      "evidence": "DIN Forsyning states that it receives wastewater from all businesses and households in both Esbjerg and Varde municipalities, via sewer or septic-tank emptying."
+    },
+    {
+      "brandId": "envafors",
+      "municipalities": ["Næstved", "Slagelse", "Sorø"],
+      "sourceUrl": "https://www.envafors.dk/envafors-sitemap",
+      "evidence": "Envafors is the shared service brand for the wastewater utilities in Næstved, Slagelse and Sorø; the underlying legal wastewater companies remain local."
+    },
+    {
+      "brandId": "fors",
+      "municipalities": ["Holbæk", "Lejre", "Roskilde"],
+      "sourceUrl": "https://www.fors.dk/",
+      "evidence": "Fors explicitly lists wastewater service in Holbæk, Lejre and Roskilde municipalities."
+    },
+    {
+      "brandId": "hofor",
+      "municipalities": ["Albertslund", "Brøndby", "Dragør", "Herlev", "Hvidovre", "København", "Rødovre", "Vallensbæk"],
+      "sourceUrl": "https://www.hofor.dk/om-hofor/organisationen/koncerndiagram/selskaber-i-hofor/holding/hofor-spildevand-holding-as/",
+      "evidence": "HOFOR lists one wastewater network company for each of the eight owner municipalities."
+    },
+    {
+      "brandId": "klar-forsyning",
+      "municipalities": ["Greve", "Køge", "Solrød", "Stevns"],
+      "sourceUrl": "https://greve.dk/media/ufwa5mjs/greve-spildevandsplan-august-2023.pdf",
+      "evidence": "Greve's wastewater plan states that KLAR Forsyning handles and treats wastewater in Køge, Greve, Solrød and Stevns municipalities."
+    },
+    {
+      "brandId": "novafos",
+      "municipalities": ["Allerød", "Ballerup", "Egedal", "Frederikssund", "Furesø", "Gentofte", "Gladsaxe", "Hørsholm", "Rudersdal"],
+      "sourceUrl": "https://gladsaxe.dk/politik/byraad-og-udvalg/andre-udvalg-raad-og-naevn?oudvalg=Novafos+Holding+A%2FS+2026",
+      "evidence": "Gladsaxe Kommune lists the nine Novafos owner municipalities and states that the group companies handle water supply, wastewater and treatment in the owner municipalities' geographic areas."
+    },
+    {
+      "brandId": "samn-forsyning",
+      "municipalities": ["Horsens", "Odder"],
+      "sourceUrl": "https://www.samn.dk/om-samn/om-samn-forsyning",
+      "evidence": "Samn Forsyning states that it handles wastewater in both Horsens and Odder municipalities."
+    }
+  ]
+}
