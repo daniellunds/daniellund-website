@@ -98,7 +98,6 @@ jobs:
               assert 'Tilbage til laboratoriet' not in body
               assert 'MARKEDS- OG KUNDEOVERBLIK' not in body
               assert 'Dansk spildevandskort' in body
-              assert 'skematisk, kildebaseret tracé' in body.lower()
               assert not dawa,dawa[:3]
 
               control=page.locator('.leaflet-control-layers')
@@ -117,6 +116,8 @@ jobs:
 
               await page.locator('.tab[data-tab="projects"]').click()
               await page.wait_for_timeout(500)
+              controls=await page.locator('#projectControls').inner_text()
+              assert 'skematisk, kildebaseret tracé' in controls.lower(),controls
               qa=await page.evaluate("projectGeorefState()")
               assert qa['staticLoaded'] + qa['ignored'] == 26,qa
               assert qa['staticLoaded'] == 17 and qa['ignored'] == 9,qa
