@@ -12,6 +12,20 @@
     if(profile&&current.isOverride&&current.displayName)profile.name=current.displayName;
   }
 
+  // Let existing search logic match both the current operator and the legacy Plandata identity without mutating either permanently.
+  const withCurrentSearchNames=fn=>{
+    const original=[];
+    for(const b of state.brands||[]){
+      const current=operatorFor(b);if(!current.isOverride)continue;
+      original.push([b,b.name]);b.name=`${current.displayName} ${b.name}`;
+    }
+    try{return fn();}finally{for(const [b,name] of original)b.name=name;}
+  };
+  const coreRenderList=renderList;
+  renderList=function(){return withCurrentSearchNames(coreRenderList);};
+  const coreFilteredPlants=filteredPlants;
+  filteredPlants=function(){return withCurrentSearchNames(coreFilteredPlants);};
+
   brandRowElement = function(b){
     const current=operatorFor(b),displayName=current.displayName||b.name;
     const row=document.createElement("div"); row.className="brand-row"; row.dataset.brandId=b.id; row.dataset.currentOperatorId=current.operatorBrandId||b.id;
