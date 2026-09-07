@@ -1,0 +1,67 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "projectKey": "roende-etape-5",
+    "geometryKind": "area",
+    "locationLabel": "Rønde · separatkloakering etape 5",
+    "sourceUrl": "https://aquadjurs.dk/sites/default/files/2025-02/Etapeopdeling%20revideret%2027-02-2025_R%C3%B8nde_0.pdf",
+    "secondarySourceUrl": "https://aquadjurs.dk/projektomraader/roende-kloakseparering",
+    "retrievedAt": "2026-09-07",
+    "projectIds": ["syddjurs-spildevand:1"],
+    "note": "Skematisk projektområde digitaliseret konservativt fra AquaDjurs' officielle etapeopdelingskort og kontrolleret mod offentlige adressepunkter på de berørte veje. Fladen viser projektets omtrentlige geografiske udstrækning på oversigtsniveau; den er ikke matrikelgrænse, entreprisegrænse eller ledningsgeometri. Regnvandsbassinet syd for Århusvej er ikke særskilt digitaliseret i denne version.",
+    "reviewReason": "AquaDjurs' reviderede oversigtstegning af 27.02.2025 markerer Etape 5 som igangværende projektareal og projektbeskrivelsen oplister de berørte veje. Geometrien er derfor egnet som skematisk oversigtsområde, men ikke som projekteringsgeometri.",
+    "method": "Conservative schematic digitisation from the published stage map, constrained by public address control points on affected streets.",
+    "controlPoints": [
+      {"label": "Nattergalevej 1", "lat": 56.30432857, "lon": 10.46367917},
+      {"label": "Nørrevangsalle 10", "lat": 56.30368106, "lon": 10.46941583},
+      {"label": "Hovedgaden 70", "lat": 56.30231901, "lon": 10.46909849},
+      {"label": "Skolevej 1", "lat": 56.30166262, "lon": 10.47758699},
+      {"label": "Ceresvej 16", "lat": 56.3004, "lon": 10.4791},
+      {"label": "Grenåvej 10A", "lat": 56.29881109, "lon": 10.48525807}
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "project_area:west",
+      "properties": {"component": "project_area", "label": "Etape 5 · vestlige og centrale projektareal"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [10.4552, 56.3064],
+          [10.4623, 56.3075],
+          [10.4680, 56.3073],
+          [10.4716, 56.3058],
+          [10.4728, 56.3035],
+          [10.4702, 56.3022],
+          [10.4656, 56.3023],
+          [10.4614, 56.3016],
+          [10.4556, 56.3024],
+          [10.4514, 56.3038],
+          [10.4552, 56.3064]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "project_area:east",
+      "properties": {"component": "project_area", "label": "Etape 5 · Hovedgaden, sidegader og Grenåvej"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [10.4688, 56.3033],
+          [10.4746, 56.3034],
+          [10.4802, 56.3025],
+          [10.4849, 56.3004],
+          [10.4895, 56.2990],
+          [10.4890, 56.2976],
+          [10.4842, 56.2978],
+          [10.4795, 56.2991],
+          [10.4742, 56.3005],
+          [10.4700, 56.3011],
+          [10.4688, 56.3033]
+        ]]
+      }
+    }
+  ]
+}

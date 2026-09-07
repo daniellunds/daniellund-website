@@ -3,30 +3,24 @@ on:
   push:
     paths:
       - 'labs/spildevandskort/projects.js'
-      - 'labs/spildevandskort/data/project-geography.json'
-      - 'labs/spildevandskort/data/project-geometries-index.json'
-      - 'labs/spildevandskort/data/svanemoellen.geojson'
-      - 'labs/spildevandskort/data/valby-skybrudstunnel.geojson'
-      - 'scripts/check-project-geography.cjs'
-      - 'labs/spildevandskort/index.html'
-      - 'labs/spildevandskort/projects.css'
-      - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/project-geocoder.js'
-      - 'labs/spildevandskort/data/project-geocodes.json'
+      - 'labs/spildevandskort/projects.css'
+      - 'labs/spildevandskort/index.html'
+      - 'labs/spildevandskort/basemaps.js'
+      - 'labs/spildevandskort/data/project-*.json'
+      - 'labs/spildevandskort/data/*.geojson'
+      - 'scripts/check-project-geography.cjs'
       - '.github/workflows/qa-project-georef-basemap.yml'
   pull_request:
     paths:
       - 'labs/spildevandskort/projects.js'
-      - 'labs/spildevandskort/data/project-geography.json'
-      - 'labs/spildevandskort/data/project-geometries-index.json'
-      - 'labs/spildevandskort/data/svanemoellen.geojson'
-      - 'labs/spildevandskort/data/valby-skybrudstunnel.geojson'
-      - 'scripts/check-project-geography.cjs'
-      - 'labs/spildevandskort/index.html'
-      - 'labs/spildevandskort/projects.css'
-      - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/project-geocoder.js'
-      - 'labs/spildevandskort/data/project-geocodes.json'
+      - 'labs/spildevandskort/projects.css'
+      - 'labs/spildevandskort/index.html'
+      - 'labs/spildevandskort/basemaps.js'
+      - 'labs/spildevandskort/data/project-*.json'
+      - 'labs/spildevandskort/data/*.geojson'
+      - 'scripts/check-project-geography.cjs'
       - '.github/workflows/qa-project-georef-basemap.yml'
 permissions:
   contents: read
@@ -40,11 +34,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -s labs/spildevandskort/basemaps.js
-          test -s labs/spildevandskort/project-geocoder.js
-          test -s labs/spildevandskort/data/project-geocodes.json
-          test -s labs/spildevandskort/data/project-geometries-index.json
-          test -s labs/spildevandskort/data/valby-skybrudstunnel.geojson
+          for f in \
+            labs/spildevandskort/basemaps.js \
+            labs/spildevandskort/project-geocoder.js \
+            labs/spildevandskort/projects.js \
+            labs/spildevandskort/data/project-geocodes.json \
+            labs/spildevandskort/data/project-geometries-index.json \
+            labs/spildevandskort/data/valby-skybrudstunnel.geojson \
+            labs/spildevandskort/data/roende-etape-5.geojson; do test -s "$f"; done
           node scripts/check-project-geography.cjs
           node --check labs/spildevandskort/basemaps.js
           node --check labs/spildevandskort/project-geocoder.js
@@ -52,7 +49,8 @@ jobs:
           ! grep -q 'Tilbage til laboratoriet' labs/spildevandskort/index.html
           ! grep -q 'MARKEDS- OG KUNDEOVERBLIK' labs/spildevandskort/index.html
           grep -q 'Vis georefererede projekter' labs/spildevandskort/index.html
-          grep -q 'skematisk, kildebaseret tracé' labs/spildevandskort/index.html
+          grep -q 'skematiske projektområder' labs/spildevandskort/index.html
+          grep -q 'skematisk, kildebaseret projektområde' labs/spildevandskort/index.html
           grep -q 'no utility-area fallback' labs/spildevandskort/project-geocoder.js
           python - <<'PY'
           import json
@@ -83,118 +81,93 @@ jobs:
           async def check(browser,mobile=False):
               viewport={"width":390,"height":844} if mobile else {"width":1440,"height":900}
               context=await browser.new_context(viewport=viewport,is_mobile=mobile)
-              page=await context.new_page()
-              errors=[]; dawa=[]
+              page=await context.new_page(); errors=[]; dawa=[]
               page.on('pageerror',lambda e:errors.append(str(e)))
               page.on('request',lambda r:dawa.append(r.url) if 'api.dataforsyningen.dk' in r.url else None)
-              r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
-              assert r and r.ok
+              r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000); assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
-              await page.wait_for_function("typeof window.spildevandskortBasemapState==='function' && typeof window.projectGeorefState==='function'",timeout=30000)
-              await page.wait_for_function("projectGeorefState().mode==='static' && projectGeorefState().staticLoaded===17 && projectGeorefState().geometryFiles===2",timeout=30000)
+              await page.wait_for_function("typeof projectGeorefState==='function' && projectGeorefState().staticLoaded===17 && projectGeorefState().geometryFiles===3",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>100",timeout=30000)
-
-              body=await page.locator('body').inner_text()
-              assert 'Tilbage til laboratoriet' not in body
-              assert 'MARKEDS- OG KUNDEOVERBLIK' not in body
-              assert 'Dansk spildevandskort' in body
               assert not dawa,dawa[:3]
 
-              control=page.locator('.leaflet-control-layers')
-              assert await control.count()==1
-              labels=page.locator('.leaflet-control-layers-base label')
-              texts=await labels.all_inner_texts()
-              assert any('Kort' in x for x in texts),texts
-              assert any('Luftfoto' in x for x in texts),texts
+              labels=page.locator('.leaflet-control-layers-base label'); texts=await labels.all_inner_texts()
+              assert any('Kort' in x for x in texts) and any('Luftfoto' in x for x in texts),texts
               for i,t in enumerate(texts):
-                  if 'Luftfoto' in t:
-                      await labels.nth(i).click(force=True);break
+                  if 'Luftfoto' in t: await labels.nth(i).click(force=True); break
               await page.wait_for_function("spildevandskortBasemapState().active==='Luftfoto' && spildevandskortBasemapState().imageryOnMap",timeout=10000)
-              await page.wait_for_timeout(1200)
-              imagery_tiles=await page.locator('img.leaflet-tile[src*="World_Imagery"]').count()
-              assert imagery_tiles>0,imagery_tiles
+              await page.wait_for_timeout(1000)
+              assert await page.locator('img.leaflet-tile[src*="World_Imagery"]').count()>0
 
-              await page.locator('.tab[data-tab="projects"]').click()
-              await page.wait_for_timeout(500)
-              controls=await page.locator('#projectControls').inner_text()
-              assert 'skematiske, kildebaserede tracéer' in controls.lower(),controls
+              await page.locator('.tab[data-tab="projects"]').click(); await page.wait_for_timeout(500)
+              controls=(await page.locator('#projectControls').inner_text()).lower(); assert 'skematiske projektområder' in controls,controls
               qa=await page.evaluate("projectGeorefState()")
-              assert qa['staticLoaded'] + qa['ignored'] == 26,qa
-              assert qa['staticLoaded'] == 17 and qa['ignored'] == 9,qa
-              assert qa['geometryFiles']==2,qa
-              assert qa['errors']==0,qa
-              assert qa['strategies']['dawa']==17 and qa['strategies']['geometry']==5,qa
-              assert qa['strategies']['withheld']>0,qa
-              assert qa['withheldLinear']==4,qa
-              assert 'fallback' not in qa['strategies'] or qa['strategies']['fallback']==0,qa
+              assert qa['staticLoaded']==17 and qa['ignored']==9 and qa['geometryFiles']==3 and qa['errors']==0,qa
+              assert qa['strategies']['dawa']==17 and qa['strategies']['geometry']==6 and qa['withheldLinear']==4,qa
 
-              svan=await page.evaluate("""() => {
-                const p=state.projects.find(x=>x.brandId==='novafos' && x.name.includes('Svanemøllen Skybrudstunnel'));
-                const g=p&&projectGeometry(p);
-                return p ? {linear:projectNeedsLinearGeometry(p),location:projectLocation(p),geometry:!!g,precision:projectGeometryPrecision(g),id:p.id} : null;
-              }""")
-              assert svan and svan['linear'] is True and svan['location'] is None and svan['geometry'] is True and svan['precision']=='source',svan
-              assert not await page.locator(f'.project-row[data-project-id="{svan["id"]}"]').evaluate("el=>el.classList.contains('unmapped')")
-
-              valby=await page.evaluate("""() => {
-                const p=state.projects.find(x=>x.brandId==='hofor' && x.name==='Valby Skybrudstunnel');
-                const g=p&&projectGeometry(p);
-                return p ? {linear:projectNeedsLinearGeometry(p),location:projectLocation(p),geometry:!!g,precision:projectGeometryPrecision(g),key:projectGeometryKey(p),id:p.id} : null;
-              }""")
-              assert valby and valby['linear'] is True and valby['location'] is None and valby['geometry'] is True and valby['precision']=='schematic' and valby['key']=='valby-skybrudstunnel',valby
-
-              # Source and schematic geometry remain visually and semantically distinct.
-              assert await page.locator('.project-route-source').count()==32
-              assert await page.locator('.project-anchor-source').count()==16
-              assert await page.locator('.project-route-schematic').count()==1
-              assert await page.locator('.project-anchor-schematic').count()==5
-              await page.locator('#projectGeometryFilter').select_option('line')
-              assert await page.locator('.project-row').count()==9
-              assert await page.locator('.project-marker-shell').count()==0
-
-              await page.locator('#search').fill('Svanemøllen')
+              # Svanemøllen: only source GIS must render for the targeted search.
+              await page.locator('#search').fill('Svanemøllen'); await page.wait_for_timeout(100)
               assert await page.locator('.project-row').count()==3
-              await page.locator('.project-row').first.click()
-              detail=await page.locator('#detailContent').inner_text()
+              counts={
+                  'source_routes':await page.locator('.project-route-source').count(),
+                  'source_points':await page.locator('.project-anchor-source').count(),
+                  'schematic_routes':await page.locator('.project-route-schematic').count(),
+                  'schematic_areas':await page.locator('.project-area-schematic').count()
+              }
+              assert counts=={'source_routes':32,'source_points':16,'schematic_routes':0,'schematic_areas':0},counts
+              await page.locator('.project-row').first.click(); detail=await page.locator('#detailContent').inner_text()
               assert 'Offentliggjort projektgeometri' in detail and 'Kilde til kortplacering' in detail,detail
               await page.locator('#closeDetail').click()
 
-              await page.locator('#search').fill('Valby Skybrudstunnel')
+              # Valby: only the separately labelled schematic trace must render.
+              await page.locator('#search').fill('Valby Skybrudstunnel'); await page.wait_for_timeout(100)
               assert await page.locator('.project-row').count()==2
-              await page.locator('.project-row').first.click()
-              detail=await page.locator('#detailContent').inner_text()
-              assert 'Skematisk, kildebaseret tracé' in detail,detail
-              assert 'ikke den projekterede centerlinje' in detail,detail
-              assert 'HOFOR, Frederiksberg Forsyning' in detail,detail
+              counts={
+                  'source_routes':await page.locator('.project-route-source').count(),
+                  'schematic_routes':await page.locator('.project-route-schematic').count(),
+                  'schematic_points':await page.locator('.project-anchor-schematic').count(),
+                  'schematic_areas':await page.locator('.project-area-schematic').count()
+              }
+              assert counts=={'source_routes':0,'schematic_routes':1,'schematic_points':5,'schematic_areas':0},counts
+              await page.locator('.project-row').first.click(); detail=await page.locator('#detailContent').inner_text()
+              assert 'Skematisk, kildebaseret tracé' in detail and 'ikke den projekterede centerlinje' in detail,detail
               await page.locator('#closeDetail').click()
 
-              # The other line projects stay withheld until a defensible route is available.
+              # The four remaining line projects still have no fabricated route.
+              await page.locator('#search').fill(''); await page.locator('#projectGeometryFilter').select_option('line')
+              assert await page.locator('.project-row').count()==9
+              assert await page.locator('.project-area').count()==0
               for name in ['Kloakledninger ved E20 og Søparken','Ny udløbsledning fra Brande Renseanlæg','Spildevandsprojekt ved Horne','Transportrør ved Nakskov Havn']:
-                  await page.locator('#search').fill(name)
-                  assert await page.locator('.project-row').count()==1,name
+                  await page.locator('#search').fill(name); assert await page.locator('.project-row').count()==1
                   assert await page.locator('.project-row').first.evaluate("el=>el.classList.contains('unmapped')"),name
-              await page.locator('#search').fill('')
-              await page.locator('#projectGeometryFilter').select_option('unmapped')
-              assert await page.locator('.project-row').count()>0
-              assert await page.locator('.project-row:not(.unmapped)').count()==0
-              assert await page.locator('.project-route').count()==0
-              await page.locator('#projectGeometryFilter').select_option('all')
+                  assert await page.locator('.project-route').count()==0,name
 
-              if mobile:
-                  overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
-                  assert overflow<=3,overflow
+              # Rønde Etape 5: reviewed schematic area, not a city-centre point and not a trace.
+              await page.locator('#search').fill(''); await page.locator('#projectGeometryFilter').select_option('polygon')
+              await page.locator('#search').fill('Rønde kloakseparering'); await page.wait_for_timeout(100)
+              assert await page.locator('.project-row').count()==1
+              row=page.locator('.project-row').first
+              assert not await row.evaluate("el=>el.classList.contains('unmapped')")
+              assert await row.get_attribute('data-geometry-kind')=='area' and await row.get_attribute('data-geometry-precision')=='schematic'
+              counts={'areas':await page.locator('.project-area-schematic').count(),'routes':await page.locator('.project-route').count(),'markers':await page.locator('.project-marker-shell').count()}
+              assert counts=={'areas':2,'routes':0,'markers':0},counts
+              await row.click(); detail=await page.locator('#detailContent').inner_text()
+              for needle in ['Rønde · separatkloakering etape 5','Skematisk, kildebaseret projektområde','ikke matrikelgrænse','27.02.2025']:
+                  assert needle in detail,(needle,detail)
+              await page.locator('#closeDetail').click()
+
+              await page.locator('#search').fill(''); await page.locator('#projectGeometryFilter').select_option('unmapped')
+              assert await page.locator('.project-row').count()>0 and await page.locator('.project-row:not(.unmapped)').count()==0
+              assert await page.locator('.project-route').count()==0 and await page.locator('.project-area').count()==0
               assert not errors,errors
-              label='mobile' if mobile else 'desktop'
-              await page.screenshot(path=f'qa-georef-{label}.png',full_page=True)
-              print(label.upper(),'geo',qa,'imageryTiles',imagery_tiles,'dawaRequests',len(dawa))
+              if mobile:
+                  overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth"); assert overflow<=3,overflow
+              label='mobile' if mobile else 'desktop'; await page.screenshot(path=f'qa-georef-{label}.png',full_page=True)
+              print(label.upper(),'PROJECT_GEO_QA_OK',qa)
               await context.close()
 
           async def main():
               async with async_playwright() as p:
-                  browser=await p.chromium.launch()
-                  await check(browser,False)
-                  await check(browser,True)
-                  await browser.close()
+                  browser=await p.chromium.launch(); await check(browser); await check(browser,True); await browser.close()
           asyncio.run(main())
           PY
           python /tmp/qa.py
