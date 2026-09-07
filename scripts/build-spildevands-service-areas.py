@@ -34,7 +34,7 @@ TYPE_NAME = "pdk:theme_pdk_kloakopland_vedtaget"
 PAGE_SIZE = 5000
 CURRENT_SEWER_CODES = {1, 2, 3, 4, 6}
 PRIVATE_OWNER_CODE = 2
-SIMPLIFY_TOLERANCE = 0.00001  # roughly 1 m north/south; topology preserved
+SIMPLIFY_TOLERANCE = 0.00008  # ca. 5–9 m in Denmark; topology preserved
 
 
 def load_json(path: Path):
@@ -223,6 +223,8 @@ def main():
         if not geom.is_valid:
             geom = geom.buffer(0)
         geom = geom.simplify(SIMPLIFY_TOLERANCE, preserve_topology=True)
+        if not geom.is_valid:
+            geom = geom.buffer(0)
         if geom.is_empty:
             raise RuntimeError(f"Empty union for {operator_id}")
 
