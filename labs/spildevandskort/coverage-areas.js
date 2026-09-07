@@ -5,7 +5,10 @@
   const MUNICIPALITY_URL="https://api.dataforsyningen.dk/kommuner?format=geojson&udenforkommuneinddeling=false";
   const VERIFIED_OVERRIDES={
     // Læsø has no mapped Plandata catchment in brands.json, but its wastewater utility is known in the app.
-    "læsø":"laesoe-forsyning"
+    "læsø":{brandId:"laesoe-forsyning",reason:"Explicit utility profile for Læsø Forsyning"},
+    // Plandata metadata uses the older/name-variant 'Københavns'; the official municipality is 'København'.
+    // Københavns Kommune explicitly identifies HOFOR Spildevand København A/S as its wastewater company.
+    "københavn":{brandId:"hofor",reason:"Verified against Københavns Kommune and HOFOR",sourceUrl:"https://www.kk.dk/dagsordener-og-referater/Klima-%2C%20Milj%C3%B8-%20og%20Teknikudvalget/m%C3%B8de-24022026/referat/punkt-20"}
   };
   const norm=s=>String(s||"").toLocaleLowerCase("da").trim().replace(/\s+/g," ");
   state.coverageLayer=null;
@@ -17,17 +20,18 @@
     for(const b of state.brands){
       if((b.municipalities||[]).some(m=>norm(m)===key))ids.push(b.id);
     }
-    if(!ids.length&&VERIFIED_OVERRIDES[key])ids.push(VERIFIED_OVERRIDES[key]);
+    const override=VERIFIED_OVERRIDES[key];
+    if(!ids.length&&override?.brandId)ids.push(override.brandId);
     return [...new Set(ids)];
   }
 
   function classify(feature){
     const p=feature.properties||{};
     const name=p.navn||p.name||p.NAVN||"";
-    const candidates=municipalityCandidates(name);
-    if(candidates.length===1)return {status:"assigned",brandId:candidates[0],name};
-    if(candidates.length>1)return {status:"ambiguous",brandIds:candidates,name};
-    return {status:"unmapped",brandIds:[],name};
+    const key=norm(name),candidates=municipalityCandidates(name),override=VERIFIED_OVERRIDES[key]||null;
+    if(candidates.length===1)return {status:"assigned",brandId:candidates[0],name,override};
+    if(candidates.length>1)return {status:"ambiguous",brandIds:candidates,name,override};
+    return {status:"unmapped",brandIds:[],name,override};
   }
 
   function colorFor(feature){
@@ -74,6 +78,7 @@
         source:"Dataforsyningen · kommuner",
         municipalities:rows.length,
         assigned:rows.filter(x=>x.status==="assigned").length,
+        verifiedOverrides:rows.filter(x=>x.status==="assigned"&&x.override).map(x=>({name:x.name,brandId:x.brandId,reason:x.override.reason,sourceUrl:x.override.sourceUrl||null})),
         ambiguous:rows.filter(x=>x.status==="ambiguous").map(x=>({name:x.name,brandIds:x.brandIds})),
         unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name)
       };
