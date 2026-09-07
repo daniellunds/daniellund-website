@@ -1,0 +1,42 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "projectKey": "haarby-etape-7",
+    "precision": "schematic",
+    "geometryRole": "project-area",
+    "locationLabel": "Haarby · 7. og sidste etape",
+    "sourceUrl": "https://www.assensforsyning.dk/spildevand/separatkloakering/haarby-status-og-tidsplan",
+    "retrievedAt": "2026-09-07",
+    "projectIds": ["assens-forsyning:0"],
+    "sharedOwners": ["Assens Forsyning"],
+    "note": "Skematisk projektområde omkring de fire vejområder, som Assens Forsyning eksplicit angiver for Haarbys 7. og sidste etape: Strandgade, Skolevej, Algade og Postvænget. Polygonen er et oversigtsområde baseret på offentlige adresse-/vejplaceringer og må ikke bruges som matrikel-, entreprise- eller projekteringsgrænse.",
+    "basis": [
+      "Assens Forsyning: sidste etape omfatter Strandgade, Skolevej, Algade og Postvænget",
+      "Offentligt tilgængelige adressekoordinater anvendt til at stedfæste vejområdet",
+      "Afgrænsningen er bevidst konservativ og omfatter kun det centrale vejområde omkring de fire navngivne veje"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "schematic_area:1",
+      "properties": {
+        "component": "schematic_area",
+        "label": "Haarby · sidste etape · skematisk projektområde"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [10.1197, 55.2213],
+          [10.1220, 55.2209],
+          [10.1283, 55.2218],
+          [10.1286, 55.2230],
+          [10.1256, 55.2242],
+          [10.1210, 55.2249],
+          [10.1194, 55.2241],
+          [10.1197, 55.2213]
+        ]]
+      }
+    }
+  ]
+}
