@@ -52,12 +52,20 @@
     }).addTo(state.map);
   }
 
+  async function waitForBrands(){
+    for(let i=0;i<100;i++){
+      if(state.brands?.length&&state.brandById?.size)return;
+      await new Promise(resolve=>setTimeout(resolve,50));
+    }
+    throw new Error("Forsyningsmetadata blev ikke klar");
+  }
+
   async function loadCoverage(){
     try{
+      await waitForBrands();
       const response=await fetch(MUNICIPALITY_URL);
       if(!response.ok)throw new Error(`${response.status} ${response.statusText}`);
       const raw=await response.json();
-      // DAWA may return either a FeatureCollection or an array depending on deployment/format handling.
       const fc=raw.type==="FeatureCollection"?raw:{type:"FeatureCollection",features:Array.isArray(raw)?raw.filter(x=>x.type==="Feature"):[]};
       if(!fc.features?.length)throw new Error("Ingen kommunegeometrier i svaret");
       state.coverageData=fc;
