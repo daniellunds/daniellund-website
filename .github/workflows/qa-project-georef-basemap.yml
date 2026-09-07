@@ -4,7 +4,9 @@ on:
     paths:
       - 'labs/spildevandskort/projects.js'
       - 'labs/spildevandskort/data/project-geography.json'
+      - 'labs/spildevandskort/data/project-geometries-index.json'
       - 'labs/spildevandskort/data/svanemoellen.geojson'
+      - 'labs/spildevandskort/data/valby-skybrudstunnel.geojson'
       - 'scripts/check-project-geography.cjs'
       - 'labs/spildevandskort/index.html'
       - 'labs/spildevandskort/projects.css'
@@ -16,7 +18,9 @@ on:
     paths:
       - 'labs/spildevandskort/projects.js'
       - 'labs/spildevandskort/data/project-geography.json'
+      - 'labs/spildevandskort/data/project-geometries-index.json'
       - 'labs/spildevandskort/data/svanemoellen.geojson'
+      - 'labs/spildevandskort/data/valby-skybrudstunnel.geojson'
       - 'scripts/check-project-geography.cjs'
       - 'labs/spildevandskort/index.html'
       - 'labs/spildevandskort/projects.css'
@@ -39,12 +43,16 @@ jobs:
           test -s labs/spildevandskort/basemaps.js
           test -s labs/spildevandskort/project-geocoder.js
           test -s labs/spildevandskort/data/project-geocodes.json
+          test -s labs/spildevandskort/data/project-geometries-index.json
+          test -s labs/spildevandskort/data/valby-skybrudstunnel.geojson
           node scripts/check-project-geography.cjs
           node --check labs/spildevandskort/basemaps.js
           node --check labs/spildevandskort/project-geocoder.js
+          node --check labs/spildevandskort/projects.js
           ! grep -q 'Tilbage til laboratoriet' labs/spildevandskort/index.html
           ! grep -q 'MARKEDS- OG KUNDEOVERBLIK' labs/spildevandskort/index.html
           grep -q 'Vis georefererede projekter' labs/spildevandskort/index.html
+          grep -q 'skematisk, kildebaseret tracé' labs/spildevandskort/index.html
           grep -q 'no utility-area fallback' labs/spildevandskort/project-geocoder.js
           python - <<'PY'
           import json
@@ -83,7 +91,7 @@ jobs:
               assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
               await page.wait_for_function("typeof window.spildevandskortBasemapState==='function' && typeof window.projectGeorefState==='function'",timeout=30000)
-              await page.wait_for_function("projectGeorefState().mode==='static' && projectGeorefState().staticLoaded===17",timeout=30000)
+              await page.wait_for_function("projectGeorefState().mode==='static' && projectGeorefState().staticLoaded===17 && projectGeorefState().geometryFiles===2",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>100",timeout=30000)
 
               body=await page.locator('body').inner_text()
@@ -108,33 +116,63 @@ jobs:
 
               await page.locator('.tab[data-tab="projects"]').click()
               await page.wait_for_timeout(500)
+              controls=await page.locator('#projectControls').inner_text()
+              assert 'skematiske, kildebaserede tracéer' in controls.lower(),controls
               qa=await page.evaluate("projectGeorefState()")
               assert qa['staticLoaded'] + qa['ignored'] == 26,qa
               assert qa['staticLoaded'] == 17 and qa['ignored'] == 9,qa
+              assert qa['geometryFiles']==2,qa
               assert qa['errors']==0,qa
-              assert qa['strategies']['dawa']==17 and qa['strategies']['geometry']==3,qa
+              assert qa['strategies']['dawa']==17 and qa['strategies']['geometry']==5,qa
               assert qa['strategies']['withheld']>0,qa
+              assert qa['withheldLinear']==4,qa
               assert 'fallback' not in qa['strategies'] or qa['strategies']['fallback']==0,qa
 
               svan=await page.evaluate("""() => {
                 const p=state.projects.find(x=>x.brandId==='novafos' && x.name.includes('Svanemøllen Skybrudstunnel'));
-                return p ? {linear:projectNeedsLinearGeometry(p),location:projectLocation(p),geometry:!!projectGeometry(p),id:p.id} : null;
+                const g=p&&projectGeometry(p);
+                return p ? {linear:projectNeedsLinearGeometry(p),location:projectLocation(p),geometry:!!g,precision:projectGeometryPrecision(g),id:p.id} : null;
               }""")
-              assert svan and svan['linear'] is True and svan['location'] is None and svan['geometry'] is True,svan
+              assert svan and svan['linear'] is True and svan['location'] is None and svan['geometry'] is True and svan['precision']=='source',svan
               assert not await page.locator(f'.project-row[data-project-id="{svan["id"]}"]').evaluate("el=>el.classList.contains('unmapped')")
 
-              # Shared tunnel geometry is drawn once, with each published component retained.
-              assert await page.locator('.project-route').count()==32
-              assert await page.locator('.project-shaft').count()==16
+              valby=await page.evaluate("""() => {
+                const p=state.projects.find(x=>x.brandId==='hofor' && x.name==='Valby Skybrudstunnel');
+                const g=p&&projectGeometry(p);
+                return p ? {linear:projectNeedsLinearGeometry(p),location:projectLocation(p),geometry:!!g,precision:projectGeometryPrecision(g),key:projectGeometryKey(p),id:p.id} : null;
+              }""")
+              assert valby and valby['linear'] is True and valby['location'] is None and valby['geometry'] is True and valby['precision']=='schematic' and valby['key']=='valby-skybrudstunnel',valby
+
+              # Source and schematic geometry remain visually and semantically distinct.
+              assert await page.locator('.project-route-source').count()==32
+              assert await page.locator('.project-anchor-source').count()==16
+              assert await page.locator('.project-route-schematic').count()==1
+              assert await page.locator('.project-anchor-schematic').count()==5
               await page.locator('#projectGeometryFilter').select_option('line')
               assert await page.locator('.project-row').count()==9
               assert await page.locator('.project-marker-shell').count()==0
+
               await page.locator('#search').fill('Svanemøllen')
               assert await page.locator('.project-row').count()==3
               await page.locator('.project-row').first.click()
               detail=await page.locator('#detailContent').inner_text()
               assert 'Offentliggjort projektgeometri' in detail and 'Kilde til kortplacering' in detail,detail
               await page.locator('#closeDetail').click()
+
+              await page.locator('#search').fill('Valby Skybrudstunnel')
+              assert await page.locator('.project-row').count()==2
+              await page.locator('.project-row').first.click()
+              detail=await page.locator('#detailContent').inner_text()
+              assert 'Skematisk, kildebaseret tracé' in detail,detail
+              assert 'ikke den projekterede centerlinje' in detail,detail
+              assert 'HOFOR, Frederiksberg Forsyning' in detail,detail
+              await page.locator('#closeDetail').click()
+
+              # The other line projects stay withheld until a defensible route is available.
+              for name in ['Kloakledninger ved E20 og Søparken','Ny udløbsledning fra Brande Renseanlæg','Spildevandsprojekt ved Horne','Transportrør ved Nakskov Havn']:
+                  await page.locator('#search').fill(name)
+                  assert await page.locator('.project-row').count()==1,name
+                  assert await page.locator('.project-row').first.evaluate("el=>el.classList.contains('unmapped')"),name
               await page.locator('#search').fill('')
               await page.locator('#projectGeometryFilter').select_option('unmapped')
               assert await page.locator('.project-row').count()>0
