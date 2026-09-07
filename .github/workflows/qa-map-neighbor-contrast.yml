@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'labs/spildevandskort/map-colors.js'
+      - 'labs/spildevandskort/current-operators.js'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/basemaps.css'
       - 'labs/spildevandskort/index.html'
@@ -10,6 +11,7 @@ on:
   pull_request:
     paths:
       - 'labs/spildevandskort/map-colors.js'
+      - 'labs/spildevandskort/current-operators.js'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/basemaps.css'
       - 'labs/spildevandskort/index.html'
@@ -27,12 +29,15 @@ jobs:
         run: |
           set -euo pipefail
           test -s labs/spildevandskort/map-colors.js
+          test -s labs/spildevandskort/current-operators.js
           grep -q 'map-colors.js' labs/spildevandskort/index.html
+          grep -q 'current-operators.js' labs/spildevandskort/index.html
           grep -q 'osm-grayscale-layer' labs/spildevandskort/basemaps.js
           grep -q 'grayscale(100%)' labs/spildevandskort/basemaps.css
           grep -q 'HOFOR' labs/spildevandskort/map-colors.js
           grep -q 'Ishøj Forsyning' labs/spildevandskort/map-colors.js
           node --check labs/spildevandskort/map-colors.js
+          node --check labs/spildevandskort/current-operators.js
           node --check labs/spildevandskort/basemaps.js
       - name: Install Playwright
         run: |
@@ -49,74 +54,50 @@ jobs:
           cat > /tmp/qa.py <<'PY'
           import asyncio, os
           from playwright.async_api import async_playwright
-
           async def check(browser,mobile=False):
               viewport={"width":390,"height":844} if mobile else {"width":1440,"height":900}
               context=await browser.new_context(viewport=viewport,is_mobile=mobile)
-              page=await context.new_page()
-              errors=[]
+              page=await context.new_page();errors=[]
               page.on('pageerror',lambda e:errors.append(str(e)))
-              r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
-              assert r and r.ok
+              r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000);assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
               await page.wait_for_function("typeof spildevandskortColorState==='function' && spildevandskortColorState()?.neighbourPairs>0",timeout=60000)
               await page.wait_for_function("typeof spildevandskortBasemapState==='function' && spildevandskortBasemapState().streetGreyscale===true",timeout=30000)
-
               cq=await page.evaluate('spildevandskortColorState()')
-              assert cq['strategy']=='near-neighbour-max-contrast',cq
-              assert cq['neighbourPairs']>40,cq
+              assert cq['strategy']=='current-operator-near-neighbour-max-contrast',cq
+              assert cq['neighbourPairs']>40 and cq['operatorGroups']<76,cq
               assert cq['sameColorNeighbourPairs']==0,cq
-              assert cq['hoforIshoej'],cq
-              assert cq['hoforIshoej']['hofor']!=cq['hoforIshoej']['ishoej'],cq
+              assert cq['sameOperatorNeighbourPairs']>=2,cq
+              assert cq['hoforIshoej'] and cq['hoforIshoej']['hofor']!=cq['hoforIshoej']['ishoej'],cq
               assert cq['hoforIshoej']['distance']>0.12,cq
-
+              colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color})")
+              assert colors['nf']==colors['vcs'] and colors['sd']==colors['ad'],colors
               bq=await page.evaluate('spildevandskortBasemapState()')
               assert bq['active']=='Kort' and bq['streetGreyscale'] is True,bq
-              filter_value=await page.locator('.osm-grayscale-layer').evaluate("el=>getComputedStyle(el).filter")
-              assert filter_value!='none',filter_value
-
-              # Verify the visible legend/list colors have been refreshed after polygon loading.
-              await page.locator('#search').fill('HOFOR')
-              await page.wait_for_timeout(250)
-              hofor_swatch=page.locator('.brand-row .brand-swatch').first
-              assert await hofor_swatch.count()==1
-              hofor_css=await hofor_swatch.evaluate("el=>getComputedStyle(el).backgroundColor")
-              await page.locator('#search').fill('Ishøj Forsyning')
-              await page.wait_for_timeout(250)
-              ishoej_swatch=page.locator('.brand-row .brand-swatch').first
-              assert await ishoej_swatch.count()==1
-              ishoej_css=await ishoej_swatch.evaluate("el=>getComputedStyle(el).backgroundColor")
+              filter_value=await page.locator('.osm-grayscale-layer').evaluate("el=>getComputedStyle(el).filter");assert filter_value!='none',filter_value
+              await page.locator('#search').fill('HOFOR');await page.wait_for_timeout(250)
+              hofor_css=await page.locator('.brand-row .brand-swatch').first.evaluate("el=>getComputedStyle(el).backgroundColor")
+              await page.locator('#search').fill('Ishøj Forsyning');await page.wait_for_timeout(250)
+              ishoej_css=await page.locator('.brand-row .brand-swatch').first.evaluate("el=>getComputedStyle(el).backgroundColor")
               assert hofor_css!=ishoej_css,(hofor_css,ishoej_css)
               await page.locator('#search').fill('')
-
-              # Aerial imagery must remain unfiltered; switching back must restore grayscale OSM.
-              labels=page.locator('.leaflet-control-layers-base label')
-              texts=await labels.all_inner_texts()
+              labels=page.locator('.leaflet-control-layers-base label');texts=await labels.all_inner_texts()
               for i,t in enumerate(texts):
-                  if 'Luftfoto' in t:
-                      await labels.nth(i).click(force=True);break
+                  if 'Luftfoto' in t:await labels.nth(i).click(force=True);break
               await page.wait_for_function("spildevandskortBasemapState().active==='Luftfoto' && spildevandskortBasemapState().imageryOnMap",timeout=10000)
               assert await page.locator('.osm-grayscale-layer').count()==0
               for i,t in enumerate(texts):
-                  if 'Kort' in t:
-                      await labels.nth(i).click(force=True);break
+                  if 'Kort' in t:await labels.nth(i).click(force=True);break
               await page.wait_for_function("spildevandskortBasemapState().active==='Kort' && spildevandskortBasemapState().streetGreyscale===true",timeout=10000)
-
               if mobile:
-                  overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
-                  assert overflow<=3,overflow
+                  overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth");assert overflow<=3,overflow
               assert not errors,errors
-              label='mobile' if mobile else 'desktop'
-              await page.screenshot(path=f'qa-map-contrast-{label}.png',full_page=True)
-              print(label.upper(),'COLOR_QA',cq,'BASEMAP_QA',bq)
+              label='mobile' if mobile else 'desktop';await page.screenshot(path=f'qa-map-contrast-{label}.png',full_page=True)
+              print(label.upper(),'COLOR_QA',cq,'CURRENT_OPERATOR_COLORS',colors,'BASEMAP_QA',bq)
               await context.close()
-
           async def main():
               async with async_playwright() as p:
-                  browser=await p.chromium.launch()
-                  await check(browser,False)
-                  await check(browser,True)
-                  await browser.close()
+                  browser=await p.chromium.launch();await check(browser,False);await check(browser,True);await browser.close()
           asyncio.run(main())
           PY
           python /tmp/qa.py
