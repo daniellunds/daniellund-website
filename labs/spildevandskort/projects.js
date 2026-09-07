@@ -67,7 +67,8 @@ function projectReview(pr){
 }
 function projectGeometryKey(pr){
   const review=projectReview(pr);
-  return review?.geometryKey||state.projectGeometryByProject?.get(pr.id)||null;
+  if(!review)return null;
+  return review.geometryKey||state.projectGeometryByProject?.get(pr.id)||null;
 }
 function projectGeometry(pr){
   const key=projectGeometryKey(pr);
