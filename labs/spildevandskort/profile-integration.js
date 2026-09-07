@@ -127,6 +127,7 @@
       actions.append(profile,zoom);
     }
   };
+  window.CATCHMENT_DETAIL_PANEL_VERSION=2;
 
   renderList();
   console.info("UTILITY_PROFILES_READY",{profiles:state.profiles.size,projects:state.projects?.length||0,currentOperatorOverrides:state.currentOperatorOverrides?.size||0});
