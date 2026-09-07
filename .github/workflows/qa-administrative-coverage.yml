@@ -25,6 +25,8 @@ jobs:
           grep -q 'showCoverage' labs/spildevandskort/index.html
           grep -q 'coverage-areas.js' labs/spildevandskort/index.html
           grep -q 'ambiguous' labs/spildevandskort/coverage-areas.js
+          grep -q 'københavn' labs/spildevandskort/coverage-areas.js
+          grep -q 'hofor' labs/spildevandskort/coverage-areas.js
       - name: Install Playwright
         run: |
           python -m pip install --quiet playwright
@@ -51,14 +53,17 @@ jobs:
                 await page.wait_for_function("spildevandskortCoverageState() && (spildevandskortCoverageState().municipalities || spildevandskortCoverageState().error)",timeout=60000)
                 qa=await page.evaluate('spildevandskortCoverageState()')
                 assert not qa.get('error'),qa
-                assert qa['municipalities']>=98,qa
-                assert qa['assigned']>70,qa
+                assert qa['municipalities']==98,qa
+                assert qa['assigned']==98,qa
+                assert qa['ambiguous']==[],qa
+                assert qa['unmapped']==[],qa
+                assert any(x['name']=='København' and x['brandId']=='hofor' for x in qa.get('verifiedOverrides',[])),qa
                 assert await page.locator('#showCoverage').is_checked()
-                assert await page.locator('.leaflet-coverage-pane path').count()>0
+                assert await page.locator('.leaflet-coverage-pane path').count()==98
                 await page.locator('#showCoverage').uncheck(); await page.wait_for_timeout(150)
                 assert await page.locator('.leaflet-coverage-pane path').count()==0
                 await page.locator('#showCoverage').check(); await page.wait_for_timeout(150)
-                assert await page.locator('.leaflet-coverage-pane path').count()>0
+                assert await page.locator('.leaflet-coverage-pane path').count()==98
                 if mobile:
                   overflow=await page.evaluate('document.documentElement.scrollWidth-document.documentElement.clientWidth'); assert overflow<=3,overflow
                 assert not errors,errors
