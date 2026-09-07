@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-09-07",
-  "note": "Register over projektgeometrier. precision=source er offentliggjort kildegeometri; precision=schematic er et skematisk, kildebaseret tracé og må ikke læses som projekteringsgeometri.",
+  "note": "Register over projektgeometrier. precision=source er offentliggjort kildegeometri; precision=schematic er skematisk, kildebaseret geometri og må ikke læses som projekterings-, matrikel- eller landmålingsgeometri.",
   "geometries": [
     {
       "key": "svanemoellen",
@@ -11,6 +11,11 @@
     {
       "key": "valby-skybrudstunnel",
       "file": "valby-skybrudstunnel.geojson",
+      "precision": "schematic"
+    },
+    {
+      "key": "tuse-naes",
+      "file": "tuse-naes.geojson",
       "precision": "schematic"
     }
   ]
