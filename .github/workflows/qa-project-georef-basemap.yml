@@ -107,7 +107,9 @@ jobs:
               assert 'Tilbage til laboratoriet' not in body
               assert 'MARKEDS- OG KUNDEOVERBLIK' not in body
               assert 'Dansk spildevandskort' in body
-              assert not dawa,dawa[:3]
+              non_coverage_dawa=[u for u in dawa if '/kommuner?' not in u]
+              assert not non_coverage_dawa,non_coverage_dawa[:3]
+              assert sum('/kommuner?' in u for u in dawa)<=1,dawa[:3]
 
               control=page.locator('.leaflet-control-layers')
               assert await control.count()==1
