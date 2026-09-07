@@ -1,0 +1,104 @@
+name: QA sewer catchment detail panel
+
+on:
+  push:
+    paths:
+      - 'labs/spildevandskort/profile-integration.js'
+      - 'labs/spildevandskort/data/spildevandsoplande-*.geojson.gz'
+      - '.github/workflows/qa-catchment-details.yml'
+  pull_request:
+    paths:
+      - 'labs/spildevandskort/profile-integration.js'
+      - 'labs/spildevandskort/data/spildevandsoplande-*.geojson.gz'
+      - '.github/workflows/qa-catchment-details.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Static JS QA
+        run: |
+          node --check labs/spildevandskort/profile-integration.js
+          grep -q 'CATCHMENT_DETAIL_PANEL_VERSION=2' labs/spildevandskort/profile-integration.js
+
+      - name: Install Playwright
+        run: |
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Start local server
+        run: |
+          python3 -m http.server 4181 --bind 127.0.0.1 >/tmp/catchment-detail-server.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4181/labs/spildevandskort/ >/dev/null && break; sleep 1; done
+
+      - name: Test catchment details on desktop and mobile
+        env:
+          MAP_URL: http://127.0.0.1:4181/labs/spildevandskort/
+        run: |
+          cat >/tmp/qa.py <<'PY'
+          import asyncio, os
+          from playwright.async_api import async_playwright
+
+          REQUIRED = ['Vedtaget kloakopland','Forsyning','Kommune','Kloaktype','Planstatus','Kildeobjekter','Datakilde']
+
+          async def check(browser, mobile=False):
+              context = await browser.new_context(
+                  viewport={'width':390,'height':844} if mobile else {'width':1440,'height':900},
+                  is_mobile=mobile,
+              )
+              page = await context.new_page()
+              errors=[]
+              page.on('pageerror', lambda e: errors.append(str(e)))
+              r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
+              assert r and r.ok
+              await page.wait_for_selector('.leaflet-container',timeout=30000)
+              await page.wait_for_function("typeof state !== 'undefined' && state.features.length>=350",timeout=90000)
+              await page.wait_for_function("window.CATCHMENT_DETAIL_PANEL_VERSION===2",timeout=90000)
+
+              opened=await page.evaluate("""() => {
+                let chosen=null;
+                state.polygonLayer.eachLayer(layer=>{
+                  const p=layer.feature?.properties||{};
+                  if(!chosen && p.sourceFeatureCount && p.displayType && p.planStatus) chosen=layer;
+                });
+                if(!chosen) return null;
+                chosen.fire('click');
+                const p=chosen.feature.properties;
+                return {brandId:p.brandId,municipality:p.municipality,displayType:p.displayType,sourceFeatureCount:p.sourceFeatureCount};
+              }""")
+              assert opened, 'No suitable catchment layer found'
+              await page.wait_for_selector('#detailPanel.open',timeout=10000)
+              text=await page.locator('#detailContent').inner_text()
+              for label in REQUIRED:
+                  assert label in text, (label,text)
+              assert 'Ikke oplyst' not in text, text
+              assert opened['municipality'] in text, (opened,text)
+              assert opened['displayType'] in text, (opened,text)
+              assert await page.locator('#detailContent .fact').count() >= 5
+              assert await page.locator('#detailContent .area-profile-actions .detail-action').count() >= 1
+              for i in range(await page.locator('#detailContent .area-source-links a').count()):
+                  href=await page.locator('#detailContent .area-source-links a').nth(i).get_attribute('href')
+                  assert href and href.startswith(('http://','https://')), href
+              assert not errors, errors
+              if mobile:
+                  overflow=await page.evaluate('document.documentElement.scrollWidth-document.documentElement.clientWidth')
+                  assert overflow<=3, overflow
+              print(('MOBILE' if mobile else 'DESKTOP'),'CATCHMENT_DETAIL_QA_OK',opened)
+              await context.close()
+
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch()
+                  await check(browser,False)
+                  await check(browser,True)
+                  await browser.close()
+
+          asyncio.run(main())
+          PY
+          python /tmp/qa.py
