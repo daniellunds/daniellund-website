@@ -1,12 +1,15 @@
 // Conservative geographic enrichment for project markers using Danmarks officielle stednavne (DAWA).
 // Normal visitors load a curated static dataset. DAWA lookups only run in explicit generator mode.
-// Map priority: live PULS plant -> curated project anchor -> curated DAWA area -> no marker.
+// Map priority: reviewed geometry type -> explicit PULS identity / documented area anchor.
+// Linear and unresolved projects cannot fall through to a point marker.
 (function installProjectGeocoder(){
   if(typeof projectLocation!=="function" || typeof initProjects!=="function")return;
 
   const DAWA_BASE="https://api.dataforsyningen.dk";
   const GENERATE_MODE=new URLSearchParams(location.search).has("generateGeocodes");
   state.projectResolvedLocations=new Map();
+  state.projectGeography=new Map();
+  state.projectGeometries=new Map();
   state.projectGeorefQa={mode:GENERATE_MODE?"generator":"static",resolved:0,attempted:0,staticLoaded:0,ignored:0,errors:0,withheldLinear:0};
 
   const genericWords=new Set([
@@ -18,6 +21,8 @@
   ].map(normalize));
 
   function projectNeedsLinearGeometry(pr){
+    const review=projectReview(pr);
+    if(review)return review.geometryType==="line";
     const t=normalize(`${pr.name||""} ${pr.description||""}`);
     return /skybrudstunnel|\btunnel\b|transportledning|transportrør|transportroer|udløbsledning|udloebsledning|pumpeledning|\blangs\b|\bkm nyt transportanlæg\b|\bkm nyt transportanlaeg\b/.test(t);
   }
@@ -110,7 +115,7 @@
     return bestScore>=15?best:null;
   }
   async function resolveProjectViaDawa(pr){
-    if(projectNeedsLinearGeometry(pr))return null;
+    if(!projectAllowsAreaAnchor(pr))return null;
     for(const candidate of projectPlaceCandidates(pr)){
       try{const loc=await resolveCandidate(candidate,pr);if(loc)return {...loc,query:candidate};}
       catch(err){state.projectGeorefQa.errors++;console.debug("DAWA project geocode skipped",pr.name,candidate,err?.message||err);}
@@ -134,7 +139,7 @@
       for(const row of raw.projects||[]){
         const pr=byId.get(row.id);
         const lat=Number(row.lat),lon=Number(row.lon);
-        if(!pr||pr.name!==row.name||!Number.isFinite(lat)||!Number.isFinite(lon)||projectNeedsLinearGeometry(pr)||projectHasMultipleNamedAreas(pr)||projectIsMunicipalityWideOrStrategic(pr)){
+        if(!pr||pr.name!==row.name||!Number.isFinite(lat)||!Number.isFinite(lon)||lat<54||lat>58.5||lon<7.5||lon>16||!projectAllowsAreaAnchor(pr)){
           state.projectGeorefQa.ignored++;continue;
         }
         state.projectResolvedLocations.set(pr.id,{lat,lon,label:row.label||pr.name,precision:"område",strategy:"dawa",sourceUrl:"https://danmarksadresser.dk/data/stednavne"});
@@ -151,7 +156,7 @@
     const pending=[];
     for(const pr of state.projects){
       if(projectPlantAnchor(pr)||projectNamedAreaAnchor(pr))continue;
-      if(projectNeedsLinearGeometry(pr)||projectHasMultipleNamedAreas(pr)||projectIsMunicipalityWideOrStrategic(pr)){
+      if(!projectAllowsAreaAnchor(pr)){
         state.projectGeorefQa.withheldLinear++;continue;
       }
       if(projectPlaceCandidates(pr).length)pending.push(pr);
@@ -166,11 +171,11 @@
   }
 
   function updateWithheldCounts(){
-    state.projectGeorefQa.withheldLinear=state.projects.filter(pr=>!projectPlantAnchor(pr)&&!projectNamedAreaAnchor(pr)&&(projectNeedsLinearGeometry(pr)||projectHasMultipleNamedAreas(pr)||projectIsMunicipalityWideOrStrategic(pr))).length;
+    state.projectGeorefQa.withheldLinear=state.projects.filter(pr=>projectNeedsLinearGeometry(pr)&&!projectHasMapGeometry(pr)).length;
   }
   function projectGeorefStrategyCounts(){
-    const counts={puls:0,anchor:0,dawa:0,withheld:0};
-    for(const pr of state.projects){const loc=projectLocation(pr);if(!loc){counts.withheld++;continue;}counts[loc.strategy]=(counts[loc.strategy]||0)+1;}
+    const counts={geometry:0,puls:0,anchor:0,dawa:0,withheld:0};
+    for(const pr of state.projects){if(projectGeometry(pr)){counts.geometry++;continue;}const loc=projectLocation(pr);if(!loc){counts.withheld++;continue;}counts[loc.strategy]=(counts[loc.strategy]||0)+1;}
     return counts;
   }
 
@@ -180,25 +185,40 @@
   window.projectGeorefState=()=>({...state.projectGeorefQa,strategies:projectGeorefStrategyCounts()});
 
   // Critical safety rule: no utility-area fallback on the project map.
-  projectLocation=function(pr){return projectPlantAnchor(pr)||projectNamedAreaAnchor(pr)||state.projectResolvedLocations.get(pr.id)||null;};
+  projectLocation=function(pr){return projectPlantAnchor(pr)||projectNamedAreaAnchor(pr)||(projectAllowsAreaAnchor(pr)?state.projectResolvedLocations.get(pr.id):null)||null;};
 
   const coreProjectRowElement=projectRowElement;
   projectRowElement=function(pr){
     const row=coreProjectRowElement(pr);
-    if(!projectLocation(pr)){row.classList.add("unmapped");row.title="Projektet er registreret, men har endnu ingen tilstrækkeligt verificeret kortplacering";}
+    if(!projectHasMapGeometry(pr)){row.classList.add("unmapped");row.title="Projektet er registreret, men har endnu ingen tilstrækkeligt verificeret kortplacering";}
     return row;
   };
 
-  const coreOpenProject=openProject;
-  openProject=function(pr){
-    coreOpenProject(pr);
-    if(projectLocation(pr))return;
-    const note=els.detailContent.querySelector(".source-note");
-    if(note)note.innerHTML="<strong>Kortplacering:</strong> Projektet er ikke vist med en markør, fordi der endnu ikke er verificeret en tilstrækkeligt præcis geografi. Det forhindrer misvisende placeringer i forsyningsområdet.";
-  };
+  function validCoordinates(value){
+    if(!Array.isArray(value)||!value.length)return false;
+    if(typeof value[0]==="number")return value.length>=2&&Number.isFinite(value[0])&&Number.isFinite(value[1])&&value[0]>=7.5&&value[0]<=16&&value[1]>=54&&value[1]<=58.5;
+    return value.every(validCoordinates);
+  }
+  async function loadProjectGeography(){
+    try{
+      const raw=await fetchJSON(`${PROD}/project-geography.json`);
+      for(const row of raw.projects||[]){
+        if(row.id&&row.name&&["point","line","polygon","unresolved"].includes(row.geometryType))state.projectGeography.set(row.id,row);
+      }
+      const geometry=await fetchJSON(`${PROD}/svanemoellen.geojson`);
+      if(geometry.type!=="FeatureCollection"||geometry.metadata?.projectKey!=="svanemoellen"||!geometry.metadata?.sourceUrl||!geometry.features?.length||!geometry.features.every(f=>["Point","LineString","MultiLineString","Polygon","MultiPolygon"].includes(f.geometry?.type)&&validCoordinates(f.geometry.coordinates)))throw new Error("Ugyldig projektgeometri");
+      state.projectGeometries.set("svanemoellen",geometry);
+    }catch(err){
+      state.projectGeorefQa.errors++;
+      console.warn("Projektgeografi kunne ikke indlæses",err);
+      const note=els.projectControls?.querySelector(".control-note");
+      if(note)note.textContent="Noget af den geografiske dokumentation kunne ikke indlæses. Berørte projekter vises i listen uden en kortplacering.";
+    }
+  }
 
   const coreInitProjects=initProjects;
   initProjects=async function(){
+    await loadProjectGeography();
     await coreInitProjects();
     if(GENERATE_MODE)await enrichProjectLocationsFromDawa();else await loadStaticProjectGeocodes();
     updateWithheldCounts();

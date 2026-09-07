@@ -2,6 +2,10 @@ name: QA project georef and basemap
 on:
   push:
     paths:
+      - 'labs/spildevandskort/projects.js'
+      - 'labs/spildevandskort/data/project-geography.json'
+      - 'labs/spildevandskort/data/svanemoellen.geojson'
+      - 'scripts/check-project-geography.cjs'
       - 'labs/spildevandskort/index.html'
       - 'labs/spildevandskort/projects.css'
       - 'labs/spildevandskort/basemaps.js'
@@ -10,6 +14,10 @@ on:
       - '.github/workflows/qa-project-georef-basemap.yml'
   pull_request:
     paths:
+      - 'labs/spildevandskort/projects.js'
+      - 'labs/spildevandskort/data/project-geography.json'
+      - 'labs/spildevandskort/data/svanemoellen.geojson'
+      - 'scripts/check-project-geography.cjs'
       - 'labs/spildevandskort/index.html'
       - 'labs/spildevandskort/projects.css'
       - 'labs/spildevandskort/basemaps.js'
@@ -31,6 +39,7 @@ jobs:
           test -s labs/spildevandskort/basemaps.js
           test -s labs/spildevandskort/project-geocoder.js
           test -s labs/spildevandskort/data/project-geocodes.json
+          node scripts/check-project-geography.cjs
           node --check labs/spildevandskort/basemaps.js
           node --check labs/spildevandskort/project-geocoder.js
           ! grep -q 'Tilbage til laboratoriet' labs/spildevandskort/index.html
@@ -74,7 +83,7 @@ jobs:
               assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
               await page.wait_for_function("typeof window.spildevandskortBasemapState==='function' && typeof window.projectGeorefState==='function'",timeout=30000)
-              await page.wait_for_function("projectGeorefState().mode==='static' && projectGeorefState().staticLoaded>=20",timeout=30000)
+              await page.wait_for_function("projectGeorefState().mode==='static' && projectGeorefState().staticLoaded===17",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>100",timeout=30000)
 
               body=await page.locator('body').inner_text()
@@ -101,18 +110,37 @@ jobs:
               await page.wait_for_timeout(500)
               qa=await page.evaluate("projectGeorefState()")
               assert qa['staticLoaded'] + qa['ignored'] == 26,qa
-              assert qa['staticLoaded'] >= 25,qa
+              assert qa['staticLoaded'] == 17 and qa['ignored'] == 9,qa
               assert qa['errors']==0,qa
-              assert qa['strategies']['dawa']>=20,qa
+              assert qa['strategies']['dawa']==17 and qa['strategies']['geometry']==3,qa
               assert qa['strategies']['withheld']>0,qa
               assert 'fallback' not in qa['strategies'] or qa['strategies']['fallback']==0,qa
 
               svan=await page.evaluate("""() => {
                 const p=state.projects.find(x=>x.brandId==='novafos' && x.name.includes('Svanemøllen Skybrudstunnel'));
-                return p ? {linear:projectNeedsLinearGeometry(p),location:projectLocation(p),id:p.id} : null;
+                return p ? {linear:projectNeedsLinearGeometry(p),location:projectLocation(p),geometry:!!projectGeometry(p),id:p.id} : null;
               }""")
-              assert svan and svan['linear'] is True and svan['location'] is None,svan
-              assert await page.locator(f'.project-row[data-project-id="{svan["id"]}"]').evaluate("el=>el.classList.contains('unmapped')")
+              assert svan and svan['linear'] is True and svan['location'] is None and svan['geometry'] is True,svan
+              assert not await page.locator(f'.project-row[data-project-id="{svan["id"]}"]').evaluate("el=>el.classList.contains('unmapped')")
+
+              # Shared tunnel geometry is drawn once, with each published component retained.
+              assert await page.locator('.project-route').count()==32
+              assert await page.locator('.project-shaft').count()==16
+              await page.locator('#projectGeometryFilter').select_option('line')
+              assert await page.locator('.project-row').count()==9
+              assert await page.locator('.project-marker-shell').count()==0
+              await page.locator('#search').fill('Svanemøllen')
+              assert await page.locator('.project-row').count()==3
+              await page.locator('.project-row').first.click()
+              detail=await page.locator('#detailContent').inner_text()
+              assert 'Offentliggjort projektgeometri' in detail and 'Kilde til kortplacering' in detail,detail
+              await page.locator('#closeDetail').click()
+              await page.locator('#search').fill('')
+              await page.locator('#projectGeometryFilter').select_option('unmapped')
+              assert await page.locator('.project-row').count()>0
+              assert await page.locator('.project-row:not(.unmapped)').count()==0
+              assert await page.locator('.project-route').count()==0
+              await page.locator('#projectGeometryFilter').select_option('all')
 
               if mobile:
                   overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")

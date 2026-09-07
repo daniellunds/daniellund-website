@@ -1,0 +1,1363 @@
+{
+  "schemaVersion": 1,
+  "classifiedAt": "2026-09-07",
+  "note": "Alle projektposter er klassificeret ud fra de eksisterende beskrivelser. Klassifikation er ikke geografisk verifikation. Kun eksplicit dokumenterede geometrier og stedankre vises.",
+  "projects": [
+    {
+      "id": "hofor:0",
+      "name": "Svanemøllen Skybrudstunnel",
+      "geometryType": "line",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.hofor.dk/baeredygtige-byer/udviklingsprojekter/skybrudssikring/svanemoelle-skybrudstunnel/",
+      "reason": "HOFORs offentlige projektkort dokumenterer tunnelstrækninger, ledninger og byggepladser med skakte. Geometrien er hentet fra kortets datalag.",
+      "geometryKey": "svanemoellen",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "hofor:1",
+      "name": "Valby Skybrudstunnel",
+      "geometryType": "line",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.hofor.dk/baeredygtige-byer/udviklingsprojekter/skybrudssikring/valby-skybrudstunnel/",
+      "reason": "Lednings- eller tunnelprojekt. Et verificeret tracé er nødvendigt; et enkelt punkt beskriver ikke projektet."
+    },
+    {
+      "id": "novafos:0",
+      "name": "Svanemøllen Skybrudstunnel",
+      "geometryType": "line",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.hofor.dk/baeredygtige-byer/udviklingsprojekter/skybrudssikring/svanemoelle-skybrudstunnel/",
+      "reason": "HOFORs offentlige projektkort dokumenterer tunnelstrækninger, ledninger og byggepladser med skakte. Geometrien er hentet fra kortets datalag.",
+      "geometryKey": "svanemoellen",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "novafos:1",
+      "name": "Skovshoved – ny udløbsledning og bassin",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://gentofte.dk/bolig-og-by/miljoe-forsyning-og-klima/badevand-og-havmiljoe/udloebsledning-ved-skovshoved-havbad/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "biofos:0",
+      "name": "Udbygningsplan – Lynetten og Damhusåen",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://biofos.dk/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "biofos:1",
+      "name": "Fremtidig placering af renseanlæg i hovedstadsområdet",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://biofos.dk/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "vandcenter-syd:0",
+      "name": "DAWN – fjerde rensetrin",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vandcenter.dk/her-arbejder-vi/udviklingsprojekter/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "vandcenter-syd:1",
+      "name": "Kloakledninger ved E20 og Søparken",
+      "geometryType": "line",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vandcenter.dk/spildevand/",
+      "reason": "Lednings- eller tunnelprojekt. Et verificeret tracé er nødvendigt; et enkelt punkt beskriver ikke projektet."
+    },
+    {
+      "id": "vandcenter-syd:2",
+      "name": "Modernisering af renseanlæg på Nordfyn",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vandcenter.dk/nyheder/stop-for-centralt-renseanlaeg-paa-nordfyn/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "aarhus-vand:0",
+      "name": "Aarhus ReWater",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.aarhusvand.dk/nyt-renseanlaeg/",
+      "reason": "Aarhus Vand bekræfter den vedtagne placering ved Tangkrogen. Det eksisterende områdeanker bevares; det er ikke en verificeret anlægsafgrænsning.",
+      "anchorLabel": "Tangkrogen",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "aarhus-vand:1",
+      "name": "Ozonanlæg på Egå Renseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.aarhusvand.dk/pressemeddelelser/2026/aarhus-vand-investerer-i-drikkevandsbeskyttelse-godt-vandmiljoe-og-klimatiltag/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.e89c3928-bd3f-44f9-b702-314617a29cb3",
+      "pulsName": "Egå",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "aalborg-forsyning:0",
+      "name": "Separatkloakering i Aalborg Kommune",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://aalborgforsyning.dk/artikelliste/07-04-2026-foraaret-saetter-fart-paa-nye-separatkloakeringer/",
+      "reason": "Flere lokaliteter eller et kommunedækkende program. Et enkelt stednavn dækker ikke projektområdet.",
+      "withholdAnchor": true
+    },
+    {
+      "id": "aalborg-forsyning:1",
+      "name": "AI-styring af Renseanlæg Øst",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.aalborgforsyning.dk/vores-kvalitet/spildevand/vores-renseanlaeg/kunstig-intelligens-paa-renseanlaeg-oest/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.f25f76d3-6f40-481d-bb5a-7fab8f032b32",
+      "pulsName": "Aalborg Øst",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "aalborg-forsyning:2",
+      "name": "MAP'N'TREAT",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.aalborgforsyning.dk/vores-kvalitet/spildevand/vores-renseanlaeg/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "din-forsyning:0",
+      "name": "Nordenskov – etape 6",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://dinforsyning.dk/da-dk/her-graver-vi",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "din-forsyning:1",
+      "name": "Engparken, Bramming – etape 2",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://dinforsyning.dk/da-dk/her-graver-vi",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "din-forsyning:2",
+      "name": "Ringen",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://dinforsyning.dk/da-dk/her-graver-vi",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "fors:0",
+      "name": "Kloakering på Tuse Næs",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.fors.dk/spildevand/spildevandsprojekter/kloakering-paa-tuse-naes/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "fors:1",
+      "name": "Lejre Strukturplan Nord",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.fors.dk/spildevand/spildevandsprojekter/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "envafors:0",
+      "name": "Hesselbjergvej/Mælkevej, Korsør",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://spildevandsplan.slagelse.dk/da/tillaeg-til-spildevandsplanen/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "envafors:1",
+      "name": "Nygårdsvej og bassin, Vemmelev",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://spildevandsplan.slagelse.dk/da/tillaeg-til-spildevandsplanen/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "aquadjurs:0",
+      "name": "Centralisering af spildevandsrensning på Djursland",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://aquadjurs.dk/projektomraader/centralisering-af-spildevandsrensning-paa-djursland",
+      "reason": "Centralisering med renseanlæg, pumpestationer og et transportnet på tværs af Djursland. Skal opdeles i punkt- og linjegeometri.",
+      "sourceCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "aquadjurs:1",
+      "name": "Udbygning af Fornæs Renseanlæg – fase II",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.aquadjurs.dk/projektomraader/udviklingsplan-fornaes-renseanlaeg",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.058c4887-f067-42ac-945a-672690d492a5",
+      "pulsName": "Fornæs",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "arwos:0",
+      "name": "Centralisering mod Stegholt Renseanlæg",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://arwos.dk/feltundrsoegelse/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "arwos:1",
+      "name": "Separatkloakering – Kruså Vest, Hjordkær, Loddenhøj og Sandskær",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://arwos.dk/kloak-og-spildevand/love-og-planer-kloak-spildevand/ny-spildevandsplan-saetter-retning/",
+      "reason": "Flere lokaliteter eller et kommunedækkende program. Et enkelt stednavn dækker ikke projektområdet.",
+      "withholdAnchor": true
+    },
+    {
+      "id": "bluekolding:0",
+      "name": "Kloaksanering i Sdr. Bjert og Agtrup",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://bluekolding.dk/prj/kloaksanering-i-sdr-bjert-og-agtrup/",
+      "reason": "Flere lokaliteter eller et kommunedækkende program. Et enkelt stednavn dækker ikke projektområdet.",
+      "withholdAnchor": true
+    },
+    {
+      "id": "bluekolding:1",
+      "name": "BlueKolding i Vejlevejs-området",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://bluekolding.dk/prj/3987/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "vandmiljoe-randers:0",
+      "name": "Opgradering af Randers Centralrenseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vmr.dk/om-os/presse/vandmiljoe-randers-investerer-i-bedre-rensning",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.eb3566e8-c3d8-474a-af0f-380e955ad81c",
+      "pulsName": "Randers",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "vandmiljoe-randers:1",
+      "name": "Separatkloakering i Vorup",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vmr.dk/viden-om/her-arbejder-vi/separatkloakering-i-vorup-naeste-etape",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "silkeborg-forsyning:0",
+      "name": "Nyt Søholt Renseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.silkeborgforsyning.dk/nyheder/p%C3%A5-vej-mod-et-nyt-s%C3%B8holt-renseanl%C3%A6g",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.5d938e22-8ccc-4fd3-b15d-12ed26fbd4dc",
+      "pulsName": "Søholt",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "silkeborg-forsyning:1",
+      "name": "Ny kloak i Ans",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.silkeborgforsyning.dk/ans",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "samn-forsyning:0",
+      "name": "Kloakseparering af Horsens Syd",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.samn.dk/horsenssyd",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "samn-forsyning:1",
+      "name": "Renovering af kloaksystem ved Dyngby Strand",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.samn.dk/driftsforstyrrelser/anlaegsarbejde/dyngbystrand",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "vejle-spildevand:0",
+      "name": "Give Renseanlæg – udbygning og renovering",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vejlespildevand.dk/projekter/oversigtskort-aktuelle-projekter/give-renseanlaeg-udbygning-og-renovering",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.95078305-f40f-4020-ba96-7e3579863af3",
+      "pulsName": "GIVE CENTRALRENS.",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "vejle-spildevand:1",
+      "name": "Børkop – nyt bassin til vandparkering",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vejlespildevand.dk/projekter/oversigtskort-aktuelle-projekter",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "klar-forsyning:0",
+      "name": "CERO-MP – 4. rensetrin på Køge-Egnens Renseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://vbn.aau.dk/da/projects/cero-mp-cost-efficient-reduction-of-micropollutants/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.00931f13-5e1c-420c-ade3-cab8bdd6f670",
+      "pulsName": "Køge-Egnens Renseanlæg I/S",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "klar-forsyning:1",
+      "name": "Modernisering ved Mosede Renseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://klarforsyning.dk/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.da2305f6-a4b3-4d3a-a0dd-5c71883bbbaa",
+      "pulsName": "Mosede",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "frederiksberg-forsyning:0",
+      "name": "Valby Skybrudstunnel",
+      "geometryType": "line",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.frb-forsyning.dk/om-os/nyheder",
+      "reason": "Lednings- eller tunnelprojekt. Et verificeret tracé er nødvendigt; et enkelt punkt beskriver ikke projektet."
+    },
+    {
+      "id": "frederiksberg-forsyning:1",
+      "name": "Svanemøllen Skybrudstunnel",
+      "geometryType": "line",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.frb-forsyning.dk/om-os/her-arbejder-vi/svanemoellen-skybrudstunnel",
+      "reason": "HOFORs offentlige projektkort dokumenterer tunnelstrækninger, ledninger og byggepladser med skakte. Geometrien er hentet fra kortets datalag.",
+      "geometryKey": "svanemoellen",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "fredericia-spildevand:0",
+      "name": "Bygværk ved Strandstien",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.frse.dk/nyheder/nyt-bygvaerk-ved-strandstien-reducerer-overloeb-til-lillebaelt-markant/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "fredericia-spildevand:1",
+      "name": "Nørrebrogade- og Vesterbrogadekvarteret",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.frse.dk/nyhedsarkiv/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "hilleroed-forsyning:0",
+      "name": "Udvidelse af HCR Syd",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.nordeafunds.com/da/artikler/plastik-er-vejen-til-renere-vand",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "hilleroed-forsyning:1",
+      "name": "4. rensetrin på HCR Syd",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://hfors.dk/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "forsyning-helsingoer:0",
+      "name": "Plan for reduktion af overløb",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.helsingor.dk/Media/639013895437979105/Spildevandsplan%202025-2037%20-%20Helsing%C3%B8r%20Kommune-a.pdf",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "forsyning-helsingoer:1",
+      "name": "Klimasikring og overløbsreduktion i Ålsgårde",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.helsingor.dk/Media/639013895437979105/Spildevandsplan%202025-2037%20-%20Helsing%C3%B8r%20Kommune-a.pdf",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "skanderborg-forsyning:0",
+      "name": "Klimatilpasning langs Skanderupbækken",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.skanderborgforsyning.dk/projekter/anlaegsprojekter/klimatilpasning-langs-skanderupbaekken",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "skanderborg-forsyning:1",
+      "name": "Kloakplan Ellemosen",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.skanderborgforsyning.dk/om-os/projekter",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "herning-vand:0",
+      "name": "Kloakprojekt Gjellerup",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://herningvand.dk/gjellerup/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "herning-vand:1",
+      "name": "Kloakprojekt Vildbjerg",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://herningvand.dk/vildbjerg/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "vestforsyning:0",
+      "name": "Separering af Tvis Øst",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vestforsyning.dk/SepareringTvis",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "vestforsyning:1",
+      "name": "Spildevandsvarmepumpe ved Holstebro Central Renseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vestforsyning.dk/nyheder/nyheder/her-rejser-sig-snart-en-kaempe-varmepumpe/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.be2de759-1ddf-4186-a9b3-b0a0bd299c99",
+      "pulsName": "Holstebro",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "energi-viborg-vand:0",
+      "name": "Modernisering af Viborg Centralrenseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.energiviborg.dk/nyheder/ncc-og-envidan-skal-modernisere-og-udvide-viborg-centralrenseanlaeg-for-energi-viborg-vand-a-s/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.a51919bd-8166-43ca-9523-cb5288eb1ac8",
+      "pulsName": "Viborg Centralrenseanlæg",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "energi-viborg-vand:1",
+      "name": "Sct. Jørgens Vej og Søndersøparken",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.energiviborg.dk/projekter/sct-joergens-vej/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "provas:0",
+      "name": "Jomfrusti – klimatilpasning og byrum",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.provas.dk/nyheder/byplanpris/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "provas:1",
+      "name": "Humlegårdsbæk-oplandet",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.provas.dk/nyheder/hygiejnisering/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "kalundborg-forsyning:0",
+      "name": "Udvidelse af Kalundborg Central Renseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://udbudsscanner.dk/udbud/6a7511f3052c3512f7df3b3d",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.e350d23a-14ff-4382-b599-7cf0afe9302b",
+      "pulsName": "KALUNDBORG C.",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "kalundborg-forsyning:1",
+      "name": "Ozon-GAK-anlæg på KCR",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://bygtek.dk/licitation/19461",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.e350d23a-14ff-4382-b599-7cf0afe9302b",
+      "pulsName": "KALUNDBORG C.",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "frederikshavn-forsyning:0",
+      "name": "Pumpestations-renovering 2026",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.forsyningen.dk/spildevand",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "frederikshavn-forsyning:1",
+      "name": "Klimaprojekt Koralbanke, Fænøvej og Bågøvej",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.forsyningen.dk/spildevand/anlaegsprojekter/anlaegsarbejder-for-klimaprojekt-koralbanke-faenoevej-og-baagoevej-skagen",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "broenderslev-forsyning:0",
+      "name": "Sanering af spildevandssystemet i Brønderslev By",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://bronderslevforsyning.dk/nyt/aktuelt/renoveringsplaner/sanering-af-spildevandssystemet-i-bronderslev-by/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "broenderslev-forsyning:1",
+      "name": "Sanering af spildevandssystemet i Hjallerup",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://bronderslevforsyning.dk/nyt/aktuelt/renoveringsplaner/sanering-af-spildevandssystemet-i-hjallerup-by/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "hjoerring-vandselskab:0",
+      "name": "Overskudsvarme fra renseanlægget i Hæstrup",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://hjvand.dk/energisk-aftale-paa-plads/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "hjoerring-vandselskab:1",
+      "name": "Nyt klimavenligt slambehandlingsanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://hjvand.dk/hjoerring-vandselskab-er-indstillet-til-et-tilskud-paa-13-mio-kroner-til-banebrydende-klimavenlig-teknologi-til-rensning-og-genanvendelse-af-spildevandsslam/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "hedensted-spildevand:0",
+      "name": "Separatkloakering af Øster Snede",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://hspv.dk/projekter/2025/12/oester-snede-kloakseparering/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "hedensted-spildevand:1",
+      "name": "Kloakering Storstranden, Juelsminde",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://hspv.dk/projekter/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "htk-forsyning:0",
+      "name": "Opgravningsfri kloakrenovering i Taastrup/Hedehusene",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://htkforsyning.dk/spildevand/",
+      "reason": "Flere lokaliteter eller et kommunedækkende program. Et enkelt stednavn dækker ikke projektområdet.",
+      "withholdAnchor": true
+    },
+    {
+      "id": "ikast-brande-spildevand:0",
+      "name": "Ny udløbsledning fra Brande Renseanlæg",
+      "geometryType": "line",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://ikast-brandespildevand.dk/node/273",
+      "reason": "Lednings- eller tunnelprojekt. Et verificeret tracé er nødvendigt; et enkelt punkt beskriver ikke projektet."
+    },
+    {
+      "id": "assens-forsyning:0",
+      "name": "Separatkloakering i Haarby – sidste etape",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.assensforsyning.dk/spildevand/separatkloakering/haarby-status-og-tidsplan",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "assens-forsyning:1",
+      "name": "Separatkloakering i Aarup og regnvandsbassin i Ebberup",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.assensforsyning.dk/projekter",
+      "reason": "Flere lokaliteter eller et kommunedækkende program. Et enkelt stednavn dækker ikke projektområdet.",
+      "withholdAnchor": true
+    },
+    {
+      "id": "billund-vand-energi:0",
+      "name": "Implementering af Spildevandsplan 2025–2031",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.billundvand.dk/spildevandsplan-2025-2031/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "billund-vand-energi:1",
+      "name": "30-årig investeringsplan for kloaknettet",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.billundvand.dk/nyheder/nyhedsarkiv/vi-har-en-plan-en-30-aars-investerigsplan/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "beof:0",
+      "name": "Reinvestering i Bornholms renseanlæg",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://beof.dk/beof-tilpasser-organisationen-til-fremtidens-opgaver/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "faxe-forsyning:0",
+      "name": "Separatkloakering i Faxe Kommune",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.faxekommune.dk/da/borger/spildevand-kloak/spildevandsplan/kloakseparering",
+      "reason": "Flere lokaliteter eller et kommunedækkende program. Et enkelt stednavn dækker ikke projektområdet.",
+      "withholdAnchor": true
+    },
+    {
+      "id": "ffv:0",
+      "name": "Spildevandsprojekt ved Horne – etape 2",
+      "geometryType": "line",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.ffv.dk/nyheder/artikler/nyt-spildevandsprojekt-ved-horne-etape-2/",
+      "reason": "Lednings- eller tunnelprojekt. Et verificeret tracé er nødvendigt; et enkelt punkt beskriver ikke projektet."
+    },
+    {
+      "id": "ffv:1",
+      "name": "Ny rensestruktur",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.ffv.dk/om-ffv/organisation-direktion-og-bestyrelse/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "gribskov-forsyning:0",
+      "name": "Ny spildevandsplan og separatkloakering",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://gribskov.dk/borger/natur-miljoe-klima-og-trafik/vand/spildevand-og-regnvand",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "guldborgsund-forsyning:0",
+      "name": "Kloakering i det åbne land",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.guldborgsundforsyning.dk/spildevand/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "guldborgsund-forsyning:1",
+      "name": "Investeringsprogram 2026",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.guldborgsundforsyning.dk/pressemeddelelse-takster-2026/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "fredensborg-forsyning:0",
+      "name": "Udbygning af Nivå Renseanlæg og afskæring af Kokkedal",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://spildevand.fredensborg.dk/om-planen/indsatser-i-planperioden",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "fredensborg-forsyning:1",
+      "name": "Separatkloakering i Humlebæk",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://fredensborg.dk/borger/spildevand/separatkloakering-i-humlebaek",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "halsnaes-forsyning:0",
+      "name": "Sommerhuskloakering i Liseleje",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://halsnaes.dk/borger/miljoe-og-affald/spildevand/spildevandsplan/kloakeringsprojekter",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "halsnaes-forsyning:1",
+      "name": "Sommerhuskloakering langs Roskilde Fjord",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://halsnaes.dk/borger/miljoe-og-affald/spildevand/spildevandsplan/kloakeringsprojekter",
+      "reason": "Flere lokaliteter eller et kommunedækkende program. Et enkelt stednavn dækker ikke projektområdet.",
+      "withholdAnchor": true
+    },
+    {
+      "id": "ishoej-forsyning:0",
+      "name": "Ishøj Vandvartegn – klimatilpasningsprojekt",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.systra.com/denmark/project/ishoej-vandvartegn-klimatilpasningsprojekt/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "ishoej-forsyning:1",
+      "name": "Spildevandsplan 2024–2034",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://ishoj.dk/borger/klima-natur-og-miljo/vand/spildevand-og-regnvand/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "jammerbugt-forsyning:0",
+      "name": "Separatkloakering i V. Hjermitslev – etape 3 og 4",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://jfas.dk/projekter/separatkloakering-i-v-hjermitslev/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "jammerbugt-forsyning:1",
+      "name": "Separatkloakering i Fjerritslev – etape 9–10",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://jfas.dk/projekter/separatkloakering-i-fjerritslev/etape-9-10/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "kerteminde-forsyning:0",
+      "name": "Ny spildevandsplan",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.kertemindeforsyning.dk/kerteminde-forsyning-leverer-bedre-end-forventet-i-2025",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "kerteminde-forsyning:1",
+      "name": "Ledningsnet og separatkloakering",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.kertemindeforsyning.dk/om-os/find-en-medarbejder",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "fanoe-vand:0",
+      "name": "Ny spildevandsplan og spildevandsstrategi",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://usercontent.one/wp/www.fanoevand.dk/wp-content/uploads/2025/04/Referat-nr-71-11-04-2025.pdf",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "fanoe-vand:1",
+      "name": "Reduktion af uvedkommende vand",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://usercontent.one/wp/www.fanoevand.dk/wp-content/uploads/2025/04/Referat-nr-71-11-04-2025.pdf",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "glostrup-forsyning:0",
+      "name": "Klimatilpasning af det offentlige kloaksystem",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.glostrup.dk/borger/miljoe-energi-og-affald/regn-og-spildevand/regnvand-og-klimatilpasning",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "glostrup-forsyning:1",
+      "name": "Vejbede til regnvand",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://dagsorden.glostrup.dk/meeting/agendaitem/print/122789/202421",
+      "reason": "Flere lokaliteter eller et kommunedækkende program. Et enkelt stednavn dækker ikke projektområdet.",
+      "withholdAnchor": true
+    },
+    {
+      "id": "taarnby-forsyning:0",
+      "name": "Klimatilpasning af Gemmas Allé",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.taarnby.dk/politik/byudvikling/klimatilpasning-af-gemmas-alle/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "taarnby-forsyning:1",
+      "name": "Spildevandsplan 2022–2034",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.taarnby.dk/politik/politikker-strategier-og-planer/klima-miljo-og-affald/planer/spildevandsplan/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "ltf:0",
+      "name": "Klimatilpasning af Bondebyen",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.ltk.dk/borger/miljoe-og-natur/klima-og-baeredygtighed/klimatilpasning-bondebyen",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "ltf:1",
+      "name": "Rammeaftale for vand, spildevand og klimatilpasning",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://eu.eu-supply.com/ctm/Supplier/PublicPurchase/451942/1/0",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "lolland-forsyning:0",
+      "name": "Fornyelse af kloakledninger",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://lollandforsyning.dk/nye-takster-for-varme-vand-og-spildevand/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "lolland-forsyning:1",
+      "name": "Transportrør ved Nakskov Havn",
+      "geometryType": "line",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://lollandforsyning.dk/kundeservice/forsyningsomraader/",
+      "reason": "Lednings- eller tunnelprojekt. Et verificeret tracé er nødvendigt; et enkelt punkt beskriver ikke projektet."
+    },
+    {
+      "id": "odsherred-forsyning:0",
+      "name": "Projektportefølje for forsyningssikkerhed og vandmiljø",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.odsherredforsyning.dk/nyheder/odsherred-forsyning-soeger-en-projektchef/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "odsherred-forsyning:1",
+      "name": "Løbende teknologiopgraderinger på spildevandsområdet",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.odsherredforsyning.dk/spildevand/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "ringsted-forsyning:0",
+      "name": "Benløse kloakering",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://nordkysten.dk/nordkysten-skal-udfoere-benloese-kloakseparering-for-ringsted-forsyning-a-s/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "ringsted-forsyning:1",
+      "name": "Separatkloakering af Holbækvej",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://bygtek.dk/licitation/17671",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "vordingborg-forsyning:0",
+      "name": "Kloakseparering af Kalvehave",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://vordingborgforsyning.dk/projekter/%408/kloakseparering-af-kalvehave",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "vordingborg-forsyning:1",
+      "name": "Renovering af regnvandsbassin i Hundeskoven",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://vordingborgforsyning.dk/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "langeland-forsyning:0",
+      "name": "Fortsat udvikling af spildevandssystemet",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://lef.dk/spildevand/priser",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "langeland-forsyning:1",
+      "name": "Langeland Energi & Forsyning – fælles serviceselskab",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://lef.dk/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "middelfart-spildevand:0",
+      "name": "Regnvandsrensning ved Hessgade",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://middelfartspildevand.dk/ny-renseloesning-til-regnvand/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "middelfart-spildevand:1",
+      "name": "Reduktion af kvælstof fra Middelfart Renseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://middelfartspildevand.dk/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.977f0bd4-ddca-4e40-9321-51b09ed7a79d",
+      "pulsName": "Middelfart Centralrenseanlæg",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "nordfyns-forsyning:0",
+      "name": "Regnvandsprojekt ved Brorenden, Otterup",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vandcenter.dk/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "nordfyns-forsyning:1",
+      "name": "Ny spildevandsstruktur på Nordfyn",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.nordfynskommune.dk/borger/bolig-byggeri-og-energi/spildevand-og-regnvand/ny-spildevandsstruktur/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "favrskov-forsyning:0",
+      "name": "Nyt centralt renseanlæg i Favrskov",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://favrskov.dk/borger/fysisk-planlaegning/nyt-centralt-renseanlaeg-i-favrskov",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "favrskov-forsyning:1",
+      "name": "Separatkloakering i Hvorslev",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.favrskovforsyning.dk/separatkloakering-af-hvorslev",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "lemvig-vand:0",
+      "name": "Centralisering på Harboøre Renseanlæg",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://lemvig.dk/selvbetjening-og-service/natur-miljoe-og-klima/vand-og-spildevand/spildevandsplan-2021-2028",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "lemvig-vand:1",
+      "name": "Kloakering og fornyelse i planperioden",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://lemvig.dk/selvbetjening-og-service/natur-miljoe-og-klima/vand-og-spildevand/spildevandsplan-2021-2028",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "mariagerfjord-vand:0",
+      "name": "Udbygning af Himmerlands Renseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.mariagerfjord.dk/by-land-og-bolig/natur-vand-og-miljoe/spildevand/udbygning-himmerlands-renseanlaeg",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.0fd53e4a-71ec-497c-8855-2632e7258f40",
+      "pulsName": "Himmerlands Renseanlæg",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "mariagerfjord-vand:1",
+      "name": "Sommerhusområdet syd for Als",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.mariagerfjordvand.dk/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "morsoe-forsyning:0",
+      "name": "Modernisering af pumpestationer og spildevandsdrift",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://morsoeforsyning.dk/spildevand/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "nyborg-forsyning:0",
+      "name": "Kloakseparering i Nyborg Kommune",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.nfs.as/spildevand-kloak/projekter-spildevand/",
+      "reason": "Flere lokaliteter eller et kommunedækkende program. Et enkelt stednavn dækker ikke projektområdet.",
+      "withholdAnchor": true
+    },
+    {
+      "id": "nyborg-forsyning:1",
+      "name": "Strømpeforing af kloakledninger",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.nfs.as/spildevand-kloak/projekter-spildevand/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "rebild-forsyning:0",
+      "name": "Separatkloakering i Ravnkilde",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://rebildforsyning.dk/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "rebild-forsyning:1",
+      "name": "Udbygning af Himmerlands Renseanlæg",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.mariagerfjord.dk/by-land-og-bolig/natur-vand-og-miljoe/spildevand/udbygning-himmerlands-renseanlaeg",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.0fd53e4a-71ec-497c-8855-2632e7258f40",
+      "pulsName": "Himmerlands Renseanlæg",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "rksk-forsyning:0",
+      "name": "Sommerhuskloakering",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.rsforsyning.dk/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "rksk-forsyning:1",
+      "name": "Separatkloakering",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.rsforsyning.dk/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "samsoe-spildevand:0",
+      "name": "Spildevandsplan 2024–2027",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.samsoe.dk/borger/natur-miljoe-og-renovation/miljoeomraadet/spildevand",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "skive-vand:0",
+      "name": "Skive Vestby – etape 6",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.skivevand.dk/anlaegsarbejder",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "skive-vand:1",
+      "name": "Glattrup Bæk",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.skivevand.dk/anlaegsarbejder",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "sonfor:0",
+      "name": "Projekt Værdivand – ny rensestruktur",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://sonfor.dk/projekter/ny-rensestruktur/",
+      "reason": "Projekt Værdivand omfatter en samlet rensestruktur med nyt renseanlæg og transportanlæg. En eksisterende renseanlægsposition må ikke bruges som placering for hele projektet.",
+      "sourceCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "sonfor:1",
+      "name": "Flowmåling på alle overløb",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://sonfor.dk/nyheder/sonfor-vil-saette-flow-maalere-paa-samtlige-overloeb/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "struer-energi:0",
+      "name": "Spildevandskloakering Oddesund Nord",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://struerenergi.dk/spildevand/spildevandskloakering-oddesund-nord/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "struer-energi:1",
+      "name": "Renovering af pumpestation ved Østre Strand",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://struerenergi.dk/spildevand/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "syddjurs-spildevand:0",
+      "name": "Centralisering af spildevandsrensning på Djursland",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://aquadjurs.dk/projektomraader/centralisering-af-spildevandsrensning-paa-djursland",
+      "reason": "Centralisering med renseanlæg, pumpestationer og et transportnet på tværs af Djursland. Skal opdeles i punkt- og linjegeometri.",
+      "sourceCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "syddjurs-spildevand:1",
+      "name": "Rønde kloakseparering – etape 5",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://aquadjurs.dk/projektomraader/roende-kloakseparering",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "thisted-vand:0",
+      "name": "Fremtidens renseanlægsstruktur i Thy",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.thyforsyning.dk/om-os/strategi/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "thisted-vand:1",
+      "name": "Robust kloaksystem og øget spildevandsportefølje",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.thyforsyning.dk/om-os/job/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "toender-forsyning:0",
+      "name": "Kloakprojekt Rømø",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.tonfor.dk/her-arbejder-vi/",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "toender-forsyning:1",
+      "name": "Kloakprojekt Skærbæk og Møgeltønder",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.tonfor.dk/her-arbejder-vi/",
+      "reason": "Flere lokaliteter eller et kommunedækkende program. Et enkelt stednavn dækker ikke projektområdet.",
+      "withholdAnchor": true
+    },
+    {
+      "id": "vand-og-affald:0",
+      "name": "Udbygning og klimatilpasning af afløbssystemet",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vandogaffald.dk/nyheder/artikler/er-dit-hus-klar-til-mere-regn/",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    },
+    {
+      "id": "vand-og-affald:1",
+      "name": "Hovedpumpestationen på Svendborg Havn",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.vandogaffald.dk/spildevand/hovedpumpestation/",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt."
+    },
+    {
+      "id": "vejen-forsyning:0",
+      "name": "Kloakseparering i Ladelund – erhverv",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://vejenforsyning.dk/kundecenter/her-graver-vi/spildevand-kloakseparering-ladelund-erhverv",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "vejen-forsyning:1",
+      "name": "Brørup Renseanlæg – kapacitet og bassinoptimering",
+      "geometryType": "point",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://vejenforsyning.dk/kundecenter/her-graver-vi",
+      "reason": "Et navngivet enkeltanlæg eller bygværk. Anlægspositionen skal dokumenteres særskilt.",
+      "pulsId": "Renseanlaeg.c12a41af-90c1-4ae9-a996-7734b2e9b75a",
+      "pulsName": "Brørup",
+      "locationCheckedAt": "2026-09-07"
+    },
+    {
+      "id": "vesthimmerlands-vand:0",
+      "name": "Ranum separatkloakering – etape 10–13",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://vesthimmerlandsforsyning.dk/ranum-separatkloakering-etape-10-13",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "vesthimmerlands-vand:1",
+      "name": "Løgstør separatkloakering – etape 6 og 7",
+      "geometryType": "polygon",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://vesthimmerlandsforsyning.dk/spildevand/her-arbejder-vi",
+      "reason": "Et områdeprojekt. Et dokumenteret sted kan vises som områdeanker, men beskriver ikke projektets afgrænsning."
+    },
+    {
+      "id": "aeroe-forsyning:0",
+      "name": "Implementering af Spildevandsplan 2023–2027",
+      "geometryType": "unresolved",
+      "classifiedAt": "2026-09-07",
+      "basis": "existing-project-description",
+      "sourceUrl": "https://www.aeroekommune.dk/borger/byggeri-bolig-og-miljoe/miljoe/spildevand/spildevandsplan",
+      "reason": "Program, rensestruktur eller flere delanlæg. Skal opdeles og stedfæstes, før en samlet kortgeometri kan angives."
+    }
+  ]
+}

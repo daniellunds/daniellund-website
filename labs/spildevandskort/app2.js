@@ -61,7 +61,7 @@ function renderList(){
     }
     if(!rows.length)els.itemList.innerHTML='<div class="empty">Ingen renseanlæg matcher de valgte filtre.</div>';
   } else {
-    const rows=filteredProjects();const mapped=rows.filter(p=>projectLocation(p)).length;
+    const rows=filteredProjects();const mapped=rows.filter(p=>projectHasMapGeometry(p)).length;
     els.listHeading.textContent="Forsyningsprojekter";els.visibleCount.textContent=`${rows.length} vist · ${mapped} på kort`;
     for(const pr of rows)els.itemList.append(projectRowElement(pr));
     if(!rows.length)els.itemList.innerHTML='<div class="empty">Ingen projekter matcher de valgte filtre.</div>';
@@ -95,7 +95,7 @@ function bindUI(){
   document.querySelectorAll(".tab").forEach(btn=>btn.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===btn));state.tab=btn.dataset.tab;els.search.value="";syncTabUI();});
   els.search.oninput=()=>{renderList();if(state.tab==="plants")renderPlants();if(state.tab==="projects"&&typeof renderProjects==="function")renderProjects()};
   [els.showPlants,els.includeClosed,els.selectedOnly].forEach(x=>x.onchange=()=>{renderPlants();renderList()});
-  [els.showProjects,els.projectsSelectedOnly,els.projectCategory].filter(Boolean).forEach(x=>x.onchange=()=>{renderProjects();renderList()});
+  [els.showProjects,els.projectsSelectedOnly,els.projectCategory,els.projectGeometryFilter].filter(Boolean).forEach(x=>x.onchange=()=>{renderProjects();renderList()});
   els.selectAll.onclick=()=>{state.selected=new Set(state.brands.map(b=>b.id));renderPolygons();renderPlants();if(typeof renderProjects==="function")renderProjects();renderList()};
   els.selectNone.onclick=()=>{state.selected.clear();renderPolygons();renderPlants();if(typeof renderProjects==="function")renderProjects();renderList()};
   els.zoomSelected.onclick=()=>{const g=L.featureGroup();state.polygonLayer?.eachLayer(l=>g.addLayer(l));if(g.getLayers().length)state.map.fitBounds(g.getBounds(),{padding:[20,20]})};els.closeDetail.onclick=closeDetail;
