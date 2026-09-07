@@ -25,7 +25,7 @@
       <div class="search-wrap"><input id="search" type="search" placeholder="Søg forsyning eller kommune…" autocomplete="off" /></div>
       <div class="summary-grid three"><div><strong id="brandCount">—</strong><span>forsyninger</span></div><div><strong id="activePlantCount">—</strong><span>aktive renseanlæg</span></div><div><strong id="projectCount">—</strong><span>projekter</span></div></div>
       <div class="tabs three" role="tablist"><button class="tab active" data-tab="brands" type="button">Forsyninger</button><button class="tab" data-tab="plants" type="button">Renseanlæg</button><button class="tab" data-tab="projects" type="button">Projekter</button></div>
-      <section id="brandControls" class="controls-panel"><div class="quick-actions"><button id="selectAll" type="button">Vælg alle</button><button id="selectNone" type="button">Ingen</button><button id="zoomSelected" type="button">Zoom til valgte</button></div><label class="toggle"><input id="showCoverage" type="checkbox" checked /><span>Vis administrative forsyningsområder</span></label><p class="coverage-note"><span class="coverage-key"></span>Lys flade = administrativt/markedsmæssigt forsyningsområde. Den kraftigere flade ovenpå er vedtaget kloakopland.</p></section>
+      <section id="brandControls" class="controls-panel"><div class="quick-actions"><button id="selectAll" type="button">Vælg alle</button><button id="selectNone" type="button">Ingen</button><button id="zoomSelected" type="button">Zoom til valgte</button></div><label class="toggle"><input id="showCoverage" type="checkbox" checked /><span>Vis administrative forsyningsområder</span></label><p class="coverage-note"><span class="coverage-key"></span>Lys flade = administrativt/markedsmæssigt område for den aktuelt verificerede spildevandsoperatør. Den kraftigere flade ovenpå er vedtaget kloakopland.</p></section>
       <section id="plantControls" class="controls-panel" hidden><label class="toggle"><input id="showPlants" type="checkbox" checked /><span>Vis renseanlæg</span></label><label class="toggle"><input id="includeClosed" type="checkbox" /><span>Medtag nedlagte</span></label><label class="toggle"><input id="selectedOnly" type="checkbox" checked /><span>Følg valgte forsyninger</span></label></section>
       <section id="projectControls" class="controls-panel projects-controls" hidden>
         <label class="toggle"><input id="showProjects" type="checkbox" checked /><span>Vis georefererede projekter</span></label>
@@ -35,7 +35,7 @@
       </section>
       <div class="list-heading"><span id="listHeading">Forsyninger</span><span id="visibleCount">—</span></div>
       <div id="itemList" class="item-list" aria-live="polite"></div>
-      <footer class="sidebar-footer"><p><strong>Forsyningsområder:</strong> Dataforsyningen · kommunegrænser + verificeret forsyningskobling</p><p><strong>Kloakoplande:</strong> Plandata · vedtagne oplande</p><p><strong>Renseanlæg:</strong> PULS · Danmarks Miljøportal</p><p><strong>Projekter:</strong> offentlige forsynings- og projektkilder</p></footer>
+      <footer class="sidebar-footer"><p><strong>Forsyningsområder:</strong> Dataforsyningen · kommunegrænser + verificeret aktuel operatørkobling</p><p><strong>Kloakoplande:</strong> Plandata · vedtagne oplande</p><p><strong>Renseanlæg:</strong> PULS · Danmarks Miljøportal</p><p><strong>Projekter:</strong> offentlige forsynings- og projektkilder</p></footer>
     </aside>
     <section class="map-shell"><div id="map"></div><div id="projectLegend" class="project-map-legend" hidden><strong>Forsyningsprojekter</strong><span><i class="legend-project-symbol"></i>anlæg / områdeanker</span><span><i class="legend-project-route"></i>offentliggjort tracé / skakte</span><span><i class="legend-project-route-schematic"></i>skematisk, kildebaseret tracé</span><span><i class="legend-project-area-schematic"></i>skematisk projektområde</span></div><div class="map-legend"><strong>Renseanlæg</strong><span><i class="dot small"></i>&lt;2.000 PE</span><span><i class="dot medium"></i>2–10.000 PE</span><span><i class="dot large"></i>10–100.000 PE</span><span><i class="dot xlarge"></i>&gt;100.000 PE</span></div><div id="mapStatus" class="map-status">Indlæser kortdata…</div></section>
   </main>
@@ -43,6 +43,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="./app1.js"></script>
   <script src="./owner-aliases.js"></script>
+  <script src="./current-operators.js"></script>
   <script src="./profiles.js"></script>
   <script src="./projects.js"></script>
   <script src="./project-geocoder.js"></script>
