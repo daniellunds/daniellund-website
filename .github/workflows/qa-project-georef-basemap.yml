@@ -7,6 +7,7 @@ on:
       - 'labs/spildevandskort/data/project-geometries-index.json'
       - 'labs/spildevandskort/data/svanemoellen.geojson'
       - 'labs/spildevandskort/data/valby-skybrudstunnel.geojson'
+      - 'labs/spildevandskort/data/roende-etape-5.geojson'
       - 'labs/spildevandskort/data/tuse-naes.geojson'
       - 'scripts/check-project-geography.cjs'
       - 'labs/spildevandskort/index.html'
@@ -22,6 +23,7 @@ on:
       - 'labs/spildevandskort/data/project-geometries-index.json'
       - 'labs/spildevandskort/data/svanemoellen.geojson'
       - 'labs/spildevandskort/data/valby-skybrudstunnel.geojson'
+      - 'labs/spildevandskort/data/roende-etape-5.geojson'
       - 'labs/spildevandskort/data/tuse-naes.geojson'
       - 'scripts/check-project-geography.cjs'
       - 'labs/spildevandskort/index.html'
@@ -47,6 +49,7 @@ jobs:
           test -s labs/spildevandskort/data/project-geocodes.json
           test -s labs/spildevandskort/data/project-geometries-index.json
           test -s labs/spildevandskort/data/valby-skybrudstunnel.geojson
+          test -s labs/spildevandskort/data/roende-etape-5.geojson
           test -s labs/spildevandskort/data/tuse-naes.geojson
           node scripts/check-project-geography.cjs
           node --check labs/spildevandskort/basemaps.js
@@ -94,7 +97,7 @@ jobs:
               assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
               await page.wait_for_function("typeof window.spildevandskortBasemapState==='function' && typeof window.projectGeorefState==='function'",timeout=30000)
-              await page.wait_for_function("projectGeorefState().mode==='static' && projectGeorefState().staticLoaded===17 && projectGeorefState().geometryFiles===3",timeout=30000)
+              await page.wait_for_function("projectGeorefState().mode==='static' && projectGeorefState().staticLoaded===17 && projectGeorefState().geometryFiles===4",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>100",timeout=30000)
 
               body=await page.locator('body').inner_text()
@@ -124,9 +127,9 @@ jobs:
               qa=await page.evaluate("projectGeorefState()")
               assert qa['staticLoaded'] + qa['ignored'] == 26,qa
               assert qa['staticLoaded'] == 17 and qa['ignored'] == 9,qa
-              assert qa['geometryFiles']==3,qa
+              assert qa['geometryFiles']==4,qa
               assert qa['errors']==0,qa
-              assert qa['strategies']['dawa']==16 and qa['strategies']['geometry']==6,qa
+              assert qa['strategies']['dawa']==16 and qa['strategies']['geometry']==7,qa
               assert qa['strategies']['withheld']>0,qa
               assert qa['withheldLinear']==4,qa
               assert 'fallback' not in qa['strategies'] or qa['strategies']['fallback']==0,qa
@@ -149,7 +152,7 @@ jobs:
               assert await page.locator('.project-anchor-source').count()==16
               assert await page.locator('.project-route-schematic').count()==1
               assert await page.locator('.project-anchor-schematic').count()==5
-              assert await page.locator('.project-area-schematic').count()==4
+              assert await page.locator('.project-area-schematic').count()==5
 
               await page.locator('#projectGeometryFilter').select_option('line')
               assert await page.locator('.project-row').count()==9
@@ -175,10 +178,24 @@ jobs:
               assert 'må ikke læses som matrikel' in detail,detail
               await page.locator('#closeDetail').click()
 
+              await page.locator('#search').fill('Rønde kloakseparering')
+              assert await page.locator('.project-row').count()==1
+              roende=page.locator('.project-row').first
+              assert not await roende.evaluate("el=>el.classList.contains('unmapped')")
+              assert await roende.get_attribute('data-geometry-role')=='project-area'
+              assert await roende.get_attribute('data-geometry-precision')=='schematic'
+              await roende.click()
+              detail=await page.locator('#detailContent').inner_text()
+              assert 'Skematisk, kildebaseret projektområde' in detail,detail
+              assert 'Rønde · etape 5' in detail,detail
+              assert 'matrikel' in detail.lower(),detail
+              await page.locator('#closeDetail').click()
+
               await page.locator('#search').fill('')
               await page.locator('#projectGeometryFilter').select_option('polygon')
               assert await page.locator('.project-row[data-project-id="fors:0"]').count()==1
-              assert await page.locator('.project-area-schematic').count()==4
+              assert await page.locator('.project-row[data-project-id="syddjurs-spildevand:1"]').count()==1
+              assert await page.locator('.project-area-schematic').count()==5
 
               for name in ['Kloakledninger ved E20 og Søparken','Ny udløbsledning fra Brande Renseanlæg','Spildevandsprojekt ved Horne','Transportrør ved Nakskov Havn']:
                   await page.locator('#projectGeometryFilter').select_option('all')
