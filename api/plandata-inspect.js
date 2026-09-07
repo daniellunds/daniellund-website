@@ -52,6 +52,11 @@ export default async function handler(req, res) {
         firstSamples: firstStatic,
         counts: {
           brandId: countBy(staticFeatures, 'brandId'),
+          municipality: countBy(staticFeatures, 'municipality'),
+          sewerType: countBy(staticFeatures, 'sewerType'),
+          sewerTypeCode: countBy(staticFeatures, 'sewerTypeCode'),
+          ownership: countBy(staticFeatures, 'ownership'),
+          localBrand: countBy(staticFeatures, 'localBrand'),
           displayType: countBy(staticFeatures, 'displayType'),
           ownerCode: countBy(staticFeatures, 'ownerCode'),
           ownerText: countBy(staticFeatures, 'ownerText'),
