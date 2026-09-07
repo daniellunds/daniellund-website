@@ -10,9 +10,17 @@
   if(!street){
     street=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
       maxZoom:18,
-      attribution:"© OpenStreetMap contributors"
+      attribution:"© OpenStreetMap contributors",
+      className:"osm-grayscale-tile"
     }).addTo(state.map);
   }
+
+  const markStreetGreyscale=()=>{
+    const container=street.getContainer?.();
+    if(container)container.classList.add("osm-grayscale-layer");
+  };
+  markStreetGreyscale();
+  state.map.on("layeradd",e=>{if(e.layer===street)requestAnimationFrame(markStreetGreyscale)});
 
   const imagery=L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{
     maxZoom:19,
@@ -48,6 +56,7 @@
         }else{
           if(state.map.hasLayer(imagery))state.map.removeLayer(imagery);
           if(!state.map.hasLayer(street))street.addTo(state.map);
+          requestAnimationFrame(markStreetGreyscale);
         }
         state.activeBasemap=name;
         kort.input.checked=!useImagery;
@@ -69,7 +78,8 @@
   window.spildevandskortBasemapState=()=>({
     active:state.activeBasemap,
     available:["Kort","Luftfoto"],
+    streetGreyscale:!!street.getContainer?.()?.classList.contains("osm-grayscale-layer"),
     imageryOnMap:state.map.hasLayer(imagery)
   });
-  console.info("BASEMAPS_READY",{layers:["Kort","Luftfoto"]});
+  console.info("BASEMAPS_READY",{layers:["Kort","Luftfoto"],street:"grayscale"});
 })();
