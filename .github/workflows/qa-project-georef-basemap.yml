@@ -61,7 +61,7 @@ jobs:
           import json
           p=json.load(open('labs/spildevandskort/data/project-geocodes.json',encoding='utf-8'))
           assert p['count']==len(p['projects'])==26,p.get('count')
-          assert len({x['id'] for x in p['projects'])==26
+          assert len({x['id'] for x in p['projects']})==26
           assert all(54<=float(x['lat'])<=58.5 and 7.5<=float(x['lon'])<=16 for x in p['projects'])
           forbidden={'aalborg-forsyning:0','faxe-forsyning:0','nyborg-forsyning:0','halsnaes-forsyning:1','thisted-vand:0'}
           assert not forbidden.intersection(x['id'] for x in p['projects'])
