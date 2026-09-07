@@ -130,7 +130,7 @@
       assigned.set(next,winner);usage.set(winner,(usage.get(winner)||0)+1);remaining.delete(next);
     }
 
-    // Utilities without polygon geography get a stable neutral-teal fallback.
+    // Utilities without polygon geography keep a stable fallback color.
     for(const b of brands)b.color=assigned.get(b.id)||b.color||"#58757E";
     return assigned;
   }
@@ -163,4 +163,26 @@
     return result;
   };
   window.spildevandskortColorState=()=>state?.colorQa||null;
+
+  // Patch the existing polygon renderer without changing project geography logic.
+  // The first polygon render computes the neighbour graph and then propagates the
+  // new brand colors to polygons, list swatches, PULS markers and project markers.
+  if(typeof renderPolygons==="function"){
+    const coreRenderPolygons=renderPolygons;
+    renderPolygons=function(){
+      const firstAssignment=!!state.features?.length&&!state.colorQa;
+      if(firstAssignment)window.applyNeighborContrastColors(state.features,state.brands);
+      if(state.features?.length){
+        for(const f of state.features){
+          const p=f.properties||{},color=state.brandById.get(p.brandId)?.color;
+          if(color)p.color=color;
+        }
+      }
+      coreRenderPolygons();
+      if(firstAssignment){
+        if(typeof renderList==="function")renderList();
+        if(state.plants?.length&&typeof renderPlants==="function")renderPlants();
+      }
+    };
+  }
 })();
