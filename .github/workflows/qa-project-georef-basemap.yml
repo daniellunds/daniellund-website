@@ -104,29 +104,52 @@ jobs:
               assert qa['staticLoaded']==17 and qa['ignored']==9 and qa['geometryFiles']==3 and qa['errors']==0,qa
               assert qa['strategies']['dawa']==17 and qa['strategies']['geometry']==6 and qa['withheldLinear']==4,qa
 
-              assert await page.locator('.project-route-source').count()==32
-              assert await page.locator('.project-anchor-source').count()==16
-              assert await page.locator('.project-route-schematic').count()==1
-              assert await page.locator('.project-anchor-schematic').count()==5
-              assert await page.locator('.project-area-schematic').count()==2
+              # Svanemøllen: only source GIS must render for the targeted search.
+              await page.locator('#search').fill('Svanemøllen'); await page.wait_for_timeout(100)
+              assert await page.locator('.project-row').count()==3
+              counts={
+                  'source_routes':await page.locator('.project-route-source').count(),
+                  'source_points':await page.locator('.project-anchor-source').count(),
+                  'schematic_routes':await page.locator('.project-route-schematic').count(),
+                  'schematic_areas':await page.locator('.project-area-schematic').count()
+              }
+              assert counts=={'source_routes':32,'source_points':16,'schematic_routes':0,'schematic_areas':0},counts
+              await page.locator('.project-row').first.click(); detail=await page.locator('#detailContent').inner_text()
+              assert 'Offentliggjort projektgeometri' in detail and 'Kilde til kortplacering' in detail,detail
+              await page.locator('#closeDetail').click()
 
-              await page.locator('#projectGeometryFilter').select_option('line')
+              # Valby: only the separately labelled schematic trace must render.
+              await page.locator('#search').fill('Valby Skybrudstunnel'); await page.wait_for_timeout(100)
+              assert await page.locator('.project-row').count()==2
+              counts={
+                  'source_routes':await page.locator('.project-route-source').count(),
+                  'schematic_routes':await page.locator('.project-route-schematic').count(),
+                  'schematic_points':await page.locator('.project-anchor-schematic').count(),
+                  'schematic_areas':await page.locator('.project-area-schematic').count()
+              }
+              assert counts=={'source_routes':0,'schematic_routes':1,'schematic_points':5,'schematic_areas':0},counts
+              await page.locator('.project-row').first.click(); detail=await page.locator('#detailContent').inner_text()
+              assert 'Skematisk, kildebaseret tracé' in detail and 'ikke den projekterede centerlinje' in detail,detail
+              await page.locator('#closeDetail').click()
+
+              # The four remaining line projects still have no fabricated route.
+              await page.locator('#search').fill(''); await page.locator('#projectGeometryFilter').select_option('line')
               assert await page.locator('.project-row').count()==9
               assert await page.locator('.project-area').count()==0
-              for query,needle in [('Svanemøllen','Offentliggjort projektgeometri'),('Valby Skybrudstunnel','Skematisk, kildebaseret tracé')]:
-                  await page.locator('#search').fill(query); await page.locator('.project-row').first.click()
-                  detail=await page.locator('#detailContent').inner_text(); assert needle in detail,detail
-                  await page.locator('#closeDetail').click()
               for name in ['Kloakledninger ved E20 og Søparken','Ny udløbsledning fra Brande Renseanlæg','Spildevandsprojekt ved Horne','Transportrør ved Nakskov Havn']:
                   await page.locator('#search').fill(name); assert await page.locator('.project-row').count()==1
                   assert await page.locator('.project-row').first.evaluate("el=>el.classList.contains('unmapped')"),name
+                  assert await page.locator('.project-route').count()==0,name
 
+              # Rønde Etape 5: reviewed schematic area, not a city-centre point and not a trace.
               await page.locator('#search').fill(''); await page.locator('#projectGeometryFilter').select_option('polygon')
-              await page.locator('#search').fill('Rønde kloakseparering'); assert await page.locator('.project-row').count()==1
+              await page.locator('#search').fill('Rønde kloakseparering'); await page.wait_for_timeout(100)
+              assert await page.locator('.project-row').count()==1
               row=page.locator('.project-row').first
               assert not await row.evaluate("el=>el.classList.contains('unmapped')")
               assert await row.get_attribute('data-geometry-kind')=='area' and await row.get_attribute('data-geometry-precision')=='schematic'
-              assert await page.locator('.project-area-schematic').count()==2
+              counts={'areas':await page.locator('.project-area-schematic').count(),'routes':await page.locator('.project-route').count(),'markers':await page.locator('.project-marker-shell').count()}
+              assert counts=={'areas':2,'routes':0,'markers':0},counts
               await row.click(); detail=await page.locator('#detailContent').inner_text()
               for needle in ['Rønde · separatkloakering etape 5','Skematisk, kildebaseret projektområde','ikke matrikelgrænse','27.02.2025']:
                   assert needle in detail,(needle,detail)
