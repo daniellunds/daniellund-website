@@ -132,7 +132,7 @@ function renderProjects(){
         if(renderedKeys.has(key))continue;
         renderedKeys.add(key);
         L.geoJSON(geometry,{
-          style:f=>({color:f.properties.component==="toemmeledning"?"#7654ab":f.properties.component==="gravet_ledning"?"#9d6327":"#cb344b",weight:4,opacity:.95,className:"project-route"}),
+          style:f=>f.geometry.type==="Point"?{color:"#fff",weight:2,fillColor:"#233e49",fillOpacity:1,className:"project-shaft"}:({color:f.properties.component==="toemmeledning"?"#7654ab":f.properties.component==="gravet_ledning"?"#9d6327":"#cb344b",weight:4,opacity:.95,className:"project-route"}),
           pointToLayer:(f,ll)=>L.circleMarker(ll,{radius:5,color:"#fff",weight:2,fillColor:"#233e49",fillOpacity:1,className:"project-shaft"}),
           onEachFeature:(f,l)=>{const tip=document.createElement("span");tip.textContent=`${pr.name} · ${f.properties.label}`;l.bindTooltip(tip);l.on("click",()=>openProject(pr));}
         }).addTo(state.projectLayer);
