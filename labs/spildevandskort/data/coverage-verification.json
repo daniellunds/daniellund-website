@@ -2,91 +2,24 @@
   "schemaVersion": 2,
   "verifiedAt": "2026-09-07",
   "purpose": "Source audit for municipality-based administrative/market wastewater coverage. This does not assert that every property is connected to public sewer; it verifies the utility brand responsible at municipality/owner-company level and selected current-operator changes layered on top of stable legacy map IDs.",
-  "method": "Plandata adopted sewer catchments are the baseline consistency check. Multi-municipality utility brands and legacy-to-current operator changes are additionally cross-checked against current official utility or municipality sources.",
+  "method": "Plandata adopted sewer catchments are the baseline consistency check. Multi-municipality utility brands, explicit municipality overrides and legacy-to-current operator changes are additionally cross-checked against current official utility or municipality sources.",
   "verifiedGroups": [
-    {
-      "brandId": "din-forsyning",
-      "municipalities": ["Esbjerg", "Varde"],
-      "sourceUrl": "https://dinforsyning.dk/da-dk/om-os",
-      "evidence": "DIN Forsyning states that it receives wastewater from all businesses and households in both Esbjerg and Varde municipalities, via sewer or septic-tank emptying."
-    },
-    {
-      "brandId": "envafors",
-      "municipalities": ["Næstved", "Slagelse", "Sorø"],
-      "sourceUrl": "https://www.envafors.dk/envafors-sitemap",
-      "evidence": "Envafors is the shared service brand for the wastewater utilities in Næstved, Slagelse and Sorø; the underlying legal wastewater companies remain local."
-    },
-    {
-      "brandId": "fors",
-      "municipalities": ["Holbæk", "Lejre", "Roskilde"],
-      "sourceUrl": "https://www.fors.dk/",
-      "evidence": "Fors explicitly lists wastewater service in Holbæk, Lejre and Roskilde municipalities."
-    },
-    {
-      "brandId": "hofor",
-      "municipalities": ["Albertslund", "Brøndby", "Dragør", "Herlev", "Hvidovre", "København", "Rødovre", "Vallensbæk"],
-      "sourceUrl": "https://www.hofor.dk/om-hofor/organisationen/koncerndiagram/selskaber-i-hofor/holding/hofor-spildevand-holding-as/",
-      "evidence": "HOFOR lists one wastewater network company for each of the eight owner municipalities."
-    },
-    {
-      "brandId": "klar-forsyning",
-      "municipalities": ["Greve", "Køge", "Solrød", "Stevns"],
-      "sourceUrl": "https://greve.dk/media/ufwa5mjs/greve-spildevandsplan-august-2023.pdf",
-      "evidence": "Greve's wastewater plan states that KLAR Forsyning handles and treats wastewater in Køge, Greve, Solrød and Stevns municipalities."
-    },
-    {
-      "brandId": "novafos",
-      "municipalities": ["Allerød", "Ballerup", "Egedal", "Frederikssund", "Furesø", "Gentofte", "Gladsaxe", "Hørsholm", "Rudersdal"],
-      "sourceUrl": "https://gladsaxe.dk/politik/byraad-og-udvalg/andre-udvalg-raad-og-naevn?oudvalg=Novafos+Holding+A%2FS+2026",
-      "evidence": "Gladsaxe Kommune lists the nine Novafos owner municipalities and states that the group companies handle water supply, wastewater and treatment in the owner municipalities' geographic areas."
-    },
-    {
-      "brandId": "samn-forsyning",
-      "municipalities": ["Horsens", "Odder"],
-      "sourceUrl": "https://www.samn.dk/om-samn/om-samn-forsyning",
-      "evidence": "Samn Forsyning states that it handles wastewater in both Horsens and Odder municipalities."
-    }
+    {"brandId":"din-forsyning","municipalities":["Esbjerg","Varde"],"sourceUrl":"https://dinforsyning.dk/da-dk/om-os","evidence":"DIN Forsyning states that it receives wastewater from all businesses and households in both Esbjerg and Varde municipalities, via sewer or septic-tank emptying."},
+    {"brandId":"envafors","municipalities":["Næstved","Slagelse","Sorø"],"sourceUrl":"https://www.envafors.dk/envafors-sitemap","evidence":"Envafors is the shared service brand for the wastewater utilities in Næstved, Slagelse and Sorø; the underlying legal wastewater companies remain local."},
+    {"brandId":"fors","municipalities":["Holbæk","Lejre","Roskilde"],"sourceUrl":"https://www.fors.dk/","evidence":"Fors explicitly lists wastewater service in Holbæk, Lejre and Roskilde municipalities."},
+    {"brandId":"hofor","municipalities":["Albertslund","Brøndby","Dragør","Herlev","Hvidovre","København","Rødovre","Vallensbæk"],"sourceUrl":"https://www.hofor.dk/om-hofor/organisationen/koncerndiagram/selskaber-i-hofor/holding/hofor-spildevand-holding-as/","evidence":"HOFOR lists one wastewater network company for each of the eight owner municipalities."},
+    {"brandId":"klar-forsyning","municipalities":["Greve","Køge","Solrød","Stevns"],"sourceUrl":"https://greve.dk/media/ufwa5mjs/greve-spildevandsplan-august-2023.pdf","evidence":"Greve's wastewater plan states that KLAR Forsyning handles and treats wastewater in Køge, Greve, Solrød and Stevns municipalities."},
+    {"brandId":"novafos","municipalities":["Allerød","Ballerup","Egedal","Frederikssund","Furesø","Gentofte","Gladsaxe","Hørsholm","Rudersdal"],"sourceUrl":"https://gladsaxe.dk/politik/byraad-og-udvalg/andre-udvalg-raad-og-naevn?oudvalg=Novafos+Holding+A%2FS+2026","evidence":"Gladsaxe Kommune lists the nine Novafos owner municipalities and states that the group companies handle water supply, wastewater and treatment in the owner municipalities' geographic areas."},
+    {"brandId":"samn-forsyning","municipalities":["Horsens","Odder"],"sourceUrl":"https://www.samn.dk/om-samn/om-samn-forsyning","evidence":"Samn Forsyning states that it handles wastewater in both Horsens and Odder municipalities."}
+  ],
+  "verifiedMunicipalityOverrides": [
+    {"municipality":"Læsø","brandId":"laesoe-forsyning","sourceUrl":"https://laesoeforsyning.dk/laesoe-vand-a-s-spildevand/","evidence":"Læsø Forsyning/Læsø Vand handles public wastewater infrastructure in the sewered parts of Læsø and the mandatory septic-tank emptying scheme in the unsewered parts. This supports a municipality-level market/administrative backdrop while preserving actual sewer catchments as the stronger layer."}
   ],
   "verifiedOperatorChanges": [
-    {
-      "legacyBrandId": "nordfyns-forsyning",
-      "operatorBrandId": "vandcenter-syd",
-      "operatorName": "VandCenter Syd",
-      "municipalities": ["Nordfyns"],
-      "sourceUrl": "https://www.nordfynskommune.dk/borger/bolig-byggeri-og-energi/spildevand-og-regnvand/kloak/",
-      "evidence": "Nordfyns Kommune states directly that VandCenter Syd is responsible for the sewers in Nordfyns Kommune."
-    },
-    {
-      "legacyBrandId": "syddjurs-spildevand",
-      "operatorBrandId": "aquadjurs",
-      "operatorName": "AquaDjurs",
-      "municipalities": ["Syddjurs"],
-      "sourceUrl": "https://aquadjurs.dk/om-os",
-      "evidence": "AquaDjurs states that it is the joint water and wastewater company for Norddjurs and Syddjurs and handles wastewater for all of Djursland."
-    },
-    {
-      "legacyBrandId": "thisted-vand",
-      "operatorBrandId": "thisted-vand",
-      "operatorName": "Thy Forsyning",
-      "municipalities": ["Thisted"],
-      "sourceUrl": "https://thyforsyning.dk/spildevand/",
-      "evidence": "Thy Forsyning states that Thy Spildevand operates and maintains the sewer system and that the sewer network is in Thisted Kommune."
-    },
-    {
-      "legacyBrandId": "vesthimmerlands-vand",
-      "operatorBrandId": "vesthimmerlands-vand",
-      "operatorName": "Vesthimmerlands Forsyning",
-      "municipalities": ["Vesthimmerlands"],
-      "sourceUrl": "https://vesthimmerlandsforsyning.dk/spildevand/dit-spildevand",
-      "evidence": "Vesthimmerlands Forsyning describes wastewater from private and business customers throughout Vesthimmerlands Kommune and identifies its own public sewer system."
-    },
-    {
-      "legacyBrandId": "mariagerfjord-vand",
-      "operatorBrandId": "mariagerfjord-vand",
-      "operatorName": "Mariagerfjord Vand / Ren Forsyning Mariagerfjord",
-      "municipalities": ["Mariagerfjord"],
-      "sourceUrl": "https://www.renform.dk/spildevand",
-      "evidence": "Ren Forsyning Mariagerfjord is the current parent/customer-facing group for wastewater; Mariagerfjord Vand remains the wastewater company responsible for public wastewater assets in Mariagerfjord Kommune."
-    }
+    {"legacyBrandId":"nordfyns-forsyning","operatorBrandId":"vandcenter-syd","operatorName":"VandCenter Syd","municipalities":["Nordfyns"],"sourceUrl":"https://www.nordfynskommune.dk/borger/bolig-byggeri-og-energi/spildevand-og-regnvand/kloak/","evidence":"Nordfyns Kommune states directly that VandCenter Syd is responsible for the sewers in Nordfyns Kommune."},
+    {"legacyBrandId":"syddjurs-spildevand","operatorBrandId":"aquadjurs","operatorName":"AquaDjurs","municipalities":["Syddjurs"],"sourceUrl":"https://aquadjurs.dk/om-os","evidence":"AquaDjurs states that it is the joint water and wastewater company for Norddjurs and Syddjurs and handles wastewater for all of Djursland."},
+    {"legacyBrandId":"thisted-vand","operatorBrandId":"thisted-vand","operatorName":"Thy Forsyning","municipalities":["Thisted"],"sourceUrl":"https://thyforsyning.dk/spildevand/","evidence":"Thy Forsyning states that Thy Spildevand operates and maintains the sewer system and that the sewer network is in Thisted Kommune."},
+    {"legacyBrandId":"vesthimmerlands-vand","operatorBrandId":"vesthimmerlands-vand","operatorName":"Vesthimmerlands Forsyning","municipalities":["Vesthimmerlands"],"sourceUrl":"https://vesthimmerlandsforsyning.dk/spildevand/dit-spildevand","evidence":"Vesthimmerlands Forsyning describes wastewater from private and business customers throughout Vesthimmerlands Kommune and identifies its own public sewer system."},
+    {"legacyBrandId":"mariagerfjord-vand","operatorBrandId":"mariagerfjord-vand","operatorName":"Mariagerfjord Vand / Ren Forsyning Mariagerfjord","municipalities":["Mariagerfjord"],"sourceUrl":"https://www.renform.dk/spildevand","evidence":"Ren Forsyning Mariagerfjord is the current parent/customer-facing group for wastewater; Mariagerfjord Vand remains the wastewater company responsible for public wastewater assets in Mariagerfjord Kommune."}
   ]
 }
