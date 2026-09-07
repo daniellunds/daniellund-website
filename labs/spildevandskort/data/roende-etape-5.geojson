@@ -3,7 +3,7 @@
   "metadata": {
     "projectKey": "roende-etape-5",
     "precision": "schematic",
-    "geometryKind": "area",
+    "geometryRole": "project-area",
     "locationLabel": "Rønde · etape 5",
     "sourceUrl": "https://aquadjurs.dk/sites/default/files/2025-02/Etapeopdeling%20revideret%2027-02-2025_R%C3%B8nde_0.pdf",
     "secondarySourceUrl": "https://www.aquadjurs.dk/node/87",
