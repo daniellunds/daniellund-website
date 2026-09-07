@@ -117,7 +117,7 @@ jobs:
               await page.locator('.tab[data-tab="projects"]').click()
               await page.wait_for_timeout(500)
               controls=await page.locator('#projectControls').inner_text()
-              assert 'skematisk, kildebaseret tracé' in controls.lower(),controls
+              assert 'skematiske, kildebaserede tracéer' in controls.lower(),controls
               qa=await page.evaluate("projectGeorefState()")
               assert qa['staticLoaded'] + qa['ignored'] == 26,qa
               assert qa['staticLoaded'] == 17 and qa['ignored'] == 9,qa
