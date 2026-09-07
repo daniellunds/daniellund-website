@@ -75,7 +75,18 @@ function projectGeometry(pr){
   return key?state.projectGeometries?.get(key)||null:null;
 }
 function projectGeometryPrecision(geometry){return geometry?.metadata?.precision==="schematic"?"schematic":"source";}
-function projectGeometryListLabel(geometry){return projectGeometryPrecision(geometry)==="schematic"?"Skematisk tracé":"Dokumenteret tracé";}
+function projectGeometryRole(geometry){
+  if(geometry?.metadata?.geometryRole)return geometry.metadata.geometryRole;
+  const types=new Set((geometry?.features||[]).map(f=>f.geometry?.type));
+  return [...types].some(t=>t==="Polygon"||t==="MultiPolygon")?"project-area":"route";
+}
+function projectGeometryListLabel(geometry){
+  const schematic=projectGeometryPrecision(geometry)==="schematic";
+  const area=projectGeometryRole(geometry)==="project-area";
+  if(schematic&&area)return "Skematisk projektområde";
+  if(schematic)return "Skematisk tracé";
+  return area?"Dokumenteret projektområde":"Dokumenteret tracé";
+}
 function projectHasMapGeometry(pr){return !!(projectGeometry(pr)||projectLocation(pr));}
 function projectGeometryLabel(pr){
   return {point:"Punkt",line:"Linje",polygon:"Område / polygon",unresolved:"Geometri ikke afklaret"}[projectReview(pr)?.geometryType]||"Ikke klassificeret";
@@ -127,6 +138,16 @@ function projectLineStyle(feature,geometry){
   if(schematic)return {color:"#d47c22",weight:3,opacity:.95,dashArray:"8 6",className:"project-route project-route-schematic"};
   return {color:feature.properties.component==="toemmeledning"?"#7654ab":feature.properties.component==="gravet_ledning"?"#9d6327":"#cb344b",weight:4,opacity:.95,className:"project-route project-route-source"};
 }
+function projectAreaStyle(geometry){
+  const schematic=projectGeometryPrecision(geometry)==="schematic";
+  return schematic?{color:"#d47c22",weight:2,opacity:.95,dashArray:"6 5",fillColor:"#d47c22",fillOpacity:.14,className:"project-area project-area-schematic"}:{color:"#08798a",weight:2,opacity:.95,fillColor:"#08798a",fillOpacity:.14,className:"project-area project-area-source"};
+}
+function projectFeatureStyle(feature,geometry){
+  const t=feature.geometry?.type;
+  if(t==="Polygon"||t==="MultiPolygon")return projectAreaStyle(geometry);
+  if(t==="Point")return projectPointStyle(geometry);
+  return projectLineStyle(feature,geometry);
+}
 function projectPointStyle(geometry){
   const schematic=projectGeometryPrecision(geometry)==="schematic";
   return {radius:schematic?4:5,color:"#fff",weight:2,fillColor:schematic?"#d47c22":"#233e49",fillOpacity:1,className:schematic?"project-shaft project-anchor-schematic":"project-shaft project-anchor-source"};
@@ -148,7 +169,7 @@ function renderProjects(){
         if(renderedKeys.has(key))continue;
         renderedKeys.add(key);
         L.geoJSON(geometry,{
-          style:f=>f.geometry.type==="Point"?projectPointStyle(geometry):projectLineStyle(f,geometry),
+          style:f=>projectFeatureStyle(f,geometry),
           pointToLayer:(f,ll)=>L.circleMarker(ll,projectPointStyle(geometry)),
           onEachFeature:(f,l)=>{const tip=document.createElement("span");tip.textContent=`${pr.name} · ${f.properties.label}`;l.bindTooltip(tip);l.on("click",()=>openProject(pr));}
         }).addTo(state.projectLayer);
@@ -167,18 +188,18 @@ function projectRowElement(pr){
   const row=document.createElement("button");row.className="project-row";row.dataset.projectId=pr.id;
   row.innerHTML=`<span class="project-list-marker" style="--project-color:${profileEscape(b?.color||"#0b7788")}"></span><span class="row-copy"><strong>${profileEscape(pr.name)}</strong><small>${profileEscape(b?.name||pr.brandId)} · ${profileEscape(meta.short)} · ${profileEscape(geometry?projectGeometryListLabel(geometry):loc?.label||"Placering mangler")}</small></span><span class="project-status-mini">${profileEscape(pr.status)}</span>`;
   row.dataset.geometryType=projectReview(pr)?.geometryType||"unresolved";
-  if(geometry)row.dataset.geometryPrecision=projectGeometryPrecision(geometry);
+  if(geometry){row.dataset.geometryPrecision=projectGeometryPrecision(geometry);row.dataset.geometryRole=projectGeometryRole(geometry);}
   row.onclick=()=>{openProject(pr);zoomProject(pr)};
   return row;
 }
 function openProject(pr){
   const b=state.brandById.get(pr.brandId),loc=projectLocation(pr),meta=projectCategoryMeta(pr),review=projectReview(pr),geometry=projectGeometry(pr);
-  const geometryPrecision=projectGeometryPrecision(geometry);
-  const precision=geometry?(geometryPrecision==="schematic"?"Skematisk, kildebaseret tracé":"Offentliggjort projektgeometri"):projectPrecisionLabel(loc?.precision);
+  const geometryPrecision=projectGeometryPrecision(geometry),geometryRole=projectGeometryRole(geometry);
+  const precision=geometry?(geometryPrecision==="schematic"?(geometryRole==="project-area"?"Skematisk, kildebaseret projektområde":"Skematisk, kildebaseret tracé"):"Offentliggjort projektgeometri"):projectPrecisionLabel(loc?.precision);
   const note=geometry?(geometry.metadata?.note||"Projektgeometrien er hentet fra en offentlig projektkilde."):loc?.precision==="anlæg"?"Projektet er knyttet til en eksplicit kontrolleret PULS-registrering. Punktet viser anlægsregistreringen, ikke entreprisegrænsen.":loc?"Områdeplacering: Markøren viser et dokumenteret sted. Projektområdets afgrænsning er endnu ikke digitaliseret.":"Projektet vises i listen. Der mangler dokumenteret geografi, så det har ingen markør på kortet.";
   const geometrySource=geometry?.metadata?.sourceUrl||loc?.sourceUrl;
   const checked=geometry?.metadata?.retrievedAt||review?.locationCheckedAt;
-  const locationLabel=geometry?.metadata?.locationLabel||geometry?projectGeometryListLabel(geometry):loc?.label||"Ikke fastlagt";
+  const locationLabel=geometry?.metadata?.locationLabel||(geometry?projectGeometryListLabel(geometry):loc?.label||"Ikke fastlagt");
   const owners=Array.isArray(geometry?.metadata?.sharedOwners)?geometry.metadata.sharedOwners:[];
   const sharedNote=owners.length>1?`<p class="source-note"><strong>Fællesprojekt:</strong> ${profileEscape(owners.join(", "))}. Geometrien tegnes én gang, også når flere medbygherrer er valgt.</p>`:"";
   els.detailContent.innerHTML=`<header class="detail-head project-detail-head"><span class="detail-kicker">Forsyningsprojekt</span><h2>${profileEscape(pr.name)}</h2><div class="detail-owner">${profileEscape(b?.name||pr.brandId)}</div><span class="project-category-badge">${profileEscape(meta.label)}</span></header><div class="detail-body"><div class="fact-grid"><div class="fact"><span>Status</span><strong>${profileEscape(pr.status)}</strong></div><div class="fact"><span>Kategori</span><strong>${profileEscape(meta.label)}</strong></div><div class="fact"><span>Kortplacering</span><strong>${profileEscape(locationLabel)}</strong></div><div class="fact"><span>Præcision</span><strong>${profileEscape(precision)}</strong></div><div class="fact"><span>Geometri</span><strong>${profileEscape(projectGeometryLabel(pr))}</strong></div><div class="fact"><span>Geografisk dokumentation</span><strong>${profileEscape(checked?`Kontrolleret ${checked}`:loc?"Eksisterende stedanker":"Afventer verifikation")}</strong></div></div><p class="project-description">${profileEscape(pr.description)}</p><div class="project-detail-actions">${pr.url?profileLink(pr.url,"Åbn projektkilde","detail-action primary"):""}<button class="detail-action" type="button" data-project-profile="${profileEscape(pr.brandId)}">Åbn forsyningsprofil</button>${projectHasMapGeometry(pr)?'<button class="detail-action" type="button" data-project-zoom="1">Zoom til projekt</button>':""}${geometrySource?profileLink(geometrySource,"Kilde til kortplacering","detail-action"):""}</div><p class="source-note"><strong>Kortplacering:</strong> ${profileEscape(note)}</p><p class="source-note"><strong>Geometrivurdering:</strong> ${profileEscape(review?.reason||"Projektet afventer klassifikation.")}</p>${sharedNote}</div>`;
