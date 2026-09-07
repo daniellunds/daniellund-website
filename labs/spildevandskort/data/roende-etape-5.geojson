@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "projectKey": "roende-etape-5",
+    "precision": "schematic",
+    "geometryKind": "area",
+    "locationLabel": "Rønde · etape 5",
+    "sourceUrl": "https://aquadjurs.dk/sites/default/files/2025-02/Etapeopdeling%20revideret%2027-02-2025_R%C3%B8nde_0.pdf",
+    "secondarySourceUrl": "https://www.aquadjurs.dk/node/87",
+    "retrievedAt": "2026-09-07",
+    "projectIds": ["syddjurs-spildevand:1"],
+    "sharedOwners": ["AquaDjurs"],
+    "note": "Skematisk projektområde digitaliseret konservativt efter AquaDjurs' officielle oversigtstegning for Rønde etape 5. Polygonen viser projektets omtrentlige geografiske udstrækning og må ikke bruges som matrikel-, entreprise- eller projekteringsgrænse.",
+    "basis": [
+      "AquaDjurs' oversigtstegning revideret 27.02.2025",
+      "Etape 5 er markeret som projektareal i gang, 2025-2028",
+      "Projektbeskrivelsen oplister bl.a. Nattergalevej, Vinkelvej, Vibevej, Nørrevangsallé, Drosselvej, Solsortevej, Skolevej, Hovedgaden, Kr. Herskinds Vej, Rønne Allé, Højskolevej, Ceresvej, Frederiks Allé, L. Jørgensens Alle og Grenåvej samt bassin syd for Århusvej"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "schematic_area:1",
+      "properties": {
+        "component": "schematic_area",
+        "label": "Rønde etape 5 · skematisk projektområde"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [10.4515, 56.3039],
+          [10.4585, 56.3068],
+          [10.4700, 56.3070],
+          [10.4805, 56.3047],
+          [10.4910, 56.3025],
+          [10.5020, 56.2997],
+          [10.4990, 56.2971],
+          [10.4895, 56.2977],
+          [10.4780, 56.2990],
+          [10.4680, 56.3002],
+          [10.4580, 56.3010],
+          [10.4515, 56.3039]
+        ]]
+      }
+    }
+  ]
+}
