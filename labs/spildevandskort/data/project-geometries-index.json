@@ -3,25 +3,10 @@
   "updatedAt": "2026-09-07",
   "note": "Register over projektgeometrier. precision=source er offentliggjort kildegeometri; precision=schematic er skematisk, kildebaseret geometri og må ikke læses som projekterings-, matrikel- eller landmålingsgeometri.",
   "geometries": [
-    {
-      "key": "svanemoellen",
-      "file": "svanemoellen.geojson",
-      "precision": "source"
-    },
-    {
-      "key": "valby-skybrudstunnel",
-      "file": "valby-skybrudstunnel.geojson",
-      "precision": "schematic"
-    },
-    {
-      "key": "roende-etape-5",
-      "file": "roende-etape-5.geojson",
-      "precision": "schematic"
-    },
-    {
-      "key": "tuse-naes",
-      "file": "tuse-naes.geojson",
-      "precision": "schematic"
-    }
+    {"key":"svanemoellen","file":"svanemoellen.geojson","precision":"source"},
+    {"key":"valby-skybrudstunnel","file":"valby-skybrudstunnel.geojson","precision":"schematic"},
+    {"key":"roende-etape-5","file":"roende-etape-5.geojson","precision":"schematic"},
+    {"key":"tuse-naes","file":"tuse-naes.geojson","precision":"schematic"},
+    {"key":"haarby-etape-7","file":"haarby-etape-7.geojson","precision":"schematic"}
   ]
 }
