@@ -10,7 +10,8 @@
   state.projectResolvedLocations=new Map();
   state.projectGeography=new Map();
   state.projectGeometries=new Map();
-  state.projectGeorefQa={mode:GENERATE_MODE?"generator":"static",resolved:0,attempted:0,staticLoaded:0,ignored:0,errors:0,withheldLinear:0};
+  state.projectGeometryByProject=new Map();
+  state.projectGeorefQa={mode:GENERATE_MODE?"generator":"static",resolved:0,attempted:0,staticLoaded:0,ignored:0,errors:0,withheldLinear:0,geometryFiles:0};
 
   const genericWords=new Set([
     "projekt","projekter","kloak","kloakering","kloakprojekt","kloaksanering","sanering","separatkloakering","separering",
@@ -199,15 +200,34 @@
     if(typeof value[0]==="number")return value.length>=2&&Number.isFinite(value[0])&&Number.isFinite(value[1])&&value[0]>=7.5&&value[0]<=16&&value[1]>=54&&value[1]<=58.5;
     return value.every(validCoordinates);
   }
+  function validGeometry(geometry,key){
+    return geometry?.type==="FeatureCollection"&&geometry.metadata?.projectKey===key&&geometry.metadata?.sourceUrl&&geometry.features?.length&&geometry.features.every(f=>["Point","LineString","MultiLineString","Polygon","MultiPolygon"].includes(f.geometry?.type)&&validCoordinates(f.geometry.coordinates));
+  }
+  async function loadRegisteredProjectGeometries(){
+    const index=await fetchJSON(`${PROD}/project-geometries-index.json`);
+    if(!Array.isArray(index.geometries)||!index.geometries.length)throw new Error("Projektgeometri-indeks mangler");
+    for(const item of index.geometries){
+      if(!item?.key||!item?.file||!["source","schematic"].includes(item.precision))throw new Error("Ugyldig geometri-registrering");
+      try{
+        const geometry=await fetchJSON(`${PROD}/${item.file}`);
+        if(!validGeometry(geometry,item.key))throw new Error(`Ugyldig projektgeometri: ${item.key}`);
+        geometry.metadata={...geometry.metadata,precision:item.precision};
+        state.projectGeometries.set(item.key,geometry);
+        for(const projectId of geometry.metadata.projectIds||[])state.projectGeometryByProject.set(projectId,item.key);
+        state.projectGeorefQa.geometryFiles++;
+      }catch(err){
+        state.projectGeorefQa.errors++;
+        console.warn("Projektgeometri kunne ikke indlæses",item.key,err);
+      }
+    }
+  }
   async function loadProjectGeography(){
     try{
       const raw=await fetchJSON(`${PROD}/project-geography.json`);
       for(const row of raw.projects||[]){
         if(row.id&&row.name&&["point","line","polygon","unresolved"].includes(row.geometryType))state.projectGeography.set(row.id,row);
       }
-      const geometry=await fetchJSON(`${PROD}/svanemoellen.geojson`);
-      if(geometry.type!=="FeatureCollection"||geometry.metadata?.projectKey!=="svanemoellen"||!geometry.metadata?.sourceUrl||!geometry.features?.length||!geometry.features.every(f=>["Point","LineString","MultiLineString","Polygon","MultiPolygon"].includes(f.geometry?.type)&&validCoordinates(f.geometry.coordinates)))throw new Error("Ugyldig projektgeometri");
-      state.projectGeometries.set("svanemoellen",geometry);
+      await loadRegisteredProjectGeometries();
     }catch(err){
       state.projectGeorefQa.errors++;
       console.warn("Projektgeografi kunne ikke indlæses",err);
