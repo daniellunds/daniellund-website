@@ -1,0 +1,68 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "projectKey": "valby-skybrudstunnel",
+    "precision": "schematic",
+    "locationLabel": "Valby · Høffdingsvej til Enghave Kanal",
+    "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/arealreservationer-og-udloebspunkt-for-kv84-valby-skybrudstunnel/",
+    "secondarySourceUrl": "https://www.hofor.dk/baeredygtige-byer/udviklingsprojekter/skybrudssikring/valby-skybrudstunnel/",
+    "retrievedAt": "2026-09-07",
+    "projectIds": ["hofor:1", "frederiksberg-forsyning:0"],
+    "sharedOwners": ["HOFOR", "Frederiksberg Forsyning"],
+    "note": "Skematisk tracé baseret på Københavns Kommunes offentliggjorte endelige tunneltracé, HOFORs beskrevne forløb og navngivne skakt-/byggepladslokaliteter. Linjen forbinder geografiske referencepunkter og er ikke den projekterede centerlinje eller landmålingsgeometri.",
+    "basis": [
+      "FLSmidth / Høffdingsvej-Ramsingsvej",
+      "Grønttorvet / Torveporten",
+      "Blushøjvej bag McDonald's",
+      "HF Musikbyen / Gåsebækrenden",
+      "Enghave Kanal"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "schematic_route:1",
+      "properties": {"component": "schematic_route", "label": "Skematisk tunneltracé"},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [12.50690954, 55.65749399],
+          [12.50677150, 55.65407121],
+          [12.50779195, 55.64997749],
+          [12.52850000, 55.64220000],
+          [12.53195000, 55.63928000]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "route_anchor:fls",
+      "properties": {"component": "route_anchor", "label": "FLSmidth · Høffdingsvej/Ramsingsvej"},
+      "geometry": {"type": "Point", "coordinates": [12.50690954, 55.65749399]}
+    },
+    {
+      "type": "Feature",
+      "id": "route_anchor:groenttorvet",
+      "properties": {"component": "route_anchor", "label": "Grønttorvet · Torveporten"},
+      "geometry": {"type": "Point", "coordinates": [12.50677150, 55.65407121]}
+    },
+    {
+      "type": "Feature",
+      "id": "route_anchor:blu",
+      "properties": {"component": "route_anchor", "label": "Blushøjvej · bag McDonald's"},
+      "geometry": {"type": "Point", "coordinates": [12.50779195, 55.64997749]}
+    },
+    {
+      "type": "Feature",
+      "id": "route_anchor:musikbyen",
+      "properties": {"component": "route_anchor", "label": "HF Musikbyen / Gåsebækrenden"},
+      "geometry": {"type": "Point", "coordinates": [12.52850000, 55.64220000]}
+    },
+    {
+      "type": "Feature",
+      "id": "route_anchor:enghave",
+      "properties": {"component": "route_anchor", "label": "Enghave Kanal"},
+      "geometry": {"type": "Point", "coordinates": [12.53195000, 55.63928000]}
+    }
+  ]
+}
