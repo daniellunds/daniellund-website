@@ -1,0 +1,103 @@
+// Proof of concept: explicit, source-backed wastewater catchment -> treatment plant relations.
+// The pilot is deliberately partial and currently covers documented Copenhagen oplande for Lynetten and Damhusåen.
+(async function integrateWwtpCatchmentPilot(){
+  let pilot=null,meta=null,highlightLayer=null,selectedPlantMarker=null,activePlantKey=null;
+
+  const esc=v=>typeof profileEscape==='function'?profileEscape(String(v)):String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const nkey=v=>String(v||'').toLocaleLowerCase('da').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9æøå]+/g,'');
+  const plantKeyFor=p=>{
+    if(!p)return null;
+    for(const [key,info] of Object.entries(meta?.plants||{})){
+      const ids=[info?.puls?.id,info?.puls?.featureId].filter(Boolean).map(String);
+      if(ids.includes(String(p.id)))return key;
+    }
+    const name=nkey(p.name);
+    if(name.includes('lynetten'))return 'lynetten';
+    if(name.includes('damhus'))return 'damhusaen';
+    return null;
+  };
+  const featuresFor=key=>(pilot?.features||[]).filter(f=>f.properties?.plantKey===key);
+  const unique=(values)=>[...new Set(values.filter(Boolean))];
+
+  function resetCatchmentHighlight(){
+    activePlantKey=null;
+    if(highlightLayer){highlightLayer.remove();highlightLayer=null;}
+    if(selectedPlantMarker){selectedPlantMarker.remove();selectedPlantMarker=null;}
+    if(typeof renderPolygons==='function')renderPolygons();
+  }
+
+  function dimBaseCatchments(){
+    state.polygonLayer?.eachLayer(layer=>{
+      if(layer.setStyle)layer.setStyle({fillOpacity:.055,opacity:.16,weight:.35});
+    });
+  }
+
+  function showCatchmentHighlight(p,key){
+    const features=featuresFor(key);
+    if(!features.length)return false;
+    resetCatchmentHighlight();
+    activePlantKey=key;
+    dimBaseCatchments();
+
+    const brand=p.responsibleBrandId?state.brandById.get(p.responsibleBrandId):null;
+    const color=brand?.color||'#006f8b';
+    highlightLayer=L.geoJSON({type:'FeatureCollection',features},{
+      style:{color,fillColor:color,weight:2.2,opacity:1,fillOpacity:.58},
+      interactive:false
+    }).addTo(state.map);
+
+    if(Array.isArray(p.coordinates)){
+      selectedPlantMarker=L.circleMarker([p.coordinates[1],p.coordinates[0]],{
+        radius:capacityRadius(p.capacity)+4,color:'#102f3b',weight:3,fillColor:color,fillOpacity:1,pane:'markerPane',interactive:false
+      }).addTo(state.map);
+    }
+    const bounds=highlightLayer.getBounds();
+    if(bounds.isValid())state.map.fitBounds(bounds,{padding:[35,35],maxZoom:13});
+    return true;
+  }
+
+  function appendCatchmentInfo(p,key){
+    const features=featuresFor(key);if(!features.length)return;
+    const info=meta?.plants?.[key]||{};
+    const planNumbers=unique(features.map(f=>f.properties?.planNumber)).sort((a,b)=>String(a).localeCompare(String(b),'da',{numeric:true}));
+    const sourceFeatureCount=features.reduce((sum,f)=>sum+Number(f.properties?.sourceFeatureCount||0),0);
+    const sources=unique(features.flatMap(f=>(f.properties?.sources||[]).map(s=>JSON.stringify(s)))).map(x=>JSON.parse(x));
+    const body=els.detailContent.querySelector('.detail-body');if(!body)return;
+
+    const box=document.createElement('section');
+    box.className='wwtp-catchment-pilot';
+    box.innerHTML=`
+      <p class="source-note"><strong>Renseanlægsopland · pilot</strong><br>De fremhævede flader er kun de oplande, hvor relationen til ${esc(info.plantName||p.name)} er dokumenteret i de anvendte kommunale kilder. Piloten er endnu ikke et komplet renseanlægsopland.</p>
+      <div class="fact-grid">
+        <div class="fact"><span>Dokumenterede oplande</span><strong>${esc(planNumbers.join(', '))}</strong></div>
+        <div class="fact"><span>Oplandsnumre matchet</span><strong>${planNumbers.length} / ${(info.requestedPlanNumbers||[]).length}</strong></div>
+        <div class="fact"><span>Plandata-objekter</span><strong>${new Intl.NumberFormat('da-DK').format(sourceFeatureCount)}</strong></div>
+        <div class="fact"><span>Datastatus</span><strong>Dokumenteret pilot · delvis dækning</strong></div>
+      </div>
+      <div class="detail-actions wwtp-catchment-actions"><button type="button" class="detail-action" data-reset-wwtp> Nulstil opland </button></div>
+      ${sources.length?`<p class="source-note"><strong>Kilder:</strong> ${sources.slice(0,4).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)}</a>`).join(' · ')}${sources.length>4?` · +${sources.length-4} flere`:''}</p>`:''}`;
+    body.append(box);
+    box.querySelector('[data-reset-wwtp]').onclick=()=>resetCatchmentHighlight();
+  }
+
+  try{
+    [pilot,meta]=await Promise.all([
+      fetchJSON(`${PROD}/wwtp-catchment-pilot.geojson`),
+      fetchJSON(`${PROD}/wwtp-catchment-pilot-meta.json`)
+    ]);
+    const coreOpenPlant=openPlant;
+    openPlant=function(p){
+      const key=plantKeyFor(p);
+      if(activePlantKey && activePlantKey!==key)resetCatchmentHighlight();
+      coreOpenPlant(p);
+      if(key && showCatchmentHighlight(p,key))appendCatchmentInfo(p,key);
+    };
+    window.resetWwtpCatchmentHighlight=resetCatchmentHighlight;
+    window.WWTP_CATCHMENT_PILOT_READY=true;
+    window.WWTP_CATCHMENT_PILOT_META=meta;
+    console.info('WWTP_CATCHMENT_PILOT_READY',{features:pilot.features?.length||0,plants:Object.keys(meta.plants||{})});
+  }catch(err){
+    window.WWTP_CATCHMENT_PILOT_READY=false;
+    console.warn('WWTP catchment pilot unavailable',err);
+  }
+})();
