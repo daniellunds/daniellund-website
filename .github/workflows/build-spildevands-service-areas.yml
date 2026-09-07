@@ -1,0 +1,70 @@
+name: Build wastewater service areas
+
+on:
+  push:
+    paths:
+      - 'scripts/build-spildevands-service-areas.py'
+      - '.github/workflows/build-spildevands-service-areas.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: python -m pip install --quiet requests shapely
+
+      - name: Build service-area geometry
+        run: python scripts/build-spildevands-service-areas.py
+
+      - name: QA output
+        run: |
+          python - <<'PY'
+          import gzip,json
+          from pathlib import Path
+          from shapely.geometry import shape
+          data=Path('labs/spildevandskort/data')
+          with gzip.open(data/'service-areas.geojson.gz','rt',encoding='utf-8') as f:
+              fc=json.load(f)
+          meta=json.loads((data/'service-areas-meta.json').read_text(encoding='utf-8'))
+          assert fc['type']=='FeatureCollection'
+          assert 60 <= len(fc['features']) <= 80, len(fc['features'])
+          assert meta['includedCurrentSewerTypeCodes']==[1,2,3,4,6]
+          assert meta['excludedCurrentSewerTypeCodes']==[5]
+          assert meta['rawFeatureCount'] >= 60000
+          assert meta['excludedUnseweredFeatureCount'] > 8000
+          ids=set()
+          for f in fc['features']:
+              p=f['properties']; oid=p['operatorBrandId']
+              assert oid not in ids, oid; ids.add(oid)
+              assert p['legacyBrandIds']
+              assert set(p['sewerTypeCodes']).issubset({1,2,3,4,6})
+              g=shape(f['geometry']); assert not g.is_empty and g.is_valid, oid
+          assert 'vandcenter-syd' in ids
+          assert 'aquadjurs' in ids
+          print('SERVICE_AREA_QA_OK',len(fc['features']),meta)
+          PY
+
+      - name: Commit generated data
+        run: |
+          if git diff --quiet -- labs/spildevandskort/data/service-areas.geojson.gz labs/spildevandskort/data/service-areas-meta.json; then
+            echo 'Generated service-area data unchanged.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add labs/spildevandskort/data/service-areas.geojson.gz labs/spildevandskort/data/service-areas-meta.json
+          git commit -m 'Update verified sewered service-area geometry'
+          git push
