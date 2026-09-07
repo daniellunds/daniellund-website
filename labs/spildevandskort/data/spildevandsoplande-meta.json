@@ -1,0 +1,40 @@
+{
+  "source": "Plandata.dk WFS – theme_pdk_kloakopland_vedtaget",
+  "sourceUrl": "https://geoserver.plandata.dk/geoserver/wfs",
+  "numberMatched": 66229,
+  "rawFeatureCount": 66229,
+  "mapFeatureCount": 377,
+  "municipalityCount": 97,
+  "includedCurrentSewerTypeCodes": [
+    1,
+    2,
+    3,
+    4,
+    6
+  ],
+  "excludedCurrentSewerTypeCodes": [
+    5
+  ],
+  "excludedUnseweredFeatureCount": 9327,
+  "excludedKnownPrivateFeatureCount": 9,
+  "invalidOrEmptyGeometryCount": 0,
+  "simplifyToleranceDegrees": 2e-05,
+  "chunkSizes": [
+    {
+      "uncompressedBytes": 9624820,
+      "compressedBytes": 3391877
+    },
+    {
+      "uncompressedBytes": 8233512,
+      "compressedBytes": 2899943
+    },
+    {
+      "uncompressedBytes": 8545667,
+      "compressedBytes": 3022654
+    },
+    {
+      "uncompressedBytes": 9656647,
+      "compressedBytes": 3398028
+    }
+  ]
+}
