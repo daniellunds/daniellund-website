@@ -79,6 +79,14 @@
       "municipalities": ["Vesthimmerlands"],
       "sourceUrl": "https://vesthimmerlandsforsyning.dk/spildevand/dit-spildevand",
       "evidence": "Vesthimmerlands Forsyning describes wastewater from private and business customers throughout Vesthimmerlands Kommune and identifies its own public sewer system."
+    },
+    {
+      "legacyBrandId": "mariagerfjord-vand",
+      "operatorBrandId": "mariagerfjord-vand",
+      "operatorName": "Mariagerfjord Vand / Ren Forsyning Mariagerfjord",
+      "municipalities": ["Mariagerfjord"],
+      "sourceUrl": "https://www.renform.dk/spildevand",
+      "evidence": "Ren Forsyning Mariagerfjord is the current parent/customer-facing group for wastewater; Mariagerfjord Vand remains the wastewater company responsible for public wastewater assets in Mariagerfjord Kommune."
     }
   ]
 }
