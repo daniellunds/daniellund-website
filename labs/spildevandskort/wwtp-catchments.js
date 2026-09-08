@@ -1,10 +1,10 @@
 // Proof of concept: explicit, source-backed wastewater catchment -> treatment plant relations.
-// The pilot is deliberately partial and currently covers documented Copenhagen oplande for Lynetten and Damhusåen.
+// The pilot is deliberately partial and can span multiple municipalities for Lynetten and Damhusåen.
 // Relation dataset uses current Plandata sewer type filtering (nuvkode) and excludes rainwater-only/unsewered areas.
 (async function integrateWwtpCatchmentPilot(){
   let pilot=null,meta=null,highlightLayer=null,selectedPlantMarker=null,activePlantKey=null;
   const MAIN_PULS_IDS={
-    lynetten:'Renseanlaeg.8793f333-ad28-446d-8d0f-28effaef0c41'.replace('8d0f','8b0f'),
+    lynetten:'Renseanlaeg.8793f333-ad28-446d-8b0f-28effaef0c41',
     damhusaen:'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'
   };
 
@@ -20,7 +20,7 @@
     return null;
   };
   const featuresFor=key=>(pilot?.features||[]).filter(f=>f.properties?.plantKey===key);
-  const unique=(values)=>[...new Set(values.filter(Boolean))];
+  const unique=(values)=>[...new Set(values.filter(v=>v!==null&&v!==undefined&&v!==''))];
 
   function resetCatchmentHighlight(){
     activePlantKey=null;
@@ -63,6 +63,9 @@
     const features=featuresFor(key);if(!features.length)return;
     const info=meta?.plants?.[key]||{};
     const planNumbers=unique(features.map(f=>f.properties?.planNumber)).sort((a,b)=>String(a).localeCompare(String(b),'da',{numeric:true}));
+    const municipalityCount=unique(features.map(f=>f.properties?.municipalityCode)).length;
+    const matchedCount=Array.isArray(info.matchedRelations)?info.matchedRelations.length:planNumbers.length;
+    const requestedCount=Array.isArray(info.requestedRelations)?info.requestedRelations.length:(info.requestedPlanNumbers||[]).length;
     const sourceFeatureCount=features.reduce((sum,f)=>sum+Number(f.properties?.sourceFeatureCount||0),0);
     const sources=unique(features.flatMap(f=>(f.properties?.sources||[]).map(s=>JSON.stringify(s)))).map(x=>JSON.parse(x));
     const body=els.detailContent.querySelector('.detail-body');if(!body)return;
@@ -73,7 +76,8 @@
       <p class="source-note"><strong>Renseanlægsopland · pilot</strong><br>De fremhævede flader er kun de oplande, hvor relationen til ${esc(info.plantName||p.name)} er dokumenteret i de anvendte kommunale kilder. Piloten er endnu ikke et komplet renseanlægsopland.</p>
       <div class="fact-grid">
         <div class="fact"><span>Dokumenterede oplande</span><strong>${esc(planNumbers.join(', '))}</strong></div>
-        <div class="fact"><span>Oplandsnumre matchet</span><strong>${planNumbers.length} / ${(info.requestedPlanNumbers||[]).length}</strong></div>
+        <div class="fact"><span>Oplandsrelationer matchet</span><strong>${matchedCount} / ${requestedCount}</strong></div>
+        <div class="fact"><span>Kommuner i piloten</span><strong>${municipalityCount}</strong></div>
         <div class="fact"><span>Plandata-objekter</span><strong>${new Intl.NumberFormat('da-DK').format(sourceFeatureCount)}</strong></div>
         <div class="fact"><span>Datastatus</span><strong>Dokumenteret pilot · delvis dækning</strong></div>
       </div>
