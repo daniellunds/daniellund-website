@@ -1,4 +1,4 @@
-# Rebuild trigger: Frederiksberg source-backed catchments added 2026-09-08
+# Rebuild trigger: Herlev source-backed Damhusåen catchments added 2026-09-08
 name: Build WWTP catchment pilot
 
 on:
