@@ -11,56 +11,44 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - name: Install audit dependencies
-        run: |
-          python -m pip install --quiet requests beautifulsoup4 playwright
-          python -m playwright install --with-deps chromium
-      - name: Inspect current Rudersdal treatment-plant and map sources
+      - name: Probe current Rudersdal sewer catchment service
         run: |
           python - <<'PY'
-          import asyncio, json, re, requests
-          from bs4 import BeautifulSoup
-          from playwright.async_api import async_playwright
+          import requests, re
+          base='https://kort.rudersdal.dk'
+          urls=[
+            base+'/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilities&SERVICENAME=extern-spildevandsplan2025',
+            base+'/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities&SERVICENAME=extern-spildevandsplan2025',
+            base+'/wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities&SERVICENAME=extern-spildevandsplan2025',
+            base+'/spatialmap?page=minimap2-generic-data-access',
+          ]
+          for u in urls:
+              try:
+                  r=requests.get(u,timeout=35)
+                  print('\nURL',u,'STATUS',r.status_code,'TYPE',r.headers.get('content-type'),'LEN',len(r.content))
+                  t=r.text
+                  for needle in ['theme-gidas_status_kloakoplandecustomergeoview_wfs_2025','kloakopland','rense','anlaeg','anlæg','recipient']:
+                      if needle.lower() in t.lower():
+                          i=t.lower().find(needle.lower())
+                          print('HIT',needle,re.sub(r'\s+',' ',t[max(0,i-1200):i+3500])[:4700])
+                  print('HEAD',re.sub(r'\s+',' ',t[:6000]))
+              except Exception as e:
+                  print('ERROR',u,repr(e))
 
-          pages=['3588','3795','3796','3797','3798','3806','6119','3788']
-          for pid in pages:
-              u=f'https://rudersdal.dkplan.dk/{pid}'
-              r=requests.get(u,timeout=30)
-              soup=BeautifulSoup(r.text,'html.parser')
-              text=' '.join(soup.stripped_strings)
-              print(f'\n=== STATIC {pid} {r.status_code} {soup.title.string if soup.title else ""} ===')
-              print(text[:25000])
-              print('IFRAMES',json.dumps([x.get('src') for x in soup.find_all('iframe')],ensure_ascii=False))
-              for tag in soup.find_all(['script','a']):
-                  val=tag.get('src') or tag.get('href') or ''
-                  if any(k in val.lower() for k in ('map','mini','sweco','novafos','wfs','arcgis','geojson','service')):
-                      print('RESOURCE_OR_LINK',val)
-
-          async def main():
-              async with async_playwright() as p:
-                  browser=await p.chromium.launch()
-                  page=await browser.new_page(viewport={'width':1440,'height':1200})
-                  reqs=[]
-                  def record(req):
-                      u=req.url
-                      if any(k in u.lower() for k in ('map','mini','sweco','novafos','wfs','arcgis','geojson','feature','service','api')):
-                          reqs.append(u)
-                  page.on('request',record)
-                  await page.goto('https://rudersdal.dkplan.dk/3788',wait_until='networkidle',timeout=60000)
-                  await page.wait_for_timeout(3000)
-                  buttons=page.get_by_text('Klik for at aktivere kortet',exact=False)
-                  if await buttons.count():
-                      try:
-                          await buttons.first.click(timeout=10000)
-                          await page.wait_for_timeout(12000)
-                      except Exception as e:
-                          print('MAP_CLICK_ERROR',repr(e))
-                  print('MAP_FRAMES',json.dumps([f.url for f in page.frames],ensure_ascii=False))
-                  print('MAP_REQUESTS',json.dumps(list(dict.fromkeys(reqs)),ensure_ascii=False)[:100000])
-                  print('MAP_BODY',re.sub(r'\s+',' ',await page.locator('body').inner_text())[:20000])
-                  await browser.close()
-          asyncio.run(main())
+          # Try likely public WFS type names directly.
+          names=[
+            'theme-gidas_status_kloakoplandecustomergeoview_wfs_2025',
+            'gidas_status_kloakoplandecustomergeoview_wfs_2025',
+          ]
+          for name in names:
+              for ver in ['1.1.0','2.0.0']:
+                  params={'SERVICE':'WFS','VERSION':ver,'REQUEST':'GetFeature','TYPENAME':name,'COUNT':'5','MAXFEATURES':'5','OUTPUTFORMAT':'application/json','SERVICENAME':'extern-spildevandsplan2025'}
+                  try:
+                      r=requests.get(base+'/wfs',params=params,timeout=35)
+                      print('\nGETFEATURE',name,ver,r.status_code,r.url,'TYPE',r.headers.get('content-type'),'LEN',len(r.content))
+                      print(r.text[:20000])
+                  except Exception as e: print('GETFEATURE_ERROR',repr(e))
           PY
