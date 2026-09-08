@@ -3,8 +3,8 @@
   "coverageStatus": "partial-documented-pilot",
   "source": "Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans",
   "rawPlandataFeaturesScanned": 66229,
-  "matchedRawFeatures": 42,
-  "mapFeatureCount": 42,
+  "matchedRawFeatures": 56,
+  "mapFeatureCount": 54,
   "excludedRainwaterOnlyMatches": 0,
   "excludedUnseweredMatches": 2,
   "plants": {
@@ -44,7 +44,19 @@
         "441",
         "442",
         "443",
-        "468"
+        "468",
+        "AUREHØJVEJ",
+        "CAROLINEVEJ",
+        "ENGHAVERENDEN",
+        "EVANSTONEVEJ",
+        "JOMSBORGVEJ",
+        "KILDESKOVSRENDEN",
+        "SANKTPEDERSVEJ",
+        "SKOVSHOVED",
+        "SOFIEVEJ",
+        "SØBORGHUSRENDEN",
+        "TUBORG",
+        "TUBORGPARKVEJ"
       ],
       "matchedPlanNumbers": [
         "100",
@@ -73,7 +85,19 @@
         "439",
         "441",
         "442",
-        "443"
+        "443",
+        "AUREHØJVEJ",
+        "CAROLINEVEJ",
+        "ENGHAVERENDEN",
+        "EVANSTONEVEJ",
+        "JOMSBORGVEJ",
+        "KILDESKOVSRENDEN",
+        "SANKTPEDERSVEJ",
+        "SKOVSHOVED",
+        "SOFIEVEJ",
+        "SØBORGHUSRENDEN",
+        "TUBORG",
+        "TUBORGPARKVEJ"
       ],
       "missingPlanNumbers": [
         "219",
@@ -220,6 +244,54 @@
         {
           "municipalityCode": 101,
           "planNumber": "468"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "AUREHØJVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "CAROLINEVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "ENGHAVERENDEN"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "EVANSTONEVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "JOMSBORGVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "KILDESKOVSRENDEN"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "SANKTPEDERSVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "SKOVSHOVED"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "SOFIEVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "SØBORGHUSRENDEN"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "TUBORG"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "TUBORGPARKVEJ"
         }
       ],
       "matchedRelations": [
@@ -330,6 +402,54 @@
         {
           "municipalityCode": 101,
           "planNumber": "443"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "AUREHØJVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "CAROLINEVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "ENGHAVERENDEN"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "EVANSTONEVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "JOMSBORGVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "KILDESKOVSRENDEN"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "SANKTPEDERSVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "SKOVSHOVED"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "SOFIEVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "SØBORGHUSRENDEN"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "TUBORG"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "TUBORGPARKVEJ"
         }
       ],
       "missingRelations": [
