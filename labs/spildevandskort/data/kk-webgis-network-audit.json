@@ -1,0 +1,326 @@
+{
+  "pageUrl": "https://webgis.digitaleplaner.dk/app/koebenhavn/spildevandsplan%2Cskybrudsplan/#geodk.bright/1/0/0/",
+  "title": "MapCentia Vidi",
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/app/koebenhavn/spildevandsplan%2Cskybrudsplan/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/fonts/roboto-v18-latin-regular.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/fonts/roboto-v18-latin-500.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/fonts/roboto-v18-latin-300.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/icons/MaterialIcons-Regular.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/js/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/css/build/all.min.b835c989dc444c5f.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/js/lib/hogan.js/hogan-3.0.2.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/js/templates.051cdc640a3f184a.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/locale",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/api/baselayer",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/js/build/all.min.fd64b1ff12dc83bc.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/js/build/all.async.min.1249c068d94aa9ed.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/api/config/koebenhavn/koebenhavn.json",
+      "resourceType": "xhr"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/app/koebenhavn/public/version.json",
+      "resourceType": "xhr"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/api/css/koebenhavn/embed.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/css/webfonts/fa-solid-900.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/api/session/status",
+      "resourceType": "xhr"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/api/setting/koebenhavn/spildevandsplan%2Cskybrudsplan",
+      "resourceType": "xhr"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/api/meta/koebenhavn/public,spildevandsplan%2Cskybrudsplan",
+      "resourceType": "xhr"
+    },
+    {
+      "method": "GET",
+      "url": "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/0/1.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/1/1.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/0/0.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/1/0.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/connection-check.ico",
+      "resourceType": "xhr"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/api/state-snapshots/koebenhavn?ownerOnly=true",
+      "resourceType": "xhr"
+    },
+    {
+      "method": "GET",
+      "url": "https://dk.gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright-01052019/1/0/1.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://dk.gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright-01052019/1/1/0.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://dk.gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright-01052019/1/1/1.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://dk.gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright-01052019/1/0/0.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/connection-check.ico",
+      "resourceType": "xhr"
+    },
+    {
+      "method": "GET",
+      "url": "https://webgis.digitaleplaner.dk/connection-check.ico",
+      "resourceType": "xhr"
+    }
+  ],
+  "responses": [
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/app/koebenhavn/spildevandsplan%2Cskybrudsplan/"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/fonts/roboto-v18-latin-500.woff2"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/css/build/all.min.b835c989dc444c5f.css"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/fonts/roboto-v18-latin-regular.woff2"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/js/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/fonts/roboto-v18-latin-300.woff2"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/js/lib/hogan.js/hogan-3.0.2.js"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/locale"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/js/templates.051cdc640a3f184a.js"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/icons/MaterialIcons-Regular.woff2"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/api/baselayer"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/js/build/all.async.min.1249c068d94aa9ed.js"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/js/build/all.min.fd64b1ff12dc83bc.js"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/api/config/koebenhavn/koebenhavn.json"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/app/koebenhavn/public/version.json"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/api/css/koebenhavn/embed.css"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/api/session/status"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/api/setting/koebenhavn/spildevandsplan%2Cskybrudsplan"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/css/webfonts/fa-solid-900.woff2"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/connection-check.ico"
+    },
+    {
+      "status": 302,
+      "url": "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/0/1.png"
+    },
+    {
+      "status": 302,
+      "url": "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/1/0.png"
+    },
+    {
+      "status": 302,
+      "url": "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/1/1.png"
+    },
+    {
+      "status": 302,
+      "url": "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/0/0.png"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/api/state-snapshots/koebenhavn?ownerOnly=true"
+    },
+    {
+      "status": 200,
+      "url": "https://dk.gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright-01052019/1/0/0.png"
+    },
+    {
+      "status": 200,
+      "url": "https://dk.gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright-01052019/1/1/0.png"
+    },
+    {
+      "status": 200,
+      "url": "https://dk.gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright-01052019/1/0/1.png"
+    },
+    {
+      "status": 200,
+      "url": "https://dk.gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright-01052019/1/1/1.png"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/api/meta/koebenhavn/public,spildevandsplan%2Cskybrudsplan"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/connection-check.ico"
+    },
+    {
+      "status": 200,
+      "url": "https://webgis.digitaleplaner.dk/connection-check.ico"
+    }
+  ],
+  "scripts": [
+    "https://webgis.digitaleplaner.dk/js/lib/hogan.js/hogan-3.0.2.js",
+    "https://webgis.digitaleplaner.dk/js/templates.051cdc640a3f184a.js",
+    "https://webgis.digitaleplaner.dk/locale",
+    "https://webgis.digitaleplaner.dk/api/baselayer",
+    "https://webgis.digitaleplaner.dk/js/build/all.min.fd64b1ff12dc83bc.js",
+    "https://webgis.digitaleplaner.dk/js/build/all.async.min.1249c068d94aa9ed.js"
+  ],
+  "links": [
+    "https://webgis.digitaleplaner.dk/favicon.ico",
+    "https://webgis.digitaleplaner.dk/images/apple-touch-icon.png",
+    "https://webgis.digitaleplaner.dk/images/favicon-32x32.png",
+    "https://webgis.digitaleplaner.dk/images/favicon-16x16.png",
+    "https://webgis.digitaleplaner.dk/site.webmanifest",
+    "https://webgis.digitaleplaner.dk/images/safari-pinned-tab.svg",
+    "https://webgis.digitaleplaner.dk/fonts/roboto-v18-latin-regular.woff2",
+    "https://webgis.digitaleplaner.dk/fonts/roboto-v18-latin-500.woff2",
+    "https://webgis.digitaleplaner.dk/fonts/roboto-v18-latin-300.woff2",
+    "https://webgis.digitaleplaner.dk/icons/MaterialIcons-Regular.woff2",
+    "https://webgis.digitaleplaner.dk/js/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2",
+    "https://webgis.digitaleplaner.dk/css/build/all.min.b835c989dc444c5f.css",
+    "https://webgis.digitaleplaner.dk/api/css/koebenhavn/embed.css"
+  ],
+  "htmlHints": [
+    "http://www.w3.org/1999/html",
+    "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/0/0.png",
+    "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/0/1.png",
+    "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/1/0.png",
+    "https://gc2.io/mapcache/baselayers/tms/1.0.0/geodk.bright/1/1/1.png"
+  ]
+}
