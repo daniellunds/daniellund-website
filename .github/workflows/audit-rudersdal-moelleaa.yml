@@ -1,0 +1,77 @@
+name: Audit Rudersdal Mølleåværket catchments
+
+on:
+  push:
+    paths:
+      - '.github/workflows/audit-rudersdal-moelleaa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Match current Plandata against Rudersdal Mølleåværket table
+        run: |
+          python -m pip install --quiet pypdf
+          python - <<'PY'
+          import io, json, re, urllib.parse, urllib.request
+          from pypdf import PdfReader
+
+          def get(url, timeout=120):
+              req=urllib.request.Request(url,headers={'User-Agent':'daniellund-spildevandskort-audit/1.0'})
+              with urllib.request.urlopen(req,timeout=timeout) as r:return r.read()
+          def norm(v):return re.sub(r'\s+','',str(v or '')).upper()
+          def keynorm(v):return re.sub(r'[^a-z0-9æøå]','',str(v or '').lower())
+          def pick(p, candidates):
+              by={keynorm(k):v for k,v in p.items()}
+              for c in candidates:
+                  if keynorm(c) in by:return by[keynorm(c)]
+              return None
+
+          pdf_url='https://spildevandsplan2017.rudersdal.dk/media/6/download?inline='
+          reader=PdfReader(io.BytesIO(get(pdf_url)))
+          # PDF pages 3-14 in human numbering correspond to zero-based pages 2..13;
+          # these are headed "Mølleåværket Renseanlæg" in the official table.
+          mol_text='\n'.join((reader.pages[i].extract_text() or '') for i in range(2,14))
+          print('MOELLEAA_PAGES',12,'TEXT_CHARS',len(mol_text))
+
+          base='https://geoserver.plandata.dk/geoserver/wfs'
+          start=0; rows=[]
+          while True:
+              qs=urllib.parse.urlencode({'service':'WFS','version':'2.0.0','request':'GetFeature','typeNames':'pdk:theme_pdk_kloakopland_vedtaget','outputFormat':'application/json','srsName':'EPSG:4326','count':5000,'startIndex':start})
+              data=json.loads(get(base+'?'+qs).decode('utf-8'))
+              feats=data.get('features',[])
+              for f in feats:
+                  p=f.get('properties') or {}
+                  mc=pick(p,['kommunekode','kommune_kode','komnr','komkode','kommunenr','kommuneid'])
+                  try: mc=int(float(mc))
+                  except: continue
+                  if mc not in (157,230):continue
+                  pn=pick(p,['plannr','plannummer','plan_nr','oplandnr','oplandnummer'])
+                  sewer=pick(p,['nuvkode','nuv_kode','kloaktype','kloak_type','sewertype','kloaktypekode'])
+                  try: sewer=int(float(sewer))
+                  except: sewer=None
+                  rows.append({'municipalityCode':mc,'planNumber':str(pn or ''),'sewerCode':sewer,'id':f.get('id')})
+              if len(feats)<5000:break
+              start+=len(feats)
+
+          rud=[]
+          for r in rows:
+              if r['municipalityCode']!=230 or r['sewerCode'] in (4,5):continue
+              pn=r['planNumber'].strip()
+              # Exact code token in extracted official Mølleåværket pages.
+              if pn and re.search(r'(?<![A-Za-z0-9.])'+re.escape(pn)+r'(?![A-Za-z0-9.])',mol_text,re.I):rud.append(r)
+          gent=[r for r in rows if r['municipalityCode']==157 and 'SANDTOFT' in norm(r['planNumber']) and r['sewerCode'] not in (4,5)]
+          current_rud=sorted({r['planNumber'] for r in rows if r['municipalityCode']==230 and r['sewerCode'] not in (4,5)})
+          matched=sorted({r['planNumber'] for r in rud},key=lambda x:(re.sub(r'\d','',x),x))
+          unmatched=sorted(set(current_rud)-set(matched))
+          print('RUDERSDAL_CURRENT_SEWERED',len(current_rud))
+          print('RUDERSDAL_MOELLEAA_MATCHED',len(matched),json.dumps(matched,ensure_ascii=False))
+          print('RUDERSDAL_NOT_MOELLEAA_OR_UNMATCHED',len(unmatched),json.dumps(unmatched,ensure_ascii=False))
+          print('GENTOFTE_SANDTOFTEN',json.dumps(gent,ensure_ascii=False))
+          assert matched, 'No Rudersdal matches'
+          assert gent, 'No current Gentofte Sandtoften match'
+          PY
