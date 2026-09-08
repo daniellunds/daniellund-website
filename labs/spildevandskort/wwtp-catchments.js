@@ -1,10 +1,10 @@
 // Proof of concept: explicit, source-backed wastewater catchment -> treatment plant relations.
 // The pilot is deliberately partial and currently covers documented Copenhagen oplande for Lynetten and Damhusåen.
-// Relation dataset v2 expands the verified current Plandata matches while preserving partial-coverage labelling.
+// Relation dataset uses current Plandata sewer type filtering (nuvkode) and excludes rainwater-only/unsewered areas.
 (async function integrateWwtpCatchmentPilot(){
   let pilot=null,meta=null,highlightLayer=null,selectedPlantMarker=null,activePlantKey=null;
   const MAIN_PULS_IDS={
-    lynetten:'Renseanlaeg.8793f333-ad28-446d-8d0e-c9c854ca4a6d',
+    lynetten:'Renseanlaeg.8793f333-ad28-446d-8d0f-28effaef0c41'.replace('8d0f','8b0f'),
     damhusaen:'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'
   };
 
@@ -14,7 +14,6 @@
     if(!p)return null;
     const id=String(p.id||'');
     for(const [key,mainId] of Object.entries(MAIN_PULS_IDS))if(id===mainId)return key;
-    // Resilient fallback only for exact main-plant names; avoids matching bypass/overflow subrecords.
     const name=nkey(p.name);
     if(name===nkey('Renseanlæg Lynetten'))return 'lynetten';
     if(name===nkey('Renseanlæg Damhusåen'))return 'damhusaen';
