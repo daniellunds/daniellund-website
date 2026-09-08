@@ -1,6 +1,6 @@
 {
-  "version": 6,
-  "scope": "Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across Copenhagen, Gentofte, Frederiksberg, Herlev and Rødovre",
+  "version": 7,
+  "scope": "Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across Copenhagen, Gentofte, Frederiksberg, Herlev, Rødovre and Lyngby-Taarbæk",
   "coverageStatus": "partial",
   "notes": "Relations are included only where an official municipal wastewater-plan source identifies the receiving treatment plant. Current subcatchment numbers are preferred when older catchment numbers have been split. Relation-level municipalityCode supports cross-municipality catchments. Ambiguous or contradictory relations are deliberately excluded. This pilot is not a complete treatment-plant catchment and must be labelled as partial in the UI.",
   "plants": [
@@ -237,6 +237,42 @@
           ],
           "sourceUrl": "https://www.frederiksberg.dk/media/zhfpmius/spildevandsplan_2019_2031_web.pdf",
           "sourceLabel": "Frederiksberg Kommune – Spildevandsplan 2019-2031, hovedoplande"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumbers": [
+            "ER01",
+            "ER02",
+            "ER03",
+            "ER04",
+            "NY02",
+            "TA01",
+            "TA02",
+            "TA03",
+            "TA04",
+            "TA05",
+            "TA06",
+            "TA07",
+            "TA08",
+            "TA09",
+            "TA10",
+            "TA11",
+            "TA12",
+            "TA13",
+            "TA14",
+            "TA15",
+            "TA16",
+            "TA17",
+            "TA18",
+            "TA19",
+            "TA20",
+            "TA21",
+            "TA23",
+            "TA24",
+            "TA26"
+          ],
+          "sourceUrl": "https://www.ltk.dk/media/5zzf1jim/kf-spildevandsplan-2014-2018-vers-10-2-2021.pdf",
+          "sourceLabel": "Lyngby-Taarbæk Kommune – Spildevandsplan 2014-2018, Bilag 7 kloakoplandsskema"
         }
       ]
     },
