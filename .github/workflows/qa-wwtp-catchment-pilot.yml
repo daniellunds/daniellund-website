@@ -7,6 +7,7 @@ on:
       - 'labs/spildevandskort/index.html'
       - 'labs/spildevandskort/data/wwtp-catchment-pilot.geojson'
       - 'labs/spildevandskort/data/wwtp-catchment-pilot-meta.json'
+      - 'labs/spildevandskort/data/wwtp-catchment-relations.json'
       - '.github/workflows/qa-wwtp-catchment-pilot.yml'
 
 permissions:
@@ -29,14 +30,29 @@ jobs:
           root=Path('labs/spildevandskort/data')
           geo=json.loads((root/'wwtp-catchment-pilot.geojson').read_text())
           meta=json.loads((root/'wwtp-catchment-pilot-meta.json').read_text())
-          assert len(geo['features'])>=20,len(geo['features'])
-          assert set(f['properties']['plantKey'] for f in geo['features'])=={'lynetten','damhusaen'}
+          features=geo['features']
+          assert len(features)>=50,len(features)
+          assert meta['mapFeatureCount']==len(features),(meta['mapFeatureCount'],len(features))
+          assert set(f['properties']['plantKey'] for f in features)=={'lynetten','damhusaen'}
           assert meta['coverageStatus']=='partial-documented-pilot'
           assert meta['plants']['lynetten']['isCompleteCatchment'] is False
           assert meta['plants']['damhusaen']['isCompleteCatchment'] is False
-          assert len(meta['plants']['lynetten']['matchedPlanNumbers'])>=15
-          assert len(meta['plants']['damhusaen']['matchedPlanNumbers'])>=8
-          print('WWTP_PILOT_STATIC_QA_OK',len(geo['features']))
+          assert meta['plants']['lynetten']['puls']['id']=='Renseanlaeg.8793f333-ad28-446d-8b0f-28effaef0c41'
+          assert meta['plants']['damhusaen']['puls']['id']=='Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'
+
+          # A treatment-plant catchment must never include rainwater-only (4) or unsewered (5) Plandata features.
+          for f in features:
+              codes=set(f['properties'].get('sewerTypeCodes') or [])
+              assert not codes.intersection({4,5}),(f['properties'].get('municipalityCode'),f['properties'].get('planNumber'),codes)
+
+          # Cross-municipality proof: all 12 conservatively selected Gentofte -> Lynetten relations must resolve.
+          gentofte=[f for f in features if f['properties'].get('plantKey')=='lynetten' and f['properties'].get('municipalityCode')==157]
+          assert len(gentofte)>=12,len(gentofte)
+          gentofte_plans={f['properties'].get('planNumber') for f in gentofte}
+          expected={'ENGHAVERENDEN','KILDESKOVSRENDEN','SKOVSHOVED','SØBORGHUSRENDEN','TUBORG','AUREHØJVEJ','SOFIEVEJ','SANKTPEDERSVEJ','CAROLINEVEJ','TUBORGPARKVEJ','JOMSBORGVEJ','EVANSTONEVEJ'}
+          assert expected.issubset(gentofte_plans),(expected-gentofte_plans,gentofte_plans)
+          assert meta.get('excludedUnseweredMatches',0)>=2,meta.get('excludedUnseweredMatches')
+          print('WWTP_PILOT_STATIC_QA_OK',len(features),'GENTOFTE',len(gentofte))
           PY
       - name: Install Playwright
         run: |
@@ -81,6 +97,8 @@ jobs:
                   text=(await page.locator('#detailContent').inner_text()).lower()
                   assert 'renseanlægsopland · pilot' in text,(needle,opened,text)
                   assert 'dokumenteret pilot · delvis dækning' in text,(needle,text)
+                  assert 'oplandsrelationer matchet' in text,(needle,text)
+                  assert 'kommuner i piloten' in text,(needle,text)
                   assert 'nulstil opland' in text,(needle,text)
                   assert opened['fillOpacity'] is not None and opened['fillOpacity']<0.1,opened
                   assert await page.locator('#detailContent .wwtp-catchment-pilot').count()==1
