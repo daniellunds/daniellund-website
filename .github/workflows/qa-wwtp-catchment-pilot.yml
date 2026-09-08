@@ -31,7 +31,7 @@ jobs:
           geo=json.loads((root/'wwtp-catchment-pilot.geojson').read_text())
           meta=json.loads((root/'wwtp-catchment-pilot-meta.json').read_text())
           features=geo['features']
-          assert len(features)>=59,len(features)
+          assert len(features)>=75,len(features)
           assert meta['mapFeatureCount']==len(features),(meta['mapFeatureCount'],len(features))
           assert set(f['properties']['plantKey'] for f in features)=={'lynetten','damhusaen'}
           assert meta['coverageStatus']=='partial-documented-pilot'
@@ -62,8 +62,16 @@ jobs:
           assert fb_by_plant['lynetten']=={'OPLAND1','OPLAND2','OPLAND3'},fb_by_plant
           assert fb_by_plant['damhusaen']=={'OPLAND4','OPLAND5'},fb_by_plant
 
+          # Herlev's official opland table maps these 16 wastewater catchments to Damhusåen.
+          herlev=[f for f in features if f['properties'].get('municipalityCode')==163]
+          herlev_expected={'101','102','103A','103B','103C','104','105','106','107','108','200','201','202','203A','203B','204'}
+          assert len(herlev)==16,len(herlev)
+          assert {f['properties'].get('planNumber') for f in herlev}==herlev_expected,herlev
+          assert {f['properties'].get('plantKey') for f in herlev}=={'damhusaen'},herlev
+          assert not any(f['properties'].get('planNumber')=='103D' for f in herlev),herlev
+
           assert meta.get('excludedUnseweredMatches',0)>=2,meta.get('excludedUnseweredMatches')
-          print('WWTP_PILOT_STATIC_QA_OK',len(features),'GENTOFTE',len(gentofte),'FREDERIKSBERG',len(frederiksberg))
+          print('WWTP_PILOT_STATIC_QA_OK',len(features),'GENTOFTE',len(gentofte),'FREDERIKSBERG',len(frederiksberg),'HERLEV',len(herlev))
           PY
       - name: Install Playwright
         run: |
