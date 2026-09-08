@@ -1,58 +1,42 @@
 {
   "attempts": [
     {
-      "label": "ows-schema",
-      "url": "https://webgis.digitaleplaner.dk/ows/koebenhavn/spildevandsplan?service=WFS&version=1.1.0&request=GetFeature&typeName=oplande_renseanlaeg&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
-      "error": "<HTTPError 404: 'Not Found'>"
+      "label": "api-sql-oplande-renseanlaeg",
+      "url": "https://webgis.digitaleplaner.dk/api/sql/koebenhavn?q=SELECT+gid%2Cid%2Copland%2Cthe_geom+FROM+spildevandsplan.oplande_renseanlaeg&srs=4326&client_encoding=UTF8&format=geojson",
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 93070,
+      "preview": "{\"success\":true,\"forStore\":[{\"name\":\"gid\",\"type\":\"integer\"},{\"name\":\"id\",\"type\":\"integer\"},{\"name\":\"opland\",\"type\":\"character varying\"},{\"name\":\"the_geom\",\"type\":\"geometry\"}],\"forGrid\":[{\"header\":\"gid\",\"dataIndex\":\"gid\",\"type\":\"integer\",\"typeObj\":null},{\"header\":\"id\",\"dataIndex\":\"id\",\"type\":\"integer\",\"typeObj\":null},{\"header\":\"opland\",\"dataIndex\":\"opland\",\"type\":\"character varying\",\"typeObj\":null},{\"header\":\"the_geom\",\"dataIndex\":\"the_geom\",\"type\":\"geometry\",\"typeObj\":null}],\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"MultiPolygon\",\"coordinates\":[[[[12.614751647,55.703679789],[12.615231695,55.703130313],[12.614563266,55.702035419],[12.616296049,55.701698078],[12.616405793,55.698692789],[12.616154877,55.698418315],[12.61599805,55.698554073],[12.616233793,55.698769026],[12.61606943,55.701642424],[12.61447647,55.701957273],[12.614005195,55.701694488],[12.613995885,55.701574039],[12.613782593,55.701579296],[12.612784566,55.702501714],[12.613126839,55.702619"
     },
     {
-      "label": "ows-db",
-      "url": "https://webgis.digitaleplaner.dk/ows/koebenhavn?service=WFS&version=1.1.0&request=GetFeature&typeName=spildevandsplan:oplande_renseanlaeg&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
-      "error": "<HTTPError 404: 'Not Found'>"
-    },
-    {
-      "label": "wfs-schema",
-      "url": "https://webgis.digitaleplaner.dk/wfs/koebenhavn/spildevandsplan?service=WFS&version=1.1.0&request=GetFeature&typeName=oplande_renseanlaeg&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
-      "error": "<HTTPError 404: 'Not Found'>"
-    },
-    {
-      "label": "wfs-db",
-      "url": "https://webgis.digitaleplaner.dk/wfs/koebenhavn?service=WFS&version=1.1.0&request=GetFeature&typeName=spildevandsplan:oplande_renseanlaeg&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
-      "error": "<HTTPError 404: 'Not Found'>"
-    },
-    {
-      "label": "/api/v2/sql/koebenhavn",
-      "url": "https://webgis.digitaleplaner.dk/api/v2/sql/koebenhavn?q=SELECT+%2A%2C+ST_AsGeoJSON%28ST_Transform%28the_geom%2C4326%29%29%3A%3Ajson+AS+geometry+FROM+spildevandsplan.oplande_renseanlaeg&format=json",
-      "error": "<HTTPError 404: 'Not Found'>"
-    },
-    {
-      "label": "/api/v1/sql/koebenhavn",
-      "url": "https://webgis.digitaleplaner.dk/api/v1/sql/koebenhavn?q=SELECT+%2A%2C+ST_AsGeoJSON%28ST_Transform%28the_geom%2C4326%29%29%3A%3Ajson+AS+geometry+FROM+spildevandsplan.oplande_renseanlaeg&format=json",
-      "error": "<HTTPError 404: 'Not Found'>"
-    },
-    {
-      "label": "status-ows-schema",
-      "url": "https://webgis.digitaleplaner.dk/ows/koebenhavn/spildevandsplan?service=WFS&version=1.1.0&request=GetFeature&typeName=kloakoplande_status&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
-      "error": "<HTTPError 404: 'Not Found'>"
-    },
-    {
-      "label": "status-wfs-schema",
-      "url": "https://webgis.digitaleplaner.dk/wfs/koebenhavn/spildevandsplan?service=WFS&version=1.1.0&request=GetFeature&typeName=kloakoplande_status&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
-      "error": "<HTTPError 404: 'Not Found'>"
-    },
-    {
-      "label": "status/api/v2/sql/koebenhavn",
-      "url": "https://webgis.digitaleplaner.dk/api/v2/sql/koebenhavn?q=SELECT+label%2Ckloaksystem_status%2Crenseanlaeg%2CST_AsGeoJSON%28ST_Transform%28the_geom%2C4326%29%29%3A%3Ajson+AS+geometry+FROM+spildevandsplan.kloakoplande_status&format=json",
-      "error": "<HTTPError 404: 'Not Found'>"
-    },
-    {
-      "label": "status/api/v1/sql/koebenhavn",
-      "url": "https://webgis.digitaleplaner.dk/api/v1/sql/koebenhavn?q=SELECT+label%2Ckloaksystem_status%2Crenseanlaeg%2CST_AsGeoJSON%28ST_Transform%28the_geom%2C4326%29%29%3A%3Ajson+AS+geometry+FROM+spildevandsplan.kloakoplande_status&format=json",
-      "error": "<HTTPError 404: 'Not Found'>"
+      "label": "api-sql-kloakoplande-status",
+      "url": "https://webgis.digitaleplaner.dk/api/sql/koebenhavn?q=SELECT+gid%2Cid%2Clabel%2Ckloaksystem_status%2Crenseanlaeg%2Cpe_status%2Cpe_plan%2Cejer_spildevand%2Cthe_geom+FROM+spildevandsplan.kloakoplande_status&srs=4326&client_encoding=UTF8&format=geojson",
+      "error": "<HTTPError 500: 'Internal Server Error'>"
     }
   ],
-  "wwtpLayerSource": null,
-  "wwtpLayer": null,
-  "catchmentSource": null,
-  "catchments": null
+  "wwtpLayerSource": "https://webgis.digitaleplaner.dk/api/sql/koebenhavn?q=SELECT+gid%2Cid%2Copland%2Cthe_geom+FROM+spildevandsplan.oplande_renseanlaeg&srs=4326&client_encoding=UTF8&format=geojson",
+  "wwtpLayerSummary": {
+    "success": true,
+    "type": "FeatureCollection",
+    "featureCount": 2,
+    "propertyKeys": [
+      "gid",
+      "id",
+      "opland"
+    ],
+    "propertiesPreview": [
+      {
+        "gid": 1,
+        "id": 1,
+        "opland": "Renseanlæg Lynetten"
+      },
+      {
+        "gid": 2,
+        "id": 2,
+        "opland": "Renseanlæg Damhusåen"
+      }
+    ]
+  },
+  "catchmentSource": "https://webgis.digitaleplaner.dk/api/sql/koebenhavn?q=SELECT+gid%2Cid%2Clabel%2Ckloaksystem_status%2Crenseanlaeg%2Cpe_status%2Cpe_plan%2Cejer_spildevand%2Cthe_geom+FROM+spildevandsplan.kloakoplande_status&srs=4326&client_encoding=UTF8&format=geojson",
+  "catchmentSummary": null
 }
