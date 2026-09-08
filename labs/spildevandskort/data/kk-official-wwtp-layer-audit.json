@@ -1,0 +1,58 @@
+{
+  "attempts": [
+    {
+      "label": "ows-schema",
+      "url": "https://webgis.digitaleplaner.dk/ows/koebenhavn/spildevandsplan?service=WFS&version=1.1.0&request=GetFeature&typeName=oplande_renseanlaeg&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
+      "error": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "label": "ows-db",
+      "url": "https://webgis.digitaleplaner.dk/ows/koebenhavn?service=WFS&version=1.1.0&request=GetFeature&typeName=spildevandsplan:oplande_renseanlaeg&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
+      "error": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "label": "wfs-schema",
+      "url": "https://webgis.digitaleplaner.dk/wfs/koebenhavn/spildevandsplan?service=WFS&version=1.1.0&request=GetFeature&typeName=oplande_renseanlaeg&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
+      "error": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "label": "wfs-db",
+      "url": "https://webgis.digitaleplaner.dk/wfs/koebenhavn?service=WFS&version=1.1.0&request=GetFeature&typeName=spildevandsplan:oplande_renseanlaeg&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
+      "error": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "label": "/api/v2/sql/koebenhavn",
+      "url": "https://webgis.digitaleplaner.dk/api/v2/sql/koebenhavn?q=SELECT+%2A%2C+ST_AsGeoJSON%28ST_Transform%28the_geom%2C4326%29%29%3A%3Ajson+AS+geometry+FROM+spildevandsplan.oplande_renseanlaeg&format=json",
+      "error": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "label": "/api/v1/sql/koebenhavn",
+      "url": "https://webgis.digitaleplaner.dk/api/v1/sql/koebenhavn?q=SELECT+%2A%2C+ST_AsGeoJSON%28ST_Transform%28the_geom%2C4326%29%29%3A%3Ajson+AS+geometry+FROM+spildevandsplan.oplande_renseanlaeg&format=json",
+      "error": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "label": "status-ows-schema",
+      "url": "https://webgis.digitaleplaner.dk/ows/koebenhavn/spildevandsplan?service=WFS&version=1.1.0&request=GetFeature&typeName=kloakoplande_status&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
+      "error": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "label": "status-wfs-schema",
+      "url": "https://webgis.digitaleplaner.dk/wfs/koebenhavn/spildevandsplan?service=WFS&version=1.1.0&request=GetFeature&typeName=kloakoplande_status&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
+      "error": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "label": "status/api/v2/sql/koebenhavn",
+      "url": "https://webgis.digitaleplaner.dk/api/v2/sql/koebenhavn?q=SELECT+label%2Ckloaksystem_status%2Crenseanlaeg%2CST_AsGeoJSON%28ST_Transform%28the_geom%2C4326%29%29%3A%3Ajson+AS+geometry+FROM+spildevandsplan.kloakoplande_status&format=json",
+      "error": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "label": "status/api/v1/sql/koebenhavn",
+      "url": "https://webgis.digitaleplaner.dk/api/v1/sql/koebenhavn?q=SELECT+label%2Ckloaksystem_status%2Crenseanlaeg%2CST_AsGeoJSON%28ST_Transform%28the_geom%2C4326%29%29%3A%3Ajson+AS+geometry+FROM+spildevandsplan.kloakoplande_status&format=json",
+      "error": "<HTTPError 404: 'Not Found'>"
+    }
+  ],
+  "wwtpLayerSource": null,
+  "wwtpLayer": null,
+  "catchmentSource": null,
+  "catchments": null
+}
