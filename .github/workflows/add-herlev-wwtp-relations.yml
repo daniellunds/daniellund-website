@@ -1,0 +1,51 @@
+name: Add Herlev WWTP relations
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-herlev-wwtp-relations.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add source-backed Herlev relations
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path=Path('labs/spildevandskort/data/wwtp-catchment-relations.json')
+          data=json.loads(path.read_text(encoding='utf-8'))
+          data['version']=5
+          data['scope']='Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across Copenhagen, Gentofte, Frederiksberg and Herlev'
+
+          plant=next(p for p in data['plants'] if p['plantKey']=='damhusaen')
+          source_url='https://herlev.dk/media/10867/spildevandsplan_2020-2029.pdf'
+          source_label='Herlev Kommune – Spildevandsplan 2020-2029, oplandstabel'
+          plans=['101','102','103A','103B','103C','104','105','106','107','108','200','201','202','203A','203B','204']
+
+          exists=any(r.get('municipalityCode')==163 and r.get('sourceUrl')==source_url for r in plant['relations'])
+          if not exists:
+              plant['relations'].append({
+                  'municipalityCode':163,
+                  'planNumbers':plans,
+                  'sourceUrl':source_url,
+                  'sourceLabel':source_label
+              })
+
+          path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add labs/spildevandskort/data/wwtp-catchment-relations.json
+          if git diff --cached --quiet; then
+            echo 'No relation changes'
+          else
+            git commit -m 'Add Herlev Damhusåen catchment relations'
+            git push
+          fi
