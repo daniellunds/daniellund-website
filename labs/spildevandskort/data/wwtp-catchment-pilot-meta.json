@@ -3,8 +3,8 @@
   "coverageStatus": "partial-documented-pilot",
   "source": "Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans",
   "rawPlandataFeaturesScanned": 66229,
-  "matchedRawFeatures": 56,
-  "mapFeatureCount": 54,
+  "matchedRawFeatures": 65,
+  "mapFeatureCount": 59,
   "excludedRainwaterOnlyMatches": 0,
   "excludedUnseweredMatches": 2,
   "plants": {
@@ -51,6 +51,9 @@
         "EVANSTONEVEJ",
         "JOMSBORGVEJ",
         "KILDESKOVSRENDEN",
+        "OPLAND1",
+        "OPLAND2",
+        "OPLAND3",
         "SANKTPEDERSVEJ",
         "SKOVSHOVED",
         "SOFIEVEJ",
@@ -92,6 +95,9 @@
         "EVANSTONEVEJ",
         "JOMSBORGVEJ",
         "KILDESKOVSRENDEN",
+        "OPLAND1",
+        "OPLAND2",
+        "OPLAND3",
         "SANKTPEDERSVEJ",
         "SKOVSHOVED",
         "SOFIEVEJ",
@@ -246,6 +252,18 @@
           "planNumber": "468"
         },
         {
+          "municipalityCode": 147,
+          "planNumber": "OPLAND1"
+        },
+        {
+          "municipalityCode": 147,
+          "planNumber": "OPLAND2"
+        },
+        {
+          "municipalityCode": 147,
+          "planNumber": "OPLAND3"
+        },
+        {
           "municipalityCode": 157,
           "planNumber": "AUREHØJVEJ"
         },
@@ -404,6 +422,18 @@
           "planNumber": "443"
         },
         {
+          "municipalityCode": 147,
+          "planNumber": "OPLAND1"
+        },
+        {
+          "municipalityCode": 147,
+          "planNumber": "OPLAND2"
+        },
+        {
+          "municipalityCode": 147,
+          "planNumber": "OPLAND3"
+        },
+        {
           "municipalityCode": 157,
           "planNumber": "AUREHØJVEJ"
         },
@@ -510,7 +540,9 @@
         "376",
         "378",
         "378C",
-        "391"
+        "391",
+        "OPLAND4",
+        "OPLAND5"
       ],
       "matchedPlanNumbers": [
         "311",
@@ -527,7 +559,9 @@
         "373",
         "376",
         "378C",
-        "391"
+        "391",
+        "OPLAND4",
+        "OPLAND5"
       ],
       "missingPlanNumbers": [
         "113",
@@ -611,6 +645,14 @@
         {
           "municipalityCode": 101,
           "planNumber": "391"
+        },
+        {
+          "municipalityCode": 147,
+          "planNumber": "OPLAND4"
+        },
+        {
+          "municipalityCode": 147,
+          "planNumber": "OPLAND5"
         }
       ],
       "matchedRelations": [
@@ -673,6 +715,14 @@
         {
           "municipalityCode": 101,
           "planNumber": "391"
+        },
+        {
+          "municipalityCode": 147,
+          "planNumber": "OPLAND4"
+        },
+        {
+          "municipalityCode": 147,
+          "planNumber": "OPLAND5"
         }
       ],
       "missingRelations": [
