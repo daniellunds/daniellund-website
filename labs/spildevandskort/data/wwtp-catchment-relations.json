@@ -1,6 +1,6 @@
 {
-  "version": 7,
-  "scope": "Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across Copenhagen, Gentofte, Frederiksberg, Herlev, Rødovre and Lyngby-Taarbæk",
+  "version": 8,
+  "scope": "Pilot: source-backed wastewater catchments for Lynetten, Damhusåen and Mølleåværket across Copenhagen, Gentofte, Frederiksberg, Herlev, Rødovre, Lyngby-Taarbæk and Gladsaxe",
   "coverageStatus": "partial",
   "notes": "Relations are included only where an official municipal wastewater-plan source identifies the receiving treatment plant. Current subcatchment numbers are preferred when older catchment numbers have been split. Relation-level municipalityCode supports cross-municipality catchments. Ambiguous or contradictory relations are deliberately excluded. This pilot is not a complete treatment-plant catchment and must be labelled as partial in the UI.",
   "plants": [
@@ -273,6 +273,17 @@
           ],
           "sourceUrl": "https://www.ltk.dk/media/5zzf1jim/kf-spildevandsplan-2014-2018-vers-10-2-2021.pdf",
           "sourceLabel": "Lyngby-Taarbæk Kommune – Spildevandsplan 2014-2018, Bilag 7 kloakoplandsskema"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumbers": [
+            "Utterslev Mose - delområde Buddinge",
+            "Utterslev Mose - delområde Buddinge Hovedgade",
+            "Utterslev Mose - delområde Søborg",
+            "Utterslev Mose - delområde Utterslev"
+          ],
+          "sourceUrl": "https://gladsaxe.dk/p/Faelles-filer/Planer-politikker-visioner/BMF/Spildevandsplan-2021.pdf",
+          "sourceLabel": "Gladsaxe Kommune – Spildevandsplan 2021, Utterslev Moses opland"
         }
       ]
     },
@@ -458,6 +469,41 @@
           ],
           "sourceUrl": "https://www.rk.dk/index.php?eID=tx_rkdoc_attachment&filename=%2FPunkt_127_Bilag_3_Bilag_1_Spildevandsplan_2022.pdf&uid=242770",
           "sourceLabel": "Rødovre Kommune – Spildevandsplan 2022-2030, Hovedopland D"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumbers": [
+            "Gyngemosen - delområde Gladsaxe Erhverv",
+            "Gyngemosen - delområde Gyngemosen",
+            "Gyngemosen - delområde Høje Gladsaxe",
+            "Kagsåen - delområde Kagså",
+            "Kagsåen - delområde Mørkhøj"
+          ],
+          "sourceUrl": "https://gladsaxe.dk/p/Faelles-filer/Planer-politikker-visioner/BMF/Spildevandsplan-2021.pdf",
+          "sourceLabel": "Gladsaxe Kommune – Spildevandsplan 2021, Gyngemosen og Kagsåen"
+        }
+      ]
+    },
+    {
+      "plantKey": "moelleaavaerket",
+      "plantName": "Mølleåværket A/S",
+      "municipalityCode": 173,
+      "relations": [
+        {
+          "municipalityCode": 159,
+          "planNumbers": [
+            "Bagsværd Sø - delområde Bagsværd",
+            "Bagsværd Sø - delområde Bagsværd Erhverv",
+            "Bagsværd Sø - delområde Bagsværd Sø",
+            "Bagsværd Sø - delområde Gladsaxe",
+            "Bagsværd Sø - delområde Vibevænget",
+            "Bagsværdrenden - delområde Kongshvile",
+            "Bagsværdrenden - delområde Stengård",
+            "Hollandsrenden",
+            "Værebro Å"
+          ],
+          "sourceUrl": "https://gladsaxe.dk/p/Faelles-filer/Planer-politikker-visioner/BMF/Spildevandsplan-2021.pdf",
+          "sourceLabel": "Gladsaxe Kommune – Spildevandsplan 2021, nordlige oplande til Mølleåværket"
         }
       ]
     }
