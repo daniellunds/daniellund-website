@@ -105,6 +105,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add labs/spildevandskort/data/kk-official-wwtp-layer-audit.json
+          git add labs/spildevandskort/data/kk-official-wwtp-layer-audit.json labs/spildevandskort/data/kk-official-wwtp-catchment.geojson labs/spildevandskort/data/kk-official-wwtp-catchment-meta.json
           git commit -m 'Capture Copenhagen official WWTP catchment data' || exit 0
           git push
