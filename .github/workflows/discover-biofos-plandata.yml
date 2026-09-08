@@ -1,0 +1,104 @@
+name: Discover BIOFOS Plandata catchments
+
+on:
+  push:
+    paths:
+      - '.github/workflows/discover-biofos-plandata.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build municipality catchment inventory
+        run: |
+          python - <<'PY'
+          import json, re, urllib.parse, urllib.request
+          from collections import defaultdict
+          from pathlib import Path
+
+          TARGETS={
+            147:'Frederiksberg',
+            157:'Gentofte',
+            159:'Gladsaxe',
+            163:'Herlev',
+            167:'Hvidovre',
+            173:'Lyngby-Taarbæk',
+            175:'Rødovre'
+          }
+
+          def keynorm(v): return re.sub(r'[^a-z0-9æøå]','',str(v or '').lower())
+          def pick(props,candidates):
+              by={keynorm(k):v for k,v in props.items()}
+              for c in candidates:
+                  if keynorm(c) in by:return by[keynorm(c)]
+              return None
+          def norm(v): return re.sub(r'\s+','',str(v or '')).upper()
+          def get_json(url,timeout=90):
+              req=urllib.request.Request(url,headers={'User-Agent':'daniellund-spildevandskort-research/1.0'})
+              with urllib.request.urlopen(req,timeout=timeout) as r:return json.load(r)
+          def walk_coords(coords,bbox):
+              if not isinstance(coords,list):return
+              if len(coords)>=2 and isinstance(coords[0],(int,float)) and isinstance(coords[1],(int,float)):
+                  x,y=float(coords[0]),float(coords[1]);bbox[0]=min(bbox[0],x);bbox[1]=min(bbox[1],y);bbox[2]=max(bbox[2],x);bbox[3]=max(bbox[3],y);return
+              for c in coords:walk_coords(c,bbox)
+
+          rows=defaultdict(lambda:defaultdict(lambda:{'featureCount':0,'sewerTypeCodes':set(),'elementIds':[],'links':set(),'bbox':[999,999,-999,-999]}))
+          base='https://geoserver.plandata.dk/geoserver/wfs';start=0;page_size=5000;raw=0
+          while True:
+              qs=urllib.parse.urlencode({'service':'WFS','version':'2.0.0','request':'GetFeature','typeNames':'pdk:theme_pdk_kloakopland_vedtaget','outputFormat':'application/json','srsName':'EPSG:4326','count':page_size,'startIndex':start})
+              data=get_json(base+'?'+qs);feats=data.get('features',[])
+              for f in feats:
+                  raw+=1;p=f.get('properties') or {}
+                  mc=pick(p,['kommunekode','kommune_kode','komnr','komkode','kommunenr','kommuneid'])
+                  try:mc=int(float(mc))
+                  except:continue
+                  if mc not in TARGETS:continue
+                  pn=pick(p,['plannr','plannummer','plan_nr','oplandnr','oplandnummer'])
+                  if pn is None:continue
+                  key=norm(pn);r=rows[mc][key];r['featureCount']+=1
+                  sewer=pick(p,['kloaktype','kloak_type','sewertype','kloaktypekode'])
+                  try:r['sewerTypeCodes'].add(int(float(sewer)))
+                  except:pass
+                  eid=pick(p,['elementid','element_id','id']) or f.get('id')
+                  if eid is not None and len(r['elementIds'])<20:r['elementIds'].append(str(eid))
+                  for cand in ['doklink','dokumentlink','webstedlink','planlink','url']:
+                      link=pick(p,[cand])
+                      if link:r['links'].add(str(link))
+                  geom=f.get('geometry') or {};walk_coords(geom.get('coordinates'),r['bbox'])
+              print('PAGE',start,len(feats),'RAW',raw)
+              if len(feats)<page_size:break
+              start+=len(feats)
+
+          out={'source':'Plandata.dk WFS – theme_pdk_kloakopland_vedtaget','rawFeaturesScanned':raw,'municipalities':{}}
+          for mc,name in TARGETS.items():
+              plans=[]
+              for pn,r in sorted(rows[mc].items()):
+                  bbox=None if r['bbox'][0]>r['bbox'][2] else [round(x,6) for x in r['bbox']]
+                  plans.append({'planNumber':pn,'featureCount':r['featureCount'],'sewerTypeCodes':sorted(r['sewerTypeCodes']),'elementIds':r['elementIds'],'links':sorted(r['links']),'bbox':bbox})
+              out['municipalities'][str(mc)]={'name':name,'planCount':len(plans),'plans':plans}
+              print('MUNICIPALITY',mc,name,'PLANS',len(plans),[p['planNumber'] for p in plans])
+          path=Path('labs/spildevandskort/data/wwtp-catchment-municipality-inventory.json')
+          path.write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+
+      - name: Commit inventory
+        run: |
+          set -e
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add labs/spildevandskort/data/wwtp-catchment-municipality-inventory.json
+          if git diff --cached --quiet; then
+            echo 'No inventory changes'
+          else
+            git commit -m 'Build BIOFOS municipality Plandata inventory'
+            git push
+          fi
