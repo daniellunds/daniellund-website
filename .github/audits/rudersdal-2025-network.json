@@ -1,0 +1,23 @@
+{
+  "targets": [
+    "https://rudersdal.dkplan.dk/plan/5",
+    "https://rudersdal.dkplan.dk/3788"
+  ],
+  "pages": [
+    {
+      "url": "https://rudersdal.dkplan.dk/plan/5",
+      "error": "TimeoutError('Page.goto: Timeout 60000ms exceeded.\\nCall log:\\n  - navigating to \"https://rudersdal.dkplan.dk/plan/5\", waiting until \"domcontentloaded\"\\n')"
+    },
+    {
+      "url": "https://rudersdal.dkplan.dk/3788",
+      "error": "TimeoutError('Page.goto: Timeout 60000ms exceeded.\\nCall log:\\n  - navigating to \"https://rudersdal.dkplan.dk/3788\", waiting until \"domcontentloaded\"\\n')"
+    }
+  ],
+  "interestingResponses": [],
+  "mapTexts": [],
+  "derived": {
+    "urls": [],
+    "urlsWithMoellea": [],
+    "urlsWithRense": []
+  }
+}
