@@ -31,7 +31,7 @@ jobs:
           geo=json.loads((root/'wwtp-catchment-pilot.geojson').read_text())
           meta=json.loads((root/'wwtp-catchment-pilot-meta.json').read_text())
           features=geo['features']
-          assert len(features)>=50,len(features)
+          assert len(features)>=59,len(features)
           assert meta['mapFeatureCount']==len(features),(meta['mapFeatureCount'],len(features))
           assert set(f['properties']['plantKey'] for f in features)=={'lynetten','damhusaen'}
           assert meta['coverageStatus']=='partial-documented-pilot'
@@ -51,8 +51,19 @@ jobs:
           gentofte_plans={f['properties'].get('planNumber') for f in gentofte}
           expected={'ENGHAVERENDEN','KILDESKOVSRENDEN','SKOVSHOVED','SØBORGHUSRENDEN','TUBORG','AUREHØJVEJ','SOFIEVEJ','SANKTPEDERSVEJ','CAROLINEVEJ','TUBORGPARKVEJ','JOMSBORGVEJ','EVANSTONEVEJ'}
           assert expected.issubset(gentofte_plans),(expected-gentofte_plans,gentofte_plans)
+
+          # Frederiksberg is a fixed five-catchment split in the municipal wastewater plan.
+          frederiksberg=[f for f in features if f['properties'].get('municipalityCode')==147]
+          assert len(frederiksberg)==5,len(frederiksberg)
+          fb_by_plant={
+              key:{f['properties'].get('planNumber') for f in frederiksberg if f['properties'].get('plantKey')==key}
+              for key in ('lynetten','damhusaen')
+          }
+          assert fb_by_plant['lynetten']=={'OPLAND1','OPLAND2','OPLAND3'},fb_by_plant
+          assert fb_by_plant['damhusaen']=={'OPLAND4','OPLAND5'},fb_by_plant
+
           assert meta.get('excludedUnseweredMatches',0)>=2,meta.get('excludedUnseweredMatches')
-          print('WWTP_PILOT_STATIC_QA_OK',len(features),'GENTOFTE',len(gentofte))
+          print('WWTP_PILOT_STATIC_QA_OK',len(features),'GENTOFTE',len(gentofte),'FREDERIKSBERG',len(frederiksberg))
           PY
       - name: Install Playwright
         run: |
