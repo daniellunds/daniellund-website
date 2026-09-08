@@ -1,10 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "coverageStatus": "partial-documented-pilot",
-  "source": "Plandata.dk vedtagne kloakoplande + Københavns Kommunes spildevandsplan",
+  "source": "Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans",
   "rawPlandataFeaturesScanned": 66229,
-  "matchedRawFeatures": 44,
-  "mapFeatureCount": 44,
+  "matchedRawFeatures": 42,
+  "mapFeatureCount": 42,
+  "excludedRainwaterOnlyMatches": 0,
+  "excludedUnseweredMatches": 2,
   "plants": {
     "lynetten": {
       "plantName": "Renseanlæg Lynetten",
@@ -55,7 +57,6 @@
         "234",
         "235",
         "241",
-        "242A",
         "242B",
         "242C",
         "262",
@@ -64,7 +65,6 @@
         "281",
         "282",
         "284",
-        "284D",
         "292",
         "401",
         "412",
@@ -79,10 +79,294 @@
         "219",
         "226",
         "242",
+        "242A",
+        "284D",
         "415",
         "468"
       ],
-      "puls": null,
+      "requestedRelations": [
+        {
+          "municipalityCode": 101,
+          "planNumber": "100"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "201"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "202"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "204"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "219"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "226"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "233"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "234"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "235"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "241"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "266"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "272"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "281"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "282"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "284"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "284D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "292"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "401"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "412"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "415"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "437"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "438"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "439"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "441"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "442"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "443"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "468"
+        }
+      ],
+      "matchedRelations": [
+        {
+          "municipalityCode": 101,
+          "planNumber": "100"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "201"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "202"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "204"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "233"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "234"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "235"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "241"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "266"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "272"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "281"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "282"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "284"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "292"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "401"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "412"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "437"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "438"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "439"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "441"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "442"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "443"
+        }
+      ],
+      "missingRelations": [
+        {
+          "municipalityCode": 101,
+          "planNumber": "219"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "226"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "284D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "415"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "468"
+        }
+      ],
+      "puls": {
+        "id": "Renseanlaeg.8793f333-ad28-446d-8d0e-c9c854ca4a6d",
+        "name": "Renseanlæg Lynetten",
+        "featureId": "Renseanlaeg.8793f333-ad28-446d-8d0e-c9c854ca4a6d"
+      },
       "isCompleteCatchment": false
     },
     "damhusaen": {
@@ -131,7 +415,169 @@
         "326",
         "378"
       ],
-      "puls": null,
+      "requestedRelations": [
+        {
+          "municipalityCode": 101,
+          "planNumber": "113"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "116"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "311"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "312"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "316"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "319"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "322"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "325"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "326"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "353"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "356"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "368"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "373"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "376"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "378"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "378C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "391"
+        }
+      ],
+      "matchedRelations": [
+        {
+          "municipalityCode": 101,
+          "planNumber": "311"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "312"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "316"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "319"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "322"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "325"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "353"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "356"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "368"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "373"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "376"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "378C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "391"
+        }
+      ],
+      "missingRelations": [
+        {
+          "municipalityCode": 101,
+          "planNumber": "113"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "116"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "326"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "378"
+        }
+      ],
+      "puls": {
+        "id": "Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f",
+        "name": "Renseanlæg Damhusåen",
+        "featureId": "Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f"
+      },
       "isCompleteCatchment": false
     }
   }
