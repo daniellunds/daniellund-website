@@ -1,0 +1,53 @@
+name: Audit Gladsaxe WWTP catchments
+
+on:
+  push:
+    paths:
+      - '.github/workflows/audit-gladsaxe-wwtp-catchments.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Fetch current Gladsaxe Plandata catchments
+        run: |
+          python - <<'PY'
+          import json, urllib.parse, urllib.request
+          params={
+            'service':'WFS','version':'2.0.0','request':'GetFeature',
+            'typeNames':'pdk:theme_pdk_kloakopland_vedtaget',
+            'outputFormat':'application/json','srsName':'EPSG:4326',
+            'count':2000,'CQL_FILTER':'komnr=159'
+          }
+          url='https://geoserver.plandata.dk/geoserver/wfs?'+urllib.parse.urlencode(params)
+          req=urllib.request.Request(url,headers={'User-Agent':'daniellund-spildevandskort-audit/1.0'})
+          with urllib.request.urlopen(req,timeout=90) as r:
+              data=json.load(r)
+          rows={}
+          for f in data.get('features',[]):
+              p=f.get('properties') or {}
+              key=str(p.get('plannr') or '')
+              row=rows.setdefault(key,{
+                'plannr':key,'plannavne':set(),'nuvkoder':set(),'nuvtekster':set(),
+                'planstatus':set(),'objects':0
+              })
+              row['objects']+=1
+              if p.get('plannavn'): row['plannavne'].add(str(p.get('plannavn')))
+              if p.get('nuvkode') is not None: row['nuvkoder'].add(p.get('nuvkode'))
+              if p.get('nuvtekst'): row['nuvtekster'].add(str(p.get('nuvtekst')))
+              if p.get('planstatus'): row['planstatus'].add(str(p.get('planstatus')))
+          out=[]
+          for key in sorted(rows):
+              r=rows[key]
+              out.append({
+                'plannr':key,'plannavne':sorted(r['plannavne']),
+                'nuvkoder':sorted(r['nuvkoder']),'nuvtekster':sorted(r['nuvtekster']),
+                'planstatus':sorted(r['planstatus']),'objects':r['objects']
+              })
+          print('GLADSAXE_COUNT',len(data.get('features',[])),'UNIQUE',len(out))
+          print('GLADSAXE_CURRENT_CATCHMENTS='+json.dumps(out,ensure_ascii=False))
+          PY
