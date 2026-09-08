@@ -1,5 +1,6 @@
 // Proof of concept: explicit, source-backed wastewater catchment -> treatment plant relations.
 // The pilot is deliberately partial and currently covers documented Copenhagen oplande for Lynetten and Damhusåen.
+// Relation dataset v2 expands the verified current Plandata matches while preserving partial-coverage labelling.
 (async function integrateWwtpCatchmentPilot(){
   let pilot=null,meta=null,highlightLayer=null,selectedPlantMarker=null,activePlantKey=null;
   const MAIN_PULS_IDS={
