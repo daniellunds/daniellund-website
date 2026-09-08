@@ -18,52 +18,64 @@ jobs:
         run: |
           python -m pip install --quiet playwright
           python -m playwright install --with-deps chromium
-      - name: Inspect DKplan network and current plan content
+      - name: Inspect current Rudersdal plan pages and API
         run: |
           python - <<'PY'
           import asyncio, json, re
           from playwright.async_api import async_playwright
 
-          URL='https://rudersdal.dkplan.dk/plan/5#/'
-          NEEDLES=('mølleåværket','molleaavaerket','renseanlæg','renseanlaeg','kloakopland','søllerød','soelleroed')
+          URLS=[
+            'https://rudersdal.dkplan.dk/3588',
+            'https://rudersdal.dkplan.dk/3788',
+            'https://rudersdal.dkplan.dk/plan/5#/3588',
+            'https://rudersdal.dkplan.dk/plan/5#/3788',
+          ]
+          NEEDLES=('mølleåværket','molleaavaerket','renseanlæg','renseanlaeg','kloakopland','bistrup','sjælsø','usserød','vedbæk','søllerød')
+
+          async def inspect(page,url):
+              responses=[]
+              async def inspect_response(response):
+                  u=response.url
+                  ctype=(response.headers.get('content-type') or '').lower()
+                  if not any(x in ctype for x in ('json','text','javascript','xml','html')):
+                      return
+                  if not any(host in u for host in ('rudersdal.dkplan.dk','contentservice.dkplan.dk','dkplan')):
+                      return
+                  try:
+                      body=await response.text()
+                  except Exception:
+                      return
+                  low=body.lower()
+                  hits=[n for n in NEEDLES if n in low]
+                  if hits:
+                      snippets=[]
+                      for needle in hits[:6]:
+                          i=low.find(needle)
+                          snippets.append(re.sub(r'\s+',' ',body[max(0,i-500):i+1800])[:2300])
+                      responses.append({'url':u,'contentType':ctype,'hits':hits,'snippets':snippets})
+              page.on('response',lambda r: asyncio.create_task(inspect_response(r)))
+              r=await page.goto(url,wait_until='networkidle',timeout=60000)
+              await page.wait_for_timeout(5000)
+              text=re.sub(r'\s+',' ',await page.locator('body').inner_text())
+              print('\n=== PAGE',url,'HTTP',r.status if r else None,'TITLE',await page.title(),'===')
+              print('TEXT',text[:30000])
+              links=await page.locator('a').evaluate_all("els=>els.map(a=>({t:(a.innerText||'').trim(),h:a.href})).filter(x=>x.t||x.h)")
+              relevant=[x for x in links if any(n in (x['t']+' '+x['h']).lower() for n in NEEDLES)]
+              print('RELEVANT_LINKS',json.dumps(relevant,ensure_ascii=False)[:30000])
+              resources=await page.evaluate("performance.getEntriesByType('resource').map(e=>e.name)")
+              print('CONTENT_RESOURCES',json.dumps([u for u in resources if 'contentservice.dkplan.dk' in u],ensure_ascii=False)[:30000])
+              print('MATCHING_RESPONSES',json.dumps(responses,ensure_ascii=False)[:90000])
 
           async def main():
               async with async_playwright() as p:
                   browser=await p.chromium.launch()
-                  page=await browser.new_page(viewport={'width':1440,'height':1000})
-                  responses=[]
-                  async def inspect_response(response):
-                      url=response.url
-                      ctype=(response.headers.get('content-type') or '').lower()
-                      if not any(x in ctype for x in ('json','text','javascript','xml')):
-                          return
-                      if not any(host in url for host in ('rudersdal.dkplan.dk','dkplan','gopublic')):
-                          return
+                  for url in URLS:
+                      page=await browser.new_page(viewport={'width':1440,'height':1200})
                       try:
-                          body=await response.text()
-                      except Exception:
-                          return
-                      low=body.lower()
-                      hits=[n for n in NEEDLES if n in low]
-                      if hits:
-                          snippets=[]
-                          for needle in hits[:4]:
-                              i=low.find(needle)
-                              snippets.append(re.sub(r'\s+',' ',body[max(0,i-260):i+650])[:950])
-                          responses.append({'url':url,'contentType':ctype,'hits':hits,'snippets':snippets})
-                  page.on('response',lambda r: asyncio.create_task(inspect_response(r)))
-                  r=await page.goto(URL,wait_until='domcontentloaded',timeout=60000)
-                  print('HTTP',r.status if r else None)
-                  await page.wait_for_timeout(15000)
-                  print('TITLE',await page.title())
-                  text=re.sub(r'\s+',' ',await page.locator('body').inner_text())
-                  print('BODY_TEXT',text[:12000])
-                  resources=await page.evaluate("performance.getEntriesByType('resource').map(e=>e.name)")
-                  print('RESOURCES',json.dumps(resources,ensure_ascii=False))
-                  storage=await page.evaluate("({local:{...localStorage},session:{...sessionStorage}})")
-                  print('STORAGE',json.dumps(storage,ensure_ascii=False)[:20000])
-                  await page.wait_for_timeout(3000)
-                  print('MATCHING_RESPONSES',json.dumps(responses,ensure_ascii=False)[:60000])
+                          await inspect(page,url)
+                      except Exception as e:
+                          print('PAGE_ERROR',url,repr(e))
+                      await page.close()
                   await browser.close()
           asyncio.run(main())
           PY
