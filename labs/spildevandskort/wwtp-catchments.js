@@ -65,6 +65,7 @@
     const features=featuresFor(key);if(!features.length)return;
     const info=meta?.plants?.[key]||{};
     const planNumbers=unique(features.map(f=>f.properties?.planNumber)).sort((a,b)=>String(a).localeCompare(String(b),'da',{numeric:true}));
+    const planNumberPreview=planNumbers.length>24?`${planNumbers.slice(0,24).join(', ')} · +${planNumbers.length-24} flere`:planNumbers.join(', ');
     const municipalityCount=unique(features.map(f=>f.properties?.municipalityCode)).length;
     const matchedCount=Array.isArray(info.matchedRelations)?info.matchedRelations.length:planNumbers.length;
     const requestedCount=Array.isArray(info.requestedRelations)?info.requestedRelations.length:(info.requestedPlanNumbers||[]).length;
@@ -77,7 +78,7 @@
     box.innerHTML=`
       <p class="source-note"><strong>Renseanlægsopland · pilot</strong><br>De fremhævede flader er kun de oplande, hvor relationen til ${esc(info.plantName||p.name)} er dokumenteret i de anvendte kommunale kilder. Piloten er endnu ikke et komplet renseanlægsopland.</p>
       <div class="fact-grid">
-        <div class="fact"><span>Dokumenterede oplande</span><strong>${esc(planNumbers.join(', '))}</strong></div>
+        <div class="fact"><span>Dokumenterede oplande</span><strong>${esc(planNumberPreview)}</strong></div>
         <div class="fact"><span>Oplandsrelationer matchet</span><strong>${matchedCount} / ${requestedCount}</strong></div>
         <div class="fact"><span>Kommuner i piloten</span><strong>${municipalityCount}</strong></div>
         <div class="fact"><span>Plandata-objekter</span><strong>${new Intl.NumberFormat('da-DK').format(sourceFeatureCount)}</strong></div>

@@ -3,8 +3,8 @@
   "coverageStatus": "partial-documented-pilot",
   "source": "Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans",
   "rawPlandataFeaturesScanned": 66229,
-  "matchedRawFeatures": 152,
-  "mapFeatureCount": 145,
+  "matchedRawFeatures": 420,
+  "mapFeatureCount": 413,
   "excludedRainwaterOnlyMatches": 0,
   "excludedUnseweredMatches": 2,
   "plants": {
@@ -1523,6 +1523,21 @@
     "moelleaavaerket": {
       "plantName": "Mølleåværket A/S",
       "requestedPlanNumbers": [
+        "BA01",
+        "BA02",
+        "BA03",
+        "BA04",
+        "BA05",
+        "BA06",
+        "BA07",
+        "BA08",
+        "BA09",
+        "BA10",
+        "BA11",
+        "BA12",
+        "BA13",
+        "BA14",
+        "BA15",
         "BAGSVÆRDRENDEN-DELOMRÅDEKONGSHVILE",
         "BAGSVÆRDRENDEN-DELOMRÅDESTENGÅRD",
         "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRD",
@@ -1530,10 +1545,278 @@
         "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDSØ",
         "BAGSVÆRDSØ-DELOMRÅDEGLADSAXE",
         "BAGSVÆRDSØ-DELOMRÅDEVIBEVÆNGET",
+        "ER05",
+        "FR01",
+        "FR02",
+        "FR03",
         "HOLLANDSRENDEN",
+        "LU01",
+        "LU02",
+        "LU03",
+        "LU04",
+        "LU05",
+        "LU06",
+        "LU07",
+        "LU08",
+        "LU09",
+        "LU10",
+        "LU11",
+        "LU12",
+        "LU13",
+        "LU14",
+        "LU15",
+        "LU16",
+        "LU17",
+        "LU18",
+        "LU19",
+        "LU20",
+        "LU21",
+        "LU22",
+        "LU24",
+        "LU25",
+        "LU26",
+        "LU27",
+        "LU28",
+        "LU29",
+        "LU30",
+        "LU31",
+        "LU32",
+        "LU33",
+        "LU34",
+        "LU35",
+        "LU36",
+        "LU37",
+        "LU38",
+        "LU39",
+        "LU40",
+        "LU41",
+        "LU42",
+        "LU43",
+        "LU44",
+        "LU45",
+        "LU46",
+        "LU47",
+        "LU48",
+        "LU49",
+        "LU50",
+        "LU51",
+        "LU52",
+        "LU53",
+        "LU54",
+        "LU55",
+        "LU56",
+        "LU57",
+        "LU58",
+        "LU59",
+        "LU60",
+        "LU61",
+        "LU62",
+        "LU63",
+        "LU64",
+        "LU65",
+        "LU66",
+        "LU67",
+        "LY1",
+        "LY10",
+        "LY100",
+        "LY101",
+        "LY102",
+        "LY103",
+        "LY104",
+        "LY105",
+        "LY106",
+        "LY107",
+        "LY11",
+        "LY12",
+        "LY13",
+        "LY14",
+        "LY15",
+        "LY16",
+        "LY17",
+        "LY18",
+        "LY19",
+        "LY2",
+        "LY20",
+        "LY21",
+        "LY22",
+        "LY23",
+        "LY24",
+        "LY25",
+        "LY26",
+        "LY27",
+        "LY28",
+        "LY29",
+        "LY3",
+        "LY30",
+        "LY31",
+        "LY32",
+        "LY33",
+        "LY34",
+        "LY35",
+        "LY36",
+        "LY37",
+        "LY38",
+        "LY39",
+        "LY4",
+        "LY40",
+        "LY41",
+        "LY42",
+        "LY43",
+        "LY44",
+        "LY45",
+        "LY46",
+        "LY47",
+        "LY48",
+        "LY49",
+        "LY5",
+        "LY50",
+        "LY51",
+        "LY52",
+        "LY53",
+        "LY54",
+        "LY55",
+        "LY56",
+        "LY57",
+        "LY58",
+        "LY59",
+        "LY6",
+        "LY60",
+        "LY61",
+        "LY62",
+        "LY63",
+        "LY64",
+        "LY65",
+        "LY66",
+        "LY67",
+        "LY68",
+        "LY69",
+        "LY7",
+        "LY70",
+        "LY71",
+        "LY72",
+        "LY74",
+        "LY75",
+        "LY77",
+        "LY78",
+        "LY79",
+        "LY8",
+        "LY80",
+        "LY81",
+        "LY83",
+        "LY84",
+        "LY85",
+        "LY86",
+        "LY87",
+        "LY88",
+        "LY89",
+        "LY9",
+        "LY90",
+        "LY91",
+        "LY92",
+        "LY93",
+        "LY94",
+        "LY95",
+        "LY96",
+        "LY97",
+        "LY98",
+        "LY99",
+        "NY01",
+        "SANDTOFTEN",
+        "TA22",
+        "TA25",
+        "VI1",
+        "VI10",
+        "VI11",
+        "VI12",
+        "VI13",
+        "VI14",
+        "VI15",
+        "VI16",
+        "VI17",
+        "VI18",
+        "VI19",
+        "VI2",
+        "VI20",
+        "VI21",
+        "VI22",
+        "VI23",
+        "VI24",
+        "VI25",
+        "VI26",
+        "VI27",
+        "VI28",
+        "VI29",
+        "VI3",
+        "VI30",
+        "VI31",
+        "VI32",
+        "VI33",
+        "VI34",
+        "VI35",
+        "VI36",
+        "VI37",
+        "VI38",
+        "VI39",
+        "VI4",
+        "VI40",
+        "VI41",
+        "VI42",
+        "VI43",
+        "VI44",
+        "VI45",
+        "VI46",
+        "VI47",
+        "VI48",
+        "VI49",
+        "VI5",
+        "VI50",
+        "VI51",
+        "VI52",
+        "VI53",
+        "VI54",
+        "VI55",
+        "VI56",
+        "VI57",
+        "VI58",
+        "VI59",
+        "VI6",
+        "VI60",
+        "VI61",
+        "VI62",
+        "VI63",
+        "VI64",
+        "VI65",
+        "VI66",
+        "VI67",
+        "VI68",
+        "VI69",
+        "VI7",
+        "VI70",
+        "VI71",
+        "VI72",
+        "VI73",
+        "VI74",
+        "VI76",
+        "VI8",
+        "VI9",
         "VÆREBROÅ"
       ],
       "matchedPlanNumbers": [
+        "BA01",
+        "BA02",
+        "BA03",
+        "BA04",
+        "BA05",
+        "BA06",
+        "BA07",
+        "BA08",
+        "BA09",
+        "BA10",
+        "BA11",
+        "BA12",
+        "BA13",
+        "BA14",
+        "BA15",
         "BAGSVÆRDRENDEN-DELOMRÅDEKONGSHVILE",
         "BAGSVÆRDRENDEN-DELOMRÅDESTENGÅRD",
         "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRD",
@@ -1541,12 +1824,269 @@
         "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDSØ",
         "BAGSVÆRDSØ-DELOMRÅDEGLADSAXE",
         "BAGSVÆRDSØ-DELOMRÅDEVIBEVÆNGET",
+        "ER05",
+        "FR01",
+        "FR02",
+        "FR03",
         "HOLLANDSRENDEN",
+        "LU01",
+        "LU02",
+        "LU03",
+        "LU04",
+        "LU05",
+        "LU06",
+        "LU07",
+        "LU08",
+        "LU09",
+        "LU10",
+        "LU11",
+        "LU12",
+        "LU13",
+        "LU14",
+        "LU15",
+        "LU16",
+        "LU17",
+        "LU18",
+        "LU19",
+        "LU20",
+        "LU21",
+        "LU22",
+        "LU24",
+        "LU25",
+        "LU26",
+        "LU27",
+        "LU28",
+        "LU29",
+        "LU30",
+        "LU31",
+        "LU32",
+        "LU33",
+        "LU34",
+        "LU35",
+        "LU36",
+        "LU37",
+        "LU38",
+        "LU39",
+        "LU40",
+        "LU41",
+        "LU42",
+        "LU43",
+        "LU44",
+        "LU45",
+        "LU46",
+        "LU47",
+        "LU48",
+        "LU49",
+        "LU50",
+        "LU51",
+        "LU52",
+        "LU53",
+        "LU54",
+        "LU55",
+        "LU56",
+        "LU57",
+        "LU58",
+        "LU59",
+        "LU60",
+        "LU61",
+        "LU62",
+        "LU63",
+        "LU64",
+        "LU65",
+        "LU66",
+        "LU67",
+        "LY1",
+        "LY10",
+        "LY100",
+        "LY101",
+        "LY102",
+        "LY103",
+        "LY104",
+        "LY105",
+        "LY106",
+        "LY107",
+        "LY11",
+        "LY12",
+        "LY13",
+        "LY14",
+        "LY15",
+        "LY16",
+        "LY17",
+        "LY18",
+        "LY19",
+        "LY2",
+        "LY20",
+        "LY21",
+        "LY22",
+        "LY23",
+        "LY24",
+        "LY25",
+        "LY26",
+        "LY27",
+        "LY28",
+        "LY29",
+        "LY3",
+        "LY30",
+        "LY31",
+        "LY32",
+        "LY33",
+        "LY34",
+        "LY35",
+        "LY36",
+        "LY37",
+        "LY38",
+        "LY39",
+        "LY4",
+        "LY40",
+        "LY41",
+        "LY42",
+        "LY43",
+        "LY44",
+        "LY45",
+        "LY46",
+        "LY47",
+        "LY48",
+        "LY49",
+        "LY5",
+        "LY50",
+        "LY51",
+        "LY52",
+        "LY53",
+        "LY54",
+        "LY55",
+        "LY56",
+        "LY57",
+        "LY58",
+        "LY59",
+        "LY6",
+        "LY60",
+        "LY61",
+        "LY62",
+        "LY63",
+        "LY64",
+        "LY65",
+        "LY66",
+        "LY67",
+        "LY68",
+        "LY69",
+        "LY7",
+        "LY70",
+        "LY71",
+        "LY72",
+        "LY74",
+        "LY75",
+        "LY77",
+        "LY78",
+        "LY79",
+        "LY8",
+        "LY80",
+        "LY81",
+        "LY83",
+        "LY84",
+        "LY85",
+        "LY86",
+        "LY87",
+        "LY88",
+        "LY89",
+        "LY9",
+        "LY90",
+        "LY91",
+        "LY92",
+        "LY93",
+        "LY94",
+        "LY95",
+        "LY96",
+        "LY97",
+        "LY98",
+        "LY99",
+        "NY01",
+        "SANDTOFTEN",
+        "TA22",
+        "TA25",
+        "VI1",
+        "VI10",
+        "VI11",
+        "VI12",
+        "VI13",
+        "VI14",
+        "VI15",
+        "VI16",
+        "VI17",
+        "VI18",
+        "VI19",
+        "VI2",
+        "VI20",
+        "VI21",
+        "VI22",
+        "VI23",
+        "VI24",
+        "VI25",
+        "VI26",
+        "VI27",
+        "VI28",
+        "VI29",
+        "VI3",
+        "VI30",
+        "VI31",
+        "VI32",
+        "VI33",
+        "VI34",
+        "VI35",
+        "VI36",
+        "VI37",
+        "VI38",
+        "VI39",
+        "VI4",
+        "VI40",
+        "VI41",
+        "VI42",
+        "VI43",
+        "VI44",
+        "VI45",
+        "VI46",
+        "VI47",
+        "VI48",
+        "VI49",
+        "VI5",
+        "VI50",
+        "VI51",
+        "VI52",
+        "VI53",
+        "VI54",
+        "VI55",
+        "VI56",
+        "VI57",
+        "VI58",
+        "VI59",
+        "VI6",
+        "VI60",
+        "VI61",
+        "VI62",
+        "VI63",
+        "VI64",
+        "VI65",
+        "VI66",
+        "VI67",
+        "VI68",
+        "VI69",
+        "VI7",
+        "VI70",
+        "VI71",
+        "VI72",
+        "VI73",
+        "VI74",
+        "VI76",
+        "VI8",
+        "VI9",
         "VÆREBROÅ"
       ],
       "missingPlanNumbers": [],
       "requestedRelations": [
         {
+          "municipalityCode": 157,
+          "planNumber": "SANDTOFTEN"
+        },
+        {
           "municipalityCode": 159,
           "planNumber": "BAGSVÆRDRENDEN-DELOMRÅDEKONGSHVILE"
         },
@@ -1581,10 +2121,1082 @@
         {
           "municipalityCode": 159,
           "planNumber": "VÆREBROÅ"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA03"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA04"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA05"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA06"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA07"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA08"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA09"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA10"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA11"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA12"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA13"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA14"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA15"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "ER05"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "FR01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "FR02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "FR03"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU03"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU04"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU05"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU06"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU07"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU08"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU09"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU10"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU11"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU12"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU13"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU14"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU15"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU16"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU17"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU18"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU19"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU20"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU21"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU22"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU24"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU25"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU26"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU27"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU28"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU29"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU30"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU31"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU32"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU33"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU34"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU35"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU36"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU37"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU38"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU39"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU40"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU41"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU42"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU43"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU44"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU45"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU46"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU47"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU48"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU49"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU50"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU51"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU52"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU53"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU54"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU55"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU56"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU57"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU58"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU59"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU60"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU61"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU62"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU63"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU64"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU65"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU66"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU67"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY1"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY10"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY100"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY101"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY102"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY103"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY104"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY105"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY106"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY107"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY11"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY12"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY13"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY14"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY15"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY16"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY17"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY18"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY19"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY2"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY20"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY21"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY22"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY23"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY24"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY25"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY26"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY27"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY28"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY29"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY3"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY30"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY31"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY32"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY33"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY34"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY35"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY36"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY37"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY38"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY39"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY4"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY40"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY41"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY42"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY43"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY44"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY45"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY46"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY47"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY48"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY49"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY5"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY50"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY51"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY52"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY53"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY54"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY55"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY56"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY57"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY58"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY59"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY6"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY60"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY61"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY62"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY63"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY64"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY65"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY66"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY67"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY68"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY69"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY7"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY70"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY71"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY72"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY74"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY75"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY77"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY78"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY79"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY8"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY80"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY81"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY83"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY84"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY85"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY86"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY87"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY88"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY89"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY9"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY90"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY91"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY92"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY93"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY94"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY95"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY96"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY97"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY98"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY99"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "NY01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA22"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA25"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI1"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI10"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI11"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI12"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI13"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI14"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI15"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI16"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI17"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI18"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI19"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI2"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI20"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI21"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI22"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI23"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI24"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI25"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI26"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI27"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI28"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI29"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI3"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI30"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI31"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI32"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI33"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI34"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI35"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI36"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI37"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI38"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI39"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI4"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI40"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI41"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI42"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI43"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI44"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI45"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI46"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI47"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI48"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI49"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI5"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI50"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI51"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI52"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI53"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI54"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI55"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI56"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI57"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI58"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI59"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI6"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI60"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI61"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI62"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI63"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI64"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI65"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI66"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI67"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI68"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI69"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI7"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI70"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI71"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI72"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI73"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI74"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI76"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI8"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI9"
         }
       ],
       "matchedRelations": [
         {
+          "municipalityCode": 157,
+          "planNumber": "SANDTOFTEN"
+        },
+        {
           "municipalityCode": 159,
           "planNumber": "BAGSVÆRDRENDEN-DELOMRÅDEKONGSHVILE"
         },
@@ -1619,6 +3231,1074 @@
         {
           "municipalityCode": 159,
           "planNumber": "VÆREBROÅ"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA03"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA04"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA05"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA06"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA07"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA08"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA09"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA10"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA11"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA12"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA13"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA14"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "BA15"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "ER05"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "FR01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "FR02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "FR03"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU03"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU04"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU05"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU06"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU07"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU08"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU09"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU10"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU11"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU12"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU13"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU14"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU15"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU16"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU17"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU18"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU19"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU20"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU21"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU22"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU24"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU25"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU26"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU27"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU28"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU29"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU30"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU31"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU32"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU33"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU34"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU35"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU36"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU37"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU38"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU39"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU40"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU41"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU42"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU43"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU44"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU45"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU46"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU47"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU48"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU49"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU50"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU51"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU52"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU53"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU54"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU55"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU56"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU57"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU58"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU59"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU60"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU61"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU62"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU63"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU64"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU65"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU66"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LU67"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY1"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY10"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY100"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY101"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY102"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY103"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY104"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY105"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY106"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY107"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY11"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY12"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY13"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY14"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY15"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY16"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY17"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY18"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY19"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY2"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY20"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY21"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY22"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY23"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY24"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY25"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY26"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY27"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY28"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY29"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY3"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY30"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY31"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY32"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY33"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY34"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY35"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY36"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY37"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY38"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY39"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY4"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY40"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY41"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY42"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY43"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY44"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY45"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY46"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY47"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY48"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY49"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY5"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY50"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY51"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY52"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY53"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY54"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY55"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY56"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY57"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY58"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY59"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY6"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY60"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY61"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY62"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY63"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY64"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY65"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY66"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY67"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY68"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY69"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY7"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY70"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY71"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY72"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY74"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY75"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY77"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY78"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY79"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY8"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY80"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY81"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY83"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY84"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY85"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY86"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY87"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY88"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY89"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY9"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY90"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY91"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY92"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY93"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY94"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY95"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY96"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY97"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY98"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "LY99"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "NY01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA22"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA25"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI1"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI10"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI11"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI12"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI13"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI14"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI15"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI16"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI17"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI18"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI19"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI2"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI20"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI21"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI22"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI23"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI24"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI25"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI26"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI27"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI28"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI29"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI3"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI30"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI31"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI32"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI33"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI34"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI35"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI36"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI37"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI38"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI39"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI4"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI40"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI41"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI42"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI43"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI44"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI45"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI46"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI47"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI48"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI49"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI5"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI50"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI51"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI52"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI53"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI54"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI55"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI56"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI57"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI58"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI59"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI6"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI60"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI61"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI62"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI63"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI64"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI65"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI66"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI67"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI68"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI69"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI7"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI70"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI71"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI72"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI73"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI74"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI76"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI8"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "VI9"
         }
       ],
       "missingRelations": [],

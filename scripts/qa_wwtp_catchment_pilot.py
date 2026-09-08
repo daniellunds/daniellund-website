@@ -4,9 +4,10 @@ from pathlib import Path
 ROOT=Path('labs/spildevandskort/data')
 geo=json.loads((ROOT/'wwtp-catchment-pilot.geojson').read_text(encoding='utf-8'))
 meta=json.loads((ROOT/'wwtp-catchment-pilot-meta.json').read_text(encoding='utf-8'))
+relations=json.loads((ROOT/'wwtp-catchment-relations.json').read_text(encoding='utf-8'))
 features=geo['features']
 
-assert len(features)>=145,len(features)
+assert len(features)>=413,len(features)
 assert meta['mapFeatureCount']==len(features),(meta['mapFeatureCount'],len(features))
 assert set(f['properties']['plantKey'] for f in features)=={'lynetten','damhusaen','moelleaavaerket'}
 assert meta['coverageStatus']=='partial-documented-pilot'
@@ -30,6 +31,7 @@ def plans(fs):
 gentofte=rows(157,'lynetten')
 gentofte_expected={'ENGHAVERENDEN','KILDESKOVSRENDEN','SKOVSHOVED','SØBORGHUSRENDEN','TUBORG','AUREHØJVEJ','SOFIEVEJ','SANKTPEDERSVEJ','CAROLINEVEJ','TUBORGPARKVEJ','JOMSBORGVEJ','EVANSTONEVEJ'}
 assert gentofte_expected.issubset(plans(gentofte))
+assert plans(rows(157,'moelleaavaerket'))=={'SANDTOFTEN'}
 
 # Frederiksberg split between Lynetten and Damhusåen.
 fb=rows(147)
@@ -54,11 +56,23 @@ assert {f['properties']['plantKey'] for f in roedovre}=={'damhusaen'}
 
 # Lyngby-Taarbæk documented LR catchments -> Lynetten.
 ltk_expected={'ER01','ER02','ER03','ER04','NY02','TA01','TA02','TA03','TA04','TA05','TA06','TA07','TA08','TA09','TA10','TA11','TA12','TA13','TA14','TA15','TA16','TA17','TA18','TA19','TA20','TA21','TA23','TA24','TA26'}
-ltk=rows(173)
-assert len(ltk)==29,len(ltk)
-assert plans(ltk)==ltk_expected
-assert {f['properties']['plantKey'] for f in ltk}=={'lynetten'}
-assert not {'TA22','TA25'}.intersection(plans(ltk))
+ltk_lyn=rows(173,'lynetten')
+assert len(ltk_lyn)==29,len(ltk_lyn)
+assert plans(ltk_lyn)==ltk_expected
+assert not {'TA22','TA25'}.intersection(plans(ltk_lyn))
+
+# Lyngby-Taarbæk Bilag 7 rows marked MV -> Mølleåværket.
+mol_rel=next(p for p in relations['plants'] if p['plantKey']=='moelleaavaerket')
+ltk_mv_rel=set()
+for rel in mol_rel['relations']:
+    if int(rel.get('municipalityCode',mol_rel.get('municipalityCode',-1)))==173:
+        ltk_mv_rel.update(''.join(str(pn).split()).upper() for pn in rel.get('planNumbers',[]))
+ltk_mv=rows(173,'moelleaavaerket')
+assert len(ltk_mv_rel)==267,len(ltk_mv_rel)
+assert len(ltk_mv)==267,len(ltk_mv)
+assert plans(ltk_mv)==ltk_mv_rel
+assert {'TA22','TA25'}.issubset(plans(ltk_mv))
+assert not plans(ltk_lyn).intersection(plans(ltk_mv))
 
 # Gladsaxe: all 18 current Plandata catchments have source-backed receiving plants.
 glx_lyn={'UTTERSLEVMOSE-DELOMRÅDEBUDDINGE','UTTERSLEVMOSE-DELOMRÅDEBUDDINGEHOVEDGADE','UTTERSLEVMOSE-DELOMRÅDESØBORG','UTTERSLEVMOSE-DELOMRÅDEUTTERSLEV'}
