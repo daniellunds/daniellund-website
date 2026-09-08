@@ -1,0 +1,43 @@
+name: Fetch Copenhagen wastewater WebGIS configuration
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fetch-kk-webgis-config.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch official map configuration
+        run: |
+          python - <<'PY'
+          import json,urllib.request
+          from pathlib import Path
+          urls={
+            'setting':'https://webgis.digitaleplaner.dk/api/setting/koebenhavn/spildevandsplan%2Cskybrudsplan',
+            'meta':'https://webgis.digitaleplaner.dk/api/meta/koebenhavn/public,spildevandsplan%2Cskybrudsplan',
+            'config':'https://webgis.digitaleplaner.dk/api/config/koebenhavn/koebenhavn.json'
+          }
+          out={}
+          for k,u in urls.items():
+            req=urllib.request.Request(u,headers={'User-Agent':'daniellund-spildevandskort-audit/1.0'})
+            with urllib.request.urlopen(req,timeout=30) as r:
+              body=r.read().decode('utf-8','replace')
+            try:out[k]=json.loads(body)
+            except:out[k]={'raw':body[:200000]}
+            print(k,'bytes',len(body))
+          Path('labs/spildevandskort/data/kk-webgis-config-audit.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Commit configuration audit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add labs/spildevandskort/data/kk-webgis-config-audit.json
+          git commit -m 'Capture Copenhagen wastewater WebGIS configuration' || exit 0
+          git push
