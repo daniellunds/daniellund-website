@@ -3,8 +3,8 @@
   "coverageStatus": "partial-documented-pilot",
   "source": "Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans",
   "rawPlandataFeaturesScanned": 66229,
-  "matchedRawFeatures": 65,
-  "mapFeatureCount": 59,
+  "matchedRawFeatures": 81,
+  "mapFeatureCount": 75,
   "excludedRainwaterOnlyMatches": 0,
   "excludedUnseweredMatches": 2,
   "plants": {
@@ -522,8 +522,24 @@
     "damhusaen": {
       "plantName": "Renseanlæg Damhusåen",
       "requestedPlanNumbers": [
+        "101",
+        "102",
+        "103A",
+        "103B",
+        "103C",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
         "113",
         "116",
+        "200",
+        "201",
+        "202",
+        "203A",
+        "203B",
+        "204",
         "311",
         "312",
         "315",
@@ -545,6 +561,22 @@
         "OPLAND5"
       ],
       "matchedPlanNumbers": [
+        "101",
+        "102",
+        "103A",
+        "103B",
+        "103C",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "200",
+        "201",
+        "202",
+        "203A",
+        "203B",
+        "204",
         "311",
         "312",
         "315",
@@ -653,6 +685,70 @@
         {
           "municipalityCode": 147,
           "planNumber": "OPLAND5"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "101"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "102"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "103A"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "103B"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "103C"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "104"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "105"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "106"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "107"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "108"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "200"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "201"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "202"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "203A"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "203B"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "204"
         }
       ],
       "matchedRelations": [
@@ -723,6 +819,70 @@
         {
           "municipalityCode": 147,
           "planNumber": "OPLAND5"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "101"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "102"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "103A"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "103B"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "103C"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "104"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "105"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "106"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "107"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "108"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "200"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "201"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "202"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "203A"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "203B"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumber": "204"
         }
       ],
       "missingRelations": [
