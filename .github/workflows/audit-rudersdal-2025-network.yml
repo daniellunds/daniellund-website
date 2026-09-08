@@ -14,33 +14,21 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Inspect current Rudersdal minimap configuration
+      - name: Read current Rudersdal minimap layer configuration
         run: |
           python - <<'PY'
-          import requests,re,json
-          s=requests.Session()
-          base='https://kort.rudersdal.dk/spatialmap'
-          targets=[
-            ('version',{'page':'minimap2.get-version-by-id','id':'ab8dcca4-cc5c-458d-8096-7b46ddb1bc76'}),
-            ('clientinfo',{'page':'minimap2.get-clientinfo'}),
-            ('generic',{'page':'minimap2-generic-data-access'}),
-          ]
-          for name,params in targets:
+          import requests,json
+          s=requests.Session(); base='https://kort.rudersdal.dk/spatialmap'; mid='ab8dcca4-cc5c-458d-8096-7b46ddb1bc76'
+          def call(label,params,method='get'):
               try:
-                  r=s.get(base,params=params,timeout=12)
-                  print('\n===',name,r.status_code,r.url,r.headers.get('content-type'),len(r.content),'===')
-                  print(r.text[:120000])
-              except Exception as e: print(name,'ERROR',repr(e))
-          # Also inspect loader source for the API contract/parameter names.
-          for u in [
-            'https://kort.rudersdal.dk/clientapi/minimap2/2.14.x/minimap.js',
-            'https://kort.rudersdal.dk/clientapi/minimap2/mmloader.js'
-          ]:
-              try:
-                  r=s.get(u,timeout=12); t=r.text
-                  print('\n=== JS',u,r.status_code,len(t),'===')
-                  for needle in ['generic-data-access','getfeature','featureinfo','cbinfo','query']:
-                      for m in list(re.finditer(needle,t,re.I))[:8]:
-                          print('JS_HIT',needle,re.sub(r'\s+',' ',t[max(0,m.start()-1000):m.start()+2500])[:3500])
-              except Exception as e: print('JS_ERROR',repr(e))
+                  r=getattr(s,method)(base,params=params,timeout=15)
+                  print('\n===',label,r.status_code,r.url,'COOKIES',s.cookies.get_dict(),'===')
+                  print(r.text[:150000]); return r
+              except Exception as e: print(label,'ERROR',repr(e)); return None
+          call('SESSION',{'page':'spatialserver.session.create'})
+          call('MINIMAP',{'page':'minimap2-generic-data-access','datasource':'minimap2_minimap','command':'read-id','id':mid,'jsonformat':'compact'})
+          call('CLIENTINFO',{'page':'minimap2.get-clientinfo','jsonformat':'compact'})
+          call('LAYERS',{'page':'minimap2-generic-data-access','datasource':'minimap2_layers','command':'read-id','id':mid,'jsonformat':'compact'})
+          call('CONTROLS',{'page':'minimap2-generic-data-access','datasource':'minimap2_controls','command':'read-id','id':mid,'jsonformat':'compact'})
+          call('PRINCIPAL',{'page':'spatialserver.principal.get-principal'})
           PY
