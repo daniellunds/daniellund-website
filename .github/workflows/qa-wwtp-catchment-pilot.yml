@@ -31,7 +31,7 @@ jobs:
           geo=json.loads((root/'wwtp-catchment-pilot.geojson').read_text())
           meta=json.loads((root/'wwtp-catchment-pilot-meta.json').read_text())
           features=geo['features']
-          assert len(features)>=98,len(features)
+          assert len(features)>=127,len(features)
           assert meta['mapFeatureCount']==len(features),(meta['mapFeatureCount'],len(features))
           assert set(f['properties']['plantKey'] for f in features)=={'lynetten','damhusaen'}
           assert meta['coverageStatus']=='partial-documented-pilot'
@@ -70,8 +70,17 @@ jobs:
           missing_roedovre=[r for r in meta['plants']['damhusaen']['missingRelations'] if r.get('municipalityCode')==175]
           assert missing_roedovre==[],missing_roedovre
 
+          ltk=[f for f in features if f['properties'].get('municipalityCode')==173]
+          ltk_expected={'ER01','ER02','ER03','ER04','NY02','TA01','TA02','TA03','TA04','TA05','TA06','TA07','TA08','TA09','TA10','TA11','TA12','TA13','TA14','TA15','TA16','TA17','TA18','TA19','TA20','TA21','TA23','TA24','TA26'}
+          assert len(ltk)==29,len(ltk)
+          assert {f['properties'].get('planNumber') for f in ltk}==ltk_expected,ltk
+          assert {f['properties'].get('plantKey') for f in ltk}=={'lynetten'},ltk
+          assert not any(f['properties'].get('planNumber') in {'TA22','TA25'} for f in ltk),ltk
+          missing_ltk=[r for r in meta['plants']['lynetten']['missingRelations'] if r.get('municipalityCode')==173]
+          assert missing_ltk==[],missing_ltk
+
           assert meta.get('excludedUnseweredMatches',0)>=2,meta.get('excludedUnseweredMatches')
-          print('WWTP_PILOT_STATIC_QA_OK',len(features),'GENTOFTE',len(gentofte),'FREDERIKSBERG',len(frederiksberg),'HERLEV',len(herlev),'ROEDOVRE',len(roedovre))
+          print('WWTP_PILOT_STATIC_QA_OK',len(features),'GENTOFTE',len(gentofte),'FREDERIKSBERG',len(frederiksberg),'HERLEV',len(herlev),'ROEDOVRE',len(roedovre),'LYNGBY_TAARBAEK',len(ltk))
           PY
       - name: Install Playwright
         run: |
