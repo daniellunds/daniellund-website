@@ -1,0 +1,62 @@
+name: QA Mac-style administrative coverage
+
+on:
+  push:
+    paths:
+      - '.github/workflows/qa-mac-admin-coverage.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Playwright browsers
+        run: |
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium webkit
+      - name: Test live page with Retina-style Chromium and WebKit
+        run: |
+          python - <<'PY'
+          import asyncio
+          from playwright.async_api import async_playwright
+
+          URL='https://www.daniellund.dk/labs/spildevandskort/'
+
+          async def check(browser_type,name):
+              browser=await browser_type.launch()
+              ctx=await browser.new_context(viewport={'width':1440,'height':900},device_scale_factor=2)
+              page=await ctx.new_page(); errors=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
+              r=await page.goto(URL,wait_until='domcontentloaded',timeout=60000)
+              assert r and r.ok
+              await page.wait_for_function("typeof spildevandskortCoverageState==='function'",timeout=30000)
+              await page.wait_for_function("spildevandskortCoverageState() && (spildevandskortCoverageState().municipalities || spildevandskortCoverageState().error)",timeout=60000)
+              qa=await page.evaluate('spildevandskortCoverageState()')
+              assert not qa.get('error'),qa
+              before=await page.locator('.leaflet-coverage-pane path').count()
+              attrs=await page.locator('.leaflet-coverage-pane path').first.get_attribute('fill-opacity') if before else None
+              styles=await page.locator('.leaflet-coverage-pane path').first.evaluate("e=>({fill:getComputedStyle(e).fill,fillOpacity:getComputedStyle(e).fillOpacity,opacity:getComputedStyle(e).opacity})") if before else None
+              await page.locator('#showCoverage').uncheck(); await page.wait_for_timeout(250)
+              off=await page.locator('.leaflet-coverage-pane path').count()
+              await page.locator('#showCoverage').check(); await page.wait_for_timeout(250)
+              after=await page.locator('.leaflet-coverage-pane path').count()
+              dpr=await page.evaluate('devicePixelRatio')
+              print(name,{'dpr':dpr,'before':before,'off':off,'after':after,'attrFillOpacity':attrs,'styles':styles,'errors':errors})
+              assert dpr==2
+              assert before==98,(name,before)
+              assert off==0,(name,off)
+              assert after==98,(name,after)
+              assert not errors,(name,errors)
+              await ctx.close(); await browser.close()
+
+          async def main():
+              async with async_playwright() as p:
+                  await check(p.chromium,'CHROMIUM_DPR2')
+                  await check(p.webkit,'WEBKIT_DPR2')
+
+          asyncio.run(main())
+          PY
