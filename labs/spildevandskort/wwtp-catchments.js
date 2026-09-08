@@ -4,7 +4,7 @@
 (async function integrateWwtpCatchmentPilot(){
   let pilot=null,meta=null,highlightLayer=null,selectedPlantMarker=null,activePlantKey=null;
   const MAIN_PULS_IDS={
-    lynetten:'Renseanlaeg.8793f333-ad28-446d-8b0f-28effaef0c41',
+    lynetten:'Renseanlaeg.8793f333-ad28-446d-8d0e-c9c854ca4a6d',
     damhusaen:'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'
   };
 
