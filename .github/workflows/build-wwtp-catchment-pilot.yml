@@ -141,19 +141,19 @@ jobs:
                   'geometry':mapping(merged)
               })
 
-          # Resolve current PULS identifiers/names for the two pilot plants.
+          # Resolve only the exact main PULS plant record. Broad substring matching can hit bypass/overflow subrecords.
           puls_base='https://pulsgeo.miljoeportal.dk/geoserver/wfs'
           pqs=urllib.parse.urlencode({'service':'WFS','version':'2.0.0','request':'GetFeature','typeNames':'puls:Renseanlaeg','outputFormat':'application/json','srsName':'EPSG:4326','count':2000})
           puls=get_json(puls_base+'?'+pqs)
           puls_resolved={}
+          expected_names={pkey:keynorm(plant['plantName']) for pkey,plant in plant_by_key.items()}
           for f in puls.get('features',[]):
               p=f.get('properties') or {}
               name=pick(p,['Name','Navn','PlantName','Renseanlægsnavn'])
               if not name:continue
               nn=keynorm(name)
-              for pkey,plant in plant_by_key.items():
-                  needle='damhus' if pkey=='damhusaen' else 'lynetten'
-                  if needle in nn:
+              for pkey,expected in expected_names.items():
+                  if nn==expected:
                       pid=pick(p,['WwtpId','Id','ID','PulsId','PULS_ID']) or f.get('id')
                       puls_resolved[pkey]={'id':str(pid),'name':str(name),'featureId':f.get('id')}
 
