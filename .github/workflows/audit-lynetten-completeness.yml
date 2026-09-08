@@ -1,6 +1,7 @@
 name: Audit Lynetten catchment completeness
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/audit-lynetten-completeness.yml'
@@ -29,8 +30,7 @@ jobs:
               d={keynorm(k):v for k,v in p.items()}
               for c in cands:
                   if keynorm(c) in d:return d[keynorm(c)]
-          classified=defaultdict(dict)
-          source_by=defaultdict(dict)
+          classified=defaultdict(dict); source_by=defaultdict(dict)
           for plant in rel['plants']:
               default=plant.get('municipalityCode')
               for r in plant['relations']:
@@ -63,19 +63,18 @@ jobs:
               if len(feats)<page:break
               start+=len(feats)
 
-          def inherited(mc,pn):
+          def inherited(mc,pn,codes):
+              # Keep type 6 outside automatic inheritance.
+              if not codes or not set(codes).issubset({1,2,3}):return None
               candidates=[]
               for parent,plant in classified[mc].items():
                   if pn==parent or not pn.startswith(parent):continue
                   tail=pn[len(parent):]
-                  # Safe subdivision inheritance: documented numeric parent followed by letter/dot suffix.
                   if not parent or not parent[0].isdigit() or not tail or tail[0].isdigit():continue
                   candidates.append((len(parent),parent,plant,source_by[mc].get(parent)))
               if not candidates:return None
-              longest=max(x[0] for x in candidates)
-              best=[x for x in candidates if x[0]==longest]
-              plants={x[2] for x in best}
-              if len(plants)!=1:return None
+              longest=max(x[0] for x in candidates); best=[x for x in candidates if x[0]==longest]
+              if len({x[2] for x in best})!=1:return None
               _,parent,plant,src=best[0]
               return {'plantKey':plant,'parentPlanNumber':parent,'source':src}
 
@@ -84,20 +83,18 @@ jobs:
           for mc,name in TARGET.items():
               rows=[]; counts=defaultdict(int)
               for pn,info in sorted(current[mc].items()):
-                  plant=classified[mc].get(pn)
-                  inherit=None if plant else inherited(mc,pn)
+                  codes=sorted(x for x in info['sewerTypes'] if x is not None)
+                  plant=classified[mc].get(pn); inherit=None if plant else inherited(mc,pn,codes)
                   status=plant or ('inheritable:'+inherit['plantKey'] if inherit else 'unclassified')
                   counts[status]+=1
-                  row={'planNumber':pn,'sewerTypes':sorted(x for x in info['sewerTypes'] if x is not None),'sourceFeatures':info['features'],'elementIds':info['elementIds'],'classification':plant,'inheritance':inherit}
-                  rows.append(row)
+                  row={'planNumber':pn,'sewerTypes':codes,'sourceFeatures':info['features'],'elementIds':info['elementIds'],'classification':plant,'inheritance':inherit}; rows.append(row)
                   if not plant:
-                      rec={'municipalityCode':mc,'municipality':name,'planNumber':pn,'sewerTypes':row['sewerTypes']}
-                      all_unclassified.append(rec)
-                      if inherit: inheritance.append({**rec,**inherit})
-                      else: remaining.append(rec)
+                      rec={'municipalityCode':mc,'municipality':name,'planNumber':pn,'sewerTypes':codes}; all_unclassified.append(rec)
+                      (inheritance if inherit else remaining).append({**rec,**inherit} if inherit else rec)
               out['municipalities'][str(mc)]={'name':name,'currentWastewaterCatchments':len(rows),'counts':dict(counts),'catchments':rows}
           cph_remaining=[r for r in remaining if r['municipalityCode']==101]
-          prefix_counts=Counter(re.match(r'^\d+',r['planNumber']).group(0)[:1] if re.match(r'^\d+',r['planNumber']) else 'OTHER' for r in cph_remaining)
+          def base3(pn):
+              m=re.match(r'^(\d{3})',pn); return m.group(1) if m else 'OTHER'
           out['summary']={
             'currentWastewaterCatchments':sum(x['currentWastewaterCatchments'] for x in out['municipalities'].values()),
             'unclassifiedBeforeInheritance':len(all_unclassified),
@@ -105,12 +102,11 @@ jobs:
             'safeInheritanceByPlant':dict(Counter(x['plantKey'] for x in inheritance)),
             'remainingAfterInheritance':len(remaining),
             'copenhagenRemainingAfterInheritance':len(cph_remaining),
-            'copenhagenRemainingFirstDigit':dict(prefix_counts),
-            'inheritanceCandidates':inheritance,
-            'remaining':remaining
-          }
+            'copenhagenRemainingBase3':dict(sorted(Counter(base3(r['planNumber']) for r in cph_remaining).items())),
+            'inheritanceCandidates':inheritance,'remaining':remaining}
           Path('labs/spildevandskort/data/lynetten-coverage-audit.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          print(json.dumps({k:v for k,v in out['summary'].items() if k not in ('inheritanceCandidates','remaining')},ensure_ascii=False))
+          print(json.dumps({k:v for k,v in out['summary'].items() if k not in ('inheritanceCandidates','remaining','copenhagenRemainingBase3')},ensure_ascii=False))
+          print('CPH_BASE3',json.dumps(out['summary']['copenhagenRemainingBase3'],ensure_ascii=False))
           for mc,v in out['municipalities'].items():print(mc,v['name'],v['counts'])
           PY
       - name: Commit audit report
@@ -118,5 +114,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add labs/spildevandskort/data/lynetten-coverage-audit.json
-          git commit -m 'Refine Lynetten completeness audit' || exit 0
+          git commit -m 'Refresh Lynetten completeness audit' || exit 0
           git push
