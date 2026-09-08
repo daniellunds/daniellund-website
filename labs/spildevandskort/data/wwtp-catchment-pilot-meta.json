@@ -3,8 +3,8 @@
   "coverageStatus": "partial-documented-pilot",
   "source": "Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans",
   "rawPlandataFeaturesScanned": 66229,
-  "matchedRawFeatures": 81,
-  "mapFeatureCount": 75,
+  "matchedRawFeatures": 104,
+  "mapFeatureCount": 98,
   "excludedRainwaterOnlyMatches": 0,
   "excludedUnseweredMatches": 2,
   "plants": {
@@ -557,6 +557,29 @@
         "378",
         "378C",
         "391",
+        "DAF01",
+        "DAF18",
+        "DAS",
+        "DB",
+        "DB1",
+        "DBS",
+        "DC",
+        "DD",
+        "DE",
+        "DF",
+        "DG",
+        "DH",
+        "DK",
+        "DL",
+        "DM",
+        "DMF17",
+        "DN",
+        "DP",
+        "DQS",
+        "DR",
+        "DR1",
+        "DS",
+        "DT",
         "OPLAND4",
         "OPLAND5"
       ],
@@ -592,6 +615,29 @@
         "376",
         "378C",
         "391",
+        "DAF01",
+        "DAF18",
+        "DAS",
+        "DB",
+        "DB1",
+        "DBS",
+        "DC",
+        "DD",
+        "DE",
+        "DF",
+        "DG",
+        "DH",
+        "DK",
+        "DL",
+        "DM",
+        "DMF17",
+        "DN",
+        "DP",
+        "DQS",
+        "DR",
+        "DR1",
+        "DS",
+        "DT",
         "OPLAND4",
         "OPLAND5"
       ],
@@ -749,6 +795,98 @@
         {
           "municipalityCode": 163,
           "planNumber": "204"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DAF01"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DAF18"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DAS"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DB"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DB1"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DBS"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DC"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DD"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DE"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DF"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DG"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DH"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DK"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DL"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DM"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DMF17"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DN"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DP"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DQS"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DR"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DR1"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DS"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DT"
         }
       ],
       "matchedRelations": [
@@ -883,6 +1021,98 @@
         {
           "municipalityCode": 163,
           "planNumber": "204"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DAF01"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DAF18"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DAS"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DB"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DB1"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DBS"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DC"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DD"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DE"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DF"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DG"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DH"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DK"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DL"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DM"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DMF17"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DN"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DP"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DQS"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DR"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DR1"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DS"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumber": "DT"
         }
       ],
       "missingRelations": [
