@@ -1,7 +1,7 @@
-# Rebuild trigger: Herlev source-backed Damhusåen catchments added 2026-09-08
 name: Build WWTP catchment pilot
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'labs/spildevandskort/data/wwtp-catchment-relations.json'
@@ -102,11 +102,9 @@ jobs:
                   pkey=wanted.get(key)
                   if not pkey: continue
 
-                  # New Plandata model: nuvkode is the current sewer type.
                   sewer=pick(p,['nuvkode','nuv_kode','kloaktype','kloak_type','sewertype','kloaktypekode'])
                   try:sewer_i=int(float(sewer))
                   except:sewer_i=None
-                  # Treatment-plant catchments represent wastewater flow: exclude rainwater-only (4) and unsewered (5).
                   if sewer_i==4:
                       excluded_rainwater_only+=1
                       continue
