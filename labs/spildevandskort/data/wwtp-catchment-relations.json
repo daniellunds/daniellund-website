@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "scope": "Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across municipalities",
+  "version": 4,
+  "scope": "Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across Copenhagen, Gentofte and Frederiksberg",
   "coverageStatus": "partial",
   "notes": "Relations are included only where an official municipal wastewater-plan source identifies the receiving treatment plant. Current subcatchment numbers are preferred when older catchment numbers have been split. Relation-level municipalityCode supports cross-municipality catchments. Ambiguous or contradictory relations are deliberately excluded. This pilot is not a complete treatment-plant catchment and must be labelled as partial in the UI.",
   "plants": [
@@ -9,34 +9,235 @@
       "plantName": "Renseanlæg Lynetten",
       "municipalityCode": 101,
       "relations": [
-        {"planNumbers":["468"],"sourceUrl":"https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf","sourceLabel":"Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"},
-        {"planNumbers":["242"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/","sourceLabel":"Københavns Kommune – Godsbaneterrænet/Jernbanebyen"},
-        {"planNumbers":["242A"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/pumpestation-kalvebod-alle-ved-arni-magnussons-gade/","sourceLabel":"Københavns Kommune – Pumpestation Kalvebod Allé"},
-        {"planNumbers":["242B"],"sourceUrl":"https://planer.kk.dk/media/2356/projekttillg_2019-a.pdf","sourceLabel":"Københavns Kommune – Enghavevej 81"},
-        {"planNumbers":["242C"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/fisketorvet-tillaeg-2/","sourceLabel":"Københavns Kommune – Fisketorvet tillæg 2"},
-        {"planNumbers":["233"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-ny-toejhus/","sourceLabel":"Københavns Kommune – Ny Tøjhus"},
-        {"planNumbers":["234"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/postgrunden/","sourceLabel":"Københavns Kommune – Postgrunden"},
-        {"planNumbers":["100","201","202","204"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/adgangsvej-til-lynetteholmen-inkl-modtageanlaeg/","sourceLabel":"Københavns Kommune – Adgangsvej til Lynetteholmen"},
-        {"planNumbers":["201"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b133-separatkloakering-af-kloeverparken/","sourceLabel":"Københavns Kommune – Kløverparken"},
-        {"planNumbers":["228","401"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/","sourceLabel":"Københavns Kommune – Levantkaj Øst"},
-        {"planNumbers":["437"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/separatkloakering-lygten-kanal/","sourceLabel":"Københavns Kommune – Lygten Kanal"},
-        {"planNumbers":["439"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-rentemestervej-iss-grunden/","sourceLabel":"Københavns Kommune – Rentemestervej"},
-        {"planNumbers":["438","439"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/","sourceLabel":"Københavns Kommune – Provstevejskvarteret"},
-        {"planNumbers":["219"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/","sourceLabel":"Københavns Kommune – Amaliegade Nord"},
-        {"planNumbers":["266"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/","sourceLabel":"Københavns Kommune – Hedegaardsvej II"},
-        {"planNumbers":["281"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/kloakering-af-hoergaarden-i-og-ii/","sourceLabel":"Københavns Kommune – Hørgården I og II"},
-        {"planNumbers":["443"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kampsportens-hus/","sourceLabel":"Københavns Kommune – Kampsportens Hus"},
-        {"planNumbers":["284D"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/kloakering-af-hf-roede-mellemvej/","sourceLabel":"Københavns Kommune – HF Røde Mellemvej"},
-        {"planNumbers":["292"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b130-tillaeg-7-til-lokalplan-301-oerestad-nord/","sourceLabel":"Københavns Kommune – Ørestad Nord"},
-        {"planNumbers":["241","235"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/supplement-til-vel45-kalvebod-brygge-skybrudstunnel/","sourceLabel":"Københavns Kommune – Kalvebod Brygge Skybrudstunnel"},
-        {"planNumbers":["262"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/","sourceLabel":"Københavns Kommune – Ved Amagerbanen Nord"},
-        {"planNumbers":["272"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b131-vermlandsgade-og-siljangade/","sourceLabel":"Københavns Kommune – Vermlandsgade og Siljangade"},
-        {"planNumbers":["282","284"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/","sourceLabel":"Københavns Kommune – Separatkloakering i Urbanplanen"},
-        {"planNumbers":["226","227"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/os1-strandboulevarden-del-2/","sourceLabel":"Københavns Kommune – Strandboulevarden del 2"},
-        {"planNumbers":["227","412","415"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/","sourceLabel":"Københavns Kommune – Østerbrotunnelen OS28"},
-        {"planNumbers":["441","442"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/lygten-ii/","sourceLabel":"Københavns Kommune – Lygten II"},
-        {"municipalityCode":157,"planNumbers":["ENGHAVERENDEN","KILDESKOVSRENDEN","SKOVSHOVED","SØBORGHUSRENDEN","TUBORG"],"sourceUrl":"https://spildevandsplan.gentofte.dk/media/za2ntrde/bilag-1-oplandsoversigt-tlg.pdf","sourceLabel":"Gentofte Kommune – Bilag 1, oplandsoversigt"},
-        {"municipalityCode":157,"planNumbers":["AUREHØJVEJ","SOFIEVEJ","SANKTPEDERSVEJ","CAROLINEVEJ","TUBORGPARKVEJ","JOMSBORGVEJ","EVANSTONEVEJ"],"sourceUrl":"https://spildevandsplan.gentofte.dk/tillaeg/tillaeg-1/11-oplandsplan-for-separering-i-hellerup-3-opland/","sourceLabel":"Gentofte Kommune – Hellerup 3 oplandsplan"}
+        {
+          "planNumbers": [
+            "468"
+          ],
+          "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
+          "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
+        },
+        {
+          "planNumbers": [
+            "242"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
+          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
+        },
+        {
+          "planNumbers": [
+            "242A"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/pumpestation-kalvebod-alle-ved-arni-magnussons-gade/",
+          "sourceLabel": "Københavns Kommune – Pumpestation Kalvebod Allé"
+        },
+        {
+          "planNumbers": [
+            "242B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/media/2356/projekttillg_2019-a.pdf",
+          "sourceLabel": "Københavns Kommune – Enghavevej 81"
+        },
+        {
+          "planNumbers": [
+            "242C"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/fisketorvet-tillaeg-2/",
+          "sourceLabel": "Københavns Kommune – Fisketorvet tillæg 2"
+        },
+        {
+          "planNumbers": [
+            "233"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-ny-toejhus/",
+          "sourceLabel": "Københavns Kommune – Ny Tøjhus"
+        },
+        {
+          "planNumbers": [
+            "234"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/postgrunden/",
+          "sourceLabel": "Københavns Kommune – Postgrunden"
+        },
+        {
+          "planNumbers": [
+            "100",
+            "201",
+            "202",
+            "204"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/adgangsvej-til-lynetteholmen-inkl-modtageanlaeg/",
+          "sourceLabel": "Københavns Kommune – Adgangsvej til Lynetteholmen"
+        },
+        {
+          "planNumbers": [
+            "201"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b133-separatkloakering-af-kloeverparken/",
+          "sourceLabel": "Københavns Kommune – Kløverparken"
+        },
+        {
+          "planNumbers": [
+            "228",
+            "401"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
+          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
+        },
+        {
+          "planNumbers": [
+            "437"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/separatkloakering-lygten-kanal/",
+          "sourceLabel": "Københavns Kommune – Lygten Kanal"
+        },
+        {
+          "planNumbers": [
+            "439"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-rentemestervej-iss-grunden/",
+          "sourceLabel": "Københavns Kommune – Rentemestervej"
+        },
+        {
+          "planNumbers": [
+            "438",
+            "439"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
+          "sourceLabel": "Københavns Kommune – Provstevejskvarteret"
+        },
+        {
+          "planNumbers": [
+            "219"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/",
+          "sourceLabel": "Københavns Kommune – Amaliegade Nord"
+        },
+        {
+          "planNumbers": [
+            "266"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
+          "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
+        },
+        {
+          "planNumbers": [
+            "281"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/kloakering-af-hoergaarden-i-og-ii/",
+          "sourceLabel": "Københavns Kommune – Hørgården I og II"
+        },
+        {
+          "planNumbers": [
+            "443"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kampsportens-hus/",
+          "sourceLabel": "Københavns Kommune – Kampsportens Hus"
+        },
+        {
+          "planNumbers": [
+            "284D"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/kloakering-af-hf-roede-mellemvej/",
+          "sourceLabel": "Københavns Kommune – HF Røde Mellemvej"
+        },
+        {
+          "planNumbers": [
+            "292"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b130-tillaeg-7-til-lokalplan-301-oerestad-nord/",
+          "sourceLabel": "Københavns Kommune – Ørestad Nord"
+        },
+        {
+          "planNumbers": [
+            "241",
+            "235"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/supplement-til-vel45-kalvebod-brygge-skybrudstunnel/",
+          "sourceLabel": "Københavns Kommune – Kalvebod Brygge Skybrudstunnel"
+        },
+        {
+          "planNumbers": [
+            "262"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
+          "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
+        },
+        {
+          "planNumbers": [
+            "272"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b131-vermlandsgade-og-siljangade/",
+          "sourceLabel": "Københavns Kommune – Vermlandsgade og Siljangade"
+        },
+        {
+          "planNumbers": [
+            "282",
+            "284"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
+          "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
+        },
+        {
+          "planNumbers": [
+            "226",
+            "227"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/os1-strandboulevarden-del-2/",
+          "sourceLabel": "Københavns Kommune – Strandboulevarden del 2"
+        },
+        {
+          "planNumbers": [
+            "227",
+            "412",
+            "415"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
+          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
+        },
+        {
+          "planNumbers": [
+            "441",
+            "442"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/lygten-ii/",
+          "sourceLabel": "Københavns Kommune – Lygten II"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumbers": [
+            "ENGHAVERENDEN",
+            "KILDESKOVSRENDEN",
+            "SKOVSHOVED",
+            "SØBORGHUSRENDEN",
+            "TUBORG"
+          ],
+          "sourceUrl": "https://spildevandsplan.gentofte.dk/media/za2ntrde/bilag-1-oplandsoversigt-tlg.pdf",
+          "sourceLabel": "Gentofte Kommune – Bilag 1, oplandsoversigt"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumbers": [
+            "AUREHØJVEJ",
+            "SOFIEVEJ",
+            "SANKTPEDERSVEJ",
+            "CAROLINEVEJ",
+            "TUBORGPARKVEJ",
+            "JOMSBORGVEJ",
+            "EVANSTONEVEJ"
+          ],
+          "sourceUrl": "https://spildevandsplan.gentofte.dk/tillaeg/tillaeg-1/11-oplandsplan-for-separering-i-hellerup-3-opland/",
+          "sourceLabel": "Gentofte Kommune – Hellerup 3 oplandsplan"
+        },
+        {
+          "municipalityCode": 147,
+          "planNumbers": [
+            "OPLAND1",
+            "OPLAND2",
+            "OPLAND3"
+          ],
+          "sourceUrl": "https://www.frederiksberg.dk/media/zhfpmius/spildevandsplan_2019_2031_web.pdf",
+          "sourceLabel": "Frederiksberg Kommune – Spildevandsplan 2019-2031, hovedoplande"
+        }
       ]
     },
     {
@@ -44,22 +245,131 @@
       "plantName": "Renseanlæg Damhusåen",
       "municipalityCode": 101,
       "relations": [
-        {"planNumbers":["391"],"sourceUrl":"https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf","sourceLabel":"Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"},
-        {"planNumbers":["315","316","319"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/","sourceLabel":"Københavns Kommune – Godsbaneterrænet/Jernbanebyen"},
-        {"planNumbers":["378C"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b116-separatkloakering-af-bystaevneparken/","sourceLabel":"Københavns Kommune – Bystævneparken"},
-        {"planNumbers":["321"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/","sourceLabel":"Københavns Kommune – Gammel Køge Landevej"},
-        {"planNumbers":["315"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/","sourceLabel":"Københavns Kommune – Scandiagade 15"},
-        {"planNumbers":["113","116"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/kv69-vestre-kirkegaard-skybrudsprojekt/","sourceLabel":"Københavns Kommune – Vestre Kirkegård"},
-        {"planNumbers":["322"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/kv66-trekronergade/","sourceLabel":"Københavns Kommune – Trekronergade"},
-        {"planNumbers":["325"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ny-hotel-og-restaurantskole/","sourceLabel":"Københavns Kommune – Ny Hotel- og Restaurantskole"},
-        {"planNumbers":["311"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/stejlepladsen/","sourceLabel":"Københavns Kommune – Stejlepladsen"},
-        {"planNumbers":["326"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/moelle-alle/","sourceLabel":"Københavns Kommune – Mølle Allé"},
-        {"planNumbers":["373"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b125-slotsherrensvej-vest/","sourceLabel":"Københavns Kommune – Slotsherrensvej Vest"},
-        {"planNumbers":["353","368"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/grundejerforeningen-katrinedal/","sourceLabel":"Københavns Kommune – Grundejerforeningen Katrinedal"},
-        {"planNumbers":["376"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/grundejerforeningen-danas-park/","sourceLabel":"Københavns Kommune – Grundejerforeningen Danas Park"},
-        {"planNumbers":["312"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/fremtidens-gaardhave-straussvej/","sourceLabel":"Københavns Kommune – Fremtidens Gårdhave Straussvej"},
-        {"planNumbers":["378"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/","sourceLabel":"Københavns Kommune – Kobbelvænget"},
-        {"planNumbers":["356"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/k250-groenne-veje-i-parcelforeningen-godthaab-bir221g/","sourceLabel":"Københavns Kommune – Parcelforeningen Godthaab"}
+        {
+          "planNumbers": [
+            "391"
+          ],
+          "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
+          "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
+        },
+        {
+          "planNumbers": [
+            "315",
+            "316",
+            "319"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
+          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
+        },
+        {
+          "planNumbers": [
+            "378C"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b116-separatkloakering-af-bystaevneparken/",
+          "sourceLabel": "Københavns Kommune – Bystævneparken"
+        },
+        {
+          "planNumbers": [
+            "321"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
+          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
+        },
+        {
+          "planNumbers": [
+            "315"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
+          "sourceLabel": "Københavns Kommune – Scandiagade 15"
+        },
+        {
+          "planNumbers": [
+            "113",
+            "116"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/kv69-vestre-kirkegaard-skybrudsprojekt/",
+          "sourceLabel": "Københavns Kommune – Vestre Kirkegård"
+        },
+        {
+          "planNumbers": [
+            "322"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/kv66-trekronergade/",
+          "sourceLabel": "Københavns Kommune – Trekronergade"
+        },
+        {
+          "planNumbers": [
+            "325"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ny-hotel-og-restaurantskole/",
+          "sourceLabel": "Københavns Kommune – Ny Hotel- og Restaurantskole"
+        },
+        {
+          "planNumbers": [
+            "311"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/stejlepladsen/",
+          "sourceLabel": "Københavns Kommune – Stejlepladsen"
+        },
+        {
+          "planNumbers": [
+            "326"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/moelle-alle/",
+          "sourceLabel": "Københavns Kommune – Mølle Allé"
+        },
+        {
+          "planNumbers": [
+            "373"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b125-slotsherrensvej-vest/",
+          "sourceLabel": "Københavns Kommune – Slotsherrensvej Vest"
+        },
+        {
+          "planNumbers": [
+            "353",
+            "368"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/grundejerforeningen-katrinedal/",
+          "sourceLabel": "Københavns Kommune – Grundejerforeningen Katrinedal"
+        },
+        {
+          "planNumbers": [
+            "376"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/grundejerforeningen-danas-park/",
+          "sourceLabel": "Københavns Kommune – Grundejerforeningen Danas Park"
+        },
+        {
+          "planNumbers": [
+            "312"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/fremtidens-gaardhave-straussvej/",
+          "sourceLabel": "Københavns Kommune – Fremtidens Gårdhave Straussvej"
+        },
+        {
+          "planNumbers": [
+            "378"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/",
+          "sourceLabel": "Københavns Kommune – Kobbelvænget"
+        },
+        {
+          "planNumbers": [
+            "356"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/k250-groenne-veje-i-parcelforeningen-godthaab-bir221g/",
+          "sourceLabel": "Københavns Kommune – Parcelforeningen Godthaab"
+        },
+        {
+          "municipalityCode": 147,
+          "planNumbers": [
+            "OPLAND4",
+            "OPLAND5"
+          ],
+          "sourceUrl": "https://www.frederiksberg.dk/media/zhfpmius/spildevandsplan_2019_2031_web.pdf",
+          "sourceLabel": "Frederiksberg Kommune – Spildevandsplan 2019-2031, hovedoplande"
+        }
       ]
     }
   ]
