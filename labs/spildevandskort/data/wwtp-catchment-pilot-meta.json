@@ -3,8 +3,8 @@
   "coverageStatus": "partial-documented-pilot",
   "source": "Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans",
   "rawPlandataFeaturesScanned": 66229,
-  "matchedRawFeatures": 104,
-  "mapFeatureCount": 98,
+  "matchedRawFeatures": 134,
+  "mapFeatureCount": 127,
   "excludedRainwaterOnlyMatches": 0,
   "excludedUnseweredMatches": 2,
   "plants": {
@@ -48,9 +48,14 @@
         "AUREHØJVEJ",
         "CAROLINEVEJ",
         "ENGHAVERENDEN",
+        "ER01",
+        "ER02",
+        "ER03",
+        "ER04",
         "EVANSTONEVEJ",
         "JOMSBORGVEJ",
         "KILDESKOVSRENDEN",
+        "NY02",
         "OPLAND1",
         "OPLAND2",
         "OPLAND3",
@@ -58,6 +63,30 @@
         "SKOVSHOVED",
         "SOFIEVEJ",
         "SØBORGHUSRENDEN",
+        "TA01",
+        "TA02",
+        "TA03",
+        "TA04",
+        "TA05",
+        "TA06",
+        "TA07",
+        "TA08",
+        "TA09",
+        "TA10",
+        "TA11",
+        "TA12",
+        "TA13",
+        "TA14",
+        "TA15",
+        "TA16",
+        "TA17",
+        "TA18",
+        "TA19",
+        "TA20",
+        "TA21",
+        "TA23",
+        "TA24",
+        "TA26",
         "TUBORG",
         "TUBORGPARKVEJ"
       ],
@@ -92,9 +121,14 @@
         "AUREHØJVEJ",
         "CAROLINEVEJ",
         "ENGHAVERENDEN",
+        "ER01",
+        "ER02",
+        "ER03",
+        "ER04",
         "EVANSTONEVEJ",
         "JOMSBORGVEJ",
         "KILDESKOVSRENDEN",
+        "NY02",
         "OPLAND1",
         "OPLAND2",
         "OPLAND3",
@@ -102,6 +136,30 @@
         "SKOVSHOVED",
         "SOFIEVEJ",
         "SØBORGHUSRENDEN",
+        "TA01",
+        "TA02",
+        "TA03",
+        "TA04",
+        "TA05",
+        "TA06",
+        "TA07",
+        "TA08",
+        "TA09",
+        "TA10",
+        "TA11",
+        "TA12",
+        "TA13",
+        "TA14",
+        "TA15",
+        "TA16",
+        "TA17",
+        "TA18",
+        "TA19",
+        "TA20",
+        "TA21",
+        "TA23",
+        "TA24",
+        "TA26",
         "TUBORG",
         "TUBORGPARKVEJ"
       ],
@@ -310,6 +368,122 @@
         {
           "municipalityCode": 157,
           "planNumber": "TUBORGPARKVEJ"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "ER01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "ER02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "ER03"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "ER04"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "NY02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA03"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA04"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA05"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA06"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA07"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA08"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA09"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA10"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA11"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA12"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA13"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA14"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA15"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA16"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA17"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA18"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA19"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA20"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA21"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA23"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA24"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA26"
         }
       ],
       "matchedRelations": [
@@ -480,6 +654,122 @@
         {
           "municipalityCode": 157,
           "planNumber": "TUBORGPARKVEJ"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "ER01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "ER02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "ER03"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "ER04"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "NY02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA01"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA02"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA03"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA04"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA05"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA06"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA07"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA08"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA09"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA10"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA11"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA12"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA13"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA14"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA15"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA16"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA17"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA18"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA19"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA20"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA21"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA23"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA24"
+        },
+        {
+          "municipalityCode": 173,
+          "planNumber": "TA26"
         }
       ],
       "missingRelations": [
