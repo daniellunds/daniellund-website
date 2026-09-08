@@ -1,8 +1,8 @@
 {
-  "version": 2,
-  "scope": "Pilot: documented Copenhagen wastewater catchments for BIOFOS Lynetten and Damhusåen",
+  "version": 3,
+  "scope": "Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across municipalities",
   "coverageStatus": "partial",
-  "notes": "Relations are included only where an official Copenhagen wastewater-plan page explicitly states the receiving treatment plant. Current subcatchment numbers are preferred when older catchment numbers have been split. Ambiguous or contradictory relations are deliberately excluded. This pilot is not a complete treatment-plant catchment and must be labelled as partial in the UI.",
+  "notes": "Relations are included only where an official municipal wastewater-plan source identifies the receiving treatment plant. Current subcatchment numbers are preferred when older catchment numbers have been split. Relation-level municipalityCode supports cross-municipality catchments. Ambiguous or contradictory relations are deliberately excluded. This pilot is not a complete treatment-plant catchment and must be labelled as partial in the UI.",
   "plants": [
     {
       "plantKey": "lynetten",
@@ -34,7 +34,9 @@
         {"planNumbers":["282","284"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/","sourceLabel":"Københavns Kommune – Separatkloakering i Urbanplanen"},
         {"planNumbers":["226","227"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/os1-strandboulevarden-del-2/","sourceLabel":"Københavns Kommune – Strandboulevarden del 2"},
         {"planNumbers":["227","412","415"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/","sourceLabel":"Københavns Kommune – Østerbrotunnelen OS28"},
-        {"planNumbers":["441","442"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/lygten-ii/","sourceLabel":"Københavns Kommune – Lygten II"}
+        {"planNumbers":["441","442"],"sourceUrl":"https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/lygten-ii/","sourceLabel":"Københavns Kommune – Lygten II"},
+        {"municipalityCode":157,"planNumbers":["ENGHAVERENDEN","KILDESKOVSRENDEN","SKOVSHOVED","SØBORGHUSRENDEN","TUBORG"],"sourceUrl":"https://spildevandsplan.gentofte.dk/media/za2ntrde/bilag-1-oplandsoversigt-tlg.pdf","sourceLabel":"Gentofte Kommune – Bilag 1, oplandsoversigt"},
+        {"municipalityCode":157,"planNumbers":["AUREHØJVEJ","SOFIEVEJ","SANKTPEDERSVEJ","CAROLINEVEJ","TUBORGPARKVEJ","JOMSBORGVEJ","EVANSTONEVEJ"],"sourceUrl":"https://spildevandsplan.gentofte.dk/tillaeg/tillaeg-1/11-oplandsplan-for-separering-i-hellerup-3-opland/","sourceLabel":"Gentofte Kommune – Hellerup 3 oplandsplan"}
       ]
     },
     {
