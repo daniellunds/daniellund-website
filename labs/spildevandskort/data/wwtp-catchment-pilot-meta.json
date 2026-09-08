@@ -3,8 +3,8 @@
   "coverageStatus": "partial-documented-pilot",
   "source": "Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans",
   "rawPlandataFeaturesScanned": 66229,
-  "matchedRawFeatures": 723,
-  "mapFeatureCount": 716,
+  "matchedRawFeatures": 848,
+  "mapFeatureCount": 840,
   "excludedRainwaterOnlyMatches": 0,
   "excludedUnseweredMatches": 2,
   "plants": {
@@ -12,39 +12,124 @@
       "plantName": "Renseanlæg Lynetten",
       "requestedPlanNumbers": [
         "100",
+        "100A",
         "201",
+        "201B",
         "202",
+        "202B",
+        "202C",
         "204",
         "219",
+        "219A",
+        "219B",
+        "219C",
+        "219D",
         "226",
+        "226A",
         "227",
+        "227A",
+        "227B",
+        "227C",
+        "227D",
+        "227E",
+        "227F",
         "228",
+        "228A",
+        "228B",
+        "228C",
+        "228D",
+        "228G",
+        "228H",
+        "232",
+        "232A",
+        "232B",
         "233",
+        "233A",
         "234",
+        "234B",
         "235",
+        "235A",
+        "235B",
         "241",
         "242",
         "242A",
         "242B",
         "242C",
+        "242D",
+        "242E",
+        "242F",
+        "242G",
+        "242H",
+        "242I",
+        "243",
+        "243A",
+        "243D",
+        "243F",
+        "258",
+        "258A",
         "262",
+        "262A",
+        "262B",
+        "262D",
+        "262E",
+        "262F",
+        "262G",
         "266",
+        "266A",
+        "266B",
+        "266C",
+        "266D",
+        "266E",
+        "271",
         "272",
+        "272A",
+        "272B",
+        "272C",
         "281",
+        "281A",
         "282",
+        "282A",
+        "282B",
+        "282C",
+        "282D",
         "284",
+        "284A",
+        "284B",
+        "284C",
         "284D",
         "292",
         "401",
+        "401B",
+        "401C",
+        "411",
+        "411A",
+        "411B",
         "412",
         "415",
+        "415A",
+        "415B",
+        "415D",
+        "417",
         "437",
+        "437A",
+        "437C",
+        "437D",
         "438",
+        "438A",
+        "438B",
         "439",
+        "439A",
+        "439B",
         "441",
+        "441B",
         "442",
         "443",
+        "443A",
         "468",
+        "468A",
+        "468B",
+        "468C",
+        "468D",
         "AUREHØJVEJ",
         "CAROLINEVEJ",
         "ENGHAVERENDEN",
@@ -52,7 +137,12 @@
         "ER02",
         "ER03",
         "ER04",
+        "ETAPE3",
         "EVANSTONEVEJ",
+        "GENTOFTEHOSPITAL",
+        "HELLERUP1",
+        "HELLERUP2",
+        "HELLERUPSYD",
         "JOMSBORGVEJ",
         "KILDESKOVSRENDEN",
         "NY02",
@@ -96,32 +186,116 @@
       ],
       "matchedPlanNumbers": [
         "100",
+        "100A",
         "201",
+        "201B",
         "202",
+        "202B",
+        "202C",
         "204",
+        "219A",
+        "219B",
+        "219C",
+        "219D",
+        "226A",
         "227",
+        "227A",
+        "227B",
+        "227C",
+        "227D",
+        "227E",
+        "227F",
         "228",
+        "228A",
+        "228B",
+        "228C",
+        "228D",
+        "228G",
+        "228H",
+        "232",
+        "232A",
+        "232B",
         "233",
+        "233A",
         "234",
+        "234B",
         "235",
+        "235A",
+        "235B",
         "241",
         "242B",
         "242C",
+        "242D",
+        "242E",
+        "242F",
+        "242G",
+        "242H",
+        "242I",
+        "243",
+        "243A",
+        "243D",
+        "243F",
+        "258",
+        "258A",
         "262",
+        "262A",
+        "262B",
+        "262D",
+        "262E",
+        "262F",
+        "262G",
         "266",
+        "266A",
+        "266B",
+        "266C",
+        "266D",
+        "266E",
+        "271",
         "272",
+        "272A",
+        "272B",
+        "272C",
         "281",
+        "281A",
         "282",
+        "282A",
+        "282B",
+        "282C",
+        "282D",
         "284",
+        "284A",
+        "284B",
+        "284C",
         "292",
         "401",
+        "401B",
+        "401C",
+        "411A",
+        "411B",
         "412",
+        "415A",
+        "415B",
+        "415D",
+        "417",
         "437",
+        "437A",
+        "437C",
+        "437D",
         "438",
+        "438A",
+        "438B",
         "439",
+        "439A",
+        "439B",
         "441",
+        "441B",
         "442",
         "443",
+        "443A",
+        "468A",
+        "468B",
+        "468C",
+        "468D",
         "AUREHØJVEJ",
         "CAROLINEVEJ",
         "ENGHAVERENDEN",
@@ -129,7 +303,12 @@
         "ER02",
         "ER03",
         "ER04",
+        "ETAPE3",
         "EVANSTONEVEJ",
+        "GENTOFTEHOSPITAL",
+        "HELLERUP1",
+        "HELLERUP2",
+        "HELLERUPSYD",
         "JOMSBORGVEJ",
         "KILDESKOVSRENDEN",
         "NY02",
@@ -177,6 +356,7 @@
         "242",
         "242A",
         "284D",
+        "411",
         "415",
         "468"
       ],
@@ -187,11 +367,27 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "100A"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "201"
         },
         {
           "municipalityCode": 101,
+          "planNumber": "201B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "202"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "202B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "202C"
         },
         {
           "municipalityCode": 101,
@@ -203,7 +399,27 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "219A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "219B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "219C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "219D"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "226"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "226A"
         },
         {
           "municipalityCode": 101,
@@ -211,7 +427,67 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "227A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227E"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227F"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "228"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228G"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228H"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "232"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "232A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "232B"
         },
         {
           "municipalityCode": 101,
@@ -219,11 +495,27 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "233A"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "234"
         },
         {
           "municipalityCode": 101,
+          "planNumber": "234B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "235"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "235A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "235B"
         },
         {
           "municipalityCode": 101,
@@ -247,7 +539,79 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "242D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242E"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242F"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242G"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242H"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242I"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "243"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "243A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "243D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "243F"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "258"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "258A"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "262"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262E"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262F"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262G"
         },
         {
           "municipalityCode": 101,
@@ -255,7 +619,43 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "266A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "266B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "266C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "266D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "266E"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "271"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "272"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "272A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "272B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "272C"
         },
         {
           "municipalityCode": 101,
@@ -263,11 +663,43 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "281A"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "282"
         },
         {
           "municipalityCode": 101,
+          "planNumber": "282A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "282B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "282C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "282D"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "284"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "284A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "284B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "284C"
         },
         {
           "municipalityCode": 101,
@@ -283,6 +715,26 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "401B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "401C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "411"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "411A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "411B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "412"
         },
         {
@@ -291,7 +743,35 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "415A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "415B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "415D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "417"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "437"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "437A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "437C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "437D"
         },
         {
           "municipalityCode": 101,
@@ -299,11 +779,31 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "438A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "438B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "439"
         },
         {
           "municipalityCode": 101,
+          "planNumber": "439A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "439B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "441"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "441B"
         },
         {
           "municipalityCode": 101,
@@ -315,7 +815,27 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "443A"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "468"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "468A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "468B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "468C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "468D"
         },
         {
           "municipalityCode": 147,
@@ -343,7 +863,27 @@
         },
         {
           "municipalityCode": 157,
+          "planNumber": "ETAPE3"
+        },
+        {
+          "municipalityCode": 157,
           "planNumber": "EVANSTONEVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "GENTOFTEHOSPITAL"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "HELLERUP1"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "HELLERUP2"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "HELLERUPSYD"
         },
         {
           "municipalityCode": 157,
@@ -517,7 +1057,15 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "100A"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "201"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "201B"
         },
         {
           "municipalityCode": 101,
@@ -525,7 +1073,35 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "202B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "202C"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "204"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "219A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "219B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "219C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "219D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "226A"
         },
         {
           "municipalityCode": 101,
@@ -533,7 +1109,67 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "227A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227E"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "227F"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "228"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228G"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "228H"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "232"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "232A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "232B"
         },
         {
           "municipalityCode": 101,
@@ -541,11 +1177,27 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "233A"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "234"
         },
         {
           "municipalityCode": 101,
+          "planNumber": "234B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "235"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "235A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "235B"
         },
         {
           "municipalityCode": 101,
@@ -561,7 +1213,79 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "242D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242E"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242F"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242G"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242H"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "242I"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "243"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "243A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "243D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "243F"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "258"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "258A"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "262"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262E"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262F"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "262G"
         },
         {
           "municipalityCode": 101,
@@ -569,7 +1293,43 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "266A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "266B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "266C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "266D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "266E"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "271"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "272"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "272A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "272B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "272C"
         },
         {
           "municipalityCode": 101,
@@ -577,11 +1337,43 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "281A"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "282"
         },
         {
           "municipalityCode": 101,
+          "planNumber": "282A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "282B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "282C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "282D"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "284"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "284A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "284B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "284C"
         },
         {
           "municipalityCode": 101,
@@ -593,7 +1385,39 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "401B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "401C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "411A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "411B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "412"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "415A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "415B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "415D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "417"
         },
         {
           "municipalityCode": 101,
@@ -601,7 +1425,27 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "437A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "437C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "437D"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "438"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "438A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "438B"
         },
         {
           "municipalityCode": 101,
@@ -609,7 +1453,19 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "439A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "439B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "441"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "441B"
         },
         {
           "municipalityCode": 101,
@@ -618,6 +1474,26 @@
         {
           "municipalityCode": 101,
           "planNumber": "443"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "443A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "468A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "468B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "468C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "468D"
         },
         {
           "municipalityCode": 147,
@@ -645,7 +1521,27 @@
         },
         {
           "municipalityCode": 157,
+          "planNumber": "ETAPE3"
+        },
+        {
+          "municipalityCode": 157,
           "planNumber": "EVANSTONEVEJ"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "GENTOFTEHOSPITAL"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "HELLERUP1"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "HELLERUP2"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumber": "HELLERUPSYD"
         },
         {
           "municipalityCode": 157,
@@ -835,6 +1731,10 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "411"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "415"
         },
         {
@@ -871,22 +1771,57 @@
         "203B",
         "204",
         "311",
+        "311A",
+        "311C",
         "312",
+        "312A",
+        "312B",
         "315",
+        "315A",
+        "315B",
+        "315C",
+        "315D",
+        "315E",
+        "315F",
         "316",
         "319",
+        "319A",
+        "319B",
         "321",
+        "321A",
+        "321B",
+        "321C",
+        "321D",
+        "321F",
+        "321G",
+        "321H",
+        "321I",
+        "321K",
+        "321L",
+        "321M",
+        "321N",
         "322",
         "325",
+        "325A",
+        "325B",
+        "325C",
         "326",
         "353",
         "356",
+        "356A",
+        "356B",
         "368",
         "373",
+        "373A",
         "376",
         "378",
+        "378A",
+        "378B",
         "378C",
+        "378D",
+        "378E",
         "391",
+        "391A",
         "DAF01",
         "DAF18",
         "DAS",
@@ -936,20 +1871,55 @@
         "203B",
         "204",
         "311",
+        "311A",
+        "311C",
         "312",
+        "312A",
+        "312B",
         "315",
+        "315A",
+        "315B",
+        "315C",
+        "315D",
+        "315E",
+        "315F",
         "316",
         "319",
+        "319A",
+        "319B",
         "321",
+        "321A",
+        "321B",
+        "321C",
+        "321D",
+        "321F",
+        "321G",
+        "321H",
+        "321I",
+        "321K",
+        "321L",
+        "321M",
+        "321N",
         "322",
         "325",
+        "325A",
+        "325B",
+        "325C",
         "353",
         "356",
+        "356A",
+        "356B",
         "368",
         "373",
+        "373A",
         "376",
+        "378A",
+        "378B",
         "378C",
+        "378D",
+        "378E",
         "391",
+        "391A",
         "DAF01",
         "DAF18",
         "DAS",
@@ -1002,11 +1972,51 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "311A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "311C"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "312"
         },
         {
           "municipalityCode": 101,
+          "planNumber": "312A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "312B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "315"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315E"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315F"
         },
         {
           "municipalityCode": 101,
@@ -1018,7 +2028,63 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "319A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "319B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "321"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321F"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321G"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321H"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321I"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321K"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321L"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321M"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321N"
         },
         {
           "municipalityCode": 101,
@@ -1027,6 +2093,18 @@
         {
           "municipalityCode": 101,
           "planNumber": "325"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "325A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "325B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "325C"
         },
         {
           "municipalityCode": 101,
@@ -1042,11 +2120,23 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "356A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "356B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "368"
         },
         {
           "municipalityCode": 101,
           "planNumber": "373"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "373A"
         },
         {
           "municipalityCode": 101,
@@ -1058,11 +2148,31 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "378A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "378B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "378C"
         },
         {
           "municipalityCode": 101,
+          "planNumber": "378D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "378E"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "391"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "391A"
         },
         {
           "municipalityCode": 147,
@@ -1256,11 +2366,51 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "311A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "311C"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "312"
         },
         {
           "municipalityCode": 101,
+          "planNumber": "312A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "312B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "315"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315E"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "315F"
         },
         {
           "municipalityCode": 101,
@@ -1272,7 +2422,63 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "319A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "319B"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "321"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321C"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321F"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321G"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321H"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321I"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321K"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321L"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321M"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "321N"
         },
         {
           "municipalityCode": 101,
@@ -1284,11 +2490,31 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "325A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "325B"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "325C"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "353"
         },
         {
           "municipalityCode": 101,
           "planNumber": "356"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "356A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "356B"
         },
         {
           "municipalityCode": 101,
@@ -1300,7 +2526,19 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "373A"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "376"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "378A"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "378B"
         },
         {
           "municipalityCode": 101,
@@ -1308,7 +2546,19 @@
         },
         {
           "municipalityCode": 101,
+          "planNumber": "378D"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "378E"
+        },
+        {
+          "municipalityCode": 101,
           "planNumber": "391"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumber": "391A"
         },
         {
           "municipalityCode": 147,

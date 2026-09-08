@@ -1,8 +1,8 @@
 {
-  "version": 10,
+  "version": 11,
   "scope": "Pilot: source-backed wastewater catchments for Lynetten, Damhusåen and Mølleåværket across Copenhagen, Gentofte, Frederiksberg, Herlev, Rødovre, Lyngby-Taarbæk and Gladsaxe and Rudersdal",
   "coverageStatus": "partial",
-  "notes": "Relations are included only where an official municipal wastewater-plan source identifies the receiving treatment plant. Current subcatchment numbers are preferred when older catchment numbers have been split. Relation-level municipalityCode supports cross-municipality catchments. Ambiguous or contradictory relations are deliberately excluded. This pilot is not a complete treatment-plant catchment and must be labelled as partial in the UI.",
+  "notes": "Relations are included only where an official municipal wastewater-plan source identifies the receiving treatment plant. Current subcatchment numbers are preferred when older catchment numbers have been split. Relation-level municipalityCode supports cross-municipality catchments. Ambiguous or contradictory relations are deliberately excluded. This pilot is not a complete treatment-plant catchment and must be labelled as partial in the UI. Current letter/dot subdivisions may inherit a documented numeric parent only when the current Plandata sewer code is 1, 2 or 3; type 6 is never inherited automatically.",
   "plants": [
     {
       "plantKey": "lynetten",
@@ -284,6 +284,356 @@
           ],
           "sourceUrl": "https://gladsaxe.dk/p/Faelles-filer/Planer-politikker-visioner/BMF/Spildevandsplan-2021.pdf",
           "sourceLabel": "Gladsaxe Kommune – Spildevandsplan 2021, Utterslev Moses opland"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "411",
+            "417"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/a49-reduktion-af-overloeb-fra-pumpestation-strandvaenget-reguleringsbygvaerker/",
+          "sourceLabel": "Københavns Kommune – A4.9 Strandvænget; opland 411, 415 og 417 til Lynetten"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "243"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/sundevedsgade-karreen/",
+          "sourceLabel": "Københavns Kommune – Sundevedsgade-karreen; opland 243 til Lynetten"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "258"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/tillaeg-1-til-nuuks-plads/",
+          "sourceLabel": "Københavns Kommune – Nuuks Plads; opland 258 til Lynetten"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "232",
+            "271"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kornblomstvej-ii/",
+          "sourceLabel": "Københavns Kommune – Kornblomstvej II; opland 232 og 271 til Lynetten"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumbers": [
+            "ETAPE3",
+            "HELLERUPSYD"
+          ],
+          "sourceUrl": "https://spildevandsplan.gentofte.dk/tillaeg/tillaeg-1/11-oplandsplan-for-separering-i-hellerup-3-opland/",
+          "sourceLabel": "Gentofte Kommune – Hellerup 3: Etape 3/Hellerup Syd; spildevand til Lynetten"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumbers": [
+            "HELLERUP1",
+            "HELLERUP2"
+          ],
+          "sourceUrl": "https://spildevandsplan.gentofte.dk/media/za2ntrde/bilag-1-oplandsoversigt-tlg.pdf",
+          "sourceLabel": "Gentofte Kommune – Bilag 1: Hellerups hovedopland til Lynetten; aktuelle Hellerup 1/2 deloplande"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumbers": [
+            "GENTOFTEHOSPITAL"
+          ],
+          "sourceUrl": "https://spildevandsplan.gentofte.dk/status/industri-og-hospitalsspildevand/",
+          "sourceLabel": "Gentofte Kommune – Gentofte Hospital er beliggende i Hellerups opland"
+        },
+        {
+          "municipalityCode": 157,
+          "planNumbers": [
+            "GENTOFTEHOSPITAL"
+          ],
+          "sourceUrl": "https://spildevandsplan.gentofte.dk/media/za2ntrde/bilag-1-oplandsoversigt-tlg.pdf",
+          "sourceLabel": "Gentofte Kommune – Bilag 1: Hellerups opland til Lynetten"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "100A"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/adgangsvej-til-lynetteholmen-inkl-modtageanlaeg/",
+          "sourceLabel": "Københavns Kommune – Adgangsvej til Lynetteholmen · aktuelle Plandata-deloplande af dokumenteret hovedopland 100"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "201B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b133-separatkloakering-af-kloeverparken/",
+          "sourceLabel": "Københavns Kommune – Kløverparken · aktuelle Plandata-deloplande af dokumenteret hovedopland 201"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "202B",
+            "202C"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/adgangsvej-til-lynetteholmen-inkl-modtageanlaeg/",
+          "sourceLabel": "Københavns Kommune – Adgangsvej til Lynetteholmen · aktuelle Plandata-deloplande af dokumenteret hovedopland 202"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "219A",
+            "219B",
+            "219C",
+            "219D"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/",
+          "sourceLabel": "Københavns Kommune – Amaliegade Nord · aktuelle Plandata-deloplande af dokumenteret hovedopland 219"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "226A"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/os1-strandboulevarden-del-2/",
+          "sourceLabel": "Københavns Kommune – Strandboulevarden del 2 · aktuelle Plandata-deloplande af dokumenteret hovedopland 226"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "227A",
+            "227B",
+            "227C",
+            "227D",
+            "227E",
+            "227F"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
+          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28 · aktuelle Plandata-deloplande af dokumenteret hovedopland 227"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "228A",
+            "228B",
+            "228C",
+            "228D",
+            "228G",
+            "228H"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
+          "sourceLabel": "Københavns Kommune – Levantkaj Øst · aktuelle Plandata-deloplande af dokumenteret hovedopland 228"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "232A",
+            "232B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kornblomstvej-ii/",
+          "sourceLabel": "Københavns Kommune – Kornblomstvej II; opland 232 og 271 til Lynetten · aktuelle Plandata-deloplande af dokumenteret hovedopland 232"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "233A"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-ny-toejhus/",
+          "sourceLabel": "Københavns Kommune – Ny Tøjhus · aktuelle Plandata-deloplande af dokumenteret hovedopland 233"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "234B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/postgrunden/",
+          "sourceLabel": "Københavns Kommune – Postgrunden · aktuelle Plandata-deloplande af dokumenteret hovedopland 234"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "235A",
+            "235B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/supplement-til-vel45-kalvebod-brygge-skybrudstunnel/",
+          "sourceLabel": "Københavns Kommune – Kalvebod Brygge Skybrudstunnel · aktuelle Plandata-deloplande af dokumenteret hovedopland 235"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "242D",
+            "242E",
+            "242F",
+            "242G",
+            "242H",
+            "242I"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
+          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen · aktuelle Plandata-deloplande af dokumenteret hovedopland 242"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "243A",
+            "243D",
+            "243F"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/sundevedsgade-karreen/",
+          "sourceLabel": "Københavns Kommune – Sundevedsgade-karreen; opland 243 til Lynetten · aktuelle Plandata-deloplande af dokumenteret hovedopland 243"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "258A"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/tillaeg-1-til-nuuks-plads/",
+          "sourceLabel": "Københavns Kommune – Nuuks Plads; opland 258 til Lynetten · aktuelle Plandata-deloplande af dokumenteret hovedopland 258"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "262A",
+            "262B",
+            "262D",
+            "262E",
+            "262F",
+            "262G"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
+          "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord · aktuelle Plandata-deloplande af dokumenteret hovedopland 262"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "266A",
+            "266B",
+            "266C",
+            "266D",
+            "266E"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
+          "sourceLabel": "Københavns Kommune – Hedegaardsvej II · aktuelle Plandata-deloplande af dokumenteret hovedopland 266"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "272A",
+            "272B",
+            "272C"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b131-vermlandsgade-og-siljangade/",
+          "sourceLabel": "Københavns Kommune – Vermlandsgade og Siljangade · aktuelle Plandata-deloplande af dokumenteret hovedopland 272"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "281A"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/kloakering-af-hoergaarden-i-og-ii/",
+          "sourceLabel": "Københavns Kommune – Hørgården I og II · aktuelle Plandata-deloplande af dokumenteret hovedopland 281"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "282A",
+            "282B",
+            "282C",
+            "282D"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
+          "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen · aktuelle Plandata-deloplande af dokumenteret hovedopland 282"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "284A",
+            "284B",
+            "284C"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
+          "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen · aktuelle Plandata-deloplande af dokumenteret hovedopland 284"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "401B",
+            "401C"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
+          "sourceLabel": "Københavns Kommune – Levantkaj Øst · aktuelle Plandata-deloplande af dokumenteret hovedopland 401"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "411A",
+            "411B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/a49-reduktion-af-overloeb-fra-pumpestation-strandvaenget-reguleringsbygvaerker/",
+          "sourceLabel": "Københavns Kommune – A4.9 Strandvænget; opland 411, 415 og 417 til Lynetten · aktuelle Plandata-deloplande af dokumenteret hovedopland 411"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "415A",
+            "415B",
+            "415D"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
+          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28 · aktuelle Plandata-deloplande af dokumenteret hovedopland 415"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "437A",
+            "437C",
+            "437D"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/separatkloakering-lygten-kanal/",
+          "sourceLabel": "Københavns Kommune – Lygten Kanal · aktuelle Plandata-deloplande af dokumenteret hovedopland 437"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "438A",
+            "438B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
+          "sourceLabel": "Københavns Kommune – Provstevejskvarteret · aktuelle Plandata-deloplande af dokumenteret hovedopland 438"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "439A",
+            "439B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
+          "sourceLabel": "Københavns Kommune – Provstevejskvarteret · aktuelle Plandata-deloplande af dokumenteret hovedopland 439"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "441B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/lygten-ii/",
+          "sourceLabel": "Københavns Kommune – Lygten II · aktuelle Plandata-deloplande af dokumenteret hovedopland 441"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "443A"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kampsportens-hus/",
+          "sourceLabel": "Københavns Kommune – Kampsportens Hus · aktuelle Plandata-deloplande af dokumenteret hovedopland 443"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "468A",
+            "468B",
+            "468C",
+            "468D"
+          ],
+          "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
+          "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg · aktuelle Plandata-deloplande af dokumenteret hovedopland 468"
         }
       ]
     },
@@ -481,6 +831,111 @@
           ],
           "sourceUrl": "https://gladsaxe.dk/p/Faelles-filer/Planer-politikker-visioner/BMF/Spildevandsplan-2021.pdf",
           "sourceLabel": "Gladsaxe Kommune – Spildevandsplan 2021, Gyngemosen og Kagsåen"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "311A",
+            "311C"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/stejlepladsen/",
+          "sourceLabel": "Københavns Kommune – Stejlepladsen · aktuelle Plandata-deloplande af dokumenteret hovedopland 311"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "312A",
+            "312B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/fremtidens-gaardhave-straussvej/",
+          "sourceLabel": "Københavns Kommune – Fremtidens Gårdhave Straussvej · aktuelle Plandata-deloplande af dokumenteret hovedopland 312"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "315A",
+            "315B",
+            "315C",
+            "315D",
+            "315E",
+            "315F"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
+          "sourceLabel": "Københavns Kommune – Scandiagade 15 · aktuelle Plandata-deloplande af dokumenteret hovedopland 315"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "319A",
+            "319B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
+          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen · aktuelle Plandata-deloplande af dokumenteret hovedopland 319"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "321A",
+            "321B",
+            "321C",
+            "321D",
+            "321F",
+            "321G",
+            "321H",
+            "321I",
+            "321K",
+            "321L",
+            "321M",
+            "321N"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
+          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej · aktuelle Plandata-deloplande af dokumenteret hovedopland 321"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "325A",
+            "325B",
+            "325C"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ny-hotel-og-restaurantskole/",
+          "sourceLabel": "Københavns Kommune – Ny Hotel- og Restaurantskole · aktuelle Plandata-deloplande af dokumenteret hovedopland 325"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "356A",
+            "356B"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/k250-groenne-veje-i-parcelforeningen-godthaab-bir221g/",
+          "sourceLabel": "Københavns Kommune – Parcelforeningen Godthaab · aktuelle Plandata-deloplande af dokumenteret hovedopland 356"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "373A"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b125-slotsherrensvej-vest/",
+          "sourceLabel": "Københavns Kommune – Slotsherrensvej Vest · aktuelle Plandata-deloplande af dokumenteret hovedopland 373"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "378A",
+            "378B",
+            "378D",
+            "378E"
+          ],
+          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/",
+          "sourceLabel": "Københavns Kommune – Kobbelvænget · aktuelle Plandata-deloplande af dokumenteret hovedopland 378"
+        },
+        {
+          "municipalityCode": 101,
+          "planNumbers": [
+            "391A"
+          ],
+          "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
+          "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg · aktuelle Plandata-deloplande af dokumenteret hovedopland 391"
         }
       ]
     },
