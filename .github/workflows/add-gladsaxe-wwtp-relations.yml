@@ -1,0 +1,53 @@
+name: Add Gladsaxe WWTP relations
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-gladsaxe-wwtp-relations.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add source-backed Gladsaxe relations
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path('labs/spildevandskort/data/wwtp-catchment-relations.json')
+          data=json.loads(path.read_text(encoding='utf-8'))
+          data['version']=8
+          data['scope']='Pilot: source-backed wastewater catchments for Lynetten, Damhusåen and Mølleåværket across Copenhagen, Gentofte, Frederiksberg, Herlev, Rødovre, Lyngby-Taarbæk and Gladsaxe'
+          by={p['plantKey']:p for p in data['plants']}
+          src='https://gladsaxe.dk/p/Faelles-filer/Planer-politikker-visioner/BMF/Spildevandsplan-2021.pdf'
+          def add(key, plans, label):
+              plant=by[key]
+              if not any(r.get('municipalityCode')==159 and r.get('sourceLabel')==label for r in plant['relations']):
+                  plant['relations'].append({'municipalityCode':159,'planNumbers':plans,'sourceUrl':src,'sourceLabel':label})
+          add('lynetten',[
+            'Utterslev Mose - delområde Buddinge','Utterslev Mose - delområde Buddinge Hovedgade',
+            'Utterslev Mose - delområde Søborg','Utterslev Mose - delområde Utterslev'
+          ],'Gladsaxe Kommune – Spildevandsplan 2021, Utterslev Moses opland')
+          add('damhusaen',[
+            'Gyngemosen - delområde Gladsaxe Erhverv','Gyngemosen - delområde Gyngemosen','Gyngemosen - delområde Høje Gladsaxe',
+            'Kagsåen - delområde Kagså','Kagsåen - delområde Mørkhøj'
+          ],'Gladsaxe Kommune – Spildevandsplan 2021, Gyngemosen og Kagsåen')
+          if 'moelleaavaerket' not in by:
+              plant={'plantKey':'moelleaavaerket','plantName':'Mølleåværket A/S','municipalityCode':173,'relations':[]}
+              data['plants'].append(plant); by['moelleaavaerket']=plant
+          add('moelleaavaerket',[
+            'Bagsværd Sø - delområde Bagsværd','Bagsværd Sø - delområde Bagsværd Erhverv','Bagsværd Sø - delområde Bagsværd Sø',
+            'Bagsværd Sø - delområde Gladsaxe','Bagsværd Sø - delområde Vibevænget',
+            'Bagsværdrenden - delområde Kongshvile','Bagsværdrenden - delområde Stengård','Hollandsrenden','Værebro Å'
+          ],'Gladsaxe Kommune – Spildevandsplan 2021, nordlige oplande til Mølleåværket')
+          path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add labs/spildevandskort/data/wwtp-catchment-relations.json
+          git commit -m 'Add Gladsaxe WWTP catchment relations'
+          git push
