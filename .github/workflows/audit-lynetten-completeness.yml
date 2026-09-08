@@ -18,7 +18,7 @@ jobs:
         run: |
           python - <<'PY'
           import json,re,urllib.parse,urllib.request
-          from collections import defaultdict
+          from collections import defaultdict,Counter
           from pathlib import Path
 
           TARGET={101:'København',147:'Frederiksberg',157:'Gentofte',159:'Gladsaxe',173:'Lyngby-Taarbæk'}
@@ -30,12 +30,13 @@ jobs:
               for c in cands:
                   if keynorm(c) in d:return d[keynorm(c)]
           classified=defaultdict(dict)
+          source_by=defaultdict(dict)
           for plant in rel['plants']:
               default=plant.get('municipalityCode')
               for r in plant['relations']:
                   mc=int(r.get('municipalityCode',default))
                   for pn in r['planNumbers']:
-                      classified[mc][norm(pn)]=plant['plantKey']
+                      n=norm(pn); classified[mc][n]=plant['plantKey']; source_by[mc][n]={'sourceUrl':r['sourceUrl'],'sourceLabel':r['sourceLabel']}
           base='https://geoserver.plandata.dk/geoserver/wfs'
           current=defaultdict(lambda:defaultdict(lambda:{'sewerTypes':set(),'features':0,'elementIds':[]}))
           start=0; page=5000
@@ -56,26 +57,60 @@ jobs:
                   try:sewer=int(float(sewer))
                   except:sewer=None
                   if sewer in (4,5):continue
-                  # Type 6 only counts as wastewater-bearing if explicitly classified already; otherwise keep separately for review.
                   n=norm(pn); row=current[mc][n]; row['features']+=1; row['sewerTypes'].add(sewer)
                   eid=pick(p,['elementid','element_id','id']) or ft.get('id')
                   if eid is not None and len(row['elementIds'])<10:row['elementIds'].append(str(eid))
               if len(feats)<page:break
               start+=len(feats)
+
+          def inherited(mc,pn):
+              candidates=[]
+              for parent,plant in classified[mc].items():
+                  if pn==parent or not pn.startswith(parent):continue
+                  tail=pn[len(parent):]
+                  # Safe subdivision inheritance: documented numeric parent followed by letter/dot suffix.
+                  if not parent or not parent[0].isdigit() or not tail or tail[0].isdigit():continue
+                  candidates.append((len(parent),parent,plant,source_by[mc].get(parent)))
+              if not candidates:return None
+              longest=max(x[0] for x in candidates)
+              best=[x for x in candidates if x[0]==longest]
+              plants={x[2] for x in best}
+              if len(plants)!=1:return None
+              _,parent,plant,src=best[0]
+              return {'plantKey':plant,'parentPlanNumber':parent,'source':src}
+
           out={'targetMunicipalities':TARGET,'municipalities':{},'summary':{}}
-          all_unclassified=[]
+          all_unclassified=[]; inheritance=[]; remaining=[]
           for mc,name in TARGET.items():
               rows=[]; counts=defaultdict(int)
               for pn,info in sorted(current[mc].items()):
                   plant=classified[mc].get(pn)
-                  status=plant or 'unclassified'
+                  inherit=None if plant else inherited(mc,pn)
+                  status=plant or ('inheritable:'+inherit['plantKey'] if inherit else 'unclassified')
                   counts[status]+=1
-                  rows.append({'planNumber':pn,'sewerTypes':sorted(x for x in info['sewerTypes'] if x is not None),'sourceFeatures':info['features'],'elementIds':info['elementIds'],'classification':plant})
-                  if not plant:all_unclassified.append({'municipalityCode':mc,'municipality':name,'planNumber':pn,'sewerTypes':rows[-1]['sewerTypes']})
+                  row={'planNumber':pn,'sewerTypes':sorted(x for x in info['sewerTypes'] if x is not None),'sourceFeatures':info['features'],'elementIds':info['elementIds'],'classification':plant,'inheritance':inherit}
+                  rows.append(row)
+                  if not plant:
+                      rec={'municipalityCode':mc,'municipality':name,'planNumber':pn,'sewerTypes':row['sewerTypes']}
+                      all_unclassified.append(rec)
+                      if inherit: inheritance.append({**rec,**inherit})
+                      else: remaining.append(rec)
               out['municipalities'][str(mc)]={'name':name,'currentWastewaterCatchments':len(rows),'counts':dict(counts),'catchments':rows}
-          out['summary']={'currentWastewaterCatchments':sum(x['currentWastewaterCatchments'] for x in out['municipalities'].values()),'unclassifiedCount':len(all_unclassified),'unclassified':all_unclassified}
+          cph_remaining=[r for r in remaining if r['municipalityCode']==101]
+          prefix_counts=Counter(re.match(r'^\d+',r['planNumber']).group(0)[:1] if re.match(r'^\d+',r['planNumber']) else 'OTHER' for r in cph_remaining)
+          out['summary']={
+            'currentWastewaterCatchments':sum(x['currentWastewaterCatchments'] for x in out['municipalities'].values()),
+            'unclassifiedBeforeInheritance':len(all_unclassified),
+            'safeInheritanceCandidates':len(inheritance),
+            'safeInheritanceByPlant':dict(Counter(x['plantKey'] for x in inheritance)),
+            'remainingAfterInheritance':len(remaining),
+            'copenhagenRemainingAfterInheritance':len(cph_remaining),
+            'copenhagenRemainingFirstDigit':dict(prefix_counts),
+            'inheritanceCandidates':inheritance,
+            'remaining':remaining
+          }
           Path('labs/spildevandskort/data/lynetten-coverage-audit.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          print(json.dumps(out['summary'],ensure_ascii=False))
+          print(json.dumps({k:v for k,v in out['summary'].items() if k not in ('inheritanceCandidates','remaining')},ensure_ascii=False))
           for mc,v in out['municipalities'].items():print(mc,v['name'],v['counts'])
           PY
       - name: Commit audit report
@@ -83,5 +118,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add labs/spildevandskort/data/lynetten-coverage-audit.json
-          git commit -m 'Capture Lynetten completeness audit' || exit 0
+          git commit -m 'Refine Lynetten completeness audit' || exit 0
           git push
