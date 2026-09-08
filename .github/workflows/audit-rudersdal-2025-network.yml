@@ -11,44 +11,36 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Probe current Rudersdal sewer catchment service
+      - name: Inspect current Rudersdal minimap configuration
         run: |
           python - <<'PY'
-          import requests, re
-          base='https://kort.rudersdal.dk'
-          urls=[
-            base+'/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilities&SERVICENAME=extern-spildevandsplan2025',
-            base+'/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities&SERVICENAME=extern-spildevandsplan2025',
-            base+'/wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities&SERVICENAME=extern-spildevandsplan2025',
-            base+'/spatialmap?page=minimap2-generic-data-access',
+          import requests,re,json
+          s=requests.Session()
+          base='https://kort.rudersdal.dk/spatialmap'
+          targets=[
+            ('version',{'page':'minimap2.get-version-by-id','id':'ab8dcca4-cc5c-458d-8096-7b46ddb1bc76'}),
+            ('clientinfo',{'page':'minimap2.get-clientinfo'}),
+            ('generic',{'page':'minimap2-generic-data-access'}),
           ]
-          for u in urls:
+          for name,params in targets:
               try:
-                  r=requests.get(u,timeout=35)
-                  print('\nURL',u,'STATUS',r.status_code,'TYPE',r.headers.get('content-type'),'LEN',len(r.content))
-                  t=r.text
-                  for needle in ['theme-gidas_status_kloakoplandecustomergeoview_wfs_2025','kloakopland','rense','anlaeg','anlæg','recipient']:
-                      if needle.lower() in t.lower():
-                          i=t.lower().find(needle.lower())
-                          print('HIT',needle,re.sub(r'\s+',' ',t[max(0,i-1200):i+3500])[:4700])
-                  print('HEAD',re.sub(r'\s+',' ',t[:6000]))
-              except Exception as e:
-                  print('ERROR',u,repr(e))
-
-          # Try likely public WFS type names directly.
-          names=[
-            'theme-gidas_status_kloakoplandecustomergeoview_wfs_2025',
-            'gidas_status_kloakoplandecustomergeoview_wfs_2025',
-          ]
-          for name in names:
-              for ver in ['1.1.0','2.0.0']:
-                  params={'SERVICE':'WFS','VERSION':ver,'REQUEST':'GetFeature','TYPENAME':name,'COUNT':'5','MAXFEATURES':'5','OUTPUTFORMAT':'application/json','SERVICENAME':'extern-spildevandsplan2025'}
-                  try:
-                      r=requests.get(base+'/wfs',params=params,timeout=35)
-                      print('\nGETFEATURE',name,ver,r.status_code,r.url,'TYPE',r.headers.get('content-type'),'LEN',len(r.content))
-                      print(r.text[:20000])
-                  except Exception as e: print('GETFEATURE_ERROR',repr(e))
+                  r=s.get(base,params=params,timeout=12)
+                  print('\n===',name,r.status_code,r.url,r.headers.get('content-type'),len(r.content),'===')
+                  print(r.text[:120000])
+              except Exception as e: print(name,'ERROR',repr(e))
+          # Also inspect loader source for the API contract/parameter names.
+          for u in [
+            'https://kort.rudersdal.dk/clientapi/minimap2/2.14.x/minimap.js',
+            'https://kort.rudersdal.dk/clientapi/minimap2/mmloader.js'
+          ]:
+              try:
+                  r=s.get(u,timeout=12); t=r.text
+                  print('\n=== JS',u,r.status_code,len(t),'===')
+                  for needle in ['generic-data-access','getfeature','featureinfo','cbinfo','query']:
+                      for m in list(re.finditer(needle,t,re.I))[:8]:
+                          print('JS_HIT',needle,re.sub(r'\s+',' ',t[max(0,m.start()-1000):m.start()+2500])[:3500])
+              except Exception as e: print('JS_ERROR',repr(e))
           PY
