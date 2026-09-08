@@ -33,6 +33,11 @@ jobs:
           root=Path('labs/spildevandskort/data')
           relations=json.loads((root/'wwtp-catchment-relations.json').read_text(encoding='utf-8'))
 
+          MAIN_PULS_IDS={
+              'lynetten':'Renseanlaeg.8793f333-ad28-446d-8d0e-c9c854ca4a6d',
+              'damhusaen':'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'
+          }
+
           def norm(v):
               return re.sub(r'\s+','',str(v or '')).upper()
           def keynorm(v):
@@ -49,13 +54,17 @@ jobs:
 
           wanted={}
           relation_sources={}
+          requested_relations=defaultdict(set)
           for plant in relations['plants']:
               pkey=plant['plantKey']
+              default_mcode=plant.get('municipalityCode')
               for rel in plant['relations']:
+                  mcode=int(rel.get('municipalityCode',default_mcode))
                   for pn in rel['planNumbers']:
                       n=norm(pn)
-                      wanted[(plant['municipalityCode'],n)]=pkey
-                      relation_sources.setdefault((pkey,n),[]).append({'label':rel['sourceLabel'],'url':rel['sourceUrl']})
+                      wanted[(mcode,n)]=pkey
+                      requested_relations[pkey].add((mcode,n))
+                      relation_sources.setdefault((pkey,mcode,n),[]).append({'label':rel['sourceLabel'],'url':rel['sourceUrl']})
 
           base='https://geoserver.plandata.dk/geoserver/wfs'
           page_size=5000
@@ -66,6 +75,8 @@ jobs:
           sewer_codes=defaultdict(set)
           element_ids=defaultdict(list)
           matched_raw=0
+          excluded_rainwater_only=0
+          excluded_unsewered=0
           while True:
               qs=urllib.parse.urlencode({
                   'service':'WFS','version':'2.0.0','request':'GetFeature',
@@ -89,12 +100,19 @@ jobs:
                   key=(mcode,norm(pn))
                   pkey=wanted.get(key)
                   if not pkey: continue
-                  sewer=pick(p,['kloaktype','kloak_type','sewertype','kloaktypekode'])
+
+                  # New Plandata model: nuvkode is the current sewer type.
+                  sewer=pick(p,['nuvkode','nuv_kode','kloaktype','kloak_type','sewertype','kloaktypekode'])
                   try:sewer_i=int(float(sewer))
                   except:sewer_i=None
-                  # Treatment-plant catchments represent wastewater flow: exclude rainwater-only and unsewered.
-                  if sewer_i in (4,5):
+                  # Treatment-plant catchments represent wastewater flow: exclude rainwater-only (4) and unsewered (5).
+                  if sewer_i==4:
+                      excluded_rainwater_only+=1
                       continue
+                  if sewer_i==5:
+                      excluded_unsewered+=1
+                      continue
+
                   try:
                       geom=shape(f.get('geometry'))
                       if geom.is_empty: continue
@@ -104,7 +122,7 @@ jobs:
                   except Exception as e:
                       print('GEOMETRY_SKIP',f.get('id'),e)
                       continue
-                  gkey=(pkey,norm(pn))
+                  gkey=(pkey,mcode,norm(pn))
                   groups[gkey].append(geom)
                   sewer_codes[gkey].add(sewer_i)
                   eid=pick(p,['elementid','element_id','id']) or f.get('id')
@@ -120,64 +138,51 @@ jobs:
 
           plant_by_key={p['plantKey']:p for p in relations['plants']}
           features=[]
-          found=defaultdict(set)
-          for (pkey,pn),geoms in sorted(groups.items()):
+          found_relations=defaultdict(set)
+          for (pkey,mcode,pn),geoms in sorted(groups.items()):
               merged=unary_union(geoms)
               if not merged.is_valid: merged=merged.buffer(0)
-              found[pkey].add(pn)
+              found_relations[pkey].add((mcode,pn))
               features.append({
                   'type':'Feature',
                   'properties':{
                       'plantKey':pkey,
                       'plantName':plant_by_key[pkey]['plantName'],
-                      'municipalityCode':plant_by_key[pkey]['municipalityCode'],
+                      'municipalityCode':mcode,
                       'planNumber':pn,
                       'sourceFeatureCount':len(geoms),
-                      'sewerTypeCodes':sorted(x for x in sewer_codes[(pkey,pn)] if x is not None),
-                      'elementIds':element_ids[(pkey,pn)][:100],
-                      'sources':relation_sources.get((pkey,pn),[]),
+                      'sewerTypeCodes':sorted(x for x in sewer_codes[(pkey,mcode,pn)] if x is not None),
+                      'elementIds':element_ids[(pkey,mcode,pn)][:100],
+                      'sources':relation_sources.get((pkey,mcode,pn),[]),
                       'coverageStatus':'documented-pilot'
                   },
                   'geometry':mapping(merged)
               })
 
-          # Resolve only the exact main PULS plant record. Broad substring matching can hit bypass/overflow subrecords.
-          puls_base='https://pulsgeo.miljoeportal.dk/geoserver/wfs'
-          pqs=urllib.parse.urlencode({'service':'WFS','version':'2.0.0','request':'GetFeature','typeNames':'puls:Renseanlaeg','outputFormat':'application/json','srsName':'EPSG:4326','count':2000})
-          puls=get_json(puls_base+'?'+pqs)
-          puls_resolved={}
-          expected_names={pkey:keynorm(plant['plantName']) for pkey,plant in plant_by_key.items()}
-          for f in puls.get('features',[]):
-              p=f.get('properties') or {}
-              name=pick(p,['Name','Navn','PlantName','Renseanlægsnavn'])
-              if not name:continue
-              nn=keynorm(name)
-              for pkey,expected in expected_names.items():
-                  if nn==expected:
-                      pid=pick(p,['WwtpId','Id','ID','PulsId','PULS_ID']) or f.get('id')
-                      puls_resolved[pkey]={'id':str(pid),'name':str(name),'featureId':f.get('id')}
-
-          requested={}
-          for p in relations['plants']:
-              requested[p['plantKey']]=sorted({norm(n) for r in p['relations'] for n in r['planNumbers']})
           meta={
-              'version':1,
+              'version':2,
               'coverageStatus':'partial-documented-pilot',
-              'source':'Plandata.dk vedtagne kloakoplande + Københavns Kommunes spildevandsplan',
+              'source':'Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans',
               'rawPlandataFeaturesScanned':raw_count,
               'matchedRawFeatures':matched_raw,
               'mapFeatureCount':len(features),
+              'excludedRainwaterOnlyMatches':excluded_rainwater_only,
+              'excludedUnseweredMatches':excluded_unsewered,
               'plants':{}
           }
-          for pkey in plant_by_key:
-              req=requested[pkey]
-              got=sorted(found[pkey])
+          for pkey,plant in plant_by_key.items():
+              req=sorted(requested_relations[pkey])
+              got=sorted(found_relations[pkey])
+              missing=sorted(set(req)-set(got))
               meta['plants'][pkey]={
-                  'plantName':plant_by_key[pkey]['plantName'],
-                  'requestedPlanNumbers':req,
-                  'matchedPlanNumbers':got,
-                  'missingPlanNumbers':sorted(set(req)-set(got)),
-                  'puls':puls_resolved.get(pkey),
+                  'plantName':plant['plantName'],
+                  'requestedPlanNumbers':sorted({n for _,n in req}),
+                  'matchedPlanNumbers':sorted({n for _,n in got}),
+                  'missingPlanNumbers':sorted({n for _,n in missing}),
+                  'requestedRelations':[{'municipalityCode':mc,'planNumber':pn} for mc,pn in req],
+                  'matchedRelations':[{'municipalityCode':mc,'planNumber':pn} for mc,pn in got],
+                  'missingRelations':[{'municipalityCode':mc,'planNumber':pn} for mc,pn in missing],
+                  'puls':{'id':MAIN_PULS_IDS.get(pkey),'name':plant['plantName'],'featureId':MAIN_PULS_IDS.get(pkey)} if MAIN_PULS_IDS.get(pkey) else None,
                   'isCompleteCatchment':False
               }
 
