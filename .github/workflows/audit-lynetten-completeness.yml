@@ -1,0 +1,87 @@
+name: Audit Lynetten catchment completeness
+
+on:
+  push:
+    paths:
+      - '.github/workflows/audit-lynetten-completeness.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit all current wastewater catchments in Lynetten municipalities
+        run: |
+          python - <<'PY'
+          import json,re,urllib.parse,urllib.request
+          from collections import defaultdict
+          from pathlib import Path
+
+          TARGET={101:'København',147:'Frederiksberg',157:'Gentofte',159:'Gladsaxe',173:'Lyngby-Taarbæk'}
+          rel=json.loads(Path('labs/spildevandskort/data/wwtp-catchment-relations.json').read_text(encoding='utf-8'))
+          def norm(v): return re.sub(r'\s+','',str(v or '')).upper()
+          def keynorm(v): return re.sub(r'[^a-z0-9æøå]','',str(v or '').lower())
+          def pick(p,cands):
+              d={keynorm(k):v for k,v in p.items()}
+              for c in cands:
+                  if keynorm(c) in d:return d[keynorm(c)]
+          classified=defaultdict(dict)
+          for plant in rel['plants']:
+              default=plant.get('municipalityCode')
+              for r in plant['relations']:
+                  mc=int(r.get('municipalityCode',default))
+                  for pn in r['planNumbers']:
+                      classified[mc][norm(pn)]=plant['plantKey']
+          base='https://geoserver.plandata.dk/geoserver/wfs'
+          current=defaultdict(lambda:defaultdict(lambda:{'sewerTypes':set(),'features':0,'elementIds':[]}))
+          start=0; page=5000
+          while True:
+              q=urllib.parse.urlencode({'service':'WFS','version':'2.0.0','request':'GetFeature','typeNames':'pdk:theme_pdk_kloakopland_vedtaget','outputFormat':'application/json','srsName':'EPSG:4326','count':page,'startIndex':start})
+              req=urllib.request.Request(base+'?'+q,headers={'User-Agent':'lynetten-completeness-audit/1.0'})
+              with urllib.request.urlopen(req,timeout=90) as f:data=json.load(f)
+              feats=data.get('features',[])
+              for ft in feats:
+                  p=ft.get('properties') or {}
+                  mc=pick(p,['kommunekode','kommune_kode','komnr','komkode','kommunenr','kommuneid'])
+                  try:mc=int(float(mc))
+                  except:continue
+                  if mc not in TARGET:continue
+                  pn=pick(p,['plannr','plannummer','plan_nr','oplandnr','oplandnummer'])
+                  if pn is None:continue
+                  sewer=pick(p,['nuvkode','nuv_kode','kloaktype','kloak_type','sewertype','kloaktypekode'])
+                  try:sewer=int(float(sewer))
+                  except:sewer=None
+                  if sewer in (4,5):continue
+                  # Type 6 only counts as wastewater-bearing if explicitly classified already; otherwise keep separately for review.
+                  n=norm(pn); row=current[mc][n]; row['features']+=1; row['sewerTypes'].add(sewer)
+                  eid=pick(p,['elementid','element_id','id']) or ft.get('id')
+                  if eid is not None and len(row['elementIds'])<10:row['elementIds'].append(str(eid))
+              if len(feats)<page:break
+              start+=len(feats)
+          out={'targetMunicipalities':TARGET,'municipalities':{},'summary':{}}
+          all_unclassified=[]
+          for mc,name in TARGET.items():
+              rows=[]; counts=defaultdict(int)
+              for pn,info in sorted(current[mc].items()):
+                  plant=classified[mc].get(pn)
+                  status=plant or 'unclassified'
+                  counts[status]+=1
+                  rows.append({'planNumber':pn,'sewerTypes':sorted(x for x in info['sewerTypes'] if x is not None),'sourceFeatures':info['features'],'elementIds':info['elementIds'],'classification':plant})
+                  if not plant:all_unclassified.append({'municipalityCode':mc,'municipality':name,'planNumber':pn,'sewerTypes':rows[-1]['sewerTypes']})
+              out['municipalities'][str(mc)]={'name':name,'currentWastewaterCatchments':len(rows),'counts':dict(counts),'catchments':rows}
+          out['summary']={'currentWastewaterCatchments':sum(x['currentWastewaterCatchments'] for x in out['municipalities'].values()),'unclassifiedCount':len(all_unclassified),'unclassified':all_unclassified}
+          Path('labs/spildevandskort/data/lynetten-coverage-audit.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(out['summary'],ensure_ascii=False))
+          for mc,v in out['municipalities'].items():print(mc,v['name'],v['counts'])
+          PY
+      - name: Commit audit report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add labs/spildevandskort/data/lynetten-coverage-audit.json
+          git commit -m 'Capture Lynetten completeness audit' || exit 0
+          git push
