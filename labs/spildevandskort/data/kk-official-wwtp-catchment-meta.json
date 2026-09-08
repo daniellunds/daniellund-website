@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "coverageStatus": "complete-official-source",
+  "sourceUrl": "https://webgis.digitaleplaner.dk/app/koebenhavn/spildevandsplan%2Cskybrudsplan/",
+  "queryUrl": "https://webgis.digitaleplaner.dk/api/sql/koebenhavn?q=SELECT+gid%2Cid%2Copland%2Cthe_geom+FROM+spildevandsplan.oplande_renseanlaeg&srs=4326&client_encoding=UTF8&format=geojson",
+  "sourceLabel": "Københavns Kommunes officielle WebGIS, laget Oplande til Renseanlæg",
+  "retrievedBy": "GitHub Actions",
+  "features": [
+    {
+      "plantKey": "lynetten",
+      "plantName": "Renseanlæg Lynetten",
+      "oplandValue": "Renseanlæg Lynetten"
+    },
+    {
+      "plantKey": "damhusaen",
+      "plantName": "Renseanlæg Damhusåen",
+      "oplandValue": "Renseanlæg Damhusåen"
+    }
+  ],
+  "featureCount": 2,
+  "propertyKeys": [
+    "gid",
+    "id",
+    "opland"
+  ]
+}
