@@ -1,0 +1,123 @@
+{
+  "discoveryMethod": "sitemap",
+  "projectUrlsScanned": 363,
+  "targetUnclassifiedCurrentCatchments": 492,
+  "hitPages": 4,
+  "uniquePlantCandidates": [
+    {
+      "planNumber": "259",
+      "sewerTypes": [
+        1
+      ],
+      "plantKeys": [
+        "lynetten"
+      ],
+      "sources": [
+        {
+          "url": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/k1107-groenne-byrum-og-skybrudssikring-i-sigurdsgade-og-sidegade-bir85/",
+          "title": "K1.107 Sigurdsgade BIR8.5",
+          "snippet": "Projektområdet ligger i kloakoplandene 257, 259, 416 og 418, som alle er forsynet af HOFOR og har status som fælleskloakerede. Spildevand og regnvand fra oplandene ledes til Renseanlæg Lynetten via Pumpestation Strandvænget.",
+          "plantKeys": [
+            "lynetten"
+          ]
+        }
+      ]
+    },
+    {
+      "planNumber": "313",
+      "sewerTypes": [
+        1
+      ],
+      "plantKeys": [
+        "damhusaen"
+      ],
+      "sources": [
+        {
+          "url": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/carl-jacobsens-vej-kv68-kv70-kv71-og-kv92/",
+          "title": "Carl Jacobsens Vej (KV68, KV70, KV71 og KV92)",
+          "snippet": "Projektområdet er forsynet af HOFOR og beliggende inden for kloakoplandene 312, 313, 321 og 322 i spildevandsplanen med status som fælleskloakeret. Spildevand og regnvand fra oplandet ledes til Renseanlæg Damhusåen. Projektet er beliggende i skybrudsgrenen Sjælør Boulevard i vandoplandet København Vest.",
+          "plantKeys": [
+            "damhusaen"
+          ]
+        }
+      ]
+    },
+    {
+      "planNumber": "331",
+      "sewerTypes": [
+        1
+      ],
+      "plantKeys": [
+        "damhusaen"
+      ],
+      "sources": [
+        {
+          "url": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/k198-harrestrup-aa-i-vigerslevparken-kv-36-kv-26b-og-kv94/",
+          "title": "K1.98 Harrestrup Å i Vigerslevparken, KV 36, KV 26b og KV94",
+          "snippet": "Projektområdet ligger i kloakopland 300, 331 (Hvidovre Kommune), 341, 343 og 344, som er fælleskloakeret. Spildevand og regnvand fra oplandene ledes til Renseanlæg Damhusåen.",
+          "plantKeys": [
+            "damhusaen"
+          ]
+        }
+      ]
+    },
+    {
+      "planNumber": "341",
+      "sewerTypes": [
+        1
+      ],
+      "plantKeys": [
+        "damhusaen"
+      ],
+      "sources": [
+        {
+          "url": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/k198-harrestrup-aa-i-vigerslevparken-kv-36-kv-26b-og-kv94/",
+          "title": "K1.98 Harrestrup Å i Vigerslevparken, KV 36, KV 26b og KV94",
+          "snippet": "Projektområdet ligger i kloakopland 300, 331 (Hvidovre Kommune), 341, 343 og 344, som er fælleskloakeret. Spildevand og regnvand fra oplandene ledes til Renseanlæg Damhusåen.",
+          "plantKeys": [
+            "damhusaen"
+          ]
+        }
+      ]
+    },
+    {
+      "planNumber": "354",
+      "sewerTypes": [
+        1
+      ],
+      "plantKeys": [
+        "damhusaen"
+      ],
+      "sources": [
+        {
+          "url": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/k1109-skybrudsprojekt-sallingvej-kv51/",
+          "title": "K1.109 Skybrudsprojekt Sallingvej – KV51",
+          "snippet": "Projektområdet ligger i kloakoplandene 353, 354,355 ,356 og 357, som er fælleskloakeret. Spildevand og regnvand fra oplandene ledes til Renseanlæg Damhusåen via Pumpestation Damhusåen.",
+          "plantKeys": [
+            "damhusaen"
+          ]
+        }
+      ]
+    },
+    {
+      "planNumber": "355",
+      "sewerTypes": [
+        1
+      ],
+      "plantKeys": [
+        "damhusaen"
+      ],
+      "sources": [
+        {
+          "url": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/k1109-skybrudsprojekt-sallingvej-kv51/",
+          "title": "K1.109 Skybrudsprojekt Sallingvej – KV51",
+          "snippet": "Projektområdet ligger i kloakoplandene 353, 354,355 ,356 og 357, som er fælleskloakeret. Spildevand og regnvand fra oplandene ledes til Renseanlæg Damhusåen via Pumpestation Damhusåen.",
+          "plantKeys": [
+            "damhusaen"
+          ]
+        }
+      ]
+    }
+  ],
+  "conflicts": []
+}
