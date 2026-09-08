@@ -1,5 +1,5 @@
 // Proof of concept: explicit, source-backed wastewater catchment -> treatment plant relations.
-// The pilot is deliberately partial; current documented coverage includes København, Gentofte, Frederiksberg, Herlev and Rødovre for Lynetten/Damhusåen.
+// The pilot is deliberately partial; current documented coverage includes København, Gentofte, Frederiksberg, Herlev, Rødovre and Lyngby-Taarbæk for Lynetten/Damhusåen.
 // Relation dataset uses current Plandata sewer type filtering (nuvkode) and excludes rainwater-only/unsewered areas.
 (async function integrateWwtpCatchmentPilot(){
   let pilot=null,meta=null,highlightLayer=null,selectedPlantMarker=null,activePlantKey=null;
