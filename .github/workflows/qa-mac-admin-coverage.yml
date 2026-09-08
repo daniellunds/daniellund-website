@@ -3,6 +3,8 @@ name: QA Mac-style administrative coverage
 on:
   push:
     paths:
+      - 'labs/spildevandskort/coverage-areas.js'
+      - 'labs/spildevandskort/data/municipalities.geojson'
       - '.github/workflows/qa-mac-admin-coverage.yml'
 
 permissions:
@@ -18,13 +20,17 @@ jobs:
         run: |
           python -m pip install --quiet playwright
           python -m playwright install --with-deps chromium webkit
-      - name: Test live page with Retina-style Chromium and WebKit
+      - name: Start local server
+        run: |
+          python3 -m http.server 4191 --bind 127.0.0.1 >/tmp/mac-coverage-server.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4191/labs/spildevandskort/data/municipalities.geojson >/dev/null && break; sleep 1; done
+      - name: Test cached coverage with Retina-style Chromium and WebKit
         run: |
           python - <<'PY'
           import asyncio
           from playwright.async_api import async_playwright
 
-          URL='https://www.daniellund.dk/labs/spildevandskort/'
+          URL='http://127.0.0.1:4191/labs/spildevandskort/'
 
           async def check(browser_type,name):
               browser=await browser_type.launch()
@@ -34,9 +40,10 @@ jobs:
               r=await page.goto(URL,wait_until='domcontentloaded',timeout=60000)
               assert r and r.ok
               await page.wait_for_function("typeof spildevandskortCoverageState==='function'",timeout=30000)
-              await page.wait_for_function("spildevandskortCoverageState() && (spildevandskortCoverageState().municipalities || spildevandskortCoverageState().error)",timeout=60000)
+              await page.wait_for_function("spildevandskortCoverageState() && (spildevandskortCoverageState().municipalities || spildevandskortCoverageState().error)",timeout=30000)
               qa=await page.evaluate('spildevandskortCoverageState()')
-              assert not qa.get('error'),qa
+              assert not qa.get('error'),(name,qa)
+              assert qa.get('source')=='Lokal cache · Dataforsyningen',(name,qa)
               before=await page.locator('.leaflet-coverage-pane path').count()
               attrs=await page.locator('.leaflet-coverage-pane path').first.get_attribute('fill-opacity') if before else None
               styles=await page.locator('.leaflet-coverage-pane path').first.evaluate("e=>({fill:getComputedStyle(e).fill,fillOpacity:getComputedStyle(e).fillOpacity,opacity:getComputedStyle(e).opacity})") if before else None
@@ -45,7 +52,7 @@ jobs:
               await page.locator('#showCoverage').check(); await page.wait_for_timeout(250)
               after=await page.locator('.leaflet-coverage-pane path').count()
               dpr=await page.evaluate('devicePixelRatio')
-              print(name,{'dpr':dpr,'before':before,'off':off,'after':after,'attrFillOpacity':attrs,'styles':styles,'errors':errors})
+              print(name,{'source':qa.get('source'),'dpr':dpr,'before':before,'off':off,'after':after,'attrFillOpacity':attrs,'styles':styles,'errors':errors})
               assert dpr==2
               assert before==98,(name,before)
               assert off==0,(name,off)
