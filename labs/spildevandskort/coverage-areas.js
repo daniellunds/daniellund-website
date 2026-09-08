@@ -2,7 +2,9 @@
 // Important: this is NOT a sewer catchment layer. Municipalities with ambiguous utility ownership
 // are intentionally withheld until their internal split has been verified from an authoritative source.
 (function initAdministrativeCoverage(){
-  const MUNICIPALITY_URL="https://api.dataforsyningen.dk/kommuner?format=geojson&udenforkommuneinddeling=false";
+  // Same-origin cache avoids browser/network-specific stalls when loading Dataforsyningen directly.
+  const MUNICIPALITY_URL="./data/municipalities.geojson";
+  const MUNICIPALITY_FALLBACK_URL="https://api.dataforsyningen.dk/kommuner?format=geojson&udenforkommuneinddeling=false";
   const VERIFIED_OVERRIDES={
     // Læsø has no mapped Plandata catchment in brands.json, but its wastewater utility is known in the app.
     "læsø":{brandId:"laesoe-forsyning",reason:"Explicit utility profile for Læsø Forsyning"},
@@ -69,18 +71,35 @@
     throw new Error("Forsyningsmetadata blev ikke klar");
   }
 
+  async function fetchJsonWithTimeout(url,timeoutMs){
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),timeoutMs);
+    try{
+      const response=await fetch(url,{signal:controller.signal,cache:"default"});
+      if(!response.ok)throw new Error(`${response.status} ${response.statusText}`);
+      return await response.json();
+    }finally{
+      clearTimeout(timer);
+    }
+  }
+
   async function loadCoverage(){
     try{
       await waitForBrands();
-      const response=await fetch(MUNICIPALITY_URL);
-      if(!response.ok)throw new Error(`${response.status} ${response.statusText}`);
-      const raw=await response.json();
+      let raw,source="Lokal cache · Dataforsyningen";
+      try{
+        raw=await fetchJsonWithTimeout(MUNICIPALITY_URL,15000);
+      }catch(localErr){
+        console.warn("Lokal kommune-cache kunne ikke indlæses; prøver Dataforsyningen direkte",localErr);
+        raw=await fetchJsonWithTimeout(MUNICIPALITY_FALLBACK_URL,20000);
+        source="Dataforsyningen · live fallback";
+      }
       const fc=raw.type==="FeatureCollection"?raw:{type:"FeatureCollection",features:Array.isArray(raw)?raw.filter(x=>x.type==="Feature"):[]};
       if(!fc.features?.length)throw new Error("Ingen kommunegeometrier i svaret");
       state.coverageData=fc;
       const rows=fc.features.map(classify);
       state.coverageQa={
-        source:"Dataforsyningen · kommuner",
+        source,
         municipalities:rows.length,
         assigned:rows.filter(x=>x.status==="assigned").length,
         verifiedOverrides:rows.filter(x=>x.status==="assigned"&&x.override).map(x=>({name:x.name,brandId:x.brandId,reason:x.override.reason,sourceUrl:x.override.sourceUrl||null})),
