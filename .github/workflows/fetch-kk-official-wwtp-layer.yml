@@ -1,0 +1,96 @@
+name: Fetch Copenhagen official WWTP catchment layer
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fetch-kk-official-wwtp-layer.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve official GC2 data endpoint
+        run: |
+          python - <<'PY'
+          import json,urllib.parse,urllib.request,urllib.error
+          from pathlib import Path
+
+          host='https://webgis.digitaleplaner.dk'
+          attempts=[]
+          def hit(label,url):
+            try:
+              req=urllib.request.Request(url,headers={'User-Agent':'daniellund-spildevandskort-source-audit/1.0','Accept':'application/json,*/*'})
+              with urllib.request.urlopen(req,timeout=40) as r:
+                body=r.read(); ct=r.headers.get('content-type','')
+              txt=body.decode('utf-8','replace')
+              attempts.append({'label':label,'url':url,'status':200,'contentType':ct,'bytes':len(body),'preview':txt[:1000]})
+              try:
+                obj=json.loads(txt)
+                if isinstance(obj,dict) and (obj.get('features') is not None or obj.get('data') is not None or obj.get('success') is not None):
+                  return obj
+              except: pass
+            except Exception as e:
+              attempts.append({'label':label,'url':url,'error':repr(e)})
+            return None
+
+          layer='oplande_renseanlaeg'
+          q=urllib.parse.urlencode({'service':'WFS','version':'1.1.0','request':'GetFeature','typeName':layer,'outputFormat':'application/json','srsName':'EPSG:4326'})
+          candidates=[
+            ('ows-schema',f'{host}/ows/koebenhavn/spildevandsplan?{q}'),
+            ('ows-db',f'{host}/ows/koebenhavn?{q.replace(layer,"spildevandsplan:"+layer)}'),
+            ('wfs-schema',f'{host}/wfs/koebenhavn/spildevandsplan?{q}'),
+            ('wfs-db',f'{host}/wfs/koebenhavn?{q.replace(layer,"spildevandsplan:"+layer)}'),
+          ]
+          result=None; source=None
+          for label,url in candidates:
+            obj=hit(label,url)
+            if obj and obj.get('features') is not None:
+              result=obj; source=url; break
+
+          # SQL API fallbacks.
+          if result is None:
+            sql='SELECT *, ST_AsGeoJSON(ST_Transform(the_geom,4326))::json AS geometry FROM spildevandsplan.oplande_renseanlaeg'
+            for endpoint in ['/api/v2/sql/koebenhavn','/api/v1/sql/koebenhavn']:
+              url=host+endpoint+'?'+urllib.parse.urlencode({'q':sql,'format':'json'})
+              obj=hit(endpoint,url)
+              if obj is not None:
+                result=obj; source=url; break
+
+          # Also try direct full current catchment table with rinseanlaeg field.
+          catch=None; catch_source=None
+          q2=urllib.parse.urlencode({'service':'WFS','version':'1.1.0','request':'GetFeature','typeName':'kloakoplande_status','outputFormat':'application/json','srsName':'EPSG:4326'})
+          for label,url in [
+            ('status-ows-schema',f'{host}/ows/koebenhavn/spildevandsplan?{q2}'),
+            ('status-wfs-schema',f'{host}/wfs/koebenhavn/spildevandsplan?{q2}')]:
+            obj=hit(label,url)
+            if obj and obj.get('features') is not None:
+              catch=obj; catch_source=url; break
+          if catch is None:
+            sql='SELECT label,kloaksystem_status,renseanlaeg,ST_AsGeoJSON(ST_Transform(the_geom,4326))::json AS geometry FROM spildevandsplan.kloakoplande_status'
+            for endpoint in ['/api/v2/sql/koebenhavn','/api/v1/sql/koebenhavn']:
+              url=host+endpoint+'?'+urllib.parse.urlencode({'q':sql,'format':'json'})
+              obj=hit('status'+endpoint,url)
+              if obj is not None:
+                catch=obj; catch_source=url; break
+
+          out={'attempts':attempts,'wwtpLayerSource':source,'wwtpLayer':result,'catchmentSource':catch_source,'catchments':catch}
+          Path('labs/spildevandskort/data/kk-official-wwtp-layer-audit.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('OFFICIAL_WWTP_SOURCE',source)
+          if isinstance(result,dict): print('WWTP_KEYS',result.keys(),'FEATURES',len(result.get('features',[])))
+          print('CATCHMENT_SOURCE',catch_source)
+          if isinstance(catch,dict): print('CATCH_KEYS',catch.keys(),'FEATURES',len(catch.get('features',[])))
+          if source is None and catch_source is None:
+            raise SystemExit('No official vector endpoint resolved; inspect attempts')
+          PY
+      - name: Commit official source audit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add labs/spildevandskort/data/kk-official-wwtp-layer-audit.json
+          git commit -m 'Capture Copenhagen official WWTP catchment data' || exit 0
+          git push
