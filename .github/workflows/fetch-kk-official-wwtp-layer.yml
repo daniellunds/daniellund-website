@@ -15,6 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Resolve official GC2 data endpoint
+        continue-on-error: true
         run: |
           python - <<'PY'
           import json,urllib.parse,urllib.request,urllib.error
@@ -88,6 +89,7 @@ jobs:
             raise SystemExit('No official vector endpoint resolved; inspect attempts')
           PY
       - name: Commit official source audit
+        if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
