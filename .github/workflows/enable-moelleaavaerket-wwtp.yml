@@ -13,47 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Extend builder, UI and QA to Mølleåværket
+      - name: Extend builder, UI and QA
+        run: python .github/scripts/enable-moelleaavaerket.py
+      - name: Commit changes
         run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          # Builder: add verified PULS main record.
-          p=Path('.github/workflows/build-wwtp-catchment-pilot.yml')
-          s=p.read_text(encoding='utf-8')
-          s=s.replace("'damhusaen':'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'\n          }", "'damhusaen':'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f',\n              'moelleaavaerket':'Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c'\n          }")
-          p.write_text(s,encoding='utf-8')
-
-          # UI: recognize Mølleåværket by exact PULS id and normalized name.
-          p=Path('labs/spildevandskort/wwtp-catchments.js')
-          s=p.read_text(encoding='utf-8')
-          s=s.replace('København, Gentofte, Frederiksberg, Herlev, Rødovre og Lyngby-Taarbæk for Lynetten/Damhusåen.', 'København, Gentofte, Frederiksberg, Herlev, Rødovre, Lyngby-Taarbæk og Gladsaxe for Lynetten/Damhusåen/Mølleåværket.')
-          s=s.replace("damhusaen:'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'\n  };", "damhusaen:'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f',\n    moelleaavaerket:'Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c'\n  };")
-          s=s.replace("if(name===nkey('Renseanlæg Damhusåen'))return 'damhusaen';\n    return null;", "if(name===nkey('Renseanlæg Damhusåen'))return 'damhusaen';\n    if(name===nkey('Mølleåværket A/S') || name===nkey('Mølleåværket'))return 'moelleaavaerket';\n    return null;")
-          p.write_text(s,encoding='utf-8')
-
-          # Dedicated catchment QA.
-          p=Path('.github/workflows/qa-wwtp-catchment-pilot.yml')
-          s=p.read_text(encoding='utf-8')
-          s=s.replace("assert len(features)>=98,len(features)", "assert len(features)>=145,len(features)")
-          s=s.replace("=={'lynetten','damhusaen'}", "=={'lynetten','damhusaen','moelleaavaerket'}")
-          s=s.replace("assert meta['plants']['damhusaen']['isCompleteCatchment'] is False", "assert meta['plants']['damhusaen']['isCompleteCatchment'] is False\n          assert meta['plants']['moelleaavaerket']['isCompleteCatchment'] is False")
-          s=s.replace("assert meta['plants']['damhusaen']['puls']['id']=='Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'", "assert meta['plants']['damhusaen']['puls']['id']=='Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'\n          assert meta['plants']['moelleaavaerket']['puls']['id']=='Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c'")
-          marker="          assert meta.get('excludedUnseweredMatches',0)>=2,meta.get('excludedUnseweredMatches')"
-          gladsaxe="""          gladsaxe=[f for f in features if f['properties'].get('municipalityCode')==159]
-          assert len(gladsaxe)==18,len(gladsaxe)
-          glx={key:{f['properties'].get('planNumber') for f in gladsaxe if f['properties'].get('plantKey')==key} for key in ('lynetten','damhusaen','moelleaavaerket')}
-          assert glx['lynetten']=={'UTTERSLEVMOSE-DELOMRÅDEBUDDINGE','UTTERSLEVMOSE-DELOMRÅDEBUDDINGEHOVEDGADE','UTTERSLEVMOSE-DELOMRÅDESØBORG','UTTERSLEVMOSE-DELOMRÅDEUTTERSLEV'},glx
-          assert glx['damhusaen']=={'GYNGEMOSEN-DELOMRÅDEGLADSAXEERHVERV','GYNGEMOSEN-DELOMRÅDEGYNGEMOSEN','GYNGEMOSEN-DELOMRÅDEHØJEGLADSAXE','KAGSÅEN-DELOMRÅDEKAGSÅ','KAGSÅEN-DELOMRÅDEMØRKHØJ'},glx
-          assert glx['moelleaavaerket']=={'BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRD','BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDERHVERV','BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDSØ','BAGSVÆRDSØ-DELOMRÅDEGLADSAXE','BAGSVÆRDSØ-DELOMRÅDEVIBEVÆNGET','BAGSVÆRDRENDEN-DELOMRÅDEKONGSHVILE','BAGSVÆRDRENDEN-DELOMRÅDESTENGÅRD','HOLLANDSRENDEN','VÆREBROÅ'},glx
-          missing_glx=[r for info in meta['plants'].values() for r in info['missingRelations'] if r.get('municipalityCode')==159]
-          assert missing_glx==[],missing_glx
-
-"""
-          s=s.replace(marker,gladsaxe+marker)
-          s=s.replace("for needle in ['lynetten','damhus']:", "for needle in ['lynetten','damhus','mølleå']:")
-          p.write_text(s,encoding='utf-8')
-          PY
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add .github/workflows/build-wwtp-catchment-pilot.yml .github/workflows/qa-wwtp-catchment-pilot.yml labs/spildevandskort/wwtp-catchments.js
