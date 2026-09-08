@@ -1,10 +1,10 @@
 {
-  "version": 2,
+  "version": 3,
   "coverageStatus": "partial-documented-pilot",
   "source": "Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans",
   "rawPlandataFeaturesScanned": 66229,
-  "matchedRawFeatures": 134,
-  "mapFeatureCount": 127,
+  "matchedRawFeatures": 152,
+  "mapFeatureCount": 145,
   "excludedRainwaterOnlyMatches": 0,
   "excludedUnseweredMatches": 2,
   "plants": {
@@ -88,7 +88,11 @@
         "TA24",
         "TA26",
         "TUBORG",
-        "TUBORGPARKVEJ"
+        "TUBORGPARKVEJ",
+        "UTTERSLEVMOSE-DELOMRÅDEBUDDINGE",
+        "UTTERSLEVMOSE-DELOMRÅDEBUDDINGEHOVEDGADE",
+        "UTTERSLEVMOSE-DELOMRÅDESØBORG",
+        "UTTERSLEVMOSE-DELOMRÅDEUTTERSLEV"
       ],
       "matchedPlanNumbers": [
         "100",
@@ -161,7 +165,11 @@
         "TA24",
         "TA26",
         "TUBORG",
-        "TUBORGPARKVEJ"
+        "TUBORGPARKVEJ",
+        "UTTERSLEVMOSE-DELOMRÅDEBUDDINGE",
+        "UTTERSLEVMOSE-DELOMRÅDEBUDDINGEHOVEDGADE",
+        "UTTERSLEVMOSE-DELOMRÅDESØBORG",
+        "UTTERSLEVMOSE-DELOMRÅDEUTTERSLEV"
       ],
       "missingPlanNumbers": [
         "219",
@@ -368,6 +376,22 @@
         {
           "municipalityCode": 157,
           "planNumber": "TUBORGPARKVEJ"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "UTTERSLEVMOSE-DELOMRÅDEBUDDINGE"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "UTTERSLEVMOSE-DELOMRÅDEBUDDINGEHOVEDGADE"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "UTTERSLEVMOSE-DELOMRÅDESØBORG"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "UTTERSLEVMOSE-DELOMRÅDEUTTERSLEV"
         },
         {
           "municipalityCode": 173,
@@ -654,6 +678,22 @@
         {
           "municipalityCode": 157,
           "planNumber": "TUBORGPARKVEJ"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "UTTERSLEVMOSE-DELOMRÅDEBUDDINGE"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "UTTERSLEVMOSE-DELOMRÅDEBUDDINGEHOVEDGADE"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "UTTERSLEVMOSE-DELOMRÅDESØBORG"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "UTTERSLEVMOSE-DELOMRÅDEUTTERSLEV"
         },
         {
           "municipalityCode": 173,
@@ -870,6 +910,11 @@
         "DR1",
         "DS",
         "DT",
+        "GYNGEMOSEN-DELOMRÅDEGLADSAXEERHVERV",
+        "GYNGEMOSEN-DELOMRÅDEGYNGEMOSEN",
+        "GYNGEMOSEN-DELOMRÅDEHØJEGLADSAXE",
+        "KAGSÅEN-DELOMRÅDEKAGSÅ",
+        "KAGSÅEN-DELOMRÅDEMØRKHØJ",
         "OPLAND4",
         "OPLAND5"
       ],
@@ -928,6 +973,11 @@
         "DR1",
         "DS",
         "DT",
+        "GYNGEMOSEN-DELOMRÅDEGLADSAXEERHVERV",
+        "GYNGEMOSEN-DELOMRÅDEGYNGEMOSEN",
+        "GYNGEMOSEN-DELOMRÅDEHØJEGLADSAXE",
+        "KAGSÅEN-DELOMRÅDEKAGSÅ",
+        "KAGSÅEN-DELOMRÅDEMØRKHØJ",
         "OPLAND4",
         "OPLAND5"
       ],
@@ -1021,6 +1071,26 @@
         {
           "municipalityCode": 147,
           "planNumber": "OPLAND5"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "GYNGEMOSEN-DELOMRÅDEGLADSAXEERHVERV"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "GYNGEMOSEN-DELOMRÅDEGYNGEMOSEN"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "GYNGEMOSEN-DELOMRÅDEHØJEGLADSAXE"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "KAGSÅEN-DELOMRÅDEKAGSÅ"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "KAGSÅEN-DELOMRÅDEMØRKHØJ"
         },
         {
           "municipalityCode": 163,
@@ -1249,6 +1319,26 @@
           "planNumber": "OPLAND5"
         },
         {
+          "municipalityCode": 159,
+          "planNumber": "GYNGEMOSEN-DELOMRÅDEGLADSAXEERHVERV"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "GYNGEMOSEN-DELOMRÅDEGYNGEMOSEN"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "GYNGEMOSEN-DELOMRÅDEHØJEGLADSAXE"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "KAGSÅEN-DELOMRÅDEKAGSÅ"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "KAGSÅEN-DELOMRÅDEMØRKHØJ"
+        },
+        {
           "municipalityCode": 163,
           "planNumber": "101"
         },
@@ -1427,6 +1517,115 @@
         "id": "Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f",
         "name": "Renseanlæg Damhusåen",
         "featureId": "Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f"
+      },
+      "isCompleteCatchment": false
+    },
+    "moelleaavaerket": {
+      "plantName": "Mølleåværket A/S",
+      "requestedPlanNumbers": [
+        "BAGSVÆRDRENDEN-DELOMRÅDEKONGSHVILE",
+        "BAGSVÆRDRENDEN-DELOMRÅDESTENGÅRD",
+        "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRD",
+        "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDERHVERV",
+        "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDSØ",
+        "BAGSVÆRDSØ-DELOMRÅDEGLADSAXE",
+        "BAGSVÆRDSØ-DELOMRÅDEVIBEVÆNGET",
+        "HOLLANDSRENDEN",
+        "VÆREBROÅ"
+      ],
+      "matchedPlanNumbers": [
+        "BAGSVÆRDRENDEN-DELOMRÅDEKONGSHVILE",
+        "BAGSVÆRDRENDEN-DELOMRÅDESTENGÅRD",
+        "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRD",
+        "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDERHVERV",
+        "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDSØ",
+        "BAGSVÆRDSØ-DELOMRÅDEGLADSAXE",
+        "BAGSVÆRDSØ-DELOMRÅDEVIBEVÆNGET",
+        "HOLLANDSRENDEN",
+        "VÆREBROÅ"
+      ],
+      "missingPlanNumbers": [],
+      "requestedRelations": [
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDRENDEN-DELOMRÅDEKONGSHVILE"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDRENDEN-DELOMRÅDESTENGÅRD"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRD"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDERHVERV"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDSØ"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDSØ-DELOMRÅDEGLADSAXE"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDSØ-DELOMRÅDEVIBEVÆNGET"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "HOLLANDSRENDEN"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "VÆREBROÅ"
+        }
+      ],
+      "matchedRelations": [
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDRENDEN-DELOMRÅDEKONGSHVILE"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDRENDEN-DELOMRÅDESTENGÅRD"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRD"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDERHVERV"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDSØ"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDSØ-DELOMRÅDEGLADSAXE"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "BAGSVÆRDSØ-DELOMRÅDEVIBEVÆNGET"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "HOLLANDSRENDEN"
+        },
+        {
+          "municipalityCode": 159,
+          "planNumber": "VÆREBROÅ"
+        }
+      ],
+      "missingRelations": [],
+      "puls": {
+        "id": "Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c",
+        "name": "Mølleåværket A/S",
+        "featureId": "Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c"
       },
       "isCompleteCatchment": false
     }
