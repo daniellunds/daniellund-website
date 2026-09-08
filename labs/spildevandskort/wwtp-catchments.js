@@ -1,14 +1,15 @@
 // Proof of concept: explicit, source-backed wastewater catchment -> treatment plant relations.
-// The pilot is deliberately partial; current documented coverage includes København, Gentofte, Frederiksberg, Herlev, Rødovre and Lyngby-Taarbæk for Lynetten/Damhusåen.
+// The pilot is deliberately partial; current documented coverage includes København, Gentofte, Frederiksberg, Herlev, Rødovre, Lyngby-Taarbæk and Gladsaxe for Lynetten/Damhusåen/Mølleåværket.
 // Relation dataset uses current Plandata sewer type filtering (nuvkode) and excludes rainwater-only/unsewered areas.
 (async function integrateWwtpCatchmentPilot(){
   let pilot=null,meta=null,highlightLayer=null,selectedPlantMarker=null,activePlantKey=null;
   const MAIN_PULS_IDS={
     lynetten:'Renseanlaeg.8793f333-ad28-446d-8d0e-c9c854ca4a6d',
-    damhusaen:'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'
+    damhusaen:'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f',
+    moelleaavaerket:'Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c'
   };
 
-  const esc=v=>typeof profileEscape==='function'?profileEscape(String(v)):String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc=v=>typeof profileEscape==='function'?profileEscape(String(v)):String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const nkey=v=>String(v||'').toLocaleLowerCase('da').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9æøå]+/g,'');
   const plantKeyFor=p=>{
     if(!p)return null;
@@ -17,6 +18,7 @@
     const name=nkey(p.name);
     if(name===nkey('Renseanlæg Lynetten'))return 'lynetten';
     if(name===nkey('Renseanlæg Damhusåen'))return 'damhusaen';
+    if(name===nkey('Mølleåværket A/S')||name===nkey('Mølleåværket'))return 'moelleaavaerket';
     return null;
   };
   const featuresFor=key=>(pilot?.features||[]).filter(f=>f.properties?.plantKey===key);
