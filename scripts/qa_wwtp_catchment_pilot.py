@@ -7,7 +7,7 @@ meta=json.loads((ROOT/'wwtp-catchment-pilot-meta.json').read_text(encoding='utf-
 relations=json.loads((ROOT/'wwtp-catchment-relations.json').read_text(encoding='utf-8'))
 features=geo['features']
 
-assert len(features)>=413,len(features)
+assert len(features)>=716,len(features)
 assert meta['mapFeatureCount']==len(features),(meta['mapFeatureCount'],len(features))
 assert set(f['properties']['plantKey'] for f in features)=={'lynetten','damhusaen','moelleaavaerket'}
 assert meta['coverageStatus']=='partial-documented-pilot'
@@ -27,7 +27,7 @@ def rows(mcode,key=None):
 def plans(fs):
     return {f['properties'].get('planNumber') for f in fs}
 
-# Gentofte -> Lynetten pilot relations.
+# Gentofte -> Lynetten and documented Sandtoften -> Mølleåværket.
 gentofte=rows(157,'lynetten')
 gentofte_expected={'ENGHAVERENDEN','KILDESKOVSRENDEN','SKOVSHOVED','SØBORGHUSRENDEN','TUBORG','AUREHØJVEJ','SOFIEVEJ','SANKTPEDERSVEJ','CAROLINEVEJ','TUBORGPARKVEJ','JOMSBORGVEJ','EVANSTONEVEJ'}
 assert gentofte_expected.issubset(plans(gentofte))
@@ -86,9 +86,22 @@ assert plans(rows(159,'moelleaavaerket'))==glx_mol
 missing_glx=[r for info in meta['plants'].values() for r in info['missingRelations'] if r.get('municipalityCode')==159]
 assert missing_glx==[],missing_glx
 
-for mcode in (147,157,159,163,173,175):
+# Rudersdal: exact current Plandata plannr retained from official 2017 planned-conditions
+# Mølleåværket pages, with current 2025 municipal planning material confirming continuity.
+rud_rel=set()
+for rel in mol_rel['relations']:
+    if int(rel.get('municipalityCode',mol_rel.get('municipalityCode',-1)))==230:
+        rud_rel.update(''.join(str(pn).split()).upper() for pn in rel.get('planNumbers',[]))
+rud=rows(230,'moelleaavaerket')
+assert len(rud_rel)==303,len(rud_rel)
+assert len(rud)==303,len(rud)
+assert plans(rud)==rud_rel
+assert {f['properties']['plantKey'] for f in rud}=={'moelleaavaerket'}
+assert all(not set(f['properties'].get('sewerTypeCodes') or []).intersection({4,5}) for f in rud)
+
+for mcode in (147,157,159,163,173,175,230):
     missing=[r for info in meta['plants'].values() for r in info['missingRelations'] if r.get('municipalityCode')==mcode]
     assert missing==[],(mcode,missing)
 
 assert meta.get('excludedUnseweredMatches',0)>=2
-print('WWTP_PILOT_STATIC_QA_OK',len(features),'GLADSAXE',len(gladsaxe),'PLANTS',sorted(meta['plants']))
+print('WWTP_PILOT_STATIC_QA_OK',len(features),'RUDERSDAL',len(rud),'GLADSAXE',len(gladsaxe),'PLANTS',sorted(meta['plants']))
