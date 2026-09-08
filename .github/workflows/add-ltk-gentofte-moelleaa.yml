@@ -1,0 +1,142 @@
+name: Add LTK and Gentofte Mølleåværket catchments
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-ltk-gentofte-moelleaa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install dependencies
+        run: python -m pip install --quiet pypdf shapely
+      - name: Add source-backed relations and harden QA/UI
+        run: |
+          python - <<'PY'
+          import io,json,re,urllib.parse,urllib.request
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          def get(url,timeout=120):
+              req=urllib.request.Request(url,headers={'User-Agent':'daniellund-spildevandskort-builder/1.0'})
+              with urllib.request.urlopen(req,timeout=timeout) as r:return r.read()
+          def keynorm(v):return re.sub(r'[^a-z0-9æøå]','',str(v or '').lower())
+          def pick(p,cs):
+              by={keynorm(k):v for k,v in p.items()}
+              for c in cs:
+                  if keynorm(c) in by:return by[keynorm(c)]
+              return None
+
+          # Source-audit all current Lyngby-Taarbæk Plandata catchments against Bilag 7 rows marked MV.
+          ltk_url='https://www.ltk.dk/media/5zzf1jim/kf-spildevandsplan-2014-2018-vers-10-2-2021.pdf'
+          reader=PdfReader(io.BytesIO(get(ltk_url)))
+          text='\n'.join((p.extract_text() or '') for p in reader.pages[76:87])
+          mv={m.group(1).upper() for m in re.finditer(r'(?<![A-Za-z0-9._-])([A-ZÆØÅ]{1,4}[A-ZÆØÅ0-9._-]*\d[A-ZÆØÅ0-9._-]*)\s+MV\b',text,re.I)}
+          base='https://geoserver.plandata.dk/geoserver/wfs';start=0;current=[]
+          while True:
+              qs=urllib.parse.urlencode({'service':'WFS','version':'2.0.0','request':'GetFeature','typeNames':'pdk:theme_pdk_kloakopland_vedtaget','outputFormat':'application/json','srsName':'EPSG:4326','count':5000,'startIndex':start})
+              data=json.loads(get(base+'?'+qs).decode())
+              fs=data.get('features',[])
+              for f in fs:
+                  p=f.get('properties') or {};mc=pick(p,['kommunekode','kommune_kode','komnr','komkode','kommunenr','kommuneid'])
+                  try:mc=int(float(mc))
+                  except:continue
+                  if mc!=173:continue
+                  pn=str(pick(p,['plannr','plannummer','plan_nr','oplandnr','oplandnummer']) or '').strip()
+                  sc=pick(p,['nuvkode','nuv_kode','kloaktype','kloak_type','sewertype','kloaktypekode'])
+                  try:sc=int(float(sc))
+                  except:sc=None
+                  current.append((pn,sc))
+              if len(fs)<5000:break
+              start+=len(fs)
+          matches=sorted({pn for pn,sc in current if pn.upper() in mv and sc not in (4,5)})
+          assert len(matches)==267,len(matches)
+          assert {'TA22','TA25'}.issubset(set(matches))
+          assert not {pn for pn,sc in current if pn.upper() in mv and sc in (4,5)}
+
+          rel_path=Path('labs/spildevandskort/data/wwtp-catchment-relations.json')
+          data=json.loads(rel_path.read_text(encoding='utf-8'))
+          data['version']=9
+          plants={p['plantKey']:p for p in data['plants']}
+          mol=plants['moelleaavaerket']
+          mol['relations']=[r for r in mol['relations'] if not (int(r.get('municipalityCode',mol.get('municipalityCode',-1))) in (157,173) and ('Mølleåværket' in r.get('sourceLabel','') or 'Bilag 7' in r.get('sourceLabel','') or 'Sandtoften' in r.get('sourceLabel','')))]
+          mol['relations'].append({
+              'municipalityCode':173,
+              'planNumbers':matches,
+              'sourceUrl':ltk_url,
+              'sourceLabel':'Lyngby-Taarbæk Kommune – Spildevandsplan 2014-2018, Bilag 7 kloakoplandsskema (MV = Mølleåværket)'
+          })
+          mol['relations'].append({
+              'municipalityCode':157,
+              'planNumbers':['Sandtoften'],
+              'sourceUrl':'https://spildevandsplan.gentofte.dk/media/za2ntrde/bilag-1-oplandsoversigt-tlg.pdf',
+              'sourceLabel':'Gentofte Kommune – Bilag 1, Sandtoftens opland → Mølleåværket'
+          })
+          rel_path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          # Keep the detail panel compact when a plant has hundreds of documented subcatchments.
+          js_path=Path('labs/spildevandskort/wwtp-catchments.js')
+          js=js_path.read_text(encoding='utf-8')
+          if 'planNumberPreview' not in js:
+              js=js.replace("    const municipalityCount=unique(features.map(f=>f.properties?.municipalityCode)).length;", "    const planNumberPreview=planNumbers.length>24?`${planNumbers.slice(0,24).join(', ')} · +${planNumbers.length-24} flere`:planNumbers.join(', ');\n    const municipalityCount=unique(features.map(f=>f.properties?.municipalityCode)).length;")
+              js=js.replace("${esc(planNumbers.join(', '))}","${esc(planNumberPreview)}")
+          js_path.write_text(js,encoding='utf-8')
+
+          # QA: retain exact Lynetten set, and source-lock the complete current MV relation set.
+          qa_path=Path('scripts/qa_wwtp_catchment_pilot.py')
+          qa=qa_path.read_text(encoding='utf-8')
+          if "relations=json.loads((ROOT/'wwtp-catchment-relations.json')" not in qa:
+              qa=qa.replace("meta=json.loads((ROOT/'wwtp-catchment-pilot-meta.json').read_text(encoding='utf-8'))", "meta=json.loads((ROOT/'wwtp-catchment-pilot-meta.json').read_text(encoding='utf-8'))\nrelations=json.loads((ROOT/'wwtp-catchment-relations.json').read_text(encoding='utf-8'))")
+          qa=qa.replace("assert len(features)>=145,len(features)","assert len(features)>=413,len(features)")
+          qa=qa.replace("gentofte_expected.issubset(plans(gentofte))", "gentofte_expected.issubset(plans(gentofte))\nassert plans(rows(157,'moelleaavaerket'))=={'SANDTOFTEN'}")
+          start_marker='# Lyngby-Taarbæk documented LR catchments -> Lynetten.'
+          end_marker='# Gladsaxe: all 18 current Plandata catchments have source-backed receiving plants.'
+          a=qa.index(start_marker);b=qa.index(end_marker)
+          block="""# Lyngby-Taarbæk documented LR catchments -> Lynetten.
+ltk_expected={'ER01','ER02','ER03','ER04','NY02','TA01','TA02','TA03','TA04','TA05','TA06','TA07','TA08','TA09','TA10','TA11','TA12','TA13','TA14','TA15','TA16','TA17','TA18','TA19','TA20','TA21','TA23','TA24','TA26'}
+ltk_lyn=rows(173,'lynetten')
+assert len(ltk_lyn)==29,len(ltk_lyn)
+assert plans(ltk_lyn)==ltk_expected
+assert not {'TA22','TA25'}.intersection(plans(ltk_lyn))
+
+# Lyngby-Taarbæk Bilag 7 rows marked MV -> Mølleåværket.
+mol_rel=next(p for p in relations['plants'] if p['plantKey']=='moelleaavaerket')
+ltk_mv_rel=set()
+for rel in mol_rel['relations']:
+    if int(rel.get('municipalityCode',mol_rel.get('municipalityCode',-1)))==173:
+        ltk_mv_rel.update(''.join(str(pn).split()).upper() for pn in rel.get('planNumbers',[]))
+ltk_mv=rows(173,'moelleaavaerket')
+assert len(ltk_mv_rel)==267,len(ltk_mv_rel)
+assert len(ltk_mv)==267,len(ltk_mv)
+assert plans(ltk_mv)==ltk_mv_rel
+assert {'TA22','TA25'}.issubset(plans(ltk_mv))
+assert not plans(ltk_lyn).intersection(plans(ltk_mv))
+
+"""
+          qa=qa[:a]+block+qa[b:]
+          qa_path.write_text(qa,encoding='utf-8')
+          print('RELATIONS_UPDATED LTK_MV',len(matches),'GENTOFTE_MV',1)
+          PY
+      - name: Build updated treatment-plant catchments
+        run: python scripts/build_wwtp_catchment_pilot.py
+      - name: Static QA before commit
+        run: |
+          node --check labs/spildevandskort/wwtp-catchments.js
+          python scripts/qa_wwtp_catchment_pilot.py
+      - name: Commit one stable batch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add labs/spildevandskort/data/wwtp-catchment-relations.json labs/spildevandskort/data/wwtp-catchment-pilot.geojson labs/spildevandskort/data/wwtp-catchment-pilot-meta.json labs/spildevandskort/wwtp-catchments.js scripts/qa_wwtp_catchment_pilot.py
+          git commit -m 'Expand Mølleåværket documented catchment'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
