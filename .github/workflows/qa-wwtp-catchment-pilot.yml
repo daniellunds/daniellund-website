@@ -8,6 +8,8 @@ on:
       - 'labs/spildevandskort/data/wwtp-catchment-pilot.geojson'
       - 'labs/spildevandskort/data/wwtp-catchment-pilot-meta.json'
       - 'labs/spildevandskort/data/wwtp-catchment-relations.json'
+      - 'scripts/qa_wwtp_catchment_pilot.py'
+      - 'scripts/qa_wwtp_catchment_browser.py'
       - '.github/workflows/qa-wwtp-catchment-pilot.yml'
 
 permissions:
@@ -24,64 +26,7 @@ jobs:
           node --check labs/spildevandskort/wwtp-catchments.js
           test -s labs/spildevandskort/data/wwtp-catchment-pilot.geojson
           test -s labs/spildevandskort/data/wwtp-catchment-pilot-meta.json
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          root=Path('labs/spildevandskort/data')
-          geo=json.loads((root/'wwtp-catchment-pilot.geojson').read_text())
-          meta=json.loads((root/'wwtp-catchment-pilot-meta.json').read_text())
-          features=geo['features']
-          assert len(features)>=127,len(features)
-          assert meta['mapFeatureCount']==len(features),(meta['mapFeatureCount'],len(features))
-          assert set(f['properties']['plantKey'] for f in features)=={'lynetten','damhusaen'}
-          assert meta['coverageStatus']=='partial-documented-pilot'
-          assert meta['plants']['lynetten']['isCompleteCatchment'] is False
-          assert meta['plants']['damhusaen']['isCompleteCatchment'] is False
-          assert meta['plants']['lynetten']['puls']['id']=='Renseanlaeg.8793f333-ad28-446d-8d0e-c9c854ca4a6d'
-          assert meta['plants']['damhusaen']['puls']['id']=='Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f'
-
-          for f in features:
-              codes=set(f['properties'].get('sewerTypeCodes') or [])
-              assert not codes.intersection({4,5}),(f['properties'].get('municipalityCode'),f['properties'].get('planNumber'),codes)
-
-          gentofte=[f for f in features if f['properties'].get('plantKey')=='lynetten' and f['properties'].get('municipalityCode')==157]
-          gentofte_expected={'ENGHAVERENDEN','KILDESKOVSRENDEN','SKOVSHOVED','SØBORGHUSRENDEN','TUBORG','AUREHØJVEJ','SOFIEVEJ','SANKTPEDERSVEJ','CAROLINEVEJ','TUBORGPARKVEJ','JOMSBORGVEJ','EVANSTONEVEJ'}
-          assert gentofte_expected.issubset({f['properties'].get('planNumber') for f in gentofte})
-
-          frederiksberg=[f for f in features if f['properties'].get('municipalityCode')==147]
-          assert len(frederiksberg)==5,len(frederiksberg)
-          fb={key:{f['properties'].get('planNumber') for f in frederiksberg if f['properties'].get('plantKey')==key} for key in ('lynetten','damhusaen')}
-          assert fb['lynetten']=={'OPLAND1','OPLAND2','OPLAND3'},fb
-          assert fb['damhusaen']=={'OPLAND4','OPLAND5'},fb
-
-          herlev=[f for f in features if f['properties'].get('municipalityCode')==163]
-          herlev_expected={'101','102','103A','103B','103C','104','105','106','107','108','200','201','202','203A','203B','204'}
-          assert len(herlev)==16,len(herlev)
-          assert {f['properties'].get('planNumber') for f in herlev}==herlev_expected,herlev
-          assert {f['properties'].get('plantKey') for f in herlev}=={'damhusaen'},herlev
-          assert not any(f['properties'].get('planNumber')=='103D' for f in herlev)
-
-          roedovre=[f for f in features if f['properties'].get('municipalityCode')==175]
-          roedovre_expected={'DAF01','DAF18','DAS','DB','DB1','DBS','DC','DD','DE','DF','DG','DH','DK','DL','DM','DMF17','DN','DP','DQS','DR','DR1','DS','DT'}
-          assert len(roedovre)==23,len(roedovre)
-          assert {f['properties'].get('planNumber') for f in roedovre}==roedovre_expected,roedovre
-          assert {f['properties'].get('plantKey') for f in roedovre}=={'damhusaen'},roedovre
-          assert not any(str(f['properties'].get('planNumber','')).startswith('A') for f in roedovre),roedovre
-          missing_roedovre=[r for r in meta['plants']['damhusaen']['missingRelations'] if r.get('municipalityCode')==175]
-          assert missing_roedovre==[],missing_roedovre
-
-          ltk=[f for f in features if f['properties'].get('municipalityCode')==173]
-          ltk_expected={'ER01','ER02','ER03','ER04','NY02','TA01','TA02','TA03','TA04','TA05','TA06','TA07','TA08','TA09','TA10','TA11','TA12','TA13','TA14','TA15','TA16','TA17','TA18','TA19','TA20','TA21','TA23','TA24','TA26'}
-          assert len(ltk)==29,len(ltk)
-          assert {f['properties'].get('planNumber') for f in ltk}==ltk_expected,ltk
-          assert {f['properties'].get('plantKey') for f in ltk}=={'lynetten'},ltk
-          assert not any(f['properties'].get('planNumber') in {'TA22','TA25'} for f in ltk),ltk
-          missing_ltk=[r for r in meta['plants']['lynetten']['missingRelations'] if r.get('municipalityCode')==173]
-          assert missing_ltk==[],missing_ltk
-
-          assert meta.get('excludedUnseweredMatches',0)>=2,meta.get('excludedUnseweredMatches')
-          print('WWTP_PILOT_STATIC_QA_OK',len(features),'GENTOFTE',len(gentofte),'FREDERIKSBERG',len(frederiksberg),'HERLEV',len(herlev),'ROEDOVRE',len(roedovre),'LYNGBY_TAARBAEK',len(ltk))
-          PY
+          python scripts/qa_wwtp_catchment_pilot.py
       - name: Install Playwright
         run: |
           python -m pip install --quiet playwright
@@ -93,58 +38,4 @@ jobs:
       - name: Test plant click and catchment highlight
         env:
           MAP_URL: http://127.0.0.1:4184/labs/spildevandskort/
-        run: |
-          cat >/tmp/qa.py <<'PY'
-          import asyncio, os
-          from playwright.async_api import async_playwright
-
-          async def check(browser,mobile=False):
-              context=await browser.new_context(viewport={'width':390,'height':844} if mobile else {'width':1440,'height':900},is_mobile=mobile)
-              page=await context.new_page(); errors=[]
-              page.on('pageerror',lambda e:errors.append(str(e)))
-              r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
-              assert r and r.ok
-              await page.wait_for_function("window.WWTP_CATCHMENT_PILOT_READY===true",timeout=90000)
-              await page.wait_for_function("typeof state!=='undefined' && state.plants.length>700 && state.features.length>350",timeout=90000)
-              candidates=await page.evaluate("""() => state.plants.filter(p=>/lynetten|damhus/i.test(p.name||'')).map(p=>({id:p.id,name:p.name,capacity:p.capacity,active:p.active})).slice(0,30)""")
-              for needle in ['lynetten','damhus']:
-                  opened=await page.evaluate("""needle => {
-                    const rows=state.plants.filter(p=>String(p.name||'').toLocaleLowerCase('da').includes(needle));
-                    rows.sort((a,b)=>(Number(b.capacity)||0)-(Number(a.capacity)||0));
-                    const p=rows.find(x=>x.active) || rows[0];
-                    if(!p)return null;
-                    openPlant(p);
-                    let first=null; state.polygonLayer.eachLayer(l=>{if(!first)first=l});
-                    return {id:p.id,name:p.name,capacity:p.capacity,fillOpacity:first?.options?.fillOpacity};
-                  }""",needle)
-                  assert opened,(needle,candidates)
-                  await page.wait_for_selector('#detailPanel.open',timeout=10000)
-                  text=(await page.locator('#detailContent').inner_text()).lower()
-                  assert 'renseanlægsopland · pilot' in text,(needle,text)
-                  assert 'dokumenteret pilot · delvis dækning' in text,(needle,text)
-                  assert 'oplandsrelationer matchet' in text,(needle,text)
-                  assert 'kommuner i piloten' in text,(needle,text)
-                  assert 'nulstil opland' in text,(needle,text)
-                  assert opened['fillOpacity'] is not None and opened['fillOpacity']<0.1,opened
-                  assert await page.locator('#detailContent .wwtp-catchment-pilot').count()==1
-                  assert await page.locator('#detailContent [data-reset-wwtp]').count()==1
-                  await page.locator('#detailContent [data-reset-wwtp]').click()
-                  await page.wait_for_timeout(150)
-                  restored=await page.evaluate("""() => {let first=null;state.polygonLayer.eachLayer(l=>{if(!first)first=l});return first?.options?.fillOpacity}""")
-                  assert restored is not None and restored>0.2,restored
-              assert not errors,errors
-              if mobile:
-                  overflow=await page.evaluate('document.documentElement.scrollWidth-document.documentElement.clientWidth')
-                  assert overflow<=3,overflow
-              print(('MOBILE' if mobile else 'DESKTOP'),'WWTP_CATCHMENT_PILOT_BROWSER_QA_OK')
-              await context.close()
-
-          async def main():
-              async with async_playwright() as p:
-                  browser=await p.chromium.launch()
-                  await check(browser,False)
-                  await check(browser,True)
-                  await browser.close()
-          asyncio.run(main())
-          PY
-          python /tmp/qa.py
+        run: python scripts/qa_wwtp_catchment_browser.py
