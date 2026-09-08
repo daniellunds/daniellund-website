@@ -131,11 +131,7 @@
         "326",
         "378"
       ],
-      "puls": {
-        "id": "Renseanlaeg.4e07442b-9b8c-4842-84a2-50d36ace45d5",
-        "name": "Damhusåen nødoverløb Mekanisk Renset Bypass",
-        "featureId": "Renseanlaeg.4e07442b-9b8c-4842-84a2-50d36ace45d5"
-      },
+      "puls": null,
       "isCompleteCatchment": false
     }
   }
