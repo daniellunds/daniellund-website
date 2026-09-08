@@ -200,5 +200,13 @@ jobs:
             echo 'No generated data changes'
           else
             git commit -m 'Build documented WWTP catchment pilot data'
-            git push
+            git fetch origin main
+            LOCAL_REL=$(git rev-parse HEAD^:labs/spildevandskort/data/wwtp-catchment-relations.json)
+            REMOTE_REL=$(git rev-parse origin/main:labs/spildevandskort/data/wwtp-catchment-relations.json)
+            if [ "$LOCAL_REL" != "$REMOTE_REL" ]; then
+              echo 'Relation table changed during build; refusing to push stale generated data.'
+              exit 0
+            fi
+            git rebase origin/main
+            git push origin HEAD:main
           fi
