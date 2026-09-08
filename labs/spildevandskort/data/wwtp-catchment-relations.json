@@ -1,6 +1,6 @@
 {
-  "version": 5,
-  "scope": "Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across Copenhagen, Gentofte, Frederiksberg and Herlev",
+  "version": 6,
+  "scope": "Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across Copenhagen, Gentofte, Frederiksberg, Herlev and Rødovre",
   "coverageStatus": "partial",
   "notes": "Relations are included only where an official municipal wastewater-plan source identifies the receiving treatment plant. Current subcatchment numbers are preferred when older catchment numbers have been split. Relation-level municipalityCode supports cross-municipality catchments. Ambiguous or contradictory relations are deliberately excluded. This pilot is not a complete treatment-plant catchment and must be labelled as partial in the UI.",
   "plants": [
@@ -392,6 +392,36 @@
           ],
           "sourceUrl": "https://herlev.dk/media/10867/spildevandsplan_2020-2029.pdf",
           "sourceLabel": "Herlev Kommune – Spildevandsplan 2020-2029, oplandstabel"
+        },
+        {
+          "municipalityCode": 175,
+          "planNumbers": [
+            "DAF01",
+            "DAF18",
+            "DAS",
+            "DB",
+            "DB1",
+            "DBS",
+            "DC",
+            "DD",
+            "DE",
+            "DF",
+            "DG",
+            "DH",
+            "DK",
+            "DL",
+            "DM",
+            "DMF17",
+            "DN",
+            "DP",
+            "DQS",
+            "DR",
+            "DR1",
+            "DS",
+            "DT"
+          ],
+          "sourceUrl": "https://www.rk.dk/index.php?eID=tx_rkdoc_attachment&filename=%2FPunkt_127_Bilag_3_Bilag_1_Spildevandsplan_2022.pdf&uid=242770",
+          "sourceLabel": "Rødovre Kommune – Spildevandsplan 2022-2030, Hovedopland D"
         }
       ]
     }
