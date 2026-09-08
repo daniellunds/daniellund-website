@@ -3,8 +3,8 @@
   "coverageStatus": "partial-documented-pilot",
   "source": "Plandata.dk vedtagne kloakoplande + source-backed municipal wastewater plans",
   "rawPlandataFeaturesScanned": 66229,
-  "matchedRawFeatures": 420,
-  "mapFeatureCount": 413,
+  "matchedRawFeatures": 723,
+  "mapFeatureCount": 716,
   "excludedRainwaterOnlyMatches": 0,
   "excludedUnseweredMatches": 2,
   "plants": {
@@ -1523,6 +1523,78 @@
     "moelleaavaerket": {
       "plantName": "Mølleåværket A/S",
       "requestedPlanNumbers": [
+        "A010B",
+        "A010F",
+        "A011",
+        "A014",
+        "A020",
+        "A021",
+        "A030.1",
+        "A030.2",
+        "A031",
+        "A031B",
+        "A032",
+        "A040A",
+        "A040B",
+        "A040C",
+        "A060A",
+        "A060C",
+        "A061A",
+        "A061B",
+        "A070",
+        "A071",
+        "A072",
+        "A073",
+        "A080",
+        "A090",
+        "A090A",
+        "A090B",
+        "A090C",
+        "A100",
+        "A110A.1",
+        "A110B",
+        "A120",
+        "A130",
+        "A140A",
+        "A140B",
+        "A140C",
+        "A141A",
+        "A141B",
+        "A142A",
+        "A142B",
+        "A150A",
+        "A150B",
+        "A151A",
+        "A151B",
+        "A151C",
+        "A151D",
+        "A151E",
+        "A152A",
+        "A152B",
+        "A152C",
+        "A152D",
+        "A153A",
+        "A153B",
+        "A154",
+        "A160A",
+        "A160B",
+        "A170",
+        "A190",
+        "A200",
+        "A21",
+        "A210",
+        "A220",
+        "A221",
+        "A240",
+        "A250",
+        "A260",
+        "A270",
+        "A280",
+        "B010",
+        "B020A",
+        "B020B",
+        "B030A",
+        "B030B",
         "BA01",
         "BA02",
         "BA03",
@@ -1545,11 +1617,219 @@
         "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDSØ",
         "BAGSVÆRDSØ-DELOMRÅDEGLADSAXE",
         "BAGSVÆRDSØ-DELOMRÅDEVIBEVÆNGET",
+        "C01",
+        "C020",
+        "C020V",
+        "C021",
+        "C030",
+        "C031",
+        "C032",
+        "C040017",
+        "C040150A",
+        "C040150B",
+        "C040150D",
+        "C040150E",
+        "C040150F",
+        "C040150V",
+        "C041A",
+        "C041B",
+        "C041C",
+        "C041D",
+        "C042",
+        "C050",
+        "C080",
+        "C081",
+        "C090",
+        "C091A",
+        "C091B",
+        "C100A",
+        "C100B",
+        "C110",
+        "C111",
+        "C120A",
+        "C120C",
+        "C120D",
+        "C121A",
+        "C121B",
+        "C121C",
+        "C150",
+        "C170A",
+        "C170B",
+        "C171",
+        "C180",
+        "C181",
+        "C190",
+        "C200",
+        "C210",
+        "C220",
+        "C221",
+        "C222",
+        "C222.1",
+        "C230A",
+        "C230B",
+        "C231",
+        "C232",
+        "C233",
+        "C240",
+        "C250",
+        "C270",
+        "C280",
+        "C290",
+        "C300",
+        "C301",
+        "C302",
+        "C303A",
+        "C303B",
+        "C303C",
+        "C303D",
+        "C303E",
+        "C303F",
+        "C304",
+        "C304C",
+        "C304D",
+        "C310",
+        "C310A",
+        "C310B",
+        "C311",
+        "C312",
+        "C313",
+        "C320A",
+        "C320B",
+        "C320C",
+        "C320D",
+        "C330",
+        "C330.1",
+        "C340A",
+        "C340B",
+        "C340C",
+        "C340D",
+        "C350",
+        "C360",
+        "C370",
+        "C390",
+        "C400A",
+        "C400B",
+        "C400C",
+        "C400D",
+        "C400E",
+        "C400F",
+        "C400G",
+        "C400H",
+        "C400I",
+        "C401",
+        "C402",
+        "C410",
+        "D010",
+        "D011A",
+        "D011B",
+        "D020A",
+        "D020B",
+        "D030",
+        "D031",
+        "D032A",
+        "D032B",
+        "D040",
+        "D050",
+        "D050A",
+        "D050B",
+        "D050C",
+        "D050E",
+        "D050F",
+        "D050G",
+        "D060",
+        "D070",
+        "D120",
+        "D130",
+        "D140",
+        "D140.1",
+        "D140A",
+        "D150",
+        "D151",
+        "D152",
+        "E000",
+        "E010",
+        "E010A",
+        "E010B",
+        "E010C",
+        "E021A",
+        "E021B",
+        "E022",
+        "E022A",
+        "E022B",
+        "E022C",
+        "E023",
+        "E023A",
+        "E023A.1",
+        "E023A.2",
+        "E023B",
+        "E023C",
+        "E023D",
+        "E023E",
+        "E023F",
+        "E023G",
+        "E023Z",
+        "E024",
+        "E024.1",
+        "E024N",
+        "E030",
+        "E041A",
+        "E041B",
+        "E041C",
+        "E041D",
+        "E042C",
+        "E043",
+        "E043A",
+        "E043B",
+        "E043D",
+        "E043G",
+        "E043H",
+        "E050",
+        "E070",
+        "E080",
+        "E090",
+        "E100",
+        "E110",
+        "E120",
+        "E130",
+        "E140.1",
+        "E151.1",
+        "E151.2",
+        "E160",
+        "E180",
         "ER05",
+        "F010A",
+        "F010B",
+        "F010C",
+        "F010E",
+        "F010F",
+        "F010G",
+        "F010H",
+        "F011",
+        "F012A",
+        "F012B",
+        "F012C",
+        "F012D",
+        "F012E",
+        "F013A",
+        "F013B",
+        "F013C",
+        "F013D",
+        "F013E",
+        "F013F",
+        "F014",
+        "F015",
+        "F016",
+        "F017",
+        "F018A",
+        "F018B",
+        "F019",
+        "F020",
         "FR01",
         "FR02",
         "FR03",
         "HOLLANDSRENDEN",
+        "K010A",
+        "K010B",
         "LU01",
         "LU02",
         "LU03",
@@ -1720,7 +2000,30 @@
         "LY97",
         "LY98",
         "LY99",
+        "N010",
+        "N020",
+        "N040",
+        "N040.1",
+        "N040.2",
+        "N040.3",
+        "N040.4",
         "NY01",
+        "N_LK",
+        "P010",
+        "P020A",
+        "R020",
+        "R020B",
+        "R020D",
+        "R020E",
+        "R021",
+        "R022",
+        "R023",
+        "R024",
+        "R025",
+        "R026",
+        "R027",
+        "R028",
+        "R029",
         "SANDTOFTEN",
         "TA22",
         "TA25",
@@ -1802,6 +2105,78 @@
         "VÆREBROÅ"
       ],
       "matchedPlanNumbers": [
+        "A010B",
+        "A010F",
+        "A011",
+        "A014",
+        "A020",
+        "A021",
+        "A030.1",
+        "A030.2",
+        "A031",
+        "A031B",
+        "A032",
+        "A040A",
+        "A040B",
+        "A040C",
+        "A060A",
+        "A060C",
+        "A061A",
+        "A061B",
+        "A070",
+        "A071",
+        "A072",
+        "A073",
+        "A080",
+        "A090",
+        "A090A",
+        "A090B",
+        "A090C",
+        "A100",
+        "A110A.1",
+        "A110B",
+        "A120",
+        "A130",
+        "A140A",
+        "A140B",
+        "A140C",
+        "A141A",
+        "A141B",
+        "A142A",
+        "A142B",
+        "A150A",
+        "A150B",
+        "A151A",
+        "A151B",
+        "A151C",
+        "A151D",
+        "A151E",
+        "A152A",
+        "A152B",
+        "A152C",
+        "A152D",
+        "A153A",
+        "A153B",
+        "A154",
+        "A160A",
+        "A160B",
+        "A170",
+        "A190",
+        "A200",
+        "A21",
+        "A210",
+        "A220",
+        "A221",
+        "A240",
+        "A250",
+        "A260",
+        "A270",
+        "A280",
+        "B010",
+        "B020A",
+        "B020B",
+        "B030A",
+        "B030B",
         "BA01",
         "BA02",
         "BA03",
@@ -1824,11 +2199,219 @@
         "BAGSVÆRDSØ-DELOMRÅDEBAGSVÆRDSØ",
         "BAGSVÆRDSØ-DELOMRÅDEGLADSAXE",
         "BAGSVÆRDSØ-DELOMRÅDEVIBEVÆNGET",
+        "C01",
+        "C020",
+        "C020V",
+        "C021",
+        "C030",
+        "C031",
+        "C032",
+        "C040017",
+        "C040150A",
+        "C040150B",
+        "C040150D",
+        "C040150E",
+        "C040150F",
+        "C040150V",
+        "C041A",
+        "C041B",
+        "C041C",
+        "C041D",
+        "C042",
+        "C050",
+        "C080",
+        "C081",
+        "C090",
+        "C091A",
+        "C091B",
+        "C100A",
+        "C100B",
+        "C110",
+        "C111",
+        "C120A",
+        "C120C",
+        "C120D",
+        "C121A",
+        "C121B",
+        "C121C",
+        "C150",
+        "C170A",
+        "C170B",
+        "C171",
+        "C180",
+        "C181",
+        "C190",
+        "C200",
+        "C210",
+        "C220",
+        "C221",
+        "C222",
+        "C222.1",
+        "C230A",
+        "C230B",
+        "C231",
+        "C232",
+        "C233",
+        "C240",
+        "C250",
+        "C270",
+        "C280",
+        "C290",
+        "C300",
+        "C301",
+        "C302",
+        "C303A",
+        "C303B",
+        "C303C",
+        "C303D",
+        "C303E",
+        "C303F",
+        "C304",
+        "C304C",
+        "C304D",
+        "C310",
+        "C310A",
+        "C310B",
+        "C311",
+        "C312",
+        "C313",
+        "C320A",
+        "C320B",
+        "C320C",
+        "C320D",
+        "C330",
+        "C330.1",
+        "C340A",
+        "C340B",
+        "C340C",
+        "C340D",
+        "C350",
+        "C360",
+        "C370",
+        "C390",
+        "C400A",
+        "C400B",
+        "C400C",
+        "C400D",
+        "C400E",
+        "C400F",
+        "C400G",
+        "C400H",
+        "C400I",
+        "C401",
+        "C402",
+        "C410",
+        "D010",
+        "D011A",
+        "D011B",
+        "D020A",
+        "D020B",
+        "D030",
+        "D031",
+        "D032A",
+        "D032B",
+        "D040",
+        "D050",
+        "D050A",
+        "D050B",
+        "D050C",
+        "D050E",
+        "D050F",
+        "D050G",
+        "D060",
+        "D070",
+        "D120",
+        "D130",
+        "D140",
+        "D140.1",
+        "D140A",
+        "D150",
+        "D151",
+        "D152",
+        "E000",
+        "E010",
+        "E010A",
+        "E010B",
+        "E010C",
+        "E021A",
+        "E021B",
+        "E022",
+        "E022A",
+        "E022B",
+        "E022C",
+        "E023",
+        "E023A",
+        "E023A.1",
+        "E023A.2",
+        "E023B",
+        "E023C",
+        "E023D",
+        "E023E",
+        "E023F",
+        "E023G",
+        "E023Z",
+        "E024",
+        "E024.1",
+        "E024N",
+        "E030",
+        "E041A",
+        "E041B",
+        "E041C",
+        "E041D",
+        "E042C",
+        "E043",
+        "E043A",
+        "E043B",
+        "E043D",
+        "E043G",
+        "E043H",
+        "E050",
+        "E070",
+        "E080",
+        "E090",
+        "E100",
+        "E110",
+        "E120",
+        "E130",
+        "E140.1",
+        "E151.1",
+        "E151.2",
+        "E160",
+        "E180",
         "ER05",
+        "F010A",
+        "F010B",
+        "F010C",
+        "F010E",
+        "F010F",
+        "F010G",
+        "F010H",
+        "F011",
+        "F012A",
+        "F012B",
+        "F012C",
+        "F012D",
+        "F012E",
+        "F013A",
+        "F013B",
+        "F013C",
+        "F013D",
+        "F013E",
+        "F013F",
+        "F014",
+        "F015",
+        "F016",
+        "F017",
+        "F018A",
+        "F018B",
+        "F019",
+        "F020",
         "FR01",
         "FR02",
         "FR03",
         "HOLLANDSRENDEN",
+        "K010A",
+        "K010B",
         "LU01",
         "LU02",
         "LU03",
@@ -1999,7 +2582,30 @@
         "LY97",
         "LY98",
         "LY99",
+        "N010",
+        "N020",
+        "N040",
+        "N040.1",
+        "N040.2",
+        "N040.3",
+        "N040.4",
         "NY01",
+        "N_LK",
+        "P010",
+        "P020A",
+        "R020",
+        "R020B",
+        "R020D",
+        "R020E",
+        "R021",
+        "R022",
+        "R023",
+        "R024",
+        "R025",
+        "R026",
+        "R027",
+        "R028",
+        "R029",
         "SANDTOFTEN",
         "TA22",
         "TA25",
@@ -3189,6 +3795,1218 @@
         {
           "municipalityCode": 173,
           "planNumber": "VI9"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A010B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A010F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A011"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A014"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A020"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A021"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A030.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A030.2"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A031"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A031B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A032"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A040A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A040B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A040C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A060A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A060C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A061A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A061B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A070"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A071"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A072"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A073"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A080"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A090"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A090A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A090B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A090C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A100"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A110A.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A110B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A120"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A130"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A140A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A140B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A140C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A141A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A141B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A142A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A142B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A150A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A150B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A151A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A151B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A151C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A151D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A151E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A152A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A152B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A152C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A152D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A153A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A153B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A154"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A160A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A160B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A170"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A190"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A200"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A21"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A210"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A220"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A221"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A240"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A250"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A260"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A270"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A280"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "B010"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "B020A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "B020B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "B030A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "B030B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C01"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C020"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C020V"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C021"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C030"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C031"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C032"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040017"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150V"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C041A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C041B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C041C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C041D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C042"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C050"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C080"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C081"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C090"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C091A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C091B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C100A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C100B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C110"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C111"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C120A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C120C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C120D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C121A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C121B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C121C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C150"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C170A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C170B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C171"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C180"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C181"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C190"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C200"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C210"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C220"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C221"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C222"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C222.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C230A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C230B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C231"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C232"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C233"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C240"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C250"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C270"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C280"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C290"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C300"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C301"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C302"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C304"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C304C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C304D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C310"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C310A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C310B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C311"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C312"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C313"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C320A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C320B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C320C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C320D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C330"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C330.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C340A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C340B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C340C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C340D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C350"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C360"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C370"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C390"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400G"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400H"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400I"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C401"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C402"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C410"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D010"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D011A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D011B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D020A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D020B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D030"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D031"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D032A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D032B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D040"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050G"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D060"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D070"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D120"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D130"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D140"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D140.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D140A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D150"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D151"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D152"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E000"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E010"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E010A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E010B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E010C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E021A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E021B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E022"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E022A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E022B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E022C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023A.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023A.2"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023G"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023Z"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E024"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E024.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E024N"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E030"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E041A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E041B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E041C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E041D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E042C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043G"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043H"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E050"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E070"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E080"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E090"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E100"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E110"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E120"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E130"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E140.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E151.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E151.2"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E160"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E180"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010G"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010H"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F011"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F012A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F012B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F012C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F012D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F012E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F014"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F015"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F016"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F017"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F018A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F018B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F019"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F020"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "K010A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "K010B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N010"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N020"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N040"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N040.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N040.2"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N040.3"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N040.4"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N_LK"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "P010"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "P020A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R020"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R020B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R020D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R020E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R021"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R022"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R023"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R024"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R025"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R026"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R027"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R028"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R029"
         }
       ],
       "matchedRelations": [
@@ -4299,6 +6117,1218 @@
         {
           "municipalityCode": 173,
           "planNumber": "VI9"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A010B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A010F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A011"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A014"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A020"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A021"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A030.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A030.2"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A031"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A031B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A032"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A040A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A040B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A040C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A060A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A060C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A061A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A061B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A070"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A071"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A072"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A073"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A080"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A090"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A090A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A090B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A090C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A100"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A110A.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A110B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A120"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A130"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A140A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A140B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A140C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A141A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A141B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A142A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A142B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A150A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A150B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A151A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A151B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A151C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A151D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A151E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A152A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A152B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A152C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A152D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A153A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A153B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A154"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A160A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A160B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A170"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A190"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A200"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A21"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A210"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A220"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A221"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A240"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A250"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A260"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A270"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "A280"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "B010"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "B020A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "B020B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "B030A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "B030B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C01"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C020"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C020V"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C021"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C030"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C031"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C032"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040017"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C040150V"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C041A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C041B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C041C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C041D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C042"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C050"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C080"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C081"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C090"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C091A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C091B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C100A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C100B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C110"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C111"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C120A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C120C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C120D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C121A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C121B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C121C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C150"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C170A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C170B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C171"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C180"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C181"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C190"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C200"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C210"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C220"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C221"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C222"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C222.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C230A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C230B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C231"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C232"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C233"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C240"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C250"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C270"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C280"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C290"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C300"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C301"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C302"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C303F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C304"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C304C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C304D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C310"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C310A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C310B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C311"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C312"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C313"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C320A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C320B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C320C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C320D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C330"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C330.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C340A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C340B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C340C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C340D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C350"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C360"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C370"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C390"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400G"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400H"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C400I"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C401"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C402"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "C410"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D010"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D011A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D011B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D020A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D020B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D030"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D031"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D032A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D032B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D040"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D050G"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D060"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D070"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D120"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D130"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D140"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D140.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D140A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D150"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D151"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "D152"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E000"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E010"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E010A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E010B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E010C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E021A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E021B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E022"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E022A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E022B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E022C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023A.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023A.2"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023G"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E023Z"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E024"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E024.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E024N"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E030"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E041A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E041B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E041C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E041D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E042C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043G"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E043H"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E050"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E070"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E080"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E090"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E100"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E110"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E120"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E130"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E140.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E151.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E151.2"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E160"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "E180"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010G"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F010H"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F011"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F012A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F012B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F012C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F012D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F012E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013C"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F013F"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F014"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F015"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F016"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F017"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F018A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F018B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F019"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "F020"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "K010A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "K010B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N010"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N020"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N040"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N040.1"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N040.2"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N040.3"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N040.4"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "N_LK"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "P010"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "P020A"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R020"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R020B"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R020D"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R020E"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R021"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R022"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R023"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R024"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R025"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R026"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R027"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R028"
+        },
+        {
+          "municipalityCode": 230,
+          "planNumber": "R029"
         }
       ],
       "missingRelations": [],
