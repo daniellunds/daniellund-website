@@ -1,6 +1,6 @@
 {
-  "version": 4,
-  "scope": "Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across Copenhagen, Gentofte and Frederiksberg",
+  "version": 5,
+  "scope": "Pilot: source-backed wastewater catchments for BIOFOS Lynetten and Damhusåen across Copenhagen, Gentofte, Frederiksberg and Herlev",
   "coverageStatus": "partial",
   "notes": "Relations are included only where an official municipal wastewater-plan source identifies the receiving treatment plant. Current subcatchment numbers are preferred when older catchment numbers have been split. Relation-level municipalityCode supports cross-municipality catchments. Ambiguous or contradictory relations are deliberately excluded. This pilot is not a complete treatment-plant catchment and must be labelled as partial in the UI.",
   "plants": [
@@ -369,6 +369,29 @@
           ],
           "sourceUrl": "https://www.frederiksberg.dk/media/zhfpmius/spildevandsplan_2019_2031_web.pdf",
           "sourceLabel": "Frederiksberg Kommune – Spildevandsplan 2019-2031, hovedoplande"
+        },
+        {
+          "municipalityCode": 163,
+          "planNumbers": [
+            "101",
+            "102",
+            "103A",
+            "103B",
+            "103C",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "200",
+            "201",
+            "202",
+            "203A",
+            "203B",
+            "204"
+          ],
+          "sourceUrl": "https://herlev.dk/media/10867/spildevandsplan_2020-2029.pdf",
+          "sourceLabel": "Herlev Kommune – Spildevandsplan 2020-2029, oplandstabel"
         }
       ]
     }
