@@ -1,0 +1,27 @@
+name: Add Rudersdal Mølleåværket relations
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-rudersdal-moelleaa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF parser
+        run: python -m pip install --quiet pypdf
+      - name: Build source-backed Rudersdal relation set
+        run: python scripts/add_rudersdal_moelleaa.py
+      - name: Commit relation and audit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add labs/spildevandskort/data/wwtp-catchment-relations.json .github/audits/rudersdal-moelleaa-match.json
+          git commit -m 'Add Rudersdal Mølleåværket catchment relations'
+          git push
