@@ -11,11 +11,9 @@
       "name": "København",
       "currentWastewaterCatchments": 653,
       "counts": {
-        "lynetten": 27,
-        "inheritable:lynetten": 77,
-        "unclassified": 499,
-        "damhusaen": 15,
-        "inheritable:damhusaen": 35
+        "lynetten": 111,
+        "unclassified": 492,
+        "damhusaen": 50
       },
       "catchments": [
         {
@@ -39,15 +37,8 @@
           "elementIds": [
             "12138748"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "100",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/adgangsvej-til-lynetteholmen-inkl-modtageanlaeg/",
-              "sourceLabel": "Københavns Kommune – Adgangsvej til Lynetteholmen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "200A",
@@ -95,14 +86,7 @@
             "12138648"
           ],
           "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "201",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b133-separatkloakering-af-kloeverparken/",
-              "sourceLabel": "Københavns Kommune – Kløverparken"
-            }
-          }
+          "inheritance": null
         },
         {
           "planNumber": "201B",
@@ -113,15 +97,8 @@
           "elementIds": [
             "12138536"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "201",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b133-separatkloakering-af-kloeverparken/",
-              "sourceLabel": "Københavns Kommune – Kløverparken"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "201D",
@@ -133,14 +110,7 @@
             "12138856"
           ],
           "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "201",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b133-separatkloakering-af-kloeverparken/",
-              "sourceLabel": "Københavns Kommune – Kløverparken"
-            }
-          }
+          "inheritance": null
         },
         {
           "planNumber": "202",
@@ -163,15 +133,8 @@
           "elementIds": [
             "12138511"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "202",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/adgangsvej-til-lynetteholmen-inkl-modtageanlaeg/",
-              "sourceLabel": "Københavns Kommune – Adgangsvej til Lynetteholmen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "202C",
@@ -182,15 +145,8 @@
           "elementIds": [
             "12138537"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "202",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/adgangsvej-til-lynetteholmen-inkl-modtageanlaeg/",
-              "sourceLabel": "Københavns Kommune – Adgangsvej til Lynetteholmen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "203",
@@ -549,15 +505,8 @@
           "elementIds": [
             "12138609"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "219",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/",
-              "sourceLabel": "Københavns Kommune – Amaliegade Nord"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "219B",
@@ -568,15 +517,8 @@
           "elementIds": [
             "12138640"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "219",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/",
-              "sourceLabel": "Københavns Kommune – Amaliegade Nord"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "219C",
@@ -587,15 +529,8 @@
           "elementIds": [
             "12138481"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "219",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/",
-              "sourceLabel": "Københavns Kommune – Amaliegade Nord"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "219D",
@@ -606,15 +541,8 @@
           "elementIds": [
             "12138866"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "219",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/",
-              "sourceLabel": "Københavns Kommune – Amaliegade Nord"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "220A",
@@ -733,15 +661,8 @@
           "elementIds": [
             "12138723"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "226",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/os1-strandboulevarden-del-2/",
-              "sourceLabel": "Københavns Kommune – Strandboulevarden del 2"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "227",
@@ -764,15 +685,8 @@
           "elementIds": [
             "12138482"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "227",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-              "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "227B",
@@ -783,15 +697,8 @@
           "elementIds": [
             "12138436"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "227",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-              "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "227C",
@@ -802,15 +709,8 @@
           "elementIds": [
             "12138643"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "227",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-              "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "227D",
@@ -821,15 +721,8 @@
           "elementIds": [
             "12138649"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "227",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-              "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "227E",
@@ -840,15 +733,8 @@
           "elementIds": [
             "12138749"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "227",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-              "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "227F",
@@ -859,15 +745,8 @@
           "elementIds": [
             "12138844"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "227",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-              "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "228",
@@ -890,15 +769,8 @@
           "elementIds": [
             "12138478"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "228",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-              "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "228B",
@@ -909,15 +781,8 @@
           "elementIds": [
             "12138451"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "228",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-              "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "228C",
@@ -928,15 +793,8 @@
           "elementIds": [
             "12138497"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "228",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-              "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "228D",
@@ -947,15 +805,8 @@
           "elementIds": [
             "12138480"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "228",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-              "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "228E",
@@ -967,14 +818,7 @@
             "12138499"
           ],
           "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "228",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-              "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-            }
-          }
+          "inheritance": null
         },
         {
           "planNumber": "228F",
@@ -986,14 +830,7 @@
             "12138641"
           ],
           "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "228",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-              "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-            }
-          }
+          "inheritance": null
         },
         {
           "planNumber": "228G",
@@ -1004,15 +841,8 @@
           "elementIds": [
             "12138439"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "228",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-              "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "228H",
@@ -1023,15 +853,8 @@
           "elementIds": [
             "12138855"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "228",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-              "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "229",
@@ -1114,7 +937,7 @@
           "elementIds": [
             "12138589"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -1126,7 +949,7 @@
           "elementIds": [
             "12138550"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -1138,7 +961,7 @@
           "elementIds": [
             "12138528"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -1162,15 +985,8 @@
           "elementIds": [
             "12138622"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "233",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-ny-toejhus/",
-              "sourceLabel": "Københavns Kommune – Ny Tøjhus"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "234",
@@ -1193,15 +1009,8 @@
           "elementIds": [
             "12138545"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "234",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/postgrunden/",
-              "sourceLabel": "Københavns Kommune – Postgrunden"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "235",
@@ -1224,15 +1033,8 @@
           "elementIds": [
             "12138538"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "235",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/supplement-til-vel45-kalvebod-brygge-skybrudstunnel/",
-              "sourceLabel": "Københavns Kommune – Kalvebod Brygge Skybrudstunnel"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "235B",
@@ -1243,15 +1045,8 @@
           "elementIds": [
             "12138554"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "235",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/supplement-til-vel45-kalvebod-brygge-skybrudstunnel/",
-              "sourceLabel": "Københavns Kommune – Kalvebod Brygge Skybrudstunnel"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "236A",
@@ -1466,15 +1261,8 @@
           "elementIds": [
             "12138786"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "242",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-              "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "242E",
@@ -1485,15 +1273,8 @@
           "elementIds": [
             "12138635"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "242",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-              "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "242F",
@@ -1504,15 +1285,8 @@
           "elementIds": [
             "12138262"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "242",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-              "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "242G",
@@ -1523,15 +1297,8 @@
           "elementIds": [
             "12138547"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "242",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-              "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "242H",
@@ -1542,15 +1309,8 @@
           "elementIds": [
             "12138539"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "242",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-              "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "242I",
@@ -1561,15 +1321,8 @@
           "elementIds": [
             "12138540"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "242",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-              "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "243",
@@ -1580,7 +1333,7 @@
           "elementIds": [
             "12138680"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -1592,7 +1345,7 @@
           "elementIds": [
             "12138474"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -1604,7 +1357,7 @@
           "elementIds": [
             "12138529"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -1616,7 +1369,7 @@
           "elementIds": [
             "12138459"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -1700,7 +1453,7 @@
           "elementIds": [
             "12138689"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -1712,7 +1465,7 @@
           "elementIds": [
             "12138849"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -1820,15 +1573,8 @@
           "elementIds": [
             "12138654"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "262",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-              "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "262B",
@@ -1839,15 +1585,8 @@
           "elementIds": [
             "12138419"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "262",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-              "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "262C",
@@ -1859,14 +1598,7 @@
             "12138430"
           ],
           "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "262",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-              "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-            }
-          }
+          "inheritance": null
         },
         {
           "planNumber": "262D",
@@ -1877,15 +1609,8 @@
           "elementIds": [
             "12138427"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "262",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-              "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "262E",
@@ -1896,15 +1621,8 @@
           "elementIds": [
             "12138552"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "262",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-              "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "262F",
@@ -1915,15 +1633,8 @@
           "elementIds": [
             "12138503"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "262",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-              "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "262G",
@@ -1934,15 +1645,8 @@
           "elementIds": [
             "12138858"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "262",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-              "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "263",
@@ -2025,15 +1729,8 @@
           "elementIds": [
             "12138408"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "266",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
-              "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "266B",
@@ -2044,15 +1741,8 @@
           "elementIds": [
             "12138829"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "266",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
-              "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "266C",
@@ -2063,15 +1753,8 @@
           "elementIds": [
             "12138842"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "266",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
-              "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "266D",
@@ -2082,15 +1765,8 @@
           "elementIds": [
             "12138854"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "266",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
-              "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "266E",
@@ -2101,15 +1777,8 @@
           "elementIds": [
             "12138869"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "266",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
-              "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "267",
@@ -2168,7 +1837,7 @@
           "elementIds": [
             "12138404"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -2192,15 +1861,8 @@
           "elementIds": [
             "12138489"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "272",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b131-vermlandsgade-og-siljangade/",
-              "sourceLabel": "Københavns Kommune – Vermlandsgade og Siljangade"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "272B",
@@ -2211,15 +1873,8 @@
           "elementIds": [
             "12138596"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "272",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b131-vermlandsgade-og-siljangade/",
-              "sourceLabel": "Københavns Kommune – Vermlandsgade og Siljangade"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "272C",
@@ -2230,15 +1885,8 @@
           "elementIds": [
             "12138450"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "272",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b131-vermlandsgade-og-siljangade/",
-              "sourceLabel": "Københavns Kommune – Vermlandsgade og Siljangade"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "273",
@@ -2297,15 +1945,8 @@
           "elementIds": [
             "12138421"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "281",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/kloakering-af-hoergaarden-i-og-ii/",
-              "sourceLabel": "Københavns Kommune – Hørgården I og II"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "282",
@@ -2328,15 +1969,8 @@
           "elementIds": [
             "12138418"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "282",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-              "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "282B",
@@ -2347,15 +1981,8 @@
           "elementIds": [
             "12138652"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "282",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-              "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "282C",
@@ -2366,15 +1993,8 @@
           "elementIds": [
             "12138653"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "282",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-              "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "282D",
@@ -2385,15 +2005,8 @@
           "elementIds": [
             "12138650"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "282",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-              "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "283",
@@ -2440,15 +2053,8 @@
           "elementIds": [
             "12138417"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "284",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-              "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "284B",
@@ -2459,15 +2065,8 @@
           "elementIds": [
             "12138407"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "284",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-              "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "284C",
@@ -2478,15 +2077,8 @@
           "elementIds": [
             "12138569"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "284",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-              "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "285",
@@ -2690,14 +2282,7 @@
             "12138423"
           ],
           "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "292",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b130-tillaeg-7-til-lokalplan-301-oerestad-nord/",
-              "sourceLabel": "Københavns Kommune – Ørestad Nord"
-            }
-          }
+          "inheritance": null
         },
         {
           "planNumber": "293",
@@ -2876,15 +2461,8 @@
           "elementIds": [
             "12138193"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "311",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/stejlepladsen/",
-              "sourceLabel": "Københavns Kommune – Stejlepladsen"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "311C",
@@ -2895,15 +2473,8 @@
           "elementIds": [
             "12138267"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "311",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/stejlepladsen/",
-              "sourceLabel": "Københavns Kommune – Stejlepladsen"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "312",
@@ -2926,15 +2497,8 @@
           "elementIds": [
             "12138183"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "312",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/fremtidens-gaardhave-straussvej/",
-              "sourceLabel": "Københavns Kommune – Fremtidens Gårdhave Straussvej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "312B",
@@ -2945,15 +2509,8 @@
           "elementIds": [
             "12138390"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "312",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/fremtidens-gaardhave-straussvej/",
-              "sourceLabel": "Københavns Kommune – Fremtidens Gårdhave Straussvej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "313",
@@ -3072,15 +2629,8 @@
           "elementIds": [
             "12138322"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "315",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-              "sourceLabel": "Københavns Kommune – Scandiagade 15"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "315B",
@@ -3091,15 +2641,8 @@
           "elementIds": [
             "12138207"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "315",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-              "sourceLabel": "Københavns Kommune – Scandiagade 15"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "315C",
@@ -3110,15 +2653,8 @@
           "elementIds": [
             "12138198"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "315",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-              "sourceLabel": "Københavns Kommune – Scandiagade 15"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "315D",
@@ -3129,15 +2665,8 @@
           "elementIds": [
             "12138388"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "315",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-              "sourceLabel": "Københavns Kommune – Scandiagade 15"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "315E",
@@ -3148,15 +2677,8 @@
           "elementIds": [
             "12138851"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "315",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-              "sourceLabel": "Københavns Kommune – Scandiagade 15"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "315F",
@@ -3167,15 +2689,8 @@
           "elementIds": [
             "12138857"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "315",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-              "sourceLabel": "Københavns Kommune – Scandiagade 15"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "316",
@@ -3342,15 +2857,8 @@
           "elementIds": [
             "12138852"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "319",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-              "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "319B",
@@ -3361,15 +2869,8 @@
           "elementIds": [
             "12138853"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "319",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-              "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "320A",
@@ -3404,15 +2905,8 @@
           "elementIds": [
             "12138201"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321B",
@@ -3423,15 +2917,8 @@
           "elementIds": [
             "12138225"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321C",
@@ -3442,15 +2929,8 @@
           "elementIds": [
             "12138205"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321D",
@@ -3461,15 +2941,8 @@
           "elementIds": [
             "12138209"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321F",
@@ -3480,15 +2953,8 @@
           "elementIds": [
             "12138330"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321G",
@@ -3499,15 +2965,8 @@
           "elementIds": [
             "12138192"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321H",
@@ -3518,15 +2977,8 @@
           "elementIds": [
             "12138315"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321I",
@@ -3537,15 +2989,8 @@
           "elementIds": [
             "12138224"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321K",
@@ -3556,15 +3001,8 @@
           "elementIds": [
             "12138293"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321L",
@@ -3575,15 +3013,8 @@
           "elementIds": [
             "12138294"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321M",
@@ -3594,15 +3025,8 @@
           "elementIds": [
             "12138199"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "321N",
@@ -3613,15 +3037,8 @@
           "elementIds": [
             "12138208"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "321",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-              "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "322",
@@ -3680,15 +3097,8 @@
           "elementIds": [
             "12138223"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "325",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ny-hotel-og-restaurantskole/",
-              "sourceLabel": "Københavns Kommune – Ny Hotel- og Restaurantskole"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "325B",
@@ -3699,15 +3109,8 @@
           "elementIds": [
             "12138329"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "325",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ny-hotel-og-restaurantskole/",
-              "sourceLabel": "Københavns Kommune – Ny Hotel- og Restaurantskole"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "325C",
@@ -3718,15 +3121,8 @@
           "elementIds": [
             "12138228"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "325",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ny-hotel-og-restaurantskole/",
-              "sourceLabel": "Københavns Kommune – Ny Hotel- og Restaurantskole"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "327",
@@ -4097,15 +3493,8 @@
           "elementIds": [
             "12138227"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "356",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/k250-groenne-veje-i-parcelforeningen-godthaab-bir221g/",
-              "sourceLabel": "Københavns Kommune – Parcelforeningen Godthaab"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "356B",
@@ -4116,15 +3505,8 @@
           "elementIds": [
             "12138847"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "356",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/k250-groenne-veje-i-parcelforeningen-godthaab-bir221g/",
-              "sourceLabel": "Københavns Kommune – Parcelforeningen Godthaab"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "357",
@@ -4411,15 +3793,8 @@
           "elementIds": [
             "12138843"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "373",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b125-slotsherrensvej-vest/",
-              "sourceLabel": "Københavns Kommune – Slotsherrensvej Vest"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "374",
@@ -4514,15 +3889,8 @@
           "elementIds": [
             "12138194"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "378",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/",
-              "sourceLabel": "Københavns Kommune – Kobbelvænget"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "378B",
@@ -4533,15 +3901,8 @@
           "elementIds": [
             "12138196"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "378",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/",
-              "sourceLabel": "Københavns Kommune – Kobbelvænget"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "378C",
@@ -4564,15 +3925,8 @@
           "elementIds": [
             "12138284"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "378",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/",
-              "sourceLabel": "Københavns Kommune – Kobbelvænget"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "378E",
@@ -4583,15 +3937,8 @@
           "elementIds": [
             "12138840"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "378",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/",
-              "sourceLabel": "Københavns Kommune – Kobbelvænget"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "380",
@@ -4638,15 +3985,8 @@
           "elementIds": [
             "12138305"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "damhusaen",
-            "parentPlanNumber": "391",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
-              "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
-            }
-          }
+          "classification": "damhusaen",
+          "inheritance": null
         },
         {
           "planNumber": "392",
@@ -4693,15 +4033,8 @@
           "elementIds": [
             "12138731"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "401",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-              "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "401C",
@@ -4712,15 +4045,8 @@
           "elementIds": [
             "12138487"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "401",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-              "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "402",
@@ -4743,7 +4069,7 @@
           "elementIds": [
             "12138797"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -4755,7 +4081,7 @@
           "elementIds": [
             "12138796"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -4803,15 +4129,8 @@
           "elementIds": [
             "12138756"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "415",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-              "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "415B",
@@ -4822,15 +4141,8 @@
           "elementIds": [
             "12138719"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "415",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-              "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "415D",
@@ -4841,15 +4153,8 @@
           "elementIds": [
             "12138793"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "415",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-              "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "416",
@@ -4884,7 +4189,7 @@
           "elementIds": [
             "12138811"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -5112,15 +4417,8 @@
           "elementIds": [
             "12138718"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "437",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/separatkloakering-lygten-kanal/",
-              "sourceLabel": "Københavns Kommune – Lygten Kanal"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "437C",
@@ -5131,15 +4429,8 @@
           "elementIds": [
             "12138763"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "437",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/separatkloakering-lygten-kanal/",
-              "sourceLabel": "Københavns Kommune – Lygten Kanal"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "437D",
@@ -5150,15 +4441,8 @@
           "elementIds": [
             "12138716"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "437",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/separatkloakering-lygten-kanal/",
-              "sourceLabel": "Københavns Kommune – Lygten Kanal"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "438",
@@ -5181,15 +4465,8 @@
           "elementIds": [
             "12138754"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "438",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
-              "sourceLabel": "Københavns Kommune – Provstevejskvarteret"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "438B",
@@ -5200,15 +4477,8 @@
           "elementIds": [
             "12138827"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "438",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
-              "sourceLabel": "Københavns Kommune – Provstevejskvarteret"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "439",
@@ -5231,15 +4501,8 @@
           "elementIds": [
             "12138546"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "439",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
-              "sourceLabel": "Københavns Kommune – Provstevejskvarteret"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "439B",
@@ -5250,15 +4513,8 @@
           "elementIds": [
             "12138753"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "439",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
-              "sourceLabel": "Københavns Kommune – Provstevejskvarteret"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "441",
@@ -5281,15 +4537,8 @@
           "elementIds": [
             "12138527"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "441",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/lygten-ii/",
-              "sourceLabel": "Københavns Kommune – Lygten II"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "442",
@@ -5324,15 +4573,8 @@
           "elementIds": [
             "12138549"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "443",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kampsportens-hus/",
-              "sourceLabel": "Københavns Kommune – Kampsportens Hus"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "444",
@@ -5523,15 +4765,8 @@
           "elementIds": [
             "12138750"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "468",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
-              "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "468B",
@@ -5542,15 +4777,8 @@
           "elementIds": [
             "12138743"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "468",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
-              "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "468C",
@@ -5561,15 +4789,8 @@
           "elementIds": [
             "12138798"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "468",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
-              "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "468D",
@@ -5580,15 +4801,8 @@
           "elementIds": [
             "12138771"
           ],
-          "classification": null,
-          "inheritance": {
-            "plantKey": "lynetten",
-            "parentPlanNumber": "468",
-            "source": {
-              "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
-              "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
-            }
-          }
+          "classification": "lynetten",
+          "inheritance": null
         },
         {
           "planNumber": "469A",
@@ -8718,9 +7932,9 @@
       "name": "Gentofte",
       "currentWastewaterCatchments": 19,
       "counts": {
-        "lynetten": 12,
-        "unclassified": 6,
-        "moelleaavaerket": 1
+        "lynetten": 17,
+        "moelleaavaerket": 1,
+        "unclassified": 1
       },
       "catchments": [
         {
@@ -8768,7 +7982,7 @@
           "elementIds": [
             "11020161"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -8792,7 +8006,7 @@
           "elementIds": [
             "11020156"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -8805,7 +8019,7 @@
             "11020163",
             "11020162"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -8817,7 +8031,7 @@
           "elementIds": [
             "11020155"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -8829,7 +8043,7 @@
           "elementIds": [
             "11020160"
           ],
-          "classification": null,
+          "classification": "lynetten",
           "inheritance": null
         },
         {
@@ -12814,1591 +12028,138 @@
   },
   "summary": {
     "currentWastewaterCatchments": 996,
-    "unclassifiedBeforeInheritance": 622,
-    "safeInheritanceCandidates": 112,
-    "safeInheritanceByPlant": {
-      "lynetten": 77,
-      "damhusaen": 35
-    },
-    "remainingAfterInheritance": 510,
-    "copenhagenRemainingAfterInheritance": 499,
-    "copenhagenRemainingFirstDigit": {
-      "2": 122,
-      "3": 82,
-      "4": 45,
-      "5": 1,
+    "unclassifiedBeforeInheritance": 498,
+    "safeInheritanceCandidates": 0,
+    "safeInheritanceByPlant": {},
+    "remainingAfterInheritance": 498,
+    "copenhagenRemainingAfterInheritance": 492,
+    "copenhagenRemainingBase3": {
+      "200": 2,
+      "201": 2,
+      "203": 4,
+      "211": 5,
+      "212": 5,
+      "213": 1,
+      "214": 4,
+      "215": 1,
+      "216": 6,
+      "217": 1,
+      "218": 1,
+      "220": 2,
+      "221": 1,
+      "222": 2,
+      "223": 2,
+      "224": 1,
+      "225": 1,
+      "228": 2,
+      "229": 1,
+      "231": 5,
+      "236": 5,
+      "237": 2,
+      "238": 7,
+      "244": 1,
+      "255": 1,
+      "256": 2,
+      "257": 2,
+      "259": 3,
+      "261": 4,
+      "262": 1,
+      "263": 1,
+      "264": 2,
+      "265": 2,
+      "267": 1,
+      "268": 2,
+      "269": 1,
+      "273": 1,
+      "274": 2,
+      "283": 2,
+      "285": 4,
+      "286": 1,
+      "288": 4,
+      "289": 4,
+      "290": 1,
+      "291": 1,
+      "292": 1,
+      "293": 2,
+      "294": 1,
+      "295": 3,
+      "296": 1,
+      "297": 3,
+      "298": 1,
+      "300": 1,
+      "310": 1,
+      "313": 1,
+      "314": 7,
+      "317": 5,
+      "318": 6,
+      "320": 1,
+      "323": 1,
+      "324": 1,
+      "327": 3,
+      "331": 1,
+      "341": 2,
+      "342": 3,
+      "343": 2,
+      "344": 9,
+      "345": 1,
+      "346": 1,
+      "347": 1,
+      "351": 1,
+      "352": 2,
+      "354": 1,
+      "355": 1,
+      "357": 2,
+      "358": 1,
+      "359": 1,
+      "361": 1,
+      "362": 1,
+      "363": 1,
+      "364": 6,
+      "365": 1,
+      "366": 2,
+      "367": 1,
+      "369": 1,
+      "372": 3,
+      "374": 3,
+      "375": 1,
+      "377": 2,
+      "380": 1,
+      "381": 1,
+      "392": 1,
+      "400": 1,
+      "402": 1,
+      "413": 1,
+      "414": 1,
+      "416": 2,
+      "418": 1,
+      "422": 2,
+      "423": 1,
+      "424": 2,
+      "425": 3,
+      "426": 1,
+      "432": 1,
+      "433": 1,
+      "434": 1,
+      "435": 1,
+      "436": 3,
+      "444": 2,
+      "451": 2,
+      "452": 1,
+      "453": 1,
+      "461": 2,
+      "462": 1,
+      "463": 1,
+      "464": 1,
+      "465": 2,
+      "466": 1,
+      "467": 1,
+      "469": 2,
+      "471": 1,
+      "473": 1,
+      "501": 1,
       "OTHER": 249
     },
-    "inheritanceCandidates": [
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "100A",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "100",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/adgangsvej-til-lynetteholmen-inkl-modtageanlaeg/",
-          "sourceLabel": "Københavns Kommune – Adgangsvej til Lynetteholmen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "201A",
-        "sewerTypes": [
-          6
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "201",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b133-separatkloakering-af-kloeverparken/",
-          "sourceLabel": "Københavns Kommune – Kløverparken"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "201B",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "201",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b133-separatkloakering-af-kloeverparken/",
-          "sourceLabel": "Københavns Kommune – Kløverparken"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "201D",
-        "sewerTypes": [
-          6
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "201",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b133-separatkloakering-af-kloeverparken/",
-          "sourceLabel": "Københavns Kommune – Kløverparken"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "202B",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "202",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/adgangsvej-til-lynetteholmen-inkl-modtageanlaeg/",
-          "sourceLabel": "Københavns Kommune – Adgangsvej til Lynetteholmen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "202C",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "202",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/adgangsvej-til-lynetteholmen-inkl-modtageanlaeg/",
-          "sourceLabel": "Københavns Kommune – Adgangsvej til Lynetteholmen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "219A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "219",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/",
-          "sourceLabel": "Københavns Kommune – Amaliegade Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "219B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "219",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/",
-          "sourceLabel": "Københavns Kommune – Amaliegade Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "219C",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "219",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/",
-          "sourceLabel": "Københavns Kommune – Amaliegade Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "219D",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "219",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/amaliegade-nord/",
-          "sourceLabel": "Københavns Kommune – Amaliegade Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "226A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "226",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/os1-strandboulevarden-del-2/",
-          "sourceLabel": "Københavns Kommune – Strandboulevarden del 2"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "227A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "227",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "227B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "227",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "227C",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "227",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "227D",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "227",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "227E",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "227",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "227F",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "227",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "228A",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "228",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "228B",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "228",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "228C",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "228",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "228D",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "228",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "228E",
-        "sewerTypes": [
-          6
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "228",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "228F",
-        "sewerTypes": [
-          6
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "228",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "228G",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "228",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "228H",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "228",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "233A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "233",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-ny-toejhus/",
-          "sourceLabel": "Københavns Kommune – Ny Tøjhus"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "234B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "234",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/postgrunden/",
-          "sourceLabel": "Københavns Kommune – Postgrunden"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "235A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "235",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/supplement-til-vel45-kalvebod-brygge-skybrudstunnel/",
-          "sourceLabel": "Københavns Kommune – Kalvebod Brygge Skybrudstunnel"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "235B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "235",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/supplement-til-vel45-kalvebod-brygge-skybrudstunnel/",
-          "sourceLabel": "Københavns Kommune – Kalvebod Brygge Skybrudstunnel"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "242D",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "242",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "242E",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "242",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "242F",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "242",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "242G",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "242",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "242H",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "242",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "242I",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "242",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "262A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "262",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-          "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "262B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "262",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-          "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "262C",
-        "sewerTypes": [
-          6
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "262",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-          "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "262D",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "262",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-          "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "262E",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "262",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-          "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "262F",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "262",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-          "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "262G",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "262",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ved-amagerbanen-nord/",
-          "sourceLabel": "Københavns Kommune – Ved Amagerbanen Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "266A",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "266",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
-          "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "266B",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "266",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
-          "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "266C",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "266",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
-          "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "266D",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "266",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
-          "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "266E",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "266",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/hedegaardsvej-ii/",
-          "sourceLabel": "Københavns Kommune – Hedegaardsvej II"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "272A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "272",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b131-vermlandsgade-og-siljangade/",
-          "sourceLabel": "Københavns Kommune – Vermlandsgade og Siljangade"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "272B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "272",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b131-vermlandsgade-og-siljangade/",
-          "sourceLabel": "Københavns Kommune – Vermlandsgade og Siljangade"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "272C",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "272",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b131-vermlandsgade-og-siljangade/",
-          "sourceLabel": "Københavns Kommune – Vermlandsgade og Siljangade"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "281A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "281",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/afloebssystem/kloakering-af-hoergaarden-i-og-ii/",
-          "sourceLabel": "Københavns Kommune – Hørgården I og II"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "282A",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "282",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-          "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "282B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "282",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-          "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "282C",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "282",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-          "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "282D",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "282",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-          "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "284A",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "284",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-          "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "284B",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "284",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-          "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "284C",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "284",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/separatkloakering-i-urbanplanen-2022/",
-          "sourceLabel": "Københavns Kommune – Separatkloakering i Urbanplanen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "292A",
-        "sewerTypes": [
-          6
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "292",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b130-tillaeg-7-til-lokalplan-301-oerestad-nord/",
-          "sourceLabel": "Københavns Kommune – Ørestad Nord"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "311A",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "311",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/stejlepladsen/",
-          "sourceLabel": "Københavns Kommune – Stejlepladsen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "311C",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "311",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/stejlepladsen/",
-          "sourceLabel": "Københavns Kommune – Stejlepladsen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "312A",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "312",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/fremtidens-gaardhave-straussvej/",
-          "sourceLabel": "Københavns Kommune – Fremtidens Gårdhave Straussvej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "312B",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "312",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/fremtidens-gaardhave-straussvej/",
-          "sourceLabel": "Københavns Kommune – Fremtidens Gårdhave Straussvej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "315A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "315",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-          "sourceLabel": "Københavns Kommune – Scandiagade 15"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "315B",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "315",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-          "sourceLabel": "Københavns Kommune – Scandiagade 15"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "315C",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "315",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-          "sourceLabel": "Københavns Kommune – Scandiagade 15"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "315D",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "315",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-          "sourceLabel": "Københavns Kommune – Scandiagade 15"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "315E",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "315",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-          "sourceLabel": "Københavns Kommune – Scandiagade 15"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "315F",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "315",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b126-scandiagade-15/",
-          "sourceLabel": "Københavns Kommune – Scandiagade 15"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "319A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "319",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "319B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "319",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b118-separatkloakering-af-godsbaneterraenet-inkl-jernbanebyen/",
-          "sourceLabel": "Københavns Kommune – Godsbaneterrænet/Jernbanebyen"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321C",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321D",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321F",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321G",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321H",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321I",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321K",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321L",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321M",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "321N",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "321",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kloakering-af-gammel-koege-landevej-59-65/",
-          "sourceLabel": "Københavns Kommune – Gammel Køge Landevej"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "325A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "325",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ny-hotel-og-restaurantskole/",
-          "sourceLabel": "Københavns Kommune – Ny Hotel- og Restaurantskole"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "325B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "325",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ny-hotel-og-restaurantskole/",
-          "sourceLabel": "Københavns Kommune – Ny Hotel- og Restaurantskole"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "325C",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "325",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/ny-hotel-og-restaurantskole/",
-          "sourceLabel": "Københavns Kommune – Ny Hotel- og Restaurantskole"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "356A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "356",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/k250-groenne-veje-i-parcelforeningen-godthaab-bir221g/",
-          "sourceLabel": "Københavns Kommune – Parcelforeningen Godthaab"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "356B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "356",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/klimatilpasning-af-kloakken/k250-groenne-veje-i-parcelforeningen-godthaab-bir221g/",
-          "sourceLabel": "Københavns Kommune – Parcelforeningen Godthaab"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "373A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "373",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b125-slotsherrensvej-vest/",
-          "sourceLabel": "Københavns Kommune – Slotsherrensvej Vest"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "378A",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "378",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/",
-          "sourceLabel": "Københavns Kommune – Kobbelvænget"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "378B",
-        "sewerTypes": [
-          3
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "378",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/",
-          "sourceLabel": "Københavns Kommune – Kobbelvænget"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "378D",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "378",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/",
-          "sourceLabel": "Københavns Kommune – Kobbelvænget"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "378E",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "378",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kobbelvaenget/",
-          "sourceLabel": "Københavns Kommune – Kobbelvænget"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "391A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "damhusaen",
-        "parentPlanNumber": "391",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
-          "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "401B",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "401",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "401C",
-        "sewerTypes": [
-          2
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "401",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/b119-separatkloakering-af-levantkaj-oest/",
-          "sourceLabel": "Københavns Kommune – Levantkaj Øst"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "415A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "415",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "415B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "415",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "415D",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "415",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/udledning-via-oesterbrotunnel-os28/",
-          "sourceLabel": "Københavns Kommune – Østerbrotunnelen OS28"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "437A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "437",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/separatkloakering-lygten-kanal/",
-          "sourceLabel": "Københavns Kommune – Lygten Kanal"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "437C",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "437",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/separatkloakering-lygten-kanal/",
-          "sourceLabel": "Københavns Kommune – Lygten Kanal"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "437D",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "437",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/skybrudssikring/separatkloakering-lygten-kanal/",
-          "sourceLabel": "Københavns Kommune – Lygten Kanal"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "438A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "438",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
-          "sourceLabel": "Københavns Kommune – Provstevejskvarteret"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "438B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "438",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
-          "sourceLabel": "Københavns Kommune – Provstevejskvarteret"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "439A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "439",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
-          "sourceLabel": "Københavns Kommune – Provstevejskvarteret"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "439B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "439",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/provstevejskvarteret/",
-          "sourceLabel": "Københavns Kommune – Provstevejskvarteret"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "441B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "441",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/lygten-ii/",
-          "sourceLabel": "Københavns Kommune – Lygten II"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "443A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "443",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/spildevandsplan-2018/projekter/byudvikling/kampsportens-hus/",
-          "sourceLabel": "Københavns Kommune – Kampsportens Hus"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "468A",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "468",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
-          "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "468B",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "468",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
-          "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "468C",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "468",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
-          "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
-        }
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "468D",
-        "sewerTypes": [
-          1
-        ],
-        "plantKey": "lynetten",
-        "parentPlanNumber": "468",
-        "source": {
-          "sourceUrl": "https://planer.kk.dk/media/2220/spildevandsplantillaeg-2024-20032024.pdf",
-          "sourceLabel": "Københavns Kommune, Spildevandsplantillæg 2024 – Tingbjerg"
-        }
-      }
-    ],
+    "inheritanceCandidates": [],
     "remaining": [
       {
         "municipalityCode": 101,
@@ -14414,6 +12175,22 @@
         "planNumber": "200B",
         "sewerTypes": [
           2
+        ]
+      },
+      {
+        "municipalityCode": 101,
+        "municipality": "København",
+        "planNumber": "201A",
+        "sewerTypes": [
+          6
+        ]
+      },
+      {
+        "municipalityCode": 101,
+        "municipality": "København",
+        "planNumber": "201D",
+        "sewerTypes": [
+          6
         ]
       },
       {
@@ -14715,6 +12492,22 @@
       {
         "municipalityCode": 101,
         "municipality": "København",
+        "planNumber": "228E",
+        "sewerTypes": [
+          6
+        ]
+      },
+      {
+        "municipalityCode": 101,
+        "municipality": "København",
+        "planNumber": "228F",
+        "sewerTypes": [
+          6
+        ]
+      },
+      {
+        "municipalityCode": 101,
+        "municipality": "København",
         "planNumber": "229",
         "sewerTypes": [
           2
@@ -14756,30 +12549,6 @@
         "municipalityCode": 101,
         "municipality": "København",
         "planNumber": "231F",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "232",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "232A",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "232B",
         "sewerTypes": [
           1
         ]
@@ -14899,38 +12668,6 @@
       {
         "municipalityCode": 101,
         "municipality": "København",
-        "planNumber": "243",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "243A",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "243D",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "243F",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
         "planNumber": "244",
         "sewerTypes": [
           1
@@ -14972,22 +12709,6 @@
         "municipalityCode": 101,
         "municipality": "København",
         "planNumber": "257B",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "258",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "258A",
         "sewerTypes": [
           1
         ]
@@ -15046,6 +12767,14 @@
         "planNumber": "261D",
         "sewerTypes": [
           3
+        ]
+      },
+      {
+        "municipalityCode": 101,
+        "municipality": "København",
+        "planNumber": "262C",
+        "sewerTypes": [
+          6
         ]
       },
       {
@@ -15116,14 +12845,6 @@
         "municipalityCode": 101,
         "municipality": "København",
         "planNumber": "269",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "271",
         "sewerTypes": [
           1
         ]
@@ -15286,6 +13007,14 @@
         "planNumber": "291",
         "sewerTypes": [
           2
+        ]
+      },
+      {
+        "municipalityCode": 101,
+        "municipality": "København",
+        "planNumber": "292A",
+        "sewerTypes": [
+          6
         ]
       },
       {
@@ -16051,22 +13780,6 @@
       {
         "municipalityCode": 101,
         "municipality": "København",
-        "planNumber": "411A",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "411B",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
         "planNumber": "413A",
         "sewerTypes": [
           1
@@ -16092,14 +13805,6 @@
         "municipalityCode": 101,
         "municipality": "København",
         "planNumber": "416A",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 101,
-        "municipality": "København",
-        "planNumber": "417",
         "sewerTypes": [
           1
         ]
@@ -18390,46 +16095,6 @@
         "planNumber": "_479",
         "sewerTypes": [
           2
-        ]
-      },
-      {
-        "municipalityCode": 157,
-        "municipality": "Gentofte",
-        "planNumber": "ETAPE3",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 157,
-        "municipality": "Gentofte",
-        "planNumber": "GENTOFTEHOSPITAL",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 157,
-        "municipality": "Gentofte",
-        "planNumber": "HELLERUP1",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 157,
-        "municipality": "Gentofte",
-        "planNumber": "HELLERUP2",
-        "sewerTypes": [
-          1
-        ]
-      },
-      {
-        "municipalityCode": 157,
-        "municipality": "Gentofte",
-        "planNumber": "HELLERUPSYD",
-        "sewerTypes": [
-          1
         ]
       },
       {
