@@ -1,3 +1,4 @@
+# Current relation build includes source-backed Lyngby-Taarbæk Lynetten catchments.
 name: Build WWTP catchment pilot
 
 on:
