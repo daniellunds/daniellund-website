@@ -1,5 +1,6 @@
 // Proof of concept: explicit, source-backed wastewater catchment -> treatment plant relations.
 // The pilot is deliberately partial; current documented coverage includes København, Gentofte, Frederiksberg, Herlev, Rødovre, Lyngby-Taarbæk and Gladsaxe for Lynetten/Damhusåen/Mølleåværket.
+// Current generated pilot contains 413 documented plan-catchment geometries; Mølleåværket includes the source-audited Lyngby-Taarbæk MV set and Gentofte Sandtoften.
 // Relation dataset uses current Plandata sewer type filtering (nuvkode) and excludes rainwater-only/unsewered areas.
 (async function integrateWwtpCatchmentPilot(){
   let pilot=null,meta=null,highlightLayer=null,selectedPlantMarker=null,activePlantKey=null;
