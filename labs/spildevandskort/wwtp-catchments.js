@@ -7,7 +7,8 @@
   const MAIN_PULS_IDS={
     lynetten:'Renseanlaeg.8793f333-ad28-446d-8d0e-c9c854ca4a6d',
     damhusaen:'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f',
-    moelleaavaerket:'Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c'
+    moelleaavaerket:'Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c',
+    avedoere:'Renseanlaeg.426fe009-d383-4e55-b365-9cd7dbe1abdb'
   };
 
   const esc=v=>typeof profileEscape==='function'?profileEscape(String(v)):String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -19,6 +20,7 @@
     const name=nkey(p.name);
     if(name===nkey('Renseanlæg Lynetten'))return 'lynetten';
     if(name===nkey('Renseanlæg Damhusåen'))return 'damhusaen';
+    if(name===nkey('Spildevandscenter Avedøre')||name===nkey('Renseanlæg Avedøre'))return 'avedoere';
     if(name===nkey('Mølleåværket A/S')||name===nkey('Mølleåværket'))return 'moelleaavaerket';
     return null;
   };
@@ -83,7 +85,7 @@
     const body=els.detailContent.querySelector('.detail-body');if(!body)return;
     const intro=officialCoverage
       ? 'Den fremhævede flade er hentet direkte fra Københavns Kommunes officielle WebGIS og repræsenterer den samlede registrerede geometri for anlæggets opland.'
-      : 'De fremhævede flader er kun de oplande, hvor relationen til '+esc(info.plantName||p.name)+' er dokumenteret i de anvendte kommunale kilder. Piloten er endnu ikke et komplet renseanlægsopland.';
+      : info.coverageNote?esc(info.coverageNote):'De fremhævede flader er kun de oplande, hvor relationen til '+esc(info.plantName||p.name)+' er dokumenteret i de anvendte kommunale kilder. Piloten er endnu ikke et komplet renseanlægsopland.';
     const box=document.createElement('section');
     box.className='wwtp-catchment-pilot';
     box.innerHTML='<p class="source-note"><strong>Renseanlægsopland · '+(officialCoverage?'officiel geometri':'pilot')+'</strong><br>'+intro+'</p>'
@@ -101,12 +103,23 @@
   }
 
   try{
-    [pilot,meta,official,officialMeta]=await Promise.all([
+    const datasets=await Promise.allSettled([
       fetchJSON(`${PROD}/wwtp-catchment-pilot.geojson`),
       fetchJSON(`${PROD}/wwtp-catchment-pilot-meta.json`),
       fetchJSON(`${PROD}/kk-official-wwtp-catchment.geojson`),
-      fetchJSON(`${PROD}/kk-official-wwtp-catchment-meta.json`)
+      fetchJSON(`${PROD}/kk-official-wwtp-catchment-meta.json`),
+      fetchJSON(`${PROD}/avedoere-brondby-catchment.geojson`)
     ]);
+    const loaded=datasets.map(r=>r.status==='fulfilled'?r.value:null);
+    [pilot,meta,official,officialMeta]=loaded;
+    pilot=pilot||{type:'FeatureCollection',features:[]};
+    meta=meta||{plants:{}};
+    const additional=loaded[4];
+    if(additional?.features?.length){
+      pilot={...pilot,features:[...(pilot.features||[]),...additional.features]};
+      meta={...meta,plants:{...meta.plants,...additional.plants}};
+    }
+    if(!pilot.features?.length&&!official?.features?.length)throw new Error('No catchment geometry available');
     const coreOpenPlant=openPlant;
     openPlant=function(p){
       const key=plantKeyFor(p);
