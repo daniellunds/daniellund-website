@@ -105,12 +105,13 @@ async function fetchAllPulsFeatures(){
 }
 async function loadPlants(){
   els.mapStatus.textContent="Henter aktuelle renseanlæg fra PULS…";
-  const features=await fetchAllPulsFeatures();
+  const [features]=await Promise.all([fetchAllPulsFeatures(),loadPlantLoads()]);
   const byId=new Map(); let duplicateIds=0;
   for(const [i,f] of features.entries()){ const p=normalizePlant(f,i); if(!p)continue; if(byId.has(p.id))duplicateIds++; byId.set(p.id,p); }
   state.plants=[...byId.values()];
   state.plantQa={rawFeatures:features.length,plants:state.plants.length,duplicateIds,missingCoordinates:state.plants.filter(p=>!p.coordinates).length,unmatchedOwners:state.plants.filter(p=>!p.brandId).length};
   console.info("PULS QA",state.plantQa);
+  updateLoadScreeningUI();
   els.activePlantCount.textContent=state.plants.filter(p=>p.active).length; renderPlants(); renderList();
 }
 function filteredPlants(){
@@ -119,7 +120,7 @@ function filteredPlants(){
     const b=p.responsibleBrandId?state.brandById.get(p.responsibleBrandId):null;
     const followsSelection=!els.selectedOnly.checked || (p.responsibleBrandId&&state.selected.has(p.responsibleBrandId));
     const matchesSearch=!q||normalize([p.name,p.owner,p.authority,p.municipality,b?.name].join(" ")).includes(q);
-    return (els.includeClosed.checked||p.active)&&followsSelection&&matchesSearch;
+    return (els.includeClosed.checked||p.active)&&followsSelection&&matchesSearch&&loadFilterMatches(p);
   });
 }
 function activePlantCountForBrand(id){ return state.plants.filter(p=>p.active&&p.responsibleBrandId===id).length; }
@@ -129,9 +130,10 @@ function renderPlants(){
     if(!p.coordinates)continue;
     const [lon,lat]=p.coordinates;
     const responsible=p.responsibleBrandId?state.brandById.get(p.responsibleBrandId):null;
-    const fill=p.active?(responsible?.color||"#087e90"):"#737e84";
-    const m=L.circleMarker([lat,lon],{radius:capacityRadius(p.capacity),color:"#fff",weight:1.5,fillColor:fill,fillOpacity:.95,pane:"markerPane"}).addTo(state.plantLayer);
-    m.bindTooltip(`${p.name} · ${responsible?.name||p.owner} · ${capacityClass(p.capacity)}`);
+    const load=plantLoad(p),band=LoadScreening.band(load),screen=screeningEnabled();
+    const fill=screen&&p.active?LoadScreening.colors[band]:p.active?(responsible?.color||"#087e90"):"#737e84";
+    const m=L.circleMarker([lat,lon],{radius:screen?({high:11,mid:8,low:5,unknown:5}[band]):capacityRadius(p.capacity),color:"#fff",weight:1.5,fillColor:fill,fillOpacity:.95,pane:"markerPane"}).addTo(state.plantLayer);
+    m.bindTooltip(`${p.name} · ${responsible?.name||p.owner} · ${screen?LoadScreening.summary(load):"Teknisk kapacitet: "+capacityClass(p.capacity)}`);
     m.on("click",()=>openPlant(p));
   }
 }

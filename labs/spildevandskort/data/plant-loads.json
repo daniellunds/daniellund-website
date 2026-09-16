@@ -1,0 +1,3644 @@
+{
+  "schemaVersion": 1,
+  "annualLoadStatus": "not-loaded",
+  "note": "PULS årsindberettet indløbsbelastning mangler. EEA 2022 er historisk fallback.",
+  "attribution": "Indeholder data, som benyttes i henhold til vilkår for brug af danske offentlige data.",
+  "records": [
+    {
+      "plantId": "83a5ac21-aa28-4576-ad58-8d9b798bad0d",
+      "name": "Vemb",
+      "historicalLoadPE": 751,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6791402",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "933bef15-bc51-4c66-8625-a38a5ee3f3f8",
+      "name": "Hvide Sande",
+      "historicalLoadPE": 3220,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6591002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9854cdac-d3f3-4317-a1ba-cc639d9e6df6",
+      "name": "Tørslev",
+      "historicalLoadPE": 5446,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2250019",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 78,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "be9c52d8-b86f-4b7f-afaf-8a4fd2b4b9b0",
+      "name": "Truust CR",
+      "historicalLoadPE": 5586,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7050014",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "6a00f296-7e8a-4310-b75c-6a14cb374d6a",
+      "name": "Sjælsmark Renseanlæg",
+      "historicalLoadPE": 2453,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2010011",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "d337ec42-e31c-4d57-912e-d5de7af92305",
+      "name": "Hørning Renseanlæg",
+      "historicalLoadPE": 12234,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7150039",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "eb3566e8-c3d8-474a-af0f-380e955ad81c",
+      "name": "Randers",
+      "historicalLoadPE": 91536,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7310011",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a371d431-95e9-4657-972f-10c33b37d5b4",
+      "name": "Bjerringbro",
+      "historicalLoadPE": 13745,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7610202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9d1bfbe5-06f9-46eb-8b13-9d51e13a0c76",
+      "name": "Bjerregrav",
+      "historicalLoadPE": 5013,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7751002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ecdee468-a832-46c1-9926-bfebfb1c3154",
+      "name": "GRAM",
+      "historicalLoadPE": 4482,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5110004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "17479b81-a057-4a24-9130-98372e569909",
+      "name": "Thisted",
+      "historicalLoadPE": 82646,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7870002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a6625171-73ad-444f-bfbc-c0bd72bc7bd3",
+      "name": "Outrup Renseanlæg",
+      "historicalLoadPE": 4402,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5530002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9cb6eb16-2ea6-4b0b-b5cf-75a7bda41568",
+      "name": "KONGSTED",
+      "historicalLoadPE": 3110,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3850004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "91072027-63e7-40a6-93ab-39b6e2c77778",
+      "name": "Hofmansgave Renseanlæg",
+      "historicalLoadPE": 1994,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4711202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "be7e2b3a-bafb-4671-893b-3c50b17f16b1",
+      "name": "Kløverhage Renseanlæg",
+      "historicalLoadPE": 967,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4951302",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0567111c-85ae-4a3d-8b8a-f1d77fe12acd",
+      "name": "BREDEBRO",
+      "historicalLoadPE": 798,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5050005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 373,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "87c30072-633c-440b-b3a1-1b0f529acf6f",
+      "name": "Renseanlæg Damhusåen",
+      "historicalLoadPE": 282822,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK1010006",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "be705dd8-8a50-4ec3-b16b-b3454129e58d",
+      "name": "Skovby Renseanlæg",
+      "historicalLoadPE": 10206,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7030027",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "23d87cc9-7d91-4bfb-baac-7249d9ff4f5d",
+      "name": "HARALDSKÆR RENSEANLÆG",
+      "historicalLoadPE": 8858,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6050100",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "74c1038d-9777-4799-8d7c-2b98c1c79424",
+      "name": "RØDBY HAVN",
+      "historicalLoadPE": 2573,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3830004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c51ad294-a14b-4988-8aeb-110c8987324b",
+      "name": "Harboøre",
+      "historicalLoadPE": 25855,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6731202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 113,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2230fe02-13d7-4ed5-8d5f-30c386c5c222",
+      "name": "Sdr. Omme",
+      "historicalLoadPE": 1351,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5650003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "6ba64d23-d2c7-4e1d-9068-8b38b388dfe0",
+      "name": "Hirtshals",
+      "historicalLoadPE": 64626,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8190545",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "64b4366b-5a0c-4587-88b3-9b34fdfd9125",
+      "name": "SØNDERBORG CENTRALRENSEANLÆG",
+      "historicalLoadPE": 38480,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5370019",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "3c7f93f8-59b8-4f4e-8dae-28d6469c348f",
+      "name": "HALK",
+      "historicalLoadPE": 1891,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5150017",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "cb13c34f-bf32-413d-adb2-c102cd8389b2",
+      "name": "Græsted",
+      "historicalLoadPE": 7093,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2130012",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "93b86be0-9422-499f-ade5-48b221e7a97b",
+      "name": "Gelsted Renseanlæg",
+      "historicalLoadPE": 1351,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4290402",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 234,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "91185982-7213-48bc-b55d-b19e793dd4b7",
+      "name": "Måløv Rens",
+      "historicalLoadPE": 38242,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK1510001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e70f973d-2903-452b-a4a5-dcda931f941f",
+      "name": "ORNUM",
+      "historicalLoadPE": 6379,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3090004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "59c4e892-28c3-4fab-8bd6-31ea15d15a42",
+      "name": "Ryslinge Renseanlæg",
+      "historicalLoadPE": 1126,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4775102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a93380a4-dde5-443a-83c7-9b77198d7a84",
+      "name": "HIMMARK",
+      "historicalLoadPE": 10479,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5230004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "4b7da241-e48a-4387-b0be-eb293758f7a6",
+      "name": "HADERSLEV ",
+      "historicalLoadPE": 37114,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5150001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "65885abc-91f3-4b09-a6f5-e90353f97cfc",
+      "name": "RØDDING",
+      "historicalLoadPE": 7634,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5270001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "fa9c9bac-79e9-45c5-a4eb-481955dcc3a6",
+      "name": "FUGLEBJERG RENSEANLÆG",
+      "historicalLoadPE": 2820,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3070013",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "12a15576-7982-4cfc-bf5f-4f26248d99ae",
+      "name": "SKÆLSKØR",
+      "historicalLoadPE": 22705,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3310010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "153d4086-40f4-4cce-b10f-8c0887555a16",
+      "name": "Neder Dråby",
+      "historicalLoadPE": 1339,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2250010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 223,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "fc1730a7-64cf-4b08-99a5-20f969d09946",
+      "name": "Vejby",
+      "historicalLoadPE": 1085,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2150003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "dd4e6a40-dbfa-46da-a3cd-53f51f3244e5",
+      "name": "Ballen + Havledning",
+      "historicalLoadPE": 2058,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7410021",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9884de71-5248-4462-aebe-e4732fd4c0eb",
+      "name": "Hedensted Renseanlæg",
+      "historicalLoadPE": 21449,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6130041",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "29e6788f-eed7-4ace-9295-e35d1ed44dab",
+      "name": "Harre-Vejle",
+      "historicalLoadPE": 3923,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7771002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "063a23d8-84a8-4ecc-b0be-09428bfbbed2",
+      "name": "Vorbasse",
+      "historicalLoadPE": 1168,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5510002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "774c429d-bc8d-43e3-88de-a4bb12619e9b",
+      "name": "Borup",
+      "historicalLoadPE": 6762,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2670001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1aee5d84-23c2-4646-967e-f0ab7ffa6b2d",
+      "name": "Varde Renseanlæg",
+      "historicalLoadPE": 22143,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5730001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "be0aefe9-4ed0-4b7d-9c7f-cfe44b035fb0",
+      "name": "Aalborg Vest",
+      "historicalLoadPE": 197995,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8510333",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "8c2755d9-74b6-44f8-9823-b272988d9b73",
+      "name": "Vedbæk",
+      "historicalLoadPE": 8389,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK1810004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "86c6a529-d210-4052-a4b1-c3d552ae91c5",
+      "name": "Ærøskøbing Renseanlæg",
+      "historicalLoadPE": 2455,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4931102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "191e5bed-f290-473b-9fcd-4d6a7d81e931",
+      "name": "Lynge Renseanlæg",
+      "historicalLoadPE": 2395,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2010010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "44f9a35f-2848-47f1-a82f-bdc2da36947c",
+      "name": "Mølleåværket A/S",
+      "historicalLoadPE": 99256,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK1730002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "7750af81-3dfa-4bba-aea5-da14a397d3f6",
+      "name": "Fårevejle renseanlæg",
+      "historicalLoadPE": 10353,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3050006",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "6c2a0209-2b8c-46b4-ba31-0dc1fe232c37",
+      "name": "Svaneke Renseanlæg",
+      "historicalLoadPE": 3100,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4050217",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f510b594-e0f8-4dee-becb-6ea59c323baa",
+      "name": "Boeslum",
+      "historicalLoadPE": 11010,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7010033",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e3003bc5-0525-4507-91f9-8a611d730c65",
+      "name": "Østerstrand",
+      "historicalLoadPE": 22686,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7730678",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0ce7afe0-e2f6-49da-8139-f03daf816cea",
+      "name": "EGTVED RENSEANLÆG",
+      "historicalLoadPE": 2203,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6050039",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "142ed8ab-93a6-46ba-ac11-f12d8f2412dc",
+      "name": "TOFTLUND",
+      "historicalLoadPE": 3302,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5250001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 248,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "d8a5612f-abb9-495b-8066-89f3c3297c3c",
+      "name": "VORDINGBORG",
+      "historicalLoadPE": 28032,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3970001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "26d00f8e-3d52-4322-b9f8-ec01f2f75ea1",
+      "name": "Lemvig",
+      "historicalLoadPE": 24324,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6651002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9a42d458-92bc-4dac-a15b-d11867f8f4f2",
+      "name": "TRAPPENDAL",
+      "historicalLoadPE": 3669,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5090019",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "3a78859a-f2bf-4933-9c77-780a04205403",
+      "name": "Knebel",
+      "historicalLoadPE": 1753,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7010067",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c74f0a7b-efd7-4e4d-9f4f-2e2a22b3f2d0",
+      "name": "Jyllinge",
+      "historicalLoadPE": 12415,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2550001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "332e425d-26a0-4e1e-9e4e-77d6bdb0afa8",
+      "name": "Brøde Renseanlæg",
+      "historicalLoadPE": 1629,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5450047",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "00e843bc-0a61-49ec-a3ef-40ff2d8003b9",
+      "name": "Præstø Renseanlæg",
+      "historicalLoadPE": 4691,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3770011",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ef4556a1-1be3-4e70-afcc-b49a37b04300",
+      "name": "Helsingør",
+      "historicalLoadPE": 23045,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2170010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "551ff1d2-2fd1-4e96-b807-d1a5055899e4",
+      "name": "Råby Kær",
+      "historicalLoadPE": 3222,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7230005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "bd86fa0f-b3cd-4ce7-9cd5-40ba8896c27e",
+      "name": "Horsens",
+      "historicalLoadPE": 117329,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6150008",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "d5510db8-4c3a-49f4-a425-79693442ea4b",
+      "name": "Ejby Mølle Renseanlæg",
+      "historicalLoadPE": 214698,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4610302",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2f891be3-1c93-447d-af9e-ca62a589713e",
+      "name": "ÅGÅRD  RENSEANLÆG",
+      "historicalLoadPE": 1634,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6050056",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9b1b00fc-23d0-43b7-9614-7507886fddef",
+      "name": "STUBBEKØBING",
+      "historicalLoadPE": 2986,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3910006",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a00774ff-5ffc-4c1b-89ed-1c5dd790afca",
+      "name": "Fjerritslev",
+      "historicalLoadPE": 5370,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8110035",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "71752c7f-956a-4dd8-a105-b78c743c2883",
+      "name": "Brønderslev",
+      "historicalLoadPE": 26891,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8050367",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "66bc8062-4009-49b7-9800-a4046606c337",
+      "name": "OVER JERSTAL",
+      "historicalLoadPE": 140,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5430009",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "32f1d533-630f-46b6-ab4a-dfb76139dd40",
+      "name": "Bjerreby Renseanlæg",
+      "historicalLoadPE": 1233,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4791202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "5b6218f0-89af-4171-8b0d-3315bc34d23b",
+      "name": "Hårby Renseanlæg",
+      "historicalLoadPE": 2919,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4370102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a51919bd-8166-43ca-9523-cb5288eb1ac8",
+      "name": "Viborg Centralrenseanlæg",
+      "historicalLoadPE": 48050,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7910202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ffc96063-a3d4-4f91-a79c-55352976b5ef",
+      "name": "Fåborg Renseanlæg",
+      "historicalLoadPE": 28579,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4311102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "72c7b161-f6d6-4f5a-b365-14078e5087da",
+      "name": "Ringkøbing",
+      "historicalLoadPE": 15553,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6671002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c19e44db-bc0b-4ac3-a9ac-a71871620151",
+      "name": "Vissenbjerg Renseanlæg",
+      "historicalLoadPE": 4417,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4910102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "56755c94-1a9d-40f4-8606-68959242d365",
+      "name": "Årre Renseanlæg",
+      "historicalLoadPE": 1295,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5670002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "07efd640-a063-4907-8e47-4d085d331947",
+      "name": "DALBY",
+      "historicalLoadPE": 2464,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3850003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "52270343-2f4b-4f2b-b0f2-85befca108f8",
+      "name": "Ribe",
+      "historicalLoadPE": 14343,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5710001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f49972c3-96d4-4738-8670-d581848c1cba",
+      "name": "Solrød",
+      "historicalLoadPE": 15537,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2690001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f22f7863-f672-488b-97ea-0d9b2f76859f",
+      "name": "Å Strand Renseanlæg",
+      "historicalLoadPE": 1595,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4211202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "89ca42d1-62db-415b-ae2b-2a08b6d82355",
+      "name": "Løgstør",
+      "historicalLoadPE": 31723,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8270321",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "4a65356f-6daa-4948-adfe-8a88926414a7",
+      "name": "Fredensborg Renseanlæg",
+      "historicalLoadPE": 8942,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2080001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "75ae5ee8-9aef-4c8f-9739-9d09946bdf54",
+      "name": "Hanstholm Renseanlæg",
+      "historicalLoadPE": 16576,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7650302",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "01ab73b0-726e-4fc7-a5c1-256bb91575a8",
+      "name": "Egsmade Renseanlæg",
+      "historicalLoadPE": 39885,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4791302",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "59c37680-2669-48dc-8204-61544cb91642",
+      "name": "PETERSVÆRFT",
+      "historicalLoadPE": 1254,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3610007",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "de220cdd-af95-4928-a6f7-b66b00508756",
+      "name": "Sæby Renseanlæg",
+      "historicalLoadPE": 1956,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2510003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "3594b10d-3d8d-4adc-94a5-3673541ed858",
+      "name": "Ejby Renseanlæg",
+      "historicalLoadPE": 3173,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4291102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 197,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "8759fbab-f4b0-49df-9d58-131d2fb02939",
+      "name": "KALVEHAVE",
+      "historicalLoadPE": 467,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3610008",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c9271a6e-adef-4138-be91-9e35faca186b",
+      "name": "Slagslunde",
+      "historicalLoadPE": 985,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2350001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c274e853-97af-4352-931c-cb3a4c6f2efb",
+      "name": "RØDVIG",
+      "historicalLoadPE": 2670,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3890013",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1c123e82-9a7c-412d-8111-f8843a6d9454",
+      "name": "Marbæk",
+      "historicalLoadPE": 1099,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7330010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "bcf08610-77c5-4d96-8c8c-21d36548d252",
+      "name": "Sydkysten",
+      "historicalLoadPE": 17682,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2170006",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "73c13472-f0ad-40bb-bb69-be960a71c511",
+      "name": "Vejleby",
+      "historicalLoadPE": 790,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2290014",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "3ee899b8-3eb0-48d9-abbb-3cebbf84103a",
+      "name": "Nørre Snede Renseanlæg",
+      "historicalLoadPE": 6430,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6250004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e0e9f794-ff71-4ddd-a509-293d1f4f08f8",
+      "name": "Sjælsø",
+      "historicalLoadPE": 12538,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2050001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "3db3e1a2-931a-47b3-8f36-8cfdd8f98503",
+      "name": "Usserød",
+      "historicalLoadPE": 36433,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2230002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "5e19e433-be1b-4c2b-8204-fcd02bad9f72",
+      "name": "Ålbæk",
+      "historicalLoadPE": 2276,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8410136",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c80c0e25-2165-489a-80b5-cbf9eab23b14",
+      "name": "Nexø Renseanlæg",
+      "historicalLoadPE": 6666,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4050412",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1177a35d-5c22-430d-acc6-0a11c3d36519",
+      "name": "Flovlev",
+      "historicalLoadPE": 2655,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6751002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "60cf9dcd-f751-4d64-8648-7eaea1dea006",
+      "name": "HUNSEBY STRAND",
+      "historicalLoadPE": 13474,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3630009",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "72dafa61-0e8b-445f-966c-95201f651bcd",
+      "name": "Hjørring",
+      "historicalLoadPE": 64497,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8210138",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "beb7ed62-1e8a-4c67-97f3-65ca113681e3",
+      "name": "Dronningmølle",
+      "historicalLoadPE": 3322,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2130009",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "6d00e2ec-3103-48f6-a236-1287359676f2",
+      "name": "LØGUMKLOSTER",
+      "historicalLoadPE": 3290,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5210012",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 237,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2249dbeb-593b-4956-9c3c-b5f740ff3aa7",
+      "name": "GISLINGE",
+      "historicalLoadPE": 1346,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3390002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a124a49f-c3a1-4f53-91d8-ef7e897e2360",
+      "name": "Aars Renseanlæg",
+      "historicalLoadPE": 35332,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8610051",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "5e63b20e-6817-4100-bb0d-d607f1b01ac9",
+      "name": "HORSLUNDE ØST",
+      "historicalLoadPE": 820,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3790001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "203f1085-6502-49e5-8811-c1faf4401f8f",
+      "name": "AGERSKOV",
+      "historicalLoadPE": 1473,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5250002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "fad8ff47-9ced-4fcb-a411-bf1b69128cf1",
+      "name": "Nr. Lyngby",
+      "historicalLoadPE": 4007,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8290389",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "4df2aeb8-e1bc-4287-90e4-4494ea1ad4c8",
+      "name": "RINGSTED C",
+      "historicalLoadPE": 64267,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3290030",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "5e6bf9d2-96b3-40f5-bc5f-f3440bf1af85",
+      "name": "TYSINGE",
+      "historicalLoadPE": 9585,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3450005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "75c5fd33-70c5-47e2-9f64-34063b5caba4",
+      "name": "Bogense Renseanlæg",
+      "historicalLoadPE": 7431,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4231102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c9ee7cb6-3425-4bf0-8346-bfa3d191252c",
+      "name": "Holmehave Renseanlæg",
+      "historicalLoadPE": 5354,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4852302",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1a22179d-a885-45f7-98fb-d847f4b145e5",
+      "name": "Vesterø",
+      "historicalLoadPE": 1690,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8250015",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c4abb4bb-a755-4dc7-997b-22fefb1c57a5",
+      "name": "Fiskbæk",
+      "historicalLoadPE": 1615,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7912602",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c40902d9-3976-47db-9050-5bae48df15bc",
+      "name": "Esbjerg øst",
+      "historicalLoadPE": 31354,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5610002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "59c143ef-3f0d-4157-86ba-e113fb68bffd",
+      "name": "Mørke",
+      "historicalLoadPE": 7397,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7330009",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "da2305f6-a4b3-4d3a-a0dd-5c71883bbbaa",
+      "name": "Mosede",
+      "historicalLoadPE": 42191,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2530001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "4b8d3d56-d7ee-4288-9826-a2b86507b280",
+      "name": "Stavnsholt",
+      "historicalLoadPE": 18528,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2070002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "395a83ff-89bb-4863-8621-155287d0676b",
+      "name": "Boderne Renseanlæg",
+      "historicalLoadPE": 5075,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4090110",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "00167ca8-4400-4630-80b7-7028395cd0a1",
+      "name": "SKÆRBÆK",
+      "historicalLoadPE": 6381,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5310025",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 150,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0f958026-5e8f-4b06-95d0-837a34850429",
+      "name": "Trevad",
+      "historicalLoadPE": 643,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7631002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "15bc1a77-1365-4726-8f54-3c428b704cc5",
+      "name": "Stenneskær Renseanlæg",
+      "historicalLoadPE": 2606,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5190010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "fb661475-3f6d-4cdb-8350-f63837627a15",
+      "name": "Rønde",
+      "historicalLoadPE": 3874,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7390008",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9a3c6aaf-df3d-4569-8ace-60164f2f517f",
+      "name": "SVINNINGE",
+      "historicalLoadPE": 3147,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3390006",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "33420d1f-f6c5-4cf0-a49b-e87e0d4941e2",
+      "name": "Nordenskov Renseanlæg",
+      "historicalLoadPE": 610,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5670003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "41eb0f31-e156-4bdd-a229-fd5ae6155f43",
+      "name": "Søby Renseanlæg",
+      "historicalLoadPE": 1567,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4931202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "647e9afa-8b31-4c8b-8258-5edf3ad6b4e4",
+      "name": "Hyllingeriis",
+      "historicalLoadPE": 3359,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2290018",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ee670dd6-2536-40be-af5b-af78240c41f6",
+      "name": "Årup Renseanlæg",
+      "historicalLoadPE": 5091,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4990102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "b2820d6e-0335-4d1b-86a8-545801d30f89",
+      "name": "Tåbel",
+      "historicalLoadPE": 5888,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7850202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "14ebd89f-8258-49aa-8543-b73b4ac3ac5f",
+      "name": "RUDS VEDBY",
+      "historicalLoadPE": 1923,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3030005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "56bc1269-1886-4814-99c8-a6217793bcf5",
+      "name": "KOLDING CENTRALRENS.",
+      "historicalLoadPE": 69447,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6210038",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1f5c91d9-461a-4265-91dd-daea0fcf7e07",
+      "name": "DIANALUND",
+      "historicalLoadPE": 3238,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3030001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "7a55e5a1-d938-435e-b204-00c8a25d099a",
+      "name": "BROAGER VIG",
+      "historicalLoadPE": 6748,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5070013",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0da47d80-3589-460c-b6bf-ced1bfe9cfb9",
+      "name": "Skanderborg Centralrenseanlæg",
+      "historicalLoadPE": 35409,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7450024",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "bc44b5f9-6fb6-4496-a653-88a03a895771",
+      "name": "Egebjerg syd Renseanlæg",
+      "historicalLoadPE": 19198,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4271102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "bc2eb2dc-21ad-4bae-966a-9826f643a770",
+      "name": "Dragør",
+      "historicalLoadPE": 11653,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK1550001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "93adfe1e-803d-4f6b-b2c4-aa2963db6de0",
+      "name": "Grønbjerg",
+      "historicalLoadPE": 807,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6811402",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 685,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "77364fcb-73be-4129-9d15-5d0f636698b1",
+      "name": "Tommerup St. Renseanlæg",
+      "historicalLoadPE": 2222,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4850102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "5b4e8c5e-8881-496f-96cb-91b8a6f80da5",
+      "name": "TØNDER",
+      "historicalLoadPE": 17937,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5410007",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f2bffa5e-4818-4013-ae65-f36291fc0212",
+      "name": "ÅRØSUND",
+      "historicalLoadPE": 747,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5150004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f4e1cbc6-dbdc-4c2a-b73a-1dbbdc503de0",
+      "name": "HUMMELVIG",
+      "historicalLoadPE": 2862,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5350016",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9f30ab3a-823d-4b49-842f-80895ea8d310",
+      "name": "Bistrup",
+      "historicalLoadPE": 8013,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2050004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "dc8570f2-26a1-4278-957d-c1bd8386b9bc",
+      "name": "TORNVED C.",
+      "historicalLoadPE": 7844,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3410011",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "7531c778-8e3a-4f67-92d2-b6ebe8f454b6",
+      "name": "Marselisborg",
+      "historicalLoadPE": 138956,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7510138",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "3d3d22c1-bb95-4042-b52e-c255342e5c3b",
+      "name": "SLOTS BJERGBY",
+      "historicalLoadPE": 1598,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3110008",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f30503ae-50ed-4d14-ad1e-a785ef56a3a4",
+      "name": "Marielyst Renseanlæg",
+      "historicalLoadPE": 20211,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3950001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "83656869-48d7-44d7-96ba-af7cc3b24c24",
+      "name": "Marstal Renseanlæg",
+      "historicalLoadPE": 5873,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4431102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "3785b04e-4305-4869-8bec-4b44108a1d18",
+      "name": "Holsted by",
+      "historicalLoadPE": 13062,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5690001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "18ae8c6b-7731-46a3-93eb-451a26c57346",
+      "name": "Nordvest Renseanlæg",
+      "historicalLoadPE": 44414,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4610102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "4b11c71e-8757-4a8e-80d4-77f019e73f57",
+      "name": "Otterup Renseanlæg",
+      "historicalLoadPE": 12511,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4710102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f3fbda47-237a-4ac9-a486-8b3333c8aee9",
+      "name": "CHRISTIANSFELD RENSEANLÆG",
+      "historicalLoadPE": 20859,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5090006",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1dcc5c33-a64e-40f7-baf5-b893d1ee09f0",
+      "name": "Sigsgård",
+      "historicalLoadPE": 20196,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8350369",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "426fe009-d383-4e55-b365-9cd7dbe1abdb",
+      "name": "Spildevandscenter Avedøre",
+      "historicalLoadPE": 264846,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK1670001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f25f76d3-6f40-481d-bb5a-7fab8f032b32",
+      "name": "Aalborg Øst",
+      "historicalLoadPE": 72026,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8510144",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "17ed31eb-9442-4731-9c22-749dd8523a61",
+      "name": "Struer",
+      "historicalLoadPE": 18281,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6711002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "37dafca8-97e7-40ee-9550-665299430fc3",
+      "name": "SOMMERSTED",
+      "historicalLoadPE": 565,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5430019",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "bc1349d7-5aa8-4f54-ba48-98f528051ee1",
+      "name": "HOLME OLSTRUP",
+      "historicalLoadPE": 4571,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3570004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "d013633d-58c2-46f4-8ce3-376c95842f2c",
+      "name": "Strandgården Renseanlæg",
+      "historicalLoadPE": 2912,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4351402",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "8c9f9346-7dcb-4dea-9aac-bde568716ad1",
+      "name": "HAVNSØ",
+      "historicalLoadPE": 1521,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3010010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "b6991616-7781-45e3-bd51-86e189c0134c",
+      "name": "Aså",
+      "historicalLoadPE": 4455,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8070383",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "55a22a3a-0b54-4a5d-a2fb-125f7560cda6",
+      "name": "VAMDRUP RENSEANLÆG",
+      "historicalLoadPE": 16919,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6290003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 80,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f3028694-081a-495f-9e93-c8c7abf9a755",
+      "name": "Nr. Nebel Renseanlæg",
+      "historicalLoadPE": 3983,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5530001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "3fbe989d-3fce-486d-9f93-dcdbf2f14575",
+      "name": "Tarm",
+      "historicalLoadPE": 58954,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6551002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c39e9e8f-87de-4090-bed1-e052f9751a9d",
+      "name": "STENLILLE",
+      "historicalLoadPE": 3425,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3370010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "767527f4-d217-4c60-bd59-d61de2837fc0",
+      "name": "U8 ST.HEDDINGE",
+      "historicalLoadPE": 7531,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3890001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1c4cddf8-4ec3-422e-b53b-edc38dffdeef",
+      "name": "Gadstrup",
+      "historicalLoadPE": 3877,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2630002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "20ee5bba-3da3-46e9-b320-67de4e6705a7",
+      "name": "FREJLEV",
+      "historicalLoadPE": 3236,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3710020",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a8748316-2034-4506-b0d9-493906f1e349",
+      "name": "SØLLESTED",
+      "historicalLoadPE": 1249,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3590001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9c56bda5-7cfb-4db0-a686-373603684bd2",
+      "name": "TÅRUP, NØRRE ALSLEV",
+      "historicalLoadPE": 5581,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3750001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "d3ee68f5-10d5-459b-bbb9-9b2b00417e9c",
+      "name": "KARISE",
+      "historicalLoadPE": 2844,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3510003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9b56d9d9-5e72-4e70-888d-f6aa232d0b5c",
+      "name": "Nr. Åby Renseanlæg",
+      "historicalLoadPE": 5902,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4510102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 227,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0e0e257a-12de-480b-8e35-7691f7d8a50f",
+      "name": "Stenderup-Krogager",
+      "historicalLoadPE": 2703,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5650011",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "be2de759-1ddf-4186-a9b3-b0a0bd299c99",
+      "name": "Holstebro",
+      "historicalLoadPE": 91272,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6611002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 224,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "8793f333-ad28-446d-8d0e-c9c854ca4a6d",
+      "name": "Renseanlæg Lynetten",
+      "historicalLoadPE": 758657,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK1010005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a0185944-7f89-41d1-a443-ab06101c826f",
+      "name": "Spjald",
+      "historicalLoadPE": 1720,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6811202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "4ccd4e13-3668-427c-8f79-6cac1f359865",
+      "name": "Gadevang",
+      "historicalLoadPE": 631,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2190017",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "edee3880-bacb-4c67-ac73-3dfd97644a61",
+      "name": "Ørbæk Renseanlæg",
+      "historicalLoadPE": 7719,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4950102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "426976e5-348b-4f31-86f9-d293a4d5fe02",
+      "name": "Gislev Renseanlæg",
+      "historicalLoadPE": 640,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4770302",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 250,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f4006e1f-4a2f-41bf-a594-99b09927eb1e",
+      "name": "Stenløse ",
+      "historicalLoadPE": 8583,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2350006",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "aba64381-cecf-47ee-a51c-074487378f76",
+      "name": "Sindal",
+      "historicalLoadPE": 5188,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8390183",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "977f0bd4-ddca-4e40-9321-51b09ed7a79d",
+      "name": "Middelfart Centralrenseanlæg",
+      "historicalLoadPE": 22562,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4451102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "058c4887-f067-42ac-945a-672690d492a5",
+      "name": "Fornæs",
+      "historicalLoadPE": 75558,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7070032",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "49870fc6-a8ff-451f-97eb-4209602766bd",
+      "name": "Drøsbro",
+      "historicalLoadPE": 3757,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7671802",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ab73751c-fd24-47f8-b264-339e3c1de3dc",
+      "name": "Hinnerup",
+      "historicalLoadPE": 11498,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7130003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 82,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "64229f2f-881c-49ae-9ca2-c0afd9accd64",
+      "name": "Ulstrup",
+      "historicalLoadPE": 1650,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7670202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ba12ce4d-e3ef-43b7-b949-c558ea2e2fd6",
+      "name": "Tejn Renseanlæg",
+      "historicalLoadPE": 4457,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4010310",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "23e1178d-df42-4293-8ddf-82f5581f8024",
+      "name": "NYKØBING F. NORD",
+      "historicalLoadPE": 25068,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3690001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "5191b081-dde2-43bc-9b84-0a3dd8c66526",
+      "name": "Hammel",
+      "historicalLoadPE": 8894,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7110003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2ececf1b-eebe-4987-87d1-9f9dbd209b9a",
+      "name": "Kværndrup Renseanlæg",
+      "historicalLoadPE": 1105,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4776202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 231,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "6b0dd0d3-540d-49b3-931c-3c83b37e27b3",
+      "name": "HAVNEBY",
+      "historicalLoadPE": 1017,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5310006",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "137da2f5-0fcf-45c0-bfd6-58b72d1fa090",
+      "name": "Rudkøbing Renseanlæg",
+      "historicalLoadPE": 5838,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4751202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "04d362a5-9463-4828-bc45-1e76f5daa2ff",
+      "name": "Roløkke Renseanlæg",
+      "historicalLoadPE": 2374,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4871702",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "50221b81-135c-4741-b1b8-22739038675d",
+      "name": "Rønne Renseanlæg",
+      "historicalLoadPE": 38666,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4070101",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ab0b4df4-e79b-4dcf-97eb-43d656d4a573",
+      "name": "Strøby Ladeplads",
+      "historicalLoadPE": 11039,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2710016",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "840fc5fe-d115-407b-9cf9-39391955990d",
+      "name": "Brandsby Renseanlæg",
+      "historicalLoadPE": 2461,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4811602",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "82a71294-bfe5-43ad-bfb4-bf9879c1acd9",
+      "name": "Harsbjerg Renseanlæg",
+      "historicalLoadPE": 802,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4811702",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "d6dff669-11bd-4612-a5e4-0eb59f5ea136",
+      "name": "HØJER",
+      "historicalLoadPE": 770,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5170001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 243,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ca4497cf-7780-4a9a-a70e-4bacbb21a6b0",
+      "name": "DALMOSE",
+      "historicalLoadPE": 1690,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3110001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "487c360a-0dfa-4588-a95b-de2e759b0fb0",
+      "name": "SNESLEV",
+      "historicalLoadPE": 809,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3290016",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1cbe99e3-b2d8-429a-a1ee-53e8ba2df1f9",
+      "name": "Nivå Renseanlæg",
+      "historicalLoadPE": 18624,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2270005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "564e2b8d-a48a-49c3-bb98-d092abe75f49",
+      "name": "Kjellerup",
+      "historicalLoadPE": 6566,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7710202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "96f7a6ee-29c7-47c8-b33e-328f65e91b7e",
+      "name": "RØRVIG",
+      "historicalLoadPE": 1064,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3270002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f681f0f9-8600-4127-92c7-ea2c05fd653c",
+      "name": "Nørager",
+      "historicalLoadPE": 7854,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8330118",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "b82c8e3c-132a-4f01-b813-f2003a9094c9",
+      "name": "Gudme Renseanlæg",
+      "historicalLoadPE": 1487,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4350202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1ed5823c-20c5-4fed-b69d-61c5a08139bb",
+      "name": "FUGLEDE",
+      "historicalLoadPE": 2599,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3170001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 85,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "7cf09844-1bc8-4d76-9f70-2488aeaf2fa9",
+      "name": "Gørding",
+      "historicalLoadPE": 1071,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5570003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a8b24078-a955-4d48-b632-df140266a019",
+      "name": "Slangerup",
+      "historicalLoadPE": 5937,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2330005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "3a3bfe61-dd3d-4f75-8626-b2ae8f8d1207",
+      "name": "Skive",
+      "historicalLoadPE": 31883,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7790202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "90ba72bd-dfae-4695-b354-3fa3f3a5d178",
+      "name": "VISKINGE",
+      "historicalLoadPE": 2517,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3010008",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 91,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0b409922-afdc-4e39-b835-334b4a1b51fb",
+      "name": "Ry Renseanlæg",
+      "historicalLoadPE": 5636,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7370001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "95078305-f40f-4020-ba96-7e3579863af3",
+      "name": "GIVE CENTRALRENS.",
+      "historicalLoadPE": 17962,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6110004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "12286672-b9f9-427d-a5cf-70f0c2a2f9f2",
+      "name": "Stokkebro-Rågemark",
+      "historicalLoadPE": 1113,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2150002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "98886481-e1bb-4cf9-90ba-b3895b5f8fc1",
+      "name": "Skovlund Renseanlæg",
+      "historicalLoadPE": 11831,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5770010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "efdcf5a7-edfb-40cd-87e7-4686a0a0f7b2",
+      "name": "Sæby",
+      "historicalLoadPE": 118139,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8470146",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "bb8d9f9f-52b4-4b64-bb5b-4179cfd50f3d",
+      "name": "Hammershøj",
+      "historicalLoadPE": 681,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7891602",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "37d8e773-2360-4139-a2b9-82f2a207b610",
+      "name": "Juelsminde",
+      "historicalLoadPE": 7590,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6190001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "bdf6f944-2a77-4810-a108-a6327aab0542",
+      "name": "Vejen",
+      "historicalLoadPE": 25621,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5750001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "86aecd8a-9242-462f-bddc-44ad5f6a9f8a",
+      "name": "Lillerød Renseanlæg",
+      "historicalLoadPE": 14883,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2010005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a6f1f78c-7628-49d6-9c35-1ea0ea33810a",
+      "name": "Brædstrup",
+      "historicalLoadPE": 9207,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6010029",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1a752106-87a7-4915-91bb-7028a0c6e7f0",
+      "name": "Kollund Renseanlæg",
+      "historicalLoadPE": 2017,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5030006",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ae3f10c0-d09a-4c48-b7ba-5bd864b081c6",
+      "name": "Ulfborg",
+      "historicalLoadPE": 2553,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6791002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "edf7294e-84bc-445c-8212-51bae5528ade",
+      "name": "Bjergmarken",
+      "historicalLoadPE": 92474,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2650002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "d325ff58-6296-4238-9d3d-9273407d7255",
+      "name": "Skals",
+      "historicalLoadPE": 1716,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7750202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "8c40b489-554b-4e0b-9fa0-0bf3e2ac25e5",
+      "name": "Ferritslev Renseanlæg",
+      "historicalLoadPE": 1875,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4970202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 181,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2b8ef25e-d39a-47ef-9489-a1479e64df2e",
+      "name": "Voerså",
+      "historicalLoadPE": 346,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8470223",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "5dc25b86-9ea0-4087-8f25-ca8408cbaed2",
+      "name": "HOLBÆK",
+      "historicalLoadPE": 36425,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3150008",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "b4e5a7e1-601b-4ef5-8c69-9d43120542b2",
+      "name": "NYKØBING",
+      "historicalLoadPE": 9372,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3270001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "b2198885-d68e-41cb-8234-9173112a16c4",
+      "name": "Stistrup",
+      "historicalLoadPE": 14072,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8090362",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "620cd2d5-d289-45e0-8d30-275770bda4d1",
+      "name": "Vilsund",
+      "historicalLoadPE": 2100,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7870802",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "76d16d91-c12c-4711-bab8-1781501314e2",
+      "name": "Nyborg Centralrenseanlæg",
+      "historicalLoadPE": 37476,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4491102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2a3e91ab-47de-4611-98c6-56f0fc03aad8",
+      "name": "VEJLE CENTRALRENS.",
+      "historicalLoadPE": 99352,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6310017",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "3ab61849-da3b-4e27-9bce-fa895c158be0",
+      "name": "SKRYDSTRUP",
+      "historicalLoadPE": 1116,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5430002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "5d938e22-8ccc-4fd3-b15d-12ed26fbd4dc",
+      "name": "Søholt",
+      "historicalLoadPE": 57583,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7430001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f07fc1f9-85c0-4c8b-80ee-f9f2a4df9021",
+      "name": "Frederikshavn",
+      "historicalLoadPE": 31207,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8130337",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e2e97135-bc29-46be-bdde-964ea4e0fadf",
+      "name": "Helsinge",
+      "historicalLoadPE": 16919,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2150010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "5deee420-608c-428a-887b-7dfdd6584d86",
+      "name": "Stegholt Renseanlæg",
+      "historicalLoadPE": 25800,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5450030",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0c1bfcfe-6c09-4377-b2ad-96ccdc704ef0",
+      "name": "VIG",
+      "historicalLoadPE": 2518,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3430016",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ed004c31-a0d4-4dd1-87cd-9698f3545911",
+      "name": "THYREGOD RENSEANLÆG",
+      "historicalLoadPE": 1129,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6110011",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e1d44352-35f3-4bc6-ae6f-3982ccebfe7f",
+      "name": "BREJNING CENTRALRENS.",
+      "historicalLoadPE": 7589,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6030020",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2cbcca8b-cb82-4702-937b-aa7710c6853a",
+      "name": "HASLEV C.",
+      "historicalLoadPE": 12019,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3130005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0275596e-5da9-4f0c-9f5e-994f62cf0668",
+      "name": "Gilleleje",
+      "historicalLoadPE": 10160,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2130015",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e350d23a-14ff-4382-b599-7cf0afe9302b",
+      "name": "KALUNDBORG C.",
+      "historicalLoadPE": 21886,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3230007",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "610f2b92-8d5f-4b3e-9866-cf4e66bacd83",
+      "name": "Skagen",
+      "historicalLoadPE": 131082,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8410526",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "26791429-d637-4e43-ae09-0a9d893c045d",
+      "name": "Gredstedbro",
+      "historicalLoadPE": 865,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5710002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "7437b2ca-6aab-4950-a395-4a858a7bb461",
+      "name": "Frederikssund",
+      "historicalLoadPE": 29184,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2090004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "557a85aa-248e-4f4e-b66f-30ef4fc17ac9",
+      "name": "Øsløs",
+      "historicalLoadPE": 1058,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7872002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "cbc87e62-37bf-45ca-80dd-dc77a1d5627f",
+      "name": "Vinderup",
+      "historicalLoadPE": 7133,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6831002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f1dafc4a-47a7-4944-b71e-da4b7322283e",
+      "name": "Viby",
+      "historicalLoadPE": 8336,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2630001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "b9d59ce0-e80d-4b1e-97c5-e5f89cf1ac43",
+      "name": "Assens Renseanlæg",
+      "historicalLoadPE": 24765,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4211102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "8b8d2024-57f3-4340-b158-51a6aeb96f17",
+      "name": "Langtoftegård (Sundby)",
+      "historicalLoadPE": 967,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7730402",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a61f3932-f12a-4434-aa25-3d72b7433376",
+      "name": "Stoholm",
+      "historicalLoadPE": 3471,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7630202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a02f25fb-4dc2-4d07-b10c-731e23f15134",
+      "name": "SØRBYMAGLE",
+      "historicalLoadPE": 1597,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3110007",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "de9f8c20-2312-4147-b933-64541ebb9137",
+      "name": "Langå",
+      "historicalLoadPE": 5491,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7170004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "ee6e4165-2581-4bac-919f-a7bdb8cf2b0e",
+      "name": "Højby Renseanlæg",
+      "historicalLoadPE": 4358,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3430004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e2033609-d863-4470-a6ae-eb73103a3da6",
+      "name": "Them",
+      "historicalLoadPE": 16697,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7490011",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "da9a86a4-56da-4ff1-80d4-09647d3509b6",
+      "name": "Kerteminde/Munkebo",
+      "historicalLoadPE": 16343,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4391202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "b65ca763-21cc-40b4-a1e6-6d2b291fff4a",
+      "name": "Nordøst Renseanlæg",
+      "historicalLoadPE": 23792,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4610202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "6aeabefc-915f-48bd-ae24-3473e801fcf0",
+      "name": "REGSTRUP",
+      "historicalLoadPE": 2837,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3210005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e89c3928-bd3f-44f9-b702-314617a29cb3",
+      "name": "Egå",
+      "historicalLoadPE": 87538,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7510186",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "36151972-33bc-43df-a125-be6561101422",
+      "name": "Bramming nord",
+      "historicalLoadPE": 1194,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5570001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0d6d990e-0320-4ebd-828a-d5b44bf04da3",
+      "name": "GÅRSLEV RENSEANLÆG",
+      "historicalLoadPE": 277,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6030003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 257,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "8dff6c02-3602-4ccd-b557-aa6410f928c0",
+      "name": "Gummerup Renseanlæg",
+      "historicalLoadPE": 4885,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4330102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "00931f13-5e1c-420c-ade3-cab8bdd6f670",
+      "name": "Køge-Egnens Renseanlæg I/S",
+      "historicalLoadPE": 76288,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2590009",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "435510d0-b775-40d8-811c-9fc6ad4acca5",
+      "name": "Udsholt",
+      "historicalLoadPE": 6170,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2130027",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c3b87804-727e-4b3b-a39f-32fd22a64ef5",
+      "name": "NAKSKOV",
+      "historicalLoadPE": 10349,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3670008",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 1,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "40464c5b-4e1a-4c05-ad85-3ae54bf1781f",
+      "name": "NÆSTVED",
+      "historicalLoadPE": 43292,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3730001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "5d55a3ea-a761-4175-937b-6d3eca8f4691",
+      "name": "SLAGELSE",
+      "historicalLoadPE": 62751,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3330007",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e2ab6333-d0b3-4083-af25-3e401cc132ff",
+      "name": "Tisvilde",
+      "historicalLoadPE": 5336,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2150001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "b267fe7c-073e-4172-8e34-b1d691f2b573",
+      "name": "Esbjerg vest",
+      "historicalLoadPE": 132578,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5610001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "20b15927-c61c-449c-956c-3f694544144e",
+      "name": "Ringe Renseanlæg",
+      "historicalLoadPE": 7846,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4735102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 220,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "885190fe-7b89-4f8d-9f66-ae500dcb1cfa",
+      "name": "GEDSER",
+      "historicalLoadPE": 2236,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3950007",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a5524587-e146-4056-a168-5c21137275f2",
+      "name": "Hørup Renseanlæg",
+      "historicalLoadPE": 5816,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4271202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a8257558-2cd8-4a1d-9af0-9e056c9525a6",
+      "name": "Søndersø By Renseanlæg",
+      "historicalLoadPE": 14099,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4830102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "700dd295-2dd0-45e1-81b4-a7f9ecf7afa6",
+      "name": "Karby",
+      "historicalLoadPE": 5010,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7730802",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "33bbb98e-8231-416e-9afa-3d16739192fc",
+      "name": "Karup",
+      "historicalLoadPE": 4735,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7690202",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e72182b2-2403-4988-bad3-d1a3c28ae1f0",
+      "name": "Videbæk",
+      "historicalLoadPE": 7179,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6811002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e9220455-0503-4c19-88ff-27caef512027",
+      "name": "Bov Renseanlæg",
+      "historicalLoadPE": 4953,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5030001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0417e5a6-072e-45f2-b56c-c6c6a28e0eb8",
+      "name": "FREDERICIA SPILDEVAND OG ENERGI A/S",
+      "historicalLoadPE": 112520,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6070012",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "b65a6573-a030-4437-855f-dafd99ab2593",
+      "name": "Åle Renseanlæg",
+      "historicalLoadPE": 2853,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6270032",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2dd014ff-b700-4619-a5bd-2806efb10f53",
+      "name": "Sdr. Nærå Renseanlæg",
+      "historicalLoadPE": 8680,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK4970102",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 240,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "471cdb5c-c07a-4568-b89c-704c4e5eb01b",
+      "name": "Voldum",
+      "historicalLoadPE": 710,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7090007",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 6,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2e64c1a1-10e8-41d3-823c-7375272f70c9",
+      "name": "VIBY. Udløb til Århus Å",
+      "historicalLoadPE": 53850,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7510091",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "af36059b-fdf0-4b79-b50f-129612af15cf",
+      "name": "Åby",
+      "historicalLoadPE": 59112,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7510188",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "25c4cf13-227e-461d-94e6-5ed39f85104f",
+      "name": "Tårnby",
+      "historicalLoadPE": 38980,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK1850001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2198bebb-978d-453a-ac54-e50ab1f66dda",
+      "name": "SORØ CENTRALRENSEANLÆG",
+      "historicalLoadPE": 17830,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3350012",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "951327fc-1af4-4244-89fb-357270f013bd",
+      "name": "Ikast",
+      "historicalLoadPE": 20482,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6631002",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "40e29349-fc1d-4404-acf0-4003638dd8ea",
+      "name": "Grindsted",
+      "historicalLoadPE": 55842,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5650012",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "2848f6f1-67c8-4fa7-8490-dd96e358b2e6",
+      "name": "Kallerup",
+      "historicalLoadPE": 8266,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK1690001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "09a1bb0c-f955-4657-b795-effbf5ff875d",
+      "name": "STEGE",
+      "historicalLoadPE": 8632,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3650006",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1079549d-ab03-4ae5-9df5-db676a76b402",
+      "name": "Hjallerup",
+      "historicalLoadPE": 4253,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8070031",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "f7c7bcd0-a6fb-4ad7-aa5c-b9c801440e6d",
+      "name": "Brande Renseanlæg",
+      "historicalLoadPE": 10187,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6531402",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "e237e2fe-0d06-4a87-8398-73aed344068e",
+      "name": "Attrup",
+      "historicalLoadPE": 21782,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK8030009",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "9d3ffd45-252f-4dd2-975b-20dac1a186d6",
+      "name": "Gårdeby Renseanlæg",
+      "historicalLoadPE": 16664,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5390001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "c12a41af-90c1-4ae9-a996-7734b2e9b75a",
+      "name": "Brørup",
+      "historicalLoadPE": 9716,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5590001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "8cff9ebe-10ff-4285-ae92-7d4afde4f8b8",
+      "name": "Tørring Renseanlæg",
+      "historicalLoadPE": 6091,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK6270003",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "a05be861-743e-4367-9100-953f2b0ca9ed",
+      "name": "ARRILD",
+      "historicalLoadPE": 815,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5250004",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "0b4ef638-b0ef-4f48-8ef7-1cf9d2f7b332",
+      "name": "Odder. Saksild Bugt",
+      "historicalLoadPE": 12847,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7270071",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "48011c6b-6276-4ae3-a289-5c2b4e3b1508",
+      "name": "Ølstykke",
+      "historicalLoadPE": 11090,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2370010",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "78e127c0-2ff4-4fd8-b2e5-9c88c04b9208",
+      "name": "HUK",
+      "historicalLoadPE": 19893,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK5130014",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 5,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "1dc57ff4-ef1e-43ea-8fcd-ad04254dd966",
+      "name": "KORSØR RENSEANLÆG",
+      "historicalLoadPE": 12761,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK3250012",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 4,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "6f9b251a-96a9-43ab-b488-b37d10618947",
+      "name": "Nordkysten",
+      "historicalLoadPE": 9295,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK2170001",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 3,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    },
+    {
+      "plantId": "b2e433e0-bb11-4c1a-a4b4-d320de5ccca8",
+      "name": "Hadsten",
+      "historicalLoadPE": 13044,
+      "historicalLoadYear": 2022,
+      "historicalMatch": {
+        "id": "DK7090005",
+        "method": "Unikt eksakt navn + afstand højst 1 km",
+        "distanceMetres": 2,
+        "sourceUrl": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_UWWTD/TreatmentPlants_2022/MapServer"
+      }
+    }
+  ]
+}
