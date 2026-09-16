@@ -9,3 +9,8 @@
 .load-screening-detail h3{font-size:16px}.load-screening-value{font-weight:700}
 .load-screening-detail a{color:#006e83;text-decoration:underline}
 .map-legend small{display:block;max-width:190px;line-height:1.4}
+#loadScreeningNote{color:#c0d9e0;border-top-color:#335967;padding-top:8px}
+.plant-row .row-copy small{white-space:normal;overflow:visible;line-height:1.45}
+.map-legend .dot:not(.small):not(.medium):not(.large):not(.xlarge){width:9px;height:9px}
+.map-legend small{grid-column:1/-1}
+@media(max-width:760px){#plantControls{max-height:22dvh;overflow-y:auto;flex-shrink:0}.sidebar{overflow-y:auto}}
