@@ -43,4 +43,14 @@ Parameteren Personækvivalenter forekommer 1.008 gange ved 17 anlæg i prøveår
 
 Status: **PULS-årsbelastning mangler fortsat**. Det uploadede prøveresultat-udtræk importeres ikke som årsbelastning. Der kræves et særskilt udtræk af årsindberetning eller dokumenteret årlig indløbstransport. Screeningen er foreløbig: års-PE er ikke dokumentation for maksimal gennemsnitlig ugebelastning; byområdestørrelse, recipient/risikoudpegning og eksisterende renseevne skal verificeres.
 
+Det korrekte manuelle udtræk findes i PULS, ikke under Arealdatas eksport af analyseresultater:
+
+1. Log ind på `https://puls.miljoeportal.dk/`.
+2. Åbn værktøjskassen øverst til højre og vælg **Eksport af data**.
+3. Vælg punktkildetypen **Renseanlæg** og datasættet for årsindberettet **Organisk belastning**.
+4. Vælg **Miljøstyrelsen** som myndighed for et landsdækkende udtræk og vælg det nyeste afsluttede indberetningsår. Eksportér gerne flere afsluttede år, så hvert anlæg kan få det nyeste tilgængelige år.
+5. Bevar PULS-id, år og felterne for husholdning/industri i eksporten. Importadapteren fastlægges først efter kontrol af de faktiske kolonnenavne og datasættets definitioner.
+
+Danmarks Miljøportal beskriver årsindberetningen som spildevandsmængde, organisk belastning og hydraulisk belastning. Under Organisk belastning indberettes PE for husholdning og industri. Den officielle REST API har desuden `GET /wwtps/{id}/computations/terms/{year}`, hvor `loadComputation.load` og `authorizedLoad` holdes adskilt. API-kaldet kræver PULS-adgang; klientoplysninger må ikke gemmes i repository eller browserkode.
+
 Kontrol: `node scripts/check-load-screening.cjs`. Eksisterende projekt- og oplandskontroller: `node scripts/check-project-geography.cjs` og `node scripts/qa_avedoere_catchment.cjs`. Desktop/mobil browserkontrol skal gennemføres før merge.
