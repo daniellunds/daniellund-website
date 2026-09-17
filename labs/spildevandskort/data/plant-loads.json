@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "basis": "eea-2022-only",
   "sourceField": "uwwLoadEnteringUWWTP",
-  "note": "EEA 2022 er det eneste belastningsgrundlag. Teknisk kapacitet og godkendt belastning holdes separat.",
+  "note": "EEA 2022 er det eneste belastningsgrundlag. PULS-felterne registreret designkapacitet og godkendt kapacitet holdes separat.",
   "attribution": "Indeholder data, som benyttes i henhold til vilkår for brug af danske offentlige data.",
   "records": [
     {

@@ -10,6 +10,12 @@ const data=JSON.parse(fs.readFileSync('labs/spildevandskort/data/plant-loads.jso
 assert.equal(data.basis,'eea-2022-only');assert.equal(data.sourceField,'uwwLoadEnteringUWWTP');
 assert.equal(new Set(data.records.map(r=>r.plantId)).size,data.records.length);
 for(const r of data.records){assert(Number.isFinite(r.historicalLoadPE));assert.equal(r.historicalLoadYear,2022);assert(r.historicalMatch.sourceUrl);}
+const app2=fs.readFileSync('labs/spildevandskort/app2.js','utf8');
+const capacityFunction=app2.slice(app2.indexOf('function capacityContext'),app2.indexOf('function openPlant'));
+const capacityVm={n:v=>Number.isFinite(Number(v))?Number(v):null};vm.createContext(capacityVm);vm.runInContext(capacityFunction,capacityVm);
+assert.match(capacityVm.capacityContext({capacity:350000,approvedLoad:470000}),/administrativ, fremtidig ramme/);
+assert.equal(capacityVm.capacityContext({capacity:470000,approvedLoad:350000}),'');
+assert.match(app2,/Registreret designkapacitet \(PULS\)/);assert.match(app2,/Godkendt kapacitet \(PULS\)/);
 // Exercise the integration's failure handling independently of the base map downloads.
 async function checkUI(fail){
  const nodes={loadScreeningEnabled:{checked:true},loadScreeningFilter:{value:'high'},loadScreeningNote:{},legend:{}};

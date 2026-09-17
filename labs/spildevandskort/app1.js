@@ -133,7 +133,7 @@ function renderPlants(){
     const load=plantLoad(p),band=LoadScreening.band(load),screen=screeningEnabled();
     const fill=screen&&p.active?LoadScreening.colors[band]:p.active?(responsible?.color||"#087e90"):"#737e84";
     const m=L.circleMarker([lat,lon],{radius:screen?({high:11,mid:8,low:5,unknown:5}[band]):capacityRadius(p.capacity),color:"#fff",weight:1.5,fillColor:fill,fillOpacity:.95,pane:"markerPane"}).addTo(state.plantLayer);
-    m.bindTooltip(`${p.name} · ${responsible?.name||p.owner} · ${screen?LoadScreening.summary(load):"Teknisk kapacitet: "+capacityClass(p.capacity)}`);
+    m.bindTooltip(`${p.name} · ${responsible?.name||p.owner} · ${screen?LoadScreening.summary(load):"PULS-designkapacitet: "+capacityClass(p.capacity)}`);
     m.on("click",()=>openPlant(p));
   }
 }

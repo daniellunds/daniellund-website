@@ -27,7 +27,7 @@ Tilføjelsen ligger i `load-screening.js` og `load-screening-ui.js`. Kortvisning
 
 Screeningen bruger udelukkende EEA's rapporterede `uwwLoadEnteringUWWTP` for 2022. `data/plant-loads.json` kobles kun på PULS UUID. De 303 koblinger er lavet ved unikt eksakt anlægsnavn og højst 1 km afstand; EEA-id, afstand og kilde er gemt på hver kobling. Koblingerne omfatter også nedlagte anlæg, men kun aktive anlæg tælles i datadækningen. Ingen værdi overføres til et nyt anlæg med et andet UUID.
 
-Teknisk kapacitet og godkendt belastning vises som separate PULS-baggrundsfelter og bruges aldrig til 10.000/150.000 PE-screeningen. Anlæg uden EEA-kobling vises som "EEA-belastning mangler".
+PULS-felterne `DesignedCapacity` og `AuthorizedLoad` vises som henholdsvis "Registreret designkapacitet (PULS)" og "Godkendt kapacitet (PULS)". De kan bygge på forskellige år og forudsætninger og er ikke faktisk årsbelastning. Hvis den godkendte værdi er højere end designkapaciteten, forklarer detaljepanelet, at den kan være en administrativ, fremtidig ramme, som forudsætter udbygning. Ingen af felterne bruges til 10.000/150.000 PE-screeningen. Anlæg uden EEA-kobling vises som "EEA-belastning mangler".
 
 Grupperne er en screening efter direktiv (EU) 2024/3019, artikel 7 og 8:
 
