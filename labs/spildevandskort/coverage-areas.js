@@ -55,6 +55,15 @@
     renderCoverage();
   }
 
+  function bindCatchmentHighlight(){
+    state.polygonLayer?.eachLayer(layer=>{
+      const brandId=layer.feature?.properties?.brandId;
+      if(!brandId||layer._administrativeCoverageHighlightBound)return;
+      layer._administrativeCoverageHighlightBound=true;
+      layer.on("click",()=>setCoverageHighlight(brandId));
+    });
+  }
+
   function pointInRing(lng,lat,ring){
     let inside=false;
     for(let i=0,j=ring.length-1;i<ring.length;j=i++){
@@ -95,8 +104,7 @@
 
   function handleAdministrativeMapClick(event){
     const brandId=brandAtLatLng(event?.latlng);
-    if(!brandId)return;
-    setCoverageHighlight(state.coverageHighlightBrandId===brandId?null:brandId);
+    setCoverageHighlight(brandId);
   }
 
   function renderCoverage(){
@@ -182,6 +190,7 @@
       };
       console.info("ADMIN_COVERAGE_QA",state.coverageQa);
       renderCoverage();
+      bindCatchmentHighlight();
     }catch(err){
       console.warn("Administrative forsyningsområder kunne ikke indlæses",err);
       state.coverageQa={error:String(err?.message||err)};
@@ -193,11 +202,13 @@
     if(checkbox.checked===false)setCoverageHighlight(null);
     else renderCoverage();
   });
+  const closeDetail=document.getElementById("closeDetail");
+  if(closeDetail)closeDetail.addEventListener("click",()=>setCoverageHighlight(null));
   state.map.on("click",handleAdministrativeMapClick);
 
-  // Keep backdrop synchronized with utility selection and recoloring.
+  // Keep backdrop synchronized with utility selection and recoloring, and preserve catchment-detail behavior.
   const coreRenderPolygons=renderPolygons;
-  renderPolygons=function(){coreRenderPolygons();renderCoverage();};
+  renderPolygons=function(){coreRenderPolygons();renderCoverage();bindCatchmentHighlight();};
   window.renderAdministrativeCoverage=renderCoverage;
   window.setAdministrativeCoverageHighlight=setCoverageHighlight;
   window.spildevandskortCoverageState=()=>({...state.coverageQa,highlightBrandId:state.coverageHighlightBrandId});
