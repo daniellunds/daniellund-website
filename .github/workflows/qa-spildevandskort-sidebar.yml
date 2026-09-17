@@ -39,6 +39,16 @@ jobs:
           import asyncio, os
           from playwright.async_api import async_playwright
 
+          async def leaflet_size(page):
+            return await page.evaluate("""() => ({
+              cached:{w:state.map.getSize().x,h:state.map.getSize().y},
+              actual:{w:document.getElementById('map').clientWidth,h:document.getElementById('map').clientHeight}
+            })""")
+
+          def assert_leaflet_matches_dom(sizes):
+            assert abs(sizes['cached']['w']-sizes['actual']['w']) <= 2, sizes
+            assert abs(sizes['cached']['h']-sizes['actual']['h']) <= 2, sizes
+
           async def check(browser,mobile=False):
             viewport={"width":390,"height":844} if mobile else {"width":1440,"height":900}
             ctx=await browser.new_context(viewport=viewport,is_mobile=mobile)
@@ -46,23 +56,27 @@ jobs:
             r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000); assert r and r.ok
             await page.wait_for_selector('.leaflet-container',timeout=30000)
             await page.wait_for_function("typeof spildevandskortSidebarState==='function'",timeout=30000)
+            await page.wait_for_function("typeof state!=='undefined' && state.map && state.map.getSize().x>0",timeout=30000)
             await page.wait_for_timeout(500)
             before=await page.locator('#map').bounding_box(); assert before
+            assert_leaflet_matches_dom(await leaflet_size(page))
             selected_before=await page.evaluate('state.selected.size')
             assert await page.locator('#collapseSidebar').is_visible()
             assert not await page.locator('#expandSidebar').is_visible()
-            await page.locator('#collapseSidebar').click(); await page.wait_for_timeout(400)
+            await page.locator('#collapseSidebar').click(); await page.wait_for_timeout(500)
             assert (await page.evaluate('spildevandskortSidebarState()'))['collapsed'] is True
             assert await page.locator('#expandSidebar').is_visible()
             after=await page.locator('#map').bounding_box(); assert after
             if mobile: assert after['height'] > before['height'] + 200,(before,after)
             else: assert after['width'] > before['width'] + 250,(before,after)
+            assert_leaflet_matches_dom(await leaflet_size(page))
             assert await page.evaluate('state.selected.size') == selected_before
-            await page.locator('#expandSidebar').click(); await page.wait_for_timeout(400)
+            await page.locator('#expandSidebar').click(); await page.wait_for_timeout(500)
             assert (await page.evaluate('spildevandskortSidebarState()'))['collapsed'] is False
             restored=await page.locator('#map').bounding_box(); assert restored
             assert abs(restored['width']-before['width']) < 5,(before,restored)
             assert abs(restored['height']-before['height']) < 5,(before,restored)
+            assert_leaflet_matches_dom(await leaflet_size(page))
             assert not errors,errors
             await ctx.close()
 
