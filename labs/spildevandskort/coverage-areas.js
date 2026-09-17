@@ -14,6 +14,7 @@
   };
   const norm=s=>String(s||"").toLocaleLowerCase("da").trim().replace(/\s+/g," ");
   state.coverageLayer=null;
+  state.coverageOutlineLayer=null;
   state.coverageData=null;
   state.coverageQa=null;
 
@@ -48,18 +49,32 @@
 
   function renderCoverage(){
     if(state.coverageLayer){state.coverageLayer.remove();state.coverageLayer=null;}
+    if(state.coverageOutlineLayer){state.coverageOutlineLayer.remove();state.coverageOutlineLayer=null;}
     const checkbox=document.getElementById("showCoverage");
     if(!state.coverageData||checkbox?.checked===false)return;
     if(!state.map.getPane("coveragePane")){
       const pane=state.map.createPane("coveragePane");pane.style.zIndex="320";pane.style.pointerEvents="none";
     }
+    if(!state.map.getPane("coverageOutlinePane")){
+      const pane=state.map.createPane("coverageOutlinePane");pane.style.zIndex="430";pane.style.pointerEvents="none";
+    }
     const features=(state.coverageData.features||[]).filter(f=>{
       const c=classify(f);return c.status==="assigned"&&state.selected.has(c.brandId);
     });
-    state.coverageLayer=L.geoJSON({type:"FeatureCollection",features},{
+    const collection={type:"FeatureCollection",features};
+
+    // Keep the administrative area as a subdued backdrop below the sewer catchments.
+    state.coverageLayer=L.geoJSON(collection,{
       pane:"coveragePane",
       interactive:false,
       style:f=>({color:colorFor(f),weight:.8,opacity:.32,fillColor:colorFor(f),fillOpacity:.105})
+    }).addTo(state.map);
+
+    // Draw a separate outline above the sewer catchments so selected administrative areas remain legible.
+    state.coverageOutlineLayer=L.geoJSON(collection,{
+      pane:"coverageOutlinePane",
+      interactive:false,
+      style:f=>({color:colorFor(f),weight:2.2,opacity:.9,fill:false,lineCap:"round",lineJoin:"round"})
     }).addTo(state.map);
   }
 
