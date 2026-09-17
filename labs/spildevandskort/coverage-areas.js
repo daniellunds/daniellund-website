@@ -15,6 +15,7 @@
   const norm=s=>String(s||"").toLocaleLowerCase("da").trim().replace(/\s+/g," ");
   state.coverageLayer=null;
   state.coverageOutlineLayer=null;
+  state.coverageHighlightBrandId=null;
   state.coverageData=null;
   state.coverageQa=null;
 
@@ -47,11 +48,19 @@
     return c.current?.color||state.brandById.get(c.brandId)?.color||"#657D84";
   }
 
+  function setCoverageHighlight(brandId){
+    const next=brandId&&state.brandById?.has(brandId)?brandId:null;
+    if(state.coverageHighlightBrandId===next)return;
+    state.coverageHighlightBrandId=next;
+    renderCoverage();
+  }
+
   function renderCoverage(){
     if(state.coverageLayer){state.coverageLayer.remove();state.coverageLayer=null;}
     if(state.coverageOutlineLayer){state.coverageOutlineLayer.remove();state.coverageOutlineLayer=null;}
     const checkbox=document.getElementById("showCoverage");
     if(!state.coverageData||checkbox?.checked===false)return;
+    if(state.coverageHighlightBrandId&&!state.selected.has(state.coverageHighlightBrandId))state.coverageHighlightBrandId=null;
     if(!state.map.getPane("coveragePane")){
       const pane=state.map.createPane("coveragePane");pane.style.zIndex="320";pane.style.pointerEvents="none";
     }
@@ -63,19 +72,24 @@
     });
     const collection={type:"FeatureCollection",features};
 
-    // Keep the administrative area as a subdued backdrop below the sewer catchments.
+    // Keep all selected administrative areas as a subdued backdrop below the sewer catchments.
     state.coverageLayer=L.geoJSON(collection,{
       pane:"coveragePane",
       interactive:false,
       style:f=>({color:colorFor(f),weight:.8,opacity:.32,fillColor:colorFor(f),fillOpacity:.105})
     }).addTo(state.map);
 
-    // Draw a separate outline above the sewer catchments so selected administrative areas remain legible.
-    state.coverageOutlineLayer=L.geoJSON(collection,{
-      pane:"coverageOutlinePane",
-      interactive:false,
-      style:f=>({color:colorFor(f),weight:2.2,opacity:.9,fill:false,lineCap:"round",lineJoin:"round"})
-    }).addTo(state.map);
+    // Only the explicitly focused utility gets the stronger outline. Nothing is highlighted on initial load.
+    if(state.coverageHighlightBrandId){
+      const highlighted=features.filter(f=>classify(f).brandId===state.coverageHighlightBrandId);
+      if(highlighted.length){
+        state.coverageOutlineLayer=L.geoJSON({type:"FeatureCollection",features:highlighted},{
+          pane:"coverageOutlinePane",
+          interactive:false,
+          style:f=>({color:colorFor(f),weight:2.2,opacity:.9,fill:false,lineCap:"round",lineJoin:"round"})
+        }).addTo(state.map);
+      }
+    }
   }
 
   async function waitForBrands(){
@@ -133,10 +147,27 @@
   const checkbox=document.getElementById("showCoverage");
   if(checkbox)checkbox.addEventListener("change",renderCoverage);
 
+  // A utility is highlighted only after an explicit interaction with its row/profile.
+  document.addEventListener("click",event=>{
+    const row=event.target?.closest?.(".brand-row[data-brand-id]");
+    if(!row)return;
+    const brandId=row.dataset.brandId;
+    const input=event.target.closest?.('input[type="checkbox"]');
+    if(input){
+      queueMicrotask(()=>{
+        if(input.checked)setCoverageHighlight(brandId);
+        else if(state.coverageHighlightBrandId===brandId)setCoverageHighlight(null);
+      });
+      return;
+    }
+    setCoverageHighlight(brandId);
+  });
+
   // Keep backdrop synchronized with utility selection and recoloring.
   const coreRenderPolygons=renderPolygons;
   renderPolygons=function(){coreRenderPolygons();renderCoverage();};
   window.renderAdministrativeCoverage=renderCoverage;
-  window.spildevandskortCoverageState=()=>state.coverageQa;
+  window.setAdministrativeCoverageHighlight=setCoverageHighlight;
+  window.spildevandskortCoverageState=()=>({...state.coverageQa,highlightBrandId:state.coverageHighlightBrandId});
   loadCoverage();
 })();
