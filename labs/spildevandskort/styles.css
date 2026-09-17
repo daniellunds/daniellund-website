@@ -17,3 +17,8 @@
 .capacity-note strong{display:block;color:#153f4a}
 .capacity-note p{margin:4px 0 0}
 @media(max-width:760px){#plantControls{max-height:22dvh;overflow-y:auto;flex-shrink:0}.sidebar{overflow-y:auto}}
+
+/* Leaflet makes clicked SVG paths keyboard-focusable. Remove Chromium's rectangular
+   focus outline around the path bounding box; the application's own map highlight
+   remains the visual selection cue. */
+#map .leaflet-interactive:focus{outline:none!important}
