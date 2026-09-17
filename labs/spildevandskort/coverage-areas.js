@@ -199,8 +199,8 @@
 
   const checkbox=document.getElementById("showCoverage");
   if(checkbox)checkbox.addEventListener("change",()=>{
-    if(checkbox.checked===false)setCoverageHighlight(null);
-    else renderCoverage();
+    if(checkbox.checked===false)state.coverageHighlightBrandId=null;
+    renderCoverage();
   });
   const closeDetail=document.getElementById("closeDetail");
   if(closeDetail)closeDetail.addEventListener("click",()=>setCoverageHighlight(null));
