@@ -103,8 +103,14 @@
   }
 
   function handleAdministrativeMapClick(event){
+    // Preserve interactions with sewer catchments, WWTPs and other interactive map objects.
+    // Only a click on the administrative backdrop itself should open the utility profile.
+    const source=event?.sourceTarget||event?.propagatedFrom;
+    const domTarget=event?.originalEvent?.target;
+    if((source&&source!==state.map)||domTarget?.closest?.(".leaflet-interactive"))return;
     const brandId=brandAtLatLng(event?.latlng);
     setCoverageHighlight(brandId);
+    if(brandId&&typeof openBrandProfile==="function")openBrandProfile(brandId);
   }
 
   function renderCoverage(){
