@@ -46,12 +46,31 @@
   expandButton.hidden=true;
   mapShell.appendChild(expandButton);
 
-  let resizeTimer=null;
+  function getLeafletMap(){
+    try{
+      return typeof state!=='undefined'&&state?.map&&typeof state.map.invalidateSize==='function'?state.map:null;
+    }catch(_err){
+      return null;
+    }
+  }
+
+  let resizeTimers=[];
+  function invalidateMap(){
+    const map=getLeafletMap();
+    if(map)map.invalidateSize({animate:false,pan:false});
+  }
   function resizeMap(){
-    window.clearTimeout(resizeTimer);
-    resizeTimer=window.setTimeout(()=>{
-      if(window.state?.map&&typeof state.map.invalidateSize==='function')state.map.invalidateSize({pan:false});
-    },230);
+    resizeTimers.forEach(id=>window.clearTimeout(id));
+    resizeTimers=[];
+    window.requestAnimationFrame(()=>window.requestAnimationFrame(invalidateMap));
+    [60,140,240,360].forEach(delay=>resizeTimers.push(window.setTimeout(invalidateMap,delay)));
+  }
+
+  // Leaflet caches the map viewport size. Keep that cache synchronized while the
+  // CSS grid animates, otherwise newly exposed map area shows only the map background.
+  if(typeof ResizeObserver!=='undefined'){
+    const observer=new ResizeObserver(()=>window.requestAnimationFrame(invalidateMap));
+    observer.observe(mapShell);
   }
 
   function setCollapsed(collapsed){
@@ -67,6 +86,7 @@
   shell.addEventListener('transitionend',event=>{
     if(event.propertyName==='grid-template-columns'||event.propertyName==='grid-template-rows')resizeMap();
   });
+  window.addEventListener('resize',resizeMap,{passive:true});
 
   window.setSpildevandskortSidebarCollapsed=setCollapsed;
   window.spildevandskortSidebarState=()=>({collapsed:shell.classList.contains('sidebar-collapsed')});
