@@ -64,6 +64,49 @@
     });
   }
 
+  function pointInRing(lng,lat,ring){
+    let inside=false;
+    for(let i=0,j=ring.length-1;i<ring.length;j=i++){
+      const xi=Number(ring[i]?.[0]),yi=Number(ring[i]?.[1]);
+      const xj=Number(ring[j]?.[0]),yj=Number(ring[j]?.[1]);
+      if(!Number.isFinite(xi)||!Number.isFinite(yi)||!Number.isFinite(xj)||!Number.isFinite(yj))continue;
+      const crosses=((yi>lat)!==(yj>lat))&&(lng<((xj-xi)*(lat-yi))/(yj-yi)+xi);
+      if(crosses)inside=!inside;
+    }
+    return inside;
+  }
+
+  function pointInPolygon(lng,lat,rings){
+    if(!rings?.length||!pointInRing(lng,lat,rings[0]))return false;
+    for(let i=1;i<rings.length;i++)if(pointInRing(lng,lat,rings[i]))return false;
+    return true;
+  }
+
+  function featureContainsLatLng(feature,latlng){
+    const geometry=feature?.geometry;
+    if(!geometry||!latlng)return false;
+    const lng=latlng.lng,lat=latlng.lat;
+    if(geometry.type==="Polygon")return pointInPolygon(lng,lat,geometry.coordinates);
+    if(geometry.type==="MultiPolygon")return geometry.coordinates.some(rings=>pointInPolygon(lng,lat,rings));
+    return false;
+  }
+
+  function brandAtLatLng(latlng){
+    const checkbox=document.getElementById("showCoverage");
+    if(!state.coverageData||checkbox?.checked===false)return null;
+    for(const feature of state.coverageData.features||[]){
+      const c=classify(feature);
+      if(c.status!=="assigned"||!state.selected.has(c.brandId))continue;
+      if(featureContainsLatLng(feature,latlng))return c.brandId;
+    }
+    return null;
+  }
+
+  function handleAdministrativeMapClick(event){
+    const brandId=brandAtLatLng(event?.latlng);
+    setCoverageHighlight(brandId);
+  }
+
   function renderCoverage(){
     if(state.coverageLayer){state.coverageLayer.remove();state.coverageLayer=null;}
     if(state.coverageOutlineLayer){state.coverageOutlineLayer.remove();state.coverageOutlineLayer=null;}
@@ -88,7 +131,7 @@
       style:f=>({color:colorFor(f),weight:.8,opacity:.32,fillColor:colorFor(f),fillOpacity:.105})
     }).addTo(state.map);
 
-    // Only the utility whose sewer catchment was explicitly clicked gets the stronger outline.
+    // Only the administrative supply area explicitly clicked on the map gets the stronger outline.
     if(state.coverageHighlightBrandId){
       const highlighted=features.filter(f=>classify(f).brandId===state.coverageHighlightBrandId);
       if(highlighted.length){
@@ -155,11 +198,15 @@
   }
 
   const checkbox=document.getElementById("showCoverage");
-  if(checkbox)checkbox.addEventListener("change",renderCoverage);
+  if(checkbox)checkbox.addEventListener("change",()=>{
+    if(checkbox.checked===false)state.coverageHighlightBrandId=null;
+    renderCoverage();
+  });
   const closeDetail=document.getElementById("closeDetail");
   if(closeDetail)closeDetail.addEventListener("click",()=>setCoverageHighlight(null));
+  state.map.on("click",handleAdministrativeMapClick);
 
-  // Keep backdrop synchronized with utility selection and recoloring, and bind clicks on newly rendered sewer catchments.
+  // Keep backdrop synchronized with utility selection and recoloring, and preserve catchment-detail behavior.
   const coreRenderPolygons=renderPolygons;
   renderPolygons=function(){coreRenderPolygons();renderCoverage();bindCatchmentHighlight();};
   window.renderAdministrativeCoverage=renderCoverage;
