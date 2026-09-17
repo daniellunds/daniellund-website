@@ -55,6 +55,15 @@
     renderCoverage();
   }
 
+  function bindCatchmentHighlight(){
+    state.polygonLayer?.eachLayer(layer=>{
+      const brandId=layer.feature?.properties?.brandId;
+      if(!brandId||layer._administrativeCoverageHighlightBound)return;
+      layer._administrativeCoverageHighlightBound=true;
+      layer.on("click",()=>setCoverageHighlight(brandId));
+    });
+  }
+
   function renderCoverage(){
     if(state.coverageLayer){state.coverageLayer.remove();state.coverageLayer=null;}
     if(state.coverageOutlineLayer){state.coverageOutlineLayer.remove();state.coverageOutlineLayer=null;}
@@ -79,7 +88,7 @@
       style:f=>({color:colorFor(f),weight:.8,opacity:.32,fillColor:colorFor(f),fillOpacity:.105})
     }).addTo(state.map);
 
-    // Only the explicitly focused utility gets the stronger outline. Nothing is highlighted on initial load.
+    // Only the utility whose sewer catchment was explicitly clicked gets the stronger outline.
     if(state.coverageHighlightBrandId){
       const highlighted=features.filter(f=>classify(f).brandId===state.coverageHighlightBrandId);
       if(highlighted.length){
@@ -138,6 +147,7 @@
       };
       console.info("ADMIN_COVERAGE_QA",state.coverageQa);
       renderCoverage();
+      bindCatchmentHighlight();
     }catch(err){
       console.warn("Administrative forsyningsområder kunne ikke indlæses",err);
       state.coverageQa={error:String(err?.message||err)};
@@ -146,26 +156,12 @@
 
   const checkbox=document.getElementById("showCoverage");
   if(checkbox)checkbox.addEventListener("change",renderCoverage);
+  const closeDetail=document.getElementById("closeDetail");
+  if(closeDetail)closeDetail.addEventListener("click",()=>setCoverageHighlight(null));
 
-  // A utility is highlighted only after an explicit interaction with its row/profile.
-  document.addEventListener("click",event=>{
-    const row=event.target?.closest?.(".brand-row[data-brand-id]");
-    if(!row)return;
-    const brandId=row.dataset.brandId;
-    const input=event.target.closest?.('input[type="checkbox"]');
-    if(input){
-      queueMicrotask(()=>{
-        if(input.checked)setCoverageHighlight(brandId);
-        else if(state.coverageHighlightBrandId===brandId)setCoverageHighlight(null);
-      });
-      return;
-    }
-    setCoverageHighlight(brandId);
-  });
-
-  // Keep backdrop synchronized with utility selection and recoloring.
+  // Keep backdrop synchronized with utility selection and recoloring, and bind clicks on newly rendered sewer catchments.
   const coreRenderPolygons=renderPolygons;
-  renderPolygons=function(){coreRenderPolygons();renderCoverage();};
+  renderPolygons=function(){coreRenderPolygons();renderCoverage();bindCatchmentHighlight();};
   window.renderAdministrativeCoverage=renderCoverage;
   window.setAdministrativeCoverageHighlight=setCoverageHighlight;
   window.spildevandskortCoverageState=()=>({...state.coverageQa,highlightBrandId:state.coverageHighlightBrandId});
