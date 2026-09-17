@@ -1,7 +1,8 @@
 {
   "schemaVersion": 1,
-  "annualLoadStatus": "not-loaded",
-  "note": "PULS årsindberettet indløbsbelastning mangler. EEA 2022 er historisk fallback.",
+  "basis": "eea-2022-only",
+  "sourceField": "uwwLoadEnteringUWWTP",
+  "note": "EEA 2022 er det eneste belastningsgrundlag. Teknisk kapacitet og godkendt belastning holdes separat.",
   "attribution": "Indeholder data, som benyttes i henhold til vilkår for brug af danske offentlige data.",
   "records": [
     {
