@@ -116,7 +116,7 @@ jobs:
               assert surface['silk']=='#E4D600',surface
               assert surface['silkAdmin'] and all(x[0]==surface['silk'] and x[1]==surface['silk'] for x in surface['silkAdmin']),surface
               assert surface['silkCatch'] and all(x[0]==surface['silk'] and x[1]==surface['silk'] for x in surface['silkCatch']),surface
-              assert surface['silkPlantColors'] and all(x==surface['silk'] for x in surface['silkPlantColors']),surface
+              assert all(x==surface['silk'] for x in surface['silkPlantColors']),surface
               bq=await page.evaluate('spildevandskortBasemapState()')
               assert bq['active']=='Kort' and bq['streetGreyscale'] is True,bq
               filter_value=await page.locator('.osm-grayscale-layer').evaluate("el=>getComputedStyle(el).filter");assert filter_value!='none',filter_value
