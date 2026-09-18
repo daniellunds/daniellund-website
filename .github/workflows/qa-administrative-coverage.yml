@@ -7,6 +7,7 @@ on:
       - 'labs/spildevandskort/profile-integration.js'
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/data/coverage-verification.json'
+      - 'labs/spildevandskort/data/administrative-neighbours.json'
       - 'labs/spildevandskort/index.html'
       - '.github/workflows/qa-administrative-coverage.yml'
   pull_request:
@@ -16,6 +17,7 @@ on:
       - 'labs/spildevandskort/profile-integration.js'
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/data/coverage-verification.json'
+      - 'labs/spildevandskort/data/administrative-neighbours.json'
       - 'labs/spildevandskort/index.html'
       - '.github/workflows/qa-administrative-coverage.yml'
 permissions:
@@ -118,9 +120,14 @@ jobs:
                 assert any(x['name']=='Nordfyns' and x['legacyBrandId']=='nordfyns-forsyning' and x['operatorBrandId']=='vandcenter-syd' for x in current),current
                 assert any(x['name']=='Syddjurs' and x['legacyBrandId']=='syddjurs-spildevand' and x['operatorBrandId']=='aquadjurs' for x in current),current
                 assert any(x['name']=='Mariagerfjord' and x['legacyBrandId']=='mariagerfjord-vand' for x in current),current
-                colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color})")
+                colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color,ev:state.brandById.get('energi-viborg-vand').color,ib:state.brandById.get('ikast-brande-spildevand').color,samn:state.brandById.get('samn-forsyning').color,silk:state.brandById.get('silkeborg-forsyning').color})")
                 assert colors['nf']==colors['vcs'],colors
                 assert colors['sd']==colors['ad'],colors
+                assert colors['ev']!=colors['ib'],colors
+                assert colors['samn']!=colors['silk'],colors
+                color_qa=qa.get('colorQa')
+                assert color_qa and color_qa['strategy']=='minimal-change-original-palette',qa
+                assert color_qa['neighbourPairs']==124 and color_qa['sameColorNeighbourPairs']==0,color_qa
                 assert await page.locator('#showCoverage').is_checked()
                 assert await page.locator('.leaflet-coverage-pane path').count()==98
                 assert await page.evaluate("!state.coverageOutlineLayer || state.coverageOutlineLayer.getLayers().length===0")
@@ -134,8 +141,8 @@ jobs:
                 assert clicked
                 await page.wait_for_timeout(150)
                 clicked_qa=await page.evaluate('spildevandskortCoverageState()')
-                assert clicked_qa.get('highlightBrandId')=='syddjurs-spildevand',clicked_qa
-                assert await page.evaluate("state.coverageOutlineLayer && state.coverageOutlineLayer.getLayers().length>0")
+                assert clicked_qa.get('highlightBrandId')=='aquadjurs',clicked_qa
+                assert await page.evaluate("state.coverageOutlineLayer && state.coverageOutlineLayer.getLayers().length==2")
                 assert await page.locator('#detailPanel').evaluate("el=>el.classList.contains('open')")
                 await page.locator('#closeDetail').click(); await page.wait_for_timeout(100)
                 closed_qa=await page.evaluate('spildevandskortCoverageState()')
@@ -143,9 +150,13 @@ jobs:
                 assert await page.evaluate("!state.coverageOutlineLayer || state.coverageOutlineLayer.getLayers().length===0")
 
                 await page.locator('#search').fill('VandCenter Syd');await page.wait_for_timeout(150)
-                assert await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').count()==2
+                assert await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').count()==1
+                await page.locator('#search').fill('Nordfyns Forsyning');await page.wait_for_timeout(150)
+                assert await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').count()==1
                 await page.locator('#search').fill('AquaDjurs');await page.wait_for_timeout(150)
-                assert await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').count()==2
+                assert await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').count()==1
+                await page.locator('#search').fill('Syddjurs Spildevand');await page.wait_for_timeout(150)
+                assert await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').count()==1
                 await page.locator('#search').fill('Ren Forsyning Mariagerfjord');await page.wait_for_timeout(150)
                 assert await page.locator('.brand-row[data-brand-id="mariagerfjord-vand"]').count()==1
                 await page.locator('#search').fill('')

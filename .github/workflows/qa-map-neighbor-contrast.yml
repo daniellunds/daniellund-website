@@ -4,6 +4,8 @@ on:
     paths:
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/current-operators.js'
+      - 'labs/spildevandskort/coverage-areas.js'
+      - 'labs/spildevandskort/data/administrative-neighbours.json'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/basemaps.css'
       - 'labs/spildevandskort/index.html'
@@ -12,6 +14,8 @@ on:
     paths:
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/current-operators.js'
+      - 'labs/spildevandskort/coverage-areas.js'
+      - 'labs/spildevandskort/data/administrative-neighbours.json'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/basemaps.css'
       - 'labs/spildevandskort/index.html'
@@ -30,14 +34,21 @@ jobs:
           set -euo pipefail
           test -s labs/spildevandskort/map-colors.js
           test -s labs/spildevandskort/current-operators.js
+          test -s labs/spildevandskort/coverage-areas.js
+          test -s labs/spildevandskort/data/administrative-neighbours.json
           grep -q 'map-colors.js' labs/spildevandskort/index.html
           grep -q 'current-operators.js' labs/spildevandskort/index.html
           grep -q 'osm-grayscale-layer' labs/spildevandskort/basemaps.js
           grep -q 'grayscale(100%)' labs/spildevandskort/basemaps.css
           grep -q 'HOFOR' labs/spildevandskort/map-colors.js
           grep -q 'Ishøj Forsyning' labs/spildevandskort/map-colors.js
+          grep -q 'AquaDjurs' labs/spildevandskort/map-colors.js
+          grep -q 'Energi Viborg Vand' labs/spildevandskort/map-colors.js
+          grep -q 'Nordfyns Forsyning' labs/spildevandskort/map-colors.js
+          grep -q 'minimal-change-original-palette' labs/spildevandskort/map-colors.js
           node --check labs/spildevandskort/map-colors.js
           node --check labs/spildevandskort/current-operators.js
+          node --check labs/spildevandskort/coverage-areas.js
           node --check labs/spildevandskort/basemaps.js
       - name: Install Playwright
         run: |
@@ -61,17 +72,57 @@ jobs:
               page.on('pageerror',lambda e:errors.append(str(e)))
               r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000);assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
-              await page.wait_for_function("typeof spildevandskortColorState==='function' && spildevandskortColorState()?.neighbourPairs>0",timeout=60000)
+              await page.wait_for_function("typeof spildevandskortColorState==='function' && spildevandskortColorState()?.administrativeResolution?.neighbourPairs>0",timeout=60000)
+              await page.wait_for_function("typeof spildevandskortCoverageState==='function' && spildevandskortCoverageState()?.colorQa?.neighbourPairs>0",timeout=60000)
               await page.wait_for_function("typeof spildevandskortBasemapState==='function' && spildevandskortBasemapState().streetGreyscale===true",timeout=30000)
               cq=await page.evaluate('spildevandskortColorState()')
               assert cq['strategy']=='current-operator-near-neighbour-max-contrast',cq
-              assert cq['neighbourPairs']>40 and cq['operatorGroups']<76,cq
-              assert cq['sameColorNeighbourPairs']==0,cq
-              assert cq['sameOperatorNeighbourPairs']>=2,cq
-              assert cq['hoforIshoej'] and cq['hoforIshoej']['hofor']!=cq['hoforIshoej']['ishoej'],cq
-              assert cq['hoforIshoej']['distance']>0.12,cq
-              colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color})")
-              assert colors['nf']==colors['vcs'] and colors['sd']==colors['ad'],colors
+              assert cq['palette']==['#0057B8','#E4D600','#E3261C','#35A7D6','#D51BC4','#138A2E','#E67E22','#7436A8','#00A875','#A91D63'],cq
+              aq=cq['administrativeResolution']
+              assert aq['strategy']=='minimal-change-original-palette',aq
+              assert aq['neighbourPairs']==124,aq
+              assert aq['sameColorNeighbourPairs']==0,aq
+              assert {x['id'] for x in aq['changed']}=={'ikast-brande-spildevand','samn-forsyning'},aq
+              for change in aq['changed']:
+                  assert all(x in aq['palette'] for x in change['before']) and change['after'] in aq['palette'],change
+              for key in ['HOFOR / Ishøj Forsyning','Energi Viborg Vand / Ikast-Brande Spildevand','SAMN Forsyning / Silkeborg Forsyning']:
+                  pair=aq['namedPairs'][key]
+                  assert pair and pair['connected'] and not pair['sameColor'],(key,pair)
+              for key in ['AquaDjurs / Syddjurs Spildevand','VandCenter Syd / Nordfyns Forsyning']:
+                  pair=aq['mergedPairs'][key]
+                  assert pair and pair['sameOperator'] and pair['sameColor'],(key,pair)
+              surface=await page.evaluate("""(()=>{
+                const same=(a,b)=>String(a||'').toLowerCase()===String(b||'').toLowerCase();
+                const problems=[];
+                state.polygonLayer?.eachLayer(layer=>{
+                  const id=layer.feature?.properties?.brandId,expected=state.brandById.get(id)?.color;
+                  if(expected&&(layer.options.color!==expected||layer.options.fillColor!==expected))problems.push(['catchment',id,expected,layer.options.color,layer.options.fillColor]);
+                });
+                state.coverageLayer?.eachLayer(layer=>{
+                  const name=layer.feature?.properties?.navn||layer.feature?.properties?.name||layer.feature?.properties?.NAVN||'';
+                  const matches=state.brands.filter(b=>(b.municipalities||[]).some(m=>same(m,name)));
+                  if(matches.length===1){
+                    const expected=matches[0].color;
+                    if(layer.options.color!==expected||layer.options.fillColor!==expected)problems.push(['admin',name,expected,layer.options.color,layer.options.fillColor]);
+                  }
+                });
+                const actualPlants=[];state.plantLayer?.eachLayer(layer=>actualPlants.push(layer.options.fillColor));
+                const expectedPlants=filteredPlants().filter(p=>p.coordinates).map(p=>p.active?(state.brandById.get(p.responsibleBrandId)?.color||'#087e90'):'#737e84');
+                if(actualPlants.length!==expectedPlants.length)problems.push(['plant-count',expectedPlants.length,actualPlants.length]);
+                else for(let i=0;i<actualPlants.length;i++)if(actualPlants[i]!==expectedPlants[i]){problems.push(['plant',i,expectedPlants[i],actualPlants[i]]);break;}
+                const silk=state.brandById.get('silkeborg-forsyning')?.color;
+                const silkAdmin=[];state.coverageLayer?.eachLayer(layer=>{const n=layer.feature?.properties?.navn||layer.feature?.properties?.name||'';if(same(n,'Silkeborg'))silkAdmin.push([layer.options.color,layer.options.fillColor]);});
+                const silkCatch=[];state.polygonLayer?.eachLayer(layer=>{if(layer.feature?.properties?.brandId==='silkeborg-forsyning')silkCatch.push([layer.options.color,layer.options.fillColor]);});
+                const silkPlantColors=[];
+                const plantMarkers=[];state.plantLayer?.eachLayer(layer=>plantMarkers.push(layer.options.fillColor));
+                filteredPlants().filter(p=>p.coordinates).forEach((p,i)=>{if(p.responsibleBrandId==='silkeborg-forsyning')silkPlantColors.push(plantMarkers[i]);});
+                return {problems,silk,silkAdmin,silkCatch,silkPlantColors};
+              })()""")
+              assert not surface['problems'],surface
+              assert surface['silk']=='#E4D600',surface
+              assert surface['silkAdmin'] and all(x[0]==surface['silk'] and x[1]==surface['silk'] for x in surface['silkAdmin']),surface
+              assert surface['silkCatch'] and all(x[0]==surface['silk'] and x[1]==surface['silk'] for x in surface['silkCatch']),surface
+              assert all(x==surface['silk'] for x in surface['silkPlantColors']),surface
               bq=await page.evaluate('spildevandskortBasemapState()')
               assert bq['active']=='Kort' and bq['streetGreyscale'] is True,bq
               filter_value=await page.locator('.osm-grayscale-layer').evaluate("el=>getComputedStyle(el).filter");assert filter_value!='none',filter_value
@@ -80,6 +131,20 @@ jobs:
               await page.locator('#search').fill('Ishøj Forsyning');await page.wait_for_timeout(250)
               ishoej_css=await page.locator('.brand-row .brand-swatch').first.evaluate("el=>getComputedStyle(el).backgroundColor")
               assert hofor_css!=ishoej_css,(hofor_css,ishoej_css)
+
+              await page.locator('#search').fill('VandCenter Syd');await page.wait_for_timeout(250)
+              assert await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').count()==1
+              vcs_text=await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').inner_text()
+              assert 'VandCenter Syd' in vcs_text and 'Nordfyns Forsyning' not in vcs_text,vcs_text
+              await page.locator('#search').fill('Nordfyns Forsyning');await page.wait_for_timeout(250)
+              assert await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').count()==1
+
+              await page.locator('#search').fill('AquaDjurs');await page.wait_for_timeout(250)
+              assert await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').count()==1
+              aq_text=await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').inner_text()
+              assert 'AquaDjurs' in aq_text and 'Syddjurs Spildevand' not in aq_text,aq_text
+              await page.locator('#search').fill('Syddjurs Spildevand');await page.wait_for_timeout(250)
+              assert await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').count()==1
               await page.locator('#search').fill('')
               labels=page.locator('.leaflet-control-layers-base label');texts=await labels.all_inner_texts()
               for i,t in enumerate(texts):
@@ -93,7 +158,7 @@ jobs:
                   overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth");assert overflow<=3,overflow
               assert not errors,errors
               label='mobile' if mobile else 'desktop';await page.screenshot(path=f'qa-map-contrast-{label}.png',full_page=True)
-              print(label.upper(),'COLOR_QA',cq,'CURRENT_OPERATOR_COLORS',colors,'BASEMAP_QA',bq)
+              print(label.upper(),'COLOR_QA',cq,'SURFACE_QA',surface,'BASEMAP_QA',bq)
               await context.close()
           async def main():
               async with async_playwright() as p:

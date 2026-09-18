@@ -5,14 +5,14 @@
     ["nordfyns-forsyning",{
       operatorBrandId:"vandcenter-syd",
       operatorName:"VandCenter Syd",
-      displayName:"VandCenter Syd – Nordfyn",
+      displayName:"VandCenter Syd",
       reason:"Nordfyns Kommune states that VandCenter Syd is responsible for the public sewers in Nordfyn.",
       sourceUrl:"https://www.nordfynskommune.dk/borger/bolig-byggeri-og-energi/spildevand-og-regnvand/"
     }],
     ["syddjurs-spildevand",{
       operatorBrandId:"aquadjurs",
       operatorName:"AquaDjurs",
-      displayName:"AquaDjurs – Syddjurs",
+      displayName:"AquaDjurs",
       reason:"Syddjurs Spildevand was merged into AquaDjurs; AquaDjurs is the current wastewater company across Norddjurs and Syddjurs.",
       sourceUrl:"https://www.aquadjurs.dk/"
     }],
@@ -56,8 +56,26 @@
     };
   }
 
+  function canonicalOperatorId(brandId){
+    return currentOperatorForBrand(brandId).operatorBrandId||brandId;
+  }
+
+  function currentOperatorMemberIds(brandId){
+    const canonical=canonicalOperatorId(brandId);
+    const ids=(state.brands||[]).filter(b=>canonicalOperatorId(b.id)===canonical).map(b=>b.id);
+    return ids.length?ids:[brandId];
+  }
+
+  function currentOperatorBrand(brandId){
+    const canonical=canonicalOperatorId(brandId);
+    return state.brandById?.get(canonical)||state.brandById?.get(brandId)||null;
+  }
+
   state.currentOperatorOverrides=overrides;
   window.currentOperatorForBrand=currentOperatorForBrand;
+  window.currentOperatorCanonicalId=canonicalOperatorId;
+  window.currentOperatorMemberIds=currentOperatorMemberIds;
+  window.currentOperatorBrand=currentOperatorBrand;
   window.spildevandskortCurrentOperatorState=()=>({
     overrides:[...overrides.entries()].map(([legacyBrandId,v])=>({legacyBrandId,...v}))
   });

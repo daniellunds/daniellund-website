@@ -4,6 +4,7 @@
 (function initAdministrativeCoverage(){
   // Same-origin cache avoids browser/network-specific stalls when loading Dataforsyningen directly.
   const MUNICIPALITY_URL="./data/municipalities.geojson";
+  const ADMIN_NEIGHBOURS_URL="./data/administrative-neighbours.json";
   const MUNICIPALITY_FALLBACK_URL="https://api.dataforsyningen.dk/kommuner?format=geojson&udenforkommuneinddeling=false";
   const VERIFIED_OVERRIDES={
     // Læsø has no mapped Plandata catchment in brands.json, but its wastewater utility is known in the app.
@@ -13,6 +14,8 @@
     "københavn":{brandId:"hofor",reason:"Verified against Københavns Kommune and HOFOR",sourceUrl:"https://www.kk.dk/dagsordener-og-referater/Klima-%2C%20Milj%C3%B8-%20og%20Teknikudvalget/m%C3%B8de-24022026/referat/punkt-20"}
   };
   const norm=s=>String(s||"").toLocaleLowerCase("da").trim().replace(/\s+/g," ");
+  const canonicalBrandId=id=>typeof currentOperatorCanonicalId==="function"?currentOperatorCanonicalId(id):id;
+  const memberBrandIds=id=>typeof currentOperatorMemberIds==="function"?currentOperatorMemberIds(id):[id];
   state.coverageLayer=null;
   state.coverageOutlineLayer=null;
   state.coverageHighlightBrandId=null;
@@ -45,11 +48,12 @@
   function colorFor(feature){
     const c=classify(feature);
     if(c.status!=="assigned")return "#FFFFFF";
-    return c.current?.color||state.brandById.get(c.brandId)?.color||"#657D84";
+    return state.brandById.get(c.brandId)?.color||"#657D84";
   }
 
   function setCoverageHighlight(brandId){
-    const next=brandId&&state.brandById?.has(brandId)?brandId:null;
+    const canonical=brandId?canonicalBrandId(brandId):null;
+    const next=canonical&&state.brandById?.has(canonical)?canonical:null;
     if(state.coverageHighlightBrandId===next)return;
     state.coverageHighlightBrandId=next;
     renderCoverage();
@@ -118,7 +122,7 @@
     if(state.coverageOutlineLayer){state.coverageOutlineLayer.remove();state.coverageOutlineLayer=null;}
     const checkbox=document.getElementById("showCoverage");
     if(!state.coverageData||checkbox?.checked===false)return;
-    if(state.coverageHighlightBrandId&&!state.selected.has(state.coverageHighlightBrandId))state.coverageHighlightBrandId=null;
+    if(state.coverageHighlightBrandId&&!memberBrandIds(state.coverageHighlightBrandId).some(id=>state.selected.has(id)))state.coverageHighlightBrandId=null;
     if(!state.map.getPane("coveragePane")){
       const pane=state.map.createPane("coveragePane");pane.style.zIndex="320";pane.style.pointerEvents="none";
     }
@@ -139,7 +143,7 @@
 
     // Only the administrative supply area explicitly clicked on the map gets the stronger outline.
     if(state.coverageHighlightBrandId){
-      const highlighted=features.filter(f=>classify(f).brandId===state.coverageHighlightBrandId);
+      const highlighted=features.filter(f=>canonicalBrandId(classify(f).brandId)===state.coverageHighlightBrandId);
       if(highlighted.length){
         state.coverageOutlineLayer=L.geoJSON({type:"FeatureCollection",features:highlighted},{
           pane:"coverageOutlinePane",
@@ -158,6 +162,14 @@
     throw new Error("Forsyningsmetadata blev ikke klar");
   }
 
+  async function waitForBaseColors(){
+    for(let i=0;i<120;i++){
+      if(state.colorQa?.strategy==="current-operator-near-neighbour-max-contrast")return true;
+      await new Promise(resolve=>setTimeout(resolve,50));
+    }
+    return false;
+  }
+
   async function fetchJsonWithTimeout(url,timeoutMs){
     const controller=new AbortController();
     const timer=setTimeout(()=>controller.abort(),timeoutMs);
@@ -173,6 +185,7 @@
   async function loadCoverage(){
     try{
       await waitForBrands();
+      await waitForBaseColors();
       let raw,source="Lokal cache · Dataforsyningen";
       try{
         raw=await fetchJsonWithTimeout(MUNICIPALITY_URL,15000);
@@ -185,6 +198,15 @@
       if(!fc.features?.length)throw new Error("Ingen kommunegeometrier i svaret");
       state.coverageData=fc;
       const rows=fc.features.map(classify);
+      let neighbourData={pairs:[]};
+      try{
+        neighbourData=await fetchJsonWithTimeout(ADMIN_NEIGHBOURS_URL,10000);
+      }catch(neighbourErr){
+        console.warn("Administrativ nabograf kunne ikke indlæses; bruger kun kendte sikkerhedsrelationer",neighbourErr);
+      }
+      const administrativeColorQa=typeof window.resolveAdministrativeNeighborColors==="function"
+        ?window.resolveAdministrativeNeighborColors(neighbourData.pairs||[],state.brands)
+        :null;
       state.coverageQa={
         source,
         municipalities:rows.length,
@@ -192,10 +214,17 @@
         verifiedOverrides:rows.filter(x=>x.status==="assigned"&&x.override).map(x=>({name:x.name,brandId:x.brandId,reason:x.override.reason,sourceUrl:x.override.sourceUrl||null})),
         currentOperatorOverrides:rows.filter(x=>x.status==="assigned"&&x.current?.isOverride).map(x=>({name:x.name,legacyBrandId:x.brandId,operatorBrandId:x.current.operatorBrandId,operatorName:x.current.operatorName,sourceUrl:x.current.sourceUrl})),
         ambiguous:rows.filter(x=>x.status==="ambiguous").map(x=>({name:x.name,brandIds:x.brandIds})),
-        unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name)
+        unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name),
+        colorQa:administrativeColorQa,
+        neighbourGraphPairs:Number(neighbourData.pairCount)||Number(neighbourData.pairs?.length)||0
       };
       console.info("ADMIN_COVERAGE_QA",state.coverageQa);
-      renderCoverage();
+      // The conflict resolver changes the shared brand color itself. Re-render every
+      // brand-colored map surface so admin area, sewer catchment and WWTP stay identical.
+      renderPolygons();
+      if(typeof renderPlants==="function")renderPlants();
+      if(typeof renderList==="function")renderList();
+      if(typeof renderProjects==="function")renderProjects();
       bindCatchmentHighlight();
     }catch(err){
       console.warn("Administrative forsyningsområder kunne ikke indlæses",err);
