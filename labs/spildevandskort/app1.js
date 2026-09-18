@@ -6,7 +6,9 @@ const PULS_QUERY_BASE = {
 };
 const PULS_PAGE_SIZE = 1000;
 const CURATED_VIRTUAL_BRANDS = [
-  {id:"biofos",name:"BIOFOS"},{id:"moelleaavaerket",name:"Mølleåværket"},{id:"laesoe-forsyning",name:"Læsø Forsyning"}
+  {id:"biofos",name:"BIOFOS",municipalities:[]},
+  {id:"moelleaavaerket",name:"Mølleåværket",municipalities:[]},
+  {id:"laesoe-forsyning",name:"Læsø Forsyning",municipalities:["Læsø"]}
 ];
 const OWNER_ALIASES_RAW = {
   "syddjurs spildevand":"aquadjurs", "syddjurs spildevand a/s":"aquadjurs",
