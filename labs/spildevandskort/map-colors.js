@@ -11,10 +11,12 @@
   const PRESERVE_BASE_COLORS=new Set(BASE_COLOR_LOCKS.keys());
   const ADMIN_REQUIRED_PAIRS=[
     ["HOFOR","Ishøj Forsyning"],
-    ["AquaDjurs","Syddjurs Spildevand"],
     ["Energi Viborg Vand","Ikast-Brande Spildevand"],
-    ["Nordfyns Forsyning","VandCenter Syd"],
     ["SAMN Forsyning","Silkeborg Forsyning"]
+  ];
+  const MERGED_OPERATOR_PAIRS=[
+    ["AquaDjurs","Syddjurs Spildevand"],
+    ["VandCenter Syd","Nordfyns Forsyning"]
   ];
   const operatorId=id=>typeof currentOperatorForBrand==="function"?currentOperatorForBrand(id).operatorBrandId:id;
 
@@ -109,7 +111,7 @@
   }
 
   function allStablePairs(graph){
-    const pairs=[];for(const [a,ns] of graph)for(const b of ns)if(a<b)pairs.push([a,b]);return pairs;
+    const pairs=[];for(const [a,ns] of graph)for(const b of ns)if(a<b&&operatorId(a)!==operatorId(b))pairs.push([a,b]);return pairs;
   }
   function currentColor(brandsById,id){return brandsById.get(id)?.color||"#58757E";}
 
@@ -164,11 +166,18 @@
 
     const remaining=conflictEdges();
     const namedPairs={};
+    const mergedPairs={};
     const byName=new Map(brands.map(b=>[String(b.name||"").toLocaleLowerCase("da"),b]));
     for(const [a,b] of ADMIN_REQUIRED_PAIRS){
       const aa=byName.get(a.toLocaleLowerCase("da")),bb=byName.get(b.toLocaleLowerCase("da"));
       namedPairs[`${a} / ${b}`]=aa&&bb?{
         aColor:aa.color,bColor:bb.color,connected:graph.get(aa.id)?.has(bb.id)||false,sameColor:aa.color===bb.color
+      }:null;
+    }
+    for(const [a,b] of MERGED_OPERATOR_PAIRS){
+      const aa=byName.get(a.toLocaleLowerCase("da")),bb=byName.get(b.toLocaleLowerCase("da"));
+      mergedPairs[`${a} / ${b}`]=aa&&bb?{
+        aColor:aa.color,bColor:bb.color,sameOperator:operatorId(aa.id)===operatorId(bb.id),sameColor:aa.color===bb.color
       }:null;
     }
     const qa={
@@ -178,6 +187,7 @@
       sameColorNeighbourPairs:remaining.length,
       changed:[...changed.values()],
       namedPairs,
+      mergedPairs,
       colors:Object.fromEntries(brands.map(b=>[b.id,b.color]))
     };
     if(typeof state!=="undefined"){
