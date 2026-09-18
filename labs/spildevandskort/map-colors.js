@@ -13,7 +13,8 @@
     ["HOFOR","Ishøj Forsyning"],
     ["AquaDjurs","Syddjurs Spildevand"],
     ["Energi Viborg Vand","Ikast-Brande Spildevand"],
-    ["Nordfyns Forsyning","VandCenter Syd"]
+    ["Nordfyns Forsyning","VandCenter Syd"],
+    ["SAMN Forsyning","Silkeborg Forsyning"]
   ];
   const operatorId=id=>typeof currentOperatorForBrand==="function"?currentOperatorForBrand(id).operatorBrandId:id;
 
@@ -112,8 +113,16 @@
   }
   function currentColor(brandsById,id){return brandsById.get(id)?.color||"#58757E";}
 
-  function resolveAdministrativeNeighborColors(features,brands){
-    const graph=buildNeighbourGraph(features,brands,ADMIN_REQUIRED_PAIRS);
+  function resolveAdministrativeNeighborColors(neighbourPairs,brands){
+    const graph=new Map(brands.map(b=>[b.id,new Set()]));
+    for(const pair of neighbourPairs||[]){
+      const a=pair?.a,b=pair?.b;
+      if(!graph.has(a)||!graph.has(b)||a===b)continue;
+      graph.get(a).add(b);graph.get(b).add(a);
+    }
+    // Named guards keep the known critical adjacencies protected even if the
+    // small precomputed neighbour file ever becomes temporarily unavailable.
+    connectNamedPairs(graph,brands,ADMIN_REQUIRED_PAIRS);
     const byId=new Map(brands.map(b=>[b.id,b]));
     const before=new Map(brands.map(b=>[b.id,b.color]));
     const changed=new Map();
