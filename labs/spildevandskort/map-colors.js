@@ -37,7 +37,11 @@
     }
     const byName=new Map(brands.map(b=>[String(b.name||"").toLocaleLowerCase("da"),b.id]));
     const connectNames=(a,b)=>{const ai=byName.get(a.toLocaleLowerCase("da")),bi=byName.get(b.toLocaleLowerCase("da"));if(ai&&bi){graph.get(ai)?.add(bi);graph.get(bi)?.add(ai);}};
-    connectNames("HOFOR","Ishøj Forsyning");return graph;
+    connectNames("HOFOR","Ishøj Forsyning");
+    connectNames("AquaDjurs","Syddjurs Spildevand");
+    connectNames("Energi Viborg Vand","Ikast-Brande Spildevand");
+    connectNames("Nordfyns Forsyning","VandCenter Syd");
+    return graph;
   }
 
   function groupedGraph(graph,brands){
@@ -90,6 +94,58 @@
   }
 
   window.applyNeighborContrastColors=(features,brands)=>{const graph=buildNeighbourGraph(features,brands),result=assignColors(graph,brands),out=qa(graph,brands,result);if(typeof state!=="undefined")state.colorQa=out;console.info("UTILITY_COLOR_QA",out);return out;};
+  function repairAdministrativeNeighborColors(features,brands){
+    const graph=buildNeighbourGraph(features,brands);
+    const byId=new Map(brands.map(b=>[b.id,b]));
+    const usage=new Map(PALETTE.map(c=>[c,brands.filter(b=>b.color===c).length]));
+    const changed=new Set();
+    const conflicts=()=>{const out=[];for(const [a,ns] of graph)for(const b of ns)if(a<b&&byId.get(a)?.color&&byId.get(a)?.color===byId.get(b)?.color)out.push([a,b]);return out;};
+    let guard=0;
+    while(conflicts().length&&guard++<500){
+      const [a,b]=conflicts()[0];
+      const degree=id=>graph.get(id)?.size||0;
+      const source=id=>Number(byId.get(id)?.sourceFeatureCount||0);
+      const target=(degree(a)<degree(b)||(degree(a)===degree(b)&&source(a)<=source(b)))?a:b;
+      const current=byId.get(target)?.color;
+      const neighbourColors=new Set([...(graph.get(target)||[])].map(n=>byId.get(n)?.color).filter(Boolean));
+      let candidates=PALETTE.filter(c=>c!==current&&!neighbourColors.has(c));
+      if(!candidates.length)candidates=PALETTE.filter(c=>c!==current);
+      if(!candidates.length)break;
+      let winner=candidates[0],winnerScore=-Infinity;
+      for(const c of candidates){
+        const ds=[...(graph.get(target)||[])].map(n=>byId.get(n)?.color).filter(Boolean).map(nc=>colorDistance(c,nc));
+        const min=ds.length?Math.min(...ds):1,avg=ds.length?ds.reduce((x,y)=>x+y,0)/ds.length:1;
+        const score=min*1000+avg*120-(usage.get(c)||0)*4-PALETTE.indexOf(c)*0.0001;
+        if(score>winnerScore){winner=c;winnerScore=score;}
+      }
+      if(current&&usage.has(current))usage.set(current,Math.max(0,(usage.get(current)||0)-1));
+      byId.get(target).color=winner;usage.set(winner,(usage.get(winner)||0)+1);changed.add(target);
+    }
+    const remaining=conflicts();
+    const pairs=[];for(const [a,ns] of graph)for(const b of ns)if(a<b)pairs.push([a,b]);
+    const distances=pairs.map(([a,b])=>colorDistance(byId.get(a)?.color||"#58757E",byId.get(b)?.color||"#58757E"));
+    const namedPair=(a,b)=>{const aa=brands.find(x=>x.name===a),bb=brands.find(x=>x.name===b);return aa&&bb?{a:a,b:b,aColor:aa.color,bColor:bb.color,distance:colorDistance(aa.color,bb.color),connected:graph.get(aa.id)?.has(bb.id)||false}:null;};
+    const out={
+      strategy:"preserve-existing-colors-repair-admin-neighbour-conflicts",
+      palette:PALETTE.slice(),
+      neighbourPairs:pairs.length,
+      changedBrandIds:[...changed],
+      sameColorNeighbourPairs:remaining.length,
+      sameColorNeighbourPairDetails:remaining.map(([a,b])=>({a,b,aName:byId.get(a)?.name||a,bName:byId.get(b)?.name||b,color:byId.get(a)?.color||null})),
+      minNeighbourDistance:distances.length?Math.min(...distances):null,
+      namedPairs:{
+        aquaDjursSyddjurs:namedPair("AquaDjurs","Syddjurs Spildevand"),
+        viborgIkast:namedPair("Energi Viborg Vand","Ikast-Brande Spildevand"),
+        nordfynVcs:namedPair("Nordfyns Forsyning","VandCenter Syd"),
+        hoforIshoej:namedPair("HOFOR","Ishøj Forsyning")
+      }
+    };
+    if(typeof state!=="undefined")state.administrativeColorQa=out;
+    console.info("ADMINISTRATIVE_COLOR_QA",out);
+    return out;
+  }
+
+  window.repairAdministrativeNeighborColors=repairAdministrativeNeighborColors;
   window.spildevandskortColorState=()=>state?.colorQa||null;
 
   if(typeof renderPolygons==="function"){
