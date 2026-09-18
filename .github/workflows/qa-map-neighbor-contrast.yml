@@ -80,14 +80,17 @@ jobs:
               assert cq['palette']==['#0057B8','#E4D600','#E3261C','#35A7D6','#D51BC4','#138A2E','#E67E22','#7436A8','#00A875','#A91D63'],cq
               aq=cq['administrativeResolution']
               assert aq['strategy']=='minimal-change-original-palette',aq
-              assert aq['neighbourPairs']==126,aq
+              assert aq['neighbourPairs']==124,aq
               assert aq['sameColorNeighbourPairs']==0,aq
-              assert {x['id'] for x in aq['changed']}=={'syddjurs-spildevand','ikast-brande-spildevand','nordfyns-forsyning','samn-forsyning'},aq
+              assert {x['id'] for x in aq['changed']}=={'ikast-brande-spildevand','samn-forsyning'},aq
               for change in aq['changed']:
-                  assert change['before'] in aq['palette'] and change['after'] in aq['palette'],change
-              for key in ['HOFOR / Ishøj Forsyning','AquaDjurs / Syddjurs Spildevand','Energi Viborg Vand / Ikast-Brande Spildevand','Nordfyns Forsyning / VandCenter Syd']:
+                  assert all(x in aq['palette'] for x in change['before']) and change['after'] in aq['palette'],change
+              for key in ['HOFOR / Ishøj Forsyning','Energi Viborg Vand / Ikast-Brande Spildevand','SAMN Forsyning / Silkeborg Forsyning']:
                   pair=aq['namedPairs'][key]
                   assert pair and pair['connected'] and not pair['sameColor'],(key,pair)
+              for key in ['AquaDjurs / Syddjurs Spildevand','VandCenter Syd / Nordfyns Forsyning']:
+                  pair=aq['mergedPairs'][key]
+                  assert pair and pair['sameOperator'] and pair['sameColor'],(key,pair)
               surface=await page.evaluate("""(()=>{
                 const same=(a,b)=>String(a||'').toLowerCase()===String(b||'').toLowerCase();
                 const problems=[];
@@ -128,6 +131,20 @@ jobs:
               await page.locator('#search').fill('Ishøj Forsyning');await page.wait_for_timeout(250)
               ishoej_css=await page.locator('.brand-row .brand-swatch').first.evaluate("el=>getComputedStyle(el).backgroundColor")
               assert hofor_css!=ishoej_css,(hofor_css,ishoej_css)
+
+              await page.locator('#search').fill('VandCenter Syd');await page.wait_for_timeout(250)
+              assert await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').count()==1
+              vcs_text=await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').inner_text()
+              assert 'VandCenter Syd' in vcs_text and 'Nordfyns Forsyning' not in vcs_text,vcs_text
+              await page.locator('#search').fill('Nordfyns Forsyning');await page.wait_for_timeout(250)
+              assert await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').count()==1
+
+              await page.locator('#search').fill('AquaDjurs');await page.wait_for_timeout(250)
+              assert await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').count()==1
+              aq_text=await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').inner_text()
+              assert 'AquaDjurs' in aq_text and 'Syddjurs Spildevand' not in aq_text,aq_text
+              await page.locator('#search').fill('Syddjurs Spildevand');await page.wait_for_timeout(250)
+              assert await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').count()==1
               await page.locator('#search').fill('')
               labels=page.locator('.leaflet-control-layers-base label');texts=await labels.all_inner_texts()
               for i,t in enumerate(texts):
