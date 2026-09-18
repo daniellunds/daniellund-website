@@ -7,6 +7,7 @@
   const PROXIMITY_DEG=0.012;
   const PALETTE=["#0057B8","#E4D600","#E3261C","#35A7D6","#D51BC4","#138A2E","#E67E22","#7436A8","#00A875","#A91D63"];
   const BASE_REQUIRED_PAIRS=[["HOFOR","Ishøj Forsyning"]];
+  const PRESERVE_BASE_COLORS=new Set(["silkeborg-forsyning"]);
   const ADMIN_REQUIRED_PAIRS=[
     ["HOFOR","Ishøj Forsyning"],
     ["AquaDjurs","Syddjurs Spildevand"],
@@ -118,6 +119,8 @@
     const conflictEdges=()=>allStablePairs(graph).filter(([a,b])=>currentColor(byId,a)===currentColor(byId,b));
 
     const chooseTarget=(a,b)=>{
+      const aPreserved=PRESERVE_BASE_COLORS.has(a),bPreserved=PRESERVE_BASE_COLORS.has(b);
+      if(aPreserved!==bPreserved)return aPreserved?b:a;
       const aAlias=operatorId(a)!==a,bAlias=operatorId(b)!==b;
       if(aAlias!==bAlias)return aAlias?a:b;
       const aCount=byId.get(a)?.sourceFeatureCount||0,bCount=byId.get(b)?.sourceFeatureCount||0;
