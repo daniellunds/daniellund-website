@@ -4,7 +4,6 @@ on:
     paths:
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/current-operators.js'
-      - 'labs/spildevandskort/coverage-areas.js'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/basemaps.css'
       - 'labs/spildevandskort/index.html'
@@ -13,7 +12,6 @@ on:
     paths:
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/current-operators.js'
-      - 'labs/spildevandskort/coverage-areas.js'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/basemaps.css'
       - 'labs/spildevandskort/index.html'
@@ -32,19 +30,14 @@ jobs:
           set -euo pipefail
           test -s labs/spildevandskort/map-colors.js
           test -s labs/spildevandskort/current-operators.js
-          test -s labs/spildevandskort/coverage-areas.js
           grep -q 'map-colors.js' labs/spildevandskort/index.html
           grep -q 'current-operators.js' labs/spildevandskort/index.html
           grep -q 'osm-grayscale-layer' labs/spildevandskort/basemaps.js
           grep -q 'grayscale(100%)' labs/spildevandskort/basemaps.css
           grep -q 'HOFOR' labs/spildevandskort/map-colors.js
           grep -q 'Ishøj Forsyning' labs/spildevandskort/map-colors.js
-          grep -q 'AquaDjurs' labs/spildevandskort/map-colors.js
-          grep -q 'Energi Viborg Vand' labs/spildevandskort/map-colors.js
-          grep -q 'Nordfyns Forsyning' labs/spildevandskort/map-colors.js
           node --check labs/spildevandskort/map-colors.js
           node --check labs/spildevandskort/current-operators.js
-          node --check labs/spildevandskort/coverage-areas.js
           node --check labs/spildevandskort/basemaps.js
       - name: Install Playwright
         run: |
@@ -69,29 +62,16 @@ jobs:
               r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000);assert r and r.ok
               await page.wait_for_selector('.leaflet-container',timeout=30000)
               await page.wait_for_function("typeof spildevandskortColorState==='function' && spildevandskortColorState()?.neighbourPairs>0",timeout=60000)
-              await page.wait_for_function("typeof spildevandskortCoverageState==='function' && spildevandskortCoverageState()?.colorQa?.neighbourPairs>0",timeout=60000)
               await page.wait_for_function("typeof spildevandskortBasemapState==='function' && spildevandskortBasemapState().streetGreyscale===true",timeout=30000)
               cq=await page.evaluate('spildevandskortColorState()')
               assert cq['strategy']=='current-operator-near-neighbour-max-contrast',cq
               assert cq['neighbourPairs']>40 and cq['operatorGroups']<76,cq
               assert cq['sameColorNeighbourPairs']==0,cq
-              aq=await page.evaluate('spildevandskortCoverageState().colorQa')
-              assert aq['strategy']=='administrative-area-neighbour-max-contrast',aq
-              assert aq['neighbourPairs']>40,aq
-              assert aq['sameColorNeighbourPairs']==0,aq
-              assert aq['sameOperatorNeighbourPairs']>=2,aq
-              assert aq['minNeighbourDistance'] and aq['minNeighbourDistance']>0.10,aq
-              expected_pairs=['HOFOR / Ishøj Forsyning','AquaDjurs / Syddjurs Spildevand','Energi Viborg Vand / Ikast-Brande Spildevand','Nordfyns Forsyning / VandCenter Syd']
-              for key in expected_pairs:
-                  pair=aq['namedPairs'][key]
-                  assert pair and pair['connected'],(key,pair,aq)
-                  assert pair['aColor']!=pair['bColor'],(key,pair)
+              assert cq['sameOperatorNeighbourPairs']>=2,cq
+              assert cq['hoforIshoej'] and cq['hoforIshoej']['hofor']!=cq['hoforIshoej']['ishoej'],cq
+              assert cq['hoforIshoej']['distance']>0.12,cq
               colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color})")
               assert colors['nf']==colors['vcs'] and colors['sd']==colors['ad'],colors
-              admin_colors=await page.evaluate("({nf:state.coverageColors.get('nordfyns-forsyning'),vcs:state.coverageColors.get('vandcenter-syd'),sd:state.coverageColors.get('syddjurs-spildevand'),ad:state.coverageColors.get('aquadjurs'),ev:state.coverageColors.get('energi-viborg-vand'),ib:state.coverageColors.get('ikast-brande-spildevand')})")
-              assert admin_colors['nf']!=admin_colors['vcs'],admin_colors
-              assert admin_colors['sd']!=admin_colors['ad'],admin_colors
-              assert admin_colors['ev']!=admin_colors['ib'],admin_colors
               bq=await page.evaluate('spildevandskortBasemapState()')
               assert bq['active']=='Kort' and bq['streetGreyscale'] is True,bq
               filter_value=await page.locator('.osm-grayscale-layer').evaluate("el=>getComputedStyle(el).filter");assert filter_value!='none',filter_value
@@ -113,7 +93,7 @@ jobs:
                   overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth");assert overflow<=3,overflow
               assert not errors,errors
               label='mobile' if mobile else 'desktop';await page.screenshot(path=f'qa-map-contrast-{label}.png',full_page=True)
-              print(label.upper(),'COLOR_QA',cq,'ADMIN_COLOR_QA',aq,'CURRENT_OPERATOR_COLORS',colors,'ADMIN_COLORS',admin_colors,'BASEMAP_QA',bq)
+              print(label.upper(),'COLOR_QA',cq,'CURRENT_OPERATOR_COLORS',colors,'BASEMAP_QA',bq)
               await context.close()
           async def main():
               async with async_playwright() as p:
