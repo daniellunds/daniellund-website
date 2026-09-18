@@ -4,6 +4,8 @@ on:
     paths:
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/current-operators.js'
+      - 'labs/spildevandskort/profiles.js'
+      - 'labs/spildevandskort/profile-integration.js'
       - 'labs/spildevandskort/coverage-areas.js'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/basemaps.css'
@@ -13,6 +15,8 @@ on:
     paths:
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/current-operators.js'
+      - 'labs/spildevandskort/profiles.js'
+      - 'labs/spildevandskort/profile-integration.js'
       - 'labs/spildevandskort/coverage-areas.js'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/basemaps.css'
@@ -32,6 +36,8 @@ jobs:
           set -euo pipefail
           test -s labs/spildevandskort/map-colors.js
           test -s labs/spildevandskort/current-operators.js
+          test -s labs/spildevandskort/profiles.js
+          test -s labs/spildevandskort/profile-integration.js
           test -s labs/spildevandskort/coverage-areas.js
           grep -q 'map-colors.js' labs/spildevandskort/index.html
           grep -q 'current-operators.js' labs/spildevandskort/index.html
@@ -39,11 +45,13 @@ jobs:
           grep -q 'grayscale(100%)' labs/spildevandskort/basemaps.css
           grep -q 'HOFOR' labs/spildevandskort/map-colors.js
           grep -q 'Ishøj Forsyning' labs/spildevandskort/map-colors.js
-          grep -q 'AquaDjurs' labs/spildevandskort/map-colors.js
           grep -q 'Energi Viborg Vand' labs/spildevandskort/map-colors.js
-          grep -q 'Nordfyns Forsyning' labs/spildevandskort/map-colors.js
+          grep -q 'displayName:"VandCenter Syd"' labs/spildevandskort/current-operators.js
+          grep -q 'displayName:"AquaDjurs"' labs/spildevandskort/current-operators.js
           node --check labs/spildevandskort/map-colors.js
           node --check labs/spildevandskort/current-operators.js
+          node --check labs/spildevandskort/profiles.js
+          node --check labs/spildevandskort/profile-integration.js
           node --check labs/spildevandskort/coverage-areas.js
           node --check labs/spildevandskort/basemaps.js
       - name: Install Playwright
@@ -74,18 +82,34 @@ jobs:
               cq=await page.evaluate('spildevandskortColorState()')
               assert cq['strategy']=='current-operator-near-neighbour-max-contrast',cq
               assert cq['neighbourPairs']>40 and cq['operatorGroups']<76,cq
+              assert cq['sameColorNeighbourPairs']==0,cq
               adminq=await page.evaluate('spildevandskortCoverageState().colorQa')
-              assert adminq['strategy']=='preserve-existing-colors-repair-admin-neighbour-conflicts',adminq
+              assert adminq['strategy']=='current-operator-near-neighbour-max-contrast',adminq
               assert adminq['sameColorNeighbourPairs']==0,adminq
-              assert len(adminq['changedBrandIds'])>0,adminq
-              for key in ['aquaDjursSyddjurs','viborgIkast','nordfynVcs','hoforIshoej']:
-                  pair=adminq['namedPairs'][key]
-                  assert pair and pair['connected'],(key,pair,adminq)
-                  assert pair['aColor']!=pair['bColor'],(key,pair)
+              assert adminq['sameOperatorNeighbourPairs']>=2,adminq
               colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color,ev:state.brandById.get('energi-viborg-vand').color,ib:state.brandById.get('ikast-brande-spildevand').color})")
-              assert colors['nf']!=colors['vcs'],colors
-              assert colors['sd']!=colors['ad'],colors
+              assert colors['nf']==colors['vcs'],colors
+              assert colors['sd']==colors['ad'],colors
               assert colors['ev']!=colors['ib'],colors
+              palette=set(adminq['palette'])
+              assert all(v in palette for v in colors.values()),colors
+              await page.locator('#search').fill('VandCenter Syd');await page.wait_for_timeout(250)
+              assert await page.locator('.brand-row').count()==1
+              assert 'VandCenter Syd' in await page.locator('.brand-row').first.inner_text()
+              await page.locator('.brand-row .row-profile-open').first.click()
+              assert (await page.locator('.profile-head h2').inner_text()).strip()=='VandCenter Syd'
+              owner_text=await page.locator('.profile-head .detail-owner').inner_text()
+              assert 'Odense' in owner_text and 'Nordfyns' in owner_text,owner_text
+              await page.locator('#closeDetail').click()
+              await page.locator('#search').fill('AquaDjurs');await page.wait_for_timeout(250)
+              assert await page.locator('.brand-row').count()==1
+              assert 'AquaDjurs' in await page.locator('.brand-row').first.inner_text()
+              await page.locator('.brand-row .row-profile-open').first.click()
+              assert (await page.locator('.profile-head h2').inner_text()).strip()=='AquaDjurs'
+              owner_text=await page.locator('.profile-head .detail-owner').inner_text()
+              assert 'Norddjurs' in owner_text and 'Syddjurs' in owner_text,owner_text
+              await page.locator('#closeDetail').click()
+              await page.locator('#search').fill('')
               silkeborg=await page.evaluate("""()=>{
                 const id='silkeborg-forsyning', brand=state.brandById.get(id)?.color;
                 let adminFill=null,adminStroke=null,catchmentFill=null,catchmentStroke=null,plantFill=null;
