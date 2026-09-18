@@ -40,6 +40,8 @@ jobs:
           test -s labs/spildevandskort/data/project-locations.json
           test -s labs/spildevandskort/data/brands.json
           test -s labs/spildevandskort/data/spildevandsoplande-meta.json
+          test -s labs/spildevandskort/wastewater-relations.js
+          test -s labs/spildevandskort/data/model/wastewater-relations.json
           for i in 1 2 3 4; do
             test -s "labs/spildevandskort/data/spildevandsoplande-$i.geojson.gz"
             gzip -t "labs/spildevandskort/data/spildevandsoplande-$i.geojson.gz"
@@ -49,6 +51,9 @@ jobs:
           node --check labs/spildevandskort/projects.js
           node --check labs/spildevandskort/project-geocoder.js
           node --check labs/spildevandskort/basemaps.js
+          node --check labs/spildevandskort/wastewater-relations.js
+          node scripts/check-facility-registry.cjs
+          node scripts/check-wastewater-relations.cjs
           python - <<'PY'
           import json, gzip
           from pathlib import Path
@@ -121,6 +126,7 @@ jobs:
               assert response and response.ok, f'HTTP {response.status if response else "none"}'
               await page.wait_for_selector('.leaflet-container',timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#brandCount')?.textContent)>60",timeout=30000)
+              await page.wait_for_function("typeof spildevandskortCanonicalUiState==='function' && spildevandskortCanonicalUiState().parity.matches===76",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#projectCount')?.textContent)>80",timeout=30000)
               await page.wait_for_function("document.querySelectorAll('.region-group').length===8",timeout=30000)
               await page.wait_for_function("document.querySelectorAll('#map .leaflet-interactive').length>100",timeout=60000)
@@ -150,7 +156,14 @@ jobs:
               map_box=await page.locator('#map').bounding_box()
 
               assert brands == 74, f'canonicalOrganizationCount={brands}'
+              canonical=await page.evaluate("spildevandskortCanonicalUiState()")
+              assert canonical['organizationCount']==74,canonical
+              assert canonical['sourceIdentityCount']==76,canonical
+              assert canonical['visibleOrganizationCount']==74,canonical
+              assert len(canonical['renderedOrganizationIds'])==74 and len(set(canonical['renderedOrganizationIds']))==74,canonical
+              assert canonical['parity']=={'checked':76,'matches':76,'mismatchCount':0},canonical
               assert plants >= 700, f'activePlantCount={plants}'
+              assert (await page.locator('#activePlantCount + span').inner_text()).strip()=='aktive PULS-poster'
               assert projects >= 100, f'projectCount={projects}'
               assert regions == 8, f'regionGroups={regions}'
               assert names == EXPECTED, names

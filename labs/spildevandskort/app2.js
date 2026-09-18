@@ -1,5 +1,7 @@
 function regionForBrand(b){
-  if(VIRTUAL_BRAND_REGION[b.id]) return VIRTUAL_BRAND_REGION[b.id];
+  if(b._regionId)return b._regionId;
+  const legacyId=b._primaryLegacyBrandId||b.id;
+  if(VIRTUAL_BRAND_REGION[legacyId]) return VIRTUAL_BRAND_REGION[legacyId];
   const counts=new Map();
   for(const municipality of b.municipalities||[]){
     const region=REGION_BY_MUNICIPALITY.get(normalizeRegionKey(municipality));
@@ -15,8 +17,8 @@ function brandRowElement(b){
   const sw=document.createElement("span");sw.className="brand-swatch";sw.style.background=b.color||"#6d98a3";
   const cp=document.createElement("span");cp.className="row-copy";
   const geography=b.sourceFeatureCount===0?"Anlægsejer · uden eget oplandslag":(b.municipalities?.length===1?b.municipalities[0]:`${b.municipalities?.length||0} kommuner`);
-  const plants=activePlantCountForBrand(b.id);
-  cp.innerHTML=`<strong>${b.name}</strong><small>${geography} · ${plants} aktive renseanlæg</small>`;
+  const organizationId=organizationIdForBrandId(b.id);
+  cp.innerHTML=`<strong>${b.name}</strong><small>${geography} · ${wastewaterListSummary(organizationId)}</small>`;
   row.append(cb,sw,cp); return row;
 }
 function setRegionSelection(regionId,selected){
@@ -28,7 +30,7 @@ function renderBrandGroups(rows,q){
   for(const b of rows){ const region=regionForBrand(b); if(!byRegion.has(region))byRegion.set(region,[]); byRegion.get(region).push(b); }
   for(const region of LANDDELE){
     const brands=byRegion.get(region.id)||[]; if(!brands.length)continue;
-    const selectedCount=brands.filter(b=>state.selected.has(b.id)).length;
+    const selectedCount=brands.filter(b=>(b._operatorMemberIds||[b.id]).every(id=>state.selected.has(id))).length;
     const group=document.createElement("section");group.className="region-group";group.dataset.region=region.id;
     const bar=document.createElement("div");bar.className="region-bar";
     const collapsed=!q&&state.collapsedRegions.has(region.id);
@@ -56,7 +58,8 @@ function renderList(){
     for(const p of rows){
       const b=p.responsibleBrandId?state.brandById.get(p.responsibleBrandId):null;
       const row=document.createElement("button");row.className="plant-row";
-      row.innerHTML=`<span class="plant-dot ${p.active?"":"closed"}" style="${p.active&&b?.color?`background:${b.color}`:""}"></span><span class="row-copy"><strong>${p.name}</strong><small>${b?`Ansvarlig: ${b.name}`:p.owner} · ${LoadScreening.summary(plantLoad(p))}</small></span>`;
+      const plantColor=p.active?plantPresentationColor(p):null;
+      row.innerHTML=`<span class="plant-dot ${p.active?"":"closed"}" style="${plantColor?`background:${plantColor}`:""}"></span><span class="row-copy"><strong>${p.name}</strong><small>${b?`Ansvarlig: ${b.name}`:p.owner} · ${LoadScreening.summary(plantLoad(p))}</small></span>`;
       row.onclick=()=>{openPlant(p);if(p.coordinates)state.map.setView([p.coordinates[1],p.coordinates[0]],13)};els.itemList.append(row);
     }
     if(!rows.length)els.itemList.innerHTML='<div class="empty">Ingen renseanlæg matcher de valgte filtre.</div>';
@@ -113,9 +116,14 @@ async function init(){
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:"© OpenStreetMap"}).addTo(state.map);
     bindUI();
 
+    state.canonicalRegistryReady=loadCanonicalRegistry();
+    state.facilityRegistryReady=loadFacilityRegistry();
+    state.wastewaterRelationsReady=Promise.all([state.canonicalRegistryReady,state.facilityRegistryReady]).then(()=>loadWastewaterRelations());
+
     // Resolve the canonical utility colors from the administrative coverage before any
     // utility layer or swatch is rendered. This prevents a visible source-color -> final-color flash.
-    const brandLoadPromise=Promise.all([loadBrands(),loadAliases()]);
+    const brandLoadPromise=Promise.all([loadBrands(),loadAliases(),state.canonicalRegistryReady,state.facilityRegistryReady,state.wastewaterRelationsReady]);
+    state.identityDataReady=brandLoadPromise;
     state.canonicalColorPromise=brandLoadPromise.then(async()=>{
       if(typeof window.prepareCanonicalColors!=="function")return null;
       return await window.prepareCanonicalColors();

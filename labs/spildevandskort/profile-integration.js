@@ -1,45 +1,50 @@
 // Non-invasive integration layer for utility profiles and project map data.
 // Keeps stable map/PULS IDs while current operator identities can evolve independently.
 (async function integrateUtilityProfiles(){
-  await loadProfiles();
+  await Promise.all([loadProfiles(),state.identityDataReady]);
+  const registry=state.canonicalRegistry;
+  if(!registry)throw new Error("Canonical organization registry er ikke indlæst");
+
+  const legacyOperatorFor=b=>typeof currentOperatorForBrand==="function"?currentOperatorForBrand(b.id):{displayName:b.name,operatorName:b.name,operatorBrandId:b.id,isOverride:false};
+  const canonicalIdFor=id=>{
+    if(registry.organizationForId(id))return id;
+    const direct=registry.organizationIdForLegacyBrandId(id);
+    if(direct)return direct;
+    const oldTarget=state.brandById.has(id)?legacyOperatorFor(state.brandById.get(id))?.operatorBrandId:null;
+    return registry.organizationIdForLegacyBrandId(oldTarget)||id;
+  };
+  const memberIdsFor=id=>registry.legacyBrandIdsForOrganizationId(canonicalIdFor(id)).filter(legacyId=>state.brandById.has(legacyId));
+  const primaryLegacyIdFor=id=>registry.preferredLegacyBrandIdForOrganizationId(canonicalIdFor(id))||memberIdsFor(id)[0]||id;
+  const operatorFor=b=>{
+    const legacy=legacyOperatorFor(b);
+    const organization=registry.organizationForId(canonicalIdFor(b.id));
+    return {...legacy,displayName:organization?.displayName||legacy.displayName||b.name,operatorName:organization?.displayName||legacy.operatorName||b.name,sourceUrl:organization?.sourceUrls?.[0]||legacy.sourceUrl};
+  };
+
+  const comparisons=(state.brands||[]).map(b=>{
+    const oldTarget=legacyOperatorFor(b)?.operatorBrandId||b.id;
+    const oldCanonical=registry.organizationIdForLegacyBrandId(oldTarget);
+    const newCanonical=registry.organizationIdForLegacyBrandId(b.id);
+    return {legacyBrandId:b.id,oldTarget,oldCanonical,newCanonical,match:Boolean(oldCanonical)&&oldCanonical===newCanonical};
+  });
+  state.canonicalRegistryParity={checked:comparisons.length,matches:comparisons.filter(x=>x.match).length,mismatches:comparisons.filter(x=>!x.match)};
+  if(state.canonicalRegistryParity.mismatches.length)throw new Error(`Canonical registry afviger fra current-operators.js for ${state.canonicalRegistryParity.mismatches.length} kildeidentiteter`);
+
   if(typeof initProjects==="function")await initProjects();
 
-  const operatorFor=b=>typeof currentOperatorForBrand==="function"?currentOperatorForBrand(b.id):{displayName:b.name,operatorName:b.name,isOverride:false};
-  const displayBrandName=b=>operatorFor(b).displayName||b.name;
-  const canonicalIdFor=id=>{
-    const b=state.brandById.get(id);if(!b)return id;
-    const current=operatorFor(b);
-    return current?.operatorBrandId&&state.brandById.has(current.operatorBrandId)?current.operatorBrandId:id;
-  };
-  const memberIdsFor=id=>{
-    const canonical=canonicalIdFor(id);
-    return (state.brands||[]).filter(b=>canonicalIdFor(b.id)===canonical).map(b=>b.id);
-  };
-  // Profiles remain keyed by stable legacy IDs, but their visible headings follow the verified current operator identity.
-  for(const b of state.brands||[]){
-    const current=operatorFor(b),profile=profileForBrand(b.id);
-    if(profile&&current.isOverride&&current.displayName)profile.name=current.displayName;
-  }
-
-  // Let existing search logic match verified current names, legacy/source names and legal/source aliases without mutating source metadata permanently.
+  // Existing filters can search canonical and historical names; raw source rows remain unchanged after each call.
   const withCurrentSearchNames=fn=>{
     const original=[];
     for(const b of state.brands||[]){
-      const current=operatorFor(b);
-      const searchNames=[...(current.searchNames||[]),current.displayName,b.name].filter(Boolean);
-      if(searchNames.length<=1)continue;
-      original.push([b,b.name]);b.name=[...new Set(searchNames)].join(" ");
+      const organization=registry.organizationForId(canonicalIdFor(b.id));
+      original.push([b,b.name]);b.name=[organization?.displayName,...(organization?.searchNames||[]),b.name].filter(Boolean).join(" ");
     }
     try{return fn();}finally{for(const [b,name] of original)b.name=name;}
   };
   const coreRenderList=renderList;
   renderList=function(){
-    const out=withCurrentSearchNames(coreRenderList);
-    if(state.tab==="brands"){
-      els.visibleCount.textContent=`${document.querySelectorAll(".brand-row").length} vist`;
-      const canonicalCount=new Set((state.brands||[]).map(b=>operatorFor(b).canonicalOrganizationId||canonicalIdFor(b.id))).size;
-      els.brandCount.textContent=canonicalCount;
-    }
+    const out=state.tab==="brands"?withCurrentSearchNames(coreRenderList):coreRenderList();
+    if(state.tab==="brands")els.visibleCount.textContent=`${state.canonicalVisibleCount||0} vist`;
     return out;
   };
   const coreFilteredPlants=filteredPlants;
@@ -52,26 +57,34 @@
       const canonical=canonicalIdFor(rowBrand.id);
       if(seen.has(canonical))continue;
       seen.add(canonical);
-      const base=state.brandById.get(canonical)||rowBrand;
       const memberIds=memberIdsFor(canonical);
       const members=memberIds.map(id=>state.brandById.get(id)).filter(Boolean);
+      const primaryLegacyBrandId=primaryLegacyIdFor(canonical);
+      const base=state.brandById.get(primaryLegacyBrandId)||rowBrand;
+      const organization=registry.organizationForId(canonical);
       merged.push({
         ...base,
         id:canonical,
-        name:operatorFor(base).operatorName||base.name,
+        name:organization?.displayName||base.name,
         municipalities:[...new Set(members.flatMap(b=>b.municipalities||[]))],
         sourceFeatureCount:members.reduce((sum,b)=>sum+Number(b.sourceFeatureCount||0),0),
+        _canonicalOrganizationId:canonical,
+        _primaryLegacyBrandId:primaryLegacyBrandId,
+        _regionId:regionForBrand(base),
         _operatorMemberIds:memberIds
       });
     }
+    state.canonicalVisibleCount=merged.length;
+    state.canonicalRenderedOrganizationIds=merged.map(b=>b.id);
     return coreRenderBrandGroups(merged,q);
   };
 
   brandRowElement = function(b){
     const canonical=canonicalIdFor(b.id),memberIds=b._operatorMemberIds||memberIdsFor(canonical);
-    const canonicalBrand=state.brandById.get(canonical)||b;
-    const current=operatorFor(canonicalBrand),displayName=current.operatorName||current.displayName||canonicalBrand.name;
-    const row=document.createElement("div"); row.className="brand-row"; row.dataset.brandId=canonical; row.dataset.currentOperatorId=canonical;
+    const primaryLegacyBrandId=b._primaryLegacyBrandId||primaryLegacyIdFor(canonical);
+    const canonicalBrand=state.brandById.get(primaryLegacyBrandId)||b;
+    const displayName=registry.organizationForId(canonical)?.displayName||b.name;
+    const row=document.createElement("div"); row.className="brand-row"; row.dataset.brandId=primaryLegacyBrandId; row.dataset.currentOperatorId=primaryLegacyBrandId; row.dataset.organizationId=canonical;
     const cb=document.createElement("input"); cb.type="checkbox";
     const selectedCount=memberIds.filter(id=>state.selected.has(id)).length;
     cb.checked=selectedCount===memberIds.length;cb.indeterminate=selectedCount>0&&selectedCount<memberIds.length;
@@ -83,10 +96,12 @@
     const sw=document.createElement("span");sw.className="brand-swatch";sw.style.background=canonicalBrand.color||"#6d98a3";
     const cp=document.createElement("button");cp.type="button";cp.className="row-copy row-profile-open";
     const municipalities=[...new Set(memberIds.flatMap(id=>state.brandById.get(id)?.municipalities||[]))];
-    const geography=current.organizationType==="jointTreatmentOrganization"
+    const organization=registry.organizationForId(canonical);
+    const geography=organization?.organizationType==="jointTreatmentOrganization"
       ?"Fælles renseorganisation"
-      :municipalities.length===1?municipalities[0]:municipalities.length?`${municipalities.length} kommuner`:"Forsyningsorganisation";
-    cp.innerHTML=`<strong>${profileEscape(displayName)}</strong><small>${profileEscape(geography)}</small>`;
+      :municipalities.length===0?"Anlægsejer · uden eget oplandslag"
+      :municipalities.length===1?municipalities[0]:`${municipalities.length} kommuner`;
+    cp.innerHTML=`<strong>${profileEscape(displayName)}</strong><small>${profileEscape(geography)} · ${profileEscape(wastewaterListSummary(canonical))}</small>`;
     cp.onclick=()=>openBrandProfile(canonical);
     const profileBtn=document.createElement("button");profileBtn.type="button";profileBtn.className=`profile-mini ${profileForBrand(canonical)?"researched":"pending"}`;
     profileBtn.textContent="Profil"; profileBtn.title=profileForBrand(canonical)?`Åbn profil for ${displayName}`:`Åbn profil for ${displayName} (research mangler)`;
@@ -97,7 +112,7 @@
   const coreZoomBrand=zoomBrand;
   zoomBrand=function(id){
     const memberIds=memberIdsFor(id);
-    if(memberIds.length<=1)return coreZoomBrand(id);
+    if(memberIds.length<=1)return coreZoomBrand(memberIds[0]||id);
     const layers=[];
     state.polygonLayer?.eachLayer(l=>{if(memberIds.includes(l.feature?.properties?.brandId))layers.push(l);});
     const plantPoints=state.plants.filter(p=>memberIds.includes(p.responsibleBrandId)&&p.coordinates).map(p=>L.latLng(p.coordinates[1],p.coordinates[0]));
@@ -117,7 +132,7 @@
     const old=body.querySelector("[data-brand]");
     const actions=document.createElement("div");actions.className="detail-actions";
     const profile=document.createElement("button");profile.type="button";profile.className="detail-action primary";profile.textContent="Åbn forsyningsprofil";profile.onclick=()=>openBrandProfile(canonicalIdFor(b.id));
-    if(old){ old.textContent="Zoom til forsyning"; old.parentNode.insertBefore(actions,old); actions.append(profile,old); }
+    if(old){ old.textContent="Zoom til forsyning"; old.onclick=()=>zoomBrand(canonicalIdFor(b.id)); old.parentNode.insertBefore(actions,old); actions.append(profile,old); }
     else { actions.append(profile); body.insertBefore(actions,body.querySelector(".source-note")); }
   };
 
@@ -191,7 +206,14 @@
     }
   };
   window.CATCHMENT_DETAIL_PANEL_VERSION=2;
+  window.spildevandskortCanonicalUiState=()=>({
+    organizationCount:registry.counts.organizations,
+    sourceIdentityCount:registry.counts.sourceIdentities,
+    visibleOrganizationCount:state.canonicalVisibleCount||0,
+    renderedOrganizationIds:[...(state.canonicalRenderedOrganizationIds||[])],
+    parity:{checked:state.canonicalRegistryParity.checked,matches:state.canonicalRegistryParity.matches,mismatchCount:state.canonicalRegistryParity.mismatches.length}
+  });
 
   renderList();
-  console.info("UTILITY_PROFILES_READY",{profiles:state.profiles.size,projects:state.projects?.length||0,currentOperatorOverrides:state.currentOperatorOverrides?.size||0});
+  console.info("UTILITY_PROFILES_READY",{profiles:state.profiles.size,projects:state.projects?.length||0,canonicalOrganizations:registry.counts.organizations,registryParity:state.canonicalRegistryParity});
 })();

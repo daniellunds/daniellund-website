@@ -125,6 +125,7 @@ jobs:
                 assert await page.locator('.leaflet-coverage-pane path').count()==98
                 assert await page.evaluate("!state.coverageOutlineLayer || state.coverageOutlineLayer.getLayers().length===0")
 
+                await page.wait_for_function("Object.values(state.polygonLayer?._layers||{}).some(l=>l.feature?.properties?.brandId==='syddjurs-spildevand')",timeout=60000)
                 clicked=await page.evaluate("""() => {
                   const layer=Object.values(state.polygonLayer?._layers||{}).find(l=>l.feature?.properties?.brandId==='syddjurs-spildevand');
                   if(!layer)return false;

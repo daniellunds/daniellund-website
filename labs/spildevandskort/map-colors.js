@@ -1,5 +1,6 @@
 // Neighbor-aware wastewater utility colors.
-// Stable legacy IDs may share one current operator; those areas intentionally share a color.
+// Stable legacy IDs resolve through the canonical registry. One canonical
+// organization therefore has one color across every presentation surface.
 (function initNeighborContrastColors(){
   const GRID_DEG=0.03;
   const PROXIMITY_DEG=0.012;
@@ -7,7 +8,13 @@
   const ADMIN_COVERAGE_URL="./data/municipalities.geojson";
   const ADMIN_COVERAGE_FALLBACK_URL="https://api.dataforsyningen.dk/kommuner?format=geojson&udenforkommuneinddeling=false";
   const normMunicipality=s=>String(s||"").toLocaleLowerCase("da").trim().replace(/\s+/g," ");
-  const operatorId=id=>typeof currentOperatorForBrand==="function"?currentOperatorForBrand(id).operatorBrandId:id;
+  const organizationId=id=>{
+    const canonical=state?.canonicalRegistry?.organizationIdForLegacyBrandId(id);
+    if(canonical)return canonical;
+    // Transitional fallback keeps the old runtime usable if canonical data fails to load.
+    const operator=typeof currentOperatorForBrand==="function"?currentOperatorForBrand(id).operatorBrandId:id;
+    return `legacy:${operator}`;
+  };
 
   function featureBBox(feature){
     const coords=feature?.geometry?.coordinates;if(!coords)return null;
@@ -47,8 +54,8 @@
 
   function groupedGraph(graph,brands){
     const groups=new Map(),sourceCounts=new Map();
-    for(const b of brands){const g=operatorId(b.id);if(!groups.has(g))groups.set(g,new Set());sourceCounts.set(g,(sourceCounts.get(g)||0)+(b.sourceFeatureCount||0));}
-    for(const [a,ns] of graph){const ga=operatorId(a);for(const b of ns){const gb=operatorId(b);if(ga===gb)continue;groups.get(ga)?.add(gb);groups.get(gb)?.add(ga);}}
+    for(const b of brands){const g=organizationId(b.id);if(!groups.has(g))groups.set(g,new Set());sourceCounts.set(g,(sourceCounts.get(g)||0)+(b.sourceFeatureCount||0));}
+    for(const [a,ns] of graph){const ga=organizationId(a);for(const b of ns){const gb=organizationId(b);if(ga===gb)continue;groups.get(ga)?.add(gb);groups.get(gb)?.add(ga);}}
     return {groups,sourceCounts};
   }
 
@@ -64,7 +71,7 @@
 
   function assignColors(graph,brands){
     const {groups,sourceCounts}=groupedGraph(graph,brands),assignedGroups=new Map(),usage=new Map(PALETTE.map(c=>[c,0]));
-    const remaining=new Set([...groups.keys()].filter(id=>(sourceCounts.get(id)||0)>0));
+    const remaining=new Set(groups.keys());
     while(remaining.size){
       let next=null,bestRank=null;
       for(const id of remaining){
@@ -79,19 +86,21 @@
       assignedGroups.set(next,winner);usage.set(winner,(usage.get(winner)||0)+1);remaining.delete(next);
     }
     const assigned=new Map();
-    for(const b of brands){const color=assignedGroups.get(operatorId(b.id))||b.color||"#58757E";b.color=color;assigned.set(b.id,color);}
-    return {assigned,assignedGroups,operatorGroups:groups.size};
+    for(const b of brands){const canonicalId=organizationId(b.id),color=assignedGroups.get(canonicalId)||b.color||"#58757E";b.organizationId=canonicalId.startsWith("org:")?canonicalId:null;b.color=color;assigned.set(b.id,color);}
+    state.organizationColors=new Map([...assignedGroups].filter(([id])=>id.startsWith("org:")));
+    return {assigned,assignedGroups,organizationGroups:groups.size,operatorGroups:groups.size};
   }
 
   function qa(graph,brands,result){
-    const {assigned,operatorGroups}=result,pairs=[];
-    for(const [a,ns] of graph)for(const b of ns)if(a<b&&operatorId(a)!==operatorId(b))pairs.push([a,b]);
-    const sameOperatorPairs=[];for(const [a,ns] of graph)for(const b of ns)if(a<b&&operatorId(a)===operatorId(b))sameOperatorPairs.push([a,b]);
+    const {assigned,organizationGroups,operatorGroups}=result,pairs=[];
+    for(const [a,ns] of graph)for(const b of ns)if(a<b&&organizationId(a)!==organizationId(b))pairs.push([a,b]);
+    const sameOrganizationPairs=[];for(const [a,ns] of graph)for(const b of ns)if(a<b&&organizationId(a)===organizationId(b))sameOrganizationPairs.push([a,b]);
     const distances=pairs.map(([a,b])=>colorDistance(assigned.get(a)||"#58757E",assigned.get(b)||"#58757E"));
     const sameColorPairs=pairs.filter(([a,b])=>assigned.get(a)&&assigned.get(a)===assigned.get(b));
     const find=name=>brands.find(b=>String(b.name).toLocaleLowerCase("da")===name.toLocaleLowerCase("da"));
     const hofor=find("HOFOR"),ishoej=find("Ishøj Forsyning");
-    return {strategy:"current-operator-near-neighbour-max-contrast",palette:PALETTE.slice(),operatorGroups,neighbourPairs:pairs.length,sameOperatorNeighbourPairs:sameOperatorPairs.length,sameColorNeighbourPairs:sameColorPairs.length,minNeighbourDistance:distances.length?Math.min(...distances):null,proximityGridDegrees:GRID_DEG,hoforIshoej:hofor&&ishoej?{hofor:hofor.color,ishoej:ishoej.color,distance:colorDistance(hofor.color,ishoej.color)}:null};
+    const canonicalMappings=brands.filter(b=>organizationId(b.id).startsWith("org:")).length;
+    return {strategy:"canonical-organization-near-neighbour-max-contrast",palette:PALETTE.slice(),organizationGroups,operatorGroups,canonicalMappings,legacyBrandCount:brands.length,neighbourPairs:pairs.length,sameOrganizationNeighbourPairs:sameOrganizationPairs.length,sameOperatorNeighbourPairs:sameOrganizationPairs.length,sameColorNeighbourPairs:sameColorPairs.length,minNeighbourDistance:distances.length?Math.min(...distances):null,proximityGridDegrees:GRID_DEG,hoforIshoej:hofor&&ishoej?{hofor:hofor.color,ishoej:ishoej.color,distance:colorDistance(hofor.color,ishoej.color)}:null};
   }
 
   function municipalityBrandId(name,brands){
@@ -147,7 +156,9 @@
   if(typeof renderPolygons==="function"){
     const coreRenderPolygons=renderPolygons;
     renderPolygons=function(){
-      if(state.features?.length)for(const f of state.features){const p=f.properties||{},color=state.brandById.get(p.brandId)?.color;if(color)p.color=color;}
+      const firstAssignment=!!state.features?.length&&!state.colorQa;
+      if(firstAssignment)window.applyNeighborContrastColors(state.features,state.brands);
+      if(state.features?.length)for(const f of state.features){const p=f.properties||{},organization=organizationId(p.brandId),color=state.organizationColors.get(organization)||state.brandById.get(p.brandId)?.color;if(organization.startsWith("org:"))p.organizationId=organization;if(color)p.color=color;}
       if(state.features?.length&&state.colorQa&&!state.colorQa.firstPolygonRenderObserved){
         state.colorQa.firstPolygonRenderObserved=true;
         state.colorQa.colorReadyBeforeFirstPolygonRender=state.colorQa.basis==="administrative-coverage-preload";

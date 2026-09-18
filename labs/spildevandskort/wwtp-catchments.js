@@ -52,8 +52,7 @@
     activePlantKey=key;
     dimBaseCatchments();
 
-    const brand=p.responsibleBrandId?state.brandById.get(p.responsibleBrandId):null;
-    const color=brand?.color||'#006f8b';
+    const color=typeof plantPresentationColor==='function'?plantPresentationColor(p):state.brandById.get(p.responsibleBrandId)?.color||'#006f8b';
     highlightLayer=L.geoJSON({type:'FeatureCollection',features},{
       style:{color,fillColor:color,weight:2.2,opacity:1,fillOpacity:.58},
       interactive:false
