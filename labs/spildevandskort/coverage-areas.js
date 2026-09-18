@@ -48,8 +48,14 @@
     return state.brandById.get(c.brandId)?.color||c.current?.color||"#657D84";
   }
 
+  function operatorBrandId(brandId){
+    if(!brandId||!state.brandById?.has(brandId))return null;
+    const current=typeof currentOperatorForBrand==="function"?currentOperatorForBrand(brandId):null;
+    return current?.operatorBrandId&&state.brandById.has(current.operatorBrandId)?current.operatorBrandId:brandId;
+  }
+
   function setCoverageHighlight(brandId){
-    const next=brandId&&state.brandById?.has(brandId)?brandId:null;
+    const next=operatorBrandId(brandId);
     if(state.coverageHighlightBrandId===next)return;
     state.coverageHighlightBrandId=next;
     renderCoverage();
@@ -118,7 +124,10 @@
     if(state.coverageOutlineLayer){state.coverageOutlineLayer.remove();state.coverageOutlineLayer=null;}
     const checkbox=document.getElementById("showCoverage");
     if(!state.coverageData||checkbox?.checked===false)return;
-    if(state.coverageHighlightBrandId&&!state.selected.has(state.coverageHighlightBrandId))state.coverageHighlightBrandId=null;
+    if(state.coverageHighlightBrandId){
+      const anySelected=(state.brands||[]).some(b=>operatorBrandId(b.id)===state.coverageHighlightBrandId&&state.selected.has(b.id));
+      if(!anySelected)state.coverageHighlightBrandId=null;
+    }
     if(!state.map.getPane("coveragePane")){
       const pane=state.map.createPane("coveragePane");pane.style.zIndex="320";pane.style.pointerEvents="none";
     }
@@ -139,7 +148,7 @@
 
     // Only the administrative supply area explicitly clicked on the map gets the stronger outline.
     if(state.coverageHighlightBrandId){
-      const highlighted=features.filter(f=>classify(f).brandId===state.coverageHighlightBrandId);
+      const highlighted=features.filter(f=>operatorBrandId(classify(f).brandId)===state.coverageHighlightBrandId);
       if(highlighted.length){
         state.coverageOutlineLayer=L.geoJSON({type:"FeatureCollection",features:highlighted},{
           pane:"coverageOutlinePane",
