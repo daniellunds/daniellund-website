@@ -4,6 +4,7 @@
 (function initAdministrativeCoverage(){
   // Same-origin cache avoids browser/network-specific stalls when loading Dataforsyningen directly.
   const MUNICIPALITY_URL="./data/municipalities.geojson";
+  const ADMIN_NEIGHBOURS_URL="./data/administrative-neighbours.json";
   const MUNICIPALITY_FALLBACK_URL="https://api.dataforsyningen.dk/kommuner?format=geojson&udenforkommuneinddeling=false";
   const VERIFIED_OVERRIDES={
     // Læsø has no mapped Plandata catchment in brands.json, but its wastewater utility is known in the app.
@@ -194,12 +195,14 @@
       if(!fc.features?.length)throw new Error("Ingen kommunegeometrier i svaret");
       state.coverageData=fc;
       const rows=fc.features.map(classify);
-      const administrativeColorFeatures=fc.features.flatMap(feature=>{
-        const c=classify(feature);
-        return c.status==="assigned"?[{...feature,properties:{...(feature.properties||{}),brandId:c.brandId}}]:[];
-      });
+      let neighbourData={pairs:[]};
+      try{
+        neighbourData=await fetchJsonWithTimeout(ADMIN_NEIGHBOURS_URL,10000);
+      }catch(neighbourErr){
+        console.warn("Administrativ nabograf kunne ikke indlæses; bruger kun kendte sikkerhedsrelationer",neighbourErr);
+      }
       const administrativeColorQa=typeof window.resolveAdministrativeNeighborColors==="function"
-        ?window.resolveAdministrativeNeighborColors(administrativeColorFeatures,state.brands)
+        ?window.resolveAdministrativeNeighborColors(neighbourData.pairs||[],state.brands)
         :null;
       state.coverageQa={
         source,
@@ -209,7 +212,8 @@
         currentOperatorOverrides:rows.filter(x=>x.status==="assigned"&&x.current?.isOverride).map(x=>({name:x.name,legacyBrandId:x.brandId,operatorBrandId:x.current.operatorBrandId,operatorName:x.current.operatorName,sourceUrl:x.current.sourceUrl})),
         ambiguous:rows.filter(x=>x.status==="ambiguous").map(x=>({name:x.name,brandIds:x.brandIds})),
         unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name),
-        colorQa:administrativeColorQa
+        colorQa:administrativeColorQa,
+        neighbourGraphPairs:Number(neighbourData.pairCount)||Number(neighbourData.pairs?.length)||0
       };
       console.info("ADMIN_COVERAGE_QA",state.coverageQa);
       // The conflict resolver changes the shared brand color itself. Re-render every
