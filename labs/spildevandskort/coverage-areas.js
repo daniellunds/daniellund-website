@@ -45,7 +45,7 @@
   function colorFor(feature){
     const c=classify(feature);
     if(c.status!=="assigned")return "#FFFFFF";
-    return c.current?.color||state.brandById.get(c.brandId)?.color||"#657D84";
+    return state.brandById.get(c.brandId)?.color||"#657D84";
   }
 
   function setCoverageHighlight(brandId){
@@ -158,6 +158,14 @@
     throw new Error("Forsyningsmetadata blev ikke klar");
   }
 
+  async function waitForBaseColors(){
+    for(let i=0;i<120;i++){
+      if(state.colorQa?.strategy==="current-operator-near-neighbour-max-contrast")return true;
+      await new Promise(resolve=>setTimeout(resolve,50));
+    }
+    return false;
+  }
+
   async function fetchJsonWithTimeout(url,timeoutMs){
     const controller=new AbortController();
     const timer=setTimeout(()=>controller.abort(),timeoutMs);
@@ -173,6 +181,7 @@
   async function loadCoverage(){
     try{
       await waitForBrands();
+      await waitForBaseColors();
       let raw,source="Lokal cache · Dataforsyningen";
       try{
         raw=await fetchJsonWithTimeout(MUNICIPALITY_URL,15000);
@@ -185,6 +194,13 @@
       if(!fc.features?.length)throw new Error("Ingen kommunegeometrier i svaret");
       state.coverageData=fc;
       const rows=fc.features.map(classify);
+      const administrativeColorFeatures=fc.features.flatMap(feature=>{
+        const c=classify(feature);
+        return c.status==="assigned"?[{...feature,properties:{...(feature.properties||{}),brandId:c.brandId}}]:[];
+      });
+      const administrativeColorQa=typeof window.resolveAdministrativeNeighborColors==="function"
+        ?window.resolveAdministrativeNeighborColors(administrativeColorFeatures,state.brands)
+        :null;
       state.coverageQa={
         source,
         municipalities:rows.length,
@@ -192,10 +208,16 @@
         verifiedOverrides:rows.filter(x=>x.status==="assigned"&&x.override).map(x=>({name:x.name,brandId:x.brandId,reason:x.override.reason,sourceUrl:x.override.sourceUrl||null})),
         currentOperatorOverrides:rows.filter(x=>x.status==="assigned"&&x.current?.isOverride).map(x=>({name:x.name,legacyBrandId:x.brandId,operatorBrandId:x.current.operatorBrandId,operatorName:x.current.operatorName,sourceUrl:x.current.sourceUrl})),
         ambiguous:rows.filter(x=>x.status==="ambiguous").map(x=>({name:x.name,brandIds:x.brandIds})),
-        unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name)
+        unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name),
+        colorQa:administrativeColorQa
       };
       console.info("ADMIN_COVERAGE_QA",state.coverageQa);
-      renderCoverage();
+      // The conflict resolver changes the shared brand color itself. Re-render every
+      // brand-colored map surface so admin area, sewer catchment and WWTP stay identical.
+      renderPolygons();
+      if(typeof renderPlants==="function")renderPlants();
+      if(typeof renderList==="function")renderList();
+      if(typeof renderProjects==="function")renderProjects();
       bindCatchmentHighlight();
     }catch(err){
       console.warn("Administrative forsyningsområder kunne ikke indlæses",err);
