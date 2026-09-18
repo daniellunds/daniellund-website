@@ -45,7 +45,7 @@
   function colorFor(feature){
     const c=classify(feature);
     if(c.status!=="assigned")return "#FFFFFF";
-    return c.current?.color||state.brandById.get(c.brandId)?.color||"#657D84";
+    return state.brandById.get(c.brandId)?.color||c.current?.color||"#657D84";
   }
 
   function setCoverageHighlight(brandId){
@@ -185,6 +185,24 @@
       if(!fc.features?.length)throw new Error("Ingen kommunegeometrier i svaret");
       state.coverageData=fc;
       const rows=fc.features.map(classify);
+
+      // Repair only true administrative-neighbour color conflicts, using the existing palette.
+      // Mutate the canonical brand colors so administrative areas, sewer catchments and WWTP markers stay identical.
+      const administrativeColorFeatures=fc.features.flatMap(feature=>{
+        const c=classify(feature);
+        return c.status==="assigned"?[{...feature,properties:{...(feature.properties||{}),brandId:c.brandId}}]:[];
+      });
+      const administrativeColorQa=typeof window.repairAdministrativeNeighborColors==="function"
+        ?window.repairAdministrativeNeighborColors(administrativeColorFeatures,state.brands)
+        :null;
+      if(administrativeColorQa){
+        for(const feature of state.features||[]){
+          const brandId=feature.properties?.brandId;
+          const color=state.brandById.get(brandId)?.color;
+          if(color)feature.properties.color=color;
+        }
+      }
+
       state.coverageQa={
         source,
         municipalities:rows.length,
@@ -192,9 +210,15 @@
         verifiedOverrides:rows.filter(x=>x.status==="assigned"&&x.override).map(x=>({name:x.name,brandId:x.brandId,reason:x.override.reason,sourceUrl:x.override.sourceUrl||null})),
         currentOperatorOverrides:rows.filter(x=>x.status==="assigned"&&x.current?.isOverride).map(x=>({name:x.name,legacyBrandId:x.brandId,operatorBrandId:x.current.operatorBrandId,operatorName:x.current.operatorName,sourceUrl:x.current.sourceUrl})),
         ambiguous:rows.filter(x=>x.status==="ambiguous").map(x=>({name:x.name,brandIds:x.brandIds})),
-        unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name)
+        unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name),
+        colorQa:administrativeColorQa
       };
       console.info("ADMIN_COVERAGE_QA",state.coverageQa);
+      // Repaint every layer after any minimal color repairs so all representations stay in sync.
+      renderPolygons();
+      if(typeof renderPlants==="function")renderPlants();
+      if(typeof renderProjects==="function")renderProjects();
+      if(typeof renderList==="function")renderList();
       renderCoverage();
       bindCatchmentHighlight();
     }catch(err){
