@@ -55,7 +55,7 @@
       const region=LANDDELE.find(r=>r.id===regionForBrand(b))?.name;
       return !q||normalize([b.name,...(b.legacyNames||[]),...(b.municipalities||[]),region].join(" ")).includes(q);
     });
-    els.listHeading.textContent="Forsyninger efter landsdel";els.visibleCount.textContent=`${rows.length} vist`;
+    els.listHeading.textContent="Forsyninger efter landsdel";els.visibleCount.textContent=`${rows.length} vist`;els.brandCount.textContent=logicalBrands().length;
     renderBrandGroups(rows,q);
     if(!rows.length)els.itemList.innerHTML='<div class="empty">Ingen forsyninger matcher søgningen.</div>';
   };
