@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'labs/spildevandskort/map-colors.js'
+      - 'labs/spildevandskort/app2.js'
       - 'labs/spildevandskort/current-operators.js'
       - 'labs/spildevandskort/profiles.js'
       - 'labs/spildevandskort/profile-integration.js'
@@ -14,6 +15,7 @@ on:
   pull_request:
     paths:
       - 'labs/spildevandskort/map-colors.js'
+      - 'labs/spildevandskort/app2.js'
       - 'labs/spildevandskort/current-operators.js'
       - 'labs/spildevandskort/profiles.js'
       - 'labs/spildevandskort/profile-integration.js'
@@ -35,11 +37,14 @@ jobs:
         run: |
           set -euo pipefail
           test -s labs/spildevandskort/map-colors.js
+          test -s labs/spildevandskort/app2.js
           test -s labs/spildevandskort/current-operators.js
           test -s labs/spildevandskort/profiles.js
           test -s labs/spildevandskort/profile-integration.js
           test -s labs/spildevandskort/coverage-areas.js
           grep -q 'map-colors.js' labs/spildevandskort/index.html
+          grep -q 'prepareCanonicalColors' labs/spildevandskort/map-colors.js
+          grep -q 'canonicalColorPromise' labs/spildevandskort/app2.js
           grep -q 'current-operators.js' labs/spildevandskort/index.html
           grep -q 'osm-grayscale-layer' labs/spildevandskort/basemaps.js
           grep -q 'grayscale(100%)' labs/spildevandskort/basemaps.css
@@ -50,6 +55,7 @@ jobs:
           grep -q 'displayName:"AquaDjurs"' labs/spildevandskort/current-operators.js
           grep -q 'responsible?.color' labs/spildevandskort/app1.js
           node --check labs/spildevandskort/map-colors.js
+          node --check labs/spildevandskort/app2.js
           node --check labs/spildevandskort/current-operators.js
           node --check labs/spildevandskort/profiles.js
           node --check labs/spildevandskort/profile-integration.js
@@ -82,10 +88,17 @@ jobs:
               await page.wait_for_function("typeof spildevandskortBasemapState==='function' && spildevandskortBasemapState().streetGreyscale===true",timeout=30000)
               cq=await page.evaluate('spildevandskortColorState()')
               assert cq['strategy']=='current-operator-near-neighbour-max-contrast',cq
+              assert cq['basis']=='administrative-coverage-preload',cq
+              assert cq['municipalities']==98 and cq['assignedMunicipalities']==98,cq
               assert cq['neighbourPairs']>40 and cq['operatorGroups']<76,cq
               assert cq['sameColorNeighbourPairs']==0,cq
+              assert cq.get('firstPolygonRenderObserved') is True,cq
+              assert cq.get('colorReadyBeforeFirstPolygonRender') is True,cq
+              din_now=await page.evaluate("state.brandById.get('din-forsyning').color")
+              assert cq.get('firstDinForsyningColor')==din_now,(cq,din_now)
               adminq=await page.evaluate('spildevandskortCoverageState().colorQa')
               assert adminq['strategy']=='current-operator-near-neighbour-max-contrast',adminq
+              assert adminq['basis']=='administrative-coverage-preload',adminq
               assert adminq['sameColorNeighbourPairs']==0,adminq
               assert adminq['sameOperatorNeighbourPairs']>=2,adminq
               colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color,ev:state.brandById.get('energi-viborg-vand').color,ib:state.brandById.get('ikast-brande-spildevand').color})")
@@ -154,7 +167,7 @@ jobs:
                   overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth");assert overflow<=3,overflow
               assert not errors,errors
               label='mobile' if mobile else 'desktop';await page.screenshot(path=f'qa-map-contrast-{label}.png',full_page=True)
-              print(label.upper(),'COLOR_QA',cq,'ADMIN_COLOR_QA',adminq,'COLORS',colors,'SILKEBORG',silkeborg,'BASEMAP_QA',bq)
+              print(label.upper(),'COLOR_QA',cq,'ADMIN_COLOR_QA',adminq,'DIN_COLOR',din_now,'COLORS',colors,'SILKEBORG',silkeborg,'BASEMAP_QA',bq)
               await context.close()
           async def main():
               async with async_playwright() as p:
