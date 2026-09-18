@@ -1,9 +1,18 @@
 // Neighbor-aware wastewater utility colors.
-// Stable legacy IDs may share one current operator; those areas intentionally share a color.
+// The normal map keeps the established palette and current-operator color assignment.
+// Administrative-neighbour conflicts are resolved afterwards with the SAME palette,
+// and the resulting brand color is then used consistently for admin areas, sewer catchments and WWTPs.
 (function initNeighborContrastColors(){
   const GRID_DEG=0.03;
   const PROXIMITY_DEG=0.012;
   const PALETTE=["#0057B8","#E4D600","#E3261C","#35A7D6","#D51BC4","#138A2E","#E67E22","#7436A8","#00A875","#A91D63"];
+  const BASE_REQUIRED_PAIRS=[["HOFOR","Ishøj Forsyning"]];
+  const ADMIN_REQUIRED_PAIRS=[
+    ["HOFOR","Ishøj Forsyning"],
+    ["AquaDjurs","Syddjurs Spildevand"],
+    ["Energi Viborg Vand","Ikast-Brande Spildevand"],
+    ["Nordfyns Forsyning","VandCenter Syd"]
+  ];
   const operatorId=id=>typeof currentOperatorForBrand==="function"?currentOperatorForBrand(id).operatorBrandId:id;
 
   function featureBBox(feature){
@@ -20,7 +29,15 @@
     visit(coords);return Number.isFinite(minX)?[minX,minY,maxX,maxY]:null;
   }
 
-  function buildNeighbourGraph(features,brands){
+  function connectNamedPairs(graph,brands,pairs){
+    const byName=new Map(brands.map(b=>[String(b.name||"").toLocaleLowerCase("da"),b.id]));
+    for(const [a,b] of pairs||[]){
+      const ai=byName.get(a.toLocaleLowerCase("da")),bi=byName.get(b.toLocaleLowerCase("da"));
+      if(ai&&bi){graph.get(ai)?.add(bi);graph.get(bi)?.add(ai);}
+    }
+  }
+
+  function buildNeighbourGraph(features,brands,requiredPairs=BASE_REQUIRED_PAIRS){
     const graph=new Map(brands.map(b=>[b.id,new Set()])),cells=new Map();
     const add=(x,y,id)=>{const key=`${x}:${y}`;if(!cells.has(key))cells.set(key,new Set());cells.get(key).add(id);};
     for(const f of features||[]){
@@ -35,9 +52,8 @@
     for(const ids of cells.values()){
       const arr=[...ids];for(let i=0;i<arr.length;i++)for(let j=i+1;j<arr.length;j++){graph.get(arr[i])?.add(arr[j]);graph.get(arr[j])?.add(arr[i]);}
     }
-    const byName=new Map(brands.map(b=>[String(b.name||"").toLocaleLowerCase("da"),b.id]));
-    const connectNames=(a,b)=>{const ai=byName.get(a.toLocaleLowerCase("da")),bi=byName.get(b.toLocaleLowerCase("da"));if(ai&&bi){graph.get(ai)?.add(bi);graph.get(bi)?.add(ai);}};
-    connectNames("HOFOR","Ishøj Forsyning");return graph;
+    connectNamedPairs(graph,brands,requiredPairs);
+    return graph;
   }
 
   function groupedGraph(graph,brands){
@@ -78,7 +94,7 @@
     return {assigned,assignedGroups,operatorGroups:groups.size};
   }
 
-  function qa(graph,brands,result){
+  function baselineQa(graph,brands,result){
     const {assigned,operatorGroups}=result,pairs=[];
     for(const [a,ns] of graph)for(const b of ns)if(a<b&&operatorId(a)!==operatorId(b))pairs.push([a,b]);
     const sameOperatorPairs=[];for(const [a,ns] of graph)for(const b of ns)if(a<b&&operatorId(a)===operatorId(b))sameOperatorPairs.push([a,b]);
@@ -89,7 +105,78 @@
     return {strategy:"current-operator-near-neighbour-max-contrast",palette:PALETTE.slice(),operatorGroups,neighbourPairs:pairs.length,sameOperatorNeighbourPairs:sameOperatorPairs.length,sameColorNeighbourPairs:sameColorPairs.length,minNeighbourDistance:distances.length?Math.min(...distances):null,proximityGridDegrees:GRID_DEG,hoforIshoej:hofor&&ishoej?{hofor:hofor.color,ishoej:ishoej.color,distance:colorDistance(hofor.color,ishoej.color)}:null};
   }
 
-  window.applyNeighborContrastColors=(features,brands)=>{const graph=buildNeighbourGraph(features,brands),result=assignColors(graph,brands),out=qa(graph,brands,result);if(typeof state!=="undefined")state.colorQa=out;console.info("UTILITY_COLOR_QA",out);return out;};
+  function allStablePairs(graph){
+    const pairs=[];for(const [a,ns] of graph)for(const b of ns)if(a<b)pairs.push([a,b]);return pairs;
+  }
+  function currentColor(brandsById,id){return brandsById.get(id)?.color||"#58757E";}
+
+  function resolveAdministrativeNeighborColors(features,brands){
+    const graph=buildNeighbourGraph(features,brands,ADMIN_REQUIRED_PAIRS);
+    const byId=new Map(brands.map(b=>[b.id,b]));
+    const before=new Map(brands.map(b=>[b.id,b.color]));
+    const changed=new Map();
+    const conflictEdges=()=>allStablePairs(graph).filter(([a,b])=>currentColor(byId,a)===currentColor(byId,b));
+
+    const chooseTarget=(a,b)=>{
+      const aAlias=operatorId(a)!==a,bAlias=operatorId(b)!==b;
+      if(aAlias!==bAlias)return aAlias?a:b;
+      const aDegree=graph.get(a)?.size||0,bDegree=graph.get(b)?.size||0;
+      if(aDegree!==bDegree)return aDegree<bDegree?a:b;
+      const aCount=byId.get(a)?.sourceFeatureCount||0,bCount=byId.get(b)?.sourceFeatureCount||0;
+      if(aCount!==bCount)return aCount<bCount?a:b;
+      return String(a)<String(b)?a:b;
+    };
+
+    let guard=0;
+    while(guard++<100){
+      const conflicts=conflictEdges();if(!conflicts.length)break;
+      const [a,b]=conflicts[0],target=chooseTarget(a,b),brand=byId.get(target);
+      if(!brand)break;
+      const neighbourColors=[...(graph.get(target)||[])].map(id=>currentColor(byId,id));
+      const forbidden=new Set(neighbourColors);
+      const candidates=PALETTE.filter(c=>c!==brand.color&&!forbidden.has(c));
+      if(!candidates.length)break;
+      let winner=candidates[0],winnerScore=-Infinity;
+      for(const c of candidates){
+        const distances=neighbourColors.map(nc=>colorDistance(c,nc));
+        const min=distances.length?Math.min(...distances):1;
+        const avg=distances.length?distances.reduce((sum,v)=>sum+v,0)/distances.length:1;
+        const score=min*1000+avg*100-PALETTE.indexOf(c)*0.0001;
+        if(score>winnerScore){winner=c;winnerScore=score;}
+      }
+      const original=before.get(target);
+      brand.color=winner;
+      changed.set(target,{id:target,name:brand.name,before:original,after:winner});
+    }
+
+    const remaining=conflictEdges();
+    const namedPairs={};
+    const byName=new Map(brands.map(b=>[String(b.name||"").toLocaleLowerCase("da"),b]));
+    for(const [a,b] of ADMIN_REQUIRED_PAIRS){
+      const aa=byName.get(a.toLocaleLowerCase("da")),bb=byName.get(b.toLocaleLowerCase("da"));
+      namedPairs[`${a} / ${b}`]=aa&&bb?{
+        aColor:aa.color,bColor:bb.color,connected:graph.get(aa.id)?.has(bb.id)||false,sameColor:aa.color===bb.color
+      }:null;
+    }
+    const qa={
+      strategy:"minimal-change-original-palette",
+      palette:PALETTE.slice(),
+      neighbourPairs:allStablePairs(graph).length,
+      sameColorNeighbourPairs:remaining.length,
+      changed:[...changed.values()],
+      namedPairs,
+      colors:Object.fromEntries(brands.map(b=>[b.id,b.color]))
+    };
+    if(typeof state!=="undefined"){
+      state.colorQa=state.colorQa||{};
+      state.colorQa.administrativeResolution=qa;
+    }
+    console.info("ADMIN_NEIGHBOR_COLOR_QA",qa);
+    return qa;
+  }
+
+  window.applyNeighborContrastColors=(features,brands)=>{const graph=buildNeighbourGraph(features,brands),result=assignColors(graph,brands),out=baselineQa(graph,brands,result);if(typeof state!=="undefined")state.colorQa=out;console.info("UTILITY_COLOR_QA",out);return out;};
+  window.resolveAdministrativeNeighborColors=resolveAdministrativeNeighborColors;
   window.spildevandskortColorState=()=>state?.colorQa||null;
 
   if(typeof renderPolygons==="function"){
