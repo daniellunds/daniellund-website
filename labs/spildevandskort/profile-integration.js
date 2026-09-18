@@ -21,19 +21,25 @@
     if(profile&&current.isOverride&&current.displayName)profile.name=current.displayName;
   }
 
-  // Let existing search logic match both the current operator and the legacy Plandata identity without mutating either permanently.
+  // Let existing search logic match verified current names, legacy/source names and legal/source aliases without mutating source metadata permanently.
   const withCurrentSearchNames=fn=>{
     const original=[];
     for(const b of state.brands||[]){
-      const current=operatorFor(b);if(!current.isOverride)continue;
-      original.push([b,b.name]);b.name=`${current.displayName} ${b.name}`;
+      const current=operatorFor(b);
+      const searchNames=[...(current.searchNames||[]),current.displayName,b.name].filter(Boolean);
+      if(searchNames.length<=1)continue;
+      original.push([b,b.name]);b.name=[...new Set(searchNames)].join(" ");
     }
     try{return fn();}finally{for(const [b,name] of original)b.name=name;}
   };
   const coreRenderList=renderList;
   renderList=function(){
     const out=withCurrentSearchNames(coreRenderList);
-    if(state.tab==="brands")els.visibleCount.textContent=`${document.querySelectorAll(".brand-row").length} vist`;
+    if(state.tab==="brands"){
+      els.visibleCount.textContent=`${document.querySelectorAll(".brand-row").length} vist`;
+      const canonicalCount=new Set((state.brands||[]).map(b=>operatorFor(b).canonicalOrganizationId||canonicalIdFor(b.id))).size;
+      els.brandCount.textContent=canonicalCount;
+    }
     return out;
   };
   const coreFilteredPlants=filteredPlants;
@@ -77,9 +83,10 @@
     const sw=document.createElement("span");sw.className="brand-swatch";sw.style.background=canonicalBrand.color||"#6d98a3";
     const cp=document.createElement("button");cp.type="button";cp.className="row-copy row-profile-open";
     const municipalities=[...new Set(memberIds.flatMap(id=>state.brandById.get(id)?.municipalities||[]))];
-    const geography=municipalities.length===1?municipalities[0]:`${municipalities.length} kommuner`;
-    const plants=memberIds.reduce((sum,id)=>sum+activePlantCountForBrand(id),0);
-    cp.innerHTML=`<strong>${profileEscape(displayName)}</strong><small>${profileEscape(geography)} · ${plants} aktive renseanlæg</small>`;
+    const geography=current.organizationType==="jointTreatmentOrganization"
+      ?"Fælles renseorganisation"
+      :municipalities.length===1?municipalities[0]:municipalities.length?`${municipalities.length} kommuner`:"Forsyningsorganisation";
+    cp.innerHTML=`<strong>${profileEscape(displayName)}</strong><small>${profileEscape(geography)}</small>`;
     cp.onclick=()=>openBrandProfile(canonical);
     const profileBtn=document.createElement("button");profileBtn.type="button";profileBtn.className=`profile-mini ${profileForBrand(canonical)?"researched":"pending"}`;
     profileBtn.textContent="Profil"; profileBtn.title=profileForBrand(canonical)?`Åbn profil for ${displayName}`:`Åbn profil for ${displayName} (research mangler)`;
