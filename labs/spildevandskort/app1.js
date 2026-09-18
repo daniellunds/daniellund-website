@@ -57,7 +57,9 @@ async function loadBrands(){
   const raw=await fetchJSON(`${PROD}/brands.json`); const arr=raw.brands||raw;
   const virtual=CURATED_VIRTUAL_BRANDS.map(b=>({...b,color:"#087e90",municipalities:[],sourceFeatureCount:0}));
   state.brands=[...arr,...virtual.filter(v=>!arr.some(b=>b.id===v.id))].sort((a,b)=>a.name.localeCompare(b.name,"da"));
-  state.brandById=new Map(state.brands.map(b=>[b.id,b])); state.selected=new Set(state.brands.map(b=>b.id)); els.brandCount.textContent=state.brands.length;
+  state.brandById=new Map(state.brands.map(b=>[b.id,b])); state.selected=new Set(state.brands.map(b=>b.id));
+  const organizationCount=typeof currentOperatorForBrand==="function"?new Set(state.brands.map(b=>currentOperatorForBrand(b.id).canonicalOrganizationId)).size:state.brands.length;
+  els.brandCount.textContent=organizationCount;
 }
 async function loadAliases(){
   const out={};
