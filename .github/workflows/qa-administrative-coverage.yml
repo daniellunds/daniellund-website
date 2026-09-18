@@ -118,9 +118,13 @@ jobs:
                 assert any(x['name']=='Nordfyns' and x['legacyBrandId']=='nordfyns-forsyning' and x['operatorBrandId']=='vandcenter-syd' for x in current),current
                 assert any(x['name']=='Syddjurs' and x['legacyBrandId']=='syddjurs-spildevand' and x['operatorBrandId']=='aquadjurs' for x in current),current
                 assert any(x['name']=='Mariagerfjord' and x['legacyBrandId']=='mariagerfjord-vand' for x in current),current
-                colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color})")
-                assert colors['nf']==colors['vcs'],colors
-                assert colors['sd']==colors['ad'],colors
+                colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color,ev:state.brandById.get('energi-viborg-vand').color,ib:state.brandById.get('ikast-brande-spildevand').color})")
+                assert colors['nf']!=colors['vcs'],colors
+                assert colors['sd']!=colors['ad'],colors
+                assert colors['ev']!=colors['ib'],colors
+                color_qa=qa.get('colorQa')
+                assert color_qa and color_qa['strategy']=='minimal-change-original-palette',qa
+                assert color_qa['sameColorNeighbourPairs']==0,color_qa
                 assert await page.locator('#showCoverage').is_checked()
                 assert await page.locator('.leaflet-coverage-pane path').count()==98
                 assert await page.evaluate("!state.coverageOutlineLayer || state.coverageOutlineLayer.getLayers().length===0")
