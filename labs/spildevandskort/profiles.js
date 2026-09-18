@@ -37,7 +37,24 @@ function profileMemberBrandIds(id){
 }
 function profileForBrand(id){
   const canonical=profileCanonicalId(id);
-  return state.profiles.get(canonical)||state.profiles.get(id)||null;
+  const memberIds=profileMemberBrandIds(id);
+  const profiles=memberIds.map(x=>state.profiles.get(x)).filter(Boolean);
+  const primary=state.profiles.get(canonical)||state.profiles.get(id)||profiles[0]||null;
+  if(!primary)return null;
+  if(profiles.length<=1)return primary;
+  const uniqueBy=(items,keyFn)=>{
+    const seen=new Set(),out=[];
+    for(const item of items){const key=keyFn(item);if(!key||seen.has(key))continue;seen.add(key);out.push(item);}
+    return out;
+  };
+  return {
+    ...primary,
+    name:primary.name,
+    contacts:uniqueBy(profiles.flatMap(p=>p.contacts||[]),c=>`${c.name||""}|${c.title||""}`),
+    projects:uniqueBy(profiles.flatMap(p=>p.projects||[]),p=>String(p.name||"").toLocaleLowerCase("da")),
+    sources:[...new Set(profiles.flatMap(p=>p.sources||[]))],
+    verifiedAt:profiles.map(p=>p.verifiedAt).filter(Boolean).sort().at(-1)||primary.verifiedAt
+  };
 }
 function profileBrandView(id){
   const canonical=profileCanonicalId(id),base=state.brandById.get(canonical)||state.brandById.get(id);
