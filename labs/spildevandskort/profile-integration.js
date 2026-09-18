@@ -12,7 +12,7 @@
     if(profile&&current.isOverride&&current.displayName)profile.name=current.displayName;
   }
 
-  // Let existing search logic match both the current operator and the legacy Plandata identity without mutating either permanently.
+  // Stable legacy IDs are retained for joins, but the sidebar exposes one row per current operator.
   const withCurrentSearchNames=fn=>{
     const original=[];
     for(const b of state.brands||[]){
@@ -21,26 +21,85 @@
     }
     try{return fn();}finally{for(const [b,name] of original)b.name=name;}
   };
+  const memberIdsFor=id=>typeof currentOperatorMemberIds==="function"?currentOperatorMemberIds(id):[id];
+  const canonicalIdFor=id=>typeof currentOperatorCanonicalId==="function"?currentOperatorCanonicalId(id):id;
+  const logicalBrands=()=>{
+    const groups=new Map();
+    for(const b of state.brands||[]){
+      const canonicalId=canonicalIdFor(b.id);
+      if(!groups.has(canonicalId))groups.set(canonicalId,[]);
+      groups.get(canonicalId).push(b);
+    }
+    return [...groups.entries()].map(([canonicalId,members])=>{
+      const base=state.brandById.get(canonicalId)||members[0];
+      const current=operatorFor(base);
+      const municipalities=[...new Set(members.flatMap(x=>x.municipalities||[]))];
+      return {
+        ...base,
+        id:canonicalId,
+        name:current.displayName||base.name,
+        color:base.color,
+        municipalities,
+        sourceFeatureCount:members.reduce((sum,x)=>sum+(Number(x.sourceFeatureCount)||0),0),
+        memberIds:members.map(x=>x.id),
+        legacyNames:members.map(x=>x.name)
+      };
+    });
+  };
+
   const coreRenderList=renderList;
-  renderList=function(){return withCurrentSearchNames(coreRenderList);};
+  renderList=function(){
+    if(state.tab!=="brands")return withCurrentSearchNames(coreRenderList);
+    const q=normalize(els.search.value);els.itemList.innerHTML="";
+    const rows=logicalBrands().filter(b=>{
+      const region=LANDDELE.find(r=>r.id===regionForBrand(b))?.name;
+      return !q||normalize([b.name,...(b.legacyNames||[]),...(b.municipalities||[]),region].join(" ")).includes(q);
+    });
+    els.listHeading.textContent="Forsyninger efter landsdel";els.visibleCount.textContent=`${rows.length} vist`;
+    renderBrandGroups(rows,q);
+    if(!rows.length)els.itemList.innerHTML='<div class="empty">Ingen forsyninger matcher søgningen.</div>';
+  };
   const coreFilteredPlants=filteredPlants;
   filteredPlants=function(){return withCurrentSearchNames(coreFilteredPlants);};
 
   brandRowElement = function(b){
-    const current=operatorFor(b),displayName=current.displayName||b.name;
-    const row=document.createElement("div"); row.className="brand-row"; row.dataset.brandId=b.id; row.dataset.currentOperatorId=current.operatorBrandId||b.id;
-    const cb=document.createElement("input"); cb.type="checkbox"; cb.checked=state.selected.has(b.id); cb.setAttribute("aria-label",`Vis ${displayName} på kortet`);
-    cb.addEventListener("change",()=>{cb.checked?state.selected.add(b.id):state.selected.delete(b.id);renderPolygons();renderPlants();if(typeof renderProjects==="function")renderProjects();renderList();});
+    const current=operatorFor(state.brandById.get(b.id)||b),displayName=current.displayName||b.name;
+    const memberIds=b.memberIds||memberIdsFor(b.id);
+    const row=document.createElement("div");row.className="brand-row";row.dataset.brandId=b.id;row.dataset.currentOperatorId=canonicalIdFor(b.id);row.dataset.memberBrandIds=memberIds.join(",");
+    const cb=document.createElement("input");cb.type="checkbox";
+    const selectedCount=memberIds.filter(id=>state.selected.has(id)).length;
+    cb.checked=selectedCount===memberIds.length;cb.indeterminate=selectedCount>0&&selectedCount<memberIds.length;
+    cb.setAttribute("aria-label",`Vis ${displayName} på kortet`);
+    cb.addEventListener("change",()=>{
+      for(const id of memberIds)cb.checked?state.selected.add(id):state.selected.delete(id);
+      renderPolygons();renderPlants();if(typeof renderProjects==="function")renderProjects();renderList();
+    });
     const sw=document.createElement("span");sw.className="brand-swatch";sw.style.background=b.color||"#6d98a3";
     const cp=document.createElement("button");cp.type="button";cp.className="row-copy row-profile-open";
     const geography=b.sourceFeatureCount===0?"Anlægsejer · uden eget oplandslag":(b.municipalities?.length===1?b.municipalities[0]:`${b.municipalities?.length||0} kommuner`);
-    const plants=activePlantCountForBrand(b.id);
+    const plants=state.plants.filter(p=>p.active&&memberIds.includes(p.responsibleBrandId)).length;
     cp.innerHTML=`<strong>${profileEscape(displayName)}</strong><small>${profileEscape(geography)} · ${plants} aktive renseanlæg</small>`;
     cp.onclick=()=>openBrandProfile(b.id);
     const profileBtn=document.createElement("button");profileBtn.type="button";profileBtn.className=`profile-mini ${profileForBrand(b.id)?"researched":"pending"}`;
-    profileBtn.textContent="Profil"; profileBtn.title=profileForBrand(b.id)?`Åbn profil for ${displayName}`:`Åbn profil for ${displayName} (research mangler)`;
+    profileBtn.textContent="Profil";profileBtn.title=profileForBrand(b.id)?`Åbn profil for ${displayName}`:`Åbn profil for ${displayName} (research mangler)`;
     profileBtn.onclick=e=>{e.stopPropagation();openBrandProfile(b.id);};
     row.append(cb,sw,cp,profileBtn);return row;
+  };
+
+  const coreZoomBrand=zoomBrand;
+  zoomBrand=function(id){
+    const memberIds=memberIdsFor(id);
+    if(memberIds.length===1)return coreZoomBrand(memberIds[0]);
+    const layers=[];
+    state.polygonLayer?.eachLayer(l=>{if(memberIds.includes(l.feature?.properties?.brandId))layers.push(l);});
+    const plantPoints=state.plants.filter(p=>memberIds.includes(p.responsibleBrandId)&&p.coordinates).map(p=>L.latLng(p.coordinates[1],p.coordinates[0]));
+    if(layers.length){
+      const g=L.featureGroup(layers);for(const pt of plantPoints)L.marker(pt,{opacity:0}).addTo(g);
+      state.map.fitBounds(g.getBounds(),{padding:[30,30]});
+    }else if(plantPoints.length){
+      state.map.fitBounds(L.latLngBounds(plantPoints),{padding:[30,30],maxZoom:11});
+    }
+    closeDetail();
   };
 
   const coreOpenPlant=openPlant;
