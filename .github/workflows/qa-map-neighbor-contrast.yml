@@ -5,6 +5,7 @@ on:
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/current-operators.js'
       - 'labs/spildevandskort/coverage-areas.js'
+      - 'labs/spildevandskort/data/administrative-neighbours.json'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/basemaps.css'
       - 'labs/spildevandskort/index.html'
@@ -14,6 +15,7 @@ on:
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/current-operators.js'
       - 'labs/spildevandskort/coverage-areas.js'
+      - 'labs/spildevandskort/data/administrative-neighbours.json'
       - 'labs/spildevandskort/basemaps.js'
       - 'labs/spildevandskort/basemaps.css'
       - 'labs/spildevandskort/index.html'
@@ -33,6 +35,7 @@ jobs:
           test -s labs/spildevandskort/map-colors.js
           test -s labs/spildevandskort/current-operators.js
           test -s labs/spildevandskort/coverage-areas.js
+          test -s labs/spildevandskort/data/administrative-neighbours.json
           grep -q 'map-colors.js' labs/spildevandskort/index.html
           grep -q 'current-operators.js' labs/spildevandskort/index.html
           grep -q 'osm-grayscale-layer' labs/spildevandskort/basemaps.js
@@ -77,9 +80,9 @@ jobs:
               assert cq['palette']==['#0057B8','#E4D600','#E3261C','#35A7D6','#D51BC4','#138A2E','#E67E22','#7436A8','#00A875','#A91D63'],cq
               aq=cq['administrativeResolution']
               assert aq['strategy']=='minimal-change-original-palette',aq
-              assert aq['neighbourPairs']>40,aq
+              assert aq['neighbourPairs']==126,aq
               assert aq['sameColorNeighbourPairs']==0,aq
-              assert len(aq['changed'])>=2,aq
+              assert {x['id'] for x in aq['changed']}=={'syddjurs-spildevand','ikast-brande-spildevand','nordfyns-forsyning','samn-forsyning'},aq
               for change in aq['changed']:
                   assert change['before'] in aq['palette'] and change['after'] in aq['palette'],change
               for key in ['HOFOR / Ishøj Forsyning','AquaDjurs / Syddjurs Spildevand','Energi Viborg Vand / Ikast-Brande Spildevand','Nordfyns Forsyning / VandCenter Syd']:
