@@ -18,7 +18,6 @@
   state.coverageHighlightBrandId=null;
   state.coverageData=null;
   state.coverageQa=null;
-  state.coverageColors=new Map();
 
   function municipalityCandidates(name){
     const key=norm(name),ids=[];
@@ -46,7 +45,7 @@
   function colorFor(feature){
     const c=classify(feature);
     if(c.status!=="assigned")return "#FFFFFF";
-    return state.coverageColors.get(c.brandId)||state.brandById.get(c.brandId)?.color||"#657D84";
+    return c.current?.color||state.brandById.get(c.brandId)?.color||"#657D84";
   }
 
   function setCoverageHighlight(brandId){
@@ -186,20 +185,6 @@
       if(!fc.features?.length)throw new Error("Ingen kommunegeometrier i svaret");
       state.coverageData=fc;
       const rows=fc.features.map(classify);
-      const administrativeColorFeatures=fc.features.flatMap(feature=>{
-        const c=classify(feature);
-        return c.status==="assigned"?[{...feature,properties:{...(feature.properties||{}),brandId:c.brandId}}]:[];
-      });
-      let administrativeColorQa=null;
-      if(typeof window.applyNeighborContrastColors==="function"){
-        const colorBrands=state.brands.map(b=>({...b}));
-        administrativeColorQa=window.applyNeighborContrastColors(administrativeColorFeatures,colorBrands,{
-          groupOperators:false,
-          storeState:false,
-          strategy:"administrative-area-neighbour-max-contrast"
-        });
-        state.coverageColors=new Map(Object.entries(administrativeColorQa.colors||{}));
-      }
       state.coverageQa={
         source,
         municipalities:rows.length,
@@ -207,8 +192,7 @@
         verifiedOverrides:rows.filter(x=>x.status==="assigned"&&x.override).map(x=>({name:x.name,brandId:x.brandId,reason:x.override.reason,sourceUrl:x.override.sourceUrl||null})),
         currentOperatorOverrides:rows.filter(x=>x.status==="assigned"&&x.current?.isOverride).map(x=>({name:x.name,legacyBrandId:x.brandId,operatorBrandId:x.current.operatorBrandId,operatorName:x.current.operatorName,sourceUrl:x.current.sourceUrl})),
         ambiguous:rows.filter(x=>x.status==="ambiguous").map(x=>({name:x.name,brandIds:x.brandIds})),
-        unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name),
-        colorQa:administrativeColorQa
+        unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name)
       };
       console.info("ADMIN_COVERAGE_QA",state.coverageQa);
       renderCoverage();
