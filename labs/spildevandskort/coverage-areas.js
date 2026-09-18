@@ -186,21 +186,23 @@
       state.coverageData=fc;
       const rows=fc.features.map(classify);
 
-      // Repair only true administrative-neighbour color conflicts, using the existing palette.
-      // Mutate the canonical brand colors so administrative areas, sewer catchments and WWTP markers stay identical.
+      // Use administrative municipality geometry to assign the shared utility colors.
+      // The color engine groups legacy IDs by current operator, so e.g. Nordfyn + Odense
+      // remain one VandCenter Syd color and Norddjurs + Syddjurs remain one AquaDjurs color.
       const administrativeColorFeatures=fc.features.flatMap(feature=>{
         const c=classify(feature);
         return c.status==="assigned"?[{...feature,properties:{...(feature.properties||{}),brandId:c.brandId}}]:[];
       });
-      const administrativeColorQa=typeof window.repairAdministrativeNeighborColors==="function"
-        ?window.repairAdministrativeNeighborColors(administrativeColorFeatures,state.brands)
+      const administrativeColorQa=typeof window.applyNeighborContrastColors==="function"
+        ?window.applyNeighborContrastColors(administrativeColorFeatures,state.brands)
         :null;
-      if(administrativeColorQa){
-        for(const feature of state.features||[]){
-          const brandId=feature.properties?.brandId;
-          const color=state.brandById.get(brandId)?.color;
-          if(color)feature.properties.color=color;
-        }
+
+      // Repaint source features with the canonical brand color so every visual representation
+      // (administrative area, adopted sewer catchment and WWTP marker) stays identical.
+      for(const feature of state.features||[]){
+        const brandId=feature.properties?.brandId;
+        const color=state.brandById.get(brandId)?.color;
+        if(color)feature.properties.color=color;
       }
 
       state.coverageQa={
@@ -214,7 +216,6 @@
         colorQa:administrativeColorQa
       };
       console.info("ADMIN_COVERAGE_QA",state.coverageQa);
-      // Repaint every layer after any minimal color repairs so all representations stay in sync.
       renderPolygons();
       if(typeof renderPlants==="function")renderPlants();
       if(typeof renderProjects==="function")renderProjects();
