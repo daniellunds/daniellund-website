@@ -182,13 +182,17 @@
   async function loadCoverage(){
     try{
       await waitForBrands();
-      let raw,source="Lokal cache · Dataforsyningen";
-      try{
-        raw=await fetchJsonWithTimeout(MUNICIPALITY_URL,15000);
-      }catch(localErr){
-        console.warn("Lokal kommune-cache kunne ikke indlæses; prøver Dataforsyningen direkte",localErr);
-        raw=await fetchJsonWithTimeout(MUNICIPALITY_FALLBACK_URL,20000);
-        source="Dataforsyningen · live fallback";
+      if(state.canonicalColorPromise)await state.canonicalColorPromise;
+      let raw=state.preloadedMunicipalityCoverageData||null;
+      let source=state.preloadedMunicipalityCoverageSource||"Lokal cache · Dataforsyningen";
+      if(!raw){
+        try{
+          raw=await fetchJsonWithTimeout(MUNICIPALITY_URL,15000);
+        }catch(localErr){
+          console.warn("Lokal kommune-cache kunne ikke indlæses; prøver Dataforsyningen direkte",localErr);
+          raw=await fetchJsonWithTimeout(MUNICIPALITY_FALLBACK_URL,20000);
+          source="Dataforsyningen · live fallback";
+        }
       }
       const fc=raw.type==="FeatureCollection"?raw:{type:"FeatureCollection",features:Array.isArray(raw)?raw.filter(x=>x.type==="Feature"):[]};
       if(!fc.features?.length)throw new Error("Ingen kommunegeometrier i svaret");
@@ -202,9 +206,11 @@
         const c=classify(feature);
         return c.status==="assigned"?[{...feature,properties:{...(feature.properties||{}),brandId:c.brandId}}]:[];
       });
-      const administrativeColorQa=typeof window.applyNeighborContrastColors==="function"
-        ?window.applyNeighborContrastColors(administrativeColorFeatures,state.brands)
-        :null;
+      const administrativeColorQa=state.colorQa?.basis==="administrative-coverage-preload"
+        ?state.colorQa
+        :typeof window.applyNeighborContrastColors==="function"
+          ?window.applyNeighborContrastColors(administrativeColorFeatures,state.brands)
+          :null;
 
       // Repaint source features with the canonical brand color so every visual representation
       // (administrative area, adopted sewer catchment and WWTP marker) stays identical.

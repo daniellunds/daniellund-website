@@ -109,8 +109,28 @@ function bindUI(){
 }
 async function init(){
   try{
-    state.map=L.map("map",{zoomControl:true,minZoom:5}).setView([56.15,10.0],7);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:"© OpenStreetMap"}).addTo(state.map);bindUI();await Promise.all([loadBrands(),loadAliases()]);renderList();
-    const results=await Promise.allSettled([loadPolygons(),loadPlants()]); const failed=results.filter(x=>x.status==="rejected"); if(failed.length){console.error(failed);status(`Kortet er delvist indlæst: ${failed.map(x=>x.reason?.message||"ukendt fejl").join(" · ")}`,true);} else status(""); els.mapStatus.hidden=true;
+    state.map=L.map("map",{zoomControl:true,minZoom:5}).setView([56.15,10.0],7);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:"© OpenStreetMap"}).addTo(state.map);
+    bindUI();
+
+    // Resolve the canonical utility colors from the administrative coverage before any
+    // utility layer or swatch is rendered. This prevents a visible source-color -> final-color flash.
+    const brandLoadPromise=Promise.all([loadBrands(),loadAliases()]);
+    state.canonicalColorPromise=brandLoadPromise.then(async()=>{
+      if(typeof window.prepareCanonicalColors!=="function")return null;
+      return await window.prepareCanonicalColors();
+    }).catch(err=>{
+      console.warn("Canonical farveforberedelse fejlede; fortsætter med eksisterende farver",err);
+      return null;
+    });
+    await brandLoadPromise;
+    await state.canonicalColorPromise;
+    renderList();
+
+    const results=await Promise.allSettled([loadPolygons(),loadPlants()]);
+    const failed=results.filter(x=>x.status==="rejected");
+    if(failed.length){console.error(failed);status(`Kortet er delvist indlæst: ${failed.map(x=>x.reason?.message||"ukendt fejl").join(" · ")}`,true);} else status("");
+    els.mapStatus.hidden=true;
   }catch(e){console.error(e);els.mapStatus.textContent="Kortet kunne ikke indlæses";status(`Indlæsningsfejl: ${e.message}`,true);}
 }
 init();
