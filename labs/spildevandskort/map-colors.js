@@ -120,10 +120,10 @@
     const chooseTarget=(a,b)=>{
       const aAlias=operatorId(a)!==a,bAlias=operatorId(b)!==b;
       if(aAlias!==bAlias)return aAlias?a:b;
-      const aDegree=graph.get(a)?.size||0,bDegree=graph.get(b)?.size||0;
-      if(aDegree!==bDegree)return aDegree<bDegree?a:b;
       const aCount=byId.get(a)?.sourceFeatureCount||0,bCount=byId.get(b)?.sourceFeatureCount||0;
       if(aCount!==bCount)return aCount<bCount?a:b;
+      const aDegree=graph.get(a)?.size||0,bDegree=graph.get(b)?.size||0;
+      if(aDegree!==bDegree)return aDegree<bDegree?a:b;
       return String(a)<String(b)?a:b;
     };
 
