@@ -4,6 +4,9 @@
   const GRID_DEG=0.03;
   const PROXIMITY_DEG=0.012;
   const PALETTE=["#0057B8","#E4D600","#E3261C","#35A7D6","#D51BC4","#138A2E","#E67E22","#7436A8","#00A875","#A91D63"];
+  const ADMIN_COVERAGE_URL="./data/municipalities.geojson";
+  const ADMIN_COVERAGE_FALLBACK_URL="https://api.dataforsyningen.dk/kommuner?format=geojson&udenforkommuneinddeling=false";
+  const normMunicipality=s=>String(s||"").toLocaleLowerCase("da").trim().replace(/\s+/g," ");
   const operatorId=id=>typeof currentOperatorForBrand==="function"?currentOperatorForBrand(id).operatorBrandId:id;
 
   function featureBBox(feature){
@@ -91,17 +94,66 @@
     return {strategy:"current-operator-near-neighbour-max-contrast",palette:PALETTE.slice(),operatorGroups,neighbourPairs:pairs.length,sameOperatorNeighbourPairs:sameOperatorPairs.length,sameColorNeighbourPairs:sameColorPairs.length,minNeighbourDistance:distances.length?Math.min(...distances):null,proximityGridDegrees:GRID_DEG,hoforIshoej:hofor&&ishoej?{hofor:hofor.color,ishoej:ishoej.color,distance:colorDistance(hofor.color,ishoej.color)}:null};
   }
 
+  function municipalityBrandId(name,brands){
+    const key=normMunicipality(name),ids=[];
+    for(const b of brands||[])if((b.municipalities||[]).some(m=>normMunicipality(m)===key))ids.push(b.id);
+    if(!ids.length&&key==="københavn")ids.push("hofor");
+    if(!ids.length&&key==="læsø")ids.push("laesoe-forsyning");
+    const unique=[...new Set(ids)].filter(id=>(brands||[]).some(b=>b.id===id));
+    return unique.length===1?unique[0]:null;
+  }
+
+  async function fetchJsonWithTimeout(url,timeoutMs){
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeoutMs);
+    try{
+      const response=await fetch(url,{signal:controller.signal,cache:"default"});
+      if(!response.ok)throw new Error(`${response.status} ${response.statusText}`);
+      return await response.json();
+    }finally{clearTimeout(timer);}
+  }
+
+  async function prepareCanonicalColors(){
+    if(state.colorQa?.basis==="administrative-coverage-preload")return state.colorQa;
+    let raw,source="Lokal cache · Dataforsyningen";
+    try{
+      raw=await fetchJsonWithTimeout(ADMIN_COVERAGE_URL,15000);
+    }catch(localErr){
+      console.warn("Farvegrundlag: lokal kommune-cache kunne ikke indlæses; prøver Dataforsyningen direkte",localErr);
+      raw=await fetchJsonWithTimeout(ADMIN_COVERAGE_FALLBACK_URL,20000);
+      source="Dataforsyningen · live fallback";
+    }
+    const fc=raw?.type==="FeatureCollection"?raw:{type:"FeatureCollection",features:Array.isArray(raw)?raw.filter(x=>x?.type==="Feature"):[]};
+    if(!fc.features?.length)throw new Error("Farvegrundlag mangler kommunegeometrier");
+    const colorFeatures=fc.features.flatMap(feature=>{
+      const p=feature.properties||{},name=p.navn||p.name||p.NAVN||"",brandId=municipalityBrandId(name,state.brands);
+      return brandId?[{...feature,properties:{...p,brandId}}]:[];
+    });
+    if(colorFeatures.length!==fc.features.length)throw new Error(`Farvegrundlag kunne kun koble ${colorFeatures.length} af ${fc.features.length} kommuner`);
+    const out=window.applyNeighborContrastColors(colorFeatures,state.brands);
+    out.basis="administrative-coverage-preload";
+    out.coverageSource=source;
+    out.municipalities=fc.features.length;
+    out.assignedMunicipalities=colorFeatures.length;
+    state.preloadedMunicipalityCoverageData=fc;
+    state.preloadedMunicipalityCoverageSource=source;
+    console.info("UTILITY_COLOR_PRELOAD_READY",out);
+    return out;
+  }
+
   window.applyNeighborContrastColors=(features,brands)=>{const graph=buildNeighbourGraph(features,brands),result=assignColors(graph,brands),out=qa(graph,brands,result);if(typeof state!=="undefined")state.colorQa=out;console.info("UTILITY_COLOR_QA",out);return out;};
+  window.prepareCanonicalColors=prepareCanonicalColors;
   window.spildevandskortColorState=()=>state?.colorQa||null;
 
   if(typeof renderPolygons==="function"){
     const coreRenderPolygons=renderPolygons;
     renderPolygons=function(){
-      const firstAssignment=!!state.features?.length&&!state.colorQa;
-      if(firstAssignment)window.applyNeighborContrastColors(state.features,state.brands);
       if(state.features?.length)for(const f of state.features){const p=f.properties||{},color=state.brandById.get(p.brandId)?.color;if(color)p.color=color;}
+      if(state.features?.length&&state.colorQa&&!state.colorQa.firstPolygonRenderObserved){
+        state.colorQa.firstPolygonRenderObserved=true;
+        state.colorQa.colorReadyBeforeFirstPolygonRender=state.colorQa.basis==="administrative-coverage-preload";
+        state.colorQa.firstDinForsyningColor=state.brandById.get("din-forsyning")?.color||null;
+      }
       coreRenderPolygons();
-      if(firstAssignment){if(typeof renderList==="function")renderList();if(state.plants?.length&&typeof renderPlants==="function")renderPlants();}
     };
   }
 })();
