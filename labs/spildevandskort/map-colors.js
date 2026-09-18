@@ -147,7 +147,11 @@
       const conflicts=conflictEdges();if(!conflicts.length)break;
       const [a,b]=conflicts[0],target=chooseTarget(a,b),brand=byId.get(target);
       if(!brand)break;
-      const neighbourColors=[...(graph.get(target)||[])].map(id=>currentColor(byId,id));
+      const targetOperator=operatorId(target);
+      const memberIds=brands.filter(x=>operatorId(x.id)===targetOperator).map(x=>x.id);
+      const neighbourIds=new Set();
+      for(const memberId of memberIds)for(const n of graph.get(memberId)||[])if(operatorId(n)!==targetOperator)neighbourIds.add(n);
+      const neighbourColors=[...neighbourIds].map(id=>currentColor(byId,id));
       const forbidden=new Set(neighbourColors);
       const candidates=PALETTE.filter(c=>c!==brand.color&&!forbidden.has(c));
       if(!candidates.length)break;
@@ -159,9 +163,11 @@
         const score=min*1000+avg*100-PALETTE.indexOf(c)*0.0001;
         if(score>winnerScore){winner=c;winnerScore=score;}
       }
-      const original=before.get(target);
-      brand.color=winner;
-      changed.set(target,{id:target,name:brand.name,before:original,after:winner});
+      const originals=memberIds.map(id=>before.get(id));
+      for(const memberId of memberIds){
+        const member=byId.get(memberId);if(member)member.color=winner;
+      }
+      changed.set(targetOperator,{id:targetOperator,memberIds,names:memberIds.map(id=>byId.get(id)?.name||id),before:[...new Set(originals)],after:winner});
     }
 
     const remaining=conflictEdges();
