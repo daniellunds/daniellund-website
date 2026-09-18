@@ -31,7 +31,11 @@
     try{return fn();}finally{for(const [b,name] of original)b.name=name;}
   };
   const coreRenderList=renderList;
-  renderList=function(){return withCurrentSearchNames(coreRenderList);};
+  renderList=function(){
+    const out=withCurrentSearchNames(coreRenderList);
+    if(state.tab==="brands")els.visibleCount.textContent=`${document.querySelectorAll(".brand-row").length} vist`;
+    return out;
+  };
   const coreFilteredPlants=filteredPlants;
   filteredPlants=function(){return withCurrentSearchNames(coreFilteredPlants);};
 
