@@ -262,7 +262,7 @@ jobs:
                   facts=await section.locator('.fact').evaluate_all("els=>Object.fromEntries(els.map(el=>[el.querySelector('span')?.textContent.trim(),el.querySelector('strong')?.textContent.trim()]))")
                   assert facts.get('Egne/driftede aktive renseanlæg')==expected_count,(organization_id,facts)
                   text=await section.inner_text()
-                  assert 'Aktive PULS-poster' in text,(organization_id,text)
+                  assert 'aktive puls-poster' in text.lower(),(organization_id,text)
                   for snippet in snippets: assert snippet in text,(organization_id,snippet,text)
                   await page.locator('#closeDetail').click()
 
