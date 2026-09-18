@@ -27,7 +27,7 @@
 
       <div id="statusBanner" class="status-banner" hidden></div>
       <div class="search-wrap"><input id="search" type="search" placeholder="Søg forsyning eller kommune…" autocomplete="off" /></div>
-      <div class="summary-grid three"><div><strong id="brandCount">—</strong><span>organisationer</span></div><div><strong id="activePlantCount">—</strong><span>aktive renseanlæg</span></div><div><strong id="projectCount">—</strong><span>projekter</span></div></div>
+      <div class="summary-grid three"><div><strong id="brandCount">—</strong><span>organisationer</span></div><div><strong id="activePlantCount">—</strong><span>aktive PULS-poster</span></div><div><strong id="projectCount">—</strong><span>projekter</span></div></div>
       <div class="tabs three" role="tablist"><button class="tab active" data-tab="brands" type="button">Forsyninger</button><button class="tab" data-tab="plants" type="button">Renseanlæg</button><button class="tab" data-tab="projects" type="button">Projekter</button></div>
       <section id="brandControls" class="controls-panel"><div class="quick-actions"><button id="selectAll" type="button">Vælg alle</button><button id="selectNone" type="button">Ingen</button><button id="zoomSelected" type="button">Zoom til valgte</button></div><label class="toggle"><input id="showCoverage" type="checkbox" checked /><span>Vis administrative forsyningsområder</span></label><p class="coverage-note"><span class="coverage-key"></span>Lys flade = administrativt/markedsmæssigt område for den aktuelt verificerede spildevandsoperatør. Den kraftigere flade ovenpå er vedtaget kloakopland.</p></section>
       <section id="plantControls" class="controls-panel" hidden><label class="toggle"><input id="showPlants" type="checkbox" checked /><span>Vis renseanlæg</span></label><label class="toggle"><input id="includeClosed" type="checkbox" /><span>Medtag nedlagte</span></label><label class="toggle"><input id="selectedOnly" type="checkbox" checked /><span>Følg valgte forsyninger</span></label><label class="toggle"><input id="loadScreeningEnabled" type="checkbox" /><span>Vis EU-screening (EEA 2022)</span></label><select id="loadScreeningFilter" aria-label="Filtrer efter EEA-belastning" disabled><option value="all">Alle belastningsgrupper</option><option value="high">≥150.000 PE · direkte tærskel</option><option value="mid">10.000–149.999 PE · risikobaseret</option><option value="low">&lt;10.000 PE</option><option value="unknown">EEA-belastning mangler</option></select><p id="loadScreeningNote" class="source-note" role="status">Indlæser EEA-belastning…</p></section>
@@ -46,6 +46,9 @@
   <aside id="detailPanel" class="detail-panel" aria-hidden="true"><button id="closeDetail" class="close-detail" type="button" aria-label="Luk">×</button><div id="detailContent"></div></aside>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="./load-screening.js"></script>
+  <script src="./canonical-registry.js"></script>
+  <script src="./facility-registry.js"></script>
+  <script src="./wastewater-relations.js"></script>
   <script src="./app1.js"></script>
   <script src="./load-screening-ui.js"></script>
   <script src="./owner-aliases.js"></script>

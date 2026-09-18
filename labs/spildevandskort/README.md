@@ -1,5 +1,52 @@
 # Dansk spildevandskort
 
+## Canonical organisationsmodel
+
+Den additive canonical registry-model ligger i
+`data/model/organization-registry.json` med en ren kompatibilitetsadapter i
+`canonical-registry.js`. Registryet bevarer alle eksisterende source-/legacy-ID'er
+og mapper kun verificerede identiteter til `org:<slug>`-ID'er. Forsyningslisten,
+søgningen og profilerne bruger registryets 74 aktuelle organisationer, mens de
+76 legacy-ID'er fortsat bruges internt til kort-, PULS- og projektjoins.
+
+`current-operators.js` kører fortsat parallelt som overgangskontrol. UI-laget
+aktiveres kun, når alle 76 kildeidentiteter giver samme organisation i begge
+modeller.
+
+Kortfarverne grupperes nu direkte på `organizationId`. Den eksisterende palette
+på ti farver er bevaret, og den landsdækkende nabokontrol kræver, at to
+forskellige administrative naboorganisationer ikke får samme farve. Den samme
+kanoniske farve bruges på administrativ flade, vedtaget kloakopland,
+forsyningsliste, renseanlægsmarkør og profil.
+
+`data/model/facility-registry.json` adskiller verificerede fysiske anlæg fra
+PULS-kildeposter. Det indeholder 27 fysiske anlæg og 28 auditerede kildeposter;
+26 anlæg indgår i en verificeret direkte driftsrelation for de auditerede
+organisationer, mens DIN Forsynings Renseanlæg Øst er registreret som verificeret
+rutedestination. Af kildeposterne er 27 verificeret koblet, mens
+Rækkehuse-posten bevarer
+`facilityId: null`. BIOFOS' tekniske Damhusåen-post og fire tekniske/fiktive
+Viby-poster deler de verificerede fysiske `facilityId`'er, men tælles ikke som
+selvstændige anlæg. `presentationOrganizationId` styrer kun offentlig identitet
+og farve — ikke ejerskab, drift, netansvar eller rensevej.
+
+`data/model/wastewater-relations.json` dokumenterer særskilt direkte drift,
+ekstern rensevej og ejerrelation for ti auditerede organisationer. Listen og
+profilerne viser derfor `Egne/driftede renseanlæg` som et verificeret fysisk tal
+og `Spildevand behandles hos` som en anden relation. Organisationer uden for det
+auditerede udsnit viser `Ikke verificeret`; de får ikke et anlægstal udledt af
+PULS. Det landsdækkende top-tal er præciseret som `aktive PULS-poster`.
+
+Kør registry-QA med:
+
+```bash
+node scripts/check-canonical-registry.cjs
+node scripts/check-canonical-ui.cjs
+node scripts/check-canonical-colors.cjs
+node scripts/check-facility-registry.cjs
+node scripts/check-wastewater-relations.cjs
+```
+
 Interaktivt kort under `daniellund.dk/labs/spildevandskort/`.
 
 - Kloakoplande: Plandata, vedtagne oplande. 53.179 kildeoplande er samlet/dissolved til 276 render-features i fire gzip-chunks for bedre browserperformance.

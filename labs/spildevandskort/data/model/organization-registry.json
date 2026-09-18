@@ -1,0 +1,3449 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "2026-09-18",
+  "status": "approvedVerifiedRegistry",
+  "generatedAt": "2026-09-18T00:00:00Z",
+  "repositoryBaseSnapshot": "69d4ec255fae4f576b8992753c418e040062aa10",
+  "provenance": {
+    "sourceAudit": "Spildevandskort_Delopgave_3_Organisationsaudit.json",
+    "sourceAuditGeneratedAt": "2026-09-18T00:00:00Z",
+    "method": "Additive canonical presentation registry. Existing source IDs remain unchanged and functional relations are not inferred from presentation mappings."
+  },
+  "counts": {
+    "canonicalOrganizations": 74,
+    "sourceIdentities": 76,
+    "verifiedMappings": 76,
+    "probableMappings": 0,
+    "unresolvedMappings": 0,
+    "verifiedMerges": 2
+  },
+  "organizations": [
+    {
+      "id": "org:aquadjurs",
+      "displayName": "AquaDjurs",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "aquadjurs",
+        "syddjurs-spildevand"
+      ],
+      "searchNames": [
+        "AquaDjurs",
+        "Syddjurs Spildevand"
+      ],
+      "sourceUrls": [
+        "https://www.aquadjurs.dk/om-os"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:arwos",
+      "displayName": "ARWOS",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "arwos"
+      ],
+      "searchNames": [
+        "ARWOS"
+      ],
+      "sourceUrls": [
+        "https://arwos.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:assens-forsyning",
+      "displayName": "Assens Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "assens-forsyning"
+      ],
+      "searchNames": [
+        "Assens Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.assensforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:billund-vand-energi",
+      "displayName": "Billund Vand & Energi",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "billund-vand-energi"
+      ],
+      "searchNames": [
+        "Billund Vand & Energi"
+      ],
+      "sourceUrls": [
+        "https://www.billundvand.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:biofos",
+      "displayName": "BIOFOS",
+      "organizationType": "jointTreatmentOrganization",
+      "status": "active",
+      "legacyIds": [
+        "biofos"
+      ],
+      "searchNames": [
+        "BIOFOS"
+      ],
+      "sourceUrls": [
+        "https://biofos.dk/om-biofos/hvem-er-vi/ejerforhold"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:bluekolding",
+      "displayName": "BlueKolding",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "bluekolding"
+      ],
+      "searchNames": [
+        "BlueKolding"
+      ],
+      "sourceUrls": [
+        "https://bluekolding.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:beof",
+      "displayName": "Bornholms Energi & Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "beof"
+      ],
+      "searchNames": [
+        "Bornholms Energi & Forsyning"
+      ],
+      "sourceUrls": [
+        "https://beof.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:broenderslev-forsyning",
+      "displayName": "Brønderslev Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "broenderslev-forsyning"
+      ],
+      "searchNames": [
+        "Brønderslev Forsyning"
+      ],
+      "sourceUrls": [
+        "https://bronderslevforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:din-forsyning",
+      "displayName": "DIN Forsyning",
+      "organizationType": "utilityGroup",
+      "status": "active",
+      "legacyIds": [
+        "din-forsyning"
+      ],
+      "searchNames": [
+        "DIN Forsyning"
+      ],
+      "sourceUrls": [
+        "https://dinforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:energi-viborg-vand",
+      "displayName": "Energi Viborg Vand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "energi-viborg-vand"
+      ],
+      "searchNames": [
+        "Energi Viborg Vand"
+      ],
+      "sourceUrls": [
+        "https://www.energiviborg.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:envafors",
+      "displayName": "Envafors",
+      "organizationType": "utilityGroup",
+      "status": "active",
+      "legacyIds": [
+        "envafors"
+      ],
+      "searchNames": [
+        "Envafors"
+      ],
+      "sourceUrls": [
+        "https://www.envafors.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:fanoe-vand",
+      "displayName": "Fanø Vand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "fanoe-vand"
+      ],
+      "searchNames": [
+        "Fanø Vand"
+      ],
+      "sourceUrls": [
+        "https://www.fanoevand.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:favrskov-forsyning",
+      "displayName": "Favrskov Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "favrskov-forsyning"
+      ],
+      "searchNames": [
+        "Favrskov Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.favrskovforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:faxe-forsyning",
+      "displayName": "Faxe Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "faxe-forsyning"
+      ],
+      "searchNames": [
+        "Faxe Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.faxeforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:ffv",
+      "displayName": "FFV Energi & Miljø",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "ffv"
+      ],
+      "searchNames": [
+        "FFV Energi & Miljø"
+      ],
+      "sourceUrls": [
+        "https://www.ffv.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:fors",
+      "displayName": "FORS",
+      "organizationType": "utilityGroup",
+      "status": "active",
+      "legacyIds": [
+        "fors"
+      ],
+      "searchNames": [
+        "FORS"
+      ],
+      "sourceUrls": [
+        "https://www.fors.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:forsyning-helsingoer",
+      "displayName": "Forsyning Helsingør",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "forsyning-helsingoer"
+      ],
+      "searchNames": [
+        "Forsyning Helsingør"
+      ],
+      "sourceUrls": [
+        "https://www.fh.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:fredensborg-forsyning",
+      "displayName": "Fredensborg Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "fredensborg-forsyning"
+      ],
+      "searchNames": [
+        "Fredensborg Forsyning"
+      ],
+      "sourceUrls": [
+        "https://fredensborgforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:fredericia-spildevand",
+      "displayName": "Fredericia Spildevand og Energi",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "fredericia-spildevand"
+      ],
+      "searchNames": [
+        "Fredericia Spildevand og Energi"
+      ],
+      "sourceUrls": [
+        "https://www.frse.dk/nyheder/nyt-forsyningsselskab-og-ny-direktoer/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:frederiksberg-forsyning",
+      "displayName": "Frederiksberg Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "frederiksberg-forsyning"
+      ],
+      "searchNames": [
+        "Frederiksberg Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.frb-forsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:frederikshavn-forsyning",
+      "displayName": "Frederikshavn Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "frederikshavn-forsyning"
+      ],
+      "searchNames": [
+        "Frederikshavn Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.forsyningen.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:glostrup-forsyning",
+      "displayName": "Glostrup Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "glostrup-forsyning"
+      ],
+      "searchNames": [
+        "Glostrup Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.glostrupforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:gribskov-forsyning",
+      "displayName": "Gribskov Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "gribskov-forsyning"
+      ],
+      "searchNames": [
+        "Gribskov Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.gribskovforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:guldborgsund-forsyning",
+      "displayName": "Guldborgsund Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "guldborgsund-forsyning"
+      ],
+      "searchNames": [
+        "Guldborgsund Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.guldborgsundforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:halsnaes-forsyning",
+      "displayName": "Halsnæs Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "halsnaes-forsyning"
+      ],
+      "searchNames": [
+        "Halsnæs Forsyning"
+      ],
+      "sourceUrls": [
+        "https://hnf.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:hedensted-spildevand",
+      "displayName": "Hedensted Spildevand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "hedensted-spildevand"
+      ],
+      "searchNames": [
+        "Hedensted Spildevand"
+      ],
+      "sourceUrls": [
+        "https://hspv.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:herning-vand",
+      "displayName": "Herning Vand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "herning-vand"
+      ],
+      "searchNames": [
+        "Herning Vand"
+      ],
+      "sourceUrls": [
+        "https://herningvand.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:hilleroed-forsyning",
+      "displayName": "Hillerød Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "hilleroed-forsyning"
+      ],
+      "searchNames": [
+        "Hillerød Forsyning"
+      ],
+      "sourceUrls": [
+        "https://hfors.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:hjoerring-vandselskab",
+      "displayName": "Hjørring Vandselskab",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "hjoerring-vandselskab"
+      ],
+      "searchNames": [
+        "Hjørring Vandselskab"
+      ],
+      "sourceUrls": [
+        "https://hjvand.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:hofor",
+      "displayName": "HOFOR",
+      "organizationType": "utilityGroup",
+      "status": "active",
+      "legacyIds": [
+        "hofor"
+      ],
+      "searchNames": [
+        "HOFOR"
+      ],
+      "sourceUrls": [
+        "https://www.hofor.dk/om-hofor/organisationen/koncerndiagram/selskaber-i-hofor/holding/hofor-spildevand-holding-as/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:htk-forsyning",
+      "displayName": "Høje-Taastrup Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "htk-forsyning"
+      ],
+      "searchNames": [
+        "Høje-Taastrup Forsyning"
+      ],
+      "sourceUrls": [
+        "https://htkforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:ikast-brande-spildevand",
+      "displayName": "Ikast-Brande Spildevand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "ikast-brande-spildevand"
+      ],
+      "searchNames": [
+        "Ikast-Brande Spildevand"
+      ],
+      "sourceUrls": [
+        "https://www.ikast-brandespildevand.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:ishoej-forsyning",
+      "displayName": "Ishøj Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "ishoej-forsyning"
+      ],
+      "searchNames": [
+        "Ishøj Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.ishojforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:jammerbugt-forsyning",
+      "displayName": "Jammerbugt Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "jammerbugt-forsyning"
+      ],
+      "searchNames": [
+        "Jammerbugt Forsyning"
+      ],
+      "sourceUrls": [
+        "https://jfas.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:kalundborg-forsyning",
+      "displayName": "Kalundborg Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "kalundborg-forsyning"
+      ],
+      "searchNames": [
+        "Kalundborg Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.kalfor.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:kerteminde-forsyning",
+      "displayName": "Kerteminde Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "kerteminde-forsyning"
+      ],
+      "searchNames": [
+        "Kerteminde Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.kertemindeforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:klar-forsyning",
+      "displayName": "KLAR Forsyning",
+      "organizationType": "utilityGroup",
+      "status": "active",
+      "legacyIds": [
+        "klar-forsyning"
+      ],
+      "searchNames": [
+        "KLAR Forsyning"
+      ],
+      "sourceUrls": [
+        "https://klarforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:langeland-energi-forsyning",
+      "displayName": "Langeland Energi & Forsyning",
+      "organizationType": "utilityGroup",
+      "status": "active",
+      "legacyIds": [
+        "langeland-forsyning"
+      ],
+      "searchNames": [
+        "Langeland Forsyning",
+        "Langeland Energi & Forsyning"
+      ],
+      "sourceUrls": [
+        "https://lef.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:lemvig-vand",
+      "displayName": "Lemvig Vand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "lemvig-vand"
+      ],
+      "searchNames": [
+        "Lemvig Vand"
+      ],
+      "sourceUrls": [
+        "https://lvs-as.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:lolland-forsyning",
+      "displayName": "Lolland Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "lolland-forsyning"
+      ],
+      "searchNames": [
+        "Lolland Forsyning"
+      ],
+      "sourceUrls": [
+        "https://lollandforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:ltf",
+      "displayName": "Lyngby-Taarbæk Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "ltf"
+      ],
+      "searchNames": [
+        "Lyngby-Taarbæk Forsyning"
+      ],
+      "sourceUrls": [
+        "https://ltf.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:laesoe-forsyning",
+      "displayName": "Læsø Forsyning",
+      "organizationType": "utilityGroup",
+      "status": "active",
+      "legacyIds": [
+        "laesoe-forsyning"
+      ],
+      "searchNames": [
+        "Læsø Forsyning"
+      ],
+      "sourceUrls": [
+        "https://laesoeforsyning.dk/laesoe-vand-a-s-spildevand/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:middelfart-spildevand",
+      "displayName": "Middelfart Spildevand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "middelfart-spildevand"
+      ],
+      "searchNames": [
+        "Middelfart Spildevand"
+      ],
+      "sourceUrls": [
+        "https://middelfartspildevand.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:morsoe-forsyning",
+      "displayName": "Morsø Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "morsoe-forsyning"
+      ],
+      "searchNames": [
+        "Morsø Forsyning"
+      ],
+      "sourceUrls": [
+        "https://morsoeforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:moelleaavaerket",
+      "displayName": "Mølleåværket",
+      "organizationType": "jointTreatmentOrganization",
+      "status": "active",
+      "legacyIds": [
+        "moelleaavaerket"
+      ],
+      "searchNames": [
+        "Mølleåværket"
+      ],
+      "sourceUrls": [
+        "https://moelleaavaerket.dk/om-os/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:novafos",
+      "displayName": "Novafos",
+      "organizationType": "utilityGroup",
+      "status": "active",
+      "legacyIds": [
+        "novafos"
+      ],
+      "searchNames": [
+        "Novafos"
+      ],
+      "sourceUrls": [
+        "https://www.novafos.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:nyborg-forsyning",
+      "displayName": "Nyborg Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "nyborg-forsyning"
+      ],
+      "searchNames": [
+        "Nyborg Forsyning & Service",
+        "Nyborg Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.nfs.as/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:odsherred-forsyning",
+      "displayName": "Odsherred Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "odsherred-forsyning"
+      ],
+      "searchNames": [
+        "Odsherred Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.odsherredforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:provas",
+      "displayName": "Provas",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "provas"
+      ],
+      "searchNames": [
+        "Provas"
+      ],
+      "sourceUrls": [
+        "https://www.provas.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:rebild-forsyning",
+      "displayName": "Rebild Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "rebild-forsyning"
+      ],
+      "searchNames": [
+        "Rebild Forsyning"
+      ],
+      "sourceUrls": [
+        "https://rebildforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:ren-forsyning-mariagerfjord",
+      "displayName": "Ren Forsyning Mariagerfjord",
+      "organizationType": "utilityGroup",
+      "status": "active",
+      "legacyIds": [
+        "mariagerfjord-vand"
+      ],
+      "searchNames": [
+        "Mariagerfjord Vand",
+        "Ren Forsyning Mariagerfjord"
+      ],
+      "sourceUrls": [
+        "https://www.renform.dk/spildevand"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:rksk-forsyning",
+      "displayName": "Ringkøbing-Skjern Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "rksk-forsyning"
+      ],
+      "searchNames": [
+        "Ringkøbing-Skjern Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.rsforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:ringsted-forsyning",
+      "displayName": "Ringsted Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "ringsted-forsyning"
+      ],
+      "searchNames": [
+        "Ringsted Forsyning"
+      ],
+      "sourceUrls": [
+        "https://ringstedforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:samn-forsyning",
+      "displayName": "SAMN Forsyning",
+      "organizationType": "utilityGroup",
+      "status": "active",
+      "legacyIds": [
+        "samn-forsyning"
+      ],
+      "searchNames": [
+        "SAMN Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.samn.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:samsoe-spildevand",
+      "displayName": "Samsø Spildevand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "samsoe-spildevand"
+      ],
+      "searchNames": [
+        "Samsø Spildevand"
+      ],
+      "sourceUrls": [
+        "https://www.samsoespildevand.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:silkeborg-forsyning",
+      "displayName": "Silkeborg Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "silkeborg-forsyning"
+      ],
+      "searchNames": [
+        "Silkeborg Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.silkeborgforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:skanderborg-forsyning",
+      "displayName": "Skanderborg Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "skanderborg-forsyning"
+      ],
+      "searchNames": [
+        "Skanderborg Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.skanderborgforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:skive-vand",
+      "displayName": "Skive Vand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "skive-vand"
+      ],
+      "searchNames": [
+        "Skive Vand"
+      ],
+      "sourceUrls": [
+        "https://www.skivevand.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:sonfor",
+      "displayName": "SONFOR",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "sonfor"
+      ],
+      "searchNames": [
+        "SONFOR"
+      ],
+      "sourceUrls": [
+        "https://sonfor.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:struer-energi",
+      "displayName": "Struer Energi",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "struer-energi"
+      ],
+      "searchNames": [
+        "Struer Energi"
+      ],
+      "sourceUrls": [
+        "https://struerenergi.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:thy-forsyning",
+      "displayName": "Thy Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "thisted-vand"
+      ],
+      "searchNames": [
+        "Thisted Vand",
+        "Thy Forsyning"
+      ],
+      "sourceUrls": [
+        "https://thyforsyning.dk/spildevand/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:toender-forsyning",
+      "displayName": "Tønder Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "toender-forsyning"
+      ],
+      "searchNames": [
+        "Tønder Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.tonfor.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:taarnby-forsyning",
+      "displayName": "Tårnby Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "taarnby-forsyning"
+      ],
+      "searchNames": [
+        "Tårnby Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.taarnbyforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:vand-og-affald",
+      "displayName": "Vand & Affald",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "vand-og-affald"
+      ],
+      "searchNames": [
+        "Vand og Affald",
+        "Vand & Affald"
+      ],
+      "sourceUrls": [
+        "https://www.vandogaffald.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:vandcenter-syd",
+      "displayName": "VandCenter Syd",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "nordfyns-forsyning",
+        "vandcenter-syd"
+      ],
+      "searchNames": [
+        "Nordfyns Forsyning",
+        "VandCenter Syd"
+      ],
+      "sourceUrls": [
+        "https://www.vandcenter.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:vandmiljoe-randers",
+      "displayName": "Vandmiljø Randers",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "vandmiljoe-randers"
+      ],
+      "searchNames": [
+        "Vandmiljø Randers"
+      ],
+      "sourceUrls": [
+        "https://www.vmr.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:vejen-forsyning",
+      "displayName": "Vejen Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "vejen-forsyning"
+      ],
+      "searchNames": [
+        "Vejen Forsyning"
+      ],
+      "sourceUrls": [
+        "https://vejenforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:vejle-spildevand",
+      "displayName": "Vejle Spildevand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "vejle-spildevand"
+      ],
+      "searchNames": [
+        "Vejle Spildevand"
+      ],
+      "sourceUrls": [
+        "https://www.vejlespildevand.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:vestforsyning",
+      "displayName": "Vestforsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "vestforsyning"
+      ],
+      "searchNames": [
+        "Vestforsyning"
+      ],
+      "sourceUrls": [
+        "https://www.vestforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:vesthimmerlands-forsyning",
+      "displayName": "Vesthimmerlands Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "vesthimmerlands-vand"
+      ],
+      "searchNames": [
+        "Vesthimmerlands Vand",
+        "Vesthimmerlands Forsyning"
+      ],
+      "sourceUrls": [
+        "https://vesthimmerlandsforsyning.dk/spildevand/dit-spildevand"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:vordingborg-forsyning",
+      "displayName": "Vordingborg Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "vordingborg-forsyning"
+      ],
+      "searchNames": [
+        "Vordingborg Forsyning"
+      ],
+      "sourceUrls": [
+        "https://vordingborgforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:aeroe-forsyning",
+      "displayName": "Ærø Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "aeroe-forsyning"
+      ],
+      "searchNames": [
+        "Ærø Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.aeroeforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:aalborg-forsyning",
+      "displayName": "Aalborg Forsyning",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "aalborg-forsyning"
+      ],
+      "searchNames": [
+        "Aalborg Forsyning"
+      ],
+      "sourceUrls": [
+        "https://www.aalborgforsyning.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    },
+    {
+      "id": "org:aarhus-vand",
+      "displayName": "Aarhus Vand",
+      "organizationType": "utility",
+      "status": "active",
+      "legacyIds": [
+        "aarhus-vand"
+      ],
+      "searchNames": [
+        "Aarhus Vand"
+      ],
+      "sourceUrls": [
+        "https://www.aarhusvand.dk/"
+      ],
+      "verification": {
+        "status": "verified",
+        "checkedAt": "2026-09-18"
+      }
+    }
+  ],
+  "sourceIdentities": [
+    {
+      "id": "source:plandata:brand:aquadjurs",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "aquadjurs",
+      "sourceName": "AquaDjurs",
+      "municipalities": [
+        "Norddjurs"
+      ],
+      "presentationOrganizationId": "org:aquadjurs",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.aquadjurs.dk/om-os"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "AquaDjurs A/S (CVR 44522322) er fælles vand- og spildevandsselskab for Norddjurs og Syddjurs."
+      }
+    },
+    {
+      "id": "source:plandata:brand:arwos",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "arwos",
+      "sourceName": "ARWOS",
+      "municipalities": [
+        "Aabenraa"
+      ],
+      "presentationOrganizationId": "org:arwos",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://arwos.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:assens-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "assens-forsyning",
+      "sourceName": "Assens Forsyning",
+      "municipalities": [
+        "Assens"
+      ],
+      "presentationOrganizationId": "org:assens-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.assensforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:billund-vand-energi",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "billund-vand-energi",
+      "sourceName": "Billund Vand & Energi",
+      "municipalities": [
+        "Billund"
+      ],
+      "presentationOrganizationId": "org:billund-vand-energi",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.billundvand.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:bluekolding",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "bluekolding",
+      "sourceName": "BlueKolding",
+      "municipalities": [
+        "Kolding"
+      ],
+      "presentationOrganizationId": "org:bluekolding",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://bluekolding.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:beof",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "beof",
+      "sourceName": "Bornholms Energi & Forsyning",
+      "municipalities": [
+        "Bornholm"
+      ],
+      "presentationOrganizationId": "org:beof",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://beof.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:broenderslev-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "broenderslev-forsyning",
+      "sourceName": "Brønderslev Forsyning",
+      "municipalities": [
+        "Brønderslev"
+      ],
+      "presentationOrganizationId": "org:broenderslev-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://bronderslevforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:din-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "din-forsyning",
+      "sourceName": "DIN Forsyning",
+      "municipalities": [
+        "Esbjerg",
+        "Varde"
+      ],
+      "presentationOrganizationId": "org:din-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://dinforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:energi-viborg-vand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "energi-viborg-vand",
+      "sourceName": "Energi Viborg Vand",
+      "municipalities": [
+        "Viborg"
+      ],
+      "presentationOrganizationId": "org:energi-viborg-vand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.energiviborg.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:envafors",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "envafors",
+      "sourceName": "Envafors",
+      "municipalities": [
+        "Næstved",
+        "Slagelse",
+        "Sorø"
+      ],
+      "presentationOrganizationId": "org:envafors",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.envafors.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:fanoe-vand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "fanoe-vand",
+      "sourceName": "Fanø Vand",
+      "municipalities": [
+        "Fanø"
+      ],
+      "presentationOrganizationId": "org:fanoe-vand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.fanoevand.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:favrskov-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "favrskov-forsyning",
+      "sourceName": "Favrskov Forsyning",
+      "municipalities": [
+        "Favrskov"
+      ],
+      "presentationOrganizationId": "org:favrskov-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.favrskovforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:faxe-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "faxe-forsyning",
+      "sourceName": "Faxe Forsyning",
+      "municipalities": [
+        "Faxe"
+      ],
+      "presentationOrganizationId": "org:faxe-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.faxeforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:ffv",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "ffv",
+      "sourceName": "FFV Energi & Miljø",
+      "municipalities": [
+        "Faaborg-Midtfyn"
+      ],
+      "presentationOrganizationId": "org:ffv",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.ffv.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:fors",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "fors",
+      "sourceName": "FORS",
+      "municipalities": [
+        "Holbæk",
+        "Lejre",
+        "Roskilde"
+      ],
+      "presentationOrganizationId": "org:fors",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.fors.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:forsyning-helsingoer",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "forsyning-helsingoer",
+      "sourceName": "Forsyning Helsingør",
+      "municipalities": [
+        "Helsingør"
+      ],
+      "presentationOrganizationId": "org:forsyning-helsingoer",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.fh.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:fredensborg-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "fredensborg-forsyning",
+      "sourceName": "Fredensborg Forsyning",
+      "municipalities": [
+        "Fredensborg"
+      ],
+      "presentationOrganizationId": "org:fredensborg-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://fredensborgforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:fredericia-spildevand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "fredericia-spildevand",
+      "sourceName": "Fredericia Spildevand og Energi",
+      "municipalities": [
+        "Fredericia"
+      ],
+      "presentationOrganizationId": "org:fredericia-spildevand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "verifiedCurrentTimeBound",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.frse.dk/nyheder/nyt-forsyningsselskab-og-ny-direktoer/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel organisation pr. auditdato. Officiel kilde varsler en ny fælles multiforsyning fra 1. januar 2027; navnet er endnu ikke offentliggjort og må ikke gættes."
+      }
+    },
+    {
+      "id": "source:plandata:brand:frederiksberg-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "frederiksberg-forsyning",
+      "sourceName": "Frederiksberg Forsyning",
+      "municipalities": [
+        "Frederiksberg"
+      ],
+      "presentationOrganizationId": "org:frederiksberg-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.frb-forsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:frederikshavn-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "frederikshavn-forsyning",
+      "sourceName": "Frederikshavn Forsyning",
+      "municipalities": [
+        "Frederikshavn"
+      ],
+      "presentationOrganizationId": "org:frederikshavn-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.forsyningen.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:glostrup-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "glostrup-forsyning",
+      "sourceName": "Glostrup Forsyning",
+      "municipalities": [
+        "Glostrup"
+      ],
+      "presentationOrganizationId": "org:glostrup-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.glostrupforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:gribskov-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "gribskov-forsyning",
+      "sourceName": "Gribskov Forsyning",
+      "municipalities": [
+        "Gribskov"
+      ],
+      "presentationOrganizationId": "org:gribskov-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.gribskovforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:guldborgsund-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "guldborgsund-forsyning",
+      "sourceName": "Guldborgsund Forsyning",
+      "municipalities": [
+        "Guldborgsund"
+      ],
+      "presentationOrganizationId": "org:guldborgsund-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.guldborgsundforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:halsnaes-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "halsnaes-forsyning",
+      "sourceName": "Halsnæs Forsyning",
+      "municipalities": [
+        "Halsnæs"
+      ],
+      "presentationOrganizationId": "org:halsnaes-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://hnf.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:hedensted-spildevand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "hedensted-spildevand",
+      "sourceName": "Hedensted Spildevand",
+      "municipalities": [
+        "Hedensted"
+      ],
+      "presentationOrganizationId": "org:hedensted-spildevand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://hspv.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:herning-vand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "herning-vand",
+      "sourceName": "Herning Vand",
+      "municipalities": [
+        "Herning"
+      ],
+      "presentationOrganizationId": "org:herning-vand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://herningvand.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:hilleroed-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "hilleroed-forsyning",
+      "sourceName": "Hillerød Forsyning",
+      "municipalities": [
+        "Hillerød"
+      ],
+      "presentationOrganizationId": "org:hilleroed-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://hfors.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:hjoerring-vandselskab",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "hjoerring-vandselskab",
+      "sourceName": "Hjørring Vandselskab",
+      "municipalities": [
+        "Hjørring"
+      ],
+      "presentationOrganizationId": "org:hjoerring-vandselskab",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://hjvand.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:hofor",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "hofor",
+      "sourceName": "HOFOR",
+      "municipalities": [
+        "Albertslund",
+        "Brøndby",
+        "Dragør",
+        "Herlev",
+        "Hvidovre",
+        "Københavns",
+        "Rødovre",
+        "Vallensbæk"
+      ],
+      "presentationOrganizationId": "org:hofor",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "publicBrandForMultipleNetworkCompanies",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.hofor.dk/om-hofor/organisationen/koncerndiagram/selskaber-i-hofor/holding/hofor-spildevand-holding-as/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "HOFOR er canonical offentlig identitet. Otte kommunespecifikke spildevands-netselskaber ligger under HOFOR Spildevand Holding A/S; HOFOR og BIOFOS må fortsat være to organisationer."
+      }
+    },
+    {
+      "id": "source:plandata:brand:htk-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "htk-forsyning",
+      "sourceName": "Høje-Taastrup Forsyning",
+      "municipalities": [
+        "Høje-Taastrup"
+      ],
+      "presentationOrganizationId": "org:htk-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://htkforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:ikast-brande-spildevand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "ikast-brande-spildevand",
+      "sourceName": "Ikast-Brande Spildevand",
+      "municipalities": [
+        "Ikast-Brande"
+      ],
+      "presentationOrganizationId": "org:ikast-brande-spildevand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.ikast-brandespildevand.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:ishoej-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "ishoej-forsyning",
+      "sourceName": "Ishøj Forsyning",
+      "municipalities": [
+        "Ishøj"
+      ],
+      "presentationOrganizationId": "org:ishoej-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.ishojforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:jammerbugt-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "jammerbugt-forsyning",
+      "sourceName": "Jammerbugt Forsyning",
+      "municipalities": [
+        "Jammerbugt"
+      ],
+      "presentationOrganizationId": "org:jammerbugt-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://jfas.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:kalundborg-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "kalundborg-forsyning",
+      "sourceName": "Kalundborg Forsyning",
+      "municipalities": [
+        "Kalundborg"
+      ],
+      "presentationOrganizationId": "org:kalundborg-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.kalfor.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:kerteminde-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "kerteminde-forsyning",
+      "sourceName": "Kerteminde Forsyning",
+      "municipalities": [
+        "Kerteminde"
+      ],
+      "presentationOrganizationId": "org:kerteminde-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.kertemindeforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:klar-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "klar-forsyning",
+      "sourceName": "KLAR Forsyning",
+      "municipalities": [
+        "Greve",
+        "Køge",
+        "Solrød",
+        "Stevns"
+      ],
+      "presentationOrganizationId": "org:klar-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://klarforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:langeland-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "langeland-forsyning",
+      "sourceName": "Langeland Forsyning",
+      "municipalities": [
+        "Langeland"
+      ],
+      "presentationOrganizationId": "org:langeland-energi-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "legacyAlias",
+      "relationToCanonical": "currentServiceBrand",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://lef.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Den aktuelle fælles serviceidentitet er Langeland Energi & Forsyning (CVR 44407531). Langeland Spildevand ApS er et af driftsselskaberne, mens Langeland Forsyning fortsat indgår i selskabsstrukturen."
+      }
+    },
+    {
+      "id": "source:plandata:brand:lemvig-vand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "lemvig-vand",
+      "sourceName": "Lemvig Vand",
+      "municipalities": [
+        "Lemvig"
+      ],
+      "presentationOrganizationId": "org:lemvig-vand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://lvs-as.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:lolland-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "lolland-forsyning",
+      "sourceName": "Lolland Forsyning",
+      "municipalities": [
+        "Lolland"
+      ],
+      "presentationOrganizationId": "org:lolland-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://lollandforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:ltf",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "ltf",
+      "sourceName": "Lyngby-Taarbæk Forsyning",
+      "municipalities": [
+        "Lyngby-Taarbæk"
+      ],
+      "presentationOrganizationId": "org:ltf",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://ltf.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:mariagerfjord-vand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "mariagerfjord-vand",
+      "sourceName": "Mariagerfjord Vand",
+      "municipalities": [
+        "Mariagerfjord"
+      ],
+      "presentationOrganizationId": "org:ren-forsyning-mariagerfjord",
+      "mappingStatus": "verified",
+      "disposition": "legalEntitySource",
+      "relationToCanonical": "publicBrandForActiveLegalEntity",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.renform.dk/spildevand"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Mariagerfjord Vand A/S er fortsat aktivt spildevandsselskab (CVR 31486424). Ren Forsyning Mariagerfjord A/S er den aktuelle fælles, kundevendte organisation (CVR 45132692)."
+      }
+    },
+    {
+      "id": "source:plandata:brand:middelfart-spildevand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "middelfart-spildevand",
+      "sourceName": "Middelfart Spildevand",
+      "municipalities": [
+        "Middelfart"
+      ],
+      "presentationOrganizationId": "org:middelfart-spildevand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://middelfartspildevand.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:morsoe-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "morsoe-forsyning",
+      "sourceName": "Morsø Forsyning",
+      "municipalities": [
+        "Morsø"
+      ],
+      "presentationOrganizationId": "org:morsoe-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://morsoeforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:nordfyns-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "nordfyns-forsyning",
+      "sourceName": "Nordfyns Forsyning",
+      "municipalities": [
+        "Nordfyns"
+      ],
+      "presentationOrganizationId": "org:vandcenter-syd",
+      "mappingStatus": "verified",
+      "disposition": "legacyAlias",
+      "relationToCanonical": "mergedIntoCurrentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.vandcenter.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Nordfyns Forsyning er en legacy/source-identitet. VandCenter Syd oplyser, at selskabet er drikkevands- og spildevandsselskab i både Odense og Nordfyns kommuner."
+      }
+    },
+    {
+      "id": "source:plandata:brand:novafos",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "novafos",
+      "sourceName": "Novafos",
+      "municipalities": [
+        "Allerød",
+        "Ballerup",
+        "Egedal",
+        "Frederikssund",
+        "Furesø",
+        "Gentofte",
+        "Gladsaxe",
+        "Hørsholm",
+        "Rudersdal"
+      ],
+      "presentationOrganizationId": "org:novafos",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.novafos.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:nyborg-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "nyborg-forsyning",
+      "sourceName": "Nyborg Forsyning & Service",
+      "municipalities": [
+        "Nyborg"
+      ],
+      "presentationOrganizationId": "org:nyborg-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "legalEntitySource",
+      "relationToCanonical": "publicBrandForActiveLegalEntity",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.nfs.as/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Den offentlige identitet på hjemmesiden er Nyborg Forsyning; Nyborg Forsyning & Service A/S er det juridiske selskabsnavn."
+      }
+    },
+    {
+      "id": "source:plandata:brand:odsherred-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "odsherred-forsyning",
+      "sourceName": "Odsherred Forsyning",
+      "municipalities": [
+        "Odsherred"
+      ],
+      "presentationOrganizationId": "org:odsherred-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.odsherredforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:provas",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "provas",
+      "sourceName": "Provas",
+      "municipalities": [
+        "Haderslev"
+      ],
+      "presentationOrganizationId": "org:provas",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.provas.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:rebild-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "rebild-forsyning",
+      "sourceName": "Rebild Forsyning",
+      "municipalities": [
+        "Rebild"
+      ],
+      "presentationOrganizationId": "org:rebild-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://rebildforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:rksk-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "rksk-forsyning",
+      "sourceName": "Ringkøbing-Skjern Forsyning",
+      "municipalities": [
+        "Ringkøbing-Skjern"
+      ],
+      "presentationOrganizationId": "org:rksk-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.rsforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:ringsted-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "ringsted-forsyning",
+      "sourceName": "Ringsted Forsyning",
+      "municipalities": [
+        "Ringsted"
+      ],
+      "presentationOrganizationId": "org:ringsted-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://ringstedforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:samn-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "samn-forsyning",
+      "sourceName": "SAMN Forsyning",
+      "municipalities": [
+        "Horsens",
+        "Odder"
+      ],
+      "presentationOrganizationId": "org:samn-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.samn.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:samsoe-spildevand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "samsoe-spildevand",
+      "sourceName": "Samsø Spildevand",
+      "municipalities": [
+        "Samsø"
+      ],
+      "presentationOrganizationId": "org:samsoe-spildevand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.samsoespildevand.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:silkeborg-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "silkeborg-forsyning",
+      "sourceName": "Silkeborg Forsyning",
+      "municipalities": [
+        "Silkeborg"
+      ],
+      "presentationOrganizationId": "org:silkeborg-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.silkeborgforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:skanderborg-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "skanderborg-forsyning",
+      "sourceName": "Skanderborg Forsyning",
+      "municipalities": [
+        "Skanderborg"
+      ],
+      "presentationOrganizationId": "org:skanderborg-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.skanderborgforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:skive-vand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "skive-vand",
+      "sourceName": "Skive Vand",
+      "municipalities": [
+        "Skive"
+      ],
+      "presentationOrganizationId": "org:skive-vand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.skivevand.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:sonfor",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "sonfor",
+      "sourceName": "SONFOR",
+      "municipalities": [
+        "Sønderborg"
+      ],
+      "presentationOrganizationId": "org:sonfor",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://sonfor.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:struer-energi",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "struer-energi",
+      "sourceName": "Struer Energi",
+      "municipalities": [
+        "Struer"
+      ],
+      "presentationOrganizationId": "org:struer-energi",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://struerenergi.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:syddjurs-spildevand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "syddjurs-spildevand",
+      "sourceName": "Syddjurs Spildevand",
+      "municipalities": [
+        "Syddjurs"
+      ],
+      "presentationOrganizationId": "org:aquadjurs",
+      "mappingStatus": "verified",
+      "disposition": "legacyAlias",
+      "relationToCanonical": "mergedIntoCurrentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.aquadjurs.dk/om-os"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "AquaDjurs A/S er det fælles vand- og spildevandsselskab for Norddjurs og Syddjurs og håndterer spildevand for hele Djursland."
+      }
+    },
+    {
+      "id": "source:plandata:brand:thisted-vand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "thisted-vand",
+      "sourceName": "Thisted Vand",
+      "municipalities": [
+        "Thisted"
+      ],
+      "presentationOrganizationId": "org:thy-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "legacyAlias",
+      "relationToCanonical": "currentPublicName",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://thyforsyning.dk/spildevand/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Thisted Vand er source-navnet. Den aktuelle offentlige organisation er Thy Forsyning; spildevandsområdet omtales som Thy Spildevand."
+      }
+    },
+    {
+      "id": "source:plandata:brand:toender-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "toender-forsyning",
+      "sourceName": "Tønder Forsyning",
+      "municipalities": [
+        "Tønder"
+      ],
+      "presentationOrganizationId": "org:toender-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.tonfor.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:taarnby-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "taarnby-forsyning",
+      "sourceName": "Tårnby Forsyning",
+      "municipalities": [
+        "Tårnby"
+      ],
+      "presentationOrganizationId": "org:taarnby-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.taarnbyforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:vand-og-affald",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "vand-og-affald",
+      "sourceName": "Vand og Affald",
+      "municipalities": [
+        "Svendborg"
+      ],
+      "presentationOrganizationId": "org:vand-og-affald",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "minorDisplayCorrection",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.vandogaffald.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Kun en displaykorrektion fra 'og' til det officielle '&'; ingen ny organisation eller merge."
+      }
+    },
+    {
+      "id": "source:plandata:brand:vandcenter-syd",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "vandcenter-syd",
+      "sourceName": "VandCenter Syd",
+      "municipalities": [
+        "Odense"
+      ],
+      "presentationOrganizationId": "org:vandcenter-syd",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.vandcenter.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel drikkevands- og spildevandsorganisation for Odense og Nordfyns kommuner."
+      }
+    },
+    {
+      "id": "source:plandata:brand:vandmiljoe-randers",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "vandmiljoe-randers",
+      "sourceName": "Vandmiljø Randers",
+      "municipalities": [
+        "Randers"
+      ],
+      "presentationOrganizationId": "org:vandmiljoe-randers",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.vmr.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:vejen-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "vejen-forsyning",
+      "sourceName": "Vejen Forsyning",
+      "municipalities": [
+        "Vejen"
+      ],
+      "presentationOrganizationId": "org:vejen-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://vejenforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:vejle-spildevand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "vejle-spildevand",
+      "sourceName": "Vejle Spildevand",
+      "municipalities": [
+        "Vejle"
+      ],
+      "presentationOrganizationId": "org:vejle-spildevand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.vejlespildevand.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:vestforsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "vestforsyning",
+      "sourceName": "Vestforsyning",
+      "municipalities": [
+        "Holstebro"
+      ],
+      "presentationOrganizationId": "org:vestforsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.vestforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:vesthimmerlands-vand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "vesthimmerlands-vand",
+      "sourceName": "Vesthimmerlands Vand",
+      "municipalities": [
+        "Vesthimmerlands"
+      ],
+      "presentationOrganizationId": "org:vesthimmerlands-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "legacyAlias",
+      "relationToCanonical": "currentPublicName",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://vesthimmerlandsforsyning.dk/spildevand/dit-spildevand"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Vesthimmerlands Vand er source-navnet; Vesthimmerlands Forsyning er det aktuelle offentlige navn for spildevandsydelsen."
+      }
+    },
+    {
+      "id": "source:plandata:brand:vordingborg-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "vordingborg-forsyning",
+      "sourceName": "Vordingborg Forsyning",
+      "municipalities": [
+        "Vordingborg"
+      ],
+      "presentationOrganizationId": "org:vordingborg-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://vordingborgforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:aeroe-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "aeroe-forsyning",
+      "sourceName": "Ærø Forsyning",
+      "municipalities": [
+        "Ærø"
+      ],
+      "presentationOrganizationId": "org:aeroe-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.aeroeforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:aalborg-forsyning",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "aalborg-forsyning",
+      "sourceName": "Aalborg Forsyning",
+      "municipalities": [
+        "Aalborg"
+      ],
+      "presentationOrganizationId": "org:aalborg-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.aalborgforsyning.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:plandata:brand:aarhus-vand",
+      "sourceSystem": "plandata",
+      "identityType": "plandataBrandId",
+      "legacyBrandId": "aarhus-vand",
+      "sourceName": "Aarhus Vand",
+      "municipalities": [
+        "Aarhus"
+      ],
+      "presentationOrganizationId": "org:aarhus-vand",
+      "mappingStatus": "verified",
+      "disposition": "canonicalSource",
+      "relationToCanonical": "currentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://www.aarhusvand.dk/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel, særskilt offentlig forsyningsidentitet i kortets præsentationslag; ingen merge eller navneændring fundet. Juridisk koncernstruktur ændrer ikke denne præsentationsmapping."
+      }
+    },
+    {
+      "id": "source:app:brand:biofos",
+      "sourceSystem": "spildevandskort",
+      "identityType": "virtualAppIdentity",
+      "legacyBrandId": "biofos",
+      "sourceName": "BIOFOS",
+      "municipalities": [],
+      "presentationOrganizationId": "org:biofos",
+      "mappingStatus": "verified",
+      "disposition": "virtualCanonical",
+      "relationToCanonical": "canonicalTreatmentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://biofos.dk/om-biofos/hvem-er-vi/ejerforhold"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Selvstændig fælles renseorganisation. BIOFOS-koncernen renser spildevand fra 15 kommuner på Lynetten, Avedøre og Damhusåen; den er ikke en almindelig kommunal netforsyning."
+      }
+    },
+    {
+      "id": "source:app:brand:moelleaavaerket",
+      "sourceSystem": "spildevandskort",
+      "identityType": "virtualAppIdentity",
+      "legacyBrandId": "moelleaavaerket",
+      "sourceName": "Mølleåværket",
+      "municipalities": [],
+      "presentationOrganizationId": "org:moelleaavaerket",
+      "mappingStatus": "verified",
+      "disposition": "virtualCanonical",
+      "relationToCanonical": "canonicalTreatmentOrganization",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://moelleaavaerket.dk/om-os/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Mølleåværket A/S (CVR 33376146) er en selvstændig virksomhed, ejet af spildevandsselskaberne i Lyngby-Taarbæk, Gladsaxe, Gentofte og Rudersdal."
+      }
+    },
+    {
+      "id": "source:app:brand:laesoe-forsyning",
+      "sourceSystem": "spildevandskort",
+      "identityType": "virtualAppIdentity",
+      "legacyBrandId": "laesoe-forsyning",
+      "sourceName": "Læsø Forsyning",
+      "municipalities": [
+        "Læsø"
+      ],
+      "presentationOrganizationId": "org:laesoe-forsyning",
+      "mappingStatus": "verified",
+      "disposition": "virtualCanonical",
+      "relationToCanonical": "publicBrandForActiveLegalEntity",
+      "validFrom": null,
+      "validTo": null,
+      "verification": {
+        "status": "verified",
+        "sourceUrls": [
+          "https://laesoeforsyning.dk/laesoe-vand-a-s-spildevand/"
+        ],
+        "checkedAt": "2026-09-18",
+        "note": "Aktuel offentlig forsyningsidentitet. Spildevandsopgaven ligger hos Læsø Vand A/S; posten mangler kun et Plandata-brand i den nuværende runtime-model."
+      }
+    }
+  ],
+  "verifiedMerges": [
+    {
+      "legacyBrandId": "nordfyns-forsyning",
+      "canonicalOrganizationId": "org:vandcenter-syd",
+      "sourceIdentityId": "source:plandata:brand:nordfyns-forsyning",
+      "sourceUrls": [
+        "https://www.vandcenter.dk/"
+      ]
+    },
+    {
+      "legacyBrandId": "syddjurs-spildevand",
+      "canonicalOrganizationId": "org:aquadjurs",
+      "sourceIdentityId": "source:plandata:brand:syddjurs-spildevand",
+      "sourceUrls": [
+        "https://www.aquadjurs.dk/om-os"
+      ]
+    }
+  ],
+  "legalStructureFindings": [
+    {
+      "organizationId": "org:aquadjurs",
+      "legalEntities": [
+        {
+          "legalName": "AquaDjurs A/S",
+          "cvr": "44522322"
+        }
+      ],
+      "relation": "organizationAndLegalEntityAligned",
+      "sourceUrl": "https://www.aquadjurs.dk/om-os"
+    },
+    {
+      "organizationId": "org:ren-forsyning-mariagerfjord",
+      "legalEntities": [
+        {
+          "legalName": "Ren Forsyning Mariagerfjord A/S",
+          "cvr": "45132692"
+        },
+        {
+          "legalName": "Mariagerfjord Vand A/S",
+          "cvr": "31486424"
+        }
+      ],
+      "relation": "customerBrandAndWastewaterLegalEntity",
+      "sourceUrl": "https://www.renform.dk/spildevand"
+    },
+    {
+      "organizationId": "org:langeland-energi-forsyning",
+      "legalEntities": [
+        {
+          "legalName": "Langeland Energi & Forsyning",
+          "cvr": "44407531"
+        },
+        {
+          "legalName": "Langeland Spildevand ApS",
+          "cvr": null
+        }
+      ],
+      "relation": "serviceCompanyAndWastewaterOperatingCompany",
+      "sourceUrl": "https://lef.dk/"
+    },
+    {
+      "organizationId": "org:nyborg-forsyning",
+      "legalEntities": [
+        {
+          "legalName": "Nyborg Forsyning & Service A/S",
+          "cvr": null
+        }
+      ],
+      "relation": "publicBrandForLegalEntity",
+      "sourceUrl": "https://www.nfs.as/"
+    },
+    {
+      "organizationId": "org:moelleaavaerket",
+      "legalEntities": [
+        {
+          "legalName": "Mølleåværket A/S",
+          "cvr": "33376146"
+        }
+      ],
+      "relation": "jointTreatmentCompany",
+      "sourceUrl": "https://moelleaavaerket.dk/om-os/"
+    },
+    {
+      "organizationId": "org:biofos",
+      "legalEntities": [
+        {
+          "legalName": "BIOFOS Holding A/S",
+          "cvr": null
+        },
+        {
+          "legalName": "BIOFOS A/S",
+          "cvr": "25601920"
+        },
+        {
+          "legalName": "BIOFOS Lynettefællesskabet A/S",
+          "cvr": null
+        },
+        {
+          "legalName": "BIOFOS Spildevandscenter Avedøre A/S",
+          "cvr": null
+        }
+      ],
+      "relation": "jointTreatmentGroup",
+      "sourceUrl": "https://biofos.dk/om-biofos/hvem-er-vi/ejerforhold"
+    },
+    {
+      "organizationId": "org:hofor",
+      "legalEntities": [
+        {
+          "legalName": "HOFOR A/S",
+          "cvr": "10073022"
+        },
+        {
+          "legalName": "HOFOR Spildevand Holding A/S",
+          "cvr": "34887411"
+        },
+        {
+          "legalName": "Otte kommunespecifikke HOFOR Spildevand A/S",
+          "cvr": null
+        }
+      ],
+      "relation": "publicGroupBrandForMunicipalNetworkCompanies",
+      "sourceUrl": "https://www.hofor.dk/om-hofor/organisationen/koncerndiagram/selskaber-i-hofor/holding/hofor-spildevand-holding-as/"
+    },
+    {
+      "organizationId": "org:laesoe-forsyning",
+      "legalEntities": [
+        {
+          "legalName": "Læsø Vand A/S",
+          "cvr": null
+        }
+      ],
+      "relation": "publicBrandForWastewaterLegalEntity",
+      "sourceUrl": "https://laesoeforsyning.dk/laesoe-vand-a-s-spildevand/"
+    },
+    {
+      "organizationId": "org:fredericia-spildevand",
+      "legalEntities": [
+        {
+          "legalName": "Fredericia Spildevand og Energi A/S",
+          "cvr": "32659365"
+        }
+      ],
+      "relation": "currentLegalAndPublicIdentityUntilAnnouncedTransition",
+      "sourceUrl": "https://www.frse.dk/nyheder/nyt-forsyningsselskab-og-ny-direktoer/"
+    }
+  ],
+  "timeBoundFindings": [
+    {
+      "legacyId": "fredericia-spildevand",
+      "currentStatus": "Fredericia Spildevand og Energi is current on the audit date.",
+      "effectiveDate": "2027-01-01",
+      "futureState": "A new multi-utility is announced, but its public name is not yet documented.",
+      "action": "Re-audit after the new name and legal structure are officially published.",
+      "sourceUrl": "https://www.frse.dk/nyheder/nyt-forsyningsselskab-og-ny-direktoer/"
+    }
+  ],
+  "compatibilityPolicy": {
+    "legacyIdsImmutable": true,
+    "rawSourceDataImmutable": true,
+    "verifiedMappingsDrivePresentation": true,
+    "probableMappingsDrivePresentation": false,
+    "unresolvedMappingsDrivePresentation": false,
+    "functionalRelationsInferredFromPresentationMapping": false
+  }
+}

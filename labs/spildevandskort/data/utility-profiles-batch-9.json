@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-18",
+  "profiles": {
+    "laesoe-forsyning": {
+      "name": "Læsø Forsyning",
+      "website": "https://laesoeforsyning.dk/laesoe-vand-a-s-spildevand/",
+      "phone": "44 45 64 00",
+      "email": "forsyning@laesoeforsyning.dk",
+      "address": "Gammel Kirkevej 6B, 9940 Læsø",
+      "summary": "Læsø Forsyning varetager spildevandsopgaven gennem Læsø Vand A/S. Forsyningen driver renseanlæggene i Vesterø og Østerby og kloaknettet i øens kloakerede områder.",
+      "contacts": [],
+      "projects": [],
+      "sources": [
+        "https://laesoeforsyning.dk/laesoe-vand-a-s-spildevand/"
+      ],
+      "verifiedAt": "2026-09-18"
+    },
+    "moelleaavaerket": {
+      "name": "Mølleåværket",
+      "website": "https://moelleaavaerket.dk/",
+      "phone": "72 28 33 60",
+      "email": "forsyning@ltf.dk",
+      "address": "Hjortekærbakken 12, 2800 Kongens Lyngby",
+      "summary": "Mølleåværket er en selvstændig rensevirksomhed, som renser spildevand fra Lyngby-Taarbæk, Gladsaxe, Rudersdal og Gentofte. Selskabet ejes af spildevandsselskaberne i de fire kommuner.",
+      "contacts": [
+        {"name":"Jane B. Madsen","title":"Administrerende direktør","sourceUrl":"https://moelleaavaerket.dk/om-os/"},
+        {"name":"Marianne Taanum Bak","title":"Økonomidirektør","sourceUrl":"https://moelleaavaerket.dk/om-os/"},
+        {"name":"Thomas Christian Bergmann","title":"Teknisk direktør","sourceUrl":"https://moelleaavaerket.dk/om-os/"}
+      ],
+      "projects": [],
+      "sources": [
+        "https://moelleaavaerket.dk/",
+        "https://moelleaavaerket.dk/om-os/"
+      ],
+      "verifiedAt": "2026-09-18"
+    }
+  }
+}

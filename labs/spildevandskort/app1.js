@@ -36,7 +36,7 @@ function normalizeRegionKey(s=""){return String(s).toLocaleLowerCase("da").trim(
 
 const $ = (id) => document.getElementById(id);
 const els = Object.fromEntries(["search","brandCount","activePlantCount","itemList","listHeading","visibleCount","brandControls","plantControls","showPlants","includeClosed","selectedOnly","selectAll","selectNone","zoomSelected","statusBanner","mapStatus","detailPanel","detailContent","closeDetail"].map(k=>[k,$(k)]));
-const state = {tab:"brands", brands:[], brandById:new Map(), selected:new Set(), features:[], plants:[], ownerAliases:{}, polygonLayer:null, plantLayer:null, map:null, collapsedRegions:new Set(LANDDELE.map(r=>r.id))};
+const state = {tab:"brands", brands:[], brandById:new Map(), selected:new Set(), features:[], plants:[], ownerAliases:{}, canonicalRegistry:null, canonicalRegistryDocument:null, canonicalRegistryReady:null, facilityRegistry:null, facilityRegistryDocument:null, facilityRegistryReady:null, wastewaterRelations:null, wastewaterRelationsDocument:null, wastewaterRelationsReady:null, identityDataReady:null, canonicalRegistryParity:null, organizationColors:new Map(), polygonLayer:null, plantLayer:null, map:null, collapsedRegions:new Set(LANDDELE.map(r=>r.id))};
 
 function normalize(s="") { return String(s).toLocaleLowerCase("da").replace(/\(cvr[^)]*\)/gi,"").replace(/\bcvr[:\s-]*\d+\b/gi,"").replace(/\ba\/s\b|\baps\b|\bi\/s\b/gi,"").replace(/&/g," og ").replace(/[^a-z0-9æøå]+/gi," ").trim().replace(/\s+/g," "); }
 function pick(p,...keys){ if(!p)return null; const m=new Map(Object.entries(p).map(([k,v])=>[k.toLowerCase(),v])); for(const k of keys){ if(m.has(k.toLowerCase())) return m.get(k.toLowerCase()); } return null; }
@@ -48,6 +48,21 @@ function activeFrom(v){ return ["aktivt","aktiv","active","i drift","drift"].inc
 function capacityRadius(pe){ const x=n(pe); if(x===null)return 5; if(x<2000)return 4; if(x<10000)return 6; if(x<100000)return 8; return 11; }
 function capacityClass(pe){ const x=n(pe); if(x===null)return "Ukendt"; if(x<2000)return "<2.000 PE"; if(x<10000)return "2.000–10.000 PE"; if(x<100000)return "10.000–100.000 PE"; return ">100.000 PE"; }
 function brandMatch(owner){ const key=normalize(owner); const direct=state.ownerAliases[key]; if(direct && state.brandById.has(direct)) return direct; for(const b of state.brands){ const bn=normalize(b.name); if(key===bn || (bn.length>=6 && (key.includes(bn)||bn.includes(key)))) return b.id; } return direct || null; }
+function organizationIdForBrandId(legacyBrandId){ return legacyBrandId?state.canonicalRegistry?.organizationIdForLegacyBrandId(legacyBrandId)||null:null; }
+function organizationColor(organizationId,legacyBrandId=null){ return (organizationId&&state.organizationColors.get(organizationId))||state.brandById.get(legacyBrandId)?.color||null; }
+function plantPresentationColor(plant){ return organizationColor(plant?.organizationId,plant?.responsibleBrandId)||"#087e90"; }
+function wastewaterSemanticsForOrganizationId(organizationId){ return organizationId?state.wastewaterRelations?.semanticsForOrganizationId(organizationId)||null:null; }
+function activePulsRecordCountForOrganizationId(organizationId){
+  const legacyIds=state.canonicalRegistry?.legacyBrandIdsForOrganizationId(organizationId)||[];
+  return state.plants.filter(plant=>plant.active&&legacyIds.includes(plant.responsibleBrandId)).length;
+}
+function wastewaterListSummary(organizationId){
+  const semantics=wastewaterSemanticsForOrganizationId(organizationId);
+  if(!semantics||semantics.auditStatus!=="verified")return "Anlægstal ikke verificeret";
+  const count=semantics.directActiveFacilityCount;
+  const destinations=[...new Set(semantics.routes.map(route=>route.treatmentOrganization?.displayName).filter(Boolean))];
+  return `${count} egne/driftede renseanlæg${destinations.length?` · Behandles hos ${destinations.join(" og ")}`:""}`;
+}
 function status(msg, error=false){ els.statusBanner.hidden=!msg; els.statusBanner.textContent=msg||""; els.statusBanner.style.background=error?"#6a352b":"#1b5665"; }
 
 async function fetchJSON(url){ const r=await fetch(url); if(!r.ok) throw new Error(`${r.status} ${r.statusText}`); return r.json(); }
@@ -58,8 +73,25 @@ async function loadBrands(){
   const virtual=CURATED_VIRTUAL_BRANDS.map(b=>({...b,color:"#087e90",municipalities:b.municipalities||[],sourceFeatureCount:0}));
   state.brands=[...arr,...virtual.filter(v=>!arr.some(b=>b.id===v.id))].sort((a,b)=>a.name.localeCompare(b.name,"da"));
   state.brandById=new Map(state.brands.map(b=>[b.id,b])); state.selected=new Set(state.brands.map(b=>b.id));
-  const organizationCount=typeof currentOperatorForBrand==="function"?new Set(state.brands.map(b=>currentOperatorForBrand(b.id).canonicalOrganizationId)).size:state.brands.length;
-  els.brandCount.textContent=organizationCount;
+}
+async function loadCanonicalRegistry(){
+  if(typeof createSpildevandskortCanonicalRegistry!=="function")throw new Error("Canonical registry-adapter mangler");
+  const document=await fetchJSON(`${PROD}/model/organization-registry.json`);
+  state.canonicalRegistryDocument=document;
+  state.canonicalRegistry=createSpildevandskortCanonicalRegistry(document);
+  els.brandCount.textContent=state.canonicalRegistry.counts.organizations;
+}
+async function loadFacilityRegistry(){
+  if(typeof createSpildevandskortFacilityRegistry!=="function")throw new Error("Facility registry-adapter mangler");
+  const document=await fetchJSON(`${PROD}/model/facility-registry.json`);
+  state.facilityRegistryDocument=document;
+  state.facilityRegistry=createSpildevandskortFacilityRegistry(document);
+}
+async function loadWastewaterRelations(){
+  if(typeof createSpildevandskortWastewaterRelations!=="function")throw new Error("Wastewater relations-adapter mangler");
+  const document=await fetchJSON(`${PROD}/model/wastewater-relations.json`);
+  state.wastewaterRelationsDocument=document;
+  state.wastewaterRelations=createSpildevandskortWastewaterRelations(document,{organizationRegistry:state.canonicalRegistry,facilityRegistry:state.facilityRegistry});
 }
 async function loadAliases(){
   const out={};
@@ -91,7 +123,11 @@ function normalizePlant(f,i){
   const owner=fmt(pick(p,"Owner","Ejer","OwnerName")); const statusValue=pick(p,"Closed","Status","Driftsstatus");
   const capacity=pick(p,"DesignedCapacity","DimensionedCapacity","DimensioneretKapacitet","Dimensioneret kapacitet","PE");
   const responsibleBrandId=brandMatch(owner);
-  return {id:String(pick(p,"WwtpId","Id","ID","PulsId","PULS_ID")||f.id||`puls-${i}`),name:fmt(pick(p,"Name","Navn","PlantName","Renseanlægsnavn")),owner,status:fmt(statusValue),active:activeFrom(statusValue),coordinates:normalizeCoords(f,p),capacity,approvedLoad:pick(p,"AuthorizedLoad","ApprovedLoad","GodkendtBelastning","Godkendt belastning"),treatmentType:pick(p,"TreatmentType","Rensetype","RenseType","Treatment"),authority:pick(p,"Authority","Myndighed"),municipality:pick(p,"Municipality","Kommune"),latestYear:pick(p,"LatestDischargeYear","SenesteUdledningsår","Udledningsår","LatestYear"),latestVolume:pick(p,"LatestDischargeVolume","LatestWastewaterVolume","Spildevandsmængde","WastewaterVolume"),brandId:responsibleBrandId,responsibleBrandId,sourceProperties:p};
+  const sourceRecordId=String(pick(p,"WwtpId","Id","ID","PulsId","PULS_ID")||f.id||`puls-${i}`);
+  const facilitySourceRecord=state.facilityRegistry?.sourceRecordForPulsId(sourceRecordId)||null;
+  const facility=state.facilityRegistry?.facilityForPulsRecordId(sourceRecordId)||null;
+  const organizationId=facility?.presentationOrganizationId||organizationIdForBrandId(responsibleBrandId);
+  return {id:sourceRecordId,sourceRecordId,name:fmt(pick(p,"Name","Navn","PlantName","Renseanlægsnavn")),owner,status:fmt(statusValue),active:activeFrom(statusValue),coordinates:normalizeCoords(f,p),capacity,approvedLoad:pick(p,"AuthorizedLoad","ApprovedLoad","GodkendtBelastning","Godkendt belastning"),treatmentType:pick(p,"TreatmentType","Rensetype","RenseType","Treatment"),authority:pick(p,"Authority","Myndighed"),municipality:pick(p,"Municipality","Kommune"),latestYear:pick(p,"LatestDischargeYear","SenesteUdledningsår","Udledningsår","LatestYear"),latestVolume:pick(p,"LatestDischargeVolume","LatestWastewaterVolume","Spildevandsmængde","WastewaterVolume"),brandId:responsibleBrandId,responsibleBrandId,organizationId,facilityId:facility?.id||null,facilityMappingStatus:facilitySourceRecord?.mappingStatus||"unmapped",sourceRecordRole:facilitySourceRecord?.recordRole||"unclassifiedSourceRecord",includeInFacilityCount:facilitySourceRecord?.includeInFacilityCount===true,sourceProperties:p};
 }
 async function fetchAllPulsFeatures(){
   const all=[]; let startIndex=0; let expected=null;
@@ -113,7 +149,7 @@ async function loadPlants(){
   const byId=new Map(); let duplicateIds=0;
   for(const [i,f] of features.entries()){ const p=normalizePlant(f,i); if(!p)continue; if(byId.has(p.id))duplicateIds++; byId.set(p.id,p); }
   state.plants=[...byId.values()];
-  state.plantQa={rawFeatures:features.length,plants:state.plants.length,duplicateIds,missingCoordinates:state.plants.filter(p=>!p.coordinates).length,unmatchedOwners:state.plants.filter(p=>!p.brandId).length};
+  state.plantQa={rawFeatures:features.length,plants:state.plants.length,duplicateIds,missingCoordinates:state.plants.filter(p=>!p.coordinates).length,unmatchedOwners:state.plants.filter(p=>!p.brandId).length,canonicalOrganizations:state.plants.filter(p=>p.organizationId).length,verifiedFacilityMappings:state.plants.filter(p=>p.facilityMappingStatus==="verified"&&p.facilityId).length,unresolvedFacilityMappings:state.plants.filter(p=>p.facilityMappingStatus==="unresolved").length};
   console.info("PULS QA",state.plantQa);
   updateLoadScreeningUI();
   els.activePlantCount.textContent=state.plants.filter(p=>p.active).length; renderPlants(); renderList();
@@ -135,7 +171,7 @@ function renderPlants(){
     const [lon,lat]=p.coordinates;
     const responsible=p.responsibleBrandId?state.brandById.get(p.responsibleBrandId):null;
     const load=plantLoad(p),band=LoadScreening.band(load),screen=screeningEnabled();
-    const fill=screen&&p.active?LoadScreening.colors[band]:p.active?(responsible?.color||"#087e90"):"#737e84";
+    const fill=screen&&p.active?LoadScreening.colors[band]:p.active?plantPresentationColor(p):"#737e84";
     const m=L.circleMarker([lat,lon],{radius:screen?({high:11,mid:8,low:5,unknown:5}[band]):capacityRadius(p.capacity),color:"#fff",weight:1.5,fillColor:fill,fillOpacity:.95,pane:"markerPane"}).addTo(state.plantLayer);
     m.bindTooltip(`${p.name} · ${responsible?.name||p.owner} · ${screen?LoadScreening.summary(load):"PULS-designkapacitet: "+capacityClass(p.capacity)}`);
     m.on("click",()=>openPlant(p));

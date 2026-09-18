@@ -1,0 +1,70 @@
+name: QA canonical organization registry
+on:
+  push:
+    paths:
+      - 'labs/spildevandskort/canonical-registry.js'
+      - 'labs/spildevandskort/facility-registry.js'
+      - 'labs/spildevandskort/wastewater-relations.js'
+      - 'labs/spildevandskort/app1.js'
+      - 'labs/spildevandskort/app2.js'
+      - 'labs/spildevandskort/index.html'
+      - 'labs/spildevandskort/profiles.js'
+      - 'labs/spildevandskort/profile-integration.js'
+      - 'labs/spildevandskort/data/model/organization-registry.json'
+      - 'labs/spildevandskort/data/model/facility-registry.json'
+      - 'labs/spildevandskort/data/model/wastewater-relations.json'
+      - 'labs/spildevandskort/data/model/README.md'
+      - 'labs/spildevandskort/README.md'
+      - 'labs/spildevandskort/data/brands.json'
+      - 'scripts/check-canonical-registry.cjs'
+      - 'scripts/check-canonical-ui.cjs'
+      - 'scripts/check-facility-registry.cjs'
+      - 'scripts/check-wastewater-relations.cjs'
+      - '.github/workflows/qa-canonical-registry.yml'
+  pull_request:
+    paths:
+      - 'labs/spildevandskort/canonical-registry.js'
+      - 'labs/spildevandskort/facility-registry.js'
+      - 'labs/spildevandskort/wastewater-relations.js'
+      - 'labs/spildevandskort/app1.js'
+      - 'labs/spildevandskort/app2.js'
+      - 'labs/spildevandskort/index.html'
+      - 'labs/spildevandskort/profiles.js'
+      - 'labs/spildevandskort/profile-integration.js'
+      - 'labs/spildevandskort/data/model/organization-registry.json'
+      - 'labs/spildevandskort/data/model/facility-registry.json'
+      - 'labs/spildevandskort/data/model/wastewater-relations.json'
+      - 'labs/spildevandskort/data/model/README.md'
+      - 'labs/spildevandskort/README.md'
+      - 'labs/spildevandskort/data/brands.json'
+      - 'scripts/check-canonical-registry.cjs'
+      - 'scripts/check-canonical-ui.cjs'
+      - 'scripts/check-facility-registry.cjs'
+      - 'scripts/check-wastewater-relations.cjs'
+      - '.github/workflows/qa-canonical-registry.yml'
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate registry and compatibility adapter
+        run: |
+          set -euo pipefail
+          node --check labs/spildevandskort/canonical-registry.js
+          node --check labs/spildevandskort/facility-registry.js
+          node --check labs/spildevandskort/wastewater-relations.js
+          node --check labs/spildevandskort/app1.js
+          node --check labs/spildevandskort/app2.js
+          node --check labs/spildevandskort/profiles.js
+          node --check labs/spildevandskort/profile-integration.js
+          node --check scripts/check-canonical-registry.cjs
+          node --check scripts/check-canonical-ui.cjs
+          node --check scripts/check-facility-registry.cjs
+          node --check scripts/check-wastewater-relations.cjs
+          node scripts/check-canonical-registry.cjs
+          node scripts/check-canonical-ui.cjs
+          node scripts/check-facility-registry.cjs
+          node scripts/check-wastewater-relations.cjs

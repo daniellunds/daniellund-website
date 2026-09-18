@@ -4,8 +4,17 @@ on:
     paths:
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/app2.js'
+      - 'labs/spildevandskort/canonical-registry.js'
+      - 'labs/spildevandskort/facility-registry.js'
+      - 'labs/spildevandskort/data/model/organization-registry.json'
+      - 'labs/spildevandskort/data/model/facility-registry.json'
+      - 'labs/spildevandskort/app1.js'
+      - 'labs/spildevandskort/wwtp-catchments.js'
+      - 'scripts/check-canonical-colors.cjs'
+      - 'scripts/check-facility-registry.cjs'
       - 'labs/spildevandskort/current-operators.js'
       - 'labs/spildevandskort/profiles.js'
+      - 'labs/spildevandskort/profiles.css'
       - 'labs/spildevandskort/profile-integration.js'
       - 'labs/spildevandskort/coverage-areas.js'
       - 'labs/spildevandskort/basemaps.js'
@@ -16,8 +25,17 @@ on:
     paths:
       - 'labs/spildevandskort/map-colors.js'
       - 'labs/spildevandskort/app2.js'
+      - 'labs/spildevandskort/canonical-registry.js'
+      - 'labs/spildevandskort/facility-registry.js'
+      - 'labs/spildevandskort/data/model/organization-registry.json'
+      - 'labs/spildevandskort/data/model/facility-registry.json'
+      - 'labs/spildevandskort/app1.js'
+      - 'labs/spildevandskort/wwtp-catchments.js'
+      - 'scripts/check-canonical-colors.cjs'
+      - 'scripts/check-facility-registry.cjs'
       - 'labs/spildevandskort/current-operators.js'
       - 'labs/spildevandskort/profiles.js'
+      - 'labs/spildevandskort/profiles.css'
       - 'labs/spildevandskort/profile-integration.js'
       - 'labs/spildevandskort/coverage-areas.js'
       - 'labs/spildevandskort/basemaps.js'
@@ -38,6 +56,8 @@ jobs:
           set -euo pipefail
           test -s labs/spildevandskort/map-colors.js
           test -s labs/spildevandskort/app2.js
+          test -s labs/spildevandskort/facility-registry.js
+          test -s labs/spildevandskort/data/model/facility-registry.json
           test -s labs/spildevandskort/current-operators.js
           test -s labs/spildevandskort/profiles.js
           test -s labs/spildevandskort/profile-integration.js
@@ -45,6 +65,7 @@ jobs:
           grep -q 'map-colors.js' labs/spildevandskort/index.html
           grep -q 'prepareCanonicalColors' labs/spildevandskort/map-colors.js
           grep -q 'canonicalColorPromise' labs/spildevandskort/app2.js
+          grep -q 'facility-registry.js' labs/spildevandskort/index.html
           grep -q 'current-operators.js' labs/spildevandskort/index.html
           grep -q 'osm-grayscale-layer' labs/spildevandskort/basemaps.js
           grep -q 'grayscale(100%)' labs/spildevandskort/basemaps.css
@@ -53,8 +74,12 @@ jobs:
           grep -q 'Energi Viborg Vand' labs/spildevandskort/map-colors.js
           grep -q 'displayName:"VandCenter Syd"' labs/spildevandskort/current-operators.js
           grep -q 'displayName:"AquaDjurs"' labs/spildevandskort/current-operators.js
-          grep -q 'responsible?.color' labs/spildevandskort/app1.js
+          grep -q 'plantPresentationColor(p)' labs/spildevandskort/app1.js
+          node scripts/check-facility-registry.cjs
+          node scripts/check-canonical-colors.cjs
           node --check labs/spildevandskort/map-colors.js
+          node --check labs/spildevandskort/facility-registry.js
+          node --check labs/spildevandskort/app1.js
           node --check labs/spildevandskort/app2.js
           node --check labs/spildevandskort/current-operators.js
           node --check labs/spildevandskort/profiles.js
@@ -87,31 +112,36 @@ jobs:
               await page.wait_for_function("typeof spildevandskortCoverageState==='function' && spildevandskortCoverageState()?.colorQa",timeout=60000)
               await page.wait_for_function("typeof spildevandskortBasemapState==='function' && spildevandskortBasemapState().streetGreyscale===true",timeout=30000)
               cq=await page.evaluate('spildevandskortColorState()')
-              assert cq['strategy']=='current-operator-near-neighbour-max-contrast',cq
+              assert cq['strategy']=='canonical-organization-near-neighbour-max-contrast',cq
               assert cq['basis']=='administrative-coverage-preload',cq
               assert cq['municipalities']==98 and cq['assignedMunicipalities']==98,cq
-              assert cq['neighbourPairs']>40 and cq['operatorGroups']<76,cq
+              assert cq['neighbourPairs']>40 and cq['organizationGroups']==74,cq
+              assert cq['canonicalMappings']==76 and cq['legacyBrandCount']==76,cq
               assert cq['sameColorNeighbourPairs']==0,cq
               assert cq.get('firstPolygonRenderObserved') is True,cq
               assert cq.get('colorReadyBeforeFirstPolygonRender') is True,cq
               din_now=await page.evaluate("state.brandById.get('din-forsyning').color")
               assert cq.get('firstDinForsyningColor')==din_now,(cq,din_now)
               adminq=await page.evaluate('spildevandskortCoverageState().colorQa')
-              assert adminq['strategy']=='current-operator-near-neighbour-max-contrast',adminq
+              assert adminq['strategy']=='canonical-organization-near-neighbour-max-contrast',adminq
               assert adminq['basis']=='administrative-coverage-preload',adminq
               assert adminq['sameColorNeighbourPairs']==0,adminq
-              assert adminq['sameOperatorNeighbourPairs']>=2,adminq
-              colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color,ev:state.brandById.get('energi-viborg-vand').color,ib:state.brandById.get('ikast-brande-spildevand').color})")
+              assert adminq['sameOrganizationNeighbourPairs']>=2,adminq
+              colors=await page.evaluate("({nf:state.brandById.get('nordfyns-forsyning').color,vcs:state.brandById.get('vandcenter-syd').color,sd:state.brandById.get('syddjurs-spildevand').color,ad:state.brandById.get('aquadjurs').color,ev:state.brandById.get('energi-viborg-vand').color,ib:state.brandById.get('ikast-brande-spildevand').color,vcsOrg:state.brandById.get('vandcenter-syd').organizationId,nfOrg:state.brandById.get('nordfyns-forsyning').organizationId})")
               assert colors['nf']==colors['vcs'],colors
+              assert colors['vcsOrg']==colors['nfOrg']=='org:vandcenter-syd',colors
               assert colors['sd']==colors['ad'],colors
               assert colors['ev']!=colors['ib'],colors
               palette=set(adminq['palette'])
-              assert all(v in palette for v in colors.values()),colors
+              assert all(colors[key] in palette for key in ['nf','vcs','sd','ad','ev','ib']),colors
               await page.locator('#search').fill('VandCenter Syd');await page.wait_for_timeout(250)
               assert await page.locator('.brand-row').count()==1
               assert 'VandCenter Syd' in await page.locator('.brand-row').first.inner_text()
+              vcs_css=await page.locator('.brand-row .brand-swatch').first.evaluate("el=>getComputedStyle(el).backgroundColor")
               await page.locator('.brand-row .row-profile-open').first.click()
               assert (await page.locator('.profile-head h2').inner_text()).strip()=='VandCenter Syd'
+              assert await page.locator('.profile-head').get_attribute('data-organization-id')=='org:vandcenter-syd'
+              assert await page.locator('.profile-head .profile-color').evaluate("el=>getComputedStyle(el).backgroundColor")==vcs_css
               owner_text=await page.locator('.profile-head .detail-owner').inner_text()
               assert 'Odense' in owner_text and 'Nordfyns' in owner_text,owner_text
               await page.locator('#closeDetail').click()
@@ -125,7 +155,7 @@ jobs:
               await page.locator('#closeDetail').click()
               await page.locator('#search').fill('')
               silkeborg=await page.evaluate("""()=>{
-                const id='silkeborg-forsyning', brand=state.brandById.get(id)?.color;
+                const id='silkeborg-forsyning', organizationId='org:silkeborg-forsyning', brand=state.organizationColors.get(organizationId);
                 let adminFill=null,adminStroke=null,catchmentFill=null,catchmentStroke=null,plantFill=null;
                 state.coverageLayer?.eachLayer(l=>{
                   const p=l.feature?.properties||{},name=p.navn||p.name||p.NAVN||'';
@@ -134,18 +164,33 @@ jobs:
                 state.polygonLayer?.eachLayer(l=>{
                   if(l.feature?.properties?.brandId===id&&!catchmentFill){catchmentFill=l.options?.fillColor||null;catchmentStroke=l.options?.color||null;}
                 });
-                const mappedPlantCount=state.plants.filter(p=>p.responsibleBrandId===id&&p.active&&Array.isArray(p.coordinates)).length;
+                const mappedPlantCount=state.plants.filter(p=>p.organizationId===organizationId&&p.active&&Array.isArray(p.coordinates)).length;
                 let matchingPlantMarkers=0;
                 state.plantLayer?.eachLayer(l=>{if(l.options?.fillColor===brand)matchingPlantMarkers++;});
                 plantFill=matchingPlantMarkers>0?brand:null;
-                return {brand,adminFill,adminStroke,catchmentFill,catchmentStroke,plantFill,matchingPlantMarkers,mappedPlantCount};
+                const catchmentOrganizationIds=[...new Set(state.features.filter(f=>f.properties?.brandId===id).map(f=>f.properties?.organizationId))];
+                const plantOrganizationIds=[...new Set(state.plants.filter(p=>p.responsibleBrandId===id).map(p=>p.organizationId))];
+                return {brand,organizationId,adminFill,adminStroke,catchmentFill,catchmentStroke,plantFill,matchingPlantMarkers,mappedPlantCount,catchmentOrganizationIds,plantOrganizationIds};
               }""")
               assert silkeborg['brand'],silkeborg
+              assert silkeborg['catchmentOrganizationIds']==['org:silkeborg-forsyning'],silkeborg
+              if silkeborg['plantOrganizationIds']: assert silkeborg['plantOrganizationIds']==['org:silkeborg-forsyning'],silkeborg
               assert silkeborg['adminFill']==silkeborg['brand'],silkeborg
               assert silkeborg['adminStroke']==silkeborg['brand'],silkeborg
               assert silkeborg['catchmentFill']==silkeborg['brand'],silkeborg
               assert silkeborg['catchmentStroke']==silkeborg['brand'],silkeborg
               if silkeborg['mappedPlantCount']>0: assert silkeborg['plantFill']==silkeborg['brand'],silkeborg
+              facility=await page.evaluate("""()=>{
+                const ids={damhusMain:'Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f',damhusTechnical:'Renseanlaeg.1542048b-26b1-415a-8b0f-28effaef0c41',moelle:'Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c',raekkehuse:'Renseanlaeg.f30e0031-62be-4312-9a23-c0135fe921e2'};
+                const row=id=>state.plants.find(p=>p.sourceRecordId===id)||null;
+                return {registry:state.facilityRegistry?.counts,damhusMain:row(ids.damhusMain),damhusTechnical:row(ids.damhusTechnical),moelle:row(ids.moelle),raekkehuse:row(ids.raekkehuse)};
+              }""")
+              assert facility['registry']['facilities']==27 and facility['registry']['sourceRecords']==28,facility
+              if facility['damhusMain'] and facility['damhusTechnical']:
+                  assert facility['damhusMain']['facilityId']==facility['damhusTechnical']['facilityId']=='facility:biofos-damhusaaen',facility
+                  assert facility['damhusMain']['organizationId']=='org:biofos',facility
+              if facility['moelle']: assert facility['moelle']['organizationId']=='org:moelleaavaerket',facility
+              if facility['raekkehuse']: assert facility['raekkehuse']['facilityId'] is None and facility['raekkehuse']['facilityMappingStatus']=='unresolved',facility
               bq=await page.evaluate('spildevandskortBasemapState()')
               assert bq['active']=='Kort' and bq['streetGreyscale'] is True,bq
               filter_value=await page.locator('.osm-grayscale-layer').evaluate("el=>getComputedStyle(el).filter");assert filter_value!='none',filter_value

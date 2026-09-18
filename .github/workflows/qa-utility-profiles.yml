@@ -24,8 +24,14 @@ jobs:
           test -s labs/spildevandskort/profile-integration.js
           test -s labs/spildevandskort/profiles.css
           test -s labs/spildevandskort/data/utility-profiles-index.json
+          test -s labs/spildevandskort/wastewater-relations.js
+          test -s labs/spildevandskort/data/model/wastewater-relations.json
           node --check labs/spildevandskort/profiles.js
           node --check labs/spildevandskort/profile-integration.js
+          node --check labs/spildevandskort/wastewater-relations.js
+          node --check scripts/check-wastewater-relations.cjs
+          node scripts/check-facility-registry.cjs
+          node scripts/check-wastewater-relations.cjs
           python - <<'PY'
           import json,re
           from pathlib import Path
@@ -42,7 +48,7 @@ jobs:
               overlap=set(profiles)&set(data.get('profiles',{}))
               assert not overlap,('duplicate profile ids',overlap)
               profiles.update(data.get('profiles',{}))
-          assert len(profiles)>=74, len(profiles)
+          assert len(profiles)>=76, len(profiles)
           assert set(profiles)<=valid, set(profiles)-valid
           required={
             'din-forsyning','fors','envafors','aquadjurs','arwos','bluekolding','vandmiljoe-randers','silkeborg-forsyning','samn-forsyning','vejle-spildevand',
@@ -51,7 +57,7 @@ jobs:
             'faxe-forsyning','ffv','gribskov-forsyning','guldborgsund-forsyning','fredensborg-forsyning','halsnaes-forsyning','ishoej-forsyning','jammerbugt-forsyning','kerteminde-forsyning','fanoe-vand',
             'glostrup-forsyning','taarnby-forsyning','ltf','lolland-forsyning','odsherred-forsyning','ringsted-forsyning','vordingborg-forsyning','langeland-forsyning','middelfart-spildevand','nordfyns-forsyning',
             'favrskov-forsyning','lemvig-vand','mariagerfjord-vand','morsoe-forsyning','nyborg-forsyning','rebild-forsyning','rksk-forsyning','samsoe-spildevand','skive-vand','sonfor',
-            'struer-energi','syddjurs-spildevand','thisted-vand','toender-forsyning','vand-og-affald','vejen-forsyning','vesthimmerlands-vand','aeroe-forsyning'
+            'struer-energi','syddjurs-spildevand','thisted-vand','toender-forsyning','vand-og-affald','vejen-forsyning','vesthimmerlands-vand','aeroe-forsyning','laesoe-forsyning','moelleaavaerket'
           }
           assert required<=set(profiles),required-set(profiles)
           url_re=re.compile(r'^https://[^\s]+$')
@@ -104,6 +110,8 @@ jobs:
               r=await page.goto(os.environ['MAP_URL'],wait_until='domcontentloaded',timeout=60000)
               assert r and r.ok,r.status if r else None
               await page.wait_for_function("state.profiles && state.profiles.size>=74",timeout=30000)
+              await page.wait_for_function("typeof spildevandskortCanonicalUiState==='function' && spildevandskortCanonicalUiState().parity.matches===76",timeout=30000)
+              await page.wait_for_function("state.wastewaterRelations?.counts?.auditedOrganizations===10",timeout=30000)
               await page.wait_for_function("Number(document.querySelector('#activePlantCount')?.textContent)>700",timeout=60000)
 
               # Regression: batch 1.
@@ -122,6 +130,20 @@ jobs:
               assert '87 58 19 00' in await page.locator('#detailContent').inner_text()
               await page.locator('[data-profile-tab="projects"]').click()
               assert 'Fornæs Renseanlæg' in await page.locator('#profileTabBody').inner_text()
+              await page.locator('#closeDetail').click()
+
+              # Historical names resolve to the one canonical organization/profile.
+              await page.locator('#search').fill('Nordfyns Forsyning')
+              await page.wait_for_selector('.brand-row[data-organization-id="org:vandcenter-syd"] .profile-mini')
+              assert await page.locator('.brand-row[data-organization-id="org:vandcenter-syd"]').count()==1
+              await page.locator('.brand-row[data-organization-id="org:vandcenter-syd"] .profile-mini').click()
+              assert 'VandCenter Syd' in await page.locator('.profile-head h2').inner_text()
+              await page.locator('#closeDetail').click()
+              await page.locator('#search').fill('Syddjurs Spildevand')
+              await page.wait_for_selector('.brand-row[data-organization-id="org:aquadjurs"] .profile-mini')
+              assert await page.locator('.brand-row[data-organization-id="org:aquadjurs"]').count()==1
+              await page.locator('.brand-row[data-organization-id="org:aquadjurs"] .profile-mini').click()
+              assert 'AquaDjurs' in await page.locator('.profile-head h2').inner_text()
               await page.locator('#closeDetail').click()
 
               # Regression: batch 3.
@@ -198,10 +220,50 @@ jobs:
                   assert await page.locator(f'.brand-row[data-brand-id="{bid}"]').count()==1,(query,bid)
                   await page.locator(f'.brand-row[data-brand-id="{bid}"] .profile-mini').click()
                   assert (await page.locator('.profile-head h2').inner_text()).strip()==expected,(query,expected)
-                  overview=await page.locator('#profileTabBody').inner_text()
-                  overview_lower=overview.lower()
-                  assert 'renseanlægsrelationer' in overview_lower and 'afventer særskilt verificering' in overview_lower,overview
-                  assert 'aktive renseanlæg' not in overview_lower,overview
+                  section=page.locator('.wastewater-semantics')
+                  assert await section.get_attribute('data-wastewater-audit-status')=='not-audited',(query,expected)
+                  facts=await section.locator('.fact').evaluate_all("els=>Object.fromEntries(els.map(el=>[el.querySelector('span')?.textContent.trim(),el.querySelector('strong')?.textContent.trim()]))")
+                  assert facts.get('Egne/driftede aktive renseanlæg')=='Ikke verificeret',(query,facts)
+                  await page.locator('#closeDetail').click()
+
+              # Delopgave 8 list semantics: owner-only, routed and unaudited cases.
+              await page.locator('#search').fill('BIOFOS')
+              await page.wait_for_selector('.brand-row[data-organization-id="org:biofos"]')
+              row_text=await page.locator('.brand-row[data-organization-id="org:biofos"]').inner_text()
+              assert 'Anlægsejer · uden eget oplandslag' in row_text and '3 egne/driftede renseanlæg' in row_text,row_text
+              await page.locator('#search').fill('Frederiksberg Forsyning')
+              await page.wait_for_selector('.brand-row[data-organization-id="org:frederiksberg-forsyning"]')
+              row_text=await page.locator('.brand-row[data-organization-id="org:frederiksberg-forsyning"]').inner_text()
+              assert '0 egne/driftede renseanlæg' in row_text and 'Behandles hos BIOFOS' in row_text,row_text
+              await page.locator('#search').fill('Silkeborg Forsyning')
+              await page.wait_for_selector('.brand-row[data-organization-id="org:silkeborg-forsyning"]')
+              assert 'Anlægstal ikke verificeret' in await page.locator('.brand-row[data-organization-id="org:silkeborg-forsyning"]').inner_text()
+
+              # Delopgave 8: broad profile sample covers every audited relation case
+              # plus one deliberately unaudited organization. Counts are read from
+              # labelled facts, not inferred from PULS source-record totals.
+              cases=[
+                  ('org:biofos','verified','3',['Fælles renseorganisation','Renseanlæg Lynetten','Renseanlæg Damhusåen','Spildevandscenter Avedøre']),
+                  ('org:aarhus-vand','verified','4',['Netforsyning · driver renseanlæg']),
+                  ('org:vandcenter-syd','verified','8',['Netforsyning · driver renseanlæg']),
+                  ('org:aquadjurs','verified','10',['Netforsyning · driver renseanlæg']),
+                  ('org:moelleaavaerket','verified','1',['Fælles renseorganisation']),
+                  ('org:frederiksberg-forsyning','verified','0',['BIOFOS · Renseanlæg Lynetten','BIOFOS · Renseanlæg Damhusåen']),
+                  ('org:glostrup-forsyning','verified','0',['BIOFOS · Spildevandscenter Avedøre']),
+                  ('org:ishoej-forsyning','verified','0',['BIOFOS · præcis anlægsfordeling ikke verificeret']),
+                  ('org:ltf','verified','0',['Mølleåværket','BIOFOS · dele af kommunen','medejer af Mølleåværket']),
+                  ('org:fanoe-vand','verified','0',['DIN Forsyning · Renseanlæg Øst']),
+                  ('org:silkeborg-forsyning','not-audited','Ikke verificeret',['roller ikke fuldt auditeret'])
+              ]
+              for organization_id,audit_status,expected_count,snippets in cases:
+                  await page.evaluate("id=>openBrandProfile(id)",organization_id)
+                  section=page.locator('.wastewater-semantics')
+                  assert await section.get_attribute('data-wastewater-audit-status')==audit_status,organization_id
+                  facts=await section.locator('.fact').evaluate_all("els=>Object.fromEntries(els.map(el=>[el.querySelector('span')?.textContent.trim(),el.querySelector('strong')?.textContent.trim()]))")
+                  assert facts.get('Egne/driftede aktive renseanlæg')==expected_count,(organization_id,facts)
+                  text=await section.inner_text()
+                  assert 'Aktive PULS-poster' in text,(organization_id,text)
+                  for snippet in snippets: assert snippet in text,(organization_id,snippet,text)
                   await page.locator('#closeDetail').click()
 
               assert not errors,errors
