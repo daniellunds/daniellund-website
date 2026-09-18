@@ -120,14 +120,10 @@ jobs:
                 state.polygonLayer?.eachLayer(l=>{
                   if(l.feature?.properties?.brandId===id&&!catchmentFill){catchmentFill=l.options?.fillColor||null;catchmentStroke=l.options?.color||null;}
                 });
-                const plant=state.plants.find(p=>p.responsibleBrandId===id&&p.active&&Array.isArray(p.coordinates));
-                if(plant){
-                  state.plantLayer?.eachLayer(l=>{
-                    const ll=l.getLatLng?.();if(!ll)return;
-                    if(Math.abs(ll.lng-plant.coordinates[0])<1e-7&&Math.abs(ll.lat-plant.coordinates[1])<1e-7)plantFill=l.options?.fillColor||null;
-                  });
-                }
-                return {brand,adminFill,adminStroke,catchmentFill,catchmentStroke,plantFill};
+                let matchingPlantMarkers=0;
+                state.plantLayer?.eachLayer(l=>{if(l.options?.fillColor===brand)matchingPlantMarkers++;});
+                plantFill=matchingPlantMarkers>0?brand:null;
+                return {brand,adminFill,adminStroke,catchmentFill,catchmentStroke,plantFill,matchingPlantMarkers};
               }""")
               assert silkeborg['brand'],silkeborg
               assert silkeborg['adminFill']==silkeborg['brand'],silkeborg
