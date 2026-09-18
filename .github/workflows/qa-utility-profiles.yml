@@ -230,7 +230,7 @@ jobs:
               await page.locator('#search').fill('BIOFOS')
               await page.wait_for_selector('.brand-row[data-organization-id="org:biofos"]')
               row_text=await page.locator('.brand-row[data-organization-id="org:biofos"]').inner_text()
-              assert 'Anlægsejer · uden eget oplandslag' in row_text and '3 egne/driftede renseanlæg' in row_text,row_text
+              assert 'Fælles renseorganisation' in row_text and '3 egne/driftede renseanlæg' in row_text,row_text
               await page.locator('#search').fill('Frederiksberg Forsyning')
               await page.wait_for_selector('.brand-row[data-organization-id="org:frederiksberg-forsyning"]')
               row_text=await page.locator('.brand-row[data-organization-id="org:frederiksberg-forsyning"]').inner_text()

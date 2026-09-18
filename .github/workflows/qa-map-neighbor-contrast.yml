@@ -111,6 +111,7 @@ jobs:
               await page.wait_for_function("typeof spildevandskortColorState==='function' && spildevandskortColorState()?.neighbourPairs>0",timeout=60000)
               await page.wait_for_function("typeof spildevandskortCoverageState==='function' && spildevandskortCoverageState()?.colorQa",timeout=60000)
               await page.wait_for_function("typeof spildevandskortBasemapState==='function' && spildevandskortBasemapState().streetGreyscale===true",timeout=30000)
+              await page.wait_for_function("spildevandskortColorState()?.firstPolygonRenderObserved===true",timeout=60000)
               cq=await page.evaluate('spildevandskortColorState()')
               assert cq['strategy']=='canonical-organization-near-neighbour-max-contrast',cq
               assert cq['basis']=='administrative-coverage-preload',cq
