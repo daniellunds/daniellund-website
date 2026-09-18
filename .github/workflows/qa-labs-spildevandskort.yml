@@ -22,6 +22,15 @@ jobs:
           set -euo pipefail
           test -s labs/spildevandskort/index.html
           test -s labs/spildevandskort/styles.css
+          test -s labs/spildevandskort/fonts/SwecoSans-Regular.woff2
+          test -s labs/spildevandskort/fonts/SwecoSans-Medium.woff2
+          test -s labs/spildevandskort/fonts/SwecoSans-Italic.woff2
+          grep -q 'font-family:"Sweco Sans"' labs/spildevandskort/styles.css
+          grep -q 'SwecoSans-Regular.woff2' labs/spildevandskort/styles.css
+          grep -q 'SwecoSans-Medium.woff2' labs/spildevandskort/styles.css
+          grep -q 'SwecoSans-Italic.woff2' labs/spildevandskort/styles.css
+          grep -q 'SwecoSans-Regular.woff2' labs/spildevandskort/index.html
+          grep -q 'SwecoSans-Medium.woff2' labs/spildevandskort/index.html
           test -s labs/spildevandskort/app1.js
           test -s labs/spildevandskort/app2.js
           test -s labs/spildevandskort/projects.js
@@ -44,6 +53,11 @@ jobs:
           import json, gzip
           from pathlib import Path
           root=Path('labs/spildevandskort/data')
+          font_root=Path('labs/spildevandskort/fonts')
+          for name in ['SwecoSans-Regular.woff2','SwecoSans-Medium.woff2','SwecoSans-Italic.woff2']:
+              raw=(font_root/name).read_bytes()
+              assert raw[:4]==b'wOF2',(name,raw[:4])
+              assert len(raw)>5000,(name,len(raw))
           b=json.loads((root/'brands.json').read_text())
           meta=json.loads((root/'spildevandsoplande-meta.json').read_text())
           loc=json.loads((root/'project-locations.json').read_text())
@@ -112,6 +126,19 @@ jobs:
               await page.wait_for_function("document.querySelectorAll('#map .leaflet-interactive').length>100",timeout=60000)
               await page.wait_for_function("Number(document.querySelector('#activePlantCount')?.textContent)>0",timeout=60000)
               await page.wait_for_timeout(1000)
+
+              await page.wait_for_function("""async()=>{await document.fonts.ready;return [...document.fonts].some(f=>f.family.replace(/['"]/g,'')==='Sweco Sans'&&f.status==='loaded')}""",timeout=15000)
+              font_qa=await page.evaluate("""() => ({
+                body:getComputedStyle(document.body).fontFamily,
+                heading:getComputedStyle(document.querySelector('.brand-header h1')).fontFamily,
+                tab:getComputedStyle(document.querySelector('.tab')).fontFamily,
+                leaflet:getComputedStyle(document.querySelector('.leaflet-control-zoom-in')).fontFamily,
+                loaded:[...document.fonts].filter(f=>f.family.replace(/['"]/g,'')==='Sweco Sans'&&f.status==='loaded').map(f=>({weight:f.weight,style:f.style}))
+              })""")
+              for key in ['body','heading','tab','leaflet']:
+                  assert 'Sweco Sans' in font_qa[key],(key,font_qa)
+              assert any(x['weight']=='400' and x['style']=='normal' for x in font_qa['loaded']),font_qa
+              assert any(('500' in x['weight'] or '500 900' in x['weight']) and x['style']=='normal' for x in font_qa['loaded']),font_qa
 
               brands=int((await page.locator('#brandCount').inner_text()).strip())
               plants=int(re.sub(r'\D','',await page.locator('#activePlantCount').inner_text()) or 0)
@@ -236,7 +263,7 @@ jobs:
                   assert overflow <= 3, f'horizontal overflow={overflow}px'
 
               await page.screenshot(path=f'qa-{label}.png',full_page=True)
-              print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} withheld={geo["withheld"]} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])}')
+              print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} withheld={geo["withheld"]} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])} font={font_qa["body"]}')
               await context.close()
 
           async def main():
