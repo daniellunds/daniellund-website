@@ -105,14 +105,30 @@ jobs:
               assert 'Rebekka Nymark' in await page.locator('#profileTabBody').inner_text()
               await page.locator('#closeDetail').click()
 
-              # Regression: batch 2.
+              # Regression: batch 2 + merged current operator identity.
               await page.locator('#search').fill('AquaDjurs')
               await page.wait_for_selector('.brand-row[data-brand-id="aquadjurs"] .profile-mini')
+              assert await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').count()==1
               await page.locator('.brand-row[data-brand-id="aquadjurs"] .profile-mini').click()
-              assert '87 58 19 00' in await page.locator('#detailContent').inner_text()
+              aqua_overview=await page.locator('#detailContent').inner_text()
+              assert '87 58 19 00' in aqua_overview and 'Norddjurs' in aqua_overview and 'Syddjurs' in aqua_overview,aqua_overview
+              assert 'Syddjurs Spildevand' not in aqua_overview,aqua_overview
               await page.locator('[data-profile-tab="projects"]').click()
               assert 'Fornæs Renseanlæg' in await page.locator('#profileTabBody').inner_text()
               await page.locator('#closeDetail').click()
+              await page.locator('#search').fill('Syddjurs Spildevand');await page.wait_for_timeout(150)
+              assert await page.locator('.brand-row[data-current-operator-id="aquadjurs"]').count()==1
+
+              # Current operator merge: Nordfyns legacy label is one VandCenter Syd profile.
+              await page.locator('#search').fill('VandCenter Syd');await page.wait_for_timeout(150)
+              assert await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').count()==1
+              await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"] .profile-mini').click()
+              vcs_overview=await page.locator('#detailContent').inner_text()
+              assert 'VandCenter Syd' in vcs_overview and 'Odense' in vcs_overview and 'Nordfyns' in vcs_overview,vcs_overview
+              assert 'Nordfyns Forsyning' not in vcs_overview,vcs_overview
+              await page.locator('#closeDetail').click()
+              await page.locator('#search').fill('Nordfyns Forsyning');await page.wait_for_timeout(150)
+              assert await page.locator('.brand-row[data-current-operator-id="vandcenter-syd"]').count()==1
 
               # Regression: batch 3.
               await page.locator('#search').fill('Energi Viborg Vand')
