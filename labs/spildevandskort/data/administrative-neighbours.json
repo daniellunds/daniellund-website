@@ -1,0 +1,643 @@
+{
+  "schemaVersion": 1,
+  "source": "Dataforsyningen municipality geometry cached in data/municipalities.geojson",
+  "sourceGeometrySha": "379908ef49eb53a897d7e348476e2a8130cbdbe6",
+  "generatedAt": "2026-09-18",
+  "method": "Administrative areas are neighbours when their official municipality boundaries share at least 2 coordinate vertices after quantization to 0.0001 degrees. Multiple municipalities assigned to the same stable utility ID are collapsed.",
+  "quantizationDegrees": 0.0001,
+  "minimumSharedVertices": 2,
+  "municipalityCount": 98,
+  "pairCount": 126,
+  "pairs": [
+    {
+      "a": "aalborg-forsyning",
+      "b": "broenderslev-forsyning",
+      "sharedVertices": 2450
+    },
+    {
+      "a": "aalborg-forsyning",
+      "b": "jammerbugt-forsyning",
+      "sharedVertices": 1011
+    },
+    {
+      "a": "aalborg-forsyning",
+      "b": "mariagerfjord-vand",
+      "sharedVertices": 180
+    },
+    {
+      "a": "aalborg-forsyning",
+      "b": "rebild-forsyning",
+      "sharedVertices": 3328
+    },
+    {
+      "a": "aalborg-forsyning",
+      "b": "vesthimmerlands-vand",
+      "sharedVertices": 1980
+    },
+    {
+      "a": "aarhus-vand",
+      "b": "favrskov-forsyning",
+      "sharedVertices": 1559
+    },
+    {
+      "a": "aarhus-vand",
+      "b": "samn-forsyning",
+      "sharedVertices": 1325
+    },
+    {
+      "a": "aarhus-vand",
+      "b": "skanderborg-forsyning",
+      "sharedVertices": 2195
+    },
+    {
+      "a": "aarhus-vand",
+      "b": "syddjurs-spildevand",
+      "sharedVertices": 1124
+    },
+    {
+      "a": "aquadjurs",
+      "b": "syddjurs-spildevand",
+      "sharedVertices": 2896
+    },
+    {
+      "a": "aquadjurs",
+      "b": "vandmiljoe-randers",
+      "sharedVertices": 684
+    },
+    {
+      "a": "arwos",
+      "b": "provas",
+      "sharedVertices": 1351
+    },
+    {
+      "a": "arwos",
+      "b": "sonfor",
+      "sharedVertices": 2515
+    },
+    {
+      "a": "arwos",
+      "b": "toender-forsyning",
+      "sharedVertices": 2672
+    },
+    {
+      "a": "assens-forsyning",
+      "b": "ffv",
+      "sharedVertices": 2084
+    },
+    {
+      "a": "assens-forsyning",
+      "b": "middelfart-spildevand",
+      "sharedVertices": 1224
+    },
+    {
+      "a": "assens-forsyning",
+      "b": "nordfyns-forsyning",
+      "sharedVertices": 608
+    },
+    {
+      "a": "assens-forsyning",
+      "b": "vandcenter-syd",
+      "sharedVertices": 1914
+    },
+    {
+      "a": "billund-vand-energi",
+      "b": "din-forsyning",
+      "sharedVertices": 2004
+    },
+    {
+      "a": "billund-vand-energi",
+      "b": "herning-vand",
+      "sharedVertices": 309
+    },
+    {
+      "a": "billund-vand-energi",
+      "b": "ikast-brande-spildevand",
+      "sharedVertices": 1061
+    },
+    {
+      "a": "billund-vand-energi",
+      "b": "rksk-forsyning",
+      "sharedVertices": 647
+    },
+    {
+      "a": "billund-vand-energi",
+      "b": "vejen-forsyning",
+      "sharedVertices": 1355
+    },
+    {
+      "a": "billund-vand-energi",
+      "b": "vejle-spildevand",
+      "sharedVertices": 1214
+    },
+    {
+      "a": "bluekolding",
+      "b": "fredericia-spildevand",
+      "sharedVertices": 783
+    },
+    {
+      "a": "bluekolding",
+      "b": "provas",
+      "sharedVertices": 2552
+    },
+    {
+      "a": "bluekolding",
+      "b": "vejen-forsyning",
+      "sharedVertices": 2605
+    },
+    {
+      "a": "bluekolding",
+      "b": "vejle-spildevand",
+      "sharedVertices": 1794
+    },
+    {
+      "a": "broenderslev-forsyning",
+      "b": "frederikshavn-forsyning",
+      "sharedVertices": 2627
+    },
+    {
+      "a": "broenderslev-forsyning",
+      "b": "hjoerring-vandselskab",
+      "sharedVertices": 1854
+    },
+    {
+      "a": "broenderslev-forsyning",
+      "b": "jammerbugt-forsyning",
+      "sharedVertices": 544
+    },
+    {
+      "a": "din-forsyning",
+      "b": "provas",
+      "sharedVertices": 1153
+    },
+    {
+      "a": "din-forsyning",
+      "b": "rksk-forsyning",
+      "sharedVertices": 2347
+    },
+    {
+      "a": "din-forsyning",
+      "b": "toender-forsyning",
+      "sharedVertices": 1068
+    },
+    {
+      "a": "din-forsyning",
+      "b": "vejen-forsyning",
+      "sharedVertices": 3404
+    },
+    {
+      "a": "energi-viborg-vand",
+      "b": "favrskov-forsyning",
+      "sharedVertices": 924
+    },
+    {
+      "a": "energi-viborg-vand",
+      "b": "herning-vand",
+      "sharedVertices": 2519
+    },
+    {
+      "a": "energi-viborg-vand",
+      "b": "ikast-brande-spildevand",
+      "sharedVertices": 1662
+    },
+    {
+      "a": "energi-viborg-vand",
+      "b": "mariagerfjord-vand",
+      "sharedVertices": 1877
+    },
+    {
+      "a": "energi-viborg-vand",
+      "b": "silkeborg-forsyning",
+      "sharedVertices": 2138
+    },
+    {
+      "a": "energi-viborg-vand",
+      "b": "skive-vand",
+      "sharedVertices": 1953
+    },
+    {
+      "a": "energi-viborg-vand",
+      "b": "vandmiljoe-randers",
+      "sharedVertices": 404
+    },
+    {
+      "a": "energi-viborg-vand",
+      "b": "vestforsyning",
+      "sharedVertices": 640
+    },
+    {
+      "a": "energi-viborg-vand",
+      "b": "vesthimmerlands-vand",
+      "sharedVertices": 1423
+    },
+    {
+      "a": "envafors",
+      "b": "faxe-forsyning",
+      "sharedVertices": 1649
+    },
+    {
+      "a": "envafors",
+      "b": "fors",
+      "sharedVertices": 1393
+    },
+    {
+      "a": "envafors",
+      "b": "kalundborg-forsyning",
+      "sharedVertices": 2012
+    },
+    {
+      "a": "envafors",
+      "b": "ringsted-forsyning",
+      "sharedVertices": 1836
+    },
+    {
+      "a": "envafors",
+      "b": "vordingborg-forsyning",
+      "sharedVertices": 983
+    },
+    {
+      "a": "favrskov-forsyning",
+      "b": "silkeborg-forsyning",
+      "sharedVertices": 2029
+    },
+    {
+      "a": "favrskov-forsyning",
+      "b": "skanderborg-forsyning",
+      "sharedVertices": 411
+    },
+    {
+      "a": "favrskov-forsyning",
+      "b": "syddjurs-spildevand",
+      "sharedVertices": 842
+    },
+    {
+      "a": "favrskov-forsyning",
+      "b": "vandmiljoe-randers",
+      "sharedVertices": 2473
+    },
+    {
+      "a": "faxe-forsyning",
+      "b": "klar-forsyning",
+      "sharedVertices": 2161
+    },
+    {
+      "a": "faxe-forsyning",
+      "b": "ringsted-forsyning",
+      "sharedVertices": 284
+    },
+    {
+      "a": "ffv",
+      "b": "kerteminde-forsyning",
+      "sharedVertices": 161
+    },
+    {
+      "a": "ffv",
+      "b": "nyborg-forsyning",
+      "sharedVertices": 1919
+    },
+    {
+      "a": "ffv",
+      "b": "vand-og-affald",
+      "sharedVertices": 2523
+    },
+    {
+      "a": "ffv",
+      "b": "vandcenter-syd",
+      "sharedVertices": 1892
+    },
+    {
+      "a": "fors",
+      "b": "htk-forsyning",
+      "sharedVertices": 789
+    },
+    {
+      "a": "fors",
+      "b": "kalundborg-forsyning",
+      "sharedVertices": 1169
+    },
+    {
+      "a": "fors",
+      "b": "klar-forsyning",
+      "sharedVertices": 1633
+    },
+    {
+      "a": "fors",
+      "b": "novafos",
+      "sharedVertices": 1717
+    },
+    {
+      "a": "fors",
+      "b": "odsherred-forsyning",
+      "sharedVertices": 258
+    },
+    {
+      "a": "fors",
+      "b": "ringsted-forsyning",
+      "sharedVertices": 966
+    },
+    {
+      "a": "forsyning-helsingoer",
+      "b": "fredensborg-forsyning",
+      "sharedVertices": 647
+    },
+    {
+      "a": "forsyning-helsingoer",
+      "b": "gribskov-forsyning",
+      "sharedVertices": 577
+    },
+    {
+      "a": "fredensborg-forsyning",
+      "b": "gribskov-forsyning",
+      "sharedVertices": 13
+    },
+    {
+      "a": "fredensborg-forsyning",
+      "b": "hilleroed-forsyning",
+      "sharedVertices": 435
+    },
+    {
+      "a": "fredensborg-forsyning",
+      "b": "novafos",
+      "sharedVertices": 717
+    },
+    {
+      "a": "fredericia-spildevand",
+      "b": "vejle-spildevand",
+      "sharedVertices": 1280
+    },
+    {
+      "a": "frederiksberg-forsyning",
+      "b": "hofor",
+      "sharedVertices": 743
+    },
+    {
+      "a": "frederikshavn-forsyning",
+      "b": "hjoerring-vandselskab",
+      "sharedVertices": 3760
+    },
+    {
+      "a": "glostrup-forsyning",
+      "b": "hofor",
+      "sharedVertices": 807
+    },
+    {
+      "a": "glostrup-forsyning",
+      "b": "novafos",
+      "sharedVertices": 285
+    },
+    {
+      "a": "gribskov-forsyning",
+      "b": "halsnaes-forsyning",
+      "sharedVertices": 202
+    },
+    {
+      "a": "gribskov-forsyning",
+      "b": "hilleroed-forsyning",
+      "sharedVertices": 624
+    },
+    {
+      "a": "guldborgsund-forsyning",
+      "b": "lolland-forsyning",
+      "sharedVertices": 637
+    },
+    {
+      "a": "halsnaes-forsyning",
+      "b": "hilleroed-forsyning",
+      "sharedVertices": 477
+    },
+    {
+      "a": "halsnaes-forsyning",
+      "b": "novafos",
+      "sharedVertices": 214
+    },
+    {
+      "a": "hedensted-spildevand",
+      "b": "ikast-brande-spildevand",
+      "sharedVertices": 724
+    },
+    {
+      "a": "hedensted-spildevand",
+      "b": "samn-forsyning",
+      "sharedVertices": 3021
+    },
+    {
+      "a": "hedensted-spildevand",
+      "b": "vejle-spildevand",
+      "sharedVertices": 2876
+    },
+    {
+      "a": "herning-vand",
+      "b": "ikast-brande-spildevand",
+      "sharedVertices": 3595
+    },
+    {
+      "a": "herning-vand",
+      "b": "rksk-forsyning",
+      "sharedVertices": 3589
+    },
+    {
+      "a": "herning-vand",
+      "b": "vestforsyning",
+      "sharedVertices": 2490
+    },
+    {
+      "a": "hilleroed-forsyning",
+      "b": "novafos",
+      "sharedVertices": 1502
+    },
+    {
+      "a": "hjoerring-vandselskab",
+      "b": "jammerbugt-forsyning",
+      "sharedVertices": 270
+    },
+    {
+      "a": "hofor",
+      "b": "htk-forsyning",
+      "sharedVertices": 461
+    },
+    {
+      "a": "hofor",
+      "b": "ishoej-forsyning",
+      "sharedVertices": 235
+    },
+    {
+      "a": "hofor",
+      "b": "novafos",
+      "sharedVertices": 2058
+    },
+    {
+      "a": "hofor",
+      "b": "taarnby-forsyning",
+      "sharedVertices": 703
+    },
+    {
+      "a": "htk-forsyning",
+      "b": "ishoej-forsyning",
+      "sharedVertices": 380
+    },
+    {
+      "a": "htk-forsyning",
+      "b": "klar-forsyning",
+      "sharedVertices": 185
+    },
+    {
+      "a": "htk-forsyning",
+      "b": "novafos",
+      "sharedVertices": 485
+    },
+    {
+      "a": "ikast-brande-spildevand",
+      "b": "samn-forsyning",
+      "sharedVertices": 850
+    },
+    {
+      "a": "ikast-brande-spildevand",
+      "b": "silkeborg-forsyning",
+      "sharedVertices": 1489
+    },
+    {
+      "a": "ikast-brande-spildevand",
+      "b": "vejle-spildevand",
+      "sharedVertices": 961
+    },
+    {
+      "a": "ishoej-forsyning",
+      "b": "klar-forsyning",
+      "sharedVertices": 866
+    },
+    {
+      "a": "jammerbugt-forsyning",
+      "b": "thisted-vand",
+      "sharedVertices": 91
+    },
+    {
+      "a": "jammerbugt-forsyning",
+      "b": "vesthimmerlands-vand",
+      "sharedVertices": 513
+    },
+    {
+      "a": "kalundborg-forsyning",
+      "b": "odsherred-forsyning",
+      "sharedVertices": 274
+    },
+    {
+      "a": "kerteminde-forsyning",
+      "b": "nyborg-forsyning",
+      "sharedVertices": 1485
+    },
+    {
+      "a": "kerteminde-forsyning",
+      "b": "vandcenter-syd",
+      "sharedVertices": 1313
+    },
+    {
+      "a": "klar-forsyning",
+      "b": "ringsted-forsyning",
+      "sharedVertices": 1004
+    },
+    {
+      "a": "lemvig-vand",
+      "b": "struer-energi",
+      "sharedVertices": 1065
+    },
+    {
+      "a": "lemvig-vand",
+      "b": "vestforsyning",
+      "sharedVertices": 1269
+    },
+    {
+      "a": "ltf",
+      "b": "novafos",
+      "sharedVertices": 1813
+    },
+    {
+      "a": "mariagerfjord-vand",
+      "b": "rebild-forsyning",
+      "sharedVertices": 4786
+    },
+    {
+      "a": "mariagerfjord-vand",
+      "b": "vandmiljoe-randers",
+      "sharedVertices": 1508
+    },
+    {
+      "a": "mariagerfjord-vand",
+      "b": "vesthimmerlands-vand",
+      "sharedVertices": 384
+    },
+    {
+      "a": "middelfart-spildevand",
+      "b": "nordfyns-forsyning",
+      "sharedVertices": 982
+    },
+    {
+      "a": "nordfyns-forsyning",
+      "b": "vandcenter-syd",
+      "sharedVertices": 1797
+    },
+    {
+      "a": "nyborg-forsyning",
+      "b": "vand-og-affald",
+      "sharedVertices": 1188
+    },
+    {
+      "a": "provas",
+      "b": "toender-forsyning",
+      "sharedVertices": 1979
+    },
+    {
+      "a": "provas",
+      "b": "vejen-forsyning",
+      "sharedVertices": 3477
+    },
+    {
+      "a": "rebild-forsyning",
+      "b": "vesthimmerlands-vand",
+      "sharedVertices": 3779
+    },
+    {
+      "a": "rksk-forsyning",
+      "b": "vestforsyning",
+      "sharedVertices": 1200
+    },
+    {
+      "a": "samn-forsyning",
+      "b": "silkeborg-forsyning",
+      "sharedVertices": 886
+    },
+    {
+      "a": "samn-forsyning",
+      "b": "skanderborg-forsyning",
+      "sharedVertices": 2080
+    },
+    {
+      "a": "silkeborg-forsyning",
+      "b": "skanderborg-forsyning",
+      "sharedVertices": 1415
+    },
+    {
+      "a": "skive-vand",
+      "b": "vestforsyning",
+      "sharedVertices": 515
+    },
+    {
+      "a": "struer-energi",
+      "b": "thisted-vand",
+      "sharedVertices": 8
+    },
+    {
+      "a": "struer-energi",
+      "b": "vestforsyning",
+      "sharedVertices": 1477
+    },
+    {
+      "a": "syddjurs-spildevand",
+      "b": "vandmiljoe-randers",
+      "sharedVertices": 549
+    },
+    {
+      "a": "vejen-forsyning",
+      "b": "vejle-spildevand",
+      "sharedVertices": 525
+    }
+  ]
+}
