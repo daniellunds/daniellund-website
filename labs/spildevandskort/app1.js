@@ -6,7 +6,9 @@ const PULS_QUERY_BASE = {
 };
 const PULS_PAGE_SIZE = 1000;
 const CURATED_VIRTUAL_BRANDS = [
-  {id:"biofos",name:"BIOFOS"},{id:"moelleaavaerket",name:"Mølleåværket"},{id:"laesoe-forsyning",name:"Læsø Forsyning"}
+  {id:"biofos",name:"BIOFOS",municipalities:[]},
+  {id:"moelleaavaerket",name:"Mølleåværket",municipalities:[]},
+  {id:"laesoe-forsyning",name:"Læsø Forsyning",municipalities:["Læsø"]}
 ];
 const OWNER_ALIASES_RAW = {
   "syddjurs spildevand":"aquadjurs", "syddjurs spildevand a/s":"aquadjurs",
@@ -53,9 +55,11 @@ async function fetchGzipJSON(url){ const r=await fetch(url); if(!r.ok) throw new
 
 async function loadBrands(){
   const raw=await fetchJSON(`${PROD}/brands.json`); const arr=raw.brands||raw;
-  const virtual=CURATED_VIRTUAL_BRANDS.map(b=>({...b,color:"#087e90",municipalities:[],sourceFeatureCount:0}));
+  const virtual=CURATED_VIRTUAL_BRANDS.map(b=>({...b,color:"#087e90",municipalities:b.municipalities||[],sourceFeatureCount:0}));
   state.brands=[...arr,...virtual.filter(v=>!arr.some(b=>b.id===v.id))].sort((a,b)=>a.name.localeCompare(b.name,"da"));
-  state.brandById=new Map(state.brands.map(b=>[b.id,b])); state.selected=new Set(state.brands.map(b=>b.id)); els.brandCount.textContent=state.brands.length;
+  state.brandById=new Map(state.brands.map(b=>[b.id,b])); state.selected=new Set(state.brands.map(b=>b.id));
+  const organizationCount=typeof currentOperatorForBrand==="function"?new Set(state.brands.map(b=>currentOperatorForBrand(b.id).canonicalOrganizationId)).size:state.brands.length;
+  els.brandCount.textContent=organizationCount;
 }
 async function loadAliases(){
   const out={};

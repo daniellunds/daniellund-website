@@ -69,6 +69,16 @@ jobs:
               for pr in p.get('projects',[]):
                   assert pr.get('name') and pr.get('status') and pr.get('description'), (bid,pr)
                   assert url_re.match(pr.get('url','')), (bid,'project',pr.get('url'))
+          expected_names={
+              'langeland-forsyning':'Langeland Energi & Forsyning',
+              'mariagerfjord-vand':'Ren Forsyning Mariagerfjord',
+              'nyborg-forsyning':'Nyborg Forsyning',
+              'thisted-vand':'Thy Forsyning',
+              'vesthimmerlands-vand':'Vesthimmerlands Forsyning',
+              'vand-og-affald':'Vand & Affald'
+          }
+          for bid,name in expected_names.items():
+              assert profiles[bid]['name']==name,(bid,profiles[bid]['name'],name)
           print('PROFILE_STATIC_QA_OK',len(profiles),'profiles',len(index['files']),'files')
           PY
       - name: Install Playwright
@@ -175,6 +185,24 @@ jobs:
               await page.locator('[data-profile-tab="projects"]').click()
               assert 'Fremtidens renseanlægsstruktur' in await page.locator('#profileTabBody').inner_text()
               await page.locator('#closeDetail').click()
+
+              # Canonical/current presentation names from the organization audit.
+              for query,expected,bid in [
+                  ('Langeland Forsyning','Langeland Energi & Forsyning','langeland-forsyning'),
+                  ('Mariagerfjord Vand','Ren Forsyning Mariagerfjord','mariagerfjord-vand'),
+                  ('Nyborg Forsyning & Service','Nyborg Forsyning','nyborg-forsyning'),
+                  ('Vesthimmerlands Vand','Vesthimmerlands Forsyning','vesthimmerlands-vand'),
+                  ('Vand og Affald','Vand & Affald','vand-og-affald')
+              ]:
+                  await page.locator('#search').fill(query);await page.wait_for_timeout(180)
+                  assert await page.locator(f'.brand-row[data-brand-id="{bid}"]').count()==1,(query,bid)
+                  await page.locator(f'.brand-row[data-brand-id="{bid}"] .profile-mini').click()
+                  assert (await page.locator('.profile-head h2').inner_text()).strip()==expected,(query,expected)
+                  overview=await page.locator('#profileTabBody').inner_text()
+                  overview_lower=overview.lower()
+                  assert 'renseanlægsrelationer' in overview_lower and 'afventer særskilt verificering' in overview_lower,overview
+                  assert 'aktive renseanlæg' not in overview_lower,overview
+                  await page.locator('#closeDetail').click()
 
               assert not errors,errors
               if mobile:

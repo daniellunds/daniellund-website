@@ -122,7 +122,7 @@ jobs:
               status_visible=await page.locator('#statusBanner').is_visible()
               map_box=await page.locator('#map').bounding_box()
 
-              assert brands == 76, f'brandCount={brands}'
+              assert brands == 74, f'canonicalOrganizationCount={brands}'
               assert plants >= 700, f'activePlantCount={plants}'
               assert projects >= 100, f'projectCount={projects}'
               assert regions == 8, f'regionGroups={regions}'
@@ -152,6 +152,22 @@ jobs:
               assert puls_schema['loadMapped'], puls_schema
               assert puls_schema['volumeMapped'], puls_schema
               assert puls_schema['activeWithCapacity'] >= 700, puls_schema
+
+              # Canonical organization presentation: legacy/source identities remain searchable but do not create duplicate rows.
+              await page.locator('#search').fill('Nordfyns Forsyning')
+              await page.wait_for_timeout(200)
+              assert await page.locator('.brand-row').count()==1
+              assert 'VandCenter Syd' in await page.locator('.brand-row').first.inner_text()
+              await page.locator('#search').fill('Syddjurs Spildevand')
+              await page.wait_for_timeout(200)
+              assert await page.locator('.brand-row').count()==1
+              assert 'AquaDjurs' in await page.locator('.brand-row').first.inner_text()
+              await page.locator('#search').fill('Langeland Forsyning')
+              await page.wait_for_timeout(200)
+              assert await page.locator('.brand-row').count()==1
+              assert 'Langeland Energi & Forsyning' in await page.locator('.brand-row').first.inner_text()
+              assert 'aktive renseanlæg' not in (await page.locator('.brand-row').first.inner_text()).lower()
+              await page.locator('#search').fill('')
 
               await page.locator('.region-group[data-region="hovedstaden"] .region-toggle').click()
               assert await page.locator('.region-group[data-region="hovedstaden"] .brand-row').count() > 0
