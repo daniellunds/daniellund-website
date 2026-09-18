@@ -14,6 +14,8 @@
     "københavn":{brandId:"hofor",reason:"Verified against Københavns Kommune and HOFOR",sourceUrl:"https://www.kk.dk/dagsordener-og-referater/Klima-%2C%20Milj%C3%B8-%20og%20Teknikudvalget/m%C3%B8de-24022026/referat/punkt-20"}
   };
   const norm=s=>String(s||"").toLocaleLowerCase("da").trim().replace(/\s+/g," ");
+  const canonicalBrandId=id=>typeof currentOperatorCanonicalId==="function"?currentOperatorCanonicalId(id):id;
+  const memberBrandIds=id=>typeof currentOperatorMemberIds==="function"?currentOperatorMemberIds(id):[id];
   state.coverageLayer=null;
   state.coverageOutlineLayer=null;
   state.coverageHighlightBrandId=null;
@@ -50,7 +52,8 @@
   }
 
   function setCoverageHighlight(brandId){
-    const next=brandId&&state.brandById?.has(brandId)?brandId:null;
+    const canonical=brandId?canonicalBrandId(brandId):null;
+    const next=canonical&&state.brandById?.has(canonical)?canonical:null;
     if(state.coverageHighlightBrandId===next)return;
     state.coverageHighlightBrandId=next;
     renderCoverage();
@@ -119,7 +122,7 @@
     if(state.coverageOutlineLayer){state.coverageOutlineLayer.remove();state.coverageOutlineLayer=null;}
     const checkbox=document.getElementById("showCoverage");
     if(!state.coverageData||checkbox?.checked===false)return;
-    if(state.coverageHighlightBrandId&&!state.selected.has(state.coverageHighlightBrandId))state.coverageHighlightBrandId=null;
+    if(state.coverageHighlightBrandId&&!memberBrandIds(state.coverageHighlightBrandId).some(id=>state.selected.has(id)))state.coverageHighlightBrandId=null;
     if(!state.map.getPane("coveragePane")){
       const pane=state.map.createPane("coveragePane");pane.style.zIndex="320";pane.style.pointerEvents="none";
     }
@@ -140,7 +143,7 @@
 
     // Only the administrative supply area explicitly clicked on the map gets the stronger outline.
     if(state.coverageHighlightBrandId){
-      const highlighted=features.filter(f=>classify(f).brandId===state.coverageHighlightBrandId);
+      const highlighted=features.filter(f=>canonicalBrandId(classify(f).brandId)===state.coverageHighlightBrandId);
       if(highlighted.length){
         state.coverageOutlineLayer=L.geoJSON({type:"FeatureCollection",features:highlighted},{
           pane:"coverageOutlinePane",
