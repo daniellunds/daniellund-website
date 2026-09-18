@@ -37,7 +37,9 @@
     }
     const byName=new Map(brands.map(b=>[String(b.name||"").toLocaleLowerCase("da"),b.id]));
     const connectNames=(a,b)=>{const ai=byName.get(a.toLocaleLowerCase("da")),bi=byName.get(b.toLocaleLowerCase("da"));if(ai&&bi){graph.get(ai)?.add(bi);graph.get(bi)?.add(ai);}};
-    connectNames("HOFOR","Ishøj Forsyning");return graph;
+    connectNames("HOFOR","Ishøj Forsyning");
+    connectNames("Energi Viborg Vand","Ikast-Brande Spildevand");
+    return graph;
   }
 
   function groupedGraph(graph,brands){

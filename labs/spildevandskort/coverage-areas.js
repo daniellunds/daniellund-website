@@ -45,11 +45,17 @@
   function colorFor(feature){
     const c=classify(feature);
     if(c.status!=="assigned")return "#FFFFFF";
-    return c.current?.color||state.brandById.get(c.brandId)?.color||"#657D84";
+    return state.brandById.get(c.brandId)?.color||c.current?.color||"#657D84";
+  }
+
+  function operatorBrandId(brandId){
+    if(!brandId||!state.brandById?.has(brandId))return null;
+    const current=typeof currentOperatorForBrand==="function"?currentOperatorForBrand(brandId):null;
+    return current?.operatorBrandId&&state.brandById.has(current.operatorBrandId)?current.operatorBrandId:brandId;
   }
 
   function setCoverageHighlight(brandId){
-    const next=brandId&&state.brandById?.has(brandId)?brandId:null;
+    const next=operatorBrandId(brandId);
     if(state.coverageHighlightBrandId===next)return;
     state.coverageHighlightBrandId=next;
     renderCoverage();
@@ -118,7 +124,10 @@
     if(state.coverageOutlineLayer){state.coverageOutlineLayer.remove();state.coverageOutlineLayer=null;}
     const checkbox=document.getElementById("showCoverage");
     if(!state.coverageData||checkbox?.checked===false)return;
-    if(state.coverageHighlightBrandId&&!state.selected.has(state.coverageHighlightBrandId))state.coverageHighlightBrandId=null;
+    if(state.coverageHighlightBrandId){
+      const anySelected=(state.brands||[]).some(b=>operatorBrandId(b.id)===state.coverageHighlightBrandId&&state.selected.has(b.id));
+      if(!anySelected)state.coverageHighlightBrandId=null;
+    }
     if(!state.map.getPane("coveragePane")){
       const pane=state.map.createPane("coveragePane");pane.style.zIndex="320";pane.style.pointerEvents="none";
     }
@@ -139,7 +148,7 @@
 
     // Only the administrative supply area explicitly clicked on the map gets the stronger outline.
     if(state.coverageHighlightBrandId){
-      const highlighted=features.filter(f=>classify(f).brandId===state.coverageHighlightBrandId);
+      const highlighted=features.filter(f=>operatorBrandId(classify(f).brandId)===state.coverageHighlightBrandId);
       if(highlighted.length){
         state.coverageOutlineLayer=L.geoJSON({type:"FeatureCollection",features:highlighted},{
           pane:"coverageOutlinePane",
@@ -185,6 +194,26 @@
       if(!fc.features?.length)throw new Error("Ingen kommunegeometrier i svaret");
       state.coverageData=fc;
       const rows=fc.features.map(classify);
+
+      // Use administrative municipality geometry to assign the shared utility colors.
+      // The color engine groups legacy IDs by current operator, so e.g. Nordfyn + Odense
+      // remain one VandCenter Syd color and Norddjurs + Syddjurs remain one AquaDjurs color.
+      const administrativeColorFeatures=fc.features.flatMap(feature=>{
+        const c=classify(feature);
+        return c.status==="assigned"?[{...feature,properties:{...(feature.properties||{}),brandId:c.brandId}}]:[];
+      });
+      const administrativeColorQa=typeof window.applyNeighborContrastColors==="function"
+        ?window.applyNeighborContrastColors(administrativeColorFeatures,state.brands)
+        :null;
+
+      // Repaint source features with the canonical brand color so every visual representation
+      // (administrative area, adopted sewer catchment and WWTP marker) stays identical.
+      for(const feature of state.features||[]){
+        const brandId=feature.properties?.brandId;
+        const color=state.brandById.get(brandId)?.color;
+        if(color)feature.properties.color=color;
+      }
+
       state.coverageQa={
         source,
         municipalities:rows.length,
@@ -192,9 +221,14 @@
         verifiedOverrides:rows.filter(x=>x.status==="assigned"&&x.override).map(x=>({name:x.name,brandId:x.brandId,reason:x.override.reason,sourceUrl:x.override.sourceUrl||null})),
         currentOperatorOverrides:rows.filter(x=>x.status==="assigned"&&x.current?.isOverride).map(x=>({name:x.name,legacyBrandId:x.brandId,operatorBrandId:x.current.operatorBrandId,operatorName:x.current.operatorName,sourceUrl:x.current.sourceUrl})),
         ambiguous:rows.filter(x=>x.status==="ambiguous").map(x=>({name:x.name,brandIds:x.brandIds})),
-        unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name)
+        unmapped:rows.filter(x=>x.status==="unmapped").map(x=>x.name),
+        colorQa:administrativeColorQa
       };
       console.info("ADMIN_COVERAGE_QA",state.coverageQa);
+      renderPolygons();
+      if(typeof renderPlants==="function")renderPlants();
+      if(typeof renderProjects==="function")renderProjects();
+      if(typeof renderList==="function")renderList();
       renderCoverage();
       bindCatchmentHighlight();
     }catch(err){
