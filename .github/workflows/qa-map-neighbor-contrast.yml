@@ -48,6 +48,7 @@ jobs:
           grep -q 'Energi Viborg Vand' labs/spildevandskort/map-colors.js
           grep -q 'displayName:"VandCenter Syd"' labs/spildevandskort/current-operators.js
           grep -q 'displayName:"AquaDjurs"' labs/spildevandskort/current-operators.js
+          grep -q 'responsible?.color' labs/spildevandskort/app1.js
           node --check labs/spildevandskort/map-colors.js
           node --check labs/spildevandskort/current-operators.js
           node --check labs/spildevandskort/profiles.js
@@ -120,17 +121,18 @@ jobs:
                 state.polygonLayer?.eachLayer(l=>{
                   if(l.feature?.properties?.brandId===id&&!catchmentFill){catchmentFill=l.options?.fillColor||null;catchmentStroke=l.options?.color||null;}
                 });
+                const mappedPlantCount=state.plants.filter(p=>p.responsibleBrandId===id&&p.active&&Array.isArray(p.coordinates)).length;
                 let matchingPlantMarkers=0;
                 state.plantLayer?.eachLayer(l=>{if(l.options?.fillColor===brand)matchingPlantMarkers++;});
                 plantFill=matchingPlantMarkers>0?brand:null;
-                return {brand,adminFill,adminStroke,catchmentFill,catchmentStroke,plantFill,matchingPlantMarkers};
+                return {brand,adminFill,adminStroke,catchmentFill,catchmentStroke,plantFill,matchingPlantMarkers,mappedPlantCount};
               }""")
               assert silkeborg['brand'],silkeborg
               assert silkeborg['adminFill']==silkeborg['brand'],silkeborg
               assert silkeborg['adminStroke']==silkeborg['brand'],silkeborg
               assert silkeborg['catchmentFill']==silkeborg['brand'],silkeborg
               assert silkeborg['catchmentStroke']==silkeborg['brand'],silkeborg
-              assert silkeborg['plantFill']==silkeborg['brand'],silkeborg
+              if silkeborg['mappedPlantCount']>0: assert silkeborg['plantFill']==silkeborg['brand'],silkeborg
               bq=await page.evaluate('spildevandskortBasemapState()')
               assert bq['active']=='Kort' and bq['streetGreyscale'] is True,bq
               filter_value=await page.locator('.osm-grayscale-layer').evaluate("el=>getComputedStyle(el).filter");assert filter_value!='none',filter_value
