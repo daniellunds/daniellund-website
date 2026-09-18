@@ -7,7 +7,8 @@
   const PROXIMITY_DEG=0.012;
   const PALETTE=["#0057B8","#E4D600","#E3261C","#35A7D6","#D51BC4","#138A2E","#E67E22","#7436A8","#00A875","#A91D63"];
   const BASE_REQUIRED_PAIRS=[["HOFOR","Ishøj Forsyning"]];
-  const PRESERVE_BASE_COLORS=new Set(["silkeborg-forsyning"]);
+  const BASE_COLOR_LOCKS=new Map([["silkeborg-forsyning","#E4D600"]]);
+  const PRESERVE_BASE_COLORS=new Set(BASE_COLOR_LOCKS.keys());
   const ADMIN_REQUIRED_PAIRS=[
     ["HOFOR","Ishøj Forsyning"],
     ["AquaDjurs","Syddjurs Spildevand"],
@@ -178,7 +179,17 @@
     return qa;
   }
 
-  window.applyNeighborContrastColors=(features,brands)=>{const graph=buildNeighbourGraph(features,brands),result=assignColors(graph,brands),out=baselineQa(graph,brands,result);if(typeof state!=="undefined")state.colorQa=out;console.info("UTILITY_COLOR_QA",out);return out;};
+  window.applyNeighborContrastColors=(features,brands)=>{
+    const graph=buildNeighbourGraph(features,brands),result=assignColors(graph,brands);
+    for(const [id,color] of BASE_COLOR_LOCKS){
+      const brand=brands.find(b=>b.id===id);
+      if(brand){brand.color=color;result.assigned.set(id,color);}
+    }
+    const out=baselineQa(graph,brands,result);
+    if(typeof state!=="undefined")state.colorQa=out;
+    console.info("UTILITY_COLOR_QA",out);
+    return out;
+  };
   window.resolveAdministrativeNeighborColors=resolveAdministrativeNeighborColors;
   window.spildevandskortColorState=()=>state?.colorQa||null;
 
