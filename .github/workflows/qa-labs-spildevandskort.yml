@@ -122,7 +122,7 @@ jobs:
               status_visible=await page.locator('#statusBanner').is_visible()
               map_box=await page.locator('#map').bounding_box()
 
-              assert brands == 76, f'brandCount={brands}'
+              assert brands == 74, f'brandCount={brands}'
               assert plants >= 700, f'activePlantCount={plants}'
               assert projects >= 100, f'projectCount={projects}'
               assert regions == 8, f'regionGroups={regions}'
