@@ -199,8 +199,9 @@ jobs:
                   await page.locator(f'.brand-row[data-brand-id="{bid}"] .profile-mini').click()
                   assert (await page.locator('.profile-head h2').inner_text()).strip()==expected,(query,expected)
                   overview=await page.locator('#profileTabBody').inner_text()
-                  assert 'Renseanlægsrelationer' in overview and 'Afventer særskilt verificering' in overview,overview
-                  assert 'Aktive renseanlæg' not in overview,overview
+                  overview_lower=overview.lower()
+                  assert 'renseanlægsrelationer' in overview_lower and 'afventer særskilt verificering' in overview_lower,overview
+                  assert 'aktive renseanlæg' not in overview_lower,overview
                   await page.locator('#closeDetail').click()
 
               assert not errors,errors
