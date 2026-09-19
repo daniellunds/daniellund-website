@@ -35,8 +35,8 @@ const VIRTUAL_BRAND_REGION = {biofos:"hovedstaden",moelleaavaerket:"nordsjaellan
 function normalizeRegionKey(s=""){return String(s).toLocaleLowerCase("da").trim().replace(/\s+/g," ");}
 
 const $ = (id) => document.getElementById(id);
-const els = Object.fromEntries(["search","brandCount","activePlantCount","itemList","listHeading","visibleCount","brandControls","plantControls","showPlants","includeClosed","selectedOnly","selectAll","selectNone","zoomSelected","statusBanner","mapStatus","detailPanel","detailContent","closeDetail"].map(k=>[k,$(k)]));
-const state = {tab:"brands", brands:[], brandById:new Map(), selected:new Set(), features:[], plants:[], ownerAliases:{}, canonicalRegistry:null, canonicalRegistryDocument:null, canonicalRegistryReady:null, facilityRegistry:null, facilityRegistryDocument:null, facilityRegistryReady:null, wastewaterRelations:null, wastewaterRelationsDocument:null, wastewaterRelationsReady:null, identityDataReady:null, canonicalRegistryParity:null, organizationColors:new Map(), polygonLayer:null, plantLayer:null, map:null, collapsedRegions:new Set(LANDDELE.map(r=>r.id))};
+const els = Object.fromEntries(["search","brandCount","activePlantCount","itemList","listHeading","visibleCount","brandControls","plantControls","showVerifiedPlants","showPulsRecords","includeClosed","selectedOnly","selectAll","selectNone","zoomSelected","statusBanner","mapStatus","detailPanel","detailContent","closeDetail"].map(k=>[k,$(k)]));
+const state = {tab:"brands", brands:[], brandById:new Map(), selected:new Set(), features:[], plants:[], facilityPlants:[], ownerAliases:{}, canonicalRegistry:null, canonicalRegistryDocument:null, canonicalRegistryReady:null, facilityRegistry:null, facilityRegistryDocument:null, facilityRegistryReady:null, wastewaterRelations:null, wastewaterRelationsDocument:null, wastewaterRelationsReady:null, identityDataReady:null, canonicalRegistryParity:null, organizationColors:new Map(), polygonLayer:null, plantLayer:null, map:null, collapsedRegions:new Set(LANDDELE.map(r=>r.id))};
 
 function normalize(s="") { return String(s).toLocaleLowerCase("da").replace(/\(cvr[^)]*\)/gi,"").replace(/\bcvr[:\s-]*\d+\b/gi,"").replace(/\ba\/s\b|\baps\b|\bi\/s\b/gi,"").replace(/&/g," og ").replace(/[^a-z0-9æøå]+/gi," ").trim().replace(/\s+/g," "); }
 function pick(p,...keys){ if(!p)return null; const m=new Map(Object.entries(p).map(([k,v])=>[k.toLowerCase(),v])); for(const k of keys){ if(m.has(k.toLowerCase())) return m.get(k.toLowerCase()); } return null; }
@@ -127,7 +127,23 @@ function normalizePlant(f,i){
   const facilitySourceRecord=state.facilityRegistry?.sourceRecordForPulsId(sourceRecordId)||null;
   const facility=state.facilityRegistry?.facilityForPulsRecordId(sourceRecordId)||null;
   const organizationId=facility?.presentationOrganizationId||organizationIdForBrandId(responsibleBrandId);
-  return {id:sourceRecordId,sourceRecordId,name:fmt(pick(p,"Name","Navn","PlantName","Renseanlægsnavn")),owner,status:fmt(statusValue),active:activeFrom(statusValue),coordinates:normalizeCoords(f,p),capacity,approvedLoad:pick(p,"AuthorizedLoad","ApprovedLoad","GodkendtBelastning","Godkendt belastning"),treatmentType:pick(p,"TreatmentType","Rensetype","RenseType","Treatment"),authority:pick(p,"Authority","Myndighed"),municipality:pick(p,"Municipality","Kommune"),latestYear:pick(p,"LatestDischargeYear","SenesteUdledningsår","Udledningsår","LatestYear"),latestVolume:pick(p,"LatestDischargeVolume","LatestWastewaterVolume","Spildevandsmængde","WastewaterVolume"),brandId:responsibleBrandId,responsibleBrandId,organizationId,facilityId:facility?.id||null,facilityMappingStatus:facilitySourceRecord?.mappingStatus||"unmapped",sourceRecordRole:facilitySourceRecord?.recordRole||"unclassifiedSourceRecord",includeInFacilityCount:facilitySourceRecord?.includeInFacilityCount===true,sourceProperties:p};
+  return {id:sourceRecordId,sourceRecordId,name:fmt(pick(p,"Name","Navn","PlantName","Renseanlægsnavn")),owner,status:fmt(statusValue),active:activeFrom(statusValue),coordinates:normalizeCoords(f,p),capacity,approvedLoad:pick(p,"AuthorizedLoad","ApprovedLoad","GodkendtBelastning","Godkendt belastning"),treatmentType:pick(p,"TreatmentType","Rensetype","RenseType","Treatment"),authority:pick(p,"Authority","Myndighed"),municipality:pick(p,"Municipality","Kommune"),latestYear:pick(p,"LatestDischargeYear","SenesteUdledningsår","Udledningsår","LatestYear"),latestVolume:pick(p,"LatestDischargeVolume","LatestWastewaterVolume","Spildevandsmængde","WastewaterVolume"),brandId:responsibleBrandId,responsibleBrandId,organizationId,facilityId:facility?.id||null,facilityName:facility?.name||null,facilityLifecycleStatus:facility?.lifecycleStatus||null,facilityVerification:facility?.verification||null,facilityMappingStatus:facilitySourceRecord?.mappingStatus||"unmapped",sourceRecordRole:facilitySourceRecord?.recordRole||"unclassifiedSourceRecord",includeInFacilityCount:facilitySourceRecord?.includeInFacilityCount===true,displayRecordType:"pulsSourceRecord",sourceProperties:p};
+}
+function facilityRecordRank(plant){
+  return ({mainFacilityRecord:0,outletRecord:1,technicalDischargeRecord:2,fictitiousOutletRecord:3}[plant.sourceRecordRole]??4);
+}
+function buildFacilityPlants(plants){
+  const groups=new Map();
+  for(const plant of plants){
+    if(plant.facilityMappingStatus!=="verified"||!plant.facilityId)continue;
+    if(!groups.has(plant.facilityId))groups.set(plant.facilityId,[]);
+    groups.get(plant.facilityId).push(plant);
+  }
+  return [...groups.entries()].map(([facilityId,records])=>{
+    const ordered=[...records].sort((a,b)=>facilityRecordRank(a)-facilityRecordRank(b));
+    const representative=ordered.find(row=>row.coordinates)||ordered[0];
+    return {...representative,id:facilityId,name:representative.facilityName||representative.name,active:representative.facilityLifecycleStatus?representative.facilityLifecycleStatus==="active":representative.active,displayRecordType:"verifiedFacility",verifiedPhysicalFacility:true,sourceRecordIds:records.map(row=>row.sourceRecordId),facilitySourceCount:records.length};
+  }).sort((a,b)=>a.name.localeCompare(b.name,"da"));
 }
 async function fetchAllPulsFeatures(){
   const all=[]; let startIndex=0; let expected=null;
@@ -149,31 +165,41 @@ async function loadPlants(){
   const byId=new Map(); let duplicateIds=0;
   for(const [i,f] of features.entries()){ const p=normalizePlant(f,i); if(!p)continue; if(byId.has(p.id))duplicateIds++; byId.set(p.id,p); }
   state.plants=[...byId.values()];
+  state.facilityPlants=buildFacilityPlants(state.plants);
   state.plantQa={rawFeatures:features.length,plants:state.plants.length,duplicateIds,missingCoordinates:state.plants.filter(p=>!p.coordinates).length,unmatchedOwners:state.plants.filter(p=>!p.brandId).length,canonicalOrganizations:state.plants.filter(p=>p.organizationId).length,verifiedFacilityMappings:state.plants.filter(p=>p.facilityMappingStatus==="verified"&&p.facilityId).length,unresolvedFacilityMappings:state.plants.filter(p=>p.facilityMappingStatus==="unresolved").length};
   console.info("PULS QA",state.plantQa);
   updateLoadScreeningUI();
-  els.activePlantCount.textContent=state.plants.filter(p=>p.active).length; renderPlants(); renderList();
+  els.activePlantCount.textContent=state.facilityPlants.filter(p=>p.active).length; renderPlants(); renderList();
+}
+function plantSelectionIds(plant){
+  const canonicalIds=plant.organizationId?state.canonicalRegistry?.legacyBrandIdsForOrganizationId(plant.organizationId)||[]:[];
+  return [...new Set([plant.responsibleBrandId,...canonicalIds].filter(Boolean))];
 }
 function filteredPlants(){
   const q=normalize(els.search.value);
-  return state.plants.filter(p=>{
+  const candidates=[];
+  if(els.showVerifiedPlants.checked)candidates.push(...state.facilityPlants);
+  if(els.showPulsRecords.checked)candidates.push(...state.plants.filter(p=>!p.includeInFacilityCount));
+  return candidates.filter(p=>{
     const b=p.responsibleBrandId?state.brandById.get(p.responsibleBrandId):null;
-    const followsSelection=!els.selectedOnly.checked || (p.responsibleBrandId&&state.selected.has(p.responsibleBrandId));
-    const matchesSearch=!q||normalize([p.name,p.owner,p.authority,p.municipality,b?.name].join(" ")).includes(q);
+    const followsSelection=!els.selectedOnly.checked || plantSelectionIds(p).some(id=>state.selected.has(id));
+    const matchesSearch=!q||normalize([p.name,p.facilityName,p.owner,p.authority,p.municipality,b?.name].join(" ")).includes(q);
     return (els.includeClosed.checked||p.active)&&followsSelection&&matchesSearch&&loadFilterMatches(p);
   });
 }
 function activePlantCountForBrand(id){ return state.plants.filter(p=>p.active&&p.responsibleBrandId===id).length; }
 function renderPlants(){
-  if(state.plantLayer) state.plantLayer.remove(); state.plantLayer=L.layerGroup().addTo(state.map); if(!els.showPlants.checked)return;
+  if(state.plantLayer) state.plantLayer.remove(); state.plantLayer=L.layerGroup().addTo(state.map);
   for(const p of filteredPlants()){
     if(!p.coordinates)continue;
     const [lon,lat]=p.coordinates;
     const responsible=p.responsibleBrandId?state.brandById.get(p.responsibleBrandId):null;
-    const load=plantLoad(p),band=LoadScreening.band(load),screen=screeningEnabled();
+    const load=plantLoad(p),band=LoadScreening.band(load),screen=screeningEnabled(),technical=p.displayRecordType==="pulsSourceRecord";
     const fill=screen&&p.active?LoadScreening.colors[band]:p.active?plantPresentationColor(p):"#737e84";
-    const m=L.circleMarker([lat,lon],{radius:screen?({high:11,mid:8,low:5,unknown:5}[band]):capacityRadius(p.capacity),color:"#fff",weight:1.5,fillColor:fill,fillOpacity:.95,pane:"markerPane"}).addTo(state.plantLayer);
-    m.bindTooltip(`${p.name} · ${responsible?.name||p.owner} · ${screen?LoadScreening.summary(load):"PULS-designkapacitet: "+capacityClass(p.capacity)}`);
+    const radius=screen?({high:11,mid:8,low:5,unknown:5}[band]):capacityRadius(p.capacity);
+    const m=L.circleMarker([lat,lon],{radius:technical?Math.max(3,radius-1):radius,color:technical?fill:"#fff",weight:technical?2:1.5,dashArray:technical?"2 2":null,fillColor:fill,fillOpacity:technical ? .18 : .95,pane:"markerPane"}).addTo(state.plantLayer);
+    const typeLabel=technical?"Teknisk PULS-post":"Verificeret fysisk anlæg";
+    m.bindTooltip(`${typeLabel} · ${p.name} · ${responsible?.name||p.owner} · ${screen?LoadScreening.summary(load):"PULS-designkapacitet: "+capacityClass(p.capacity)}`);
     m.on("click",()=>openPlant(p));
   }
 }

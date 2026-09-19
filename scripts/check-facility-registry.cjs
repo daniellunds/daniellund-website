@@ -50,6 +50,11 @@ assert.equal(registry.presentationOrganizationIdForPulsRecordId(unresolved), nul
 
 const biofosFacilities = registryDocument.facilities.filter(row => row.presentationOrganizationId === "org:biofos");
 assert.equal(biofosFacilities.length, 3, "BIOFOS must have three verified physical facilities");
+const mappedFacilityIds = new Set(registryDocument.sourceRecords.filter(row => row.mappingStatus === "verified").map(row => row.facilityId));
+assert.ok(registryDocument.facilities.every(row => mappedFacilityIds.has(row.id)), "Every verified facility needs at least one map anchor");
+const aarhusFacilities = registryDocument.facilities.filter(row => row.presentationOrganizationId === "org:aarhus-vand");
+assert.equal(aarhusFacilities.length, 4, "Aarhus Vand must have four verified physical facilities");
+assert.ok(aarhusFacilities.every(row => mappedFacilityIds.has(row.id)), "All four Aarhus facilities need PULS map anchors");
 assert.equal(registry.presentationOrganizationIdForPulsRecordId("Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c"), "org:moelleaavaerket");
 assert.equal(registry.facilityForId("facility:din-forsyning-renseanlaeg-oest").presentationOrganizationId, "org:din-forsyning");
 

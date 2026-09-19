@@ -20,10 +20,10 @@ kanoniske farve bruges på administrativ flade, vedtaget kloakopland,
 forsyningsliste, renseanlægsmarkør og profil.
 
 `data/model/facility-registry.json` adskiller verificerede fysiske anlæg fra
-PULS-kildeposter. Det indeholder 27 fysiske anlæg og 28 auditerede kildeposter;
+PULS-kildeposter. Det indeholder 27 fysiske anlæg og 32 auditerede kildeposter;
 26 anlæg indgår i en verificeret direkte driftsrelation for de auditerede
 organisationer, mens DIN Forsynings Renseanlæg Øst er registreret som verificeret
-rutedestination. Af kildeposterne er 27 verificeret koblet, mens
+rutedestination. Af kildeposterne er 31 verificeret koblet, mens
 Rækkehuse-posten bevarer
 `facilityId: null`. BIOFOS' tekniske Damhusåen-post og fire tekniske/fiktive
 Viby-poster deler de verificerede fysiske `facilityId`'er, men tælles ikke som
@@ -35,7 +35,8 @@ ekstern rensevej og ejerrelation for ti auditerede organisationer. Listen og
 profilerne viser derfor `Egne/driftede renseanlæg` som et verificeret fysisk tal
 og `Spildevand behandles hos` som en anden relation. Organisationer uden for det
 auditerede udsnit viser `Ikke verificeret`; de får ikke et anlægstal udledt af
-PULS. Det landsdækkende top-tal er præciseret som `aktive PULS-poster`.
+PULS. Det landsdækkende top-tal viser verificerede fysiske anlæg, mens øvrige
+PULS-poster kan slås til som et særskilt teknisk lag.
 
 Kør registry-QA med:
 
@@ -44,6 +45,7 @@ node scripts/check-canonical-registry.cjs
 node scripts/check-canonical-ui.cjs
 node scripts/check-canonical-colors.cjs
 node scripts/check-facility-registry.cjs
+node scripts/check-plant-presentation.cjs
 node scripts/check-wastewater-relations.cjs
 ```
 
