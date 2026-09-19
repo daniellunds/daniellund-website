@@ -197,7 +197,7 @@ function renderPlants(){
     const load=plantLoad(p),band=LoadScreening.band(load),screen=screeningEnabled(),technical=p.displayRecordType==="pulsSourceRecord";
     const fill=screen&&p.active?LoadScreening.colors[band]:p.active?plantPresentationColor(p):"#737e84";
     const radius=screen?({high:11,mid:8,low:5,unknown:5}[band]):capacityRadius(p.capacity);
-    const m=L.circleMarker([lat,lon],{radius:technical?Math.max(3,radius-1):radius,color:technical?fill:"#fff",weight:technical?2:1.5,dashArray:technical?"2 2":null,fillColor:fill,fillOpacity:technical ? .18 : .95,pane:"markerPane"}).addTo(state.plantLayer);
+    const m=L.circleMarker([lat,lon],{radius,color:"#fff",weight:1.5,fillColor:fill,fillOpacity:.95,pane:"markerPane"}).addTo(state.plantLayer);
     const typeLabel=technical?"Teknisk PULS-post":"Verificeret fysisk anlæg";
     m.bindTooltip(`${typeLabel} · ${p.name} · ${responsible?.name||p.owner} · ${screen?LoadScreening.summary(load):"PULS-designkapacitet: "+capacityClass(p.capacity)}`);
     m.on("click",()=>openPlant(p));

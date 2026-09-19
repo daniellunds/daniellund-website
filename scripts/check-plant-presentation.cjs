@@ -8,6 +8,7 @@ const root = path.resolve(__dirname, "..");
 const app1 = fs.readFileSync(path.join(root, "labs/spildevandskort/app1.js"), "utf8");
 const app2 = fs.readFileSync(path.join(root, "labs/spildevandskort/app2.js"), "utf8");
 const html = fs.readFileSync(path.join(root, "labs/spildevandskort/index.html"), "utf8");
+const styles = fs.readFileSync(path.join(root, "labs/spildevandskort/styles.css"), "utf8");
 const registry = JSON.parse(fs.readFileSync(path.join(root, "labs/spildevandskort/data/model/facility-registry.json"), "utf8"));
 
 const helperStart = app1.indexOf("function facilityRecordRank");
@@ -53,6 +54,10 @@ assert.match(html, /Øvrige aktive PULS-poster/);
 assert.match(html, /Standardvisningen viser både verificerede fysiske anlæg og øvrige aktive PULS-poster/);
 assert.match(app1, /state\.plants\.filter\(p=>!p\.includeInFacilityCount\)/);
 assert.match(app2, /Ikke et selvstændigt verificeret anlæg/);
+assert.match(app1, /L\.circleMarker\(\[lat,lon\],\{radius,color:"#fff",weight:1\.5,fillColor:fill,fillOpacity:\.95/);
+assert.doesNotMatch(app1, /dashArray:technical|fillOpacity:technical/);
+assert.doesNotMatch(styles, /\.plant-dot\.technical\{/);
+assert.doesNotMatch(styles, /\.dot\.technical\{[^}]*background:transparent|\.dot\.technical\{[^}]*dashed/);
 
 console.log("PLANT_PRESENTATION_QA", JSON.stringify({
   verifiedFacilities: facilityPlants.length,

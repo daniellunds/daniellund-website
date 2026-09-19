@@ -61,7 +61,7 @@ function renderList(){
       const plantColor=p.active?plantPresentationColor(p):null;
       const technical=p.displayRecordType==="pulsSourceRecord";
       const typeLabel=technical?"Teknisk PULS-post":"Verificeret fysisk anlæg";
-      row.innerHTML=`<span class="plant-dot ${p.active?"":"closed"} ${technical?"technical":""}" style="${plantColor?`color:${plantColor};background:${plantColor}`:""}"></span><span class="row-copy"><strong>${p.name}</strong><small>${typeLabel} · ${b?`Ansvarlig: ${b.name}`:p.owner} · ${LoadScreening.summary(plantLoad(p))}</small></span>`;
+      row.innerHTML=`<span class="plant-dot ${p.active?"":"closed"}" style="${plantColor?`color:${plantColor};background:${plantColor}`:""}"></span><span class="row-copy"><strong>${p.name}</strong><small>${typeLabel} · ${b?`Ansvarlig: ${b.name}`:p.owner} · ${LoadScreening.summary(plantLoad(p))}</small></span>`;
       row.onclick=()=>{openPlant(p);if(p.coordinates)state.map.setView([p.coordinates[1],p.coordinates[0]],13)};els.itemList.append(row);
     }
     if(!rows.length)els.itemList.innerHTML='<div class="empty">Ingen renseanlæg matcher de valgte filtre.</div>';
