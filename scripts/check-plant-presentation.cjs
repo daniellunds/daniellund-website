@@ -38,7 +38,7 @@ const mappedPlants = registry.sourceRecords
   });
 
 const facilityPlants = context.buildFacilityPlants(mappedPlants);
-assert.equal(facilityPlants.length, registry.facilities.length, "Default layer must contain one marker per verified facility");
+assert.equal(facilityPlants.length, registry.facilities.length, "Verified facility layer must contain one marker per verified facility");
 assert.equal(new Set(facilityPlants.map(row => row.id)).size, registry.facilities.length, "Default facility markers must be unique");
 
 const aarhus = facilityPlants.filter(row => row.facilityId.startsWith("facility:aarhus-vand-"));
@@ -48,7 +48,9 @@ assert.equal(viby.facilitySourceCount, 4, "Four Viby source records must collaps
 assert.equal(viby.sourceRecordRole, "outletRecord", "Viby must use the real outlet record as its map anchor");
 
 assert.match(html, /id="showVerifiedPlants" type="checkbox" checked/);
-assert.match(html, /id="showPulsRecords" type="checkbox"(?! checked)/);
+assert.match(html, /id="showPulsRecords" type="checkbox" checked/);
+assert.match(html, /Øvrige aktive PULS-poster/);
+assert.match(html, /Standardvisningen viser både verificerede fysiske anlæg og øvrige aktive PULS-poster/);
 assert.match(app1, /state\.plants\.filter\(p=>!p\.includeInFacilityCount\)/);
 assert.match(app2, /Ikke et selvstændigt verificeret anlæg/);
 

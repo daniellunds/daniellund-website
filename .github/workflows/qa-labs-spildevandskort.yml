@@ -53,6 +53,7 @@ jobs:
           node --check labs/spildevandskort/basemaps.js
           node --check labs/spildevandskort/wastewater-relations.js
           node scripts/check-facility-registry.cjs
+          node scripts/check-plant-presentation.cjs
           node scripts/check-wastewater-relations.cjs
           python - <<'PY'
           import json, gzip
@@ -222,15 +223,13 @@ jobs:
               assert not await page.locator('#brandControls').is_visible()
               assert not await page.locator('#projectControls').is_visible()
               assert await page.locator('#showVerifiedPlants').is_checked()
-              assert not await page.locator('#showPulsRecords').is_checked()
+              assert await page.locator('#showPulsRecords').is_checked()
+              default_plant_rows=await page.locator('.plant-row').count()
+              assert default_plant_rows > 600, f'defaultPlantRows={default_plant_rows}'
+              await page.locator('#showPulsRecords').uncheck()
+              await page.wait_for_timeout(300)
               verified_plant_rows=await page.locator('.plant-row').count()
               assert verified_plant_rows == 27, f'verifiedPlantRows={verified_plant_rows}'
-              await page.locator('#showVerifiedPlants').uncheck()
-              await page.locator('#showPulsRecords').check()
-              await page.wait_for_timeout(300)
-              puls_rows=await page.locator('.plant-row').count()
-              expected_puls_rows=await page.evaluate("state.plants.filter(p=>p.active&&!p.includeInFacilityCount&&plantSelectionIds(p).some(id=>state.selected.has(id))).length")
-              assert puls_rows == expected_puls_rows and puls_rows > 600, f'pulsRows={puls_rows}, expected={expected_puls_rows}'
 
               await page.locator('.tab[data-tab="projects"]').click()
               await page.wait_for_timeout(1500)
@@ -284,7 +283,7 @@ jobs:
                   assert overflow <= 3, f'horizontal overflow={overflow}px'
 
               await page.screenshot(path=f'qa-{label}.png',full_page=True)
-              print(f'{label.upper()}_QA_OK brands={brands} verifiedPlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} withheld={geo["withheld"]} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} verifiedPlantRows={verified_plant_rows} pulsRows={puls_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])} font={font_qa["body"]}')
+              print(f'{label.upper()}_QA_OK brands={brands} verifiedPlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} withheld={geo["withheld"]} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} defaultPlantRows={default_plant_rows} verifiedPlantRows={verified_plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])} font={font_qa["body"]}')
               await context.close()
 
           async def main():

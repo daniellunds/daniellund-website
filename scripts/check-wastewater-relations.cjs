@@ -86,7 +86,7 @@ const uiFiles = ["index.html","app2.js","profile-integration.js","profiles.js"].
 );
 assert.match(uiFiles[0], /verificerede anlæg/);
 assert.match(uiFiles[0], /Verificerede fysiske anlæg/);
-assert.match(uiFiles[0], /Øvrige tekniske PULS-poster/);
+assert.match(uiFiles[0], /Øvrige aktive PULS-poster/);
 assert.doesNotMatch(uiFiles.slice(0,3).join("\n"), />aktive renseanlæg<|\$\{plants\} aktive renseanlæg/);
 assert.match(uiFiles[3], /Egne\/driftede aktive renseanlæg/);
 assert.match(uiFiles[3], /Spildevand behandles hos/);
