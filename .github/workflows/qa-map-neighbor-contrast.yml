@@ -186,7 +186,7 @@ jobs:
                 const row=id=>state.plants.find(p=>p.sourceRecordId===id)||null;
                 return {registry:state.facilityRegistry?.counts,damhusMain:row(ids.damhusMain),damhusTechnical:row(ids.damhusTechnical),moelle:row(ids.moelle),raekkehuse:row(ids.raekkehuse)};
               }""")
-              assert facility['registry']['facilities']==27 and facility['registry']['sourceRecords']==28,facility
+              assert facility['registry']['facilities']==27 and facility['registry']['sourceRecords']==32,facility
               if facility['damhusMain'] and facility['damhusTechnical']:
                   assert facility['damhusMain']['facilityId']==facility['damhusTechnical']['facilityId']=='facility:biofos-damhusaaen',facility
                   assert facility['damhusMain']['organizationId']=='org:biofos',facility

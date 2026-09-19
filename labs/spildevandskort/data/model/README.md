@@ -15,7 +15,7 @@ treatment-route relations without deriving them from presentation identity.
 - `facility-registry.json` contains 27 verified physical wastewater facilities:
   26 with a verified direct operating relation in the audited sample and DIN
   Forsyning's Renseanlæg Øst as a verified route destination. It also contains
-  28 explicitly audited PULS source-record mappings. One unresolved small record
+  32 explicitly audited PULS source-record mappings. One unresolved small record
   remains without a `facilityId`.
 - `wastewater-relations.json` contains the verified semantics for ten audited
   organizations: direct operation, external treatment routes and documented

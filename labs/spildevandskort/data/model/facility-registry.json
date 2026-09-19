@@ -14,10 +14,10 @@
   },
   "counts": {
     "facilities": 27,
-    "sourceRecords": 28,
-    "verifiedMappings": 27,
+    "sourceRecords": 32,
+    "verifiedMappings": 31,
     "unresolvedMappings": 1,
-    "countableSourceRecords": 22
+    "countableSourceRecords": 26
   },
   "facilities": [
     {"id":"facility:biofos-lynetten","name":"Renseanlæg Lynetten","facilityType":"wastewaterTreatmentPlant","lifecycleStatus":"active","presentationOrganizationId":"org:biofos","verification":{"status":"verified","checkedAt":"2026-09-18","sourceUrls":["https://www.hofor.dk/om-hofor/organisationen/koncerndiagram/selskaber-i-hofor/biofos-a-s/"]}},
@@ -57,6 +57,9 @@
     {"pulsRecordId":"Renseanlaeg.2e64c1a1-10e8-41d3-823c-7375272f70c9","facilityId":"facility:aarhus-vand-viby","mappingStatus":"verified","recordRole":"outletRecord","includeInFacilityCount":false},
     {"pulsRecordId":"Renseanlaeg.b98813a1-680b-463d-8009-cc26ed36aad8","facilityId":"facility:aarhus-vand-viby","mappingStatus":"verified","recordRole":"fictitiousOutletRecord","includeInFacilityCount":false},
     {"pulsRecordId":"Renseanlaeg.d68d86f2-e486-4a0d-ad32-9ad59cff0766","facilityId":"facility:aarhus-vand-viby","mappingStatus":"verified","recordRole":"fictitiousOutletRecord","includeInFacilityCount":false},
+    {"pulsRecordId":"Renseanlaeg.e89c3928-bd3f-44f9-b702-314617a29cb3","facilityId":"facility:aarhus-vand-egaa","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true},
+    {"pulsRecordId":"Renseanlaeg.7531c778-8e3a-4f67-92d2-b6ebe8f454b6","facilityId":"facility:aarhus-vand-marselisborg","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true},
+    {"pulsRecordId":"Renseanlaeg.af36059b-fdf0-4b79-b50f-129612af15cf","facilityId":"facility:aarhus-vand-aaby","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true},
     {"pulsRecordId":"Renseanlaeg.18ae8c6b-7731-46a3-93eb-451a26c57346","facilityId":"facility:vandcenter-syd-nordvest","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true},
     {"pulsRecordId":"Renseanlaeg.4b11c71e-8757-4a8e-80d4-77f019e73f57","facilityId":"facility:vandcenter-syd-otterup","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true},
     {"pulsRecordId":"Renseanlaeg.5e6544ce-0ca2-47cc-8857-ec1e0d44b717","facilityId":"facility:vandcenter-syd-haarslev","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true},
@@ -76,6 +79,7 @@
     {"pulsRecordId":"Renseanlaeg.ddb768bb-3051-4029-8563-6626f5e3e0dd","facilityId":"facility:aquadjurs-holme","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true},
     {"pulsRecordId":"Renseanlaeg.f510b594-e0f8-4dee-becb-6ea59c323baa","facilityId":"facility:aquadjurs-boeslum","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true},
     {"pulsRecordId":"Renseanlaeg.fb661475-3f6d-4cdb-8350-f63837627a15","facilityId":"facility:aquadjurs-roende","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true},
-    {"pulsRecordId":"Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c","facilityId":"facility:moelleaavaerket","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true}
+    {"pulsRecordId":"Renseanlaeg.44f9a35f-2848-47f1-a82f-bdc2da36947c","facilityId":"facility:moelleaavaerket","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true},
+    {"pulsRecordId":"Renseanlaeg.c40902d9-3976-47db-9050-5bae48df15bc","facilityId":"facility:din-forsyning-renseanlaeg-oest","mappingStatus":"verified","recordRole":"mainFacilityRecord","includeInFacilityCount":true}
   ]
 }

@@ -17,6 +17,12 @@
 .plant-row .row-copy small{white-space:normal;overflow:visible;line-height:1.45}
 .map-legend .dot:not(.small):not(.medium):not(.large):not(.xlarge){width:9px;height:9px}
 .map-legend small{grid-column:1/-1}
+.plant-source-note{margin:4px 0 9px;padding:7px 9px;border-left:2px solid #54a9b5;background:#123946;color:#b9d2d8}
+.plant-dot.technical{background:transparent!important;border-color:currentColor;box-shadow:none}
+.dot.facility{width:10px;height:10px}
+.dot.technical{width:10px;height:10px;background:transparent;border:2px dashed #087e90;box-shadow:none}
+.record-status-note{margin:0 0 18px;padding:11px 12px;border-left:3px solid #5b8994;background:#edf4f5;color:#36545c;font-size:12px;line-height:1.45}
+.record-status-note strong{display:block;margin-bottom:3px;color:#173e49}
 .capacity-note{margin:0 0 18px;padding:12px 13px;border-left:3px solid #0a7b8c;background:#eaf4f5;color:#284b55;font-size:12px;line-height:1.5}
 .capacity-note strong{display:block;color:#153f4a}
 .capacity-note p{margin:4px 0 0}

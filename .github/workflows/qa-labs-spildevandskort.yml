@@ -162,8 +162,8 @@ jobs:
               assert canonical['visibleOrganizationCount']==74,canonical
               assert len(canonical['renderedOrganizationIds'])==74 and len(set(canonical['renderedOrganizationIds']))==74,canonical
               assert canonical['parity']=={'checked':76,'matches':76,'mismatchCount':0},canonical
-              assert plants >= 700, f'activePlantCount={plants}'
-              assert (await page.locator('#activePlantCount + span').inner_text()).strip()=='aktive PULS-poster'
+              assert plants == 27, f'verifiedPlantCount={plants}'
+              assert (await page.locator('#activePlantCount + span').inner_text()).strip()=='verificerede anlæg'
               assert projects >= 100, f'projectCount={projects}'
               assert regions == 8, f'regionGroups={regions}'
               assert names == EXPECTED, names
@@ -221,8 +221,16 @@ jobs:
               assert await page.locator('#plantControls').is_visible()
               assert not await page.locator('#brandControls').is_visible()
               assert not await page.locator('#projectControls').is_visible()
-              plant_rows=await page.locator('.plant-row').count()
-              assert plant_rows > 100, f'plantRows={plant_rows}'
+              assert await page.locator('#showVerifiedPlants').is_checked()
+              assert not await page.locator('#showPulsRecords').is_checked()
+              verified_plant_rows=await page.locator('.plant-row').count()
+              assert verified_plant_rows == 27, f'verifiedPlantRows={verified_plant_rows}'
+              await page.locator('#showVerifiedPlants').uncheck()
+              await page.locator('#showPulsRecords').check()
+              await page.wait_for_timeout(300)
+              puls_rows=await page.locator('.plant-row').count()
+              expected_puls_rows=await page.evaluate("state.plants.filter(p=>p.active&&!p.includeInFacilityCount&&plantSelectionIds(p).some(id=>state.selected.has(id))).length")
+              assert puls_rows == expected_puls_rows and puls_rows > 600, f'pulsRows={puls_rows}, expected={expected_puls_rows}'
 
               await page.locator('.tab[data-tab="projects"]').click()
               await page.wait_for_timeout(1500)
@@ -276,7 +284,7 @@ jobs:
                   assert overflow <= 3, f'horizontal overflow={overflow}px'
 
               await page.screenshot(path=f'qa-{label}.png',full_page=True)
-              print(f'{label.upper()}_QA_OK brands={brands} activePlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} withheld={geo["withheld"]} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} plantRows={plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])} font={font_qa["body"]}')
+              print(f'{label.upper()}_QA_OK brands={brands} verifiedPlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} withheld={geo["withheld"]} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} verifiedPlantRows={verified_plant_rows} pulsRows={puls_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])} font={font_qa["body"]}')
               await context.close()
 
           async def main():
