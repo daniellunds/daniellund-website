@@ -229,7 +229,7 @@ jobs:
               await page.locator('#showPulsRecords').check()
               await page.wait_for_timeout(300)
               puls_rows=await page.locator('.plant-row').count()
-              expected_puls_rows=await page.evaluate("state.plants.filter(p=>p.active&&!p.includeInFacilityCount).length")
+              expected_puls_rows=await page.evaluate("state.plants.filter(p=>p.active&&!p.includeInFacilityCount&&plantSelectionIds(p).some(id=>state.selected.has(id))).length")
               assert puls_rows == expected_puls_rows and puls_rows > 600, f'pulsRows={puls_rows}, expected={expected_puls_rows}'
 
               await page.locator('.tab[data-tab="projects"]').click()
