@@ -226,6 +226,10 @@ jobs:
               assert await page.locator('#showPulsRecords').is_checked()
               default_plant_rows=await page.locator('.plant-row').count()
               assert default_plant_rows > 600, f'defaultPlantRows={default_plant_rows}'
+              plant_styles=await page.evaluate("Array.from(state.plantLayer.getLayers()).map(layer=>layer.options)")
+              assert plant_styles, 'No plant markers rendered'
+              assert all(not style.get('dashArray') for style in plant_styles), plant_styles
+              assert all(style.get('fillOpacity',0) >= .9 for style in plant_styles), plant_styles
               await page.locator('#showPulsRecords').uncheck()
               await page.wait_for_timeout(300)
               verified_plant_rows=await page.locator('.plant-row').count()
