@@ -55,6 +55,7 @@ jobs:
           node scripts/check-facility-registry.cjs
           node scripts/check-plant-presentation.cjs
           node scripts/check-wastewater-relations.cjs
+          node scripts/check-load-screening.cjs
           python - <<'PY'
           import json, gzip
           from pathlib import Path

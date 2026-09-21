@@ -22,7 +22,16 @@ async function checkUI(fail){
  const c={window:{LoadScreening:S},LoadScreening:S,console:{warn(){}},PROD:'data',state:{plants:[{id:uuid,active:true}]},document:{getElementById:k=>nodes[k],querySelector:()=>nodes.legend},fetchJSON:async()=>{if(fail)throw Error('offline');return data;}};
  vm.createContext(c);vm.runInContext(fs.readFileSync('labs/spildevandskort/load-screening-ui.js','utf8'),c);
  await c.loadPlantLoads();assert.match(nodes.loadScreeningNote.textContent,fail?/kunne ikke hentes/:/1 aktive anlæg med EEA-belastning/);
+ if(!fail){
+  const biofosFacilities=[
+   [{id:'facility:biofos-lynetten',sourceRecordId:'Renseanlaeg.8793f333-ad28-446d-8d0e-c9c854ca4a6d'},758657],
+   [{id:'facility:biofos-damhusaaen',sourceRecordIds:['Renseanlaeg.87c30072-633c-440b-b3a1-1b0f529acf6f']},282822],
+   [{id:'facility:biofos-avedoere',sourceRecordId:'Renseanlaeg.426fe009-d383-4e55-b365-9cd7dbe1abdb'},264846]
+  ];
+  for(const [plant,expected] of biofosFacilities)assert.equal(c.plantLoad(plant).pe,expected);
+  assert.equal(c.plantLoad({id:'facility:biofos-lynetten'}).pe,null);
+ }
  assert.equal(c.loadFilterMatches({id:'unknown',active:true}),false);
  nodes.loadScreeningEnabled.checked=false;assert.equal(c.loadFilterMatches({id:'unknown',active:true}),true);
 }
-(async()=>{await checkUI(false);await checkUI(true);console.log('LOAD_SCREENING_OK: EEA 2022 basis, thresholds, zero, missing data, unique joins and download failure');})();
+(async()=>{await checkUI(false);await checkUI(true);console.log('LOAD_SCREENING_OK: EEA 2022 basis, thresholds, facility/PULS joins, BIOFOS regressions, missing data and download failure');})();
