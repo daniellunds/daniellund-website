@@ -1,6 +1,14 @@
 const plantLoadRecords=new Map();
 let plantLoadsState='loading';
-function plantLoad(p){return LoadScreening.select(plantLoadRecords.get(LoadScreening.id(p.id)));}
+function plantLoad(p){
+  const ids=[p?.sourceRecordId,...(Array.isArray(p?.sourceRecordIds)?p.sourceRecordIds:[]),p?.id];
+  for(const candidate of ids){
+    if(!candidate)continue;
+    const record=plantLoadRecords.get(LoadScreening.id(candidate));
+    if(record)return LoadScreening.select(record);
+  }
+  return LoadScreening.select(null);
+}
 function screeningEnabled(){return !!document.getElementById('loadScreeningEnabled')?.checked;}
 function loadFilterMatches(p){
   const filter=document.getElementById('loadScreeningFilter')?.value||'all';
