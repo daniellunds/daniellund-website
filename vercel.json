@@ -9,6 +9,11 @@
       "source": "/labs/spildevandskort",
       "destination": "/labs/spildevandskort/",
       "permanent": false
+    },
+    {
+      "source": "/labs/spildevandskort/changelog",
+      "destination": "/labs/spildevandskort/changelog/",
+      "permanent": false
     }
   ]
 }
