@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0c3040" />
+  <title>Roadmap · Spildevandskortet</title>
+  <link rel="preload" href="../fonts/SwecoSans-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../fonts/SwecoSans-Medium.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="hero-top">
+        <a class="back-link" href="../">← Tilbage til kortet</a>
+        <span class="eyebrow">Spildevandskortet</span>
+      </div>
+      <h1>Roadmap</h1>
+      <p class="lede">En enkel arbejdsplan for de næste funktioner og dataløft i Spildevandskortet. Roadmappet er et arbejdsdokument og bliver justeret, når research og kvalitetssikring ændrer vores metode.</p>
+      <div class="legend" aria-label="Statusforklaring">
+        <span><i class="dot now"></i>I gang</span>
+        <span><i class="dot next"></i>Næste</span>
+        <span><i class="dot later"></i>Senere</span>
+      </div>
+    </header>
+
+    <section class="roadmap-section">
+      <div class="section-head">
+        <span class="section-kicker">Prioritet 1</span>
+        <h2>I gang nu</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-meta"><span class="status now">I gang</span><span class="area">Datakvalitet</span></div>
+          <h3>National audit af renseanlæg og relationer</h3>
+          <p>Færdiggøre koblingen mellem PULS-kildeposter, fysiske renseanlæg og canonical organisationer. Ejerskab, drift, netansvar og rensevej holdes som separate relationer, så anlægstal og profiler ikke bygger på gæt eller navnematch alene.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-meta"><span class="status now">I gang</span><span class="area">Transparens</span></div>
+          <h3>Direkte links til rådata og kilder</h3>
+          <p>Tilføje klikbare kildelinks direkte i detailpanelerne til PULS, Plandata, EEA og Dataforsyningen. Første trin er dataset-links; strukturen skal kunne udvides til konkrete record-links, hvor datakilden understøtter det.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-meta"><span class="status now">I gang</span><span class="area">Renseanlæg</span></div>
+          <h3>Renseanlægsoplande</h3>
+          <p>Koble renseanlæg til deres faktiske oplande. Ved klik på et renseanlæg skal det tilhørende opland kunne fremhæves, mens øvrige områder tones ned. Relationerne skal være dokumenterede, før de vises.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="roadmap-section">
+      <div class="section-head">
+        <span class="section-kicker">Prioritet 2</span>
+        <h2>Næste</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-meta"><span class="status next">Næste</span><span class="area">Rensetrin</span></div>
+          <h3>3. og 4. rensetrin</h3>
+          <p>Tilføje strukturerede oplysninger om eksisterende og planlagte rensetrin og gøre dem filtrerbare. Den nuværende EEA-screening skal fortsat vises som historisk belastningsscreening og ikke som dokumentation for et konkret myndighedskrav.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-meta"><span class="status next">Næste</span><span class="area">Filtrering</span></div>
+          <h3>Udvidede PE-filtre</h3>
+          <p>Gøre det lettere at filtrere renseanlæg efter registreret designkapacitet, godkendt kapacitet og EEA-belastning uden at blande de tre begreber sammen.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-meta"><span class="status next">Næste</span><span class="area">Forsyningsprofiler</span></div>
+          <h3>Igangværende udbud</h3>
+          <p>Ny fane på hver forsyningsprofil med aktuelle udbud og relevante links. Udbud skal knyttes til den canonical organisation og have tydelig kilde og dato.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-meta"><span class="status next">Næste</span><span class="area">Forsyningsprofiler</span></div>
+          <h3>Rigere organisationsprofiler</h3>
+          <p>Udbygge profiler med verificeret hjemmeside, relevante kontaktpersoner og roller, LinkedIn-links, projekter og andre dokumenterede organisationsoplysninger.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-meta"><span class="status next">Næste</span><span class="area">Projekter</span></div>
+          <h3>Mere præcis projektgeografi</h3>
+          <p>Erstatte skematiske områdeankre og uafklarede placeringer med dokumenteret punkt-, linje- eller polygongeometri, når offentlige kilder gør det muligt. Projekter med flere delanlæg skal opdeles, før de placeres præcist.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="roadmap-section">
+      <div class="section-head">
+        <span class="section-kicker">Perspektiv</span>
+        <h2>Senere</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-meta"><span class="status later">Senere</span><span class="area">Miljøscreening</span></div>
+          <h3>Miljøforhold for et valgt punkt</h3>
+          <p>Mulighed for at klikke på et punkt og få et samlet overblik over relevante miljølag. På sigt kan de dokumenterede forhold danne grundlag for et første, kildebaseret udkast til en miljøscreening.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-meta"><span class="status later">Senere</span><span class="area">Udvidelse</span></div>
+          <h3>Vandforsyning som separat korttilstand</h3>
+          <p>Udvide løsningen med vandforsyningsområder og vandværker uden at blande dem sammen med spildevandsorganisationer, renseanlæg og kloakoplande.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-meta"><span class="status later">Senere</span><span class="area">Dokumentation</span></div>
+          <h3>Offentlig changelog</h3>
+          <p>En enkel versionshistorik med nye funktioner, større dataopdateringer og væsentlige metodeændringer, så det er nemt at se, hvad der er ændret over tid.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="shipped">
+      <div>
+        <span class="section-kicker">Fundamentet</span>
+        <h2>Allerede på plads</h2>
+      </div>
+      <div class="chips" aria-label="Allerede implementerede funktioner">
+        <span>Canonical organisationer</span>
+        <span>Administrative forsyningsområder</span>
+        <span>Vedtagne kloakoplande</span>
+        <span>PULS renseanlæg</span>
+        <span>Fysiske anlæg vs. PULS-poster</span>
+        <span>EEA 2022-screening</span>
+        <span>Forsyningsprojekter</span>
+        <span>Stabile canonical farver</span>
+        <span>Sweco Sans</span>
+        <span>Desktop + mobil</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Roadmappet beskriver den aktuelle arbejdsretning og er ikke en bindende releaseplan.</p>
+      <a href="../">Åbn Spildevandskortet →</a>
+    </footer>
+  </main>
+</body>
+</html>
