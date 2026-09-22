@@ -1,0 +1,61 @@
+name: QA Spildevandskort roadmap
+on:
+  push:
+    paths:
+      - 'labs/spildevandskort/roadmap/**'
+      - 'labs/spildevandskort/index.html'
+      - '.github/workflows/qa-spildevandskort-roadmap.yml'
+  pull_request:
+    paths:
+      - 'labs/spildevandskort/roadmap/**'
+      - 'labs/spildevandskort/index.html'
+      - '.github/workflows/qa-spildevandskort-roadmap.yml'
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate roadmap
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s labs/spildevandskort/roadmap/index.html
+          grep -q '<h1>Roadmap</h1>' labs/spildevandskort/roadmap/index.html
+          grep -q 'Direkte links til rådata og kilder' labs/spildevandskort/roadmap/index.html
+          grep -q 'National audit af renseanlæg og relationer' labs/spildevandskort/roadmap/index.html
+          grep -q 'Renseanlægsoplande' labs/spildevandskort/roadmap/index.html
+          grep -q '3. og 4. rensetrin' labs/spildevandskort/roadmap/index.html
+          grep -q 'Udvidede PE-filtre' labs/spildevandskort/roadmap/index.html
+          grep -q 'Igangværende udbud' labs/spildevandskort/roadmap/index.html
+          grep -q 'Mere præcis projektgeografi' labs/spildevandskort/roadmap/index.html
+          grep -q 'Miljøforhold for et valgt punkt' labs/spildevandskort/roadmap/index.html
+          grep -q 'Vandforsyning som separat korttilstand' labs/spildevandskort/roadmap/index.html
+          grep -q 'SwecoSans-Regular.woff2' labs/spildevandskort/roadmap/index.html
+          grep -q 'href="../changelog/"' labs/spildevandskort/roadmap/index.html
+          grep -q 'href="./roadmap/"' labs/spildevandskort/index.html
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          class Checker(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.cards=0
+                  self.h1=0
+              def handle_starttag(self,tag,attrs):
+                  attrs=dict(attrs)
+                  classes=set(attrs.get('class','').split())
+                  if tag=='article' and 'card' in classes:
+                      self.cards+=1
+                  if tag=='h1':
+                      self.h1+=1
+
+          p=Checker()
+          p.feed(Path('labs/spildevandskort/roadmap/index.html').read_text())
+          assert p.h1==1,p.h1
+          assert p.cards==10,p.cards
+          print('ROADMAP_QA_OK cards=',p.cards)
+          PY
