@@ -22,6 +22,14 @@ jobs:
           set -euo pipefail
           test -s labs/spildevandskort/index.html
           test -s labs/spildevandskort/styles.css
+          test -s labs/spildevandskort/roadmap/index.html
+          test -s labs/spildevandskort/roadmap/styles.css
+          grep -q '<h1>Roadmap</h1>' labs/spildevandskort/roadmap/index.html
+          grep -q 'Direkte links til rådata og kilder' labs/spildevandskort/roadmap/index.html
+          grep -q '3. og 4. rensetrin' labs/spildevandskort/roadmap/index.html
+          grep -q 'Igangværende udbud' labs/spildevandskort/roadmap/index.html
+          grep -q 'Renseanlægsoplande' labs/spildevandskort/roadmap/index.html
+          grep -q 'href="./roadmap/"' labs/spildevandskort/index.html
           test -s labs/spildevandskort/fonts/SwecoSans-Regular.woff2
           test -s labs/spildevandskort/fonts/SwecoSans-Medium.woff2
           test -s labs/spildevandskort/fonts/SwecoSans-Italic.woff2
@@ -288,7 +296,22 @@ jobs:
                   assert overflow <= 3, f'horizontal overflow={overflow}px'
 
               await page.screenshot(path=f'qa-{label}.png',full_page=True)
-              print(f'{label.upper()}_QA_OK brands={brands} verifiedPlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} withheld={geo["withheld"]} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} defaultPlantRows={default_plant_rows} verifiedPlantRows={verified_plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])} font={font_qa["body"]}')
+
+              roadmap_response=await page.goto(os.environ['MAP_URL']+'roadmap/',wait_until='domcontentloaded',timeout=30000)
+              assert roadmap_response and roadmap_response.ok, f'Roadmap HTTP {roadmap_response.status if roadmap_response else "none"}'
+              assert (await page.locator('h1').inner_text()).strip()=='Roadmap'
+              assert await page.locator('.card').count() >= 10
+              assert await page.locator('text=Direkte links til rådata og kilder').count()==1
+              assert await page.locator('text=Igangværende udbud').count()==1
+              assert await page.locator('text=Renseanlægsoplande').count()==1
+              await page.wait_for_function("""async()=>{await document.fonts.ready;return getComputedStyle(document.body).fontFamily.includes('Sweco Sans')}""",timeout=15000)
+              assert await page.locator('.back-link').get_attribute('href')=='../'
+              if mobile:
+                  roadmap_overflow=await page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
+                  assert roadmap_overflow <= 3, f'roadmap horizontal overflow={roadmap_overflow}px'
+              await page.screenshot(path=f'qa-roadmap-{label}.png',full_page=True)
+
+              print(f'{label.upper()}_QA_OK brands={brands} verifiedPlants={plants} projects={projects} projectRows={project_rows} projectMarkers={project_markers} withheld={geo["withheld"]} advancedRows={advanced_rows} regions={regions} leafletInteractive={interactive} defaultPlantRows={default_plant_rows} verifiedPlantRows={verified_plant_rows} activeWithCapacity={puls_schema["activeWithCapacity"]} map={round(map_box["width"])}x{round(map_box["height"])} font={font_qa["body"]} roadmapCards={await page.locator(".card").count()}')
               await context.close()
 
           async def main():
