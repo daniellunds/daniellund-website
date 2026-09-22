@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b2d3b" />
+  <title>Changelog – Dansk spildevandskort</title>
+  <meta name="description" content="Udviklingshistorik for Dansk spildevandskort." />
+  <link rel="preload" href="../fonts/SwecoSans-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../fonts/SwecoSans-Medium.woff2" as="font" type="font/woff2" crossorigin />
+  <style>
+    @font-face{font-family:"Sweco Sans";src:url("../fonts/SwecoSans-Regular.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
+    @font-face{font-family:"Sweco Sans";src:url("../fonts/SwecoSans-Medium.woff2") format("woff2");font-style:normal;font-weight:500 900;font-display:swap}
+    :root{--ink:#153847;--muted:#667f87;--line:#dbe6e8;--brand:#0c3040;--accent:#087a8b;--paper:#f7faf9;--card:#fff}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Sweco Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    a{color:var(--accent)}
+    .topbar{position:sticky;top:0;z-index:10;background:rgba(12,48,64,.96);backdrop-filter:blur(8px);color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}
+    .topbar-inner{max-width:920px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .topbar strong{font-size:14px;letter-spacing:-.01em}
+    .back{color:#cfe7eb;text-decoration:none;font-size:13px}
+    .back:hover{color:#fff}
+    main{max-width:920px;margin:0 auto;padding:58px 24px 90px}
+    .eyebrow{margin:0 0 8px;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+    h1{margin:0;font-size:clamp(36px,6vw,58px);line-height:1;letter-spacing:-.05em}
+    .lead{max-width:680px;margin:18px 0 8px;color:#4f6a73;font-size:18px}
+    .updated{margin:0;color:#80959b;font-size:12px}
+    .timeline{margin-top:54px}
+    .release{display:grid;grid-template-columns:155px minmax(0,1fr);gap:34px;padding:34px 0;border-top:1px solid var(--line)}
+    .release:first-child{border-top:0;padding-top:0}
+    .release-meta{position:sticky;top:74px;align-self:start}
+    .version{display:block;font-size:18px;font-weight:750;letter-spacing:-.02em}
+    .date{display:block;margin-top:2px;color:#80949a;font-size:12px}
+    .status{display:inline-block;margin-top:9px;padding:3px 8px;border-radius:999px;background:#e4f2f3;color:#086878;font-size:10px;font-weight:750;text-transform:uppercase;letter-spacing:.06em}
+    .release h2{margin:0 0 13px;font-size:25px;letter-spacing:-.035em;line-height:1.15}
+    .release p{margin:0 0 12px;color:#506b74}
+    .release ul{margin:12px 0 0;padding-left:19px}
+    .release li{margin:6px 0}
+    .release code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;background:#eaf0f1;padding:2px 5px;border-radius:4px}
+    .refs{margin-top:17px!important;color:#84989e!important;font-size:12px}
+    .unreleased{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:42px}
+    .unreleased h2{font-size:21px}
+    footer{border-top:1px solid var(--line);padding-top:24px;margin-top:25px;color:#80949a;font-size:12px}
+    @media(max-width:680px){
+      .topbar-inner{padding:11px 16px}
+      main{padding:38px 18px 65px}
+      .lead{font-size:16px}
+      .release{grid-template-columns:1fr;gap:12px;padding:28px 0}
+      .release-meta{position:static}
+      .version{display:inline;margin-right:8px}
+      .date{display:inline}
+      .status{display:block;width:max-content}
+      .unreleased{padding:19px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <strong>Dansk spildevandskort</strong>
+      <a class="back" href="../">← Tilbage til kortet</a>
+    </div>
+  </header>
+
+  <main>
+    <p class="eyebrow">Udviklingshistorik</p>
+    <h1>Changelog</h1>
+    <p class="lead">Et kort over de væsentligste funktioner, dataforbedringer og rettelser i Spildevandskortet.</p>
+    <p class="updated">Senest opdateret 22. september 2026</p>
+
+    <section class="timeline" aria-label="Changelog">
+      <article class="unreleased">
+        <div class="release-meta">
+          <span class="version">Under udvikling</span>
+          <span class="status">Unreleased</span>
+        </div>
+        <div>
+          <h2>Næste forbedringer</h2>
+          <ul>
+            <li>Fejlsøgning af hvide vertikale seams i kortvisningen.</li>
+            <li>Screening og filtrering efter 3. og 4. rensetrin.</li>
+            <li>Videreudbygning af relationer mellem renseanlæg og oplande.</li>
+            <li>Fanen <strong>Igangværende udbud</strong> på forsyningsprofiler.</li>
+            <li>Yderligere verificering og datakvalitet for administrative områder og kloakoplande.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="release">
+        <div class="release-meta"><span class="version">v0.5.1</span><span class="date">21. september 2026</span></div>
+        <div>
+          <h2>EEA-belastning rettet for verificerede anlæg</h2>
+          <p>EEA-opslag følger nu de PULS-kildeposter, der er knyttet til et verificeret fysisk renseanlæg. Dermed vises belastningen igen korrekt efter overgangen til interne <code>facility:*</code>-ID'er.</p>
+          <ul>
+            <li>Lynetten: 758.657 PE</li>
+            <li>Damhusåen: 282.822 PE</li>
+            <li>Avedøre: 264.846 PE</li>
+          </ul>
+          <p class="refs">GitHub: PR #46</p>
+        </div>
+      </article>
+
+      <article class="release">
+        <div class="release-meta"><span class="version">v0.5.0</span><span class="date">19. september 2026</span></div>
+        <div>
+          <h2>Fysiske renseanlæg og PULS-poster</h2>
+          <p>Datamodellen skelner nu mellem verificerede fysiske renseanlæg og tekniske PULS-poster. Verificerede dubletter samles under det fysiske anlæg, mens den landsdækkende PULS-dækning bevares.</p>
+          <ul>
+            <li>27 verificerede pilotanlæg og 31 verificerede PULS-koblinger.</li>
+            <li>Viby-anlæggets fire PULS-poster samlet som ét fysisk anlæg.</li>
+            <li>654 synlige renseanlægs-/PULS-markører i standardvisningen.</li>
+            <li>Alle markører vises nu med massiv fyld og ubrudt hvid kant.</li>
+          </ul>
+          <p class="refs">GitHub: PR #43–45</p>
+        </div>
+      </article>
+
+      <article class="release">
+        <div class="release-meta"><span class="version">v0.4.0</span><span class="date">18. september 2026</span></div>
+        <div>
+          <h2>Fælles organisations- og anlægsmodel</h2>
+          <p>Forsyninger, aliases, profiler, kortfarver og datakilder blev samlet omkring stabile organisations-ID'er.</p>
+          <ul>
+            <li>74 kanoniske organisationer og 76 historiske kildeidentiteter.</li>
+            <li>27 fysiske renseanlæg og 28 tilknyttede kildeposter.</li>
+            <li>Nabokontrast mellem administrative områder uden at opgive den gennemgående forsyningsfarve.</li>
+            <li>Sweco Sans implementeret på tværs af kortets brugerflade.</li>
+            <li>Farve-flash ved første indlæsning fjernet.</li>
+          </ul>
+          <p class="refs">GitHub: PR #35–36 og #38–42</p>
+        </div>
+      </article>
+
+      <article class="release">
+        <div class="release-meta"><span class="version">v0.3.0</span><span class="date">16.–17. september 2026</span></div>
+        <div>
+          <h2>PE-screening og bedre kortinteraktion</h2>
+          <p>EEA's rapporterede indløbsbelastning fra 2022 blev integreret som et separat datalag og adskilt fra teknisk kapacitet og godkendt belastning.</p>
+          <ul>
+            <li>Screening ved 10.000 og 150.000 PE.</li>
+            <li>303 dokumenterede EEA/PULS-koblinger ved første implementering.</li>
+            <li>Administrative områder kan vælges og highlightes direkte.</li>
+            <li>Klik på oplande kan fremhæve relevant administrativt område og åbne forsyningsprofilen.</li>
+            <li>Kollapsbar sidebar med korrekt kort-resize.</li>
+          </ul>
+          <p class="refs">GitHub: PR #26–34</p>
+        </div>
+      </article>
+
+      <article class="release">
+        <div class="release-meta"><span class="version">v0.2.0</span><span class="date">7.–14. september 2026</span></div>
+        <div>
+          <h2>Geografi, baggrundskort og forsyningsområder</h2>
+          <ul>
+            <li>Grayscale OSM og luftfoto som baggrundskort.</li>
+            <li>Administrative forsyningsområder etableret som særskilt lag.</li>
+            <li>Punkt-, linje- og skematisk områdegeometri for projekter.</li>
+            <li>Historiske områder koblet til aktuelle spildevandsoperatører.</li>
+            <li>Officielle og dokumenterede renseanlægsoplande introduceret, bl.a. for BIOFOS-anlæg.</li>
+          </ul>
+          <p class="refs">GitHub: PR #11–25 samt efterfølgende oplandsarbejde</p>
+        </div>
+      </article>
+
+      <article class="release">
+        <div class="release-meta"><span class="version">v0.1.0</span><span class="date">4. september 2026</span></div>
+        <div>
+          <h2>Første samlede Spildevandskort</h2>
+          <ul>
+            <li>Plandata-kloakoplande og PULS-renseanlæg samlet i én webkortløsning.</li>
+            <li>53.179 kildegeometrier optimeret til 276 render-features.</li>
+            <li>74 forsyningsprofiler med overblik, personer og projekter.</li>
+            <li>143 forsyningsprojekter med kategori, status, kilde og kortplacering.</li>
+            <li>Regionsopdeling, multi-select samt desktop- og mobilvisning.</li>
+            <li>Automatiseret browser-QA introduceret.</li>
+          </ul>
+          <p class="refs">GitHub: PR #1–10</p>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      Changeloggen fokuserer på væsentlige bruger- og dataændringer. Mindre tekniske commits og iterative QA-kørsler er ikke oplistet enkeltvis.
+    </footer>
+  </main>
+</body>
+</html>
