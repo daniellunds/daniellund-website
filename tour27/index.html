@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang='da'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Tour de France 2027 — Etapekalender</title>
+<link rel='stylesheet' href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'>
+<style>
+:root{--tour-yellow:#FEDD00;--paper:#fbfaf6;--panel:#fff;--ink:#171717;--muted:#6f6a5a;--line:#d9d3bf;--line2:#ece6d4;--flat:#477a9d;--hilly:#6f8f62;--mountain:#9d4a42;--tt:#b9824d;--rest:#888;--r:18px}*{box-sizing:border-box}body{margin:0;background:var(--tour-yellow);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}.page{width:min(1420px,calc(100vw - 48px));margin:42px auto 56px}.top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;margin-bottom:28px}.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;margin-bottom:18px}h1{margin:0;font-size:clamp(56px,9vw,132px);line-height:.82;letter-spacing:-.075em}.controls{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;max-width:650px}.filter,.small{height:34px;border:1px solid rgba(23,23,23,.24);background:rgba(255,255,255,.34);border-radius:999px;padding:0 13px;color:#2e2800;cursor:pointer;font-size:13px}.filter:hover,.small:hover{background:rgba(255,255,255,.56);border-color:#171717}.filter.active{background:#171717;color:var(--tour-yellow);border-color:#171717}.search{height:34px;min-width:230px;border:1px solid rgba(23,23,23,.24);background:rgba(255,255,255,.34);border-radius:999px;padding:0 14px;color:#171717;outline:none}.layout{display:grid;grid-template-columns:minmax(0,1fr) 410px;gap:22px;align-items:start}.calendar{background:var(--paper);border:1px solid rgba(23,23,23,.18);border-radius:var(--r);overflow:hidden;box-shadow:0 18px 46px rgba(74,61,0,.12)}.weekdays,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.weekdays{border-bottom:1px solid var(--line)}.weekdays div{height:44px;display:flex;align-items:center;padding:0 16px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;border-right:1px solid var(--line2)}.weekdays div:last-child,.day:nth-child(7n){border-right:0}.day{min-width:0;min-height:160px;padding:13px 11px 12px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);background:rgba(255,255,255,.28);display:flex;flex-direction:column}.empty{background:rgba(0,0,0,.015)}.date{font-size:15px;color:#aaa;font-weight:600;margin-bottom:9px}.date.has{color:#111}.stage{--c:#111;min-width:0;width:100%;flex:1;min-height:0;border:0;border-left:2px solid var(--c);background:transparent;padding:0 0 0 10px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:6px;color:#111;overflow:hidden}.stage.sel{border-left-width:4px;background:linear-gradient(90deg,rgba(254,221,0,.26),rgba(254,221,0,0) 52%)}.stage:hover{transform:translateX(2px)}.code{font-size:21px;line-height:1;letter-spacing:-.06em;font-weight:750}.type{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--c);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.route{font-size:13px;line-height:1.2;font-weight:650;overflow-wrap:anywhere}.meta{font-size:11.5px;line-height:1.35;color:var(--muted)}.mini{margin-top:auto;width:100%;height:18px;opacity:.9;flex-shrink:0;display:flex;align-items:flex-end}.details{position:sticky;top:22px;background:var(--panel);border:1px solid rgba(23,23,23,.18);border-top:4px solid var(--tour-yellow);border-radius:var(--r);padding:22px;min-height:620px;box-shadow:0 18px 46px rgba(74,61,0,.12)}.detailsType{color:var(--c);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800}.details h2{margin:18px 0 8px;font-size:38px;line-height:.95;letter-spacing:-.055em}.detailsRoute{font-size:15px;color:var(--muted);line-height:1.35;margin-bottom:20px}.profile{margin:18px 0 10px}.profileBox{border:1px solid var(--line2);background:#f8f7f3;overflow:hidden}.profileBox img{display:block;width:100%;max-width:100%;height:auto}.routeMap{border-top:1px solid var(--line2);padding-top:16px;margin:18px 0 24px}.stageMap{width:100%;height:360px;border:1px solid var(--line2);border-radius:14px;background:#f3f1eb;overflow:hidden}.stageMap.mapError{outline:1px solid rgba(157,74,66,.35);background:#f7f1ee}.routeStatus{margin:8px 0 0;color:#999;font-size:11.5px;line-height:1.4}.routeStatus.error{color:#9d4a42}.stageMap .leaflet-control-attribution{font-size:9px;background:rgba(251,250,246,.84)}.stageMap .leaflet-tile-pane{filter:saturate(.74) contrast(.96) brightness(1.03)}.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line2);border:1px solid var(--line2);margin:20px 0 24px}.fact{background:#fff;min-height:64px;padding:12px}.lab{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#999;font-weight:750;margin-bottom:7px}.val{font-size:14px;line-height:1.25;font-weight:650}.section{border-top:1px solid var(--line2);padding-top:18px;margin-top:18px}.sectionTitle{margin:0 0 8px;font-size:11px;letter-spacing:.16em;color:#999;text-transform:uppercase}.section p{margin:0;font-size:14px;line-height:1.58;color:#2f2f2f}.nav{display:flex;gap:8px;margin-top:22px}.nav button{flex:1}.hidden{opacity:.16}.backdrop,.close{display:none}@media(max-width:1120px){.top{grid-template-columns:1fr}.controls{justify-content:flex-start}.layout{grid-template-columns:1fr}.details{position:relative;top:0;min-height:0}}@media(max-width:860px){.page{width:100%;margin:0;padding:18px 14px 28px}.top{display:block;margin-bottom:18px}.eyebrow{font-size:10px;margin-bottom:12px}h1{font-size:clamp(76px,22vw,100px);line-height:.84;letter-spacing:-.075em}.controls{margin-top:18px;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:7px;padding:0 2px 8px;max-width:none;scrollbar-width:none}.controls::-webkit-scrollbar{display:none}.filter{flex:0 0 auto;height:32px;font-size:12px}.search{flex:0 0 210px;min-width:210px;height:32px;font-size:12px}.layout{display:block}.calendar{border:0;background:transparent;border-radius:0;overflow:visible;box-shadow:none}.weekdays{display:none}.grid{display:block}.day{min-height:auto;display:grid;grid-template-columns:42px minmax(0,1fr);gap:10px;padding:0;margin-bottom:9px;border:0;background:transparent}.empty{display:none}.date{margin:0;min-height:82px;display:flex;align-items:flex-start;justify-content:center;padding-top:13px;color:#5c5000;font-size:13px}.date.has{color:#171717}.stage{min-height:82px;border-left-width:3px;background:#fbfaf6;border-radius:14px;padding:13px 13px 12px 14px;box-shadow:0 1px 0 rgba(0,0,0,.04)}.stage.sel{border-left-width:3px;outline:1px solid #171717;background:linear-gradient(90deg,rgba(254,221,0,.24),#fbfaf6 55%)}.code{font-size:19px}.type{font-size:9px;max-width:50%}.route{font-size:13px}.meta{font-size:11px}.mini{display:none}.details{position:fixed;z-index:30;left:0;right:0;bottom:0;top:auto;width:100%;max-height:88vh;overflow:auto;border-radius:22px 22px 0 0;border-left:0;border-right:0;border-bottom:0;padding:18px 16px calc(24px + env(safe-area-inset-bottom));transform:translateY(calc(100% + 24px));transition:transform 240ms ease;box-shadow:0 -18px 60px rgba(0,0,0,.2)}body.open .details{transform:translateY(0)}.backdrop{display:block;position:fixed;z-index:20;inset:0;background:rgba(0,0,0,.26);opacity:0;pointer-events:none}body.open .backdrop{opacity:1;pointer-events:auto}.close{display:flex;position:sticky;top:0;margin:-2px 0 10px auto;height:32px;min-width:32px;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;border-radius:999px;color:#555}.details h2{font-size:34px}.profileBox{overflow:hidden;width:100%}.profileBox img{width:100%;max-width:100%;min-width:0;height:auto}.stageMap{height:320px}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:420px){.page{padding-left:10px;padding-right:10px}h1{font-size:clamp(76px,22vw,100px)}.day{grid-template-columns:34px minmax(0,1fr);gap:7px}.stageMap{height:280px}}
+</style>
+</head>
+<body><div class='page'><header class='top'><div><div class='eyebrow'>Tour de France 2027</div><h1>Juli</h1></div><div class='controls'><button class='filter active' data-filter='all'>Alle</button><button class='filter' data-filter='mountain'>Bjerge</button><button class='filter' data-filter='summit'>Bjergafslutning</button><button class='filter' data-filter='gcday'>Klassementsdag</button><button class='filter' data-filter='clearbreakaway'>Oplagt udbrud</button><button class='filter' data-filter='possiblebreakaway'>Mulig udbrud</button><button class='filter' data-filter='hilly'>Kuperet</button><button class='filter' data-filter='flat'>Flad</button><button class='filter' data-filter='tt'>TT</button><button class='filter' data-filter='rest'>Hviledag</button><input id='search' class='search' placeholder='Søg rute, rytter, etape…'></div></header><main class='layout'><section class='calendar'><div class='weekdays'><div>Mandag</div><div>Tirsdag</div><div>Onsdag</div><div>Torsdag</div><div>Fredag</div><div>Lørdag</div><div>Søndag</div></div><div id='grid' class='grid'></div></section><aside id='details' class='details'></aside><div class='backdrop' onclick='closeDetails()'></div></main></div>
+<script src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'></script>
+<script>
+const stages=[{"d":"2027-07-02","n":1,"t":"1. etape","r":"Edinburgh → Carlisle","km":"184 km","ty":"Flad","k":"flat","climbs":"1 kategoriseret","s":"Touren begynder i Edinburgh og går sydpå gennem Midlothian og de skotske grænselandskaber, før feltet krydser ind i England med mål i Carlisle. Undervejs passerer rytterne Côte de Melrose, dagens eneste kategoriserede stigning. Terrænet er overvejende bølgende, mens den sidste del frem mod Carlisle er flad med et kort opløb.","watch":"Côte de Melrose ved Eildon Hills er et af rutens tydelige pejlemærker. Målbyen Carlisle ligger på den engelske side af grænsen.","note":"Grand Départ i Skotland. Etapen er officielt offentliggjort.","img":"https://cdn.cyclingstage.com/images/tour-de-france/2027/stage-1-profile.jpg","gpx":""},{"d":"2027-07-03","n":2,"t":"2. etape","r":"Keswick → Liverpool","km":"223 km","ty":"Kuperet","k":"hilly","climbs":"5 kategoriserede","s":"Anden etape starter i Keswick midt i Lake District og følger landskabet forbi blandt andet Thirlmere, Grasmere og Windermere. Efter Lancaster bliver ruten mere kuperet, og de fem kategoriserede stigninger gør den markant hårdere end åbningsdagen. De sidste kilometer frem mod Liverpool er forholdsvis flade, men en nedkørsel inden kilometerporten til mål bliver en vigtig del af finalen.","watch":"De fem kategoriserede stigninger, herunder Côte de Jubilee Tower i Lancashire, er rutens centrale udfordring.","note":"Grand Départ i England. Etapen er officielt offentliggjort.","img":"https://cdn.cyclingstage.com/images/tour-de-france/2027/stage-2-profile.jpg","gpx":""},{"d":"2027-07-04","n":3,"t":"3. etape","r":"Welshpool → Cardiff","km":"223 km","ty":"Kuperet","k":"hilly","climbs":"Ikke oplyst","s":"Tredje etape foregår helt i Wales fra Welshpool til hovedstaden Cardiff. Efter de første cirka 80 kilometer bliver terrænet mere krævende med længere stigninger, blandt andet Epynt på 3,7 km med 7,9 procent i gennemsnit. I sidste del af etapen bliver bakkerne kortere og stejlere. Côte de Caerffili ligger omkring 12 km fra mål og stiger 2 km med 8,1 procent, inden rytterne kører mod Cardiff.","watch":"Côte de Caerffili, cirka 12 km før mål, er en dokumenteret stejl udfordring på vej ind mod Cardiff.","note":"Grand Départ i Wales. Etapen er officielt offentliggjort.","img":"https://cdn.cyclingstage.com/images/tour-de-france/2027/stage-3-profile.jpg","gpx":""}];
+const C={flat:'#477a9d',hilly:'#6f8f62',mountain:'#9d4a42',ttt:'#b9824d',itt:'#b9824d',rest:'#888'};
+const T={flat:'Flad etape',hilly:'Kuperet etape',mountain:'Bjergetape',ttt:'Holdtidskørsel',itt:'Enkeltstart',rest:'Hviledag'};
+function dateStr(d){return '2027-07-'+String(d).padStart(2,'0')}
+function onDay(d){return stages.find(s=>s.d===d)}
+function fmt(d){return new Date(d+'T12:00').toLocaleDateString('da-DK',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+function miniProfile(t){
+ const c=C[t]||'#111';
+ if(t==='flat')return '<svg viewBox="0 0 240 40" preserveAspectRatio="none"><path d="M4 24 L236 24" stroke="'+c+'" stroke-width="3" fill="none" stroke-linecap="round"/></svg>';
+ return '<svg viewBox="0 0 240 40" preserveAspectRatio="none"><path d="M4 27 C28 12 52 34 78 20 S126 8 154 22 S200 33 236 13" stroke="'+c+'" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>';
+}
+let map=null,routeLayer=null,req=0;
+function statusMsg(message,error=false){const el=document.getElementById('route-status');if(el){el.textContent=message;el.classList.toggle('error',error)}}
+function parseGpx(txt){
+ const xml=new DOMParser().parseFromString(txt,'application/xml');
+ if(xml.querySelector('parsererror'))throw Error('GPX parse error');
+ const pts=[...xml.querySelectorAll('trkpt'),...xml.querySelectorAll('rtept')].map(n=>{
+  const lat=Number(n.getAttribute('lat')),lon=Number(n.getAttribute('lon'));
+  return Number.isFinite(lat)&&Number.isFinite(lon)?[lat,lon]:null;
+ }).filter(Boolean);
+ if(!pts.length)throw Error('Ingen rute-punkter');
+ return pts;
+}
+function initMap(){
+ const el=document.getElementById('stage-map');
+ if(!el||!window.L)return null;
+ if(map){map.remove();map=null}
+ map=window.L.map(el,{zoomControl:false,attributionControl:true,scrollWheelZoom:false,doubleClickZoom:true,dragging:true,tap:true});
+ window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+ if(!matchMedia('(max-width:860px)').matches){window.L.control.zoom({position:'bottomright'}).addTo(map)}
+ map.setView([54.8,-3.0],6);
+ return map;
+}
+async function showRoute(s){
+ const id=++req,el=document.getElementById('stage-map');
+ if(!s||!s.gpx||!el)return;
+ el.classList.remove('mapError');
+ statusMsg('Ruten loader fra GPX-fil.');
+ const m=initMap();
+ if(!m){statusMsg('Kortbiblioteket kunne ikke indlæses.',true);return}
+ try{
+  const response=await fetch(s.gpx,{cache:'force-cache'});
+  if(id!==req)return;
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const pts=parseGpx(await response.text());
+  window.L.polyline(pts,{color:'#171717',weight:7,opacity:.22,lineCap:'round',lineJoin:'round'}).addTo(m);
+  routeLayer=window.L.polyline(pts,{color:'#FEDD00',weight:4,opacity:.98,lineCap:'round',lineJoin:'round'}).addTo(m);
+  window.L.circleMarker(pts[0],{radius:4,color:'#171717',weight:2,fillColor:'#fbfaf6',fillOpacity:1}).addTo(m);
+  window.L.circleMarker(pts[pts.length-1],{radius:5,color:'#171717',weight:2,fillColor:'#FEDD00',fillOpacity:1}).addTo(m);
+  const bounds=routeLayer.getBounds();
+  setTimeout(()=>{m.invalidateSize();if(bounds.isValid())m.fitBounds(bounds,{padding:[22,22],maxZoom:12})},160);
+  statusMsg('Rute indlæst · '+pts.length.toLocaleString('da-DK')+' punkter');
+ }catch(e){if(id!==req)return;el.classList.add('mapError');statusMsg('GPX-ruten kunne ikke indlæses.',true)}
+}
+function build(){
+ const grid=document.getElementById('grid');
+ grid.innerHTML='';
+ // 1 July 2027 falls on a Thursday (Monday-first calendar).
+ for(let i=0;i<3;i++){const e=document.createElement('div');e.className='day empty';grid.appendChild(e)}
+ for(let d=1;d<=31;d++){
+  const s=onDay(dateStr(d)),cell=document.createElement('div');
+  cell.className='day';
+  cell.innerHTML='<div class="date '+(s?'has':'')+'">'+d+'</div>';
+  if(s){
+   const b=document.createElement('button');
+   b.className='stage';
+   b.dataset.date=s.d;
+   b.dataset.type=s.k;
+   b.dataset.search=JSON.stringify(s).toLowerCase();
+   b.style.setProperty('--c',C[s.k]);
+   b.innerHTML='<div class="code">'+s.n+'. etape</div><div class="type">'+T[s.k]+'</div><div class="route">'+s.r+'</div><div class="meta">'+s.km+'</div><div class="mini">'+miniProfile(s.k)+'</div>';
+   b.onclick=()=>select(s.d);
+   cell.appendChild(b);
+  }
+  grid.appendChild(cell);
+ }
+ for(let i=0;i<1;i++){const e=document.createElement('div');e.className='day empty';grid.appendChild(e)}
+}
+function select(date){
+ const s=onDay(date);
+ if(!s)return;
+ if(matchMedia('(max-width:860px)').matches)document.body.classList.add('open');
+ document.querySelectorAll('.stage').forEach(e=>e.classList.toggle('sel',e.dataset.date===date));
+ const details=document.getElementById('details');
+ details.style.setProperty('--c',C[s.k]);
+ const picture='<div class="profile"><div class="profileBox"><img src="'+s.img+'" alt="Etapeprofil for '+s.t+'" loading="lazy" onerror="this.parentNode.textContent=\'Profilbilledet kunne ikke indlæses.\'"></div></div>';
+ const route=s.gpx?'<div class="routeMap"><h3 class="sectionTitle">Rute</h3><div id="stage-map" class="stageMap"></div><p id="route-status" class="routeStatus">Ruten loader fra GPX-fil.</p></div>':'';
+ const facts='<div class="facts"><div class="fact"><div class="lab">Distance</div><div class="val">'+s.km+'</div></div><div class="fact"><div class="lab">Profil</div><div class="val">'+s.ty+'</div></div><div class="fact"><div class="lab">Kategoriserede stigninger</div><div class="val">'+s.climbs+'</div></div><div class="fact"><div class="lab">Status</div><div class="val">Bekræftet</div></div></div>';
+ details.innerHTML='<button class="close" onclick="closeDetails()">×</button><div class="detailsType">'+T[s.k]+'</div><h2>'+s.t+'</h2><div class="detailsRoute">'+fmt(s.d)+'<br>'+s.r+'</div>'+picture+route+facts+'<div class="section"><h3 class="sectionTitle">Analyse</h3><p>'+s.s+'</p></div><div class="section"><h3 class="sectionTitle">Hold øje med</h3><p>'+s.watch+'</p></div><div class="section"><h3 class="sectionTitle">Kalendernote</h3><p>'+s.note+'</p></div><div class="nav"><button class="small" onclick="step(-1)">Forrige</button><button class="small" onclick="step(1)">Næste</button></div>';
+ if(s.gpx)setTimeout(()=>showRoute(s),120);
+}
+function closeDetails(){document.body.classList.remove('open')}
+addEventListener('keydown',e=>{if(e.key==='Escape')closeDetails()});
+function idx(){const e=document.querySelector('.stage.sel');return Math.max(0,stages.findIndex(s=>s.d===(e&&e.dataset.date)))}
+function step(n){let i=idx()+n;if(i<0)i=stages.length-1;if(i>=stages.length)i=0;select(stages[i].d)}
+function filters(){
+ let f='all';
+ const bs=document.querySelectorAll('.filter'),q=document.getElementById('search');
+ function apply(){
+  const x=q.value.trim().toLowerCase();
+  document.querySelectorAll('.stage').forEach(e=>{
+   const t=e.dataset.type,data=JSON.parse(e.dataset.search);
+   const ok=f==='all'||f===t||(f==='tt'&&(t==='itt'||t==='ttt'))||(f==='summit'&&data.summit)||(f==='gcday'&&data.gcday)||(f==='clearbreakaway'&&data.clearbreak)||(f==='possiblebreakaway'&&data.maybebreak);
+   const matches=!x||e.dataset.search.includes(x);
+   e.classList.toggle('hidden',!(ok&&matches));
+  });
+ }
+ bs.forEach(b=>b.onclick=()=>{bs.forEach(a=>a.classList.remove('active'));b.classList.add('active');f=b.dataset.filter;apply()});
+ q.oninput=apply;
+}
+build();filters();select('2027-07-02');if(matchMedia('(max-width:860px)').matches)closeDetails();
+</script></body></html>
