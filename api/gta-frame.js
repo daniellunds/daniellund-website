@@ -72,11 +72,6 @@ function cityFrame(state) {
 <path d="M1692 643 Q1597 533 1450 561 M1692 640 Q1682 502 1731 442 M1691 639 Q1786 542 1920 557 M1692 650 Q1818 664 1920 705 M1694 637 Q1609 572 1577 478" stroke-width="37"/>
 </g>
 <rect width="1920" height="1080" fill="url(#film)"/>
-<g fill="#fff" font-family="system-ui, sans-serif">
-<text x="90" y="108" opacity=".66" font-size="24" letter-spacing="7">ONE FRAME CLOSER / TEST VISUAL</text>
-<text x="90" y="975" font-size="72" font-weight="700" letter-spacing="-2">VICE CITY, IN SLOW MOTION.</text>
-<text x="95" y="1020" font-size="24" opacity=".64" letter-spacing="4">SIMULATED FRAME ${num} / ${TOTAL_FRAMES}</text>
-</g>
 </svg>`;
 }
 
