@@ -144,7 +144,7 @@
     const index = frameIndex(t);
     const frame = index + 1;
     const progress = Math.max(0, Math.min(1, (t - START) / (RELEASE - START)));
-    ui.counter.textContent = 'FRAME ' + String(frame).padStart(5, '0') + ' / ' + TOTAL.toLocaleString('en-US');
+    ui.counter.textContent = 'FRAME ' + frame.toLocaleString('en-US') + ' / ' + TOTAL.toLocaleString('en-US');
     ui.fill.style.width = (progress * 100).toFixed(4) + '%';
     ui.progress.setAttribute('aria-valuenow', String(Math.round(progress * 100)));
     const nextAt = Math.min(RELEASE, START + (index + 1) * STEP);
