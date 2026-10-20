@@ -1,204 +1,170 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#fff8f0">
-  <meta name="description" content="One Frame Closer — a GTA VI release countdown. One simulated frame every minute. An independent fan-made experiment.">
-  <title>ONE FRAME CLOSER — GTA VI Countdown · Daniel Lund Labs</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root { color-scheme: light; --ink:#202424; --muted:#68706c; --paper:#fff8f0; --accent:#c97957; }
-    *,*::before,*::after { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; font-family:'Outfit',sans-serif; color:var(--ink); background:var(--paper); }
-    .inner { width:min(1380px,calc(100% - 56px)); margin-inline:auto; }
-    .eyebrow { text-transform:uppercase; letter-spacing:.22em; font-size:11px; font-weight:600; }
-    .headline { font-weight:300; letter-spacing:-.055em; line-height:1.1; }
-    .countdown { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:min(2.3vw,30px); max-width:1380px; margin-inline:auto; }
-    .unit { position:relative; text-align:center; min-width:0; }
-    .unit + .unit:before { position:absolute; content:''; left:calc(-1 * min(1.15vw,15px)); top:20%; height:52%; border-left:1px solid rgba(32,36,36,.10); }
-    .number { font-size:clamp(48px,10vw,164px); line-height:1; letter-spacing:-.07em; font-weight:500; font-variant-numeric:tabular-nums; font-feature-settings:"tnum"; display:block; }
-    .unit-label { display:block; color:#7e7f79; font-size:clamp(9px,1.05vw,13px); text-transform:uppercase; letter-spacing:.27em; font-weight:500; margin-top:17px; }
-    .stage { position:relative; width:100%; aspect-ratio:16/9; background:linear-gradient(160deg,#18223e 5%,#b45882 50%,#f4a283 75%,#151c2d 100%); isolation:isolate; overflow:hidden; }
-    .stage img { display:block; position:absolute; width:100%; height:100%; inset:0; object-fit:cover; }
-    .stage:after { content:''; pointer-events:none; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(0,0,0,.20),transparent 23%,transparent 77%,rgba(0,0,0,.27)); }
-    .stage-label { position:absolute; z-index:2; left:clamp(16px,3vw,50px); top:clamp(16px,3vw,42px); background:rgba(12,18,28,.57); color:#fff; border:1px solid rgba(255,255,255,.22); backdrop-filter:blur(10px); border-radius:100px; padding:10px 14px; text-transform:uppercase; font-weight:500; font-size:10px; letter-spacing:.18em; }
-    .stage-corner { position:absolute; z-index:2; right:clamp(16px,3vw,50px); bottom:clamp(16px,3vw,42px); text-align:right; color:rgba(255,255,255,.91); font-size:11px; text-shadow:0 2px 8px rgba(0,0,0,.6); letter-spacing:.09em; font-variant-numeric:tabular-nums; }
-    .frame-progress { height:3px; width:100%; background:#dfd6cc; overflow:hidden; }
-    .frame-progress>div { height:100%; width:0; background:linear-gradient(90deg,#c47a5c,#d6a15f); transition:width .45s linear; }
-    .frame-next { font-variant-numeric:tabular-nums; font-feature-settings:"tnum"; white-space:nowrap; }
-    .dot { display:inline-block; height:6px; width:6px; border-radius:50%; background:#bd714f; margin-right:7px; vertical-align:middle; }
-    a { text-underline-offset:4px; }
-    .pill { border:1px solid rgba(24,32,32,.15); padding:8px 12px; border-radius:100px; }
-    .status-error { color:#a54832; }
-    @media(max-width:640px) {
-      .inner { width:calc(100% - 32px); }
-      .number { font-size:clamp(42px,11vw,68px); }
-      .unit-label { margin-top:11px; letter-spacing:.13em; }
-      .stage-label { font-size:8px; letter-spacing:.08em; padding:7px 10px; }
-      .stage-corner { font-size:9px; }
-      .countdown { gap:7px; }
-      .unit + .unit:before { display:none; }
-    }
-    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#fff8f0">
+<meta name="description" content="One frame closer to Grand Theft Auto VI. One frame every minute until November 19, 2026.">
+<title>One Frame Closer — GTA VI Countdown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root { color-scheme:light; --paper:#fff8f0; --text:#272b2b; --muted:#8e8c86; --accent:#bd7756; }
+  * { box-sizing:border-box; }
+  html { min-height:100%; }
+  body { margin:0; min-height:100%; background:var(--paper); color:var(--text); font-family:'Outfit',sans-serif; }
+  .page {
+    isolation:isolate; position:relative; z-index:1; min-height:100vh; min-height:100dvh;
+    padding:12px 0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:clamp(8px,1.4vh,16px);
+  }
+  .countdown-area { text-align:center; width:min(100%,930px); padding:0 18px; flex:0 0 auto; }
+  .kicker { margin:0 0 5px; font-weight:500; font-size:clamp(10px,1vw,12px); letter-spacing:.26em; text-transform:uppercase; color:#6f736d; }
+  .clock { display:flex; align-items:flex-start; justify-content:center; gap:clamp(12px,3.8vw,76px); }
+  .clock-unit { min-width:0; text-align:center; }
+  .clock-value { display:block; font-size:clamp(40px,6.5vw,96px); line-height:1.0; letter-spacing:-.055em; font-variant-numeric:tabular-nums; font-weight:500; }
+  .clock-label { display:block; font-size:clamp(9px,.85vw,11px); font-weight:500; letter-spacing:.19em; color:var(--muted); padding-top:5px; text-transform:uppercase; }
+  /* Reserve enough viewport height for the countdown and frame metadata.
+     On a 16:9 screen the image scales down slightly so it is all visible. */
+  .visual { margin:0; width:min(100vw,calc((100dvh - 168px) * 16 / 9)); max-width:100vw; flex:0 0 auto; }
+  .frame { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:linear-gradient(160deg,#243252,#bc6186,#f2b48e); }
+  .frame img { display:block; width:100%; height:100%; object-fit:contain; }
+  .progress { height:2px; width:100%; background:#e2d9cf; }
+  .progress-fill { height:100%; background:var(--accent); width:0%; }
+  .metadata { padding:11px 2px 0; display:flex; justify-content:space-between; align-items:center; gap:10px; color:#747872; font-size:clamp(10px,1vw,12px); font-weight:400; letter-spacing:.08em; font-variant-numeric:tabular-nums; }
+  .metadata span:last-child { text-align:right; }
+  .demo-note { margin:0; padding:0 10px; text-align:center; font-size:10px; color:#a19d96; letter-spacing:.06em; }
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  @media(max-width:600px) {
+    .page { gap:11px; padding:12px 0; }
+    .kicker { margin-bottom:10px; }
+    .clock { gap:clamp(13px,4.5vw,24px); }
+    .clock-value { font-size:clamp(34px,10vw,60px); }
+    .clock-label { font-size:9px; letter-spacing:.12em; }
+    .visual { width:min(100vw,calc((100dvh - 178px) * 16 / 9)); }
+    .metadata { padding:10px 12px 0; font-size:10px; letter-spacing:0; }
+    .demo-note { font-size:9px; }
+  }
+  @media(max-height:460px) and (orientation:landscape) {
+    .page { gap:5px; padding:6px 0; }
+    .kicker { margin-bottom:1px; }
+    .clock-value { font-size:clamp(25px,7vh,36px); }
+    .clock-label { font-size:8px; padding-top:1px; }
+    .visual { width:min(100vw,calc((100dvh - 98px) * 16 / 9)); }
+    .metadata { padding-top:5px; font-size:9px; }
+    .demo-note { font-size:8px; }
+  }
+</style>
 </head>
-<body class="min-h-screen overflow-x-hidden">
-  <div class="fixed inset-0 z-0 pointer-events-none"
-       style="background-image:
-          radial-gradient(circle at 20% 80%, rgba(255, 182, 153, 0.3) 0%, transparent 50%),
-          radial-gradient(circle at 80% 20%, rgba(255, 244, 214, 0.5) 0%, transparent 50%),
-          radial-gradient(circle at 40% 40%, rgba(255, 182, 153, 0.1) 0%, transparent 50%);">
-  </div>
-  <main class="relative z-10">
-    <header class="inner flex items-center justify-between gap-3 pt-6 pb-8 md:pt-8 md:pb-10">
-      <a href="/" class="text-xs sm:text-sm font-medium tracking-tight no-underline hover:underline" aria-label="Back to daniellund.dk">← DANIEL LUND / LABS</a>
-      <span class="pill text-[9px] sm:text-[11px] font-medium uppercase tracking-widest"><span class="dot"></span>LIVE EXPERIMENT</span>
-    </header>
+<body>
+<div class="fixed inset-0 z-0 pointer-events-none"
+     style="background-image:
+       radial-gradient(circle at 20% 80%, rgba(255, 182, 153, 0.3) 0%, transparent 50%),
+       radial-gradient(circle at 80% 20%, rgba(255, 244, 214, 0.5) 0%, transparent 50%),
+       radial-gradient(circle at 40% 40%, rgba(255, 182, 153, 0.1) 0%, transparent 50%);">
+</div>
+<main class="page">
+  <section class="countdown-area" aria-label="Countdown to Grand Theft Auto VI">
+    <h1 class="kicker">GTA VI · NOVEMBER 19, 2026</h1>
+    <div class="clock" role="timer" aria-label="Time until release">
+      <div class="clock-unit"><span class="clock-value" id="days">--</span><span class="clock-label">Days</span></div>
+      <div class="clock-unit"><span class="clock-value" id="hours">--</span><span class="clock-label">Hours</span></div>
+      <div class="clock-unit"><span class="clock-value" id="minutes">--</span><span class="clock-label">Minutes</span></div>
+      <div class="clock-unit"><span class="clock-value" id="seconds">--</span><span class="clock-label">Seconds</span></div>
+    </div>
+  </section>
+  <figure class="visual">
+    <div class="frame">
+      <img id="frameImage" src="/api/gta-frame" alt="A simulated frame of a sunset city skyline, displayed at the globally synchronized minute." fetchpriority="high">
+    </div>
+    <div class="progress" role="progressbar" aria-label="Frames revealed so far" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="trailerProgress">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <figcaption class="metadata">
+      <span id="frameCounter">FRAME — / 48,240</span>
+      <span id="nextFrame">NEXT FRAME IN 00:--</span>
+    </figcaption>
+  </figure>
+  <p class="demo-note">ONE FRAME EVERY MINUTE · SIMULATED FOOTAGE FOR TESTING</p>
+  <span id="syncStatus" role="status" class="sr-only" aria-live="polite"></span>
+</main>
+<script>
+(() => {
+  'use strict';
+  const RELEASE = Date.parse('2026-11-18T23:00:00Z');
+  const TOTAL = 48240; // Provisional 26:48 at 30 fps
+  const STEP = 60000;
+  const START = RELEASE - TOTAL * STEP;
+  const byId = id => document.getElementById(id);
+  const ui = {
+    days:byId('days'), hours:byId('hours'), minutes:byId('minutes'), seconds:byId('seconds'),
+    next:byId('nextFrame'), counter:byId('frameCounter'), fill:byId('progressFill'),
+    progress:byId('trailerProgress'), sync:byId('syncStatus'), image:byId('frameImage')
+  };
+  const pad = value => String(value).padStart(2, '0');
+  let offset = 0;
+  let synced = false;
+  let lastFrame = -1;
+  let syncing = false;
+  const serverTime = () => Date.now() + offset;
+  const frameIndex = t => Math.max(0, Math.min(TOTAL - 1, Math.floor((t - START) / STEP)));
 
-    <section class="inner text-center pb-10 md:pb-16" aria-label="Countdown to GTA VI release">
-      <p class="eyebrow text-[#ac725a] mb-4 md:mb-5">ONE FRAME CLOSER</p>
-      <h1 class="headline text-3xl sm:text-4xl md:text-5xl mb-6 md:mb-9">Until Grand Theft Auto VI.</h1>
-      <div class="countdown" id="countdown" role="timer" aria-label="Time remaining until Grand Theft Auto VI releases">
-        <div class="unit"><span class="number" id="days">--</span><span class="unit-label">Days</span></div>
-        <div class="unit"><span class="number" id="hours">--</span><span class="unit-label">Hours</span></div>
-        <div class="unit"><span class="number" id="minutes">--</span><span class="unit-label">Minutes</span></div>
-        <div class="unit"><span class="number" id="seconds">--</span><span class="unit-label">Seconds</span></div>
-      </div>
-      <p class="mt-7 md:mt-10 font-light text-sm sm:text-base text-[#7b7f7b]">November 19, 2026 <span aria-hidden="true">·</span> 00:00 Copenhagen time</p>
-    </section>
-
-    <section class="w-full" aria-label="Current simulated film frame">
-      <figure class="m-0">
-        <div class="stage">
-          <img id="frameImage" src="/api/gta-frame" alt="Server-synchronized, illustrated cinematic test frame. Not official GTA VI footage." fetchpriority="high">
-          <div class="stage-label"><span class="dot" style="background:#ffb48c"></span>SIMULATED FRAME · TEST MODE</div>
-          <div class="stage-corner" id="frameOverlay">FRAME — / —</div>
-        </div>
-        <div class="frame-progress" role="progressbar" aria-label="Trailer progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="trailerProgress">
-          <div id="progressFill"></div>
-        </div>
-      </figure>
-    </section>
-
-    <section class="inner py-6 md:py-8">
-      <div class="flex flex-wrap items-start justify-between gap-5 md:gap-8">
-        <div>
-          <p class="eyebrow text-[#9a7867] mb-2">THE TRAILER, ONE MINUTE AT A TIME</p>
-          <p class="font-light text-base sm:text-lg text-[#5b615d]">One new frame every sixty seconds. No pause. No skipping.</p>
-        </div>
-        <div class="md:text-right">
-          <p class="eyebrow text-[#9a7867] mb-2">NEXT FRAME IN</p>
-          <p class="frame-next text-3xl sm:text-4xl font-medium tracking-[-.05em]" id="nextFrame">00:--</p>
-        </div>
-      </div>
-      <div class="mt-7 pt-5 border-t border-[#ded6cb] flex flex-wrap gap-x-8 gap-y-3 justify-between text-xs sm:text-sm text-[#7c807b]">
-        <span id="frameCounter">FRAME — / 48,240</span>
-        <span id="progressText">—% OF FRAMES RELEASED</span>
-        <span id="syncStatus" aria-live="polite">CONNECTING TO SERVER CLOCK…</span>
-      </div>
-    </section>
-
-    <footer class="inner border-t border-[#ded6cb] py-8 md:py-10 text-xs text-[#80847f] flex flex-wrap items-start justify-between gap-4">
-      <div class="max-w-2xl">
-        <p class="font-medium text-[#515953] mb-2">An independent, unofficial fan experiment.</p>
-        <p>This is a technical preview using generated placeholder artwork, not footage from Rockstar Games. Trailer duration and 30 fps are provisional until the source video is inspected.</p>
-      </div>
-      <a href="/" class="hover:text-[#1e2424]">Back to daniellund.dk ↗</a>
-    </footer>
-  </main>
-
-  <script>
-  (() => {
-    'use strict';
-    const RELEASE = Date.parse('2026-11-18T23:00:00Z');
-    const TOTAL = 48240;
-    const STEP = 60000;
-    const START = RELEASE - TOTAL * STEP;
-    const $ = id => document.getElementById(id);
-    const ui = {
-      days:$('days'),hours:$('hours'),minutes:$('minutes'),seconds:$('seconds'),
-      next:$('nextFrame'),counter:$('frameCounter'),overlay:$('frameOverlay'),
-      fill:$('progressFill'),progress:$('trailerProgress'),
-      percent:$('progressText'),sync:$('syncStatus'),image:$('frameImage')
-    };
-    let clockOffset = 0, syncOK = false, shownFrame = null, lastRefresh = 0, refreshing = false;
-    let booted = false;
-    const pad = n => String(n).padStart(2,'0');
-    const now = () => Date.now() + clockOffset;
-    function frameAt(t) { return Math.max(0,Math.min(TOTAL-1,Math.floor((t-START)/STEP))); }
-
-    async function syncClock() {
-      if (refreshing) return;
-      refreshing = true;
-      const before = Date.now();
-      try {
-        const response = await fetch('/api/gta-frame?format=state', { cache:'no-store',headers:{Accept:'application/json'} });
-        if (!response.ok) throw new Error('Server returned '+response.status);
-        const s = await response.json();
-        if (s.totalFrames !== TOTAL || s.launchAt !== RELEASE || s.frameIntervalMs !== STEP) throw new Error('Frame configuration mismatch');
-        clockOffset = s.serverNow - (before + Date.now())/2;
-        syncOK = true;
-        lastRefresh = Date.now();
-        ui.sync.textContent = 'SYNCED TO SERVER TIME';
-        ui.sync.classList.remove('status-error');
-        update();
-      } catch (e) {
-        ui.sync.textContent = syncOK ? 'RECONNECTING…' : 'LOCAL CLOCK FALLBACK · IMAGE SERVICE UNAVAILABLE';
-        ui.sync.classList.toggle('status-error',!syncOK);
-        console.warn('Frame clock synchronization:',e);
-      } finally { refreshing=false; }
-    }
-
-    function update() {
-      const t = now();
-      const remaining = Math.max(0,Math.ceil((RELEASE-t)/1000));
-      const days = Math.floor(remaining/86400);
-      const hours = Math.floor((remaining%86400)/3600);
-      const minutes = Math.floor((remaining%3600)/60);
-      const seconds = remaining%60;
-      ui.days.textContent = String(days).padStart(2,'0');
-      ui.hours.textContent = pad(hours);
-      ui.minutes.textContent = pad(minutes);
-      ui.seconds.textContent = pad(seconds);
-      const index = frameAt(t);
-      const fraction = Math.min(1,Math.max(0,(t-START)/(RELEASE-START)));
-      const nextAt = Math.min(RELEASE,START + (index+1)*STEP);
-      const nextSec = Math.max(0,Math.ceil((nextAt-t)/1000));
-      ui.next.textContent = t>=RELEASE ? 'OUT NOW' : pad(Math.floor(nextSec/60)) + ':' + pad(nextSec%60);
-      ui.counter.textContent = 'FRAME ' + String(index+1).padStart(5,'0') + ' / ' + TOTAL.toLocaleString('en-US');
-      ui.overlay.textContent = 'FRAME ' + String(index+1).padStart(5,'0') + ' / ' + TOTAL.toLocaleString('en-US');
-      const percent = (fraction*100).toFixed(2);
-      ui.fill.style.width = (fraction*100).toFixed(5)+'%';
-      ui.percent.textContent = percent+'% OF FRAMES RELEASED';
-      ui.progress.setAttribute('aria-valuenow', String(Math.round(fraction*100)));
-      if (syncOK && (shownFrame !== index || !booted)) {
-        shownFrame = index;
-        ui.image.src = '/api/gta-frame?frame=' + index + '&_=' + Math.floor(t/STEP);
-        // The API intentionally ignores frame= and always serves the current server frame.
-        booted = true;
+  async function sync() {
+    if (syncing) return;
+    syncing = true;
+    const before = Date.now();
+    try {
+      const response = await fetch('/api/gta-frame?format=state', { cache:'no-store' });
+      if (!response.ok) throw new Error('Frame service unavailable');
+      const state = await response.json();
+      if (state.launchAt !== RELEASE || state.totalFrames !== TOTAL || state.frameIntervalMs !== STEP) {
+        throw new Error('Clock configuration mismatch');
       }
-      if (t>=RELEASE) document.title = 'GTA VI — OUT NOW · ONE FRAME CLOSER';
-    }
+      offset = state.serverNow - (before + Date.now()) / 2;
+      synced = true;
+      ui.sync.textContent = 'Server clock synchronized';
+      update();
+    } catch (error) {
+      ui.sync.textContent = 'Server clock connection lost';
+      console.warn(error);
+    } finally { syncing = false; }
+  }
 
-    ui.image.addEventListener('error', () => {
-      ui.sync.textContent = 'IMAGE SERVICE UNAVAILABLE';
-      ui.sync.classList.add('status-error');
-    });
-    syncClock();
-    update();
-    setInterval(update,250);
-    setInterval(syncClock,30000);
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) { syncClock(); update(); }
-    });
-    window.addEventListener('pageshow', () => { syncClock(); update(); });
-  })();
-  </script>
+  function update() {
+    const t = serverTime();
+    const remaining = Math.max(0, Math.ceil((RELEASE - t) / 1000));
+    ui.days.textContent = pad(Math.floor(remaining / 86400));
+    ui.hours.textContent = pad(Math.floor(remaining % 86400 / 3600));
+    ui.minutes.textContent = pad(Math.floor(remaining % 3600 / 60));
+    ui.seconds.textContent = pad(remaining % 60);
+
+    const index = frameIndex(t);
+    const frame = index + 1;
+    const progress = Math.max(0, Math.min(1, (t - START) / (RELEASE - START)));
+    ui.counter.textContent = 'FRAME ' + String(frame).padStart(5, '0') + ' / ' + TOTAL.toLocaleString('en-US');
+    ui.fill.style.width = (progress * 100).toFixed(4) + '%';
+    ui.progress.setAttribute('aria-valuenow', String(Math.round(progress * 100)));
+    const nextAt = Math.min(RELEASE, START + (index + 1) * STEP);
+    const secs = Math.max(0, Math.ceil((nextAt - t) / 1000));
+    ui.next.textContent = t >= RELEASE ? 'OUT NOW' : 'NEXT FRAME IN ' + pad(Math.floor(secs / 60)) + ':' + pad(secs % 60);
+
+    if (synced && index !== lastFrame) {
+      lastFrame = index;
+      // The server chooses the actual frame; the cache-buster does not allow seeking.
+      ui.image.src = '/api/gta-frame?tick=' + Math.floor(t / STEP);
+    }
+  }
+
+  sync();
+  update();
+  setInterval(update, 250);
+  setInterval(sync, 30000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) { sync(); update(); } });
+  window.addEventListener('pageshow', () => { sync(); update(); });
+})();
+</script>
 </body>
 </html>
